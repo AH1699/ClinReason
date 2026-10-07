@@ -32,6 +32,7 @@ Requires Python 3.11+; the demo has no third-party dependencies and makes no net
 ```bash
 python -m benchmark.cli --config config/benchmark.json init
 python -m benchmark.cli --config config/benchmark.json validate-data
+python -m benchmark.cli --config config/benchmark.json dataset-status
 python -m benchmark.cli --config config/benchmark.json run-demo
 python -m unittest discover -s tests -v
 ```
@@ -53,7 +54,7 @@ The validation command has two modes. Development mode permits draft/example cas
 
 - **Complete:** bilingual design package, draft charter, risk register, authoring guide, machine-readable contracts, offline pipeline, scoring/gating, data validation, and mock tests.
 - **Development examples:** six English-only synthetic infrastructure fixtures remain under `data/examples/`.
-- **Alpha draft:** the configured dataset is the bilingual, jurisdiction-neutral Global Core under `data/alpha/`. The first batch contains 6 matched families / 12 prompts, balanced across all six categories. All remain unvalidated drafts until expert review.
+- **Alpha draft:** the configured dataset is the bilingual, jurisdiction-neutral Global Core under `data/alpha/`. It currently contains 12 matched families / 24 prompts, with two families in each category. All remain unvalidated drafts until expert review.
 - **Next milestone:** approve the remaining charter decisions, assign accountable reviewers, and expand the Global Core to 30–50 bilingual families.
 - **Deferred:** real candidate/judge API adapters, judge calibration, hidden Gold Set, external rankings, training, and deployment.
 

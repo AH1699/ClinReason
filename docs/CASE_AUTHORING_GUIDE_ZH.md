@@ -132,6 +132,14 @@ python -m benchmark.cli --config config/benchmark.json validate-data \
 
 退出码 `0` 表示无错误；开发模式仍可能有警告。退出码 `1` 表示数据集不得继续推进。验证只能检查结构和政策一致性，不能证明临床正确性。
 
+使用以下命令跟踪编写和审核进度：
+
+```bash
+python -m benchmark.cli --config config/benchmark.json dataset-status
+```
+
+状态报告会统计双语案例族，并列出待完成的临床、语言、来源和生命周期审核工作。它只用于流程跟踪，不能证明审核已经发生。
+
 ## 12. 完成检查表
 
 - [ ] 不含真实患者数据或标识符。

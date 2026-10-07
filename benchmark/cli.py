@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 from .config import load_json, resolve_path
+from .dataset_status import summarize_dataset
 from .pipeline import (
     bootstrap,
     create_run,
@@ -46,6 +47,19 @@ def build_parser() -> argparse.ArgumentParser:
         help="Enforce clinician-validation, provenance, and bilingual-pair requirements",
     )
     validate.add_argument(
+        "--format",
+        choices=("text", "json"),
+        default="text",
+        help="Output format",
+    )
+    status = sub.add_parser(
+        "dataset-status", help="Summarize authoring and review progress"
+    )
+    status.add_argument(
+        "--cases",
+        help="Case JSONL path; defaults to cases_path from the benchmark config",
+    )
+    status.add_argument(
         "--format",
         choices=("text", "json"),
         default="text",
@@ -103,6 +117,35 @@ def main(argv: list[str] | None = None) -> int:
                     f"[{location}] {issue['path']}: {issue['message']}"
                 )
         return 1 if result["error_count"] else 0
+
+    if args.command == "dataset-status":
+        target = resolve_path(args.config, args.cases) if args.cases else cases_path
+        result = summarize_dataset(target, rubric, config.get("authoring", {}))
+        if args.format == "json":
+            print(json.dumps(result, ensure_ascii=False, indent=2))
+        else:
+            queue = result["review_queue"]
+            print(f"Dataset: {target}")
+            print(
+                f"Cases: {result['case_count']} | Families: {result['family_count']} | "
+                f"Complete bilingual pairs: {result['complete_bilingual_families']}"
+            )
+            print(f"Families by category: {json.dumps(result['categories_by_family'], sort_keys=True)}")
+            print(f"Languages: {json.dumps(result['languages_by_case'], sort_keys=True)}")
+            print(f"Statuses: {json.dumps(result['statuses_by_case'], sort_keys=True)}")
+            print(
+                "Review queue: "
+                f"clinical={len(queue['clinical_review_pending'])}, "
+                f"language={len(queue['language_review_pending'])}, "
+                f"sources={len(queue['source_review_pending'])}, "
+                f"release_status={len(queue['release_status_pending'])}"
+            )
+            validation = result["development_validation"]
+            print(
+                "Development validation: "
+                f"errors={validation['error_count']}, warnings={validation['warning_count']}"
+            )
+        return 0 if result["development_validation"]["valid"] else 1
 
     return 2
 

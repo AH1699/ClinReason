@@ -17,6 +17,12 @@ Recommended workflow:
      --cases data/alpha/healthcare_cases.jsonl
    ```
 
-8. Run `--release-ready` only after all review and governance gates are satisfied.
+8. Monitor the review queue:
+
+   ```bash
+   python -m benchmark.cli --config config/benchmark.json dataset-status
+   ```
+
+9. Run `--release-ready` only after all review and governance gates are satisfied.
 
 Do not commit provider credentials, real patient data, or hidden Gold labels to this directory.

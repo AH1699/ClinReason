@@ -132,6 +132,14 @@ python -m benchmark.cli --config config/benchmark.json validate-data \
 
 Exit code `0` means no errors; warnings may remain in development mode. Exit code `1` means the dataset must not proceed. Validation checks structure and policy consistency—it cannot establish clinical correctness.
 
+Track authoring and review progress with:
+
+```bash
+python -m benchmark.cli --config config/benchmark.json dataset-status
+```
+
+The status report counts bilingual families and lists pending clinical, language, source, and lifecycle review work. It is operational tracking, not evidence that a review occurred.
+
 ## 12. Completion checklist
 
 - [ ] No real patient data or identifiers.

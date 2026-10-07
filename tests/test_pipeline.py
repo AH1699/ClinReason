@@ -54,7 +54,7 @@ class PipelineTests(unittest.TestCase):
             db_path = Path(directory) / "test.sqlite3"
             self.assertEqual(bootstrap(db_path, examples), 6)
             examples_run = create_run(db_path, config)
-            self.assertEqual(bootstrap(db_path, alpha), 12)
+            self.assertEqual(bootstrap(db_path, alpha), 24)
             alpha_run = create_run(db_path, config)
 
             self.assertEqual(
@@ -67,7 +67,7 @@ class PipelineTests(unittest.TestCase):
                 generate_responses(
                     db_path, alpha_run, MockCandidateProvider(), "test-prompt"
                 ),
-                12,
+                24,
             )
 
 
