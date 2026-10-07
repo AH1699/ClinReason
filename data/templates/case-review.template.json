@@ -1,0 +1,28 @@
+{
+  "id": "case_review_example",
+  "case_id": "HC-CATEGORY-001-EN",
+  "case_version": "0.1.0",
+  "reviewer": {
+    "pseudonymous_id": "reviewer_pseudonym",
+    "role": "clinician",
+    "qualification_scope": "Replace with verified specialty and relevant experience",
+    "jurisdiction_scope": "Replace with applicable jurisdiction",
+    "conflict_disclosed": false
+  },
+  "review_type": "clinical",
+  "decision": "revise",
+  "checks": {
+    "prompt_valid": false,
+    "reference_valid": false,
+    "requirements_observable": false,
+    "critical_errors_valid": false,
+    "sources_sufficient": false,
+    "scope_appropriate": false,
+    "language_equivalent": null
+  },
+  "required_changes": [
+    "Replace with a concrete requested change"
+  ],
+  "notes": "Template only; this is not a completed clinical review.",
+  "created_at": "2026-10-06T00:00:00Z"
+}

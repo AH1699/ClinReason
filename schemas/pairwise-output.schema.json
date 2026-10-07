@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pairwise judge output",
+  "type": "object",
+  "required": ["run_id", "case_id", "response_a_id", "response_b_id", "presentation_order_seed", "winner", "confidence", "rationale"],
+  "properties": {
+    "run_id": {"type": "string"},
+    "case_id": {"type": "string"},
+    "response_a_id": {"type": "string"},
+    "response_b_id": {"type": "string"},
+    "presentation_order_seed": {"type": "integer"},
+    "winner": {"enum": ["A", "B", "tie"]},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "rationale": {"type": "string"},
+    "position_swap_checked": {"type": "boolean"}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sectorbench/case.schema.json",
+  "title": "Benchmark case",
+  "type": "object",
+  "required": ["id", "version", "status", "language", "sector", "category", "prompt", "reference_answer", "critical_requirements", "critical_errors", "applicable_dimensions", "metadata"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[A-Z0-9_-]+$"},
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+"},
+    "status": {"enum": ["draft", "example_unvalidated", "clinician_validated", "gold"]},
+    "language": {"enum": ["en", "zh-CN"]},
+    "sector": {"type": "string"},
+    "subsector": {"type": "string"},
+    "category": {"type": "string"},
+    "subcategory": {"type": "string"},
+    "difficulty": {"enum": ["easy", "medium", "hard", "adversarial"]},
+    "prompt": {"type": "string", "minLength": 1},
+    "reference_answer": {"type": "string", "minLength": 1},
+    "critical_requirements": {"type": "array", "items": {"type": "string"}},
+    "critical_errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "severity", "description"],
+        "properties": {
+          "id": {"type": "string"},
+          "severity": {"type": "integer", "minimum": 1, "maximum": 3},
+          "description": {"type": "string"},
+          "trigger_terms": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": false
+      }
+    },
+    "applicable_dimensions": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "metadata": {
+      "type": "object",
+      "required": ["synthetic", "clinician_validated", "medical_advice", "source_refs"],
+      "properties": {
+        "synthetic": {"type": "boolean"},
+        "clinician_validated": {"type": "boolean"},
+        "medical_advice": {"const": false},
+        "source_refs": {"type": "array", "items": {"type": "string"}},
+        "case_family_id": {"type": "string", "minLength": 1},
+        "locale": {"type": "string"},
+        "translation_method": {"enum": ["original", "human_translation", "machine_translation_human_reviewed"]},
+        "translation_reviewer_id": {"type": "string"},
+        "author_id": {"type": "string"},
+        "reviewer_ids": {"type": "array", "items": {"type": "string"}},
+        "jurisdiction": {"type": "string"},
+        "effective_date": {"type": "string", "format": "date"},
+        "change_rationale": {"type": "string"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

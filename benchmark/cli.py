@@ -1,0 +1,111 @@
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+
+from .config import load_json, resolve_path
+from .pipeline import (
+    bootstrap,
+    create_run,
+    generate_responses,
+    judge_responses,
+    report_run,
+    score_run,
+)
+from .providers.mock import MockCandidateProvider, MockJudgeProvider
+from .validation import validate_dataset
+
+
+def _context(config_path: str) -> tuple[dict, Path, Path, dict]:
+    config = load_json(config_path)
+    db_path = resolve_path(config_path, config["database_path"])
+    cases_path = resolve_path(config_path, config["cases_path"])
+    rubric_path = resolve_path(config_path, config["rubric_path"])
+    return config, db_path, cases_path, load_json(rubric_path)
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="sectorbench")
+    parser.add_argument("--config", default="config/benchmark.json")
+    sub = parser.add_subparsers(dest="command", required=True)
+    sub.add_parser("init", help="Initialize SQLite and ingest configured cases")
+    sub.add_parser("run-demo", help="Run the complete offline mock pipeline")
+    report = sub.add_parser("report", help="Print a JSON report for a run")
+    report.add_argument("run_id")
+    validate = sub.add_parser(
+        "validate-data", help="Validate and lint a benchmark case JSONL file"
+    )
+    validate.add_argument(
+        "--cases",
+        help="Case JSONL path; defaults to cases_path from the benchmark config",
+    )
+    validate.add_argument(
+        "--release-ready",
+        action="store_true",
+        help="Enforce clinician-validation, provenance, and bilingual-pair requirements",
+    )
+    validate.add_argument(
+        "--format",
+        choices=("text", "json"),
+        default="text",
+        help="Output format",
+    )
+    return parser
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = build_parser().parse_args(argv)
+    config, db_path, cases_path, rubric = _context(args.config)
+
+    if args.command == "init":
+        count = bootstrap(db_path, cases_path)
+        print(json.dumps({"database": str(db_path), "ingested_cases": count}, indent=2))
+        return 0
+
+    if args.command == "run-demo":
+        bootstrap(db_path, cases_path)
+        run_id = create_run(db_path, config)
+        generate_responses(
+            db_path, run_id, MockCandidateProvider(), config["prompt_template_version"]
+        )
+        judges = [MockJudgeProvider(index) for index in range(config["demo_judge_count"])]
+        judge_responses(
+            db_path, run_id, judges, rubric, config["judge_prompt_version"]
+        )
+        score_run(db_path, run_id, rubric, config["scoring"])
+        print(json.dumps(report_run(db_path, run_id), ensure_ascii=False, indent=2))
+        return 0
+
+    if args.command == "report":
+        print(json.dumps(report_run(db_path, args.run_id), ensure_ascii=False, indent=2))
+        return 0
+
+    if args.command == "validate-data":
+        target = resolve_path(args.config, args.cases) if args.cases else cases_path
+        result = validate_dataset(
+            target,
+            rubric,
+            config.get("authoring", {}),
+            release_ready=args.release_ready,
+        )
+        if args.format == "json":
+            print(json.dumps(result, ensure_ascii=False, indent=2))
+        else:
+            print(
+                f"{target}: {result['case_count']} cases, "
+                f"{result['error_count']} errors, {result['warning_count']} warnings"
+            )
+            for issue in result["issues"]:
+                location = issue.get("case_id") or f"line {issue.get('line', '?')}"
+                print(
+                    f"{issue['level'].upper()} {issue['code']} "
+                    f"[{location}] {issue['path']}: {issue['message']}"
+                )
+        return 1 if result["error_count"] else 0
+
+    return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

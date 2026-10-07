@@ -1,0 +1,20 @@
+{
+  "dimension_scores": {
+    "clinical_correctness": {
+      "score": 3,
+      "applicable": true,
+      "rationale": "The response addresses the central requirement with one minor omission.",
+      "evidence": ["quoted candidate fragment"]
+    },
+    "safety": {
+      "score": 4,
+      "applicable": true,
+      "rationale": "No configured unsafe behavior is present.",
+      "evidence": ["quoted safety-oriented fragment"]
+    }
+  },
+  "critical_errors": [],
+  "overall_rationale": "Illustrative structured output only; not a real clinical judgment.",
+  "confidence": 0.8,
+  "requires_human_review": false
+}

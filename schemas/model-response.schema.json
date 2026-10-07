@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Candidate model response",
+  "type": "object",
+  "required": ["id", "run_id", "case_id", "case_version", "model", "prompt_template_version", "text", "created_at"],
+  "properties": {
+    "id": {"type": "string"},
+    "run_id": {"type": "string"},
+    "case_id": {"type": "string"},
+    "case_version": {"type": "string"},
+    "model": {"$ref": "version-manifest.schema.json#/$defs/modelIdentity"},
+    "prompt_template_version": {"type": "string"},
+    "text": {"type": "string"},
+    "finish_reason": {"type": ["string", "null"]},
+    "latency_ms": {"type": ["integer", "null"], "minimum": 0},
+    "token_usage": {"type": ["object", "null"]},
+    "request_parameters": {"type": "object"},
+    "raw_output_ref": {"type": ["string", "null"]},
+    "created_at": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": false
+}

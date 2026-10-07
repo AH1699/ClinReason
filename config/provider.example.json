@@ -1,0 +1,27 @@
+{
+  "candidate": {
+    "adapter": "replace-with-provider-adapter",
+    "provider": "example-provider",
+    "model_id": "pinned-candidate-model-id",
+    "model_version": "immutable-snapshot-if-available",
+    "credentials_env": "CANDIDATE_API_KEY",
+    "timeout_seconds": 60,
+    "max_retries": 2
+  },
+  "judges": [
+    {
+      "adapter": "replace-with-provider-adapter",
+      "provider": "judge-provider-a",
+      "model_id": "pinned-judge-model-id-a",
+      "model_version": "immutable-snapshot-if-available",
+      "credentials_env": "JUDGE_A_API_KEY"
+    },
+    {
+      "adapter": "replace-with-provider-adapter",
+      "provider": "judge-provider-b",
+      "model_id": "pinned-judge-model-id-b",
+      "model_version": "immutable-snapshot-if-available",
+      "credentials_env": "JUDGE_B_API_KEY"
+    }
+  ]
+}

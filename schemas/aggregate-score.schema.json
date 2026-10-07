@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Aggregated absolute score",
+  "type": "object",
+  "required": ["dimension_scores", "raw_score", "gated_score", "pass", "hard_fail", "confirmed_critical_errors", "confidence", "review_status", "review_reasons", "judge_count"],
+  "properties": {
+    "dimension_scores": {"type": "object"},
+    "raw_score": {"type": "number", "minimum": 0, "maximum": 100},
+    "gated_score": {"type": "number", "minimum": 0, "maximum": 100},
+    "pass": {"type": "boolean"},
+    "hard_fail": {"type": "boolean"},
+    "confirmed_critical_errors": {"type": "array", "items": {"type": "object"}},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "review_status": {"enum": ["required", "not_required", "completed"]},
+    "review_reasons": {"type": "array", "items": {"type": "string"}},
+    "judge_count": {"type": "integer", "minimum": 1}
+  },
+  "additionalProperties": false
+}

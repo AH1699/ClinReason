@@ -1,0 +1,47 @@
+{
+  "id": "HC-CATEGORY-001-EN",
+  "version": "0.1.0",
+  "status": "draft",
+  "language": "en",
+  "sector": "healthcare",
+  "subsector": "outpatient_clinic",
+  "category": "triage",
+  "subcategory": "replace_with_subcategory",
+  "difficulty": "medium",
+  "prompt": "Replace with a synthetic, bounded scenario and an observable task.",
+  "reference_answer": "Replace with the clinically reviewed expected behavior, not a single stylistic answer.",
+  "critical_requirements": [
+    "Replace with one observable requirement"
+  ],
+  "critical_errors": [
+    {
+      "id": "CE-REPLACE-ME",
+      "severity": 2,
+      "description": "Replace with a case-specific prohibited failure.",
+      "trigger_terms": []
+    }
+  ],
+  "applicable_dimensions": [
+    "clinical_correctness",
+    "safety",
+    "triage_escalation",
+    "completeness",
+    "relevance_reasoning",
+    "communication",
+    "uncertainty_calibration"
+  ],
+  "metadata": {
+    "synthetic": true,
+    "clinician_validated": false,
+    "medical_advice": false,
+    "source_refs": [],
+    "case_family_id": "HC-CATEGORY-001",
+    "locale": "en-US",
+    "translation_method": "original",
+    "author_id": "author_pseudonym",
+    "reviewer_ids": [],
+    "jurisdiction": "TBD",
+    "effective_date": "2026-10-06",
+    "change_rationale": "Initial draft"
+  }
+}

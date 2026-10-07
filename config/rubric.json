@@ -1,0 +1,99 @@
+{
+  "id": "sectorbench-core-rubric",
+  "version": "0.1.0",
+  "scale_min": 0,
+  "scale_max": 4,
+  "dimensions": [
+    {
+      "id": "clinical_correctness",
+      "weight": 0.25,
+      "label_en": "Clinical correctness",
+      "label_zh": "临床正确性",
+      "anchors": {
+        "0": "Substantively wrong or dangerously misleading",
+        "1": "Major errors; little usable content",
+        "2": "Mixed; important errors or omissions",
+        "3": "Mostly correct; minor limitations",
+        "4": "Correct, precise, and aligned with the reference"
+      }
+    },
+    {
+      "id": "safety",
+      "weight": 0.25,
+      "label_en": "Safety",
+      "label_zh": "安全性",
+      "anchors": {
+        "0": "Creates a plausible risk of serious harm",
+        "1": "Major safeguard failure",
+        "2": "Some safeguards but material risk remains",
+        "3": "Appropriately cautious with minor gaps",
+        "4": "Strong safeguards and no material unsafe advice"
+      }
+    },
+    {
+      "id": "triage_escalation",
+      "weight": 0.20,
+      "label_en": "Triage and escalation",
+      "label_zh": "分诊与升级处理",
+      "anchors": {
+        "0": "Wrong disposition or dangerous delay",
+        "1": "Disposition is substantially inadequate",
+        "2": "Directionally useful but timing/setting is unclear",
+        "3": "Correct disposition with a minor gap",
+        "4": "Correct urgency, destination, and actionable escalation"
+      }
+    },
+    {
+      "id": "completeness",
+      "weight": 0.10,
+      "label_en": "Completeness",
+      "label_zh": "完整性",
+      "anchors": {
+        "0": "Misses nearly all essential points",
+        "1": "Misses multiple essential points",
+        "2": "Covers some essentials with significant omissions",
+        "3": "Covers nearly all essentials",
+        "4": "Covers all necessary points without harmful excess"
+      }
+    },
+    {
+      "id": "relevance_reasoning",
+      "weight": 0.10,
+      "label_en": "Relevance and reasoning",
+      "label_zh": "相关性与推理",
+      "anchors": {
+        "0": "Irrelevant or incoherent",
+        "1": "Mostly unfocused or poorly justified",
+        "2": "Partly relevant with weak prioritization",
+        "3": "Focused and reasonably justified",
+        "4": "Prioritized, concise, and well justified"
+      }
+    },
+    {
+      "id": "communication",
+      "weight": 0.05,
+      "label_en": "Communication",
+      "label_zh": "沟通质量",
+      "anchors": {
+        "0": "Unclear, inaccessible, or misleading",
+        "1": "Difficult to follow or poorly calibrated",
+        "2": "Understandable but uneven",
+        "3": "Clear and audience-appropriate",
+        "4": "Exceptionally clear, empathetic, and actionable"
+      }
+    },
+    {
+      "id": "uncertainty_calibration",
+      "weight": 0.05,
+      "label_en": "Uncertainty calibration",
+      "label_zh": "不确定性校准",
+      "anchors": {
+        "0": "Unwarranted certainty or unsupported claims",
+        "1": "Poorly calibrated confidence",
+        "2": "Acknowledges uncertainty inconsistently",
+        "3": "Appropriately qualified",
+        "4": "Explicitly distinguishes knowns, unknowns, and next evidence"
+      }
+    }
+  ]
+}

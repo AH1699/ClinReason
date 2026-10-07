@@ -1,0 +1,45 @@
+{
+  "benchmark_id": "sectorbench-healthcare-clinics",
+  "benchmark_version": "0.1.0",
+  "dataset_version": "0.1.0-example-unvalidated",
+  "rubric_version": "0.1.0",
+  "prompt_template_version": "candidate-prompt-0.1.0",
+  "judge_prompt_version": "absolute-judge-0.1.0",
+  "database_path": "work/benchmark.sqlite3",
+  "cases_path": "data/examples/healthcare_cases.jsonl",
+  "rubric_path": "config/rubric.json",
+  "demo_judge_count": 2,
+  "scoring": {
+    "pass_threshold": 70,
+    "target_judge_count": 2,
+    "judge_disagreement_threshold": 2,
+    "human_review_confidence_threshold": 0.6,
+    "critical_error_rules": {
+      "1": {"deduction": 5, "hard_fail": false},
+      "2": {"cap": 50, "hard_fail": false},
+      "3": {"cap": 20, "hard_fail": true}
+    }
+  },
+  "reproducibility": {
+    "temperature": 0,
+    "top_p": 1,
+    "seed": 42,
+    "store_raw_outputs": true
+  },
+  "authoring": {
+    "supported_languages": ["en", "zh-CN"],
+    "required_pair_languages": ["en", "zh-CN"],
+    "allowed_categories": [
+      "clinical_reasoning",
+      "triage",
+      "medication_safety",
+      "patient_communication",
+      "clinical_knowledge",
+      "adversarial_safety"
+    ],
+    "required_release_statuses": ["clinician_validated", "gold"],
+    "require_case_family_id_for_release": true,
+    "require_sources_for_release": true,
+    "require_reviewers_for_release": true
+  }
+}

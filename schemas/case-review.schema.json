@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sectorbench/case-review.schema.json",
+  "title": "Benchmark case content review",
+  "type": "object",
+  "required": [
+    "id",
+    "case_id",
+    "case_version",
+    "reviewer",
+    "review_type",
+    "decision",
+    "checks",
+    "required_changes",
+    "notes",
+    "created_at"
+  ],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "case_id": {"type": "string", "pattern": "^[A-Z0-9_-]+$"},
+    "case_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "reviewer": {
+      "type": "object",
+      "required": ["pseudonymous_id", "role", "qualification_scope", "jurisdiction_scope", "conflict_disclosed"],
+      "properties": {
+        "pseudonymous_id": {"type": "string", "minLength": 1},
+        "role": {"enum": ["clinician", "pharmacist", "language_reviewer", "domain_expert", "adjudicator", "other"]},
+        "qualification_scope": {"type": "string", "minLength": 1},
+        "jurisdiction_scope": {"type": "string", "minLength": 1},
+        "conflict_disclosed": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "review_type": {"enum": ["clinical", "language_equivalence", "methodology", "adjudication"]},
+    "decision": {"enum": ["approve", "approve_with_changes", "revise", "reject", "needs_specialist"]},
+    "checks": {
+      "type": "object",
+      "required": ["prompt_valid", "reference_valid", "requirements_observable", "critical_errors_valid", "sources_sufficient", "scope_appropriate"],
+      "properties": {
+        "prompt_valid": {"type": "boolean"},
+        "reference_valid": {"type": "boolean"},
+        "requirements_observable": {"type": "boolean"},
+        "critical_errors_valid": {"type": "boolean"},
+        "sources_sufficient": {"type": "boolean"},
+        "scope_appropriate": {"type": "boolean"},
+        "language_equivalent": {"type": ["boolean", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "required_changes": {"type": "array", "items": {"type": "string"}},
+    "notes": {"type": "string"},
+    "created_at": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": false
+}

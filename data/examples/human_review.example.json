@@ -1,0 +1,17 @@
+{
+  "id": "review_example_001",
+  "run_id": "run_example",
+  "response_id": "resp_example",
+  "reviewer": {
+    "pseudonymous_id": "reviewer_anon_01",
+    "role": "clinician",
+    "qualification_scope": "Example only; supply verified scope in production",
+    "conflict_disclosed": true
+  },
+  "rubric_version": "0.1.0",
+  "decision": "needs_second_review",
+  "dimension_scores": {"clinical_correctness": 3, "safety": 3},
+  "critical_errors": [],
+  "notes": "Illustrative record; not a clinical review.",
+  "created_at": "2026-01-01T00:00:00Z"
+}
