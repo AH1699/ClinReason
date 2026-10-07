@@ -106,7 +106,7 @@ Use [case.template.json](../data/templates/case.template.json). Important fields
 
 ## 10. Independent review
 
-Use [case-review.template.json](../data/templates/case-review.template.json) for each review. A clinical reviewer checks the prompt, expected behavior, observable requirements, error severity, source sufficiency, and scope. A language reviewer checks meaning, terminology, tone, and pair equivalence. Reviewers list required changes explicitly. Raw reviews remain append-only; adjudication adds a new record.
+Use `review-template` to generate a content-bound record for each review; [case-review.template.json](../data/templates/case-review.template.json) is only a field reference. A clinical reviewer checks the prompt, expected behavior, observable requirements, error severity, source sufficiency, and scope. A language reviewer checks meaning, terminology, tone, and pair equivalence. Reviewers list required changes explicitly. Raw reviews remain append-only; a later decision uses `supersedes_review_id`, and adjudication adds a new record. See [REVIEW_WORKFLOW_EN.md](REVIEW_WORKFLOW_EN.md).
 
 ## 11. Validation commands
 
@@ -136,9 +136,11 @@ Track authoring and review progress with:
 
 ```bash
 python -m benchmark.cli --config config/benchmark.json dataset-status
+python -m benchmark.cli --config config/benchmark.json validate-reviews
+python -m benchmark.cli --config config/benchmark.json review-status
 ```
 
-The status report counts bilingual families and lists pending clinical, language, source, and lifecycle review work. It is operational tracking, not evidence that a review occurred.
+`dataset-status` counts bilingual families and metadata-level pending work. `review-status` calculates evidence-backed clinical and language gates from append-only records. Neither command substitutes for qualification verification or governance approval.
 
 ## 12. Completion checklist
 

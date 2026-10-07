@@ -7,6 +7,7 @@
   "judge_prompt_version": "absolute-judge-0.1.0",
   "database_path": "work/benchmark.sqlite3",
   "cases_path": "data/alpha/global_core_cases.jsonl",
+  "reviews_path": "data/reviews",
   "rubric_path": "config/rubric.json",
   "demo_judge_count": 2,
   "scoring": {
@@ -53,5 +54,9 @@
     "require_case_family_id_for_release": true,
     "require_sources_for_release": true,
     "require_reviewers_for_release": true
+  },
+  "review_policy": {
+    "required_clinical_approvals": 1,
+    "required_language_approvals": 1
   }
 }

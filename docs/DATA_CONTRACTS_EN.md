@@ -49,6 +49,8 @@ Use a pseudonymous reviewer ID, role, qualification scope, conflict disclosure, 
 
 `human-review.schema.json` covers review of a model response. `case-review.schema.json` separately covers clinical, language-equivalence, methodology, and adjudication review of authored benchmark cases. Do not use a response review as evidence that a case itself was validated.
 
+Each case review binds to `case_id + case_version + case_content_hash`. The hash is the lowercase SHA-256 digest of canonical UTF-8 JSON (`sort_keys=true`, compact separators, Unicode retained) for reviewable case content. Promotion-derived fields are excluded: top-level `status` plus `metadata.clinician_validated`, `reviewer_ids`, `translation_method`, `translation_reviewer_id`, and `change_rationale`. All prompts, references, requirements, error policies, sources, scope, dates, and other substantive fields remain covered. A substantive content mismatch makes the review stale even if an author failed to increment the case version. Corrections append a new record and may reference the prior record with `supersedes_review_id`; completed records are never overwritten.
+
 ## 6. Version manifest
 
 Every real run must record:

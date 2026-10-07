@@ -19,6 +19,7 @@ This package is **research/evaluation infrastructure, not medical advice**. All 
 - `docs/RISK_REGISTER_EN.md` and `docs/RISK_REGISTER_ZH.md`: active healthcare benchmark risk register and immediate controls.
 - `docs/CASE_AUTHORING_GUIDE_EN.md` and `docs/CASE_AUTHORING_GUIDE_ZH.md`: bilingual family design, source policy, review workflow, and completion checklist.
 - `docs/GLOBAL_CORE_DESIGN_EN.md` and `docs/GLOBAL_CORE_DESIGN_ZH.md`: separation of jurisdiction-neutral behavior, local jurisdiction packs, and cross-jurisdiction adaptation.
+- `docs/REVIEW_WORKFLOW_EN.md` and `docs/REVIEW_WORKFLOW_ZH.md`: append-only clinical/language review operations, evidence rules, and promotion gates.
 - `schemas/`: JSON Schema definitions for cases, responses, judge outputs, human reviews, version manifests, aggregate scores, pairwise outputs, and runs.
 - `benchmark/`: standard-library Python implementation with SQLite persistence and candidate/judge provider interfaces.
 - `data/examples/`: six synthetic, unvalidated healthcare/clinic examples.
@@ -33,6 +34,8 @@ Requires Python 3.11+; the demo has no third-party dependencies and makes no net
 python -m benchmark.cli --config config/benchmark.json init
 python -m benchmark.cli --config config/benchmark.json validate-data
 python -m benchmark.cli --config config/benchmark.json dataset-status
+python -m benchmark.cli --config config/benchmark.json validate-reviews
+python -m benchmark.cli --config config/benchmark.json review-status
 python -m benchmark.cli --config config/benchmark.json run-demo
 python -m unittest discover -s tests -v
 ```
@@ -50,12 +53,14 @@ The mock candidate and judges only verify plumbing: ingestion, persistence, stru
 
 The validation command has two modes. Development mode permits draft/example cases and reports provenance and bilingual-pair warnings. `validate-data --release-ready` fails cases that lack validated status, sources, reviewers, jurisdiction, effective date, or complete English/Chinese family pairs. Structural validation cannot establish clinical correctness.
 
+Case reviews are append-only and content-bound. `review-template` generates a record containing the exact case ID, version, and canonical SHA-256 content hash. `validate-reviews` rejects stale, malformed, self-authored, or role-inappropriate reviews; `review-status` reports which clinical and language gates are actually complete. A file's existence never counts as approval.
+
 ## Current project status
 
-- **Complete:** bilingual design package, draft charter, risk register, authoring guide, machine-readable contracts, offline pipeline, scoring/gating, data validation, and mock tests.
+- **Complete:** bilingual design package, draft charter, risk register, authoring guide, machine-readable contracts, offline pipeline, scoring/gating, data validation, append-only review workflow, and mock tests.
 - **Development examples:** six English-only synthetic infrastructure fixtures remain under `data/examples/`.
 - **Alpha draft:** the configured dataset is the bilingual, jurisdiction-neutral Global Core under `data/alpha/`. It currently contains 12 matched families / 24 prompts, with two families in each category. All remain unvalidated drafts until expert review.
-- **Next milestone:** approve the remaining charter decisions, assign accountable reviewers, and expand the Global Core to 30–50 bilingual families.
+- **Next milestone:** assign qualified reviewers, run the first clinical and language-equivalence review round, resolve requested changes, and then expand the Global Core to 30–50 bilingual families.
 - **Deferred:** real candidate/judge API adapters, judge calibration, hidden Gold Set, external rankings, training, and deployment.
 
 ## Adding a provider

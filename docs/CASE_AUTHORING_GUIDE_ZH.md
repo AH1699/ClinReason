@@ -106,7 +106,7 @@ ID 示例：`HC-TRIAGE-007-EN` 和 `HC-TRIAGE-007-ZH-HANS`。记录地区和翻�
 
 ## 10. 独立审核
 
-每次审核使用 [case-review.template.json](../data/templates/case-review.template.json)。临床审核者检查题目、预期行为、要求可观察性、错误严重度、来源充分性和专业范围。语言审核者检查含义、术语、语气和配对等价性。审核者必须明确列出修改要求。原始审核记录只追加、不覆盖；裁决应生成新记录。
+每次审核应使用 `review-template` 生成与内容绑定的记录；[case-review.template.json](../data/templates/case-review.template.json) 仅供字段参考。临床审核者检查题目、预期行为、要求可观察性、错误严重度、来源充分性和专业范围。语言审核者检查含义、术语、语气和配对等价性。审核者必须明确列出修改要求。原始审核记录只追加、不覆盖；后续决定使用 `supersedes_review_id`，裁决也应生成新记录。详见 [REVIEW_WORKFLOW_ZH.md](REVIEW_WORKFLOW_ZH.md)。
 
 ## 11. 验证命令
 
@@ -136,9 +136,11 @@ python -m benchmark.cli --config config/benchmark.json validate-data \
 
 ```bash
 python -m benchmark.cli --config config/benchmark.json dataset-status
+python -m benchmark.cli --config config/benchmark.json validate-reviews
+python -m benchmark.cli --config config/benchmark.json review-status
 ```
 
-状态报告会统计双语案例族，并列出待完成的临床、语言、来源和生命周期审核工作。它只用于流程跟踪，不能证明审核已经发生。
+`dataset-status` 统计双语案例族和元数据层面的待办事项；`review-status` 根据只追加记录计算有证据支持的临床与语言门槛。两者都不能替代资质核验或治理批准。
 
 ## 12. 完成检查表
 

@@ -49,6 +49,8 @@ draft -> clinician_validated -> gold
 
 `human-review.schema.json` 用于审核模型回答；`case-review.schema.json` 则单独用于审核已编写案例的临床内容、语言等价性、方法和裁决。模型回答审核不能作为案例本身已验证的证据。
 
+每项案例审核都绑定 `case_id + case_version + case_content_hash`。哈希是可审核案例内容的规范 UTF-8 JSON（键排序、紧凑分隔符、保留 Unicode）的全小写 SHA-256 摘要。升级流程产生的字段不计入哈希：顶层 `status`，以及 `metadata.clinician_validated`、`reviewer_ids`、`translation_method`、`translation_reviewer_id` 和 `change_rationale`。题目、参考行为、要求、错误政策、来源、范围、日期及其他实质字段仍受哈希保护。如果实质内容不一致，即使作者忘记提升案例版本，该审核也会被视为过期。纠错时应追加新记录，并可用 `supersedes_review_id` 指向旧记录；已完成记录不得覆盖。
+
 ## 6. 版本清单
 
 每次真实运行必须记录：

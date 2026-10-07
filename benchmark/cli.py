@@ -4,7 +4,7 @@ import argparse
 import json
 from pathlib import Path
 
-from .config import load_json, resolve_path
+from .config import load_json, load_jsonl, resolve_path
 from .dataset_status import summarize_dataset
 from .pipeline import (
     bootstrap,
@@ -15,6 +15,12 @@ from .pipeline import (
     score_run,
 )
 from .providers.mock import MockCandidateProvider, MockJudgeProvider
+from .reviews import (
+    REVIEW_TYPES,
+    ROLES,
+    assess_reviews,
+    build_review_template,
+)
 from .validation import validate_dataset
 
 
@@ -64,6 +70,44 @@ def build_parser() -> argparse.ArgumentParser:
         choices=("text", "json"),
         default="text",
         help="Output format",
+    )
+    validate_reviews = sub.add_parser(
+        "validate-reviews", help="Validate append-only case review records"
+    )
+    validate_reviews.add_argument(
+        "--reviews",
+        help="Review JSON/JSONL file or directory; defaults to reviews_path",
+    )
+    validate_reviews.add_argument(
+        "--format",
+        choices=("text", "json"),
+        default="text",
+        help="Output format",
+    )
+    review_status = sub.add_parser(
+        "review-status", help="Summarize independent case-review gates"
+    )
+    review_status.add_argument(
+        "--reviews",
+        help="Review JSON/JSONL file or directory; defaults to reviews_path",
+    )
+    review_status.add_argument(
+        "--format",
+        choices=("text", "json"),
+        default="text",
+        help="Output format",
+    )
+    review_template = sub.add_parser(
+        "review-template", help="Create a review record bound to an exact case revision"
+    )
+    review_template.add_argument("case_id")
+    review_template.add_argument("--review-type", choices=sorted(REVIEW_TYPES), required=True)
+    review_template.add_argument("--reviewer-id", required=True)
+    review_template.add_argument("--role", choices=sorted(ROLES), required=True)
+    review_template.add_argument("--qualification-scope", required=True)
+    review_template.add_argument("--jurisdiction-scope", required=True)
+    review_template.add_argument(
+        "--output", help="Write JSON to this path instead of standard output"
     )
     return parser
 
@@ -146,6 +190,75 @@ def main(argv: list[str] | None = None) -> int:
                 f"errors={validation['error_count']}, warnings={validation['warning_count']}"
             )
         return 0 if result["development_validation"]["valid"] else 1
+
+    if args.command in {"validate-reviews", "review-status"}:
+        configured_reviews = config.get("reviews_path", "data/reviews")
+        reviews_path = resolve_path(
+            args.config, args.reviews if args.reviews else configured_reviews
+        )
+        result = assess_reviews(
+            cases_path,
+            reviews_path,
+            config.get("review_policy", {}),
+        )
+        if args.format == "json":
+            print(json.dumps(result, ensure_ascii=False, indent=2))
+        elif args.command == "validate-reviews":
+            print(
+                f"{reviews_path}: {result['review_record_count']} reviews, "
+                f"{result['error_count']} errors, {result['warning_count']} warnings"
+            )
+            for issue in result["issues"]:
+                identity = issue.get("review_id") or issue["source"]
+                print(
+                    f"{issue['level'].upper()} {issue['code']} "
+                    f"[{identity}] {issue['path']}: {issue['message']}"
+                )
+        else:
+            queue = result["review_queue"]
+            print(f"Reviews: {reviews_path}")
+            print(
+                f"Records: {result['review_record_count']} | "
+                f"Errors: {result['error_count']} | Warnings: {result['warning_count']}"
+            )
+            print(f"Decisions: {json.dumps(result['decision_counts'], sort_keys=True)}")
+            print(
+                "Review gates: "
+                f"clinical_pending={len(queue['clinical_review_pending'])}, "
+                f"language_pending={len(queue['language_review_pending'])}, "
+                f"complete={len(queue['review_gates_complete'])}"
+            )
+        return 0 if result["valid"] else 1
+
+    if args.command == "review-template":
+        cases = [case for case in load_jsonl(cases_path) if case.get("id") == args.case_id]
+        if len(cases) != 1:
+            print(f"Expected one case with ID {args.case_id!r}; found {len(cases)}.")
+            return 2
+        try:
+            record = build_review_template(
+                cases[0],
+                review_type=args.review_type,
+                reviewer_id=args.reviewer_id,
+                role=args.role,
+                qualification_scope=args.qualification_scope,
+                jurisdiction_scope=args.jurisdiction_scope,
+            )
+        except ValueError as exc:
+            print(f"Cannot create review template: {exc}")
+            return 2
+        encoded = json.dumps(record, ensure_ascii=False, indent=2) + "\n"
+        if args.output:
+            output_path = Path(args.output)
+            if output_path.exists():
+                print(f"Refusing to overwrite append-only review file: {output_path}")
+                return 2
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+            output_path.write_text(encoded, encoding="utf-8")
+            print(output_path)
+        else:
+            print(encoded, end="")
+        return 0
 
     return 2
 

@@ -1,7 +1,9 @@
 {
+  "schema_version": "0.2.0",
   "id": "case_review_example",
   "case_id": "HC-CATEGORY-001-EN",
   "case_version": "0.1.0",
+  "case_content_hash": "0000000000000000000000000000000000000000000000000000000000000000",
   "reviewer": {
     "pseudonymous_id": "reviewer_pseudonym",
     "role": "clinician",
