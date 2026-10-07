@@ -22,7 +22,7 @@ Required: stable ID, semantic version, lifecycle status, sector/category, prompt
 
 Recommended production metadata adds case-family ID, author, independent reviewers, jurisdiction, guideline/source references, effective date, intended workflow, sensitivity tags, and change rationale.
 
-For the bilingual Alpha, `language`, `metadata.case_family_id`, locale, and translation method are authoring-policy fields. Release-ready cases require complete `en` and `zh-CN` variants within each family. Family variants share taxonomy, difficulty, applicable dimensions, and critical-error IDs/severities while retaining independently reviewed text.
+For the bilingual Alpha, `language`, `metadata.case_family_id`, `metadata.benchmark_layer`, jurisdiction, locale, and translation method are authoring-policy fields. Global Core release-ready cases require complete `en` and `zh-Hans` variants within each family and use `jurisdiction=global_core`. Family variants share taxonomy, difficulty, benchmark layer, jurisdiction, applicable dimensions, and critical-error IDs/severities while retaining independently reviewed text. Jurisdiction packs use explicit local jurisdictions and region-qualified `metadata.locale` values.
 
 Status transitions are controlled:
 
@@ -62,6 +62,8 @@ Every real run must record:
 - privacy mode and raw-output retention policy.
 
 Never edit a completed manifest. Corrections create a new run and link to the superseded run.
+
+At run creation, the scaffold snapshots the exact active `case_id + case_version + content_hash` set into `run_cases`. Later dataset ingestion may change the active set but cannot silently change an existing run. Historical case versions remain in the case table for auditability.
 
 ## 7. Semantic versioning policy
 

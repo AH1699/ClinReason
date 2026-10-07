@@ -4,7 +4,7 @@ This guide governs Alpha case creation. It does not provide clinical content. Au
 
 ## 1. Alpha target
 
-Draft **30–50 bilingual case families** spanning all six categories. Each family contains an English (`en`) and Simplified Chinese (`zh-CN`) variant, producing 60–100 prompt instances. Begin with five families per category, then add cases according to coverage gaps found during review.
+Draft **30–50 bilingual Global Core case families** spanning all six categories. Each family contains an English (`en`) and Simplified Chinese script (`zh-Hans`) variant, producing 60–100 prompt instances. Begin with five families per category, then add cases according to coverage gaps found during review.
 
 Minimum initial matrix:
 
@@ -21,7 +21,7 @@ Do not treat these quotas as evidence of statistical adequacy. The methodology o
 
 ## 2. Authoring workflow
 
-1. Reserve a stable `case_family_id` and select category, subcategory, intended user, jurisdiction, and difficulty.
+1. Reserve a stable `case_family_id` and select category, subcategory, intended user, benchmark layer, jurisdiction, and difficulty. Global Core uses `benchmark_layer=global_core` and `jurisdiction=global_core`.
 2. Gather approved authoritative sources and record their effective date.
 3. Write the clinical construct and expected behavior before writing the prompt.
 4. Write the English or Chinese original; identify it with `translation_method=original`.
@@ -83,22 +83,24 @@ The two variants must share:
 - the same critical-error IDs and severities;
 - equivalent—not necessarily literal—critical requirements and reference behavior.
 
-Use IDs such as `HC-TRIAGE-007-EN` and `HC-TRIAGE-007-ZH-CN`. Record locale and translation method. Avoid culture-specific assumptions unless they are the construct under test. A bilingual reviewer verifies semantic equivalence; a clinically qualified reviewer verifies both variants or documents the qualified review chain.
+Use IDs such as `HC-TRIAGE-007-EN` and `HC-TRIAGE-007-ZH-HANS`. Record locale and translation method. Avoid culture-specific assumptions unless they are the construct under test. Global Core variants may direct users to appropriate local services but must not name a country-specific number, institution, regulation, or care pathway. A bilingual reviewer verifies semantic equivalence; a clinically qualified reviewer verifies both variants or documents the qualified review chain.
 
 ## 8. Source policy
 
-The clinical safety lead must approve the source hierarchy. Until then, source selection remains provisional. Prefer current, authoritative, jurisdiction-relevant primary guidelines or official public-health/drug-safety sources. Record a stable citation or URL, publishing body, relevant version/date, and access date in the authoring work record. Do not use model output as a source. If sources conflict, document the conflict and escalate rather than silently choosing.
+The clinical safety lead must approve the source hierarchy. Until then, source selection remains provisional. For Global Core, prefer current internationally applicable normative guidance or official global public-health/drug-safety sources, and keep the expected behavior narrow enough not to require a local pathway. Jurisdiction packs require current local authoritative sources. Record a stable citation or URL, publishing body, relevant version/date, and access date in the authoring work record. Do not use model output as a source. If sources conflict, document the conflict and move the case to an appropriate jurisdiction pack rather than silently choosing.
 
 ## 9. Metadata and status
 
 Use [case.template.json](../data/templates/case.template.json). Important fields:
 
 - `status`: begin at `draft`; promotion requires recorded reviews.
-- `language`: `en` or `zh-CN`.
+- `language`: `en` or `zh-Hans` for Global Core.
 - `metadata.case_family_id`: shared by both variants.
+- `metadata.benchmark_layer`: `global_core`, `jurisdiction_pack`, or `adaptation`.
+- `metadata.translation_method`: machine-generated drafts use `machine_translation_unreviewed` and cannot pass release validation until a human language reviewer approves them.
 - `metadata.source_refs`: authoritative citation strings.
 - `metadata.author_id` and `reviewer_ids`: pseudonymous audit identities.
-- `metadata.jurisdiction` and `effective_date`: required for release-ready validation.
+- `metadata.jurisdiction` and `effective_date`: required for release-ready validation; Global Core uses `jurisdiction=global_core`.
 - `metadata.clinician_validated`: must agree with lifecycle status.
 - `metadata.medical_advice`: always `false`; this describes the artifact’s intended use.
 

@@ -4,7 +4,7 @@
 
 ## 1. Alpha 目标
 
-起草 **30–50 个双语案例族**，覆盖全部六个类别。每个案例族包含英文（`en`）和简体中文（`zh-CN`）变体，因此共有 60–100 个提示实例。先为每类编写五个案例族，再根据审核发现的覆盖缺口增加案例。
+起草 **30–50 个双语全球核心案例族**，覆盖全部六个类别。每个案例族包含英文（`en`）和简体中文书写系统（`zh-Hans`）变体，因此共有 60–100 个提示实例。先为每类编写五个案例族，再根据审核发现的覆盖缺口增加案例。
 
 初始最低矩阵：
 
@@ -21,7 +21,7 @@
 
 ## 2. 编写流程
 
-1. 预留稳定的 `case_family_id`，选择类别、子类别、目标用户、司法辖区和难度。
+1. 预留稳定的 `case_family_id`，选择类别、子类别、目标用户、评测层、司法辖区和难度。全球核心使用 `benchmark_layer=global_core` 和 `jurisdiction=global_core`。
 2. 收集获批权威来源并记录生效日期。
 3. 先定义临床构念和预期行为，再编写题目。
 4. 用英文或中文写原始版本，并标记 `translation_method=original`。
@@ -83,22 +83,24 @@
 - 相同关键错误 ID 和严重度；
 - 含义等价、但不要求逐字翻译的关键要求和参考行为。
 
-ID 示例：`HC-TRIAGE-007-EN` 和 `HC-TRIAGE-007-ZH-CN`。记录地区和翻译方式。除非文化差异就是测试构念，否则不要引入特定文化假设。双语审核者验证语义等价；合格临床审核者验证两个变体，或记录完整的合格审核链。
+ID 示例：`HC-TRIAGE-007-EN` 和 `HC-TRIAGE-007-ZH-HANS`。记录地区和翻译方式。除非文化差异就是测试构念，否则不要引入特定文化假设。全球核心可以建议联系适当的当地服务，但不得指定某国急救号码、机构、法规或就医路径。双语审核者验证语义等价；合格临床审核者验证两个变体，或记录完整的合格审核链。
 
 ## 8. 来源政策
 
-临床安全负责人必须批准来源层级；在此之前，来源选择均为暂定。优先使用当前、权威、适用于目标司法辖区的主要指南或官方公共卫生/药品安全来源。在编写工作记录中保存稳定引文或 URL、发布机构、相关版本/日期和访问日期。不得把模型输出当作来源。来源冲突时应记录并升级处理，不能静默选择。
+临床安全负责人必须批准来源层级；在此之前，来源选择均为暂定。全球核心优先使用当前、具有国际适用性的规范指导或官方全球公共卫生/药品安全来源，并把预期行为限制到不依赖本地路径的程度。司法辖区扩展包必须使用当前本地权威来源。在编写工作记录中保存稳定引文或 URL、发布机构、相关版本/日期和访问日期。不得把模型输出当作来源。来源冲突时应记录，并把案例移入合适的司法辖区扩展包，而不能静默选择。
 
 ## 9. 元数据与状态
 
 使用 [case.template.json](../data/templates/case.template.json)。重要字段：
 
 - `status`：从 `draft` 开始；升级必须有审核记录。
-- `language`：`en` 或 `zh-CN`。
+- `language`：全球核心使用 `en` 或 `zh-Hans`。
 - `metadata.case_family_id`：两个变体共享。
+- `metadata.benchmark_layer`：`global_core`、`jurisdiction_pack` 或 `adaptation`。
+- `metadata.translation_method`：机器生成草案使用 `machine_translation_unreviewed`；在人工语言审核批准前，无法通过发布模式验证。
 - `metadata.source_refs`：权威来源引文字符串。
 - `metadata.author_id` 和 `reviewer_ids`：用于审计的匿名身份。
-- `metadata.jurisdiction` 和 `effective_date`：发布模式验证必需。
+- `metadata.jurisdiction` 和 `effective_date`：发布模式验证必需；全球核心使用 `jurisdiction=global_core`。
 - `metadata.clinician_validated`：必须与生命周期状态一致。
 - `metadata.medical_advice`：始终为 `false`，表示该制品的预期用途。
 

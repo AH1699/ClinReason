@@ -50,6 +50,21 @@ CREATE TABLE IF NOT EXISTS cases (
   created_at TEXT NOT NULL,
   PRIMARY KEY (id, version)
 );
+CREATE TABLE IF NOT EXISTS active_cases (
+  case_id TEXT NOT NULL,
+  case_version TEXT NOT NULL,
+  PRIMARY KEY (case_id, case_version),
+  FOREIGN KEY(case_id, case_version) REFERENCES cases(id, version)
+);
+CREATE TABLE IF NOT EXISTS run_cases (
+  run_id TEXT NOT NULL,
+  case_id TEXT NOT NULL,
+  case_version TEXT NOT NULL,
+  content_hash TEXT NOT NULL,
+  PRIMARY KEY (run_id, case_id, case_version),
+  FOREIGN KEY(run_id) REFERENCES benchmark_runs(id),
+  FOREIGN KEY(case_id, case_version) REFERENCES cases(id, version)
+);
 CREATE TABLE IF NOT EXISTS model_responses (
   id TEXT PRIMARY KEY,
   run_id TEXT NOT NULL,

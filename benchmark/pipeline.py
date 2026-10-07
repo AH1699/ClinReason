@@ -14,6 +14,7 @@ from .scoring import aggregate_judgments
 def ingest_cases(db_path: str | Path, cases_path: str | Path) -> int:
     cases = load_jsonl(cases_path)
     with connect(db_path) as conn:
+        conn.execute("DELETE FROM active_cases")
         for case in cases:
             encoded = dump(case)
             content_hash = hashlib.sha256(encoded.encode("utf-8")).hexdigest()
@@ -22,6 +23,10 @@ def ingest_cases(db_path: str | Path, cases_path: str | Path) -> int:
                 (id, version, category, payload_json, content_hash, created_at)
                 VALUES (?, ?, ?, ?, ?, ?)""",
                 (case["id"], case["version"], case["category"], encoded, content_hash, now_iso()),
+            )
+            conn.execute(
+                "INSERT INTO active_cases (case_id, case_version) VALUES (?, ?)",
+                (case["id"], case["version"]),
             )
     return len(cases)
 
@@ -43,6 +48,16 @@ def create_run(db_path: str | Path, config: dict[str, Any]) -> str:
                 "running",
             ),
         )
+        active_count = conn.execute("SELECT COUNT(*) FROM active_cases").fetchone()[0]
+        if not active_count:
+            raise ValueError("Cannot create a run without an active dataset")
+        conn.execute(
+            """INSERT INTO run_cases (run_id, case_id, case_version, content_hash)
+               SELECT ?, a.case_id, a.case_version, c.content_hash
+               FROM active_cases a JOIN cases c
+               ON c.id = a.case_id AND c.version = a.case_version""",
+            (run_id,),
+        )
     return run_id
 
 
@@ -53,7 +68,12 @@ def generate_responses(
     prompt_template_version: str,
 ) -> int:
     with connect(db_path) as conn:
-        cases = conn.execute("SELECT payload_json FROM cases ORDER BY id").fetchall()
+        cases = conn.execute(
+            """SELECT c.payload_json FROM run_cases rc JOIN cases c
+               ON c.id = rc.case_id AND c.version = rc.case_version
+               WHERE rc.run_id = ? ORDER BY c.id""",
+            (run_id,),
+        ).fetchall()
         for row in cases:
             case = json.loads(row["payload_json"])
             generated = provider.generate(case)

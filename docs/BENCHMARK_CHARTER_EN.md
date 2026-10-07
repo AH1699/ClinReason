@@ -41,7 +41,8 @@ The benchmark must not be used to:
 | Sector | Healthcare |
 | Workflow | Outpatient/clinic-facing informational assistance |
 | Data | Synthetic only; no PHI/PII |
-| Languages | English (`en`) and Simplified Chinese (`zh-CN`) |
+| Benchmark layer | Jurisdiction-neutral Global Core; jurisdiction packs are separate modules |
+| Languages | English (`en`) and Simplified Chinese script (`zh-Hans`) |
 | Evaluation unit | Bilingual case family with one independently reviewed variant per language |
 | Categories | Clinical reasoning, triage, medication safety, patient communication, clinical knowledge, adversarial/safety |
 | Scoring | Absolute 0–4 rubric plus critical-error gating; pairwise ranking is optional and secondary |
@@ -51,21 +52,21 @@ Out of alpha scope: multimodal inputs, EHR integration, autonomous actions, tool
 
 ## 5. Decisions required before case validation
 
-These items are deliberately unresolved and block promotion beyond `draft`:
+The Global Core jurisdiction decision is resolved: cases use `benchmark_layer=global_core` and `jurisdiction=global_core`. These remaining items block promotion beyond `draft`:
 
-1. **Jurisdiction:** select the clinical-policy jurisdiction and local-policy boundary.
-2. **Target users:** choose whether prompts emulate staff-facing, patient-facing, or both workflows, and tag them distinctly.
-3. **Population:** specify adult-only or approved pediatric/pregnancy subscopes with qualified reviewers.
-4. **Chinese locale:** confirm whether `zh-CN` cases target mainland terminology, US Chinese-speaking clinic communication, or another context.
-5. **Authoritative sources:** approve source hierarchy, currency window, and update cadence.
-6. **Reviewer qualifications:** approve scope matching and conflict-disclosure rules.
-7. **Release thresholds:** approve agreement, critical-error sensitivity, sample-size, and uncertainty requirements.
+1. **Target users:** choose whether prompts emulate staff-facing, patient-facing, or both workflows, and tag them distinctly.
+2. **Population:** specify adult-only or approved pediatric/pregnancy subscopes with qualified reviewers.
+3. **Global Chinese style:** approve terminology that is natural in Simplified Chinese without silently assuming one national care system.
+4. **Authoritative sources:** approve global-source hierarchy, currency window, and update cadence.
+5. **Reviewer qualifications:** approve scope matching and conflict-disclosure rules.
+6. **Release thresholds:** approve agreement, critical-error sensitivity, sample-size, and uncertainty requirements.
+7. **First jurisdiction packs:** select only after target markets and qualified local reviewers are known.
 
-The benchmark lead records decisions. The clinical safety lead approves items 1, 3, 5, 6, and 7. The language lead approves item 4.
+The benchmark lead records decisions. The clinical safety lead approves items 2, 4, 5, and 6. The language lead approves item 3. Jurisdiction-pack owners approve item 7 when those modules begin.
 
 ## 6. Bilingual design rule
 
-A case family represents one clinical construct. Its English and Chinese variants must preserve the same facts, task, risk level, applicable dimensions, and critical-error policy. Translation need not be literal, but localization must not change difficulty or expected clinical behavior. Each language variant receives independent language and clinical review. Case families remain within one development or Gold partition to prevent leakage.
+A case family represents one clinical construct. Its English and Simplified Chinese (`zh-Hans`) variants must preserve the same facts, task, risk level, applicable dimensions, and critical-error policy. Translation need not be literal, but localization must not change difficulty or expected clinical behavior. Global Core wording must avoid country-specific emergency numbers, institutions, regulations, and care pathways. Each language variant receives independent language and clinical review. Case families remain within one development or Gold partition to prevent leakage.
 
 ## 7. Data and privacy rules
 
@@ -98,8 +99,8 @@ Changes to a case prompt, reference answer, critical requirement, critical error
 
 ### Alpha entry
 
-- charter decisions are recorded;
-- 30–50 case families are drafted across all six categories;
+- remaining charter decisions are recorded;
+- 30–50 Global Core case families are drafted across all six categories;
 - both language variants pass development validation;
 - no real patient data is present;
 - review assignments are documented.

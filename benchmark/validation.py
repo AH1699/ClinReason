@@ -133,7 +133,7 @@ def validate_case(
             "$.difficulty",
         )
 
-    supported_languages = authoring.get("supported_languages", ["en", "zh-CN"])
+    supported_languages = authoring.get("supported_languages", ["en", "zh-Hans"])
     if not _nonempty_string(case.get("language")):
         add("error", "MISSING_LANGUAGE", "Language is required by the authoring policy.", "$.language")
     elif case["language"] not in supported_languages:
@@ -265,6 +265,21 @@ def validate_case(
     ):
         add("error", "INVALID_EFFECTIVE_DATE", "effective_date must use YYYY-MM-DD.", "$.metadata.effective_date")
 
+    translation_method = metadata.get("translation_method")
+    all_translation_methods = {
+        "original",
+        "human_translation",
+        "machine_translation_unreviewed",
+        "machine_translation_human_reviewed",
+    }
+    if translation_method is not None and translation_method not in all_translation_methods:
+        add(
+            "error",
+            "INVALID_TRANSLATION_METHOD",
+            f"translation_method must be one of {sorted(all_translation_methods)}.",
+            "$.metadata.translation_method",
+        )
+
     status = case.get("status")
     if status in {"clinician_validated", "gold"} and metadata.get("clinician_validated") is not True:
         add(
@@ -310,17 +325,37 @@ def validate_case(
             add("error", "MISSING_AUTHOR", "Release cases require a non-placeholder author ID.", "$.metadata.author_id")
         if _is_placeholder(metadata.get("locale")):
             add("error", "MISSING_LOCALE", "Release cases require a resolved locale.", "$.metadata.locale")
-        translation_method = metadata.get("translation_method")
-        allowed_methods = {
+        benchmark_layer = metadata.get("benchmark_layer")
+        allowed_layers = set(
+            authoring.get(
+                "allowed_benchmark_layers",
+                ["global_core", "jurisdiction_pack", "adaptation"],
+            )
+        )
+        if benchmark_layer not in allowed_layers:
+            add(
+                "error",
+                "MISSING_BENCHMARK_LAYER",
+                f"Release cases require one of {sorted(allowed_layers)}.",
+                "$.metadata.benchmark_layer",
+            )
+        release_translation_methods = {
             "original",
             "human_translation",
             "machine_translation_human_reviewed",
         }
-        if translation_method not in allowed_methods:
+        if translation_method == "machine_translation_unreviewed":
+            add(
+                "error",
+                "UNREVIEWED_TRANSLATION",
+                "Machine-translated cases require human language review before release.",
+                "$.metadata.translation_method",
+            )
+        elif translation_method not in release_translation_methods:
             add(
                 "error",
                 "MISSING_TRANSLATION_METHOD",
-                f"Release cases require one of {sorted(allowed_methods)}.",
+                f"Release cases require one of {sorted(release_translation_methods)}.",
                 "$.metadata.translation_method",
             )
         elif translation_method != "original" and _is_placeholder(
@@ -332,6 +367,54 @@ def validate_case(
                 "Translated release cases require metadata.translation_reviewer_id.",
                 "$.metadata.translation_reviewer_id",
             )
+
+    benchmark_layer = metadata.get("benchmark_layer")
+    if benchmark_layer is not None:
+        allowed_layers = set(
+            authoring.get(
+                "allowed_benchmark_layers",
+                ["global_core", "jurisdiction_pack", "adaptation"],
+            )
+        )
+        if benchmark_layer not in allowed_layers:
+            add(
+                "error",
+                "INVALID_BENCHMARK_LAYER",
+                f"benchmark_layer must be one of {sorted(allowed_layers)}.",
+                "$.metadata.benchmark_layer",
+            )
+        global_jurisdiction = authoring.get("global_core_jurisdiction", "global_core")
+        if benchmark_layer == "global_core" and metadata.get("jurisdiction") != global_jurisdiction:
+            add(
+                "error",
+                "GLOBAL_CORE_JURISDICTION_MISMATCH",
+                f"Global Core cases must use jurisdiction='{global_jurisdiction}'.",
+                "$.metadata.jurisdiction",
+            )
+        if benchmark_layer == "jurisdiction_pack" and metadata.get("jurisdiction") == global_jurisdiction:
+            add(
+                "error",
+                "PACK_JURISDICTION_MISSING",
+                "Jurisdiction-pack cases must name a specific jurisdiction.",
+                "$.metadata.jurisdiction",
+            )
+        if benchmark_layer == "global_core":
+            searchable = " ".join(
+                str(case.get(field, ""))
+                for field in ("prompt", "reference_answer")
+            ).casefold()
+            found_terms = sorted(
+                term
+                for term in authoring.get("global_core_disallowed_terms", [])
+                if re.search(rf"(?<!\\w){re.escape(term.casefold())}(?!\\w)", searchable)
+            )
+            if found_terms:
+                add(
+                    "error" if release_ready else "warning",
+                    "GLOBAL_CORE_LOCAL_TERM",
+                    f"Global Core text contains jurisdiction-specific terms: {found_terms}.",
+                    "$.prompt",
+                )
     else:
         if not _nonempty_string(family_id):
             add("warning", "MISSING_CASE_FAMILY_ID", "Add metadata.case_family_id before bilingual pairing.", "$.metadata.case_family_id")
@@ -437,7 +520,7 @@ def validate_dataset(
                     )
                 )
 
-    required_languages = set(authoring.get("required_pair_languages", ["en", "zh-CN"]))
+    required_languages = set(authoring.get("required_pair_languages", ["en", "zh-Hans"]))
     for family_id, rows in sorted(families.items()):
         languages = [case.get("language") for _, case in rows]
         missing = sorted(required_languages - set(languages))
@@ -470,6 +553,8 @@ def validate_dataset(
                 case.get("category"),
                 case.get("subcategory"),
                 case.get("difficulty"),
+                (case.get("metadata") or {}).get("benchmark_layer"),
+                (case.get("metadata") or {}).get("jurisdiction"),
                 tuple(case.get("applicable_dimensions", [])),
                 tuple(
                     (error.get("id"), error.get("severity"))

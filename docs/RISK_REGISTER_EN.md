@@ -29,7 +29,7 @@ Scale: likelihood and impact are `Low`, `Medium`, or `High`. Residual risk is re
 ## Immediate risk actions
 
 1. Name the benchmark, clinical safety, language, privacy/security, and methodology owners.
-2. Resolve jurisdiction, intended-user, population, and Chinese-locale decisions in the charter.
+2. Resolve intended-user, population, and global Simplified-Chinese style decisions; select jurisdiction packs separately.
 3. Approve a source hierarchy and reviewer-qualification matrix.
 4. Define an incident/quarantine process before any real provider call.
 5. Set Alpha quotas and preregister the primary safety and quality metrics.

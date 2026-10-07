@@ -18,6 +18,7 @@ This package is **research/evaluation infrastructure, not medical advice**. All 
 - `docs/BENCHMARK_CHARTER_EN.md` and `docs/BENCHMARK_CHARTER_ZH.md`: intended use, exclusions, governance, decision rights, and release gates.
 - `docs/RISK_REGISTER_EN.md` and `docs/RISK_REGISTER_ZH.md`: active healthcare benchmark risk register and immediate controls.
 - `docs/CASE_AUTHORING_GUIDE_EN.md` and `docs/CASE_AUTHORING_GUIDE_ZH.md`: bilingual family design, source policy, review workflow, and completion checklist.
+- `docs/GLOBAL_CORE_DESIGN_EN.md` and `docs/GLOBAL_CORE_DESIGN_ZH.md`: separation of jurisdiction-neutral behavior, local jurisdiction packs, and cross-jurisdiction adaptation.
 - `schemas/`: JSON Schema definitions for cases, responses, judge outputs, human reviews, version manifests, aggregate scores, pairwise outputs, and runs.
 - `benchmark/`: standard-library Python implementation with SQLite persistence and candidate/judge provider interfaces.
 - `data/examples/`: six synthetic, unvalidated healthcare/clinic examples.
@@ -51,8 +52,9 @@ The validation command has two modes. Development mode permits draft/example cas
 ## Current project status
 
 - **Complete:** bilingual design package, draft charter, risk register, authoring guide, machine-readable contracts, offline pipeline, scoring/gating, data validation, and mock tests.
-- **Development examples:** six English-only synthetic cases, one per category. They are deliberately `example_unvalidated` and are not Alpha or Gold data.
-- **Next milestone:** approve the unresolved charter decisions, assign accountable reviewers, and author 30–50 bilingual case families using `data/templates/`.
+- **Development examples:** six English-only synthetic infrastructure fixtures remain under `data/examples/`.
+- **Alpha draft:** the configured dataset is the bilingual, jurisdiction-neutral Global Core under `data/alpha/`. The first batch contains 6 matched families / 12 prompts, balanced across all six categories. All remain unvalidated drafts until expert review.
+- **Next milestone:** approve the remaining charter decisions, assign accountable reviewers, and expand the Global Core to 30–50 bilingual families.
 - **Deferred:** real candidate/judge API adapters, judge calibration, hidden Gold Set, external rankings, training, and deployment.
 
 ## Adding a provider

@@ -36,11 +36,13 @@
     "medical_advice": false,
     "source_refs": [],
     "case_family_id": "HC-CATEGORY-001",
-    "locale": "en-US",
+    "benchmark_layer": "global_core",
+    "locale": "en-001",
     "translation_method": "original",
     "author_id": "author_pseudonym",
     "reviewer_ids": [],
-    "jurisdiction": "TBD",
+    "jurisdiction": "global_core",
+    "care_system_context": "jurisdiction_neutral",
     "effective_date": "2026-10-06",
     "change_rationale": "Initial draft"
   }

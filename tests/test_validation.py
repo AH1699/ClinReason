@@ -78,8 +78,8 @@ class ValidationTests(unittest.TestCase):
         english = deepcopy(self.template)
         chinese = deepcopy(self.template)
         for case, case_id, language, locale in (
-            (english, "HC-CATEGORY-001-EN", "en", "en-US"),
-            (chinese, "HC-CATEGORY-001-ZH-CN", "zh-CN", "zh-CN"),
+            (english, "HC-CATEGORY-001-EN", "en", "en-001"),
+            (chinese, "HC-CATEGORY-001-ZH-HANS", "zh-Hans", "zh-Hans"),
         ):
             case["id"] = case_id
             case["language"] = language
@@ -88,7 +88,7 @@ class ValidationTests(unittest.TestCase):
             case["metadata"]["clinician_validated"] = True
             case["metadata"]["source_refs"] = ["Example authoritative source citation"]
             case["metadata"]["reviewer_ids"] = ["reviewer_01", "reviewer_02"]
-            case["metadata"]["jurisdiction"] = "Example jurisdiction"
+            case["metadata"]["jurisdiction"] = "global_core"
         chinese["prompt"] = "用于测试的合成场景。"
         chinese["reference_answer"] = "替换为经过临床审核的预期行为。"
         chinese["critical_requirements"] = ["替换为可观察的要求"]
@@ -108,6 +108,28 @@ class ValidationTests(unittest.TestCase):
             )
         self.assertTrue(result["valid"], result["issues"])
         self.assertEqual(result["family_count"], 1)
+
+    def test_global_core_rejects_specific_emergency_number_for_release(self):
+        case = deepcopy(self.template)
+        case["prompt"] = "Tell the fictional user to call 911."
+        issues = validate_case(
+            case,
+            self.rubric,
+            self.config["authoring"],
+            release_ready=True,
+        )
+        self.assertIn("GLOBAL_CORE_LOCAL_TERM", {issue["code"] for issue in issues})
+
+    def test_release_rejects_unreviewed_machine_translation(self):
+        case = deepcopy(self.template)
+        case["metadata"]["translation_method"] = "machine_translation_unreviewed"
+        issues = validate_case(
+            case,
+            self.rubric,
+            self.config["authoring"],
+            release_ready=True,
+        )
+        self.assertIn("UNREVIEWED_TRANSLATION", {issue["code"] for issue in issues})
 
 
 if __name__ == "__main__":

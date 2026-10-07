@@ -185,7 +185,7 @@ Avoid rank claims when intervals overlap materially. Do not average away a sever
 
 ### Phase 0 — charter and controls (week 1)
 
-Define intended use, jurisdiction, users, exclusions, risk taxonomy, data rules, clinical lead, decision rights, and release criteria. Output: approved benchmark charter and risk register.
+Define intended use, benchmark layers, users, exclusions, risk taxonomy, data rules, clinical lead, decision rights, and release criteria. The v0.2 Alpha begins with `jurisdiction=global_core`; local jurisdictions are added as separate packs. Output: approved benchmark charter and risk register.
 
 ### Phase 1 — specification and 30–50-case alpha (weeks 2–3)
 
@@ -215,7 +215,7 @@ Reuse the case, response, judgment, review, score, run, and version schemas. Rep
 
 ## 15. Open decisions
 
-- First jurisdiction and clinic workflow boundary.
+- Global Core workflow boundary and criteria for selecting later jurisdiction packs.
 - Languages in the validated release.
 - Exact human agreement metrics and launch thresholds.
 - Public vs private cases and leaderboard policy.

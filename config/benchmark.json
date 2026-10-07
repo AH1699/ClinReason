@@ -1,12 +1,12 @@
 {
   "benchmark_id": "sectorbench-healthcare-clinics",
-  "benchmark_version": "0.1.0",
-  "dataset_version": "0.1.0-example-unvalidated",
+  "benchmark_version": "0.2.0",
+  "dataset_version": "0.2.0-global-core-alpha-draft",
   "rubric_version": "0.1.0",
   "prompt_template_version": "candidate-prompt-0.1.0",
   "judge_prompt_version": "absolute-judge-0.1.0",
   "database_path": "work/benchmark.sqlite3",
-  "cases_path": "data/examples/healthcare_cases.jsonl",
+  "cases_path": "data/alpha/global_core_cases.jsonl",
   "rubric_path": "config/rubric.json",
   "demo_judge_count": 2,
   "scoring": {
@@ -27,8 +27,20 @@
     "store_raw_outputs": true
   },
   "authoring": {
-    "supported_languages": ["en", "zh-CN"],
-    "required_pair_languages": ["en", "zh-CN"],
+    "supported_languages": ["en", "zh-Hans"],
+    "required_pair_languages": ["en", "zh-Hans"],
+    "allowed_benchmark_layers": ["global_core", "jurisdiction_pack", "adaptation"],
+    "global_core_jurisdiction": "global_core",
+    "global_core_disallowed_terms": [
+      "911",
+      "999",
+      "112",
+      "120",
+      "NHS",
+      "FDA",
+      "HIPAA",
+      "Medicare"
+    ],
     "allowed_categories": [
       "clinical_reasoning",
       "triage",
