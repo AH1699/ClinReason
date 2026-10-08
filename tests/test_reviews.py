@@ -1,11 +1,19 @@
 import json
+import io
 import tempfile
 import unittest
+from contextlib import redirect_stdout
 from copy import deepcopy
 from pathlib import Path
 
 from benchmark.config import load_jsonl
-from benchmark.reviews import assess_reviews, build_review_template, case_content_hash
+from benchmark.cli import main
+from benchmark.reviews import (
+    assess_reviews,
+    build_review_template,
+    case_content_hash,
+    release_review_issues,
+)
 
 
 class ReviewWorkflowTests(unittest.TestCase):
@@ -26,6 +34,7 @@ class ReviewWorkflowTests(unittest.TestCase):
             jurisdiction_scope="global_core",
         )
         record["decision"] = "approve"
+        record["reviewer"]["conflict_disclosed"] = False
         for field in (
             "prompt_valid",
             "reference_valid",
@@ -107,6 +116,32 @@ class ReviewWorkflowTests(unittest.TestCase):
         self.assertFalse(result["valid"])
         self.assertIn("SELF_REVIEW", {issue["code"] for issue in result["issues"]})
 
+    def test_disclosed_conflict_cannot_clear_gate(self):
+        record = self._clinical_record()
+        record["reviewer"]["conflict_disclosed"] = True
+        result = self._assess([record])
+        self.assertFalse(result["valid"])
+        self.assertIn("CONFLICTED_APPROVAL", {issue["code"] for issue in result["issues"]})
+        self.assertIn(
+            self.english_case["id"],
+            result["review_queue"]["clinical_review_pending"],
+        )
+
+    def test_another_reviewers_requested_changes_keep_gate_open(self):
+        approval = self._clinical_record()
+        revision = deepcopy(approval)
+        revision["id"] += "_second_reviewer"
+        revision["reviewer"]["pseudonymous_id"] = "reviewer_clinical_02"
+        revision["decision"] = "revise"
+        revision["checks"]["reference_valid"] = False
+        revision["required_changes"] = ["Clarify expected behavior."]
+        result = self._assess([approval, revision])
+        self.assertTrue(result["valid"], result["issues"])
+        status = next(item for item in result["case_status"] if item["case_id"] == self.english_case["id"])
+        self.assertEqual(status["clinical_approvals"], 1)
+        self.assertFalse(status["clinical_complete"])
+        self.assertEqual(status["unresolved_clinical_reviewer_ids"], ["reviewer_clinical_02"])
+
     def test_latest_review_by_same_reviewer_controls_gate(self):
         approval = self._clinical_record()
         revision = deepcopy(approval)
@@ -144,6 +179,87 @@ class ReviewWorkflowTests(unittest.TestCase):
             "REVIEWER_ROLE_MISMATCH",
             {issue["code"] for issue in result["issues"]},
         )
+
+    def test_release_requires_real_review_evidence(self):
+        empty = self._assess([])
+        issues = release_review_issues([self.english_case], empty)
+        self.assertIn("REVIEW_GATE_INCOMPLETE", {issue["code"] for issue in issues})
+
+        approved = self._assess([self._clinical_record()])
+        issues = release_review_issues([self.english_case], approved)
+        self.assertIn("CLINICAL_REVIEWER_METADATA_MISMATCH", {issue["code"] for issue in issues})
+
+        promoted = deepcopy(self.english_case)
+        promoted["metadata"]["reviewer_ids"] = ["reviewer_clinical_01"]
+        self.assertEqual(release_review_issues([promoted], approved), [])
+
+    def test_release_cli_requires_matching_reviews_for_bilingual_pair(self):
+        family_id = self.english_case["metadata"]["case_family_id"]
+        pair = [
+            deepcopy(case)
+            for case in self.cases
+            if case["metadata"]["case_family_id"] == family_id
+        ]
+        records = []
+        for case in pair:
+            case["status"] = "clinician_validated"
+            case["metadata"]["clinician_validated"] = True
+            case["metadata"]["reviewer_ids"] = ["reviewer_clinical_01"]
+            if case["language"] != "en":
+                case["metadata"]["translation_method"] = "machine_translation_human_reviewed"
+                case["metadata"]["translation_reviewer_id"] = "reviewer_language_01"
+            clinical = build_review_template(
+                case,
+                review_type="clinical",
+                reviewer_id="reviewer_clinical_01",
+                role="clinician",
+                qualification_scope="Clinical safety review",
+                jurisdiction_scope="global_core",
+            )
+            clinical["decision"] = "approve"
+            clinical["reviewer"]["conflict_disclosed"] = False
+            for field in clinical["checks"]:
+                if field != "language_equivalent":
+                    clinical["checks"][field] = True
+            records.append(clinical)
+            if case["language"] != "en":
+                language = build_review_template(
+                    case,
+                    review_type="language_equivalence",
+                    reviewer_id="reviewer_language_01",
+                    role="language_reviewer",
+                    qualification_scope="Bilingual review",
+                    jurisdiction_scope="global_core",
+                )
+                language["decision"] = "approve"
+                language["reviewer"]["conflict_disclosed"] = False
+                language["checks"]["language_equivalent"] = True
+                language["checks"]["scope_appropriate"] = True
+                records.append(language)
+
+        with tempfile.TemporaryDirectory() as directory:
+            cases_path = Path(directory) / "paired.jsonl"
+            reviews_path = Path(directory) / "reviews.jsonl"
+            cases_path.write_text(
+                "\n".join(json.dumps(case, ensure_ascii=False) for case in pair) + "\n",
+                encoding="utf-8",
+            )
+            config_path = self.root / "config" / "benchmark.json"
+            arguments = [
+                "--config", str(config_path), "validate-data", "--cases", str(cases_path),
+                "--reviews", str(reviews_path), "--release-ready",
+            ]
+            reviews_path.write_text("", encoding="utf-8")
+            with redirect_stdout(io.StringIO()) as output:
+                self.assertEqual(main(arguments), 1)
+            self.assertIn("REVIEW_GATE_INCOMPLETE", output.getvalue())
+
+            reviews_path.write_text(
+                "\n".join(json.dumps(record, ensure_ascii=False) for record in records) + "\n",
+                encoding="utf-8",
+            )
+            with redirect_stdout(io.StringIO()) as output:
+                self.assertEqual(main(arguments), 0, output.getvalue())
 
 
 if __name__ == "__main__":

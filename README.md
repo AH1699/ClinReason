@@ -36,6 +36,7 @@ python -m benchmark.cli --config config/benchmark.json validate-data
 python -m benchmark.cli --config config/benchmark.json dataset-status
 python -m benchmark.cli --config config/benchmark.json validate-reviews
 python -m benchmark.cli --config config/benchmark.json review-status
+python -m benchmark.cli --config config/benchmark.json export-review-packets
 python -m benchmark.cli --config config/benchmark.json run-demo
 python -m unittest discover -s tests -v
 ```
@@ -51,13 +52,15 @@ sectorbench --config config/benchmark.json run-demo
 
 The mock candidate and judges only verify plumbing: ingestion, persistence, structured outputs, aggregation, gating, reporting, and tests. Their scores have **no clinical meaning**. Replace them with real provider adapters only after the evaluation protocol, data handling, and clinician oversight are approved.
 
-The validation command has two modes. Development mode permits draft/example cases and reports provenance and bilingual-pair warnings. `validate-data --release-ready` fails cases that lack validated status, sources, reviewers, jurisdiction, effective date, or complete English/Chinese family pairs. Structural validation cannot establish clinical correctness.
+The validation command has two modes. Development mode permits draft/example cases and reports provenance and bilingual-pair warnings. `validate-data --release-ready` also checks validated status, sources, jurisdiction, effective date, complete English/Chinese families, and matching clinical/language approvals in the review records. Passing automated checks does not establish clinical correctness; reviewer qualifications and governance decisions still require human verification.
 
 Case reviews are append-only and content-bound. `review-template` generates a record containing the exact case ID, version, and canonical SHA-256 content hash. `validate-reviews` rejects stale, malformed, self-authored, or role-inappropriate reviews; `review-status` reports which clinical and language gates are actually complete. A file's existence never counts as approval.
 
+`export-review-packets` writes one Markdown packet per bilingual family and an assignment manifest to `work/reviewer_packets/`. The packets contain the draft prompts, reference behavior, critical errors, sources, and review hashes. The command refuses to overwrite an existing packet directory. Reviewer IDs and real qualification checks remain to be supplied by the project team.
+
 ## Current project status
 
-- **Complete:** bilingual design package, draft charter, risk register, authoring guide, machine-readable contracts, offline pipeline, scoring/gating, data validation, append-only review workflow, and mock tests.
+- **Complete:** bilingual design package, draft charter, risk register, authoring guide, machine-readable contracts, offline pipeline, scoring/gating, data validation, append-only review workflow, reviewer packet export, and mock tests.
 - **Development examples:** six English-only synthetic infrastructure fixtures remain under `data/examples/`.
 - **Alpha draft:** the configured dataset is the bilingual, jurisdiction-neutral Global Core under `data/alpha/`. It currently contains 12 matched families / 24 prompts, with two families in each category. All remain unvalidated drafts until expert review.
 - **Next milestone:** assign qualified reviewers, run the first clinical and language-equivalence review round, resolve requested changes, and then expand the Global Core to 30–50 bilingual families.

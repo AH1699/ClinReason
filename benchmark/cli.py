@@ -15,11 +15,13 @@ from .pipeline import (
     score_run,
 )
 from .providers.mock import MockCandidateProvider, MockJudgeProvider
+from .review_packets import export_review_packets
 from .reviews import (
     REVIEW_TYPES,
     ROLES,
     assess_reviews,
     build_review_template,
+    release_review_issues,
 )
 from .validation import validate_dataset
 
@@ -57,6 +59,10 @@ def build_parser() -> argparse.ArgumentParser:
         choices=("text", "json"),
         default="text",
         help="Output format",
+    )
+    validate.add_argument(
+        "--reviews",
+        help="Review JSON/JSONL file or directory for release-ready evidence",
     )
     status = sub.add_parser(
         "dataset-status", help="Summarize authoring and review progress"
@@ -109,6 +115,12 @@ def build_parser() -> argparse.ArgumentParser:
     review_template.add_argument(
         "--output", help="Write JSON to this path instead of standard output"
     )
+    packets = sub.add_parser(
+        "export-review-packets", help="Export bilingual Alpha packets and an assignment manifest"
+    )
+    packets.add_argument(
+        "--output-dir", default="work/reviewer_packets", help="New or empty output directory"
+    )
     return parser
 
 
@@ -147,6 +159,25 @@ def main(argv: list[str] | None = None) -> int:
             config.get("authoring", {}),
             release_ready=args.release_ready,
         )
+        if args.release_ready and result["valid"]:
+            configured_reviews = config.get("reviews_path", "data/reviews")
+            reviews_path = resolve_path(
+                args.config, args.reviews if args.reviews else configured_reviews
+            )
+            review_report = assess_reviews(
+                target,
+                reviews_path,
+                config.get("review_policy", {}),
+            )
+            evidence_issues = release_review_issues(load_jsonl(target), review_report)
+            result["issues"].extend(evidence_issues)
+            result["error_count"] += len(evidence_issues)
+            result["valid"] = result["error_count"] == 0
+            result["review_evidence"] = {
+                "reviews_path": str(reviews_path),
+                "review_record_count": review_report["review_record_count"],
+                "error_count": review_report["error_count"],
+            }
         if args.format == "json":
             print(json.dumps(result, ensure_ascii=False, indent=2))
         else:
@@ -258,6 +289,32 @@ def main(argv: list[str] | None = None) -> int:
             print(output_path)
         else:
             print(encoded, end="")
+        return 0
+
+    if args.command == "export-review-packets":
+        result = validate_dataset(cases_path, rubric, config.get("authoring", {}))
+        if not result["valid"] or result["warning_count"]:
+            print(
+                "Resolve development validation errors and warnings before exporting packets."
+            )
+            return 1
+        try:
+            manifest = export_review_packets(
+                load_jsonl(cases_path), resolve_path(args.config, args.output_dir)
+            )
+        except (ValueError, FileExistsError) as exc:
+            print(f"Cannot export reviewer packets: {exc}")
+            return 2
+        print(
+            json.dumps(
+                {
+                    "output_dir": manifest["output_dir"],
+                    "family_count": manifest["family_count"],
+                    "case_count": manifest["case_count"],
+                },
+                indent=2,
+            )
+        )
         return 0
 
     return 2

@@ -123,7 +123,7 @@ python -m benchmark.cli --config config/benchmark.json validate-data \
   --cases data/alpha/healthcare_cases.jsonl --format json
 ```
 
-发布模式要求已批准状态、来源、审核者、司法辖区、生效日期和完整中英文配对：
+CLI 发布模式要求已批准状态、来源、司法辖区、生效日期、完整中英文配对以及相匹配的审核记录：
 
 ```bash
 python -m benchmark.cli --config config/benchmark.json validate-data \

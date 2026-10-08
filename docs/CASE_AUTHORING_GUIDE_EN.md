@@ -123,7 +123,7 @@ python -m benchmark.cli --config config/benchmark.json validate-data \
   --cases data/alpha/healthcare_cases.jsonl --format json
 ```
 
-Release-ready validation requires approved status, sources, reviewers, jurisdiction, effective date, and complete English/Chinese pairs:
+Release-ready CLI validation requires approved status, sources, jurisdiction, effective date, complete English/Chinese pairs, and matching review records:
 
 ```bash
 python -m benchmark.cli --config config/benchmark.json validate-data \

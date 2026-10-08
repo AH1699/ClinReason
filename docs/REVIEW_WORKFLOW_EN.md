@@ -13,6 +13,7 @@ An approval counts only when the record:
 - uses a reviewer role permitted for the review type;
 - is independent of the recorded case author;
 - completes the checks required for that review type;
+- explicitly records `conflict_disclosed=false`; a disclosed conflict does not count as an independent approval;
 - has `decision=approve` and no unresolved required changes;
 - passes `validate-reviews` without an error.
 
@@ -46,6 +47,8 @@ python -m benchmark.cli --config config/benchmark.json review-template \
 
 The generated file is deliberately non-approved. The reviewer evaluates the case, completes the checks, records conflicts and notes, and selects a decision. If reviewable content changes—even without a version change—the stored hash becomes stale and the review cannot clear a gate. Meaning-bearing changes must also increment the case version. Lifecycle fields that are updated only after approval—status, validation flags, reviewer IDs, translation-review state, and change rationale—are excluded from the hash so controlled promotion does not invalidate its own evidence.
 
+The generated `conflict_disclosed` value is `null`. The reviewer must set it to `false` to declare no conflict or `true` to disclose a conflict. A conflicted approval is rejected by validation.
+
 ## 4. Decisions
 
 - `approve`: all required checks pass and no required changes remain.
@@ -62,7 +65,17 @@ Never edit a completed record. Create a new record with a new ID and set `supers
 
 When reviewers disagree, preserve each independent record and add an adjudication record. Adjudication must explain the resolution; it must not erase the disagreement.
 
-## 6. Validate and monitor
+An active `approve_with_changes`, `revise`, `reject`, or `needs_specialist` decision from any clinical or language reviewer keeps that case's corresponding gate open, even when another reviewer approves. A later review from the same reviewer can supersede that decision after the issue is resolved.
+
+## 6. Prepare reviewer packets
+
+```bash
+python -m benchmark.cli --config config/benchmark.json export-review-packets
+```
+
+This writes 12 bilingual family packets and an assignment manifest under `work/reviewer_packets/` for the current Alpha. Each packet includes both prompts, expected behavior, critical requirements and errors, source references, author IDs, and content hashes. The manifest has empty reviewer ID fields for assignment. The command requires a clean development validation result, refuses to overwrite existing output, and refuses to export Gold cases. Keep the packets under controlled access when actual reviewers are assigned; they contain reference answers.
+
+## 7. Validate and monitor
 
 ```bash
 python -m benchmark.cli --config config/benchmark.json validate-reviews
@@ -78,9 +91,11 @@ python -m benchmark.cli --config config/benchmark.json validate-data
 python -m benchmark.cli --config config/benchmark.json validate-data --release-ready
 ```
 
+Release-ready CLI validation first checks the case structure and lifecycle fields, then verifies current review evidence. It requires all active clinical and language gates to be complete, `metadata.reviewer_ids` to include the clinical approvers, and `metadata.translation_reviewer_id` to name an approving language reviewer for translated variants. Use `--reviews PATH` to check a separate review directory. The standalone `validate_dataset()` library function checks only dataset structure and metadata; use the CLI for the combined release check.
+
 Passing review gates makes a case eligible for controlled promotion; it does not mutate case metadata or status. An accountable maintainer must verify required changes are resolved, update reviewer IDs and translation metadata, advance status/version as appropriate, and rerun both validation systems.
 
-## 7. Promotion checklist
+## 8. Promotion checklist
 
 - [ ] Reviewers' qualifications and conflicts were verified outside the repository.
 - [ ] Clinical approval exists for each exact case revision.

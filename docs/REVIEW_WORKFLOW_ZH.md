@@ -13,6 +13,7 @@
 - 审核者角色获准执行相应审核类型；
 - 审核者独立于案例中记录的作者；
 - 完成该审核类型要求的检查；
+- 明确记录 `conflict_disclosed=false`；存在已披露利益冲突的批准不能算作独立批准；
 - `decision=approve`，且没有未解决的必改项；
 - 通过 `validate-reviews`，没有错误。
 
@@ -46,6 +47,8 @@ python -m benchmark.cli --config config/benchmark.json review-template \
 
 生成的文件刻意保持为未批准状态。审核者需要评估案例、完成检查、记录利益冲突和说明，并选择决定。如果可审核内容发生变化，即使版本号未变，已保存的哈希也会失效，该审核不能关闭门槛。改变含义的修改还必须提升案例版本。仅在批准后更新的生命周期字段——状态、验证标志、审核者 ID、翻译审核状态和变更理由——不计入哈希，因此受控升级不会使其自身的证据失效。
 
+生成的 `conflict_disclosed` 值为 `null`。审核者必须将其设为 `false` 表示无利益冲突，或设为 `true` 披露存在利益冲突。存在利益冲突的批准无法通过验证。
+
 ## 4. 决定类型
 
 - `approve`：所有必要检查通过，且没有未解决的必改项。
@@ -62,7 +65,17 @@ python -m benchmark.cli --config config/benchmark.json review-template \
 
 审核者意见不一致时，应保留所有独立记录，并新增裁决记录。裁决必须说明如何解决分歧，不能抹去分歧历史。
 
-## 6. 验证与监控
+任何临床或语言审核者当前的 `approve_with_changes`、`revise`、`reject` 或 `needs_specialist` 决定，都会使该案例相应门槛保持开放，即使其他审核者已经批准。问题解决后，同一审核者可用新记录替代之前的决定。
+
+## 6. 准备审核材料包
+
+```bash
+python -m benchmark.cli --config config/benchmark.json export-review-packets
+```
+
+对于当前 Alpha，此命令在 `work/reviewer_packets/` 下生成 12 个双语案例族材料包和一个分配清单。每个材料包包含两种语言的题目、预期行为、关键要求与错误、来源引用、作者 ID 和内容哈希。分配清单中的审核者 ID 字段为空，等待项目组填写。命令要求开发模式验证通过，不会覆盖已有输出，也拒绝导出 Gold 案例。分配实际审核者后应限制材料包访问，因为其中含有参考答案。
+
+## 7. 验证与监控
 
 ```bash
 python -m benchmark.cli --config config/benchmark.json validate-reviews
@@ -78,9 +91,11 @@ python -m benchmark.cli --config config/benchmark.json validate-data
 python -m benchmark.cli --config config/benchmark.json validate-data --release-ready
 ```
 
+CLI 发布模式先检查案例结构和生命周期字段，再核验当前审核证据。所有临床与语言门槛必须完成；`metadata.reviewer_ids` 必须包含临床批准者；翻译版本的 `metadata.translation_reviewer_id` 必须对应批准该语言版本的审核者。可使用 `--reviews PATH` 检查其他审核目录。独立的 `validate_dataset()` 库函数只检查数据集结构和元数据；合并发布检查应使用 CLI。
+
 通过审核门槛只表示案例可以进入受控升级流程；工具不会自动修改案例元数据或状态。负责人仍需确认必改项已经解决，更新审核者 ID 和翻译元数据，按需提升状态/版本，并重新运行两套验证。
 
-## 7. 升级检查清单
+## 8. 升级检查清单
 
 - [ ] 已在仓库之外核实审核者资质与利益冲突。
 - [ ] 每个精确案例修订版都有临床批准。

@@ -9,7 +9,7 @@
     "role": "clinician",
     "qualification_scope": "Replace with verified specialty and relevant experience",
     "jurisdiction_scope": "Replace with applicable jurisdiction",
-    "conflict_disclosed": false
+    "conflict_disclosed": null
   },
   "review_type": "clinical",
   "decision": "revise",

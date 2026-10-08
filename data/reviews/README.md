@@ -13,7 +13,7 @@ python -m benchmark.cli --config config/benchmark.json review-template \
   --output data/reviews/development/HC-GC-TRIAGE-001-EN.clinical.json
 ```
 
-The generated record defaults to `decision=revise` and is not an approval. The reviewer must complete every applicable check, disclose conflicts, document requested changes, and set the final decision. Validate all records and inspect gate status with:
+The generated record defaults to `decision=revise` and is not an approval. `conflict_disclosed=null` requires the reviewer to explicitly set `false` when no conflict exists or `true` when one does. A conflicted approval cannot clear a gate. The reviewer must complete every applicable check, document requested changes, and set the final decision. Validate all records and inspect gate status with:
 
 ```bash
 python -m benchmark.cli --config config/benchmark.json validate-reviews
@@ -32,3 +32,5 @@ Hidden Gold labels should not be committed to this repository. Keep them in a se
 Review records are immutable. If a reviewer revises a decision, add a new record with a unique ID and `supersedes_review_id`; do not edit or delete the original. The latest valid record from the same reviewer for the same case version and review type controls that reviewer’s current decision.
 
 Do not mark a case `clinician_validated` merely because a file exists here. Only a valid `approve` decision can clear a gate. `approve_with_changes`, `revise`, `reject`, and `needs_specialist` remain unresolved until a later valid approval. Apply the charter’s independence, qualification, conflict-disclosure, required-change, and adjudication rules before promotion.
+
+If different reviewers have active, conflicting decisions for the same case version, the review gate stays open. The project lead must resolve the disagreement and record the decision chain. Review packets for assignment can be generated with `export-review-packets` in the repository root.

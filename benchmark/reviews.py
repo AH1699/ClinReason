@@ -325,6 +325,13 @@ def _validate_record(
         "adjudication": {"scope_appropriate"},
     }
     if decision == "approve":
+        if isinstance(reviewer, dict) and reviewer.get("conflict_disclosed") is True:
+            add(
+                "error",
+                "CONFLICTED_APPROVAL",
+                "A disclosed conflict prevents this approval from clearing a review gate.",
+                "$.reviewer.conflict_disclosed",
+            )
         failed = sorted(field for field in required_true.get(review_type, set()) if checks.get(field) is not True)
         if failed:
             add("error", "APPROVAL_CHECKS_FAILED", f"An approval requires true checks: {failed}.", "$.checks")
@@ -454,12 +461,15 @@ def assess_reviews(
             latest[key] = (timestamp, review)
 
     approvals: dict[tuple[str, str], dict[str, set[str]]] = {}
+    unresolved: dict[tuple[str, str], dict[str, set[str]]] = {}
     for _, review in latest.values():
-        if review.get("decision") != "approve":
-            continue
         identity = (str(review.get("case_id")), str(review.get("case_version")))
         reviewer_id = str((review.get("reviewer") or {}).get("pseudonymous_id"))
-        approvals.setdefault(identity, {}).setdefault(str(review.get("review_type")), set()).add(reviewer_id)
+        review_type = str(review.get("review_type"))
+        if review.get("decision") == "approve":
+            approvals.setdefault(identity, {}).setdefault(review_type, set()).add(reviewer_id)
+        elif review_type in {"clinical", "language_equivalence"}:
+            unresolved.setdefault(identity, {}).setdefault(review_type, set()).add(reviewer_id)
 
     clinical_required = max(1, int(policy.get("required_clinical_approvals", 1)))
     language_required = max(1, int(policy.get("required_language_approvals", 1)))
@@ -473,8 +483,12 @@ def assess_reviews(
         clinical_count = len(by_type.get("clinical", set()))
         needs_language = case.get("metadata", {}).get("translation_method") != "original"
         language_count = len(by_type.get("language_equivalence", set()))
-        clinical_complete = clinical_count >= clinical_required
-        language_complete = not needs_language or language_count >= language_required
+        unresolved_clinical = sorted(unresolved.get(identity, {}).get("clinical", set()))
+        unresolved_language = sorted(unresolved.get(identity, {}).get("language_equivalence", set()))
+        clinical_complete = clinical_count >= clinical_required and not unresolved_clinical
+        language_complete = not needs_language or (
+            language_count >= language_required and not unresolved_language
+        )
         if not clinical_complete:
             clinical_pending.append(case["id"])
         if not language_complete:
@@ -486,9 +500,13 @@ def assess_reviews(
                 "case_id": case["id"],
                 "case_version": case["version"],
                 "clinical_approvals": clinical_count,
+                "clinical_approving_reviewer_ids": sorted(by_type.get("clinical", set())),
+                "unresolved_clinical_reviewer_ids": unresolved_clinical,
                 "clinical_complete": clinical_complete,
                 "language_review_required": needs_language,
                 "language_approvals": language_count,
+                "language_approving_reviewer_ids": sorted(by_type.get("language_equivalence", set())),
+                "unresolved_language_reviewer_ids": unresolved_language,
                 "language_complete": language_complete,
                 "review_gates_complete": clinical_complete and language_complete,
             }
@@ -512,6 +530,66 @@ def assess_reviews(
         },
         "case_status": case_status,
     }
+
+
+def release_review_issues(
+    cases: list[dict[str, Any]], review_report: dict[str, Any]
+) -> list[dict[str, Any]]:
+    """Return release blockers caused by missing or mismatched review evidence."""
+    issues: list[dict[str, Any]] = []
+    if not review_report["valid"]:
+        issues.append(
+            {
+                "level": "error",
+                "code": "INVALID_REVIEW_RECORDS",
+                "path": "$",
+                "message": f"Review records have {review_report['error_count']} validation errors.",
+            }
+        )
+    status_by_id = {
+        (item["case_id"], item["case_version"]): item
+        for item in review_report["case_status"]
+    }
+    for case in cases:
+        case_id = case["id"]
+        status = status_by_id[(case_id, case["version"])]
+        if not status["review_gates_complete"]:
+            issues.append(
+                {
+                    "level": "error",
+                    "code": "REVIEW_GATE_INCOMPLETE",
+                    "path": "$.metadata.reviewer_ids",
+                    "case_id": case_id,
+                    "message": "Independent clinical or language review gates are incomplete.",
+                }
+            )
+            continue
+        metadata = case["metadata"]
+        recorded = set(metadata.get("reviewer_ids") or [])
+        clinical_reviewers = set(status["clinical_approving_reviewer_ids"])
+        if not clinical_reviewers <= recorded:
+            issues.append(
+                {
+                    "level": "error",
+                    "code": "CLINICAL_REVIEWER_METADATA_MISMATCH",
+                    "path": "$.metadata.reviewer_ids",
+                    "case_id": case_id,
+                    "message": "metadata.reviewer_ids must include the clinical approvers in review records.",
+                }
+            )
+        if status["language_review_required"] and metadata.get("translation_reviewer_id") not in set(
+            status["language_approving_reviewer_ids"]
+        ):
+            issues.append(
+                {
+                    "level": "error",
+                    "code": "LANGUAGE_REVIEWER_METADATA_MISMATCH",
+                    "path": "$.metadata.translation_reviewer_id",
+                    "case_id": case_id,
+                    "message": "metadata.translation_reviewer_id must identify an approving language reviewer.",
+                }
+            )
+    return issues
 
 
 def build_review_template(
@@ -545,7 +623,7 @@ def build_review_template(
             "role": role,
             "qualification_scope": qualification_scope,
             "jurisdiction_scope": jurisdiction_scope,
-            "conflict_disclosed": False,
+            "conflict_disclosed": None,
         },
         "review_type": review_type,
         "decision": "revise",
