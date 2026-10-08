@@ -2,13 +2,13 @@
 
 A bilingual, local-first planning package and runnable scaffold for evaluating LLMs in high-stakes sector workflows. Healthcare/clinics is the first domain module; the core data model and scoring engine are designed to extend to finance and legal.
 
-This package is **research/evaluation infrastructure, not medical advice**. All included cases are synthetic, illustrative, and marked `example_unvalidated`. They must not be presented as a validated benchmark or used for clinical decisions until qualified clinicians complete the validation and Gold Set process.
+This package is **research/evaluation infrastructure, not medical advice**. All included cases are synthetic and unvalidated: examples are marked `example_unvalidated`, while the bilingual Alpha cases are marked `draft`. They must not be presented as a validated benchmark or used for clinical decisions until qualified clinicians complete the validation and Gold Set process.
 
 ## 中文简介
 
 这是一个双语、本地优先的行业大模型评测规划包与可运行脚手架。首个领域是医疗/诊所，但核心数据结构与评分引擎可扩展到金融与法律。
 
-本项目是**研究与评测基础设施，不构成医疗建议**。所有示例案例均为合成内容，状态为 `example_unvalidated`。在合格临床专家完成验证与 Gold Set 流程前，不得将其宣传为已验证基准，也不得用于临床决策。
+本项目是**研究与评测基础设施，不构成医疗建议**。所有案例均为合成且未经验证：示例案例状态为 `example_unvalidated`，双语 Alpha 案例状态为 `draft`。在合格临床专家完成验证与 Gold Set 流程前，不得将其宣传为已验证基准，也不得用于临床决策。
 
 ## Included / 内容
 
@@ -20,6 +20,9 @@ This package is **research/evaluation infrastructure, not medical advice**. All 
 - `docs/CASE_AUTHORING_GUIDE_EN.md` and `docs/CASE_AUTHORING_GUIDE_ZH.md`: bilingual family design, source policy, review workflow, and completion checklist.
 - `docs/GLOBAL_CORE_DESIGN_EN.md` and `docs/GLOBAL_CORE_DESIGN_ZH.md`: separation of jurisdiction-neutral behavior, local jurisdiction packs, and cross-jurisdiction adaptation.
 - `docs/REVIEW_WORKFLOW_EN.md` and `docs/REVIEW_WORKFLOW_ZH.md`: append-only clinical/language review operations, evidence rules, and promotion gates.
+- `docs/PRELIMINARY_CLINICAL_REVIEW_EN.md` and `docs/PRELIMINARY_CLINICAL_REVIEW_ZH.md`: public-evidence first pass across all 12 Alpha families; explicitly not clinical validation.
+- `docs/CLINICAL_REVIEW_HANDOFF_EN.md` and `docs/CLINICAL_REVIEW_HANDOFF_ZH.md`: living prioritized questions for later qualified reviewers.
+- `agents/preliminary_clinical_reviewer.md`, `data/evidence/public_sources.json`, and `benchmark/preliminary_reviewer.py`: a bounded, source-linked AI audit workflow that cannot clear human review gates.
 - `schemas/`: JSON Schema definitions for cases, responses, judge outputs, human reviews, version manifests, aggregate scores, pairwise outputs, and runs.
 - `benchmark/`: standard-library Python implementation with SQLite persistence and candidate/judge provider interfaces.
 - `data/examples/`: six synthetic, unvalidated healthcare/clinic examples.
@@ -31,20 +34,22 @@ This package is **research/evaluation infrastructure, not medical advice**. All 
 Requires Python 3.11+; the demo has no third-party dependencies and makes no network calls.
 
 ```bash
-python -m benchmark.cli --config config/benchmark.json init
-python -m benchmark.cli --config config/benchmark.json validate-data
-python -m benchmark.cli --config config/benchmark.json dataset-status
-python -m benchmark.cli --config config/benchmark.json validate-reviews
-python -m benchmark.cli --config config/benchmark.json review-status
-python -m benchmark.cli --config config/benchmark.json export-review-packets
-python -m benchmark.cli --config config/benchmark.json run-demo
-python -m unittest discover -s tests -v
+python3 -m benchmark.cli --config config/benchmark.json init
+python3 -m benchmark.cli --config config/benchmark.json validate-data
+python3 -m benchmark.cli --config config/benchmark.json dataset-status
+python3 -m benchmark.cli --config config/benchmark.json validate-reviews
+python3 -m benchmark.cli --config config/benchmark.json review-status
+python3 -m benchmark.cli --config config/benchmark.json export-review-packets
+python3 -m benchmark.cli --config config/benchmark.json run-demo
+python3 -m unittest discover -s tests -v
 ```
+
+To inspect the evidence-limited AI reviewer prompt for one bilingual family, run `python3 -m benchmark.preliminary_reviewer HC-GC-TRIAGE-001`. With a **compatible, locally authenticated** Codex CLI, add `--run` to invoke the agent in a read-only sandbox. Validated output is written under `work/preliminary_reviews/`, never `data/reviews/`; it is not a clinical or language approval. The installed `codex-cli 0.23.0` currently cannot run the configured ChatGPT model (server requests a newer CLI), so this live path remains unverified until the CLI is updated. The initial first pass is recorded in the bilingual preliminary-review documents.
 
 The generated SQLite file is `work/benchmark.sqlite3` and is intentionally excluded from the package. To install the CLI locally:
 
 ```bash
-python -m pip install -e .
+python3 -m pip install -e .
 sectorbench --config config/benchmark.json run-demo
 ```
 

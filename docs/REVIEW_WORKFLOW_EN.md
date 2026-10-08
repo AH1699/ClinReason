@@ -2,6 +2,8 @@
 
 This workflow turns expert review into auditable release evidence. It supports clinical and bilingual quality control; it does not automate clinical judgment or certify a benchmark by itself.
 
+The separate [AI preliminary audit](PRELIMINARY_CLINICAL_REVIEW_EN.md) and its [human handoff](CLINICAL_REVIEW_HANDOFF_EN.md) are working notes only. Its runner writes under `work/preliminary_reviews/`; these files cannot be placed in `data/reviews/` or counted as clinical or language approvals.
+
 ## 1. Review gates
 
 For the current Alpha policy, every case requires one valid independent clinical approval. Every translated variant also requires one valid language-equivalence approval. These are minimum development gates, not a final Gold Set standard. Gold construction should use dual independent review and adjudication under a separately approved protocol.
