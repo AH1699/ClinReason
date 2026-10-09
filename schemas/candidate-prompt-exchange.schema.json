@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Candidate-visible prompt exchange row",
+  "type": "object",
+  "required": ["exchange_version", "case_id", "case_version", "case_content_hash", "language", "prompt_template_version", "instruction", "prompt"],
+  "properties": {
+    "exchange_version": {"const": "0.1.0"},
+    "case_id": {"type": "string", "minLength": 1},
+    "case_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "case_content_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "language": {"enum": ["en", "zh-Hans"]},
+    "prompt_template_version": {"type": "string", "minLength": 1},
+    "instruction": {"type": "string", "minLength": 1},
+    "prompt": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": false
+}

@@ -37,6 +37,8 @@ The example status `example_unvalidated` may never transition automatically.
 
 A response must retain the exact case version, candidate provider/model/snapshot, prompt-template version, request parameters, text, finish reason, latency, usage, timestamp, and optional raw-output reference. Do not infer a model version from a marketing name. If a provider exposes no immutable snapshot, store the returned model string, request date, endpoint revision if available, and mark reproducibility as limited.
 
+The local file-based pilot uses `schemas/candidate-prompt-exchange.schema.json` and `schemas/candidate-answer-exchange.schema.json`. Prompt export is a field allowlist containing only instructions, the case prompt, language, case ID/version/hash, and prompt-template version. It excludes reference answers, critical requirements, error labels, and reviewer notes. Answer import requires exactly one nonempty row per exact case revision; model identity is supplied once at run creation. The pilot does not yet capture the full production response manifest or call a live API. See `docs/CANDIDATE_PILOT_EN.md`.
+
 ## 4. Judge output contract
 
 Each applicable dimension contains a numeric score, applicability flag, concise rationale, and cited evidence from the candidate response. The output separately lists only configured critical-error IDs, confidence, overall rationale, and a human-review flag. Reject unknown fields in production to prevent silent prompt/schema drift.

@@ -14,13 +14,12 @@ class MockCandidateProvider(CandidateProvider):
     model_id = "mock-candidate"
     model_version = "0.1"
 
-    def generate(self, case: dict[str, Any]) -> dict[str, Any]:
-        requirements = case.get("critical_requirements", [])
-        body = " ".join(requirements[:3])
+    def generate(self, candidate_input: dict[str, Any]) -> dict[str, Any]:
         return {
             "text": (
-                "Demonstration-only response. I would clarify missing context, "
-                f"address these required points: {body}. This is not medical advice."
+                "Demonstration-only response to a synthetic case. "
+                "I would clarify missing context and avoid unsupported conclusions. "
+                "This is not medical advice."
             ),
             "finish_reason": "stop",
             "latency_ms": 0,

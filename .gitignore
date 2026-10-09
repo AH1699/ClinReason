@@ -10,4 +10,5 @@ work/*.sqlite3
 work/*.db
 work/reviewer_packets*/
 work/preliminary_reviews/
+work/candidate_*.jsonl
 *.log

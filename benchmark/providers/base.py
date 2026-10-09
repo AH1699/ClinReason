@@ -5,14 +5,17 @@ from typing import Any
 
 
 class CandidateProvider(ABC):
-    """Adapter contract for a model being benchmarked."""
+    """Adapter contract for a model being benchmarked.
+
+    The pipeline passes only id, version, language, and prompt—not reference data.
+    """
 
     provider_name: str
     model_id: str
     model_version: str
 
     @abstractmethod
-    def generate(self, case: dict[str, Any]) -> dict[str, Any]:
+    def generate(self, candidate_input: dict[str, Any]) -> dict[str, Any]:
         """Return at least {text: str}; usage/latency metadata is optional."""
 
 

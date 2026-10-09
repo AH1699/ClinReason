@@ -4,8 +4,10 @@ import argparse
 import json
 from pathlib import Path
 
+from .candidate_exchange import export_prompts, import_answers
 from .config import load_json, load_jsonl, resolve_path
 from .dataset_status import summarize_dataset
+from .db import connect
 from .pipeline import (
     bootstrap,
     create_run,
@@ -40,6 +42,21 @@ def build_parser() -> argparse.ArgumentParser:
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("init", help="Initialize SQLite and ingest configured cases")
     sub.add_parser("run-demo", help="Run the complete offline mock pipeline")
+    prompt_export = sub.add_parser(
+        "export-prompts", help="Export only candidate-visible prompts for an external model"
+    )
+    prompt_export.add_argument("--output", default="work/candidate_prompts.jsonl")
+    answer_import = sub.add_parser(
+        "import-responses", help="Import one external-model answer for each exact case revision"
+    )
+    answer_import.add_argument("--input", required=True, help="Answer JSONL file")
+    answer_import.add_argument("--provider", required=True)
+    answer_import.add_argument("--model-id", required=True)
+    answer_import.add_argument("--model-version", required=True)
+    imported_demo = sub.add_parser(
+        "score-imported-demo", help="Score imported answers with mock judges (infrastructure only)"
+    )
+    imported_demo.add_argument("run_id")
     report = sub.add_parser("report", help="Print a JSON report for a run")
     report.add_argument("run_id")
     validate = sub.add_parser(
@@ -145,6 +162,60 @@ def main(argv: list[str] | None = None) -> int:
         )
         score_run(db_path, run_id, rubric, config["scoring"])
         print(json.dumps(report_run(db_path, run_id), ensure_ascii=False, indent=2))
+        return 0
+
+    if args.command == "export-prompts":
+        target = resolve_path(args.config, args.output)
+        instruction_path = resolve_path(
+            args.config, config.get("candidate_prompt_path", "config/candidate_prompt.txt")
+        )
+        try:
+            count = export_prompts(
+                cases_path, target, rubric=rubric, authoring=config.get("authoring", {}),
+                instruction=instruction_path.read_text(encoding="utf-8").strip(),
+                prompt_template_version=config["prompt_template_version"],
+            )
+        except (ValueError, FileExistsError, OSError) as exc:
+            print(f"Cannot export prompts: {exc}")
+            return 2
+        print(json.dumps({"output": str(target), "case_count": count}, indent=2))
+        return 0
+
+    if args.command == "import-responses":
+        try:
+            run_id = import_answers(
+                db_path, cases_path, Path(args.input), config=config, rubric=rubric,
+                provider=args.provider, model_id=args.model_id, model_version=args.model_version,
+            )
+        except (ValueError, OSError) as exc:
+            print(f"Cannot import responses: {exc}")
+            return 2
+        print(json.dumps({"run_id": run_id, "response_count": len(load_jsonl(args.input)), "status": "awaiting_mock_or_future_real_judges"}, indent=2))
+        return 0
+
+    if args.command == "score-imported-demo":
+        with connect(db_path) as conn:
+            expected = {
+                (row["case_id"], row["case_version"])
+                for row in conn.execute(
+                    "SELECT case_id, case_version FROM run_cases WHERE run_id = ?", (args.run_id,)
+                )
+            }
+            actual = [
+                (row["case_id"], row["case_version"])
+                for row in conn.execute(
+                    "SELECT case_id, case_version FROM model_responses WHERE run_id = ?", (args.run_id,)
+                )
+            ]
+            judged = conn.execute("SELECT COUNT(*) FROM judge_outputs WHERE run_id = ?", (args.run_id,)).fetchone()[0]
+            scored = conn.execute("SELECT COUNT(*) FROM scores WHERE run_id = ?", (args.run_id,)).fetchone()[0]
+        if not expected or len(actual) != len(expected) or set(actual) != expected or judged or scored:
+            print("Run must have one unjudged, unscored response per snapshotted case.")
+            return 2
+        judges = [MockJudgeProvider(index) for index in range(config["demo_judge_count"])]
+        judge_responses(db_path, args.run_id, judges, rubric, config["judge_prompt_version"])
+        score_run(db_path, args.run_id, rubric, config["scoring"])
+        print(json.dumps(report_run(db_path, args.run_id), ensure_ascii=False, indent=2))
         return 0
 
     if args.command == "report":

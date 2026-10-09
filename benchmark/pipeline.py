@@ -2,12 +2,14 @@ from __future__ import annotations
 
 import hashlib
 import json
+from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
 from .config import load_jsonl
 from .db import connect, dump, init_db, new_id, now_iso
 from .providers.base import CandidateProvider, JudgeProvider
+from .reviews import case_content_hash
 from .scoring import aggregate_judgments
 
 
@@ -18,10 +20,22 @@ def ingest_cases(db_path: str | Path, cases_path: str | Path) -> int:
         for case in cases:
             encoded = dump(case)
             content_hash = hashlib.sha256(encoded.encode("utf-8")).hexdigest()
+            existing = conn.execute(
+                "SELECT payload_json FROM cases WHERE id = ? AND version = ?",
+                (case["id"], case["version"]),
+            ).fetchone()
+            if existing and case_content_hash(json.loads(existing["payload_json"])) != case_content_hash(case):
+                raise ValueError(
+                    f"Reviewable content of {case['id']}@{case['version']} changed without a new version"
+                )
             conn.execute(
-                """INSERT OR REPLACE INTO cases
+                """INSERT INTO cases
                 (id, version, category, payload_json, content_hash, created_at)
-                VALUES (?, ?, ?, ?, ?, ?)""",
+                VALUES (?, ?, ?, ?, ?, ?)
+                ON CONFLICT(id, version) DO UPDATE SET
+                  category = excluded.category,
+                  payload_json = excluded.payload_json,
+                  content_hash = excluded.content_hash""",
                 (case["id"], case["version"], case["category"], encoded, content_hash, now_iso()),
             )
             conn.execute(
@@ -76,7 +90,13 @@ def generate_responses(
         ).fetchall()
         for row in cases:
             case = json.loads(row["payload_json"])
-            generated = provider.generate(case)
+            candidate_input = {
+                "id": case["id"],
+                "version": case["version"],
+                "language": case.get("language"),
+                "prompt": case["prompt"],
+            }
+            generated = provider.generate(candidate_input)
             payload = {
                 "text": generated["text"],
                 "finish_reason": generated.get("finish_reason"),
@@ -176,33 +196,96 @@ def score_run(
 
 def report_run(db_path: str | Path, run_id: str) -> dict[str, Any]:
     with connect(db_path) as conn:
+        expected_case_count = conn.execute(
+            "SELECT COUNT(*) FROM run_cases WHERE run_id = ?", (run_id,)
+        ).fetchone()[0]
         rows = conn.execute(
-            """SELECT s.*, r.case_id, r.model_id, r.model_version
+            """SELECT s.*, r.case_id, r.provider, r.model_id, r.model_version,
+                      c.category, c.payload_json AS case_json
                FROM scores s JOIN model_responses r ON s.response_id = r.id
+               JOIN cases c ON r.case_id = c.id AND r.case_version = c.version
                WHERE s.run_id = ? ORDER BY r.case_id""",
             (run_id,),
         ).fetchall()
     if not rows:
-        return {"run_id": run_id, "count": 0}
-    scores = [float(row["gated_score"]) for row in rows]
-    return {
-        "run_id": run_id,
-        "count": len(rows),
-        "mean_gated_score": round(sum(scores) / len(scores), 2),
-        "pass_rate": round(sum(int(row["pass"]) for row in rows) / len(rows), 3),
-        "human_review_required": sum(row["review_status"] == "required" for row in rows),
-        "cases": [
+        return {
+            "run_id": run_id,
+            "count": 0,
+            "expected_case_count": expected_case_count,
+            "coverage": 0.0,
+            "report_status": "experimental_unvalidated",
+        }
+
+    def summarize(items: list[dict[str, Any]]) -> dict[str, Any]:
+        return {
+            "count": len(items),
+            "mean_gated_score": round(sum(item["gated_score"] for item in items) / len(items), 2),
+            "pass_rate": round(sum(item["pass"] for item in items) / len(items), 3),
+            "human_review_required": sum(item["review_status"] == "required" for item in items),
+            "confirmed_critical_error_count": sum(len(item["confirmed_critical_errors"]) for item in items),
+        }
+
+    cases = []
+    for row in rows:
+        case = json.loads(row["case_json"])
+        score = json.loads(row["payload_json"])
+        cases.append(
             {
                 "case_id": row["case_id"],
+                "case_family_id": case.get("metadata", {}).get("case_family_id"),
+                "category": row["category"],
+                "language": case.get("language"),
+                "provider": row["provider"],
+                "model_id": row["model_id"],
+                "model_version": row["model_version"],
                 "model": f"{row['model_id']}@{row['model_version']}",
                 "raw_score": row["raw_score"],
-                "gated_score": row["gated_score"],
+                "gated_score": float(row["gated_score"]),
                 "pass": bool(row["pass"]),
                 "confidence": row["confidence"],
                 "review_status": row["review_status"],
+                "dimension_scores": score["dimension_scores"],
+                "confirmed_critical_errors": score["confirmed_critical_errors"],
+                "review_reasons": score["review_reasons"],
             }
-            for row in rows
-        ],
+        )
+
+    def grouped(key: str, items: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+        buckets: dict[str, list[dict[str, Any]]] = defaultdict(list)
+        for item in items:
+            buckets[str(item[key])].append(item)
+        return {name: summarize(bucket) for name, bucket in sorted(buckets.items())}
+
+    model_buckets: dict[tuple[str, str, str], list[dict[str, Any]]] = defaultdict(list)
+    for item in cases:
+        model_buckets[(item["provider"], item["model_id"], item["model_version"])].append(item)
+    by_model = []
+    for (provider, model_id, model_version), items in sorted(model_buckets.items()):
+        category_summary = grouped("category", items)
+        by_model.append(
+            {
+                "provider": provider,
+                "model_id": model_id,
+                "model_version": model_version,
+                **summarize(items),
+                "macro_category_mean": round(
+                    sum(group["mean_gated_score"] for group in category_summary.values())
+                    / len(category_summary), 2
+                ),
+                "by_category": category_summary,
+                "by_language": grouped("language", items),
+            }
+        )
+    overview = summarize(cases)
+    return {
+        "run_id": run_id,
+        "report_status": "experimental_unvalidated",
+        "caution": "Draft cases or uncalibrated judges; scores are not clinical validation or a public model ranking.",
+        "expected_case_count": expected_case_count,
+        "coverage": round(len(cases) / expected_case_count, 3) if expected_case_count else 0.0,
+        **overview,
+        "by_model": by_model,
+        "cases": cases,
     }
 
 
