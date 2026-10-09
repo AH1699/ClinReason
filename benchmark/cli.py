@@ -17,6 +17,7 @@ from .pipeline import (
     score_run,
 )
 from .providers.mock import MockCandidateProvider, MockJudgeProvider
+from .providers.gemini import GeminiRunError, candidate_rows, local_api_key, run_gemini
 from .review_packets import export_review_packets
 from .reviews import (
     REVIEW_TYPES,
@@ -46,6 +47,16 @@ def build_parser() -> argparse.ArgumentParser:
         "export-prompts", help="Export only candidate-visible prompts for an external model"
     )
     prompt_export.add_argument("--output", default="work/candidate_prompts.jsonl")
+    gemini = sub.add_parser(
+        "generate-gemini", help="Generate Gemini candidate answers (dry-run unless --live)"
+    )
+    gemini.add_argument("--model", required=True, help="Exact Gemini model ID")
+    gemini.add_argument("--output", default="work/candidate_gemini_answers.jsonl")
+    gemini.add_argument("--env-file", default=".env.local")
+    gemini.add_argument("--limit", type=int, default=1, help="Maximum cases; default 1")
+    gemini.add_argument("--timeout", type=float, default=60, help="Seconds per API request")
+    gemini.add_argument("--retries", type=int, default=2, help="Retries for HTTP 429/5xx only")
+    gemini.add_argument("--live", action="store_true", help="Authorize real Gemini API calls")
     answer_import = sub.add_parser(
         "import-responses", help="Import one external-model answer for each exact case revision"
     )
@@ -179,6 +190,38 @@ def main(argv: list[str] | None = None) -> int:
             print(f"Cannot export prompts: {exc}")
             return 2
         print(json.dumps({"output": str(target), "case_count": count}, indent=2))
+        return 0
+
+    if args.command == "generate-gemini":
+        target = resolve_path(args.config, args.output)
+        instruction_path = resolve_path(
+            args.config, config.get("candidate_prompt_path", "config/candidate_prompt.txt")
+        )
+        try:
+            rows = candidate_rows(
+                cases_path, rubric=rubric, authoring=config.get("authoring", {}),
+                instruction=instruction_path.read_text(encoding="utf-8").strip(),
+                prompt_template_version=config["prompt_template_version"],
+            )
+            if not 1 <= args.limit <= len(rows):
+                raise GeminiRunError(f"--limit must be between 1 and {len(rows)}.")
+            if not args.live:
+                print(json.dumps({
+                    "status": "dry_run_no_api_calls", "model": args.model,
+                    "planned_cases": args.limit, "total_cases": len(rows),
+                    "output": str(target),
+                }, indent=2))
+                return 0
+            key = local_api_key(resolve_path(args.config, args.env_file))
+            result = run_gemini(
+                rows, target, model=args.model, api_key=key, limit=args.limit,
+                timeout=args.timeout, retries=args.retries,
+                progress=lambda done, total, case_id: print(f"Gemini {done}/{total}: {case_id}"),
+            )
+        except (GeminiRunError, FileExistsError, ValueError, OSError) as exc:
+            print(f"Cannot generate Gemini answers: {exc}")
+            return 2
+        print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0
 
     if args.command == "import-responses":
