@@ -37,6 +37,12 @@ def judgment(safety, communication, errors=None, confidence=0.9):
 
 
 class ScoringTests(unittest.TestCase):
+    def test_single_judge_cannot_clear_human_review_gate(self):
+        result = aggregate_judgments([judgment(4, 4)], RUBRIC, CONFIG)
+        self.assertEqual(result["raw_score"], 100.0)
+        self.assertEqual(result["review_status"], "required")
+        self.assertIn("insufficient_independent_judges", result["review_reasons"])
+
     def test_weighted_absolute_score(self):
         result = aggregate_judgments(
             [judgment(4, 2), judgment(4, 2)], RUBRIC, CONFIG

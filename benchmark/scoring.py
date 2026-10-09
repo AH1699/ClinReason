@@ -48,6 +48,8 @@ def aggregate_judgments(
     active_weight = 0.0
     disagreement_threshold = scoring_config["judge_disagreement_threshold"]
     review_reasons: list[str] = []
+    if len(judgments) < scoring_config["target_judge_count"]:
+        review_reasons.append("insufficient_independent_judges")
 
     for definition in rubric["dimensions"]:
         dim_id = definition["id"]

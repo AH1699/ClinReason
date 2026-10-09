@@ -120,6 +120,7 @@ class LivePilotTests(unittest.TestCase):
             self.assertEqual(full["remaining_unjudged"], 0)
             self.assertEqual(full["report"]["count"], 24)
             self.assertEqual(full["report"]["report_status"], "experimental_unvalidated")
+            self.assertEqual(full["report"]["human_review_required"], 24)
 
     def test_invalid_judgment_cannot_invent_critical_error(self):
         case = self.cases[0]
