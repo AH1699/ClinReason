@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-import os
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -13,6 +12,7 @@ from urllib.request import Request, urlopen
 
 from ..candidate_exchange import prompt_rows
 from ..config import load_jsonl
+from ..local_settings import read_setting
 from ..validation import validate_dataset
 
 
@@ -31,26 +31,10 @@ def _check_key(value: str) -> str:
 
 def local_api_key(env_file: str | Path, environ: Mapping[str, str] | None = None) -> str:
     """Read a literal GEMINI_API_KEY value; never execute an env file as shell code."""
-    variables = os.environ if environ is None else environ
-    from_env = variables.get("GEMINI_API_KEY", "").strip()
-    if from_env:
-        return _check_key(from_env)
-    path = Path(env_file)
-    if not path.exists():
-        raise GeminiRunError("Set GEMINI_API_KEY or create a local .env.local file.")
-    found: str | None = None
-    for line in path.read_text(encoding="utf-8").splitlines():
-        stripped = line.strip()
-        if not stripped or stripped.startswith("#"):
-            continue
-        if not stripped.startswith("GEMINI_API_KEY="):
-            raise GeminiRunError(".env.local must contain only GEMINI_API_KEY=... and comments.")
-        if found is not None:
-            raise GeminiRunError(".env.local contains duplicate GEMINI_API_KEY entries.")
-        found = stripped.partition("=")[2].strip()
-        if len(found) >= 2 and found[0] == found[-1] and found[0] in "\"'":
-            found = found[1:-1]
-    return _check_key(found or "")
+    try:
+        return read_setting(env_file, "GEMINI_API_KEY", environ=environ, secret=True)
+    except ValueError as exc:
+        raise GeminiRunError(str(exc)) from None
 
 
 def candidate_rows(

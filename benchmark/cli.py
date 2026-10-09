@@ -8,6 +8,8 @@ from .candidate_exchange import export_prompts, import_answers
 from .config import load_json, load_jsonl, resolve_path
 from .dataset_status import summarize_dataset
 from .db import connect
+from .live_judging import gemini_judge_status, judge_imported_grok
+from .local_settings import read_setting
 from .pipeline import (
     bootstrap,
     create_run,
@@ -18,6 +20,8 @@ from .pipeline import (
 )
 from .providers.mock import MockCandidateProvider, MockJudgeProvider
 from .providers.gemini import GeminiRunError, candidate_rows, local_api_key, run_gemini
+from .providers.grok import candidate_rows as grok_candidate_rows, run_grok
+from .providers.http_json import ProviderRequestError
 from .review_packets import export_review_packets
 from .reviews import (
     REVIEW_TYPES,
@@ -57,6 +61,16 @@ def build_parser() -> argparse.ArgumentParser:
     gemini.add_argument("--timeout", type=float, default=60, help="Seconds per API request")
     gemini.add_argument("--retries", type=int, default=2, help="Retries for HTTP 429/5xx only")
     gemini.add_argument("--live", action="store_true", help="Authorize real Gemini API calls")
+    grok = sub.add_parser(
+        "generate-grok", help="Generate Grok candidate answers (dry-run unless --live)"
+    )
+    grok.add_argument("--model", help="Override GROK_MODEL from local settings")
+    grok.add_argument("--output", default="work/candidate_grok_answers.jsonl")
+    grok.add_argument("--env-file", default=".env.local")
+    grok.add_argument("--limit", type=int, default=1)
+    grok.add_argument("--timeout", type=float, default=120)
+    grok.add_argument("--retries", type=int, default=2)
+    grok.add_argument("--live", action="store_true")
     answer_import = sub.add_parser(
         "import-responses", help="Import one external-model answer for each exact case revision"
     )
@@ -68,6 +82,16 @@ def build_parser() -> argparse.ArgumentParser:
         "score-imported-demo", help="Score imported answers with mock judges (infrastructure only)"
     )
     imported_demo.add_argument("run_id")
+    gemini_judge = sub.add_parser(
+        "judge-imported-gemini", help="Judge imported Grok answers with Gemini (dry-run unless --live)"
+    )
+    gemini_judge.add_argument("run_id")
+    gemini_judge.add_argument("--model", help="Override GEMINI_JUDGE_MODEL from local settings")
+    gemini_judge.add_argument("--env-file", default=".env.local")
+    gemini_judge.add_argument("--limit", type=int, default=1)
+    gemini_judge.add_argument("--timeout", type=float, default=120)
+    gemini_judge.add_argument("--retries", type=int, default=2)
+    gemini_judge.add_argument("--live", action="store_true")
     report = sub.add_parser("report", help="Print a JSON report for a run")
     report.add_argument("run_id")
     validate = sub.add_parser(
@@ -224,6 +248,38 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0
 
+    if args.command == "generate-grok":
+        target = resolve_path(args.config, args.output)
+        env_path = resolve_path(args.config, args.env_file)
+        instruction_path = resolve_path(
+            args.config, config.get("candidate_prompt_path", "config/candidate_prompt.txt")
+        )
+        try:
+            model = args.model or read_setting(env_path, "GROK_MODEL")
+            rows = grok_candidate_rows(
+                cases_path, rubric=rubric, authoring=config.get("authoring", {}),
+                instruction=instruction_path.read_text(encoding="utf-8").strip(),
+                prompt_template_version=config["prompt_template_version"],
+            )
+            if not 1 <= args.limit <= len(rows):
+                raise ValueError(f"--limit must be between 1 and {len(rows)}")
+            if not args.live:
+                print(json.dumps({"status": "dry_run_no_api_calls", "model": model,
+                                  "planned_cases": args.limit, "total_cases": len(rows),
+                                  "output": str(target)}, indent=2))
+                return 0
+            key = read_setting(env_path, "GROK_API_KEY", secret=True)
+            result = run_grok(
+                rows, target, model=model, api_key=key, limit=args.limit,
+                timeout=args.timeout, retries=args.retries,
+                progress=lambda done, total, case_id: print(f"Grok {done}/{total}: {case_id}"),
+            )
+        except (ProviderRequestError, FileExistsError, ValueError, OSError) as exc:
+            print(f"Cannot generate Grok answers: {exc}")
+            return 2
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return 0
+
     if args.command == "import-responses":
         try:
             run_id = import_answers(
@@ -259,6 +315,41 @@ def main(argv: list[str] | None = None) -> int:
         judge_responses(db_path, args.run_id, judges, rubric, config["judge_prompt_version"])
         score_run(db_path, args.run_id, rubric, config["scoring"])
         print(json.dumps(report_run(db_path, args.run_id), ensure_ascii=False, indent=2))
+        return 0
+
+    if args.command == "judge-imported-gemini":
+        env_path = resolve_path(args.config, args.env_file)
+        try:
+            model = args.model or read_setting(env_path, "GEMINI_JUDGE_MODEL")
+            pending, _version, total = gemini_judge_status(
+                db_path, args.run_id, model=model,
+                judge_prompt_version=config["judge_prompt_version"],
+                rubric_version=rubric["version"],
+            )
+            if args.limit < 1:
+                raise ValueError("--limit must be positive")
+            if not args.live:
+                print(json.dumps({"status": "dry_run_no_api_calls", "run_id": args.run_id,
+                                  "model": model, "total_cases": total,
+                                  "remaining_unjudged": len(pending),
+                                  "planned_judgments": min(args.limit, len(pending))}, indent=2))
+                return 0
+            key = read_setting(env_path, "GEMINI_API_KEY", secret=True)
+            judge_instruction = resolve_path(
+                args.config, config.get("absolute_judge_prompt_path", "config/absolute_judge_prompt.txt")
+            ).read_text(encoding="utf-8").strip()
+            result = judge_imported_grok(
+                db_path, args.run_id, model=model, api_key=key,
+                instruction=judge_instruction, rubric=rubric,
+                judge_prompt_version=config["judge_prompt_version"],
+                scoring=config["scoring"], limit=args.limit,
+                timeout=args.timeout, retries=args.retries,
+                progress=lambda done, total, case_id: print(f"Gemini judge {done}/{total}: {case_id}"),
+            )
+        except (ProviderRequestError, ValueError, OSError) as exc:
+            print(f"Cannot judge imported responses: {exc}")
+            return 2
+        print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0
 
     if args.command == "report":

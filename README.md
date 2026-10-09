@@ -23,6 +23,7 @@ This package is **research/evaluation infrastructure, not medical advice**. All 
 - `docs/PRELIMINARY_CLINICAL_REVIEW_EN.md` and `docs/PRELIMINARY_CLINICAL_REVIEW_ZH.md`: public-evidence first pass across all 12 Alpha families; explicitly not clinical validation.
 - `docs/CLINICAL_REVIEW_HANDOFF_EN.md` and `docs/CLINICAL_REVIEW_HANDOFF_ZH.md`: living prioritized questions for later qualified reviewers.
 - `docs/CANDIDATE_PILOT_EN.md` and `docs/CANDIDATE_PILOT_ZH.md`: prompt-only export, optional local Gemini runner, external-answer import, and mock-scored experimental reports.
+- `docs/GROK_GEMINI_PILOT_EN.md` and `docs/GROK_GEMINI_PILOT_ZH.md`: opt-in Grok candidate → Gemini provisional judge workflow, local model/key settings, and end-to-end test commands.
 - `docs/COVERAGE_ROADMAP_EN.md` and `docs/COVERAGE_ROADMAP_ZH.md`: gaps in complex and clinician-facing evaluation, with staged expansion controls.
 - `agents/preliminary_clinical_reviewer.md`, `data/evidence/public_sources.json`, and `benchmark/preliminary_reviewer.py`: a bounded, source-linked AI audit workflow that cannot clear human review gates.
 - `schemas/`: JSON Schema definitions for cases, responses, judge outputs, human reviews, version manifests, aggregate scores, pairwise outputs, and runs.
@@ -48,6 +49,8 @@ python3 -m unittest discover -s tests -v
 
 For an external LLM, use the [English pilot guide](docs/CANDIDATE_PILOT_EN.md) or [中文试运行指南](docs/CANDIDATE_PILOT_ZH.md). The optional `generate-gemini` command defaults to a no-network dry run and needs `--live` for real calls; it reads a locally ignored `.env.local` or `GEMINI_API_KEY`. Exported rows contain only candidate-visible inputs; imported answers must match each exact case version and hash. `score-imported-demo` uses mock judges and its `experimental_unvalidated` report is **not** a clinical evaluation or ranking.
 
+For the two-provider test, follow [Grok → Gemini (English)](docs/GROK_GEMINI_PILOT_EN.md) or [Grok → Gemini（中文）](docs/GROK_GEMINI_PILOT_ZH.md). `.env.local` holds `GROK_API_KEY`, `GROK_MODEL`, `GEMINI_API_KEY`, and `GEMINI_JUDGE_MODEL`; both keys are placeholders until supplied locally. The Grok generator and Gemini judge each require `--live` for network calls. A single Gemini judge on draft cases is useful for integration testing only.
+
 To inspect the evidence-limited AI reviewer prompt for one bilingual family, run `python3 -m benchmark.preliminary_reviewer HC-GC-TRIAGE-001`. With a **compatible, locally authenticated** Codex CLI, add `--run` to invoke the agent in a read-only sandbox. Validated output is written under `work/preliminary_reviews/`, never `data/reviews/`; it is not a clinical or language approval. The installed `codex-cli 0.23.0` currently cannot run the configured ChatGPT model (server requests a newer CLI), so this live path remains unverified until the CLI is updated. The initial first pass is recorded in the bilingual preliminary-review documents.
 
 The generated SQLite file is `work/benchmark.sqlite3` and is intentionally excluded from the package. To install the CLI locally:
@@ -72,7 +75,7 @@ Case reviews are append-only and content-bound. `review-template` generates a re
 - **Complete:** bilingual design package, draft charter, risk register, authoring guide, machine-readable contracts, offline pipeline, scoring/gating, data validation, append-only review workflow, reviewer packet export, prompt-only candidate export, local Gemini candidate adapter, exact-revision answer import, experimental category/language reports, and mock tests.
 - **Development examples:** six English-only synthetic infrastructure fixtures remain under `data/examples/`.
 - **Alpha draft:** the configured dataset is the bilingual, jurisdiction-neutral Global Core under `data/alpha/`. It currently contains 12 matched families / 24 prompts, with two families in each category. All remain unvalidated drafts until expert review.
-- **Next milestone:** run a one-case Gemini smoke test after adding a local key, then a full 24-case integration run; assign qualified reviewers, resolve priority clinical/language issues, and expand coverage using the separate [roadmap](docs/COVERAGE_ROADMAP_EN.md). The 30–50-family development target is not a release-size guarantee.
+- **Next milestone:** after locally adding keys, run a one-case Grok candidate and Gemini judge smoke test, then the full 24-case integration run; assign qualified reviewers, resolve priority clinical/language issues, and expand coverage using the separate [roadmap](docs/COVERAGE_ROADMAP_EN.md). The 30–50-family development target is not a release-size guarantee.
 - **Deferred:** production-grade candidate connectors beyond the Gemini pilot, real judge API adapters, judge calibration, hidden Gold Set, external rankings, training, and deployment.
 
 ## Adding a provider
