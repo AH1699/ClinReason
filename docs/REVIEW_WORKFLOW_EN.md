@@ -75,7 +75,7 @@ An active `approve_with_changes`, `revise`, `reject`, or `needs_specialist` deci
 python -m benchmark.cli --config config/benchmark.json export-review-packets
 ```
 
-This writes 12 bilingual family packets and an assignment manifest under `work/reviewer_packets/` for the current Alpha. Each packet includes both prompts, expected behavior, critical requirements and errors, source references, author IDs, and content hashes. The manifest has empty reviewer ID fields for assignment. The command requires a clean development validation result, refuses to overwrite existing output, and refuses to export Gold cases. Keep the packets under controlled access when actual reviewers are assigned; they contain reference answers.
+This writes one packet per configured bilingual family (currently 30) and an assignment manifest under `work/reviewer_packets/` for the current Alpha. Each packet includes both prompts, expected behavior, critical requirements and errors, source references, author IDs, and content hashes. The manifest has empty reviewer ID fields for assignment. The command requires a clean development validation result, refuses to overwrite existing output, and refuses to export Gold cases. Keep the packets under controlled access when actual reviewers are assigned; they contain reference answers.
 
 ## 7. Validate and monitor
 

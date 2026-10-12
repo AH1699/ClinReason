@@ -18,9 +18,9 @@ class ReviewPacketTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             target = Path(directory) / "packets"
             manifest = export_review_packets(self.cases, target)
-            self.assertEqual(manifest["family_count"], 12)
-            self.assertEqual(manifest["case_count"], 24)
-            self.assertEqual(len(list(target.glob("*.md"))), 12)
+            self.assertEqual(manifest["family_count"], 30)
+            self.assertEqual(manifest["case_count"], 60)
+            self.assertEqual(len(list(target.glob("*.md"))), 30)
             first = manifest["families"][0]
             self.assertEqual({item["language"] for item in first["cases"]}, {"en", "zh-Hans"})
             by_id = {case["id"]: case for case in self.cases}

@@ -1,0 +1,16 @@
+{
+  "schema_version": "0.1.0",
+  "scope": "All 30 public Alpha families are development-only. No hidden Gold set exists. Future holdout families must be newly authored and access-controlled, not retroactively hidden from this public set.",
+  "splits": {
+    "development": [
+      "HC-GC-TRIAGE-001", "HC-GC-TRIAGE-002", "HC-GC-TRIAGE-003", "HC-GC-TRIAGE-004", "HC-GC-TRIAGE-005",
+      "HC-GC-MEDSAFE-001", "HC-GC-MEDSAFE-002", "HC-GC-MEDSAFE-003", "HC-GC-MEDSAFE-004", "HC-GC-MEDSAFE-005",
+      "HC-GC-COMMS-001", "HC-GC-COMMS-002", "HC-GC-COMMS-003", "HC-GC-COMMS-004", "HC-GC-COMMS-005",
+      "HC-GC-REASON-001", "HC-GC-REASON-002", "HC-GC-REASON-003", "HC-GC-REASON-004", "HC-GC-REASON-005",
+      "HC-GC-KNOW-001", "HC-GC-KNOW-002", "HC-GC-KNOW-003", "HC-GC-KNOW-004", "HC-GC-KNOW-005",
+      "HC-GC-ADV-001", "HC-GC-ADV-002", "HC-GC-ADV-003", "HC-GC-ADV-004", "HC-GC-ADV-005"
+    ],
+    "calibration": [],
+    "hidden_gold": []
+  }
+}

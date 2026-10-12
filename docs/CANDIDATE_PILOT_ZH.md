@@ -1,6 +1,6 @@
 # 外部模型试运行交换格式 — 中文
 
-这是一个**本地、实验性的集成流程**，不是临床评测结果。当前配置的 24 个 Alpha 案例都是合成草稿；真实评审模型适配器及评审模型与临床医生的校准尚未完成。基于文件的试运行不需要 API 密钥；可选的 Gemini 运行器仅在指定 `--live` 时发起可能计费的请求。
+这是一个**本地、实验性的集成流程**，不是临床评测结果。当前配置的 60 条 Alpha 题目都是合成草稿；评审模型与临床医生的校准尚未完成。基于文件的试运行不需要 API 密钥；可选的 Gemini 运行器仅在指定 `--live` 时发起可能计费的请求。
 
 ## 1. 导出模型可见输入
 
@@ -33,15 +33,15 @@ python3 -m benchmark.cli --config config/benchmark.json generate-gemini \
   --output work/candidate_gemini_smoke.jsonl
 ```
 
-检查该回答后，再用新路径显式运行全部 24 例：
+检查该回答后，再用新路径显式运行全部 60 条题目：
 
 ```bash
 python3 -m benchmark.cli --config config/benchmark.json generate-gemini \
-  --model YOUR_EXACT_GEMINI_MODEL_ID --limit 24 --live \
+  --model YOUR_EXACT_GEMINI_MODEL_ID --limit 60 --live \
   --output work/candidate_gemini_answers.jsonl
 ```
 
-默认上限是一个案例，真实调用始终需要 `--live`。运行器使用与导出器相同的白名单，只把指令和题目发送给 [Gemini Interactions API](https://ai.google.dev/api/interactions-api-v1)，并设置 `store: false`；不会请求 Google 搜索或其他工具。回答文件记录文本、耗时及可获得的 token 计数；本地清单记录请求及返回的模型 ID 和精确案例版本。两份文件都不含密钥，并已被 git 忽略。返回的模型 ID 不一定代表不可变的模型快照，如需更严格复现，应另行记录提供商的版本信息。HTTP 429/5xx 最多重试两次；传输故障可能已送达并计费，因此不会自动重试。失败或未完成的交互不生成回答文件，也不会覆盖现有文件。单例预检文件不足以导入要求 24 例完整回答的运行。
+默认上限是一个案例，真实调用始终需要 `--live`。运行器使用与导出器相同的白名单，只把指令和题目发送给 [Gemini Interactions API](https://ai.google.dev/api/interactions-api-v1)，并设置 `store: false`；不会请求 Google 搜索或其他工具。回答文件记录文本、耗时及可获得的 token 计数；本地清单记录请求及返回的模型 ID 和精确案例版本。两份文件都不含密钥，并已被 git 忽略。返回的模型 ID 不一定代表不可变的模型快照，如需更严格复现，应另行记录提供商的版本信息。HTTP 429/5xx 最多重试两次；传输故障可能已送达并计费，因此不会自动重试。失败或未完成的交互不生成回答文件，也不会覆盖现有文件。单例预检文件不足以导入要求 60 条题目完整回答的运行。
 
 ## 2. 运行模型并准备回答
 
@@ -72,7 +72,7 @@ python3 -m benchmark.cli --config config/benchmark.json score-imported-demo RUN_
 python3 -m benchmark.cli --config config/benchmark.json report RUN_ID
 ```
 
-`score-imported-demo` 使用两个**模拟**评审模型。它们只是确定性的词汇匹配测试组件，不是临床专家；分数没有临床解释。命令要求每个快照案例有一个尚未评分的回答，也不会重新评分同一运行。报告明确标为 `experimental_unvalidated`，包含逐案例维度分数、关键错误/人工复核标记、按模型的类别和语言分组、案例微平均、类别宏平均及覆盖率。每类仅两个案例族，因此即便评审者合格，类别均值也会非常不稳定。
+`score-imported-demo` 使用两个**模拟**评审模型。它们只是确定性的词汇匹配测试组件，不是临床专家；分数没有临床解释。命令要求每个快照案例有一个尚未评分的回答，也不会重新评分同一运行。报告明确标为 `experimental_unvalidated`，包含逐案例维度分数、关键错误/人工复核标记、按模型的类别和语言分组、案例微平均、类别宏平均及覆盖率。每类仅五个案例族，因此即便评审者合格，类别均值仍会非常不稳定。
 
 ## 尚需完成
 

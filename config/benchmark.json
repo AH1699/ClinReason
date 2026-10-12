@@ -1,13 +1,17 @@
 {
   "benchmark_id": "sectorbench-healthcare-clinics",
   "benchmark_version": "0.2.0",
-  "dataset_version": "0.2.0-global-core-alpha-draft",
+  "dataset_version": "0.4.0-global-core-alpha-draft",
   "rubric_version": "0.1.0",
   "prompt_template_version": "candidate-prompt-0.1.0",
   "candidate_prompt_path": "config/candidate_prompt.txt",
   "judge_prompt_version": "absolute-judge-0.1.0",
   "database_path": "work/benchmark.sqlite3",
   "cases_path": "data/alpha/global_core_cases.jsonl",
+  "coverage_tags_path": "data/alpha/coverage_tags.json",
+  "family_labels_path": "data/alpha/family_labels.json",
+  "family_splits_path": "data/alpha/family_splits.json",
+  "judge_contrasts_path": "data/alpha/judge_contrasts.json",
   "reviews_path": "data/reviews",
   "rubric_path": "config/rubric.json",
   "demo_judge_count": 2,
@@ -23,10 +27,9 @@
     }
   },
   "reproducibility": {
-    "temperature": 0,
-    "top_p": 1,
-    "seed": 42,
-    "store_raw_outputs": true
+    "candidate_sampling": "provider_default_unpinned",
+    "store_raw_outputs": false,
+    "note": "The current xAI and Gemini candidate adapters send store=false but no temperature, top_p, or seed. Their provider defaults and model aliases limit exact replay."
   },
   "authoring": {
     "supported_languages": ["en", "zh-Hans"],

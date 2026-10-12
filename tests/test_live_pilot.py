@@ -83,11 +83,13 @@ class LivePilotTests(unittest.TestCase):
             answers_path = tmp / "candidate_grok_answers.jsonl"
             manifest = run_grok(
                 self.rows, answers_path, model="grok-test", api_key="grok-test-key",
-                limit=24, transport=grok_transport,
+                limit=60, transport=grok_transport,
             )
-            self.assertEqual(len(grok_calls), 24)
-            self.assertEqual(len(validate_answers(answers_path, self.cases)), 24)
+            self.assertEqual(len(grok_calls), 60)
+            self.assertEqual(len(validate_answers(answers_path, self.cases)), 60)
             self.assertEqual(manifest["returned_model"], "grok-test")
+            self.assertEqual(manifest["actual_request_parameters"], {"store": False})
+            self.assertEqual(manifest["sampling_policy"], "provider_default_unpinned")
             db_path = tmp / "pilot.sqlite3"
             run_id = import_answers(
                 db_path, self.cases_path, answers_path, config=self.config,
@@ -113,14 +115,14 @@ class LivePilotTests(unittest.TestCase):
                 "scoring": self.config["scoring"], "transport": judge_transport,
             }
             smoke = judge_imported_grok(db_path, run_id, limit=1, **common)
-            self.assertEqual(smoke["remaining_unjudged"], 23)
+            self.assertEqual(smoke["remaining_unjudged"], 59)
             self.assertNotIn("report", smoke)
-            full = judge_imported_grok(db_path, run_id, limit=24, **common)
-            self.assertEqual(len(judge_calls), 24)
+            full = judge_imported_grok(db_path, run_id, limit=60, **common)
+            self.assertEqual(len(judge_calls), 60)
             self.assertEqual(full["remaining_unjudged"], 0)
-            self.assertEqual(full["report"]["count"], 24)
+            self.assertEqual(full["report"]["count"], 60)
             self.assertEqual(full["report"]["report_status"], "experimental_unvalidated")
-            self.assertEqual(full["report"]["human_review_required"], 24)
+            self.assertEqual(full["report"]["human_review_required"], 60)
 
     def test_invalid_judgment_cannot_invent_critical_error(self):
         case = self.cases[0]

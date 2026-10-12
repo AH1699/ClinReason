@@ -38,8 +38,8 @@ class PipelineTests(unittest.TestCase):
             bootstrap(db_path, cases)
             run_id = create_run(db_path, config)
             provider = InspectingCandidate()
-            self.assertEqual(generate_responses(db_path, run_id, provider, "test-prompt"), 24)
-            self.assertEqual(len(provider.inputs), 24)
+            self.assertEqual(generate_responses(db_path, run_id, provider, "test-prompt"), 60)
+            self.assertEqual(len(provider.inputs), 60)
             for candidate_input in provider.inputs:
                 self.assertEqual(set(candidate_input), {"id", "version", "language", "prompt"})
 
@@ -71,6 +71,8 @@ class PipelineTests(unittest.TestCase):
             report = report_run(db_path, run_id)
             self.assertEqual(report["count"], 6)
             self.assertEqual(len(report["cases"]), 6)
+            self.assertEqual(report["by_model"][0]["family_count"], 6)
+            self.assertEqual(report["by_model"][0]["complete_bilingual_pair_count"], 0)
 
     def test_run_uses_its_dataset_snapshot_after_active_dataset_changes(self):
         root = Path(__file__).resolve().parents[1]
@@ -82,7 +84,7 @@ class PipelineTests(unittest.TestCase):
             db_path = Path(directory) / "test.sqlite3"
             self.assertEqual(bootstrap(db_path, examples), 6)
             examples_run = create_run(db_path, config)
-            self.assertEqual(bootstrap(db_path, alpha), 24)
+            self.assertEqual(bootstrap(db_path, alpha), 60)
             alpha_run = create_run(db_path, config)
 
             self.assertEqual(
@@ -95,8 +97,16 @@ class PipelineTests(unittest.TestCase):
                 generate_responses(
                     db_path, alpha_run, MockCandidateProvider(), "test-prompt"
                 ),
-                24,
+                60,
             )
+            judge_responses(db_path, alpha_run, [MockJudgeProvider(0)],
+                            load_json(root / "config" / "rubric.json"), "test-judge-prompt")
+            score_run(db_path, alpha_run, load_json(root / "config" / "rubric.json"), config["scoring"])
+            model = report_run(db_path, alpha_run)["by_model"][0]
+            self.assertEqual(model["family_count"], 30)
+            self.assertEqual(model["complete_bilingual_pair_count"], 30)
+            self.assertEqual(len(model["by_family"]), 30)
+            self.assertTrue(all(row["language_gap_en_minus_zh"] is not None for row in model["by_family"]))
 
 
 if __name__ == "__main__":

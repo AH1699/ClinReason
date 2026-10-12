@@ -262,18 +262,52 @@ def report_run(db_path: str | Path, run_id: str) -> dict[str, Any]:
     by_model = []
     for (provider, model_id, model_version), items in sorted(model_buckets.items()):
         category_summary = grouped("category", items)
+        family_buckets: dict[str, list[dict[str, Any]]] = defaultdict(list)
+        for item in items:
+            # Legacy example cases have no bilingual family; treat each as a singleton.
+            family_buckets[item["case_family_id"] or item["case_id"]].append(item)
+        family_rows = []
+        for family_id, members in sorted(family_buckets.items()):
+            languages = {member["language"]: member["gated_score"] for member in members}
+            family_rows.append({
+                "family_id": family_id,
+                "category": members[0]["category"],
+                "prompt_count": len(members),
+                "mean_gated_score": round(sum(member["gated_score"] for member in members) / len(members), 2),
+                "by_language": languages,
+                "complete_bilingual_pair": len(members) == 2 and set(languages) == {"en", "zh-Hans"},
+                "language_gap_en_minus_zh": round(languages["en"] - languages["zh-Hans"], 2)
+                if len(members) == 2 and set(languages) == {"en", "zh-Hans"} else None,
+            })
+        family_category: dict[str, list[float]] = defaultdict(list)
+        for family in family_rows:
+            family_category[family["category"]].append(family["mean_gated_score"])
+        paired = [family for family in family_rows if family["complete_bilingual_pair"]]
         by_model.append(
             {
                 "provider": provider,
                 "model_id": model_id,
                 "model_version": model_version,
                 **summarize(items),
+                "prompt_coverage": round(len({item["case_id"] for item in items}) / expected_case_count, 3)
+                if expected_case_count else 0.0,
                 "macro_category_mean": round(
                     sum(group["mean_gated_score"] for group in category_summary.values())
                     / len(category_summary), 2
                 ),
                 "by_category": category_summary,
                 "by_language": grouped("language", items),
+                "family_count": len(family_rows),
+                "complete_bilingual_pair_count": len(paired),
+                "mean_family_score": round(sum(family["mean_gated_score"] for family in family_rows) / len(family_rows), 2),
+                "macro_category_family_mean": round(
+                    sum(sum(values) / len(values) for values in family_category.values())
+                    / len(family_category), 2
+                ),
+                "mean_absolute_paired_language_gap": round(
+                    sum(abs(family["language_gap_en_minus_zh"]) for family in paired) / len(paired), 2
+                ) if paired else None,
+                "by_family": family_rows,
             }
         )
     overview = summarize(cases)
@@ -281,8 +315,11 @@ def report_run(db_path: str | Path, run_id: str) -> dict[str, Any]:
         "run_id": run_id,
         "report_status": "experimental_unvalidated",
         "caution": "Draft cases or uncalibrated judges; scores are not clinical validation or a public model ranking.",
+        "analysis_unit": "clinical_case_family; bilingual prompts are paired variants, not independent scenarios",
+        "uncertainty_note": "Descriptive scores only; no confidence interval or comparative ranking is justified for this selected, unreviewed set.",
         "expected_case_count": expected_case_count,
-        "coverage": round(len(cases) / expected_case_count, 3) if expected_case_count else 0.0,
+        "coverage": round(len({item["case_id"] for item in cases}) / expected_case_count, 3)
+        if expected_case_count else 0.0,
         **overview,
         "by_model": by_model,
         "cases": cases,

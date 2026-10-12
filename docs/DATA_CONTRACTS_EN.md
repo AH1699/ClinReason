@@ -59,7 +59,7 @@ Every real run must record:
 
 - benchmark, dataset, rubric, candidate-prompt, and judge-prompt versions;
 - each candidate and judge provider, model ID, immutable snapshot/revision when available;
-- decoding parameters, seed, timeout, retries, and structured-output mode;
+- actual decoding parameters and seed **if sent and supported** (otherwise explicitly record provider defaults/unpinned), timeout, retries, and structured-output mode;
 - code commit/release, Python/environment fingerprint, and schema versions;
 - case content hashes and source-guideline effective dates;
 - creation time and operator/service identity;

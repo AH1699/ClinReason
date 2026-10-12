@@ -15,6 +15,8 @@ sector
 
 The engine is sector-neutral. Healthcare v0.1 uses `sector=healthcare` and begins with `subsector=outpatient_clinic`. A case family groups paraphrases or structurally similar variants and must stay within one train/development/Gold partition.
 
+For the current Alpha, [`family_labels.json`](../data/alpha/family_labels.json) adds **development-only** competency, reasoning-operation, failure-mode, and complexity facets at the family level. These facets are not independent scoring dimensions or validated difficulty estimates; the rubric and case-specific critical requirements/errors remain the provisional scoring contract.
+
 ## 2. Healthcare taxonomy
 
 | Category | Representative subcategories | Required coverage |

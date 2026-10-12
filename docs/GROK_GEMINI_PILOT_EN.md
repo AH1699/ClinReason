@@ -1,6 +1,6 @@
 # Local Grok → Gemini pilot
 
-This is an **experimental integration test**, not a validated healthcare benchmark. Grok is the candidate; Gemini is a single provisional AI judge. The 24 bilingual Alpha cases and their reference answers are drafts. No clinical or language review gate is cleared by this workflow.
+This is an **experimental integration test**, not a validated healthcare benchmark. Grok is the candidate; Gemini is a single provisional AI judge. The 60 current Alpha prompts and their reference answers are drafts. The [2026-10-08 live pilot](LIVE_PILOT_2026-10-08_EN.md) used the earlier 24-case snapshot. No clinical or language review gate is cleared by this workflow.
 
 ## Local settings
 
@@ -32,7 +32,7 @@ python3 -m benchmark.cli generate-grok --limit 1 --live --output work/candidate_
 Full set, using a new output path:
 
 ```bash
-python3 -m benchmark.cli generate-grok --limit 24 --live --output work/candidate_grok_answers.jsonl
+python3 -m benchmark.cli generate-grok --limit 60 --live --output work/candidate_grok_answers.jsonl
 ```
 
 The runner uses [xAI's Responses API](https://docs.x.ai/developers/rest-api-reference/inference/responses) with `store: false`. It sends only the approved candidate instruction and case prompt; no reference answer, rubric, or critical-error labels. It records answer text, latency, token counts when available, requested/returned model IDs, and exact case revisions. An incomplete/failed response produces no answer file; transport failures have uncertain delivery and are not retried automatically. HTTP 429/5xx may be retried twice. The one-case file cannot be imported as a complete run. A full candidate failure does not currently resume; repeat calls may add cost.
@@ -56,8 +56,18 @@ The judge receives the candidate answer plus the **draft** reference, critical r
 ```bash
 python3 -m benchmark.cli judge-imported-gemini RUN_ID --limit 1
 python3 -m benchmark.cli judge-imported-gemini RUN_ID --limit 1 --live
-python3 -m benchmark.cli judge-imported-gemini RUN_ID --limit 24 --live
+python3 -m benchmark.cli judge-imported-gemini RUN_ID --limit 60 --live
 python3 -m benchmark.cli report RUN_ID
 ```
 
-The first command is a no-network plan. The first live command judges one answer; the next judges the remaining 23 and scores only after all 24 have valid judgments. Unlike the candidate run, successful judgments are saved one by one and can be resumed after a failure. Each call uses `store: false`, no search tools, and the selected Gemini model ID. The scoring report remains `experimental_unvalidated`. One uncalibrated AI judge and two draft case families per category cannot support clinical claims, model rankings, or a meaningful safety certification. Qualified clinicians, bilingual reviewers, independent judges, and human calibration are still required.
+The first command is a no-network plan. The first live command judges one answer; the next judges the remaining 59 and scores only after all 60 have valid judgments. Unlike the candidate run, successful judgments are saved one by one and can be resumed after a failure. Each call uses `store: false`, no search tools, and the selected Gemini model ID. The scoring report remains `experimental_unvalidated`. One uncalibrated AI judge and five draft case families per category cannot support clinical claims, model rankings, or a meaningful safety certification. Qualified clinicians, bilingual reviewers, independent judges, and human calibration are still required.
+
+Before relying on judge scores, you can inspect the **provisional** four-pair diagnostic without API calls, then opt into eight potentially billable Gemini calls:
+
+```bash
+python3 -m benchmark.cli judge-contrast-gemini --limit 4 --model YOUR_JUDGE_MODEL
+python3 -m benchmark.cli judge-contrast-gemini --limit 4 --model YOUR_JUDGE_MODEL --live \
+  --output work/judge_contrast_gemini_2026-10-11.json
+```
+
+It checks whether the judge ranks a clear safety-preserving answer above a clear unsafe one and identifies the configured severity-3 error. This is a smoke diagnostic, **not** human-calibrated validation. Use a fresh output name; the command refuses to overwrite existing results.

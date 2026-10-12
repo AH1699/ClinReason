@@ -79,6 +79,10 @@ class GeminiRunnerTests(unittest.TestCase):
             self.assertEqual(answers[0]["text"], "A real model answer.")
             self.assertEqual(answers[0]["token_usage"]["total_tokens"], 22)
             self.assertEqual(result["returned_model"], "gemini-test-snapshot")
+            self.assertEqual(result["actual_request_parameters"], {"store": False})
+            self.assertEqual(result["sampling_policy"], "provider_default_unpinned")
+            self.assertEqual(len(result["candidate_instruction_sha256"]), 64)
+            self.assertEqual(len(result["candidate_visible_inputs_sha256"]), 64)
             self.assertNotIn("secret-test-value", output.read_text())
             self.assertNotIn("secret-test-value", Path(result["manifest"]).read_text())
             self.assertNotIn("reference_answer", json.dumps(seen))
@@ -127,11 +131,11 @@ class GeminiRunnerTests(unittest.TestCase):
                 limit=len(self.rows), opener=opener,
             )
             answers = load_jsonl(output)
-            self.assertEqual(len(answers), 24)
-            self.assertEqual(len(validate_answers(output, self.cases)), 24)
+            self.assertEqual(len(answers), 60)
+            self.assertEqual(len(validate_answers(output, self.cases)), 60)
             self.assertEqual({row["case_id"] for row in answers}, {row["case_id"] for row in self.rows})
-            self.assertEqual(result["case_count"], 24)
-            self.assertEqual(len(result["case_revisions"]), 24)
+            self.assertEqual(result["case_count"], 60)
+            self.assertEqual(len(result["case_revisions"]), 60)
 
     def test_cli_dry_run_makes_no_network_call_or_key_read(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -77,15 +77,16 @@ Case reviews are append-only and content-bound. `review-template` generates a re
 
 - **Complete:** bilingual design package, draft charter, risk register, authoring guide, machine-readable contracts, offline pipeline, scoring/gating, data validation, append-only review workflow, reviewer packet export, prompt-only candidate export, local Gemini candidate adapter, exact-revision answer import, experimental category/language reports, and mock tests.
 - **Development examples:** six English-only synthetic infrastructure fixtures remain under `data/examples/`.
-- **Alpha draft:** the configured dataset is the bilingual, jurisdiction-neutral Global Core under `data/alpha/`. It currently contains 12 matched families / 24 prompts, with two families in each category. All remain unvalidated drafts until expert review.
-- **Next milestone:** review the live answer–judgment pairs with qualified clinicians and bilingual reviewers, investigate the score ceiling, resolve priority clinical/language issues, and expand coverage using the separate [roadmap](docs/COVERAGE_ROADMAP_EN.md). The 30–50-family development target is not a release-size guarantee.
-- **Deferred:** production-grade candidate connectors beyond the Gemini pilot, real judge API adapters, judge calibration, hidden Gold Set, external rankings, training, and deployment.
+- **Alpha draft:** the configured dataset is the bilingual, jurisdiction-neutral Global Core under `data/alpha/`. It now contains 30 matched families / 60 prompts, with five families in each category. The [granular family labels](data/alpha/family_labels.json), [latest expansion note](docs/LABEL_EXPANSION_BATCH_B_2026-10-11_EN.md), and [public source inventory](docs/PUBLIC_DATASET_SOURCES_EN.md) document the development-only cases. All remain unvalidated drafts until expert review.
+- **Non-clinical gap work:** the [2026-10-11 progress log](docs/PROJECT_PROGRESS_2026-10-11_EN.md) tracks coverage auditing, synthetic judge contrasts, paired family-level reporting, and truthful candidate-run provenance. All 30 families remain single-turn patient-facing; no hidden Gold or calibration split exists.
+- **Next milestone:** build a genuine multi-turn track and targeted advanced families that fill missing coverage and test discrimination. Professional clinical/language review is deliberately deferred, but remains mandatory before validation or release. Reaching 30 draft families is not a quality guarantee.
+- **Deferred:** production-grade candidate connectors, judge calibration against human ratings, hidden Gold Set, external rankings, training, and deployment.
 
 ## Adding a provider
 
 1. Implement `CandidateProvider.generate()` and/or `JudgeProvider.evaluate()` in `benchmark/providers/`, or a candidate-only runner using the prompt export allowlist like the Gemini pilot.
 2. Return the documented structured payload; validate production outputs against `schemas/judge-output.schema.json`.
-3. Pin provider, model ID/snapshot, prompt version, parameters, retry policy, and code revision in a run manifest.
+3. Record provider, requested/returned model ID, prompt/config hashes, actual request parameters, retry policy, time, and Git state in a run manifest. Mark provider defaults and mutable aliases as limited reproducibility; do not invent a pinned snapshot or seed.
 4. Keep credentials in environment variables; never store them in config, SQLite, or the ZIP.
 5. Add retry/rate-limit handling, structured-output repair with an audit trail, and cost telemetry before a real run.
 

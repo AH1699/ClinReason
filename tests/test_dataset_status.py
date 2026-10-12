@@ -16,12 +16,12 @@ class DatasetStatusTests(unittest.TestCase):
             config["authoring"],
         )
 
-        self.assertEqual(result["case_count"], 24)
-        self.assertEqual(result["family_count"], 12)
-        self.assertEqual(result["complete_bilingual_families"], 12)
-        self.assertEqual(set(result["categories_by_family"].values()), {2})
-        self.assertEqual(len(result["review_queue"]["clinical_review_pending"]), 24)
-        self.assertEqual(len(result["review_queue"]["language_review_pending"]), 12)
+        self.assertEqual(result["case_count"], 60)
+        self.assertEqual(result["family_count"], 30)
+        self.assertEqual(result["complete_bilingual_families"], 30)
+        self.assertEqual(set(result["categories_by_family"].values()), {5})
+        self.assertEqual(len(result["review_queue"]["clinical_review_pending"]), 60)
+        self.assertEqual(len(result["review_queue"]["language_review_pending"]), 30)
         self.assertEqual(result["review_queue"]["source_review_pending"], [])
         self.assertTrue(result["development_validation"]["valid"])
 

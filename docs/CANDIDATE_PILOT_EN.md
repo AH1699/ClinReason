@@ -1,6 +1,6 @@
 # External-model pilot exchange — English
 
-This is a **local, experimental integration workflow**, not a clinical benchmark result. The 24 configured Alpha cases are synthetic drafts; real judge adapters and judge–clinician calibration do not yet exist. The file-based path needs no API key. The optional Gemini runner makes live, potentially billable calls only with `--live`.
+This is a **local, experimental integration workflow**, not a clinical benchmark result. The 60 configured Alpha prompts are synthetic drafts; judge–clinician calibration does not yet exist. The file-based path needs no API key. The optional Gemini runner makes live, potentially billable calls only with `--live`.
 
 ## 1. Export model-visible inputs
 
@@ -37,11 +37,11 @@ After inspecting that answer, run all configured cases with an explicit new outp
 
 ```bash
 python3 -m benchmark.cli --config config/benchmark.json generate-gemini \
-  --model YOUR_EXACT_GEMINI_MODEL_ID --limit 24 --live \
+  --model YOUR_EXACT_GEMINI_MODEL_ID --limit 60 --live \
   --output work/candidate_gemini_answers.jsonl
 ```
 
-The default limit is one case; `--live` is always required. The runner sends only the instruction and prompt from the same allowlisted export, with `store: false` to the [Gemini Interactions API](https://ai.google.dev/api/interactions-api-v1). It does not request Google Search or other tools. It records answer text, latency, token counts when returned, and a local manifest with requested and returned model IDs and exact case revisions. Neither answers nor manifest contain the key, and both are git-ignored. The returned model ID is not necessarily an immutable model snapshot; record any provider-side version information separately if needed. A transport failure has uncertain delivery/cost and is not auto-retried; HTTP 429/5xx is retried up to twice. Failed or incomplete interactions produce no answer file. Outputs are never overwritten. A one-case smoke file is intentionally too short to import into a full 24-case run.
+The default limit is one case; `--live` is always required. The runner sends only the instruction and prompt from the same allowlisted export, with `store: false` to the [Gemini Interactions API](https://ai.google.dev/api/interactions-api-v1). It does not request Google Search or other tools. It records answer text, latency, token counts when returned, and a local manifest with requested/returned model IDs, exact case revisions, prompt/config/rubric hashes, request parameters, time, and Git state. Neither answers nor manifest contain the key, and both are git-ignored. The adapters currently **do not send temperature, top-p, or seed**; their provider defaults and mutable model aliases limit exact replay. A transport failure has uncertain delivery/cost and is not auto-retried; HTTP 429/5xx is retried up to twice. Failed or incomplete interactions produce no answer file. Outputs are never overwritten. A one-case smoke file is intentionally too short to import into a full 60-prompt run.
 
 ## 2. Run your model and prepare answers
 
@@ -72,7 +72,7 @@ python3 -m benchmark.cli --config config/benchmark.json score-imported-demo RUN_
 python3 -m benchmark.cli --config config/benchmark.json report RUN_ID
 ```
 
-`score-imported-demo` uses two **mock** judges. They are deterministic lexical fixtures, not clinical experts; their scores have no clinical interpretation. The command requires one unjudged response per snapshotted case and will not rescore an existing run. The report is explicitly labeled `experimental_unvalidated` and includes case-level dimension scores, critical-error/review flags, a per-model category and language breakdown, an overall micro mean, a category macro mean, and coverage. With only two families per category, category means are especially unstable even if the judges were valid.
+`score-imported-demo` uses two **mock** judges. They are deterministic lexical fixtures, not clinical experts; their scores have no clinical interpretation. The command requires one unjudged response per snapshotted case and will not rescore an existing run. The report is explicitly labeled `experimental_unvalidated` and includes case-level dimension scores, critical-error/review flags, legacy prompt-level metrics, and a per-model **clinical-family** summary with paired English/Chinese scores and gaps. A translated prompt is not a second independent clinical scenario. With only five draft families per category, category means remain unstable even if the judges were valid.
 
 ## What is still required
 

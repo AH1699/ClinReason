@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable
 
@@ -10,6 +11,7 @@ from .http_json import ProviderRequestError, post_json
 from ..candidate_exchange import prompt_rows
 from ..config import load_jsonl
 from ..validation import validate_dataset
+from ..provenance import sha256_json, sha256_text
 
 
 ENDPOINT = "https://api.x.ai/v1/responses"
@@ -80,6 +82,7 @@ def run_grok(
     limit: int = 1, timeout: float = 120, retries: int = 2,
     transport: Callable[..., Any] = post_json,
     progress: Callable[[int, int, str], None] | None = None,
+    provenance: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     if not model or any(c.isspace() for c in model):
         raise ValueError("GROK_MODEL must be a nonempty model ID without spaces")
@@ -109,9 +112,15 @@ def run_grok(
     manifest = {
         "provider": "xai-grok", "requested_model": model, "returned_model": returned_model,
         "endpoint": ENDPOINT, "store": False, "case_count": limit,
+        "actual_request_parameters": {"store": False},
+        "sampling_policy": "provider_default_unpinned",
         "total_available_cases": len(rows), "timeout_seconds": timeout,
         "max_http_retries": retries,
         "prompt_template_version": rows[0]["prompt_template_version"],
+        "candidate_instruction_sha256": sha256_text(rows[0]["instruction"]),
+        "candidate_visible_inputs_sha256": sha256_json(rows[:limit]),
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "provenance": provenance or {},
         "case_revisions": [
             {key: row[key] for key in ("case_id", "case_version", "case_content_hash")}
             for row in rows[:limit]

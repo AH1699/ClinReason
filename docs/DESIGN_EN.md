@@ -105,7 +105,7 @@ Candidate adapters accept a case and return text plus usage/latency metadata. Ju
 
 ### Stage A — frontier judges
 
-Use two strong, diverse judges at temperature 0 with a strict JSON schema. Benefits are fast iteration and high instruction understanding. Risks include provider drift, self-preference, verbosity bias, shared blind spots, and cost. Mitigate with pinned snapshots, blind identities, independent calls, prompt/version logs, Gold Set calibration, and expert sampling.
+The target design uses two strong, diverse judges with a strict JSON schema and low-variance settings **where the selected API supports them**. The current Gemini pilot sends no temperature or seed and uses only one judge; it does not meet that target. Benefits are fast iteration and high instruction understanding. Risks include provider drift, self-preference, verbosity bias, shared blind spots, and cost. Mitigate with pinned snapshots where available, blind identities, independent calls, actual request-parameter logs, Gold Set calibration, and expert sampling.
 
 ### Stage B — hybrid routing
 

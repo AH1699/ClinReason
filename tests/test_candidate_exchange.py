@@ -29,7 +29,7 @@ class CandidateExchangeTests(unittest.TestCase):
             authoring=self.config["authoring"], instruction="Answer the case only.",
             prompt_template_version=self.config["prompt_template_version"],
         )
-        self.assertEqual(count, 24)
+        self.assertEqual(count, 60)
         return path
 
     @staticmethod
@@ -44,7 +44,7 @@ class CandidateExchangeTests(unittest.TestCase):
             path = self._export(directory)
             rows = load_jsonl(path)
             self.assertEqual({row["language"] for row in rows}, {"en", "zh-Hans"})
-            self.assertEqual(len(rows), 24)
+            self.assertEqual(len(rows), 60)
             self.assertEqual(
                 set(rows[0]),
                 {"exchange_version", "case_id", "case_version", "case_content_hash",
@@ -68,7 +68,7 @@ class CandidateExchangeTests(unittest.TestCase):
             ]
             path = Path(directory) / "answers.jsonl"
             self._write_answers(path, rows)
-            self.assertEqual(len(validate_answers(path, self.cases)), 24)
+            self.assertEqual(len(validate_answers(path, self.cases)), 60)
             for invalid in (
                 rows[:-1],
                 rows + [rows[0]],
@@ -103,22 +103,22 @@ class CandidateExchangeTests(unittest.TestCase):
                 count = conn.execute(
                     "SELECT COUNT(*) FROM model_responses WHERE run_id = ?", (run_id,)
                 ).fetchone()[0]
-            self.assertEqual(count, 24)
+            self.assertEqual(count, 60)
             self.assertEqual(
                 judge_responses(db_path, run_id, [MockJudgeProvider(0), MockJudgeProvider(1)],
                                 self.rubric, self.config["judge_prompt_version"]),
-                48,
+                120,
             )
-            self.assertEqual(score_run(db_path, run_id, self.rubric, self.config["scoring"]), 24)
+            self.assertEqual(score_run(db_path, run_id, self.rubric, self.config["scoring"]), 60)
             report = report_run(db_path, run_id)
             self.assertEqual(report["report_status"], "experimental_unvalidated")
-            self.assertEqual(report["count"], 24)
+            self.assertEqual(report["count"], 60)
             self.assertEqual(len(report["by_model"]), 1)
             model = report["by_model"][0]
             self.assertEqual(len(model["by_category"]), 6)
-            self.assertTrue(all(item["count"] == 4 for item in model["by_category"].values()))
-            self.assertEqual(model["by_language"]["en"]["count"], 12)
-            self.assertEqual(model["by_language"]["zh-Hans"]["count"], 12)
+            self.assertTrue(all(item["count"] == 10 for item in model["by_category"].values()))
+            self.assertEqual(model["by_language"]["en"]["count"], 30)
+            self.assertEqual(model["by_language"]["zh-Hans"]["count"], 30)
             self.assertIn("dimension_scores", report["cases"][0])
 
     def test_existing_case_version_cannot_be_silently_overwritten(self):

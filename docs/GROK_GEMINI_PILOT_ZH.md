@@ -1,6 +1,6 @@
 # 本地 Grok → Gemini 试运行
 
-这是**实验性集成测试**，不是经过验证的医疗基准。Grok 是被测模型；Gemini 是唯一的临时 AI 评审。24 个双语 Alpha 案例及参考答案仍是草稿。这个流程不能完成临床或语言审核门槛。
+这是**实验性集成测试**，不是经过验证的医疗基准。Grok 是被测模型；Gemini 是唯一的临时 AI 评审。当前 60 条 Alpha 题目及参考答案仍是草稿；[2026-10-08 的实际试运行](LIVE_PILOT_2026-10-08_ZH.md)使用了此前 24 例的快照。这个流程不能完成临床或语言审核门槛。
 
 ## 本地配置
 
@@ -32,7 +32,7 @@ python3 -m benchmark.cli generate-grok --limit 1 --live --output work/candidate_
 用新路径运行全部案例：
 
 ```bash
-python3 -m benchmark.cli generate-grok --limit 24 --live --output work/candidate_grok_answers.jsonl
+python3 -m benchmark.cli generate-grok --limit 60 --live --output work/candidate_grok_answers.jsonl
 ```
 
 运行器调用 [xAI Responses API](https://docs.x.ai/developers/rest-api-reference/inference/responses) 并设置 `store: false`。只发送获准的候选指令和案例题目，不发送参考答案、评分量表或关键错误标签。结果记录回答、耗时、可获得的 token 计数、请求及返回的模型 ID，以及精确案例版本。失败或未完成的响应不会生成回答文件；传输故障可能已送达，因此不自动重试。HTTP 429/5xx 最多重试两次。单例文件不能作为完整运行导入。候选模型的完整运行目前不能断点续跑，重试可能增加费用。
@@ -56,8 +56,18 @@ python3 -m benchmark.cli import-responses \
 ```bash
 python3 -m benchmark.cli judge-imported-gemini RUN_ID --limit 1
 python3 -m benchmark.cli judge-imported-gemini RUN_ID --limit 1 --live
-python3 -m benchmark.cli judge-imported-gemini RUN_ID --limit 24 --live
+python3 -m benchmark.cli judge-imported-gemini RUN_ID --limit 60 --live
 python3 -m benchmark.cli report RUN_ID
 ```
 
-第一条命令仅预检，不访问网络。第一次真实调用评审一例；下一次评审余下 23 例，仅在 24 例均有有效评审后评分。与候选模型运行不同，成功的评审会逐条保存，失败后可继续。每次请求都设置 `store: false`，不启用搜索工具，并记录所选 Gemini 模型。报告仍标为 `experimental_unvalidated`。一个未校准的 AI 评审、每类仅两个草稿案例族，不足以支持临床结论、模型排名或安全认证。仍需合格临床和双语审核者、独立评审及人工校准。
+第一条命令仅预检，不访问网络。第一次真实调用评审一例；下一次评审余下 59 例，仅在 60 例均有有效评审后评分。与候选模型运行不同，成功的评审会逐条保存，失败后可继续。每次请求都设置 `store: false`，不启用搜索工具，并记录所选 Gemini 模型。报告仍标为 `experimental_unvalidated`。一个未校准的 AI 评审、每类仅五个草稿案例族，不足以支持临床结论、模型排名或安全认证。仍需合格临床和双语审核者、独立评审及人工校准。
+
+在依赖评审分数前，可先无网络演练四组**临时**“较好/不安全”对照题；加入 `--live` 后会产生八次可能计费的 Gemini 调用：
+
+```bash
+python3 -m benchmark.cli judge-contrast-gemini --limit 4 --model YOUR_JUDGE_MODEL
+python3 -m benchmark.cli judge-contrast-gemini --limit 4 --model YOUR_JUDGE_MODEL --live \
+  --output work/judge_contrast_gemini_2026-10-11.json
+```
+
+它分别检查评审是否给较好答案更高分，以及是否识别既有三级严重错误。这只是冒烟测试，**不是**经人工校准的验证；输出文件不得覆盖。候选模型清单会记录实际请求参数及哈希；目前 xAI/Gemini 候选适配器都未发送 temperature、top-p 或 seed，默认采样与模型别名限制精确重现。

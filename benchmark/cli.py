@@ -6,6 +6,8 @@ from pathlib import Path
 
 from .candidate_exchange import export_prompts, import_answers
 from .config import load_json, load_jsonl, resolve_path
+from .coverage import audit_coverage
+from .judge_diagnostics import assess_contrasts
 from .dataset_status import summarize_dataset
 from .db import connect
 from .live_judging import gemini_judge_status, judge_imported_grok
@@ -18,9 +20,11 @@ from .pipeline import (
     report_run,
     score_run,
 )
+from .provenance import candidate_provenance
 from .providers.mock import MockCandidateProvider, MockJudgeProvider
 from .providers.gemini import GeminiRunError, candidate_rows, local_api_key, run_gemini
 from .providers.grok import candidate_rows as grok_candidate_rows, run_grok
+from .providers.gemini_judge import GeminiJudgeProvider
 from .providers.http_json import ProviderRequestError
 from .review_packets import export_review_packets
 from .reviews import (
@@ -94,6 +98,15 @@ def build_parser() -> argparse.ArgumentParser:
     gemini_judge.add_argument("--live", action="store_true")
     report = sub.add_parser("report", help="Print a JSON report for a run")
     report.add_argument("run_id")
+    sub.add_parser("coverage-audit", help="Audit family-level coverage and development/holdout status")
+    contrast = sub.add_parser(
+        "judge-contrast-gemini", help="Check a Gemini judge on synthetic good/unsafe pairs (dry-run unless --live)"
+    )
+    contrast.add_argument("--model", help="Override GEMINI_JUDGE_MODEL from local settings")
+    contrast.add_argument("--env-file", default=".env.local")
+    contrast.add_argument("--limit", type=int, default=1, help="Number of pairs; two API calls per pair")
+    contrast.add_argument("--output", default="work/judge_contrast_gemini.json")
+    contrast.add_argument("--live", action="store_true")
     validate = sub.add_parser(
         "validate-data", help="Validate and lint a benchmark case JSONL file"
     )
@@ -241,6 +254,7 @@ def main(argv: list[str] | None = None) -> int:
                 rows, target, model=args.model, api_key=key, limit=args.limit,
                 timeout=args.timeout, retries=args.retries,
                 progress=lambda done, total, case_id: print(f"Gemini {done}/{total}: {case_id}"),
+                provenance=candidate_provenance(config, rubric, Path(__file__).resolve().parents[1]),
             )
         except (GeminiRunError, FileExistsError, ValueError, OSError) as exc:
             print(f"Cannot generate Gemini answers: {exc}")
@@ -273,6 +287,7 @@ def main(argv: list[str] | None = None) -> int:
                 rows, target, model=model, api_key=key, limit=args.limit,
                 timeout=args.timeout, retries=args.retries,
                 progress=lambda done, total, case_id: print(f"Grok {done}/{total}: {case_id}"),
+                provenance=candidate_provenance(config, rubric, Path(__file__).resolve().parents[1]),
             )
         except (ProviderRequestError, FileExistsError, ValueError, OSError) as exc:
             print(f"Cannot generate Grok answers: {exc}")
@@ -354,6 +369,58 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "report":
         print(json.dumps(report_run(db_path, args.run_id), ensure_ascii=False, indent=2))
+        return 0
+
+    if args.command == "coverage-audit":
+        try:
+            result = audit_coverage(
+                load_jsonl(cases_path),
+                load_json(resolve_path(args.config, config.get("coverage_tags_path", "data/alpha/coverage_tags.json"))),
+                load_json(resolve_path(args.config, config.get("family_splits_path", "data/alpha/family_splits.json"))),
+                load_json(resolve_path(args.config, config.get("family_labels_path", "data/alpha/family_labels.json"))),
+            )
+        except (ValueError, KeyError, OSError) as exc:
+            print(f"Cannot audit coverage: {exc}")
+            return 2
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return 0
+
+    if args.command == "judge-contrast-gemini":
+        try:
+            pairs = load_json(resolve_path(
+                args.config, config.get("judge_contrasts_path", "data/alpha/judge_contrasts.json")
+            ))["pairs"]
+            if not 1 <= args.limit <= len(pairs):
+                raise ValueError(f"--limit must be between 1 and {len(pairs)}")
+            target = resolve_path(args.config, args.output)
+            if target.exists():
+                raise FileExistsError(f"Refusing to overwrite diagnostic output: {target}")
+            model = args.model or read_setting(
+                resolve_path(args.config, args.env_file), "GEMINI_JUDGE_MODEL"
+            )
+            if not args.live:
+                print(json.dumps({
+                    "status": "dry_run_no_api_calls", "model": model,
+                    "planned_pairs": args.limit, "planned_api_calls": args.limit * 2,
+                    "output": str(target),
+                }, indent=2))
+                return 0
+            key = read_setting(resolve_path(args.config, args.env_file), "GEMINI_API_KEY", secret=True)
+            instruction = resolve_path(
+                args.config, config.get("absolute_judge_prompt_path", "config/absolute_judge_prompt.txt")
+            ).read_text(encoding="utf-8").strip()
+            judge = GeminiJudgeProvider(model=model, api_key=key, instruction=instruction)
+            result = assess_contrasts(
+                load_jsonl(cases_path), pairs[:args.limit], judge, rubric, config["scoring"]
+            )
+            target.parent.mkdir(parents=True, exist_ok=True)
+            with target.open("x", encoding="utf-8") as handle:
+                json.dump(result, handle, ensure_ascii=False, indent=2)
+                handle.write("\n")
+        except (ProviderRequestError, FileExistsError, ValueError, KeyError, OSError) as exc:
+            print(f"Cannot run judge contrasts: {exc}")
+            return 2
+        print(json.dumps({"output": str(target), **result}, ensure_ascii=False, indent=2))
         return 0
 
     if args.command == "validate-data":

@@ -32,6 +32,8 @@ Do not treat these quotas as evidence of statistical adequacy. The methodology o
 9. Apply required changes, increment the case version when meaning-bearing fields change, and rerun validation.
 10. Promote only through the charter’s status gates; never self-approve.
 
+For the configured Alpha, also map each new family in [`family_labels.json`](../data/alpha/family_labels.json) using the controlled competency, reasoning-operation, failure-mode, and complexity axes. Map each source in [`public_sources.json`](../data/evidence/public_sources.json). These development labels do not replace case-specific critical requirements/errors or human validation. The [public data inventory](PUBLIC_DATASET_SOURCES_EN.md) records why free access alone is insufficient for importing third-party cases.
+
 ## 3. Prompt rules
 
 A good prompt:

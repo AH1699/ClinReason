@@ -14,6 +14,7 @@ from ..candidate_exchange import prompt_rows
 from ..config import load_jsonl
 from ..local_settings import read_setting
 from ..validation import validate_dataset
+from ..provenance import sha256_json, sha256_text
 
 
 ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/interactions"
@@ -133,6 +134,7 @@ def run_gemini(
     limit: int = 1, timeout: float = 60, retries: int = 2,
     opener: Callable[..., Any] = urlopen, sleeper: Callable[[float], None] = time.sleep,
     progress: Callable[[int, int, str], None] | None = None,
+    provenance: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     if not isinstance(model, str) or not model.strip() or any(char.isspace() for char in model):
         raise GeminiRunError("Provide an exact Gemini model ID without spaces.")
@@ -165,12 +167,17 @@ def run_gemini(
         "returned_model": returned_model,
         "endpoint": ENDPOINT,
         "store": False,
+        "actual_request_parameters": {"store": False},
+        "sampling_policy": "provider_default_unpinned",
         "case_count": limit,
         "total_available_cases": len(rows),
         "timeout_seconds": timeout,
         "max_http_retries": retries,
         "prompt_template_version": rows[0]["prompt_template_version"],
+        "candidate_instruction_sha256": sha256_text(rows[0]["instruction"]),
+        "candidate_visible_inputs_sha256": sha256_json(rows[:limit]),
         "generated_at": datetime.now(timezone.utc).isoformat(),
+        "provenance": provenance or {},
         "case_revisions": [
             {key: row[key] for key in ("case_id", "case_version", "case_content_hash")}
             for row in rows[:limit]

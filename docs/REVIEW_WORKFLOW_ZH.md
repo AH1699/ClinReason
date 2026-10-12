@@ -75,7 +75,7 @@ python -m benchmark.cli --config config/benchmark.json review-template \
 python -m benchmark.cli --config config/benchmark.json export-review-packets
 ```
 
-对于当前 Alpha，此命令在 `work/reviewer_packets/` 下生成 12 个双语案例族材料包和一个分配清单。每个材料包包含两种语言的题目、预期行为、关键要求与错误、来源引用、作者 ID 和内容哈希。分配清单中的审核者 ID 字段为空，等待项目组填写。命令要求开发模式验证通过，不会覆盖已有输出，也拒绝导出 Gold 案例。分配实际审核者后应限制材料包访问，因为其中含有参考答案。
+对于当前 Alpha，此命令在 `work/reviewer_packets/` 下为每个已配置的双语案例族生成材料包（目前为 30 个）和一个分配清单。每个材料包包含两种语言的题目、预期行为、关键要求与错误、来源引用、作者 ID 和内容哈希。分配清单中的审核者 ID 字段为空，等待项目组填写。命令要求开发模式验证通过，不会覆盖已有输出，也拒绝导出 Gold 案例。分配实际审核者后应限制材料包访问，因为其中含有参考答案。
 
 ## 7. 验证与监控
 
