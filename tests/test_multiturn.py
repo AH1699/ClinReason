@@ -10,7 +10,8 @@ from unittest.mock import patch
 from benchmark.cli import main
 from benchmark.config import load_json, load_jsonl
 from benchmark.multiturn import (
-    build_judge_packet, merge_multiturn_datasets, ordered_variants, play_variant, validate_multiturn_dataset,
+    build_judge_packet, judge_packets_from_answers, merge_multiturn_datasets,
+    ordered_variants, play_variant, validate_multiturn_dataset,
     write_batch,
 )
 from benchmark.providers.grok_conversation import GrokConversationProvider
@@ -63,6 +64,15 @@ class MultiturnTests(unittest.TestCase):
             status = main(["validate-multiturn"])
         self.assertEqual(status, 0)
         self.assertEqual(json.loads(output.getvalue())["family_count"], 16)
+
+    def test_old_pilot_answer_remains_content_bound_after_batch_merge(self):
+        combined = merge_multiturn_datasets([
+            self.dataset, load_json(self.root / "data/multiturn/batch_c_cases.json")
+        ])
+        old_answer = play_variant(self.dataset["families"][0], "en", InspectingConversationCandidate())
+        packets = judge_packets_from_answers(combined, [old_answer])
+        self.assertEqual(len(packets), 1)
+        self.assertEqual(packets[0]["case_content_hash"], old_answer["case_content_hash"])
 
     def test_bilingual_error_mismatch_rejected(self):
         corrupted = deepcopy(self.dataset)

@@ -104,6 +104,8 @@ class MultiturnDiagnosticTests(unittest.TestCase):
         self.assertEqual(result["partial_pair_count"], 5)
         self.assertEqual(result["correct_partial_ranking_count"], 5)
         self.assertEqual(result["error_detection_count"], 5)
+        self.assertIn("overall", result["results"][0]["partial"]["judge_rationale"])
+        self.assertEqual(len(result["results"][0]["partial"]["judge_rationale"]["stages"]), 2)
 
     def test_cli_dry_run_can_select_three_call_triplet(self):
         output = io.StringIO()

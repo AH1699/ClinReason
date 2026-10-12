@@ -64,6 +64,15 @@ def assess_contrast_pairs(
                 "gated_score": score["gated_score"],
                 "critical_error_ids": sorted(error["error_id"] for error in judgment["critical_errors"]),
                 "revision_score": score["revision_score"],
+                "stage_scores": score["stage_scores"],
+                "judge_rationale": {
+                    "overall": judgment["overall_rationale"],
+                    "stages": [
+                        {"stage_id": stage["stage_id"], "rationale": stage["rationale"]}
+                        for stage in judgment["stage_scores"]
+                    ],
+                    "critical_errors": judgment["critical_errors"],
+                },
             }
         row = {
             "family_id": family_id,
