@@ -25,3 +25,7 @@ The [coverage roadmap](COVERAGE_ROADMAP_EN.md) remains valid. A timeline narrate
 4. Define the future calibration and hidden Gold acquisition protocol, independent reviewer counts, and statistical analysis plan before public model comparisons. Public development cases cannot be relabeled hidden retroactively.
 
 The [case authoring guide](CASE_AUTHORING_GUIDE_EN.md) and [human-review handoff](CLINICAL_REVIEW_HANDOFF_EN.md) remain the source of release gates. No clinician-facing or jurisdiction-specific score should be merged with Global Core.
+
+## Multi-turn pilot addendum
+
+The next engineering step has now been implemented as a **separate** four-family/eight-variant two-turn pilot, not a rewrite of the single-turn Alpha. Its contract, staged runner, content-bound judge packets, provisional gated rubric, and controlled judge contrasts are described in [the pilot report](MULTITURN_PILOT_2026-10-11_EN.md). The two-turn English and Chinese Grok→Gemini smoke runs completed; each received an unvalidated 100/100. The judge detected and penalized all four deliberately obvious unsafe English updates (4/4 error detection and ranking). These results establish workflow and obvious-error sensitivity only; the ceiling and expert-difficulty questions remain open. The next significant batch choice is nuanced patient-facing multi-turn expansion versus a separate clinician-facing track.

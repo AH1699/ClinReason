@@ -11,6 +11,7 @@ build/
 *.egg-info/
 work/*.sqlite3
 work/*.db
+work/
 work/reviewer_packets*/
 work/preliminary_reviews/
 work/candidate_*.jsonl

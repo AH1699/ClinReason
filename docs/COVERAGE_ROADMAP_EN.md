@@ -4,6 +4,8 @@ The present Global Core Alpha has **30 bilingual families / 60 prompts**: five f
 
 The machine-readable [coverage audit](../benchmark/coverage.py) confirms this: 30/30 patient-facing and single-turn, with triage split 4 emergency / 1 timely nonemergency / 0 routine / 0 self-care. `python3 -m benchmark.cli coverage-audit` also counts author-assigned reasoning tags: temporal reassessment appears in 2 families, quantitative reasoning in 2, and longitudinal-values-without-provenance in 1. These are **intended probes, not measured difficulty**. See the [2026-10-11 progress log](PROJECT_PROGRESS_2026-10-11_EN.md).
 
+A [separate scripted two-turn pilot](MULTITURN_PILOT_2026-10-11_EN.md) now probes four transitions, including self-care→emergency and routine→emergency. It is still small, synthetic, unreviewed, and outside the single-turn score; it does not close the broader sequential-reasoning or expert-knowledge gap.
+
 ## Separate capabilities before adding volume
 
 1. **Patient-facing Global Core:** safe triage, clarification, medication boundaries, result explanation, privacy, and uncertainty without assuming a country's services. The **30-family first coverage milestone** is reached; any further expansion toward 50 or 500 must follow coverage and review criteria, not a statistical sufficiency claim.

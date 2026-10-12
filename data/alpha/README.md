@@ -4,6 +4,8 @@ The configured draft dataset is [`global_core_cases.jsonl`](global_core_cases.js
 
 All rows are synthetic, patient-facing, `status=draft`, and `clinician_validated=false`. The Chinese variants remain `machine_translation_unreviewed`. No real patient data, paid catalog samples, or copied external benchmark questions belong in this file. The earlier `-003` families are described in [batch A](../../docs/LABEL_EXPANSION_2026-10-11_EN.md), and the `-004/-005` families in [batch B](../../docs/LABEL_EXPANSION_BATCH_B_2026-10-11_EN.md); public-source options and reuse cautions are in [the source inventory](../../docs/PUBLIC_DATASET_SOURCES_EN.md).
 
+A [separate multi-turn pilot](../multiturn/README.md) now contains four additional draft families; its cases and scores are **not** included in the 30-family/60-prompt single-turn Alpha.
+
 Authoring steps:
 
 1. Follow the [case authoring guide](../../docs/CASE_AUTHORING_GUIDE_EN.md), including source provenance and meaning-preserving bilingual pairing.

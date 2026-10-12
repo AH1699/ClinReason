@@ -12,6 +12,12 @@ from .dataset_status import summarize_dataset
 from .db import connect
 from .live_judging import gemini_judge_status, judge_imported_grok
 from .local_settings import read_setting
+from .multiturn import (
+    judge_packets_from_answers, ordered_variants, validate_multiturn_dataset, variant_id, write_batch,
+)
+from .multiturn_judging import GeminiMultiturnJudge, score_judgment
+from .multiturn_diagnostics import assess_contrast_pairs
+from .provenance import sha256_json, sha256_text
 from .pipeline import (
     bootstrap,
     create_run,
@@ -24,6 +30,7 @@ from .provenance import candidate_provenance
 from .providers.mock import MockCandidateProvider, MockJudgeProvider
 from .providers.gemini import GeminiRunError, candidate_rows, local_api_key, run_gemini
 from .providers.grok import candidate_rows as grok_candidate_rows, run_grok
+from .providers.grok_conversation import GrokConversationProvider
 from .providers.gemini_judge import GeminiJudgeProvider
 from .providers.http_json import ProviderRequestError
 from .review_packets import export_review_packets
@@ -99,6 +106,38 @@ def build_parser() -> argparse.ArgumentParser:
     report = sub.add_parser("report", help="Print a JSON report for a run")
     report.add_argument("run_id")
     sub.add_parser("coverage-audit", help="Audit family-level coverage and development/holdout status")
+    sub.add_parser("validate-multiturn", help="Validate the separate two-turn draft pilot")
+    mt_grok = sub.add_parser(
+        "generate-grok-multiturn", help="Run scripted two-turn Grok pilot (dry-run unless --live)"
+    )
+    mt_grok.add_argument("--model", help="Override GROK_MODEL from local settings")
+    mt_grok.add_argument("--env-file", default=".env.local")
+    mt_grok.add_argument("--limit", type=int, default=1, help="Variants, two calls each")
+    mt_grok.add_argument("--case-id", help="Run one exact bilingual variant, such as HC-MT-MEDSAFE-001-ZH-HANS")
+    mt_grok.add_argument("--output", default="work/multiturn_grok_answers.jsonl")
+    mt_grok.add_argument("--live", action="store_true")
+    mt_packet = sub.add_parser(
+        "export-multiturn-judge-packets", help="Create draft per-turn judge packets from a completed conversation file"
+    )
+    mt_packet.add_argument("--answers", required=True)
+    mt_packet.add_argument("--output", default="work/multiturn_judge_packets.jsonl")
+    mt_judge = sub.add_parser(
+        "judge-multiturn-gemini", help="Provisional judge of scripted conversations (dry-run unless --live)"
+    )
+    mt_judge.add_argument("--answers", required=True)
+    mt_judge.add_argument("--model", help="Override GEMINI_JUDGE_MODEL from local settings")
+    mt_judge.add_argument("--env-file", default=".env.local")
+    mt_judge.add_argument("--limit", type=int, default=1)
+    mt_judge.add_argument("--output", default="work/multiturn_gemini_judgments.jsonl")
+    mt_judge.add_argument("--live", action="store_true")
+    mt_contrast = sub.add_parser(
+        "judge-multiturn-contrast", help="Test Gemini on safe/unsafe two-turn transcripts (dry-run unless --live)"
+    )
+    mt_contrast.add_argument("--model", help="Override GEMINI_JUDGE_MODEL from local settings")
+    mt_contrast.add_argument("--env-file", default=".env.local")
+    mt_contrast.add_argument("--limit", type=int, default=1, help="Pairs, two judge calls each")
+    mt_contrast.add_argument("--output", default="work/multiturn_judge_contrasts.json")
+    mt_contrast.add_argument("--live", action="store_true")
     contrast = sub.add_parser(
         "judge-contrast-gemini", help="Check a Gemini judge on synthetic good/unsafe pairs (dry-run unless --live)"
     )
@@ -381,6 +420,167 @@ def main(argv: list[str] | None = None) -> int:
             )
         except (ValueError, KeyError, OSError) as exc:
             print(f"Cannot audit coverage: {exc}")
+            return 2
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return 0
+
+    if args.command in {"validate-multiturn", "generate-grok-multiturn", "export-multiturn-judge-packets", "judge-multiturn-gemini", "judge-multiturn-contrast"}:
+        try:
+            dataset = load_json(resolve_path(
+                args.config, config.get("multiturn_cases_path", "data/multiturn/pilot_cases.json")
+            ))
+            status = validate_multiturn_dataset(dataset)
+            if args.command == "validate-multiturn":
+                print(json.dumps(status, ensure_ascii=False, indent=2))
+                return 0
+            if args.command == "export-multiturn-judge-packets":
+                answers = load_jsonl(resolve_path(args.config, args.answers))
+                packets = judge_packets_from_answers(dataset, answers)
+                target = resolve_path(args.config, args.output)
+                if target.exists():
+                    raise FileExistsError(f"Refusing to overwrite: {target}")
+                target.parent.mkdir(parents=True, exist_ok=True)
+                with target.open("x", encoding="utf-8") as handle:
+                    for packet in packets:
+                        handle.write(json.dumps(packet, ensure_ascii=False, sort_keys=True) + "\n")
+                print(json.dumps({"status": "draft_packets_not_clinical_scores", "packet_count": len(packets),
+                                  "output": str(target)}, indent=2))
+                return 0
+            if args.command == "judge-multiturn-gemini":
+                from datetime import datetime, timezone
+
+                answers = load_jsonl(resolve_path(args.config, args.answers))
+                packets = judge_packets_from_answers(dataset, answers)
+                if not 1 <= args.limit <= len(packets):
+                    raise ValueError(f"--limit must be between 1 and {len(packets)}")
+                target = resolve_path(args.config, args.output)
+                manifest_path = target.with_suffix(".manifest.json")
+                if target.exists() or manifest_path.exists():
+                    raise FileExistsError(f"Refusing to overwrite answer or manifest: {target}")
+                env_path = resolve_path(args.config, args.env_file)
+                model = args.model or read_setting(env_path, "GEMINI_JUDGE_MODEL")
+                if not args.live:
+                    print(json.dumps({"status": "dry_run_no_api_calls", "model": model,
+                                      "planned_judgments": args.limit, "output": str(target)}, indent=2))
+                    return 0
+                instruction = resolve_path(
+                    args.config, config.get("multiturn_judge_prompt_path", "config/multiturn_judge_prompt.txt")
+                ).read_text(encoding="utf-8").strip()
+                mt_rubric = load_json(resolve_path(
+                    args.config, config.get("multiturn_rubric_path", "config/multiturn_rubric.json")
+                ))
+                judge = GeminiMultiturnJudge(
+                    model=model, api_key=read_setting(env_path, "GEMINI_API_KEY", secret=True),
+                    instruction=instruction,
+                )
+                results = []
+                for packet in packets[:args.limit]:
+                    judgment = judge.evaluate(packet)
+                    results.append({
+                        "case_id": packet["case_id"],
+                        "case_content_hash": packet["case_content_hash"],
+                        "judgment": judgment,
+                        "score": score_judgment(judgment, packet, mt_rubric),
+                    })
+                manifest = {
+                    "status": "experimental_unvalidated_single_ai_judge",
+                    "provider": "google-gemini", "requested_model": model,
+                    "returned_model": judge.model_version,
+                    "generated_at": datetime.now(timezone.utc).isoformat(),
+                    "case_count": len(results),
+                    "judge_instruction_sha256": sha256_text(instruction),
+                    "rubric_sha256": sha256_json(mt_rubric),
+                    "actual_request_parameters": {"store": False, "response_format": "json_schema"},
+                    "case_revisions": [
+                        {"case_id": item["case_id"], "case_content_hash": item["case_content_hash"]}
+                        for item in results
+                    ],
+                    "provenance": candidate_provenance(config, mt_rubric, Path(__file__).resolve().parents[1]),
+                }
+                target.parent.mkdir(parents=True, exist_ok=True)
+                with target.open("x", encoding="utf-8") as handle:
+                    for item in results:
+                        handle.write(json.dumps(item, ensure_ascii=False, sort_keys=True) + "\n")
+                with manifest_path.open("x", encoding="utf-8") as handle:
+                    json.dump(manifest, handle, ensure_ascii=False, indent=2)
+                    handle.write("\n")
+                print(json.dumps({"output": str(target), "manifest": str(manifest_path), **manifest}, ensure_ascii=False, indent=2))
+                return 0
+            if args.command == "judge-multiturn-contrast":
+                pairs = load_json(resolve_path(
+                    args.config, config.get("multiturn_contrasts_path", "data/multiturn/contrast_transcripts.json")
+                ))["pairs"]
+                if not 1 <= args.limit <= len(pairs):
+                    raise ValueError(f"--limit must be between 1 and {len(pairs)}")
+                target = resolve_path(args.config, args.output)
+                if target.exists():
+                    raise FileExistsError(f"Refusing to overwrite contrast output: {target}")
+                env_path = resolve_path(args.config, args.env_file)
+                model = args.model or read_setting(env_path, "GEMINI_JUDGE_MODEL")
+                if not args.live:
+                    print(json.dumps({"status": "dry_run_no_api_calls", "model": model,
+                                      "planned_pairs": args.limit, "planned_api_calls": args.limit * 2,
+                                      "output": str(target)}, indent=2))
+                    return 0
+                instruction = resolve_path(
+                    args.config, config.get("multiturn_judge_prompt_path", "config/multiturn_judge_prompt.txt")
+                ).read_text(encoding="utf-8").strip()
+                mt_rubric = load_json(resolve_path(
+                    args.config, config.get("multiturn_rubric_path", "config/multiturn_rubric.json")
+                ))
+                judge = GeminiMultiturnJudge(
+                    model=model, api_key=read_setting(env_path, "GEMINI_API_KEY", secret=True),
+                    instruction=instruction,
+                )
+                result = assess_contrast_pairs(dataset, pairs[:args.limit], judge, mt_rubric)
+                from datetime import datetime, timezone
+
+                result.update({
+                    "generated_at": datetime.now(timezone.utc).isoformat(),
+                    "judge_instruction_sha256": sha256_text(instruction),
+                    "rubric_sha256": sha256_json(mt_rubric),
+                    "actual_request_parameters": {"store": False, "response_format": "json_schema"},
+                    "provenance": candidate_provenance(config, mt_rubric, Path(__file__).resolve().parents[1]),
+                })
+                target.parent.mkdir(parents=True, exist_ok=True)
+                with target.open("x", encoding="utf-8") as handle:
+                    json.dump(result, handle, ensure_ascii=False, indent=2)
+                    handle.write("\n")
+                print(json.dumps({"output": str(target), **result}, ensure_ascii=False, indent=2))
+                return 0
+            selected = ordered_variants(dataset)
+            if args.case_id:
+                if args.limit != 1:
+                    raise ValueError("--case-id requires the default --limit 1")
+                selected = [(family, language) for family, language in selected
+                            if variant_id(family, language) == args.case_id]
+                if not selected:
+                    raise ValueError(f"Unknown multi-turn case ID: {args.case_id}")
+            if not 1 <= args.limit <= len(selected):
+                raise ValueError(f"--limit must be between 1 and {len(selected)}")
+            target = resolve_path(args.config, args.output)
+            if target.exists() or target.with_suffix(".manifest.json").exists():
+                raise FileExistsError(f"Refusing to overwrite answer or manifest: {target}")
+            env_path = resolve_path(args.config, args.env_file)
+            model = args.model or read_setting(env_path, "GROK_MODEL")
+            if not args.live:
+                print(json.dumps({"status": "dry_run_no_api_calls", "model": model,
+                                  "planned_variants": args.limit, "planned_api_calls": args.limit * 2,
+                                  "output": str(target)}, indent=2))
+                return 0
+            instruction = resolve_path(
+                args.config, config.get("candidate_prompt_path", "config/candidate_prompt.txt")
+            ).read_text(encoding="utf-8").strip()
+            candidate = GrokConversationProvider(
+                model=model, api_key=read_setting(env_path, "GROK_API_KEY", secret=True),
+                instruction=instruction,
+            )
+            result = write_batch(
+                dataset, selected[:args.limit], candidate, target, instruction=instruction,
+                provenance=candidate_provenance(config, rubric, Path(__file__).resolve().parents[1]),
+            )
+        except (ProviderRequestError, FileExistsError, ValueError, KeyError, OSError) as exc:
+            print(f"Cannot process multi-turn pilot: {exc}")
             return 2
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0

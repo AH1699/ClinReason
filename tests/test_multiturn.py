@@ -1,0 +1,156 @@
+import io
+import json
+import tempfile
+import unittest
+from contextlib import redirect_stdout
+from copy import deepcopy
+from pathlib import Path
+from unittest.mock import patch
+
+from benchmark.cli import main
+from benchmark.config import load_json, load_jsonl
+from benchmark.multiturn import (
+    build_judge_packet, ordered_variants, play_variant, validate_multiturn_dataset,
+    write_batch,
+)
+from benchmark.providers.grok_conversation import GrokConversationProvider
+
+
+class InspectingConversationCandidate:
+    provider_name = "fixture"
+    model_id = "fixture-model"
+    model_version = "1"
+
+    def __init__(self):
+        self.histories = []
+
+    def reply(self, history):
+        self.histories.append(deepcopy(history))
+        return {"text": f"Fixture answer {len(self.histories)}"}
+
+
+class MultiturnTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.root = Path(__file__).resolve().parents[1]
+        cls.dataset = load_json(cls.root / "data/multiturn/pilot_cases.json")
+
+    def test_contract_and_coverage(self):
+        status = validate_multiturn_dataset(self.dataset)
+        self.assertEqual(status["family_count"], 4)
+        self.assertEqual(status["variant_count"], 8)
+        self.assertEqual(status["triage_transitions"], {
+            "routine→emergency": 1, "self_care→emergency": 1,
+        })
+        self.assertEqual(len(ordered_variants(self.dataset)), 8)
+
+    def test_bilingual_error_mismatch_rejected(self):
+        corrupted = deepcopy(self.dataset)
+        corrupted["families"][0]["variants"]["zh-Hans"]["turns"][1]["critical_errors"][0]["severity"] = 1
+        with self.assertRaises(ValueError):
+            validate_multiturn_dataset(corrupted)
+
+    def test_future_turn_and_labels_never_reach_candidate(self):
+        family = self.dataset["families"][0]
+        candidate = InspectingConversationCandidate()
+        response = play_variant(family, "en", candidate)
+        self.assertEqual(len(candidate.histories), 2)
+        self.assertEqual([item["role"] for item in candidate.histories[0]], ["user"])
+        self.assertEqual([item["role"] for item in candidate.histories[1]], ["user", "assistant", "user"])
+        self.assertEqual(candidate.histories[1][1]["content"], "Fixture answer 1")
+        self.assertNotIn("short of breath at rest", json.dumps(candidate.histories[0]))
+        self.assertNotIn("critical_requirements", json.dumps(candidate.histories))
+        self.assertNotIn("source_refs", json.dumps(candidate.histories))
+        packet = build_judge_packet(family, "en", response)
+        self.assertEqual(len(packet["turn_labels"]), 2)
+        self.assertNotIn("provider", packet)
+        self.assertNotIn("model_id", packet)
+        corrupted = deepcopy(response)
+        corrupted["transcript"][2]["content"] = "Different prompt"
+        with self.assertRaises(ValueError):
+            build_judge_packet(family, "en", corrupted)
+
+    def test_grok_adapter_resends_visible_history_with_store_false(self):
+        payloads = []
+
+        def transport(_endpoint, payload, **kwargs):
+            payloads.append(payload)
+            self.assertEqual(kwargs["auth_header"], "Authorization")
+            self.assertFalse(payload["store"])
+            self.assertNotIn("critical_requirements", json.dumps(payload))
+            return ({"status": "completed", "model": "grok-test", "output": [
+                {"type": "message", "content": [{"type": "output_text", "text": "Synthetic answer"}]}
+            ]}, 4)
+
+        provider = GrokConversationProvider(
+            model="grok-test", api_key="fixture-key", instruction="Answer the chat.",
+            transport=transport,
+        )
+        response = play_variant(self.dataset["families"][0], "en", provider)
+        self.assertEqual(len(payloads), 2)
+        self.assertEqual([item["role"] for item in payloads[0]["input"]], ["system", "user"])
+        self.assertEqual([item["role"] for item in payloads[1]["input"]],
+                         ["system", "user", "assistant", "user"])
+        self.assertEqual(response["model_version"], "grok-test")
+
+    def test_batch_outputs_are_content_bound_and_never_overwritten(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "answers.jsonl"
+            result = write_batch(self.dataset, ordered_variants(self.dataset)[:2],
+                                 InspectingConversationCandidate(), path,
+                                 instruction="Answer the chat.")
+            self.assertEqual(result["case_count"], 2)
+            self.assertEqual(result["model_calls"], 4)
+            self.assertEqual(len(load_jsonl(path)), 2)
+            self.assertEqual(len(result["dataset_sha256"]), 64)
+            with self.assertRaises(FileExistsError):
+                write_batch(self.dataset, ordered_variants(self.dataset)[:1],
+                            InspectingConversationCandidate(), path,
+                            instruction="Answer the chat.")
+            with self.assertRaises(ValueError):
+                write_batch(self.dataset, ordered_variants(self.dataset)[:1] * 2,
+                            InspectingConversationCandidate(), Path(directory) / "other.jsonl",
+                            instruction="Answer the chat.")
+            altered = deepcopy(ordered_variants(self.dataset)[0][0])
+            altered["variants"]["en"]["turns"][0]["user"] = "Changed question"
+            with self.assertRaises(ValueError):
+                write_batch(self.dataset, [(altered, "en")], InspectingConversationCandidate(),
+                            Path(directory) / "altered.jsonl", instruction="Answer the chat.")
+
+    def test_all_variants_can_produce_draft_judge_packets_offline(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "all_answers.jsonl"
+            write_batch(self.dataset, ordered_variants(self.dataset),
+                        InspectingConversationCandidate(), path,
+                        instruction="Answer the chat.")
+            answers = load_jsonl(path)
+            self.assertEqual(len(answers), 8)
+            packet_path = Path(directory) / "packets.jsonl"
+            output = io.StringIO()
+            with redirect_stdout(output):
+                status = main(["export-multiturn-judge-packets", "--answers", str(path),
+                               "--output", str(packet_path)])
+            self.assertEqual(status, 0)
+            self.assertEqual(json.loads(output.getvalue())["packet_count"], 8)
+            packets = load_jsonl(packet_path)
+            self.assertEqual(len(packets), 8)
+            self.assertTrue(all(len(packet["transcript"]) == 4 for packet in packets))
+            self.assertTrue(all(len(packet["turn_labels"]) == 2 for packet in packets))
+
+    def test_cli_dry_run_is_no_network_and_plans_two_calls_per_variant(self):
+        output = io.StringIO()
+        with patch("benchmark.providers.grok_conversation.post_json", side_effect=AssertionError("network called")):
+            with redirect_stdout(output):
+                status = main(["generate-grok-multiturn", "--model", "grok-test", "--limit", "2"])
+        self.assertEqual(status, 0)
+        self.assertEqual(json.loads(output.getvalue())["planned_api_calls"], 4)
+        output = io.StringIO()
+        with redirect_stdout(output):
+            status = main(["generate-grok-multiturn", "--model", "grok-test",
+                           "--case-id", "HC-MT-MEDSAFE-001-ZH-HANS"])
+        self.assertEqual(status, 0)
+        self.assertEqual(json.loads(output.getvalue())["planned_variants"], 1)
+
+
+if __name__ == "__main__":
+    unittest.main()

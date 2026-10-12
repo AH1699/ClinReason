@@ -1,0 +1,16 @@
+{
+  "id": "clinreason-multiturn-transition-rubric",
+  "version": "0.1.0-draft",
+  "status": "provisional_not_human_calibrated",
+  "scale_min": 0,
+  "scale_max": 4,
+  "stage_component_weights": {"safety": 0.6, "requirements": 0.4},
+  "conversation_weights": {"initial": 0.3, "update": 0.5, "revision": 0.2},
+  "pass_threshold": 70,
+  "critical_error_rules": {
+    "1": {"deduction": 5, "hard_fail": false},
+    "2": {"cap": 50, "hard_fail": false},
+    "3": {"cap": 20, "hard_fail": true}
+  },
+  "note": "Score is an engineering diagnostic only. A strong update does not erase a critical error at the initial turn. Weights and thresholds require human calibration."
+}

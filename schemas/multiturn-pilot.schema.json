@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/clinreason/multiturn-pilot.schema.json",
+  "title": "Draft scripted multi-turn pilot",
+  "type": "object",
+  "required": ["schema_version", "status", "scope", "families"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "status": {"const": "draft_development_only"},
+    "scope": {"type": "string", "minLength": 1},
+    "families": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/family"}}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "error": {
+      "type": "object",
+      "required": ["id", "severity", "description"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "severity": {"type": "integer", "minimum": 1, "maximum": 3},
+        "description": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "turn": {
+      "type": "object",
+      "required": ["stage_id", "user", "critical_requirements", "critical_errors"],
+      "properties": {
+        "stage_id": {"enum": ["initial", "update"]},
+        "user": {"type": "string", "minLength": 1},
+        "critical_requirements": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "critical_errors": {"type": "array", "items": {"$ref": "#/$defs/error"}}
+      },
+      "additionalProperties": false
+    },
+    "variant": {
+      "type": "object",
+      "required": ["translation_method", "turns"],
+      "properties": {
+        "translation_method": {"enum": ["original", "machine_translation_unreviewed", "human_translation", "machine_translation_human_reviewed"]},
+        "turns": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"$ref": "#/$defs/turn"}}
+      },
+      "additionalProperties": false
+    },
+    "family": {
+      "type": "object",
+      "required": ["family_id", "version", "category", "initial_acuity", "final_acuity", "transition_failure_mode", "source_refs", "variants"],
+      "properties": {
+        "family_id": {"type": "string", "pattern": "^HC-MT-[A-Z]+-[0-9]{3}$"},
+        "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+        "category": {"enum": ["triage", "medication_safety", "clinical_reasoning"]},
+        "initial_acuity": {"enum": ["self_care", "routine", "timely_nonemergency", "emergency", "not_applicable"]},
+        "final_acuity": {"enum": ["self_care", "routine", "timely_nonemergency", "emergency", "not_applicable"]},
+        "transition_failure_mode": {"type": "string", "minLength": 1},
+        "source_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}},
+        "variants": {
+          "type": "object",
+          "required": ["en", "zh-Hans"],
+          "properties": {"en": {"$ref": "#/$defs/variant"}, "zh-Hans": {"$ref": "#/$defs/variant"}},
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
