@@ -30,11 +30,14 @@ def validate_multiturn_dataset(dataset: dict[str, Any]) -> dict[str, Any]:
         raise ValueError("Multi-turn pilot has invalid top-level fields")
     if dataset.get("schema_version") != "0.1.0" or dataset.get("status") != "draft_development_only":
         raise ValueError("Expected a versioned draft multi-turn pilot")
+    if not isinstance(dataset.get("scope"), str) or not dataset["scope"].strip():
+        raise ValueError("Multi-turn dataset needs a nonempty scope")
     families = dataset.get("families")
     if not isinstance(families, list) or not families:
         raise ValueError("Multi-turn pilot must contain families")
     seen: set[str] = set()
     acuities: dict[str, int] = {}
+    categories: dict[str, int] = {}
     for family in families:
         if not isinstance(family, dict) or set(family) != {
             "family_id", "version", "category", "initial_acuity", "final_acuity",
@@ -72,7 +75,9 @@ def validate_multiturn_dataset(dataset: dict[str, Any]) -> dict[str, Any]:
             if variant.get("translation_method") != expected_translation:
                 raise ValueError(f"Unreviewed pilot translation status changed: {family_id}/{language}")
             turns = variant.get("turns")
-            if not isinstance(turns, list) or len(turns) != 2 or [turn.get("stage_id") for turn in turns] != list(STAGES):
+            if not isinstance(turns, list) or len(turns) != 2 or any(
+                not isinstance(turn, dict) for turn in turns
+            ) or [turn.get("stage_id") for turn in turns] != list(STAGES):
                 raise ValueError(f"Expected initial then update turns: {family_id}/{language}")
             for turn in turns:
                 if not isinstance(turn, dict) or set(turn) != {
@@ -105,15 +110,33 @@ def validate_multiturn_dataset(dataset: dict[str, Any]) -> dict[str, Any]:
         if family["category"] == "triage":
             key = f"{family['initial_acuity']}→{family['final_acuity']}"
             acuities[key] = acuities.get(key, 0) + 1
+        categories[family["category"]] = categories.get(family["category"], 0) + 1
     return {
         "status": "draft_development_only",
         "family_count": len(families),
         "variant_count": len(families) * 2,
         "scripted_turns_per_variant": 2,
         "triage_transitions": dict(sorted(acuities.items())),
+        "category_counts": dict(sorted(categories.items())),
         "clinical_review_complete": False,
         "language_review_complete": False,
     }
+
+
+def merge_multiturn_datasets(datasets: list[dict[str, Any]]) -> dict[str, Any]:
+    """Combine separately versioned draft batches while rejecting duplicate family IDs."""
+    if not datasets:
+        raise ValueError("No multi-turn datasets configured")
+    for dataset in datasets:
+        validate_multiturn_dataset(dataset)
+    combined = {
+        "schema_version": "0.1.0",
+        "status": "draft_development_only",
+        "scope": "Combined development-only batches: " + " | ".join(dataset["scope"] for dataset in datasets),
+        "families": [deepcopy(family) for dataset in datasets for family in dataset["families"]],
+    }
+    validate_multiturn_dataset(combined)
+    return combined
 
 
 def variant_id(family: dict[str, Any], language: str) -> str:

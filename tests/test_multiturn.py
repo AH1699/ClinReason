@@ -10,7 +10,7 @@ from unittest.mock import patch
 from benchmark.cli import main
 from benchmark.config import load_json, load_jsonl
 from benchmark.multiturn import (
-    build_judge_packet, ordered_variants, play_variant, validate_multiturn_dataset,
+    build_judge_packet, merge_multiturn_datasets, ordered_variants, play_variant, validate_multiturn_dataset,
     write_batch,
 )
 from benchmark.providers.grok_conversation import GrokConversationProvider
@@ -44,9 +44,39 @@ class MultiturnTests(unittest.TestCase):
         })
         self.assertEqual(len(ordered_variants(self.dataset)), 8)
 
+    def test_batch_c_merges_without_changing_original_pilot(self):
+        batch_c = load_json(self.root / "data/multiturn/batch_c_cases.json")
+        combined = merge_multiturn_datasets([self.dataset, batch_c])
+        status = validate_multiturn_dataset(combined)
+        self.assertEqual(status["family_count"], 16)
+        self.assertEqual(status["variant_count"], 32)
+        self.assertEqual(status["category_counts"], {
+            "clinical_reasoning": 5, "medication_safety": 5, "triage": 6,
+        })
+        self.assertEqual(self.dataset["families"][0]["family_id"], "HC-MT-TRIAGE-001")
+        with self.assertRaises(ValueError):
+            merge_multiturn_datasets([self.dataset, self.dataset])
+
+    def test_cli_validates_all_configured_batches(self):
+        output = io.StringIO()
+        with redirect_stdout(output):
+            status = main(["validate-multiturn"])
+        self.assertEqual(status, 0)
+        self.assertEqual(json.loads(output.getvalue())["family_count"], 16)
+
     def test_bilingual_error_mismatch_rejected(self):
         corrupted = deepcopy(self.dataset)
         corrupted["families"][0]["variants"]["zh-Hans"]["turns"][1]["critical_errors"][0]["severity"] = 1
+        with self.assertRaises(ValueError):
+            validate_multiturn_dataset(corrupted)
+
+    def test_malformed_turn_or_empty_scope_rejected_cleanly(self):
+        corrupted = deepcopy(self.dataset)
+        corrupted["scope"] = " "
+        with self.assertRaises(ValueError):
+            validate_multiturn_dataset(corrupted)
+        corrupted = deepcopy(self.dataset)
+        corrupted["families"][0]["variants"]["en"]["turns"][1] = None
         with self.assertRaises(ValueError):
             validate_multiturn_dataset(corrupted)
 

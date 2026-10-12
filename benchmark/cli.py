@@ -13,7 +13,8 @@ from .db import connect
 from .live_judging import gemini_judge_status, judge_imported_grok
 from .local_settings import read_setting
 from .multiturn import (
-    judge_packets_from_answers, ordered_variants, validate_multiturn_dataset, variant_id, write_batch,
+    judge_packets_from_answers, merge_multiturn_datasets, ordered_variants,
+    validate_multiturn_dataset, variant_id, write_batch,
 )
 from .multiturn_judging import GeminiMultiturnJudge, score_judgment
 from .multiturn_diagnostics import assess_contrast_pairs
@@ -131,11 +132,12 @@ def build_parser() -> argparse.ArgumentParser:
     mt_judge.add_argument("--output", default="work/multiturn_gemini_judgments.jsonl")
     mt_judge.add_argument("--live", action="store_true")
     mt_contrast = sub.add_parser(
-        "judge-multiturn-contrast", help="Test Gemini on safe/unsafe two-turn transcripts (dry-run unless --live)"
+        "judge-multiturn-contrast", help="Test Gemini on safe/partial/unsafe two-turn transcripts (dry-run unless --live)"
     )
     mt_contrast.add_argument("--model", help="Override GEMINI_JUDGE_MODEL from local settings")
     mt_contrast.add_argument("--env-file", default=".env.local")
-    mt_contrast.add_argument("--limit", type=int, default=1, help="Pairs, two judge calls each")
+    mt_contrast.add_argument("--limit", type=int, default=1, help="Number of pairs; two or three calls each")
+    mt_contrast.add_argument("--family-id", help="Run one exact family, such as HC-MT-REASON-004")
     mt_contrast.add_argument("--output", default="work/multiturn_judge_contrasts.json")
     mt_contrast.add_argument("--live", action="store_true")
     contrast = sub.add_parser(
@@ -426,9 +428,16 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command in {"validate-multiturn", "generate-grok-multiturn", "export-multiturn-judge-packets", "judge-multiturn-gemini", "judge-multiturn-contrast"}:
         try:
-            dataset = load_json(resolve_path(
-                args.config, config.get("multiturn_cases_path", "data/multiturn/pilot_cases.json")
-            ))
+            batch_paths = config.get("multiturn_cases_paths")
+            if batch_paths is None:
+                batch_paths = [config.get("multiturn_cases_path", "data/multiturn/pilot_cases.json")]
+            if not isinstance(batch_paths, list) or not batch_paths or any(
+                not isinstance(path, str) or not path.strip() for path in batch_paths
+            ):
+                raise ValueError("multiturn_cases_paths must be a nonempty list of paths")
+            dataset = merge_multiturn_datasets([
+                load_json(resolve_path(args.config, path)) for path in batch_paths
+            ])
             status = validate_multiturn_dataset(dataset)
             if args.command == "validate-multiturn":
                 print(json.dumps(status, ensure_ascii=False, indent=2))
@@ -510,8 +519,16 @@ def main(argv: list[str] | None = None) -> int:
                 pairs = load_json(resolve_path(
                     args.config, config.get("multiturn_contrasts_path", "data/multiturn/contrast_transcripts.json")
                 ))["pairs"]
+                if args.family_id:
+                    if args.limit != 1:
+                        raise ValueError("--family-id requires the default --limit 1")
+                    pairs = [pair for pair in pairs if pair["family_id"] == args.family_id]
+                    if not pairs:
+                        raise ValueError(f"Unknown contrast family: {args.family_id}")
                 if not 1 <= args.limit <= len(pairs):
                     raise ValueError(f"--limit must be between 1 and {len(pairs)}")
+                selected_pairs = pairs[:args.limit]
+                planned_calls = sum(3 if "partial_update_response" in pair else 2 for pair in selected_pairs)
                 target = resolve_path(args.config, args.output)
                 if target.exists():
                     raise FileExistsError(f"Refusing to overwrite contrast output: {target}")
@@ -519,7 +536,7 @@ def main(argv: list[str] | None = None) -> int:
                 model = args.model or read_setting(env_path, "GEMINI_JUDGE_MODEL")
                 if not args.live:
                     print(json.dumps({"status": "dry_run_no_api_calls", "model": model,
-                                      "planned_pairs": args.limit, "planned_api_calls": args.limit * 2,
+                                      "planned_pairs": args.limit, "planned_api_calls": planned_calls,
                                       "output": str(target)}, indent=2))
                     return 0
                 instruction = resolve_path(
@@ -532,7 +549,7 @@ def main(argv: list[str] | None = None) -> int:
                     model=model, api_key=read_setting(env_path, "GEMINI_API_KEY", secret=True),
                     instruction=instruction,
                 )
-                result = assess_contrast_pairs(dataset, pairs[:args.limit], judge, mt_rubric)
+                result = assess_contrast_pairs(dataset, selected_pairs, judge, mt_rubric)
                 from datetime import datetime, timezone
 
                 result.update({
