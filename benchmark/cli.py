@@ -9,7 +9,7 @@ from .config import load_json, load_jsonl, resolve_path
 from .coverage import audit_coverage
 from .judge_diagnostics import assess_contrasts
 from .dataset_status import summarize_dataset
-from .difficulty_audit import audit_multiturn_difficulty
+from .difficulty_audit import audit_multiturn_difficulty, compare_multiturn_judge_passes
 from .db import connect
 from .live_judging import gemini_judge_status, judge_imported_grok
 from .local_settings import read_setting
@@ -148,6 +148,17 @@ def build_parser() -> argparse.ArgumentParser:
     mt_audit.add_argument("--answers", required=True, help="Candidate JSONL from generate-grok-multiturn")
     mt_audit.add_argument("--judgments", required=True, help="Judgment JSONL from judge-multiturn-gemini")
     mt_audit.add_argument("--output", help="Optional new JSON report path; never overwrites")
+    mt_audit.add_argument("--cases-path", action="append", dest="cases_paths",
+                          help="Repeat to select exact historical batch files instead of the current configured set")
+    mt_repeat = sub.add_parser(
+        "compare-multiturn-judges", help="Compare two provisional judge passes on the same answers"
+    )
+    mt_repeat.add_argument("--answers", required=True)
+    mt_repeat.add_argument("--first", required=True, help="First judgment JSONL")
+    mt_repeat.add_argument("--second", required=True, help="Second judgment JSONL")
+    mt_repeat.add_argument("--output", help="Optional new JSON report path; never overwrites")
+    mt_repeat.add_argument("--cases-path", action="append", dest="cases_paths",
+                           help="Repeat to select exact historical batch files instead of the current configured set")
     contrast = sub.add_parser(
         "judge-contrast-gemini", help="Check a Gemini judge on synthetic good/unsafe pairs (dry-run unless --live)"
     )
@@ -434,9 +445,11 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0
 
-    if args.command in {"validate-multiturn", "generate-grok-multiturn", "export-multiturn-judge-packets", "judge-multiturn-gemini", "judge-multiturn-contrast", "difficulty-audit-multiturn"}:
+    if args.command in {"validate-multiturn", "generate-grok-multiturn", "export-multiturn-judge-packets", "judge-multiturn-gemini", "judge-multiturn-contrast", "difficulty-audit-multiturn", "compare-multiturn-judges"}:
         try:
             batch_paths = config.get("multiturn_cases_paths")
+            if getattr(args, "cases_paths", None):
+                batch_paths = args.cases_paths
             if batch_paths is None:
                 batch_paths = [config.get("multiturn_cases_path", "data/multiturn/pilot_cases.json")]
             if not isinstance(batch_paths, list) or not batch_paths or any(
@@ -465,6 +478,32 @@ def main(argv: list[str] | None = None) -> int:
                     target = resolve_path(args.config, args.output)
                     if target.exists():
                         raise FileExistsError(f"Refusing to overwrite difficulty report: {target}")
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    with target.open("x", encoding="utf-8") as handle:
+                        json.dump(report, handle, ensure_ascii=False, indent=2)
+                        handle.write("\n")
+                print(json.dumps(report, ensure_ascii=False, indent=2))
+                return 0
+            if args.command == "compare-multiturn-judges":
+                answers_path = resolve_path(args.config, args.answers)
+                first_path = resolve_path(args.config, args.first)
+                second_path = resolve_path(args.config, args.second)
+                if first_path == second_path:
+                    raise ValueError("Judge passes must use different files")
+                mt_rubric = load_json(resolve_path(
+                    args.config, config.get("multiturn_rubric_path", "config/multiturn_rubric.json")
+                ))
+                report = compare_multiturn_judge_passes(
+                    dataset, load_jsonl(answers_path),
+                    load_json(answers_path.with_suffix(".manifest.json")),
+                    load_jsonl(first_path), load_json(first_path.with_suffix(".manifest.json")),
+                    load_jsonl(second_path), load_json(second_path.with_suffix(".manifest.json")),
+                    mt_rubric,
+                )
+                if args.output:
+                    target = resolve_path(args.config, args.output)
+                    if target.exists():
+                        raise FileExistsError(f"Refusing to overwrite comparison report: {target}")
                     target.parent.mkdir(parents=True, exist_ok=True)
                     with target.open("x", encoding="utf-8") as handle:
                         json.dump(report, handle, ensure_ascii=False, indent=2)
@@ -529,6 +568,7 @@ def main(argv: list[str] | None = None) -> int:
                     "judge_instruction_sha256": sha256_text(instruction),
                     "rubric_sha256": sha256_json(mt_rubric),
                     "actual_request_parameters": {"store": False, "response_format": "json_schema"},
+                    "sampling_policy": "provider_default_unpinned",
                     "case_revisions": [
                         {"case_id": item["case_id"], "case_content_hash": item["case_content_hash"]}
                         for item in results

@@ -1,5 +1,6 @@
 import io
 import json
+import tempfile
 import unittest
 from contextlib import redirect_stdout
 from copy import deepcopy
@@ -7,7 +8,7 @@ from pathlib import Path
 
 from benchmark.cli import main
 from benchmark.config import load_json
-from benchmark.difficulty_audit import audit_multiturn_difficulty
+from benchmark.difficulty_audit import audit_multiturn_difficulty, compare_multiturn_judge_passes
 from benchmark.multiturn import build_judge_packet, merge_multiturn_datasets, play_variant
 from benchmark.multiturn_judging import score_judgment
 from benchmark.provenance import sha256_json
@@ -66,6 +67,8 @@ class DifficultyAuditTests(unittest.TestCase):
             "status": "experimental_unvalidated_single_ai_judge",
             "case_count": len(judgments), "rubric_sha256": sha256_json(self.rubric),
             "provider": "fixture", "requested_model": "fixture-judge", "returned_model": "1",
+            "judge_instruction_sha256": "a" * 64,
+            "generated_at": "2026-10-12T01:00:00+00:00",
             "case_revisions": [
                 {"case_id": row["case_id"], "case_content_hash": row["case_content_hash"]}
                 for row in judgments
@@ -126,6 +129,51 @@ class DifficultyAuditTests(unittest.TestCase):
             ])
         self.assertEqual(status, 0)
         self.assertEqual(json.loads(output.getvalue())["planned_api_calls"], 8)
+
+    def test_repeat_comparison_detects_score_change_and_rejects_prompt_change(self):
+        answers, first, candidate_manifest, first_manifest = self.fixtures()
+        second = deepcopy(first)
+        second[0]["judgment"]["stage_scores"][0]["safety"] = 3
+        family = self.dataset["families"][0]
+        packet = build_judge_packet(family, "en", answers[0])
+        second[0]["score"] = score_judgment(second[0]["judgment"], packet, self.rubric)
+        second_manifest = {**first_manifest, "generated_at": "2026-10-12T02:00:00+00:00"}
+        report = compare_multiturn_judge_passes(
+            self.dataset, answers, candidate_manifest,
+            first, first_manifest, second, second_manifest, self.rubric,
+        )
+        self.assertEqual(report["conversation_count"], 2)
+        self.assertEqual(report["changed_gated_score_count"], 1)
+        self.assertEqual(report["changed_initial_count"], 1)
+        self.assertEqual(report["changed_update_count"], 0)
+        with self.assertRaisesRegex(ValueError, "different model, instruction, or rubric"):
+            compare_multiturn_judge_passes(
+                self.dataset, answers, candidate_manifest,
+                first, first_manifest, second,
+                {**second_manifest, "judge_instruction_sha256": "b" * 64}, self.rubric,
+            )
+
+    def test_cli_can_reopen_historical_batches_after_configured_expansion(self):
+        answers, first, candidate_manifest, first_manifest = self.fixtures()
+        second_manifest = {**first_manifest, "generated_at": "2026-10-12T02:00:00+00:00"}
+        with tempfile.TemporaryDirectory() as directory:
+            paths = [Path(directory) / name for name in ("answers.jsonl", "first.jsonl", "second.jsonl")]
+            for path, rows, manifest in zip(
+                paths, (answers, first, first),
+                (candidate_manifest, first_manifest, second_manifest),
+            ):
+                path.write_text("\n".join(json.dumps(row) for row in rows) + "\n", encoding="utf-8")
+                path.with_suffix(".manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+            output = io.StringIO()
+            with redirect_stdout(output):
+                status = main([
+                    "compare-multiturn-judges",
+                    "--cases-path", "data/multiturn/pilot_cases.json",
+                    "--cases-path", "data/multiturn/batch_c_cases.json",
+                    "--answers", str(paths[0]), "--first", str(paths[1]), "--second", str(paths[2]),
+                ])
+            self.assertEqual(status, 0)
+            self.assertEqual(json.loads(output.getvalue())["changed_gated_score_count"], 0)
 
 
 if __name__ == "__main__":

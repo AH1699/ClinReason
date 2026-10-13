@@ -131,11 +131,11 @@ class GeminiRunnerTests(unittest.TestCase):
                 limit=len(self.rows), opener=opener,
             )
             answers = load_jsonl(output)
-            self.assertEqual(len(answers), 60)
-            self.assertEqual(len(validate_answers(output, self.cases)), 60)
+            self.assertEqual(len(answers), 64)
+            self.assertEqual(len(validate_answers(output, self.cases)), 64)
             self.assertEqual({row["case_id"] for row in answers}, {row["case_id"] for row in self.rows})
-            self.assertEqual(result["case_count"], 60)
-            self.assertEqual(len(result["case_revisions"]), 60)
+            self.assertEqual(result["case_count"], 64)
+            self.assertEqual(len(result["case_revisions"]), 64)
 
     def test_cli_dry_run_makes_no_network_call_or_key_read(self):
         with tempfile.TemporaryDirectory() as directory:

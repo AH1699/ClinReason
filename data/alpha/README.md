@@ -1,10 +1,10 @@
 # Global Core Alpha authoring workspace
 
-The configured draft dataset is [`global_core_cases.jsonl`](global_core_cases.jsonl): **30 bilingual families / 60 prompts** as of 2026-10-11, five families per category. The original 36 rows were not revised during this batch. [`family_labels.json`](family_labels.json) classifies every family by competency, reasoning operation, anticipated failure mode, and complexity factor without changing those case hashes or the scoring rubric. These are analytic labels, not human-validated ground truth.
+The configured draft dataset is [`global_core_cases.jsonl`](global_core_cases.jsonl): **32 bilingual families / 64 prompts** as of 2026-10-12. Triage has seven families (including new self-care and routine controls); the other five categories have five each. The earlier 60 rows were not revised in this batch. [`family_labels.json`](family_labels.json) classifies every family by competency, reasoning operation, anticipated failure mode, and complexity factor without changing prior case hashes or the scoring rubric. These are analytic labels, not human-validated ground truth.
 
 All rows are synthetic, patient-facing, `status=draft`, and `clinician_validated=false`. The Chinese variants remain `machine_translation_unreviewed`. No real patient data, paid catalog samples, or copied external benchmark questions belong in this file. The earlier `-003` families are described in [batch A](../../docs/LABEL_EXPANSION_2026-10-11_EN.md), and the `-004/-005` families in [batch B](../../docs/LABEL_EXPANSION_BATCH_B_2026-10-11_EN.md); public-source options and reuse cautions are in [the source inventory](../../docs/PUBLIC_DATASET_SOURCES_EN.md).
 
-A [separate multi-turn pilot](../multiturn/README.md) now contains four additional draft families; its cases and scores are **not** included in the 30-family/60-prompt single-turn Alpha.
+A [separate multi-turn track](../multiturn/README.md) contains 20 additional draft families / 40 bilingual conversations; its cases and scores are **not** included in the 32-family/64-prompt single-turn Alpha.
 
 Authoring steps:
 

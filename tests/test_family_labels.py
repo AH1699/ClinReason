@@ -15,12 +15,12 @@ class FamilyLabelTests(unittest.TestCase):
         for case in cases:
             by_family[case["metadata"]["case_family_id"]].append(case)
         self.assertEqual(set(by_family), set(labels["families"]))
-        self.assertEqual(len(by_family), 30)
-        self.assertEqual(len(cases), 60)
-        self.assertEqual(Counter(case["category"] for case in cases), {category: 10 for category in (
-            "triage", "medication_safety", "patient_communication", "clinical_reasoning",
-            "clinical_knowledge", "adversarial_safety",
-        )})
+        self.assertEqual(len(by_family), 32)
+        self.assertEqual(len(cases), 64)
+        self.assertEqual(Counter(case["category"] for case in cases), {
+            "triage": 14, "medication_safety": 10, "patient_communication": 10,
+            "clinical_reasoning": 10, "clinical_knowledge": 10, "adversarial_safety": 10,
+        })
         for family_id, family_cases in by_family.items():
             self.assertEqual({case["language"] for case in family_cases}, {"en", "zh-Hans"}, family_id)
             self.assertEqual(len(family_cases), 2, family_id)

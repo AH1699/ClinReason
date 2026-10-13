@@ -63,7 +63,23 @@ class MultiturnTests(unittest.TestCase):
         with redirect_stdout(output):
             status = main(["validate-multiturn"])
         self.assertEqual(status, 0)
-        self.assertEqual(json.loads(output.getvalue())["family_count"], 16)
+        self.assertEqual(json.loads(output.getvalue())["family_count"], 20)
+
+    def test_batch_d_adds_distinct_bilingual_failure_modes(self):
+        batch_c = load_json(self.root / "data/multiturn/batch_c_cases.json")
+        batch_d = load_json(self.root / "data/multiturn/batch_d_cases.json")
+        combined = merge_multiturn_datasets([self.dataset, batch_c, batch_d])
+        status = validate_multiturn_dataset(combined)
+        self.assertEqual(status["family_count"], 20)
+        self.assertEqual(status["variant_count"], 40)
+        self.assertEqual(status["category_counts"], {
+            "clinical_reasoning": 7, "medication_safety": 6, "triage": 7,
+        })
+        self.assertEqual(status["triage_transitions"]["emergency→emergency"], 1)
+        self.assertEqual({family["family_id"] for family in batch_d["families"]}, {
+            "HC-MT-TRIAGE-007", "HC-MT-MEDSAFE-006",
+            "HC-MT-REASON-006", "HC-MT-REASON-007",
+        })
 
     def test_old_pilot_answer_remains_content_bound_after_batch_merge(self):
         combined = merge_multiturn_datasets([

@@ -83,10 +83,10 @@ class LivePilotTests(unittest.TestCase):
             answers_path = tmp / "candidate_grok_answers.jsonl"
             manifest = run_grok(
                 self.rows, answers_path, model="grok-test", api_key="grok-test-key",
-                limit=60, transport=grok_transport,
+                limit=64, transport=grok_transport,
             )
-            self.assertEqual(len(grok_calls), 60)
-            self.assertEqual(len(validate_answers(answers_path, self.cases)), 60)
+            self.assertEqual(len(grok_calls), 64)
+            self.assertEqual(len(validate_answers(answers_path, self.cases)), 64)
             self.assertEqual(manifest["returned_model"], "grok-test")
             self.assertEqual(manifest["actual_request_parameters"], {"store": False})
             self.assertEqual(manifest["sampling_policy"], "provider_default_unpinned")
@@ -115,14 +115,14 @@ class LivePilotTests(unittest.TestCase):
                 "scoring": self.config["scoring"], "transport": judge_transport,
             }
             smoke = judge_imported_grok(db_path, run_id, limit=1, **common)
-            self.assertEqual(smoke["remaining_unjudged"], 59)
+            self.assertEqual(smoke["remaining_unjudged"], 63)
             self.assertNotIn("report", smoke)
-            full = judge_imported_grok(db_path, run_id, limit=60, **common)
-            self.assertEqual(len(judge_calls), 60)
+            full = judge_imported_grok(db_path, run_id, limit=64, **common)
+            self.assertEqual(len(judge_calls), 64)
             self.assertEqual(full["remaining_unjudged"], 0)
-            self.assertEqual(full["report"]["count"], 60)
+            self.assertEqual(full["report"]["count"], 64)
             self.assertEqual(full["report"]["report_status"], "experimental_unvalidated")
-            self.assertEqual(full["report"]["human_review_required"], 60)
+            self.assertEqual(full["report"]["human_review_required"], 64)
 
     def test_invalid_judgment_cannot_invent_critical_error(self):
         case = self.cases[0]

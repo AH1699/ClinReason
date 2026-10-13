@@ -16,13 +16,13 @@ class CoverageTests(unittest.TestCase):
 
     def test_current_coverage_reports_real_gaps(self):
         result = audit_coverage(self.cases, self.tags, self.splits, self.labels)
-        self.assertEqual(result["family_count"], 30)
-        self.assertEqual(result["prompt_count"], 60)
-        self.assertEqual(result["triage_acuity"], {"emergency": 4, "timely_nonemergency": 1})
-        self.assertEqual(result["missing_triage_acuity"], ["routine", "self_care"])
+        self.assertEqual(result["family_count"], 32)
+        self.assertEqual(result["prompt_count"], 64)
+        self.assertEqual(result["triage_acuity"], {"emergency": 4, "timely_nonemergency": 1, "routine": 1, "self_care": 1})
+        self.assertEqual(result["missing_triage_acuity"], [])
         self.assertEqual(result["missing_interactions"], ["multi_turn"])
         self.assertEqual(result["missing_audiences"], ["clinician"])
-        self.assertEqual(result["split_counts"], {"development": 30, "calibration": 0, "hidden_gold": 0})
+        self.assertEqual(result["split_counts"], {"development": 32, "calibration": 0, "hidden_gold": 0})
         self.assertIn("temporal_reassessment", result["by_reasoning_operation"])
         self.assertIn("longitudinal_values_without_provenance", result["by_complexity_tag"])
 

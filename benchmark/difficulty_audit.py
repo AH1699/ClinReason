@@ -178,3 +178,70 @@ def audit_multiturn_difficulty(
             "Language score gaps may reflect judge bias, translation differences, or candidate behavior.",
         ],
     }
+
+
+def compare_multiturn_judge_passes(
+    dataset: dict[str, Any], answers: list[dict[str, Any]],
+    candidate_manifest: dict[str, Any],
+    first_judgments: list[dict[str, Any]], first_manifest: dict[str, Any],
+    second_judgments: list[dict[str, Any]], second_manifest: dict[str, Any],
+    rubric: dict[str, Any],
+) -> dict[str, Any]:
+    """Compare two independent judge calls on identical candidate responses."""
+    if any(not isinstance(manifest.get("generated_at"), str) or not manifest["generated_at"].strip()
+           for manifest in (first_manifest, second_manifest)):
+        raise ValueError("Judge passes need recorded generation timestamps")
+    if first_manifest["generated_at"] == second_manifest["generated_at"]:
+        raise ValueError("Judge passes need distinct generation timestamps")
+    identity = ("provider", "requested_model", "returned_model", "judge_instruction_sha256", "rubric_sha256")
+    if any(first_manifest.get(key) != second_manifest.get(key) for key in identity):
+        raise ValueError("Judge passes use different model, instruction, or rubric configurations")
+    if not first_manifest.get("judge_instruction_sha256"):
+        raise ValueError("Judge passes need a recorded instruction hash")
+    first = audit_multiturn_difficulty(
+        dataset, answers, first_judgments, candidate_manifest, first_manifest, rubric
+    )
+    second = audit_multiturn_difficulty(
+        dataset, answers, second_judgments, candidate_manifest, second_manifest, rubric
+    )
+    first_cases = {case["case_id"]: case for case in first["cases"]}
+    second_cases = {case["case_id"]: case for case in second["cases"]}
+    if first_cases.keys() != second_cases.keys():
+        raise ValueError("Judge passes have different case sets")
+    changes = []
+    for case_id in sorted(first_cases):
+        old, new = first_cases[case_id], second_cases[case_id]
+        changes.append({
+            "case_id": case_id, "family_id": old["family_id"], "language": old["language"],
+            "first_score": old["gated_score"], "second_score": new["gated_score"],
+            "absolute_score_delta": round(abs(old["gated_score"] - new["gated_score"]), 2),
+            "initial_changed": old["stage_scores"]["initial"] != new["stage_scores"]["initial"],
+            "update_changed": old["stage_scores"]["update"] != new["stage_scores"]["update"],
+            "revision_changed": old["revision_score"] != new["revision_score"],
+            "critical_error_ids_changed": set(old["critical_error_ids"]) != set(new["critical_error_ids"]),
+            "hard_fail_changed": old["hard_fail"] != new["hard_fail"],
+            "review_request_changed": old["judge_requested_review"] != new["judge_requested_review"],
+        })
+    deltas = [row["absolute_score_delta"] for row in changes]
+    return {
+        "status": "provisional_judge_repeatability_diagnostic_not_human_calibration",
+        "unit_of_analysis": "same_candidate_response_judged_twice",
+        "family_count": first["family_count"], "conversation_count": len(changes),
+        "candidate": first["candidate"], "judge": first["judge"],
+        "first_generated_at": first_manifest["generated_at"],
+        "second_generated_at": second_manifest["generated_at"],
+        "absolute_score_delta_distribution": _summary(deltas),
+        "changed_gated_score_count": sum(row["absolute_score_delta"] > 0 for row in changes),
+        "changed_initial_count": sum(row["initial_changed"] for row in changes),
+        "changed_update_count": sum(row["update_changed"] for row in changes),
+        "changed_revision_count": sum(row["revision_changed"] for row in changes),
+        "critical_error_label_flip_count": sum(row["critical_error_ids_changed"] for row in changes),
+        "hard_fail_flip_count": sum(row["hard_fail_changed"] for row in changes),
+        "review_request_flip_count": sum(row["review_request_changed"] for row in changes),
+        "cases": changes,
+        "limitations": [
+            "Two passes on one candidate answer per case do not measure candidate nondeterminism.",
+            "Agreement between uncalibrated AI passes does not establish clinical validity.",
+            "Provider-default sampling and mutable aliases limit exact replay.",
+        ],
+    }

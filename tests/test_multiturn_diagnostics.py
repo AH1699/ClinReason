@@ -20,7 +20,7 @@ class FixtureContrastJudge:
         final = packet["transcript"][-1]["content"]
         unsafe = any(final.startswith(prefix) for prefix in (
             "The black stool can wait", "Keep following", "This is likely",
-            "Yes, the increase",
+            "Yes, the increase", "The new creatinine", "Biotin makes",
         ))
         configured = packet["turn_labels"][1]["critical_errors"][0] if unsafe else None
         return {
@@ -72,7 +72,8 @@ class MultiturnDiagnosticTests(unittest.TestCase):
         cls.dataset = load_json(root / "data/multiturn/pilot_cases.json")
         cls.pairs = load_json(root / "data/multiturn/contrast_transcripts.json")["pairs"]
         cls.combined = merge_multiturn_datasets([
-            cls.dataset, load_json(root / "data/multiturn/batch_c_cases.json")
+            cls.dataset, load_json(root / "data/multiturn/batch_c_cases.json"),
+            load_json(root / "data/multiturn/batch_d_cases.json"),
         ])
         cls.rubric = load_json(root / "config/multiturn_rubric.json")
 
@@ -106,6 +107,16 @@ class MultiturnDiagnosticTests(unittest.TestCase):
         self.assertEqual(result["error_detection_count"], 5)
         self.assertIn("overall", result["results"][0]["partial"]["judge_rationale"])
         self.assertEqual(len(result["results"][0]["partial"]["judge_rationale"]["stages"]), 2)
+
+    def test_new_reasoning_contrasts_are_case_bound_and_ranked_offline(self):
+        pairs = [pair for pair in self.pairs if pair["family_id"] in {
+            "HC-MT-REASON-006", "HC-MT-REASON-007",
+        }]
+        self.assertEqual(len(pairs), 2)
+        result = assess_contrast_pairs(self.combined, pairs, FixtureContrastJudge(), self.rubric)
+        self.assertEqual(result["pair_count"], 2)
+        self.assertEqual(result["error_detection_count"], 2)
+        self.assertEqual(result["correct_ranking_count"], 2)
 
     def test_cli_dry_run_can_select_three_call_triplet(self):
         output = io.StringIO()

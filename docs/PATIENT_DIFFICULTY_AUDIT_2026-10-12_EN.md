@@ -58,3 +58,18 @@ Each of the three categories had four 100-point conversations. A spot check of t
 One candidate and one uncalibrated judge can identify suspicious ceilings and cases for inspection but cannot measure cross-model discrimination, repeatability, or clinical correctness. The next difficulty round needs at least another independent candidate capability level (or imported model outputs), repeated runs on selected cases, blinded judge calibration against qualified clinical and bilingual ratings, and an explicit development/held-out split. Analyze family-level scores and language gaps rather than inflating sample size with translations. Failure-driven case revision should target distinct reasoning traps, not merely longer prompts. The clinician-facing professional construct remains a separate track.
 
 The task-specific, controlled-contrast, and human-calibration design follows [official OpenAI evaluation guidance](https://developers.openai.com/api/docs/guides/evaluation-best-practices). It does not imply that OpenAI validated these cases or this judge.
+
+## Same-answer judge repeatability addendum
+
+The identical 12 stored candidate answers were rejudged with Gemini 3.8 Flash using the same instruction and rubric. `compare-multiturn-judges` verifies distinct run timestamps, matching model/instruction/rubric identities, both manifests, complete paired languages, content hashes, and score recomputation. It found **0/12 changed gated scores**, **0/12 changed initial/update/revision scores**, and no critical-error, hard-fail, or judge-review flips. The comparison artifact remains ignored in `work/`. This result does not measure candidate nondeterminism, detect a consistently wrong judge, or establish that the rubric is clinically valid. Batch D and its unresolved contrasts are documented [separately](MULTITURN_BATCH_D_2026-10-12_EN.md).
+
+Because batch D was configured after these answers were generated, replay the historical audit with both original batch files explicitly selected. The old candidate manifest is intentionally bound to the old merged-dataset hash; using the current three-batch config without this override must fail.
+
+```bash
+python3 -m benchmark.cli compare-multiturn-judges \
+  --cases-path data/multiturn/pilot_cases.json \
+  --cases-path data/multiturn/batch_c_cases.json \
+  --answers work/difficulty_audit_2026-10-12_grok_answers.jsonl \
+  --first work/difficulty_audit_2026-10-12_gemini_judgments.jsonl \
+  --second work/difficulty_audit_2026-10-12_gemini_repeat.jsonl
+```
