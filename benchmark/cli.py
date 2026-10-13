@@ -9,6 +9,7 @@ from .config import load_json, load_jsonl, resolve_path
 from .coverage import audit_coverage
 from .judge_diagnostics import assess_contrasts
 from .dataset_status import summarize_dataset
+from .difficulty_audit import audit_multiturn_difficulty
 from .db import connect
 from .live_judging import gemini_judge_status, judge_imported_grok
 from .local_settings import read_setting
@@ -115,6 +116,7 @@ def build_parser() -> argparse.ArgumentParser:
     mt_grok.add_argument("--env-file", default=".env.local")
     mt_grok.add_argument("--limit", type=int, default=1, help="Variants, two calls each")
     mt_grok.add_argument("--case-id", help="Run one exact bilingual variant, such as HC-MT-MEDSAFE-001-ZH-HANS")
+    mt_grok.add_argument("--family-ids", help="Comma-separated exact family IDs; --limit must equal two variants per family")
     mt_grok.add_argument("--output", default="work/multiturn_grok_answers.jsonl")
     mt_grok.add_argument("--live", action="store_true")
     mt_packet = sub.add_parser(
@@ -140,6 +142,12 @@ def build_parser() -> argparse.ArgumentParser:
     mt_contrast.add_argument("--family-id", help="Run one exact family, such as HC-MT-REASON-004")
     mt_contrast.add_argument("--output", default="work/multiturn_judge_contrasts.json")
     mt_contrast.add_argument("--live", action="store_true")
+    mt_audit = sub.add_parser(
+        "difficulty-audit-multiturn", help="Describe a paired draft candidate/judge run without clinical claims"
+    )
+    mt_audit.add_argument("--answers", required=True, help="Candidate JSONL from generate-grok-multiturn")
+    mt_audit.add_argument("--judgments", required=True, help="Judgment JSONL from judge-multiturn-gemini")
+    mt_audit.add_argument("--output", help="Optional new JSON report path; never overwrites")
     contrast = sub.add_parser(
         "judge-contrast-gemini", help="Check a Gemini judge on synthetic good/unsafe pairs (dry-run unless --live)"
     )
@@ -426,7 +434,7 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0
 
-    if args.command in {"validate-multiturn", "generate-grok-multiturn", "export-multiturn-judge-packets", "judge-multiturn-gemini", "judge-multiturn-contrast"}:
+    if args.command in {"validate-multiturn", "generate-grok-multiturn", "export-multiturn-judge-packets", "judge-multiturn-gemini", "judge-multiturn-contrast", "difficulty-audit-multiturn"}:
         try:
             batch_paths = config.get("multiturn_cases_paths")
             if batch_paths is None:
@@ -441,6 +449,27 @@ def main(argv: list[str] | None = None) -> int:
             status = validate_multiturn_dataset(dataset)
             if args.command == "validate-multiturn":
                 print(json.dumps(status, ensure_ascii=False, indent=2))
+                return 0
+            if args.command == "difficulty-audit-multiturn":
+                answers_path = resolve_path(args.config, args.answers)
+                judgments_path = resolve_path(args.config, args.judgments)
+                mt_rubric = load_json(resolve_path(
+                    args.config, config.get("multiturn_rubric_path", "config/multiturn_rubric.json")
+                ))
+                report = audit_multiturn_difficulty(
+                    dataset, load_jsonl(answers_path), load_jsonl(judgments_path),
+                    load_json(answers_path.with_suffix(".manifest.json")),
+                    load_json(judgments_path.with_suffix(".manifest.json")), mt_rubric,
+                )
+                if args.output:
+                    target = resolve_path(args.config, args.output)
+                    if target.exists():
+                        raise FileExistsError(f"Refusing to overwrite difficulty report: {target}")
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    with target.open("x", encoding="utf-8") as handle:
+                        json.dump(report, handle, ensure_ascii=False, indent=2)
+                        handle.write("\n")
+                print(json.dumps(report, ensure_ascii=False, indent=2))
                 return 0
             if args.command == "export-multiturn-judge-packets":
                 answers = load_jsonl(resolve_path(args.config, args.answers))
@@ -566,6 +595,18 @@ def main(argv: list[str] | None = None) -> int:
                 print(json.dumps({"output": str(target), **result}, ensure_ascii=False, indent=2))
                 return 0
             selected = ordered_variants(dataset)
+            if args.family_ids:
+                if args.case_id:
+                    raise ValueError("--family-ids and --case-id cannot be combined")
+                requested = [item.strip() for item in args.family_ids.split(",")]
+                known = {family["family_id"] for family in dataset["families"]}
+                if (not requested or any(not item or item not in known for item in requested)
+                    or len(requested) != len(set(requested))):
+                    raise ValueError("--family-ids must list distinct configured family IDs")
+                selected = [(family, language) for family, language in selected
+                            if family["family_id"] in requested]
+                if args.limit != len(selected):
+                    raise ValueError(f"--family-ids selects {len(selected)} variants; set --limit {len(selected)}")
             if args.case_id:
                 if args.limit != 1:
                     raise ValueError("--case-id requires the default --limit 1")
