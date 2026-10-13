@@ -15,6 +15,7 @@ from benchmark.multiturn import (
     write_batch,
 )
 from benchmark.providers.grok_conversation import GrokConversationProvider
+from benchmark.providers.gemini_conversation import GeminiConversationProvider
 
 
 class InspectingConversationCandidate:
@@ -149,6 +150,29 @@ class MultiturnTests(unittest.TestCase):
                          ["system", "user", "assistant", "user"])
         self.assertEqual(response["model_version"], "grok-test")
 
+    def test_gemini_adapter_resends_only_visible_history_with_store_false(self):
+        payloads = []
+
+        def transport(_endpoint, payload, **kwargs):
+            payloads.append(payload)
+            self.assertEqual(kwargs["auth_header"], "x-goog-api-key")
+            self.assertFalse(payload["store"])
+            self.assertNotIn("critical_requirements", json.dumps(payload))
+            return ({"status": "completed", "model": "gemini-test", "steps": [
+                {"type": "model_output", "content": [{"type": "text", "text": "Synthetic answer"}]}
+            ]}, 4)
+
+        provider = GeminiConversationProvider(
+            model="gemini-test", api_key="fixture-key", instruction="Answer the chat.",
+            transport=transport,
+        )
+        response = play_variant(self.dataset["families"][0], "en", provider)
+        self.assertEqual(len(payloads), 2)
+        self.assertEqual(payloads[0]["input"].count("<user"), 1)
+        self.assertEqual(payloads[1]["input"].count("<user"), 2)
+        self.assertEqual(payloads[1]["input"].count("<assistant"), 1)
+        self.assertEqual(response["model_version"], "gemini-test")
+
     def test_batch_outputs_are_content_bound_and_never_overwritten(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "answers.jsonl"
@@ -206,6 +230,12 @@ class MultiturnTests(unittest.TestCase):
                            "--case-id", "HC-MT-MEDSAFE-001-ZH-HANS"])
         self.assertEqual(status, 0)
         self.assertEqual(json.loads(output.getvalue())["planned_variants"], 1)
+        output = io.StringIO()
+        with redirect_stdout(output):
+            status = main(["generate-gemini-multiturn", "--model", "gemini-test", "--limit", "4",
+                           "--family-ids", "HC-MT-TRIAGE-003,HC-MT-REASON-004"])
+        self.assertEqual(status, 0)
+        self.assertEqual(json.loads(output.getvalue())["planned_api_calls"], 8)
 
 
 if __name__ == "__main__":

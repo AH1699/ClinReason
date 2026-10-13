@@ -9,7 +9,10 @@ from .config import load_json, load_jsonl, resolve_path
 from .coverage import audit_coverage
 from .judge_diagnostics import assess_contrasts
 from .dataset_status import summarize_dataset
-from .difficulty_audit import audit_multiturn_difficulty, compare_multiturn_judge_passes
+from .difficulty_audit import (
+    audit_multiturn_difficulty, compare_multiturn_candidate_reports,
+    compare_multiturn_judge_passes,
+)
 from .db import connect
 from .live_judging import gemini_judge_status, judge_imported_grok
 from .local_settings import read_setting
@@ -33,7 +36,12 @@ from .providers.mock import MockCandidateProvider, MockJudgeProvider
 from .providers.gemini import GeminiRunError, candidate_rows, local_api_key, run_gemini
 from .providers.grok import candidate_rows as grok_candidate_rows, run_grok
 from .providers.grok_conversation import GrokConversationProvider
+from .providers.gemini_conversation import GeminiConversationProvider
 from .providers.gemini_judge import GeminiJudgeProvider
+from .professional import (
+    export_professional_prompts, professional_candidate_rows,
+    validate_professional_dataset, validate_professional_rubric,
+)
 from .providers.http_json import ProviderRequestError
 from .review_packets import export_review_packets
 from .reviews import (
@@ -109,6 +117,9 @@ def build_parser() -> argparse.ArgumentParser:
     report.add_argument("run_id")
     sub.add_parser("coverage-audit", help="Audit family-level coverage and development/holdout status")
     sub.add_parser("validate-multiturn", help="Validate the separate two-turn draft pilot")
+    sub.add_parser("validate-professional", help="Validate the separate clinician-facing development pilot")
+    pro_export = sub.add_parser("export-professional-prompts", help="Export only clinician-facing candidate-visible prompts")
+    pro_export.add_argument("--output", default="work/professional_candidate_prompts.jsonl")
     mt_grok = sub.add_parser(
         "generate-grok-multiturn", help="Run scripted two-turn Grok pilot (dry-run unless --live)"
     )
@@ -119,6 +130,16 @@ def build_parser() -> argparse.ArgumentParser:
     mt_grok.add_argument("--family-ids", help="Comma-separated exact family IDs; --limit must equal two variants per family")
     mt_grok.add_argument("--output", default="work/multiturn_grok_answers.jsonl")
     mt_grok.add_argument("--live", action="store_true")
+    mt_gemini = sub.add_parser(
+        "generate-gemini-multiturn", help="Run scripted two-turn Gemini candidate pilot (dry-run unless --live)"
+    )
+    mt_gemini.add_argument("--model", required=True, help="Exact Gemini candidate model ID")
+    mt_gemini.add_argument("--env-file", default=".env.local")
+    mt_gemini.add_argument("--limit", type=int, default=1, help="Variants, two calls each")
+    mt_gemini.add_argument("--case-id")
+    mt_gemini.add_argument("--family-ids", help="Comma-separated exact family IDs; --limit must equal two variants per family")
+    mt_gemini.add_argument("--output", default="work/multiturn_gemini_candidate_answers.jsonl")
+    mt_gemini.add_argument("--live", action="store_true")
     mt_packet = sub.add_parser(
         "export-multiturn-judge-packets", help="Create draft per-turn judge packets from a completed conversation file"
     )
@@ -159,6 +180,12 @@ def build_parser() -> argparse.ArgumentParser:
     mt_repeat.add_argument("--output", help="Optional new JSON report path; never overwrites")
     mt_repeat.add_argument("--cases-path", action="append", dest="cases_paths",
                            help="Repeat to select exact historical batch files instead of the current configured set")
+    mt_candidates = sub.add_parser(
+        "compare-multiturn-candidates", help="Compare two independently audited fixed-sample candidate runs"
+    )
+    mt_candidates.add_argument("--first-report", required=True)
+    mt_candidates.add_argument("--second-report", required=True)
+    mt_candidates.add_argument("--output", help="Optional new JSON report path; never overwrites")
     contrast = sub.add_parser(
         "judge-contrast-gemini", help="Check a Gemini judge on synthetic good/unsafe pairs (dry-run unless --live)"
     )
@@ -252,6 +279,51 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     config, db_path, cases_path, rubric = _context(args.config)
+    if args.command == "compare-multiturn-candidates":
+        try:
+            report = compare_multiturn_candidate_reports(
+                load_json(resolve_path(args.config, args.first_report)),
+                load_json(resolve_path(args.config, args.second_report)),
+            )
+            if args.output:
+                target = resolve_path(args.config, args.output)
+                if target.exists():
+                    raise FileExistsError(f"Refusing to overwrite candidate comparison: {target}")
+                target.parent.mkdir(parents=True, exist_ok=True)
+                with target.open("x", encoding="utf-8") as handle:
+                    json.dump(report, handle, ensure_ascii=False, indent=2)
+                    handle.write("\n")
+        except (ValueError, KeyError, FileExistsError, OSError) as exc:
+            print(f"Cannot compare candidate runs: {exc}")
+            return 2
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+        return 0
+    if args.command in {"validate-professional", "export-professional-prompts"}:
+        try:
+            professional = load_json(resolve_path(
+                args.config, config.get("professional_cases_path", "data/professional/pilot_cases.json")
+            ))
+            status = validate_professional_dataset(professional)
+            validate_professional_rubric(load_json(resolve_path(
+                args.config, config.get("professional_rubric_path", "config/professional_rubric.json")
+            )))
+            if args.command == "validate-professional":
+                print(json.dumps(status, ensure_ascii=False, indent=2))
+                return 0
+            instruction = resolve_path(
+                args.config, config.get("professional_candidate_prompt_path", "config/professional_candidate_prompt.txt")
+            ).read_text(encoding="utf-8").strip()
+            rows = professional_candidate_rows(
+                professional, instruction=instruction, prompt_template_version="professional-candidate-0.1.0"
+            )
+            target = resolve_path(args.config, args.output)
+            count = export_professional_prompts(rows, target)
+        except (ValueError, KeyError, FileExistsError, OSError) as exc:
+            print(f"Cannot process professional pilot: {exc}")
+            return 2
+        print(json.dumps({"status": "draft_prompts_not_clinical_scores", "output": str(target),
+                          "case_count": count, "track": status["track"]}, ensure_ascii=False, indent=2))
+        return 0
 
     if args.command == "init":
         count = bootstrap(db_path, cases_path)
@@ -445,7 +517,7 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0
 
-    if args.command in {"validate-multiturn", "generate-grok-multiturn", "export-multiturn-judge-packets", "judge-multiturn-gemini", "judge-multiturn-contrast", "difficulty-audit-multiturn", "compare-multiturn-judges"}:
+    if args.command in {"validate-multiturn", "generate-grok-multiturn", "generate-gemini-multiturn", "export-multiturn-judge-packets", "judge-multiturn-gemini", "judge-multiturn-contrast", "difficulty-audit-multiturn", "compare-multiturn-judges"}:
         try:
             batch_paths = config.get("multiturn_cases_paths")
             if getattr(args, "cases_paths", None):
@@ -660,7 +732,8 @@ def main(argv: list[str] | None = None) -> int:
             if target.exists() or target.with_suffix(".manifest.json").exists():
                 raise FileExistsError(f"Refusing to overwrite answer or manifest: {target}")
             env_path = resolve_path(args.config, args.env_file)
-            model = args.model or read_setting(env_path, "GROK_MODEL")
+            is_gemini_candidate = args.command == "generate-gemini-multiturn"
+            model = args.model if is_gemini_candidate else args.model or read_setting(env_path, "GROK_MODEL")
             if not args.live:
                 print(json.dumps({"status": "dry_run_no_api_calls", "model": model,
                                   "planned_variants": args.limit, "planned_api_calls": args.limit * 2,
@@ -669,10 +742,16 @@ def main(argv: list[str] | None = None) -> int:
             instruction = resolve_path(
                 args.config, config.get("candidate_prompt_path", "config/candidate_prompt.txt")
             ).read_text(encoding="utf-8").strip()
-            candidate = GrokConversationProvider(
-                model=model, api_key=read_setting(env_path, "GROK_API_KEY", secret=True),
-                instruction=instruction,
-            )
+            if is_gemini_candidate:
+                candidate = GeminiConversationProvider(
+                    model=model, api_key=read_setting(env_path, "GEMINI_API_KEY", secret=True),
+                    instruction=instruction,
+                )
+            else:
+                candidate = GrokConversationProvider(
+                    model=model, api_key=read_setting(env_path, "GROK_API_KEY", secret=True),
+                    instruction=instruction,
+                )
             result = write_batch(
                 dataset, selected[:args.limit], candidate, target, instruction=instruction,
                 provenance=candidate_provenance(config, rubric, Path(__file__).resolve().parents[1]),

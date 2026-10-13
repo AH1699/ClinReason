@@ -8,7 +8,10 @@ from pathlib import Path
 
 from benchmark.cli import main
 from benchmark.config import load_json
-from benchmark.difficulty_audit import audit_multiturn_difficulty, compare_multiturn_judge_passes
+from benchmark.difficulty_audit import (
+    audit_multiturn_difficulty, compare_multiturn_candidate_reports,
+    compare_multiturn_judge_passes,
+)
 from benchmark.multiturn import build_judge_packet, merge_multiturn_datasets, play_variant
 from benchmark.multiturn_judging import score_judgment
 from benchmark.provenance import sha256_json
@@ -58,6 +61,7 @@ class DifficultyAuditTests(unittest.TestCase):
             "status": "draft_multiturn_candidate_run_no_clinical_score",
             "case_count": len(answers), "dataset_sha256": sha256_json(self.dataset),
             "provider": "fixture", "requested_model": "fixture-candidate", "returned_model": "1",
+            "candidate_instruction_sha256": "c" * 64,
             "case_revisions": [
                 {"case_id": answer["case_id"], "case_content_hash": answer["case_content_hash"]}
                 for answer in answers
@@ -152,6 +156,35 @@ class DifficultyAuditTests(unittest.TestCase):
                 first, first_manifest, second,
                 {**second_manifest, "judge_instruction_sha256": "b" * 64}, self.rubric,
             )
+
+    def test_candidate_comparison_requires_matching_case_and_judge(self):
+        first = audit_multiturn_difficulty(self.dataset, *self.fixtures(), self.rubric)
+        second = deepcopy(first)
+        second["candidate"]["requested_model"] = "other-candidate"
+        second["cases"][0]["gated_score"] = 75
+        report = compare_multiturn_candidate_reports(first, second)
+        self.assertEqual(report["nonzero_score_delta_count"], 1)
+        self.assertEqual(report["second_perfect_100_count"], 0)
+        second["cases"][0]["case_content_hash"] = "0" * 64
+        with self.assertRaisesRegex(ValueError, "Case revision"):
+            compare_multiturn_candidate_reports(first, second)
+        second = deepcopy(first)
+        second["candidate"]["requested_model"] = "other-candidate"
+        second["judge_instruction_sha256"] = "b" * 64
+        with self.assertRaisesRegex(ValueError, "same rubric, judge, and instructions"):
+            compare_multiturn_candidate_reports(first, second)
+        with tempfile.TemporaryDirectory() as directory:
+            first_path = Path(directory) / "first.json"
+            second_path = Path(directory) / "second.json"
+            second["judge_instruction_sha256"] = first["judge_instruction_sha256"]
+            first_path.write_text(json.dumps(first), encoding="utf-8")
+            second_path.write_text(json.dumps(second), encoding="utf-8")
+            output = io.StringIO()
+            with redirect_stdout(output):
+                status = main(["compare-multiturn-candidates", "--first-report", str(first_path),
+                               "--second-report", str(second_path)])
+            self.assertEqual(status, 0)
+            self.assertEqual(json.loads(output.getvalue())["conversation_count"], 2)
 
     def test_cli_can_reopen_historical_batches_after_configured_expansion(self):
         answers, first, candidate_manifest, first_manifest = self.fixtures()

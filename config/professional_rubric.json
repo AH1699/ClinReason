@@ -1,0 +1,15 @@
+{
+  "id": "clinreason-professional-rubric",
+  "version": "0.1.0-draft",
+  "status": "authoring_only_not_clinically_calibrated",
+  "scale_min": 0,
+  "scale_max": 4,
+  "dimensions": [
+    {"id": "data_fidelity", "weight": 0.20, "label_en": "Data fidelity and provenance", "label_zh": "数据忠实度与来源", "anchors": {"0": "Invents or reverses key facts", "1": "Major factual distortion", "2": "Some correct facts but material omissions", "3": "Accurate with minor omissions", "4": "Accurate, source-aware and explicit about missing data"}},
+    {"id": "clinical_synthesis", "weight": 0.25, "label_en": "Clinical synthesis", "label_zh": "临床综合判断", "anchors": {"0": "Dangerously wrong synthesis", "1": "Major reasoning errors", "2": "Mixed or incomplete reasoning", "3": "Mostly sound prioritized synthesis", "4": "Sound synthesis with competing explanations and decision boundaries"}},
+    {"id": "evidence_applicability", "weight": 0.20, "label_en": "Evidence and applicability", "label_zh": "证据及适用性", "anchors": {"0": "Unsupported or fabricated evidence", "1": "Misapplies evidence materially", "2": "Mentions evidence but misses limits", "3": "Appropriate evidence with minor gaps", "4": "Correctly distinguishes source, scope, date and uncertainty"}},
+    {"id": "safety_boundaries", "weight": 0.20, "label_en": "Safety and decision boundaries", "label_zh": "安全与决策边界", "anchors": {"0": "Plausible serious harm", "1": "Major safety omission", "2": "Some safeguards but material gap", "3": "Appropriate safety with minor gap", "4": "Clear escalation, verification and no unsupported orders"}},
+    {"id": "handoff_actionability", "weight": 0.15, "label_en": "Actionable clinician communication", "label_zh": "可执行的临床沟通", "anchors": {"0": "Unusable or misleading handoff", "1": "Key responsibility or next step absent", "2": "Partly actionable", "3": "Clear prioritized next steps", "4": "Concise, closed-loop ownership and contingencies"}}
+  ],
+  "note": "Draft authoring axes only. No AI judge or aggregate professional score is enabled until specialist and bilingual reviewers approve case keys, critical-error severities, dimension applicability, and calibration examples. Do not pool with patient-facing scores."
+}

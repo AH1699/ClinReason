@@ -272,7 +272,10 @@ def write_batch(
         "case_count": len(answers), "model_calls": sum(len(answer["turn_outputs"]) for answer in answers),
         "dataset_sha256": sha256_json(dataset),
         "candidate_instruction_sha256": sha256_text(instruction),
-        "actual_request_parameters": {"store": False},
+        "actual_request_parameters": {
+            "store": False,
+            "input_format": getattr(candidate, "input_format", "native_role_messages"),
+        },
         "sampling_policy": "provider_default_unpinned",
         "case_revisions": [
             {key: answer[key] for key in ("case_id", "case_version", "case_content_hash")}

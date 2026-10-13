@@ -18,6 +18,64 @@ def _summary(values: list[float]) -> dict[str, float]:
     }
 
 
+def compare_multiturn_candidate_reports(
+    first: dict[str, Any], second: dict[str, Any],
+) -> dict[str, Any]:
+    """Compare two separately integrity-audited, paired development runs."""
+    if not isinstance(first, dict) or not isinstance(second, dict):
+        raise ValueError("Candidate audit reports must be JSON objects")
+    expected_status = "provisional_patient_facing_difficulty_diagnostic_not_clinical_validation"
+    if first.get("status") != expected_status or second.get("status") != expected_status:
+        raise ValueError("Both inputs must be audited draft difficulty reports")
+    if (first.get("rubric_sha256") != second.get("rubric_sha256")
+        or first.get("judge") != second.get("judge")
+        or not first.get("judge_instruction_sha256")
+        or first.get("judge_instruction_sha256") != second.get("judge_instruction_sha256")
+        or not first.get("candidate_instruction_sha256")
+        or first.get("candidate_instruction_sha256") != second.get("candidate_instruction_sha256")):
+        raise ValueError("Candidate comparison requires the same rubric, judge, and instructions")
+    if first.get("candidate") == second.get("candidate"):
+        raise ValueError("Candidate comparison requires distinct model identities")
+    left = _unique_by_case(first.get("cases"), "First audit cases")
+    right = _unique_by_case(second.get("cases"), "Second audit cases")
+    if set(left) != set(right) or not left:
+        raise ValueError("Candidate audits must cover the same cases")
+    cases = []
+    for case_id in sorted(left):
+        a, b = left[case_id], right[case_id]
+        if a.get("case_content_hash") != b.get("case_content_hash") or a.get("language") != b.get("language"):
+            raise ValueError(f"Case revision or language mismatch: {case_id}")
+        cases.append({
+            "case_id": case_id, "family_id": a["family_id"], "language": a["language"],
+            "first_score": a["gated_score"], "second_score": b["gated_score"],
+            "second_minus_first": round(b["gated_score"] - a["gated_score"], 2),
+            "first_critical_error_ids": a["critical_error_ids"],
+            "second_critical_error_ids": b["critical_error_ids"],
+        })
+    families = {case["family_id"] for case in cases}
+    if first.get("family_count") != len(families) or second.get("family_count") != len(families) or len(cases) != 2 * len(families):
+        raise ValueError("Candidate audits must contain complete bilingual families")
+    return {
+        "status": "provisional_cross_candidate_diagnostic_not_model_ranking",
+        "rubric_sha256": first["rubric_sha256"], "judge": first["judge"],
+        "judge_instruction_sha256": first["judge_instruction_sha256"],
+        "candidate_instruction_sha256": first["candidate_instruction_sha256"],
+        "first_candidate": first["candidate"], "second_candidate": second["candidate"],
+        "first_dataset_sha256": first["dataset_sha256"],
+        "second_dataset_sha256": second["dataset_sha256"],
+        "family_count": len(families), "conversation_count": len(cases),
+        "first_perfect_100_count": sum(case["first_score"] == 100 for case in cases),
+        "second_perfect_100_count": sum(case["second_score"] == 100 for case in cases),
+        "nonzero_score_delta_count": sum(case["second_minus_first"] != 0 for case in cases),
+        "cases": cases,
+        "limitations": [
+            "Synthetic unreviewed bilingual cases and a single uncalibrated AI judge; no clinical validity or model ranking.",
+            "One run per candidate, no uncertainty estimate; provider and prompt serialization differ.",
+            "The Gemini candidate shares a vendor with the Gemini judge, so judge preference is possible.",
+        ],
+    }
+
+
 def _unique_by_case(rows: list[dict[str, Any]], name: str) -> dict[str, dict[str, Any]]:
     if not rows or any(not isinstance(row, dict) or not isinstance(row.get("case_id"), str) for row in rows):
         raise ValueError(f"{name} must contain case-ID objects")
@@ -124,6 +182,8 @@ def audit_multiturn_difficulty(
         "status": "provisional_patient_facing_difficulty_diagnostic_not_clinical_validation",
         "unit_of_analysis": "family_with_paired_english_and_chinese_variants",
         "dataset_sha256": sha256_json(dataset), "rubric_sha256": sha256_json(rubric),
+        "candidate_instruction_sha256": candidate_manifest.get("candidate_instruction_sha256"),
+        "judge_instruction_sha256": judge_manifest.get("judge_instruction_sha256"),
         "candidate": {
             "provider": candidate_manifest["provider"],
             "requested_model": candidate_manifest["requested_model"],
