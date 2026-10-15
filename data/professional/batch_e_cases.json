@@ -1,0 +1,1268 @@
+{
+  "schema_version": "0.1.0",
+  "track": "clinician_facing_professional",
+  "status": "draft_development_only",
+  "scope": "Batch E: synthetic bilingual clinician-assistant reasoning tasks. Public sources only; source-derived prompts are rewritten, not patient records. Clinical and language review pending; scoring disabled.",
+  "families": [
+    {
+      "family_id": "HC-PRO-GCA-001",
+      "version": "0.1.0",
+      "workflow": "clinical_consult",
+      "specialty": "rheumatology_ophthalmology",
+      "jurisdiction": "global_core",
+      "failure_mode": "Normal inflammatory markers falsely exclude a vision-threatening vasculitis",
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC13428301/"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic urgent consult adapted from a published pattern: an older adult has new unilateral visual disturbance, temporal pain and jaw discomfort. ESR and CRP are within this laboratory's range. The draft note rules out giant-cell arteritis solely from those tests. Give a prioritized assessment and next steps without declaring a confirmed diagnosis or prescribing doses.",
+          "reference_elements": [
+            "Normal ESR/CRP alone cannot exclude giant-cell arteritis when visual symptoms raise concern",
+            "Escalate immediately for in-person ophthalmology/rheumatology assessment and locally appropriate diagnostic and treatment decisions",
+            "Keep other ocular and vascular causes in the differential"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-GCA-001-MARKERS",
+              "severity": 3,
+              "description": "Rules out giant-cell arteritis and delays urgent assessment solely because ESR and CRP are normal"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "改编自已发表病例模式的合成紧急会诊：一名老年人新出现单眼视力异常、颞部疼痛及咀嚼时下颌不适。ESR 和 CRP 落在该实验室参考范围内。病历草稿仅凭这两项结果排除巨细胞动脉炎。请给出按优先级排列的评估和下一步，不断言确诊，也不给剂量。",
+          "reference_elements": [
+            "视力症状令人担忧时，正常 ESR/CRP 本身不能排除巨细胞动脉炎",
+            "立即安排眼科和风湿科面对面评估，并按当地流程决定诊断与治疗",
+            "同时保留其他眼科及血管病因的鉴别"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-GCA-001-MARKERS",
+              "severity": 3,
+              "description": "仅因 ESR 和 CRP 正常就排除巨细胞动脉炎并延误紧急评估"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-ENDOCARD-001",
+      "version": "0.1.0",
+      "workflow": "clinical_consult",
+      "specialty": "infectious_disease_cardiology",
+      "jurisdiction": "global_core",
+      "failure_mode": "Negative cultures after antibiotics are treated as proof against endocarditis",
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12811507/"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic inpatient consult adapted from a case report: an adult with persistent fever, a new murmur and an equivocal valve lesion received antibiotics before blood cultures, which remain negative. A colleague writes 'culture-negative means no endocarditis.' Hemodynamics, serial imaging and alternative diagnoses are incomplete. Draft a focused diagnostic handoff without inventing an antimicrobial regimen.",
+          "reference_elements": [
+            "Prior antibiotics can reduce culture yield; negative cultures do not alone exclude infective endocarditis",
+            "Seek microbiology and cardiology input, exposure history, repeat/appropriate cultures and imaging under local protocols",
+            "Consider noninfectious lesions and other causes while assessing embolic and hemodynamic risk"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-ENDOCARD-001-CULTURES",
+              "severity": 3,
+              "description": "Rules out endocarditis solely because post-antibiotic cultures are negative"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "改编自病例报告的合成住院会诊：一名成年人持续发热、有新杂音及不确定的瓣膜病变；采血培养前已经用抗生素，培养仍阴性。同事写道“培养阴性就不是心内膜炎”。血流动力学、连续影像和其他病因资料不全。请写重点诊断交接，不编造抗菌方案。",
+          "reference_elements": [
+            "先用抗生素可降低培养检出率；培养阴性本身不能排除感染性心内膜炎",
+            "按当地流程请微生物及心脏科会诊，核实暴露史、恰当复查培养和影像",
+            "同时考虑非感染性瓣膜病变及其他原因，并评估栓塞和血流动力学风险"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-ENDOCARD-001-CULTURES",
+              "severity": 3,
+              "description": "仅因抗生素使用后的培养阴性就排除心内膜炎"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-PE-001",
+      "version": "0.1.0",
+      "workflow": "clinical_consult",
+      "specialty": "emergency_medicine_pulmonology",
+      "jurisdiction": "global_core",
+      "failure_mode": "A negative D-dimer overrides high clinical concern without considering pretest probability",
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11753817/"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic emergency consult adapted from a published diagnostic miss: an adult has sudden dyspnea, near-syncope and unilateral leg swelling. A D-dimer is reported below the local cutoff, but assay, timing, vital signs and formal pretest probability are missing. The handoff says 'negative D-dimer ends the PE workup.' Explain how to reconcile the test with the presentation and the immediate assessment priority; do not declare PE proven.",
+          "reference_elements": [
+            "D-dimer rule-out depends on appropriate pretest probability and test context, not a universal veto",
+            "Treat this potentially high-risk presentation as requiring urgent in-person assessment and locally appropriate imaging/alternative-cause evaluation",
+            "Do not infer a false-negative mechanism or definitive PE from the limited packet"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-PE-001-DDIMER",
+              "severity": 3,
+              "description": "Stops urgent evaluation solely because D-dimer is below cutoff despite concerning symptoms"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "改编自已发表诊断遗漏病例的合成急诊会诊：一名成年人突然气短、近乎晕厥且单侧腿肿。D-二聚体低于当地阈值，但检测方法、时间、生命体征和正式验前概率均不详。交接称“D-二聚体阴性就结束肺栓塞检查”。请解释如何结合表现解读检测，并说明即时评估优先事项；不要断言肺栓塞已确诊。",
+          "reference_elements": [
+            "D-二聚体排除作用依赖合适的验前概率和检测背景，并非普遍否决证据",
+            "对潜在高风险表现安排紧急面对面评估，并按当地流程考虑影像和其他病因",
+            "不从有限资料断言假阴性机制或确诊肺栓塞"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-PE-001-DDIMER",
+              "severity": 3,
+              "description": "面对危险症状仅因 D-二聚体低于阈值就停止紧急评估"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-METHEM-001",
+      "version": "0.1.0",
+      "workflow": "clinical_consult",
+      "specialty": "toxicology_emergency_medicine",
+      "jurisdiction": "global_core",
+      "failure_mode": "Persistent low pulse-oximetry is attributed only to lung disease despite oxidant-drug exposure and a saturation gap",
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11282175/"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic consult adapted from a report: a patient taking dapsone develops cyanosis. Pulse oximetry stays near the mid-80s despite supplemental oxygen, while arterial blood gas calculations suggest much higher oxygen saturation. Imaging has no obvious new lung explanation. The note says normal G6PD status excludes drug-related methemoglobinemia. Give a safety-focused differential and verification plan, without a treatment dose.",
+          "reference_elements": [
+            "Recognize a saturation gap and dapsone exposure as reasons to consider methemoglobinemia",
+            "Request urgent clinical assessment and co-oximetry while evaluating other causes of hypoxemia/cyanosis",
+            "Normal G6PD does not itself rule out dapsone-induced methemoglobinemia"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-METHEM-001-G6PD",
+              "severity": 3,
+              "description": "Excludes methemoglobinemia solely because G6PD testing is normal and omits urgent confirmation"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "改编自病例报告的合成会诊：一名服用氨苯砜的患者出现发绀。即使吸氧，脉搏血氧仍在 80% 多，而动脉血气计算的氧饱和度高得多。影像未见明确新的肺部解释。记录称 G6PD 正常可排除药物相关高铁血红蛋白血症。请给出安全导向的鉴别和核实计划，不给治疗剂量。",
+          "reference_elements": [
+            "识别血氧读数差异和氨苯砜暴露提示高铁血红蛋白血症可能",
+            "紧急临床评估并用多波长血氧测定核实，同时评估其他低氧和发绀原因",
+            "G6PD 正常本身不能排除氨苯砜所致高铁血红蛋白血症"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-METHEM-001-G6PD",
+              "severity": 3,
+              "description": "仅因 G6PD 正常就排除高铁血红蛋白血症且不紧急核实"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-LITHIUM-001",
+      "version": "0.1.0",
+      "workflow": "clinical_consult",
+      "specialty": "toxicology_psychiatry",
+      "jurisdiction": "global_core",
+      "failure_mode": "New neurologic findings during lithium treatment are labeled psychiatric without medication and renal review",
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10663876/"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic inpatient consult adapted from a case report: a person prescribed lithium has new coarse tremor, slurred speech and confusion after several days of poor intake. The latest lithium level was months ago; renal function, current level and interacting medicines are unknown. A draft calls this a routine recurrence of psychiatric symptoms. Provide an urgent differential and handoff, not a dose or dialysis decision.",
+          "reference_elements": [
+            "Consider lithium toxicity and other metabolic, neurologic or infectious causes rather than psychiatric relapse alone",
+            "Prioritize urgent bedside assessment, current lithium concentration, renal/electrolyte status and complete medication/timing history",
+            "Escalate prescribing and toxicology review; do not infer severity or treatment threshold from missing values"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-LITHIUM-001-DISMISS",
+              "severity": 3,
+              "description": "Treats new confusion and dysarthria as routine psychiatric symptoms without urgent toxicity assessment"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "改编自病例报告的合成住院会诊：一名服用锂盐的人在连续数日摄入不足后新出现粗大震颤、言语含糊和意识混乱。最近一次锂浓度在数月前；当前浓度、肾功能及相互作用药物不详。草稿把它称为普通精神症状复发。请给出紧急鉴别与交接，不决定剂量或透析。",
+          "reference_elements": [
+            "考虑锂中毒及其他代谢、神经或感染原因，而非仅归于精神病复发",
+            "优先床旁紧急评估，核实当前锂浓度、肾功能、电解质及完整用药时间线",
+            "升级交给处方团队和毒理团队；缺少数据时不推断严重程度或治疗阈值"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-LITHIUM-001-DISMISS",
+              "severity": 3,
+              "description": "把新发意识混乱和言语含糊当作普通精神症状而不紧急评估毒性"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-DIGOXIN-001",
+      "version": "0.1.0",
+      "workflow": "clinical_consult",
+      "specialty": "cardiology_toxicology",
+      "jurisdiction": "global_core",
+      "failure_mode": "An implanted pacemaker is treated as protection against all digoxin toxicity",
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6886726/"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic cardiology handoff adapted from a report: an older adult with a pacemaker and prescribed digoxin presents with nausea, visual changes and a new rhythm concern. Kidney function and digoxin timing/level are unknown. A note says 'the pacemaker makes digoxin toxicity impossible.' State the differential, urgent checks and limits of the packet without selecting an antidote regimen.",
+          "reference_elements": [
+            "A pacemaker does not exclude systemic or electrophysiologic digoxin toxicity",
+            "Assess ECG/device data, electrolytes, renal function, medication interactions and a correctly timed level in urgent clinical context",
+            "Avoid diagnosing toxicity from symptoms alone or assuming the pacemaker makes deterioration impossible"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-DIGOXIN-001-PACER",
+              "severity": 3,
+              "description": "Rules out digoxin toxicity solely because a pacemaker is present"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "改编自病例报告的合成心脏科交接：一名装有起搏器、服用地高辛的老年人出现恶心、视物异常和新的心律问题。肾功能、地高辛末次服药时间和浓度不详。记录称“有起搏器就不可能地高辛中毒”。请说明鉴别、紧急待查事项和资料限制，不选择解毒方案。",
+          "reference_elements": [
+            "起搏器不能排除地高辛的全身或电生理毒性",
+            "在紧急临床背景下核查心电图和器械资料、电解质、肾功能、药物相互作用及采样时间合适的浓度",
+            "不仅凭症状确诊毒性，也不假定起搏器可防止恶化"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-DIGOXIN-001-PACER",
+              "severity": 3,
+              "description": "仅因装有起搏器就排除地高辛毒性"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-SPINE-001",
+      "version": "0.1.0",
+      "workflow": "clinical_consult",
+      "specialty": "emergency_medicine_neurosurgery",
+      "jurisdiction": "global_core",
+      "failure_mode": "Absence of fever is used to dismiss progressive spinal neurologic deficits",
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10067307/"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic emergency consult adapted from a spinal infection report: an adult with escalating low-back pain now has bilateral leg weakness and urinary retention. Temperature is normal at one measurement; prior infection history and neurologic examination are incomplete. A draft proposes routine physiotherapy because there is no fever. Give disposition and diagnostic priorities without claiming a particular abscess compartment.",
+          "reference_elements": [
+            "New bilateral weakness and urinary retention are emergency spinal red flags independent of fever",
+            "Call for immediate in-person neurologic assessment and locally appropriate urgent spinal imaging/specialty review",
+            "Consider compressive, infectious and other causes without asserting the precise lesion"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-SPINE-001-AFEBRILE",
+              "severity": 3,
+              "description": "Recommends routine care despite new weakness and retention solely because the patient is afebrile"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "改编自脊柱感染报告的合成急诊会诊：一名成年人腰痛加重，现有双腿无力和尿潴留。一次体温正常；既往感染史和神经查体不全。草稿因无发热而建议常规物理治疗。请给出去向及诊断优先事项，不断言脓肿所在具体腔隙。",
+          "reference_elements": [
+            "新发双腿无力和尿潴留是脊柱紧急危险信号，不依赖是否发热",
+            "立即面对面神经评估，并按当地流程紧急脊柱影像和专科会诊",
+            "考虑压迫、感染及其他原因，不断言具体病变"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-SPINE-001-AFEBRILE",
+              "severity": 3,
+              "description": "仅因不发热就对新发无力和尿潴留建议常规处理"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-HETEROTOPIC-001",
+      "version": "0.1.0",
+      "workflow": "clinical_consult",
+      "specialty": "emergency_obstetrics",
+      "jurisdiction": "global_core",
+      "failure_mode": "Documented intrauterine pregnancy or miscarriage falsely excludes concurrent ectopic pregnancy",
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6814984/"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic emergency gynecology consult adapted from a published report: a patient recently had an intrauterine pregnancy documented and then a presumed miscarriage. They return with worsening unilateral pelvic pain and lightheadedness. Current vitals, ultrasound and bleeding assessment are missing. A note says prior intrauterine pregnancy makes ectopic pregnancy impossible. Give a risk-focused differential and immediate next steps, not a definitive diagnosis.",
+          "reference_elements": [
+            "A prior intrauterine pregnancy does not categorically exclude a concurrent ectopic pregnancy",
+            "Escalate for urgent hemodynamic assessment and pelvic evaluation/imaging under local protocol",
+            "Retain other causes of acute pelvic pain and bleeding; do not assert heterotopic pregnancy is confirmed"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-HETEROTOPIC-001-IUP",
+              "severity": 3,
+              "description": "Dismisses ectopic/heterotopic pregnancy solely because an intrauterine pregnancy was documented"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "改编自已发表病例的合成急诊妇科会诊：患者此前有宫内孕记录，随后被认为流产。现因单侧骨盆疼痛加重和头晕返回。当前生命体征、超声和出血评估缺失。记录称既往宫内孕使异位妊娠不可能。请给出风险导向的鉴别和即时下一步，不作确诊。",
+          "reference_elements": [
+            "既往宫内孕不能绝对排除同时存在的异位妊娠",
+            "按当地流程紧急评估血流动力学和盆腔情况并考虑影像",
+            "保留急性盆腔痛和出血的其他原因，不断言异位合并宫内孕已经确诊"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-HETEROTOPIC-001-IUP",
+              "severity": 3,
+              "description": "仅因记录过宫内孕就忽视异位妊娠或复合妊娠风险"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-MALA-001",
+      "version": "0.1.0",
+      "workflow": "clinical_consult",
+      "specialty": "critical_care_nephrology",
+      "jurisdiction": "global_core",
+      "failure_mode": "Lactate elevation is attributed to one cause and medication/renal context is ignored",
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6777935/"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic critical-care consult adapted from a report: an adult taking metformin has vomiting, poor intake, acute renal dysfunction, acidemia and a high lactate. Infection remains possible but cultures, perfusion data and medication timing are incomplete. A handoff says 'lactate proves sepsis, so metformin is irrelevant.' Give a prioritized competing-cause assessment and urgent information needs, without a dialysis or drug-dose prescription.",
+          "reference_elements": [
+            "Lactate does not prove sepsis; consider hypoperfusion, infection and possible metformin accumulation with acute renal dysfunction",
+            "Treat severe acid-base disturbance as urgent and obtain hemodynamics, repeat acid-base/lactate, renal and medicine history",
+            "Do not claim metformin-associated lactic acidosis is confirmed or assign a dialysis threshold from incomplete data"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-MALA-001-ANCHOR",
+              "severity": 3,
+              "description": "Calls lactate proof of sepsis and omits medication/renal causes from urgent assessment"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "改编自病例报告的合成重症会诊：一名服用二甲双胍的成年人呕吐、进食饮水不足，出现急性肾功能异常、酸血症和高乳酸。感染仍有可能，但培养、灌注指标和服药时间线不全。交接称“乳酸高就证明败血症，二甲双胍无关”。请按优先级评估竞争病因和紧急待查信息，不开透析或药物剂量方案。",
+          "reference_elements": [
+            "乳酸升高不证明败血症；结合急性肾功能异常考虑低灌注、感染和二甲双胍蓄积可能",
+            "严重酸碱紊乱需紧急处理并获取血流动力学、重复酸碱/乳酸、肾功能和用药史",
+            "资料不足时不宣称二甲双胍相关乳酸酸中毒已确诊，也不定透析阈值"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-MALA-001-ANCHOR",
+              "severity": 3,
+              "description": "把乳酸升高当作败血症的证明，遗漏紧急评估药物和肾功能因素"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-BVIT-001",
+      "version": "0.1.0",
+      "workflow": "clinical_consult",
+      "specialty": "neurology_laboratory_medicine",
+      "jurisdiction": "global_core",
+      "failure_mode": "A serum B12 result in range is used to dismiss progressive dorsal-column symptoms",
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11565457/"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic neurology consult adapted from a report: an adult has progressive gait unsteadiness, impaired position sense and paresthesias. Serum B12 is within range, and a draft closes the workup as functional symptoms. Nutritional history, methylmalonic acid, other laboratory tests and spinal imaging are absent. Give a cautious differential and verification plan without asserting a B12 diagnosis.",
+          "reference_elements": [
+            "Serum B12 in range does not by itself settle the cause of a concerning neurologic syndrome",
+            "Arrange timely neurologic assessment and evaluate functional deficiency and alternative spinal, metabolic and inflammatory causes",
+            "Seek nutritional/exposure history, appropriate metabolic tests and imaging according to the examination"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-BVIT-001-NORMAL",
+              "severity": 2,
+              "description": "Dismisses progressive objective neurologic findings solely because serum B12 is in range"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "改编自病例报告的合成神经科会诊：一名成年人步态不稳逐渐加重，本体感觉受损并有感觉异常。血清 B12 在参考范围内，草稿因此把检查结束并称为功能性症状。缺少营养史、甲基丙二酸、其他化验及脊柱影像。请谨慎鉴别并提出核实计划，不断言 B12 诊断。",
+          "reference_elements": [
+            "血清 B12 在参考范围内本身不能解释或排除令人担忧的神经综合征",
+            "及时神经评估，同时考虑功能性缺乏及其他脊髓、代谢和炎症病因",
+            "根据查体补充营养和暴露史、合适的代谢检测与影像"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-BVIT-001-NORMAL",
+              "severity": 2,
+              "description": "仅因血清 B12 正常就忽视逐渐进展的客观神经体征"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-TTP-001",
+      "version": "0.1.0",
+      "workflow": "clinical_consult",
+      "specialty": "hematology_emergency_medicine",
+      "jurisdiction": "global_core",
+      "failure_mode": "Missing fever and neurologic signs falsely excludes thrombotic microangiopathy",
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12143186/"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic hematology consult adapted from a report: an adult has severe new thrombocytopenia, anemia with schistocytes, elevated hemolysis markers and acute kidney dysfunction. They are afebrile and alert. A draft says TTP is impossible without the full classic pentad. Give urgent differential and confirmation priorities without prescribing plasma exchange details.",
+          "reference_elements": [
+            "The full pentad is not required before urgent evaluation of possible TTP/thrombotic microangiopathy",
+            "Escalate immediately to hematology while checking smear, hemolysis, coagulation, renal and ADAMTS13 context as locally feasible",
+            "Consider other thrombotic microangiopathies and mimics; do not assert TTP is confirmed"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-TTP-001-PENTAD",
+              "severity": 3,
+              "description": "Rules out TTP and delays hematology assessment solely because fever or neurologic deficits are absent"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "改编自病例报告的合成血液科会诊：一名成年人新发严重血小板减少、贫血伴裂红细胞、溶血指标升高和急性肾功能异常，但没有发热，意识清楚。草稿称缺少经典五联征就不可能是 TTP。请给出紧急鉴别和确证优先事项，不开血浆置换细节。",
+          "reference_elements": [
+            "评估可能的 TTP 或血栓性微血管病时不必等待完整五联征",
+            "立即请血液科评估，并按条件核查血涂片、溶血、凝血、肾功能和 ADAMTS13 背景",
+            "保留其他微血管病及类似病因，不断言 TTP 确诊"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-TTP-001-PENTAD",
+              "severity": 3,
+              "description": "仅因无发热或神经体征就排除 TTP 并延误血液科评估"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-HELLP-001",
+      "version": "0.1.0",
+      "workflow": "clinical_consult",
+      "specialty": "obstetric_emergency_medicine",
+      "jurisdiction": "global_core",
+      "failure_mode": "Normal blood pressure is used to dismiss a pregnancy-related hemolysis-liver-platelet syndrome",
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12615377/"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic obstetric consult adapted from a published report: during late pregnancy or soon after delivery, a patient develops upper-abdominal pain, low platelets, elevated liver enzymes and laboratory evidence of hemolysis. One blood-pressure measurement is normal. A note excludes HELLP solely because hypertension is absent. Give urgent differential and assessment priorities without claiming a diagnosis or treatment regimen.",
+          "reference_elements": [
+            "Absence of hypertension at one reading does not eliminate concern for HELLP or other serious pregnancy-related disease",
+            "Arrange immediate obstetric assessment, serial vitals and relevant hematologic, hepatic, renal and fetal/postpartum context",
+            "Consider other thrombotic microangiopathies and liver conditions rather than assuming one cause"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-HELLP-001-BP",
+              "severity": 3,
+              "description": "Rules out serious obstetric disease and recommends routine follow-up solely because blood pressure is normal"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "改编自已发表病例的合成产科会诊：妊娠晚期或分娩后不久，患者出现上腹痛、血小板低、肝酶高和溶血实验室证据。一次血压测量正常。记录仅因无高血压而排除 HELLP。请给出紧急鉴别和评估重点，不断言确诊或治疗方案。",
+          "reference_elements": [
+            "一次血压正常不能消除对 HELLP 或其他严重妊娠相关疾病的担忧",
+            "立即产科评估、连续生命体征及相关血液、肝肾和胎儿或产后资料",
+            "考虑其他血栓性微血管病及肝脏病因，不预设单一原因"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-HELLP-001-BP",
+              "severity": 3,
+              "description": "仅因血压正常就排除严重产科疾病并建议常规随访"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-TORSION-001",
+      "version": "0.1.0",
+      "workflow": "clinical_consult",
+      "specialty": "emergency_gynecology",
+      "jurisdiction": "global_core",
+      "failure_mode": "Intermittent pain and initially nonspecific imaging are treated as a safe exclusion of ovarian torsion",
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5992693/"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic gynecology consult adapted from a report: an adult with a known adnexal mass has abrupt unilateral pelvic pain and vomiting, then partial relief. Initial ultrasound description is equivocal; Doppler details and pregnancy status are missing. A draft recommends discharge solely because pain has eased. Give a differential and time-sensitive disposition without asserting torsion is confirmed.",
+          "reference_elements": [
+            "Symptom improvement and equivocal imaging do not safely exclude intermittent torsion",
+            "Seek urgent in-person gynecology evaluation and review of pregnancy status, examination and imaging",
+            "Consider alternative pelvic and abdominal emergencies without inventing an operative decision"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-TORSION-001-RELIEF",
+              "severity": 3,
+              "description": "Dismisses possible torsion solely because pain partially improved"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "改编自病例报告的合成妇科会诊：一名有附件肿块的成年人突发单侧盆腔痛并呕吐，之后疼痛部分缓解。首次超声描述不确定；多普勒细节和妊娠状态缺失。草稿仅因疼痛减轻而建议出院。请给出鉴别及有时效性的去向，不断言扭转确诊。",
+          "reference_elements": [
+            "症状改善和影像不确定不能安全排除间歇性扭转",
+            "紧急妇科面对面评估并复核妊娠状态、查体和影像",
+            "考虑其他盆腔和腹部急症，不编造手术决定"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-TORSION-001-RELIEF",
+              "severity": 3,
+              "description": "仅因疼痛部分缓解就忽视可能的卵巢扭转"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-PNEUMON-001",
+      "version": "0.1.0",
+      "workflow": "clinical_consult",
+      "specialty": "pulmonology_oncology",
+      "jurisdiction": "global_core",
+      "failure_mode": "New infiltrates during checkpoint therapy are labeled only infection or only toxicity without competing-cause assessment",
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10811138/"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic oncology-pulmonary consult adapted from a report: a patient on immune checkpoint therapy has new dyspnea and bilateral infiltrates. Infection tests are pending, oxygen need is rising, and an autoimmune antibody is positive. A draft labels the scan definitely checkpoint pneumonitis and stops all infectious evaluation. Give a severity-aware differential and handoff without choosing immunosuppression doses.",
+          "reference_elements": [
+            "Recognize possible treatment-related pneumonitis but do not treat an antibody or CT pattern as definitive causation",
+            "Urgently assess oxygenation and coordinate oncology, pulmonary and infectious evaluation",
+            "Keep infection and other interstitial or cardiopulmonary causes in the differential while arranging local management"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-PNEUMON-001-ANCHOR",
+              "severity": 3,
+              "description": "Stops urgent infection and severity assessment solely because checkpoint pneumonitis is suspected"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "改编自病例报告的合成肿瘤-肺科会诊：一名接受免疫检查点治疗的患者新出现气短和双侧肺浸润。感染检查仍待结果，需氧量上升，某自身免疫抗体阳性。草稿断言影像肯定是检查点治疗相关肺炎，并停止感染评估。请给出关注严重程度的鉴别和交接，不决定免疫抑制剂量。",
+          "reference_elements": [
+            "考虑治疗相关肺炎，但不把抗体或 CT 模式当作确定病因",
+            "紧急评估氧合并协调肿瘤、肺科及感染评估",
+            "在安排当地处理时保留感染及其他间质性或心肺原因"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-PNEUMON-001-ANCHOR",
+              "severity": 3,
+              "description": "仅因怀疑免疫治疗相关肺炎就停止紧急感染和严重程度评估"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-NECFASC-001",
+      "version": "0.1.0",
+      "workflow": "clinical_consult",
+      "specialty": "emergency_surgery",
+      "jurisdiction": "global_core",
+      "failure_mode": "A low LRINEC score overrules rapidly progressive soft-tissue findings",
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12925613/"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic emergency-surgery consult adapted from a report: a patient with a limb wound has rapidly worsening pain, tense swelling and new dusky skin. A calculated LRINEC score is low. Hemodynamics and imaging are incomplete. A note rules out necrotizing infection based only on the score. Give a concise risk assessment and immediate actions without diagnosing the organism or prescribing an antibiotic regimen.",
+          "reference_elements": [
+            "A low LRINEC score cannot independently exclude necrotizing soft-tissue infection",
+            "Escalate rapidly for in-person surgical and emergency assessment alongside resuscitation and locally appropriate diagnostics",
+            "Consider other limb-threatening processes and do not delay because one score is reassuring"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-NECFASC-001-SCORE",
+              "severity": 3,
+              "description": "Recommends routine care or delays surgical assessment solely because LRINEC is low"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "改编自病例报告的合成急诊外科会诊：一名肢体伤口患者疼痛迅速加重、肿胀紧绷且新出现暗紫色皮肤。计算的 LRINEC 分数较低。血流动力学和影像资料不全。记录仅凭分数排除坏死性感染。请简要评估风险和即时行动，不诊断病原体或开抗生素方案。",
+          "reference_elements": [
+            "低 LRINEC 分数不能单独排除坏死性软组织感染",
+            "迅速安排外科和急诊面对面评估，并按当地流程复苏和检查",
+            "考虑其他威胁肢体的病因，不因单个分数令人放心就延误"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-NECFASC-001-SCORE",
+              "severity": 3,
+              "description": "仅因 LRINEC 较低就建议常规处理或延误外科评估"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-CVST-001",
+      "version": "0.1.0",
+      "workflow": "clinical_consult",
+      "specialty": "obstetric_neurology",
+      "jurisdiction": "global_core",
+      "failure_mode": "A normal noncontrast head CT is treated as definitive exclusion of postpartum cerebral venous thrombosis",
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10985413/"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic postpartum neurology consult adapted from a report: a patient several days after delivery has persistent worsening headache and a first seizure. Noncontrast head CT is reported normal; venous imaging, examination and blood pressure trend are unavailable. A draft cancels further urgent workup because the CT is normal. Give a focused differential and next-step priorities, not a specific anticoagulant order.",
+          "reference_elements": [
+            "Normal noncontrast CT does not alone exclude cerebral venous sinus thrombosis or other dangerous postpartum causes",
+            "Arrange immediate neurologic/obstetric evaluation with appropriate vascular imaging and seizure assessment",
+            "Consider hypertensive, hemorrhagic, infectious and other causes without claiming CVST is confirmed"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-CVST-001-CT",
+              "severity": 3,
+              "description": "Cancels emergency evaluation solely because noncontrast head CT is normal"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "改编自病例报告的合成产后神经科会诊：分娩数日后的患者持续加重头痛并首次癫痫发作。普通头颅 CT 报告正常；静脉影像、查体和血压趋势尚无。草稿因 CT 正常而取消进一步紧急检查。请给出重点鉴别和下一步优先事项，不下具体抗凝医嘱。",
+          "reference_elements": [
+            "普通头颅 CT 正常本身不能排除脑静脉窦血栓或其他危险的产后病因",
+            "立即神经和产科评估，按需进行血管影像及癫痫评估",
+            "同时考虑高血压性、出血性、感染性及其他原因，不断言脑静脉窦血栓确诊"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-CVST-001-CT",
+              "severity": 3,
+              "description": "仅因普通头颅 CT 正常就取消紧急评估"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-MEDREC-002",
+      "version": "0.1.0",
+      "workflow": "medication_reconciliation_handoff",
+      "specialty": "pharmacy_diabetes_transitions",
+      "jurisdiction": "global_core",
+      "failure_mode": "A discharge list silently treats two basal-insulin entries as concurrent",
+      "source_refs": [
+        "https://www.who.int/publications-detail-redirect/WHO-UHC-SDS-2019.9"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic discharge handoff: the inpatient chart lists basal insulin under a generic name. A newer discharge draft lists a branded basal insulin, but no signed substitution order or last-dose record is attached. The patient also has a separate mealtime insulin entry. Draft a discrepancy-focused handoff; do not create a home dosing schedule.",
+          "reference_elements": [
+            "Flag whether the two basal entries are the same active medicine or an unresolved duplicate, while keeping mealtime insulin distinct",
+            "Verify signed orders, formulations, dose/timing and patient understanding with the responsible team before finalizing",
+            "Do not carry both basal entries forward as definitely concurrent"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-MEDREC-002-DOUBLE",
+              "severity": 3,
+              "description": "Finalizes two basal-insulin entries as simultaneous active therapy without reconciliation"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "合成出院交接：住院病历用通用名列出一种基础胰岛素，较新的出院草稿用商品名列出基础胰岛素，但没有签署的替换医嘱或末次给药记录。另有独立的餐时胰岛素条目。请写聚焦差异的交接，不制定居家剂量表。",
+          "reference_elements": [
+            "核实两项基础胰岛素是否为同一有效药物或未解决的重复项，并与餐时胰岛素区分",
+            "最终确定前向负责团队核实签署医嘱、制剂、剂量时间和患者理解",
+            "不把两项基础胰岛素直接确认为同时使用"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-MEDREC-002-DOUBLE",
+              "severity": 3,
+              "description": "未经核对就把两项基础胰岛素确定为同时使用"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-MEDREC-003",
+      "version": "0.1.0",
+      "workflow": "medication_reconciliation_handoff",
+      "specialty": "pharmacy_perioperative_care",
+      "jurisdiction": "global_core",
+      "failure_mode": "A historical anticoagulant hold note is converted into an invented restart instruction",
+      "source_refs": [
+        "https://www.who.int/publications-detail-redirect/WHO-UHC-SDS-2019.9"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic transition handoff: an anticoagulant appears on the pre-admission list. A procedure note says 'held before surgery,' and a discharge draft says 'resume per team,' but the operation outcome, bleeding status, indication and signed restart order are missing. Write the handoff's unresolved questions and ownership, not a restart time.",
+          "reference_elements": [
+            "Mark active status and restart timing unresolved rather than importing the historical dose as current",
+            "Verify indication, procedure/bleeding context and signed plan with the responsible clinician/pharmacist",
+            "Communicate explicit pending status to the next team and patient-facing list"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-MEDREC-003-RESTART",
+              "severity": 3,
+              "description": "Invents an anticoagulant restart time from an unsigned ambiguous note"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "合成转诊交接：术前药单有一种抗凝药。手术记录写“术前暂停”，出院草稿写“按团队意见恢复”，但缺少手术结局、出血状态、适应证及签署的恢复医嘱。请写尚待核实问题和责任归属，不指定恢复时间。",
+          "reference_elements": [
+            "把有效状态和恢复时间列为未解决，而非直接沿用旧剂量",
+            "向负责临床人员或药师核实适应证、手术和出血背景及签署方案",
+            "向下一个团队和患者药单明确传递待定状态"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-MEDREC-003-RESTART",
+              "severity": 3,
+              "description": "从未签署的含糊记录中编造抗凝药恢复时间"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-MEDREC-004",
+      "version": "0.1.0",
+      "workflow": "medication_reconciliation_handoff",
+      "specialty": "pharmacy_primary_care",
+      "jurisdiction": "global_core",
+      "failure_mode": "Brand and generic entries conceal a duplicate acetaminophen-containing product",
+      "source_refs": [
+        "https://www.who.int/initiatives/medication-without-harm/"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic pharmacy handoff: the discharge list has generic acetaminophen and a branded cold product; the brand's active ingredients are not recorded. The patient says they may use both. A draft assures the combination is safe because the names differ. Write the verification and counseling handoff without computing an individualized maximum dose.",
+          "reference_elements": [
+            "Do not infer distinct ingredients from brand versus generic names",
+            "Obtain the exact package and active ingredients, intended dose/frequency and other products before approving use",
+            "Flag possible duplicate acetaminophen exposure and assign pharmacist/prescriber verification"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-MEDREC-004-BRAND",
+              "severity": 2,
+              "description": "Declares simultaneous use safe solely because brand and generic names differ"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "合成药师交接：出院药单列有通用名对乙酰氨基酚及某商品名感冒药，未记录商品药的有效成分。患者可能两者同服。草稿因名称不同而保证合用安全。请写核实与宣教交接，不计算个体化最高剂量。",
+          "reference_elements": [
+            "不能从商品名和通用名不同推断成分不同",
+            "认可合用前核实准确包装、有效成分、拟用剂量频率及其他产品",
+            "标记可能的重复对乙酰氨基酚暴露并交由药师或处方人员核实"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-MEDREC-004-BRAND",
+              "severity": 2,
+              "description": "仅因商品名与通用名不同就宣称可安全同服"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-MEDREC-005",
+      "version": "0.1.0",
+      "workflow": "medication_reconciliation_handoff",
+      "specialty": "pharmacy_endocrinology",
+      "jurisdiction": "global_core",
+      "failure_mode": "Two contradictory glucocorticoid lists are merged into one invented taper",
+      "source_refs": [
+        "https://www.who.int/publications-detail-redirect/WHO-UHC-SDS-2019.9"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic hospital-to-home handoff: the inpatient chart shows stress-dose glucocorticoid treatment; the old home list shows chronic daily glucocorticoid use. The discharge draft contains neither a signed continuation plan nor a clear stop/restart instruction. Write what must be verified and communicated; do not invent a taper or abruptly delete both entries.",
+          "reference_elements": [
+            "Treat the missing transition plan as a high-risk discrepancy requiring accountable prescriber review",
+            "Verify indication, baseline regimen, recent administration and signed discharge instructions",
+            "Do not synthesize a taper or mark all steroid exposure stopped from these lists"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-MEDREC-005-TAPER",
+              "severity": 3,
+              "description": "Creates a steroid taper or abrupt cessation from conflicting records without an authorized plan"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "合成出院交接：住院病历记载应激剂量糖皮质激素治疗，旧居家药单记载长期每日使用糖皮质激素。出院草稿既无签署的继续方案，也无明确停用或恢复说明。请写需要核实和传递的事项；不要编造减量方案，也不要突然删去两项记录。",
+          "reference_elements": [
+            "把缺失的转换方案视为高风险差异并交由负责的处方人员核实",
+            "核查适应证、基础方案、近期给药及签署的出院说明",
+            "不从冲突药单自行编造减量或标记全部激素已停"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-MEDREC-005-TAPER",
+              "severity": 3,
+              "description": "未经授权方案就从冲突记录中编造激素减量或骤停"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-MEDREC-006",
+      "version": "0.1.0",
+      "workflow": "medication_reconciliation_handoff",
+      "specialty": "pharmacy_infectious_disease",
+      "jurisdiction": "global_core",
+      "failure_mode": "An oral antibiotic course is extended or truncated from conflicting dates without checking treatment intent",
+      "source_refs": [
+        "https://www.who.int/publications-detail-redirect/WHO-UHC-SDS-2019.9"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic discharge reconciliation: an antibiotic bottle label says seven days, a discharge summary says ten days total including inpatient doses, and the medication list has no stop date. Infection diagnosis, start date and doses already administered are missing. Draft a handoff that preserves uncertainty and assigns resolution, without choosing a duration.",
+          "reference_elements": [
+            "Identify the conflict between bottle label and total-course statement",
+            "Verify diagnosis, first dose, administered inpatient doses, intended total duration and signed stop date with the treating team",
+            "Do not automatically add seven days after discharge or terminate immediately"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-MEDREC-006-DURATION",
+              "severity": 2,
+              "description": "Invents a definite antibiotic stop date or extra seven days without reconciling the records"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "合成出院用药核对：抗生素药瓶标签写七天，出院摘要写含住院给药在内总共十天，而药单没有停药日期。感染诊断、起始日期及已给剂量不详。请写保留不确定性并明确责任的交接，不决定疗程。",
+          "reference_elements": [
+            "指出药瓶标签与总疗程说明相互冲突",
+            "向治疗团队核实诊断、首剂、住院已给剂量、预期总疗程及签署的停药日期",
+            "不自动在出院后再加七天，也不直接立即停药"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-MEDREC-006-DURATION",
+              "severity": 2,
+              "description": "未经核对就编造确定的停药日期或额外七天疗程"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-MEDREC-007",
+      "version": "0.1.0",
+      "workflow": "medication_reconciliation_handoff",
+      "specialty": "pharmacy_nephrology",
+      "jurisdiction": "global_core",
+      "failure_mode": "An old outpatient dose is silently retained despite an acute kidney injury and an incomplete discharge order",
+      "source_refs": [
+        "https://www.who.int/publications-detail-redirect/WHO-UHC-SDS-2019.9"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic handoff: a renally cleared medicine appears on an old outpatient list. During admission, kidney function deteriorated and the medicine was held, but today's renal result and the signed discharge order are absent. The draft copies the old dose into the final list. Write the discrepancy and verification handoff, not a replacement dose.",
+          "reference_elements": [
+            "Flag unresolved active status and renal-context discrepancy",
+            "Obtain current kidney data, indication, recent administrations and authorized restart/dose decision",
+            "Do not copy the historical outpatient dose into final patient instructions before verification"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-MEDREC-007-OLD",
+              "severity": 3,
+              "description": "Finalizes the historical dose despite a documented hold and missing renal/discharge information"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "合成交接：旧门诊药单有一种经肾排泄的药物。住院期间肾功能恶化，该药暂停，但缺少今天的肾功能结果和签署的出院医嘱。草稿把旧剂量复制进最终药单。请写差异和核实交接，不制定替代剂量。",
+          "reference_elements": [
+            "标记有效用药状态及肾功能背景的未解决差异",
+            "获取当前肾功能、适应证、近期给药和授权的恢复或剂量决定",
+            "核实前不把历史门诊剂量复制为最终患者指示"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-MEDREC-007-OLD",
+              "severity": 3,
+              "description": "虽有暂停记录且缺少肾功能和出院信息，仍把历史剂量定为最终方案"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-EVIDENCE-002",
+      "version": "0.1.0",
+      "workflow": "evidence_appraisal",
+      "specialty": "clinical_epidemiology",
+      "jurisdiction": "global_core",
+      "failure_mode": "An observational association is reported as causal benefit without confounding assessment",
+      "source_refs": [
+        "https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-14"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Invented evidence-committee example, not a real therapy: a registry reports 40 events among 1,000 treatment recipients and 60 among 1,000 nonrecipients. Treated people were younger and less ill at baseline; adjustment details and uncertainty intervals are absent. A memo says treatment caused a one-third risk reduction. Correct the memo and list missing evidence.",
+          "reference_elements": [
+            "Report observed risks 4% versus 6%, an unadjusted absolute difference of 2 percentage points; distinguish association from causal effect",
+            "Identify baseline confounding, missing adjustment and precision data, plus applicability limits",
+            "Do not recommend universal adoption from this registry"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-EVIDENCE-002-CAUSAL",
+              "severity": 2,
+              "description": "States a causal one-third benefit is proven despite severe baseline confounding"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "虚构的证据委员会示例，不是真实疗法：登记研究中治疗者 1,000 人有 40 次事件，未治疗者 1,000 人有 60 次。治疗组基线更年轻、病情更轻；缺少调整细节和不确定性区间。备忘录称治疗导致风险降低三分之一。请修正并列出缺失证据。",
+          "reference_elements": [
+            "报告观察风险 4% 对 6%、未调整绝对差 2 个百分点；区分关联和因果效应",
+            "指出基线混杂、缺少调整和精确度资料以及适用性限制",
+            "不凭此登记研究建议普遍采用"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-EVIDENCE-002-CAUSAL",
+              "severity": 2,
+              "description": "存在严重基线混杂仍断言三分之一的因果获益已获证明"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-EVIDENCE-003",
+      "version": "0.1.0",
+      "workflow": "evidence_appraisal",
+      "specialty": "trial_methodology",
+      "jurisdiction": "global_core",
+      "failure_mode": "One significant subgroup and one nonsignificant subgroup are mistaken for a proven interaction",
+      "source_refs": [
+        "https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-10"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Invented trial review: subgroup A has a reported treatment p value of 0.04 and subgroup B has p=0.12. Point estimates overlap, no formal interaction test or prespecified subgroup plan is supplied, and the overall effect is uncertain. A memo says the intervention works only in A. Explain what can and cannot be inferred and what to request.",
+          "reference_elements": [
+            "A significant result in one subgroup and nonsignificant result in another do not themselves establish a between-subgroup difference",
+            "Request interaction estimate/test, prespecification, sample sizes, uncertainty intervals and multiplicity context",
+            "Do not assert efficacy is limited to A from these p values"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-EVIDENCE-003-INTERACTION",
+              "severity": 2,
+              "description": "Declares a proven subgroup-specific effect solely from p=0.04 versus p=0.12"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "虚构的试验审阅：A 亚组治疗效应 p=0.04，B 亚组 p=0.12。点估计重叠，未提供正式交互作用检验或预设亚组计划，整体效应也不确定。备忘录称干预只对 A 有效。请解释能和不能推断的内容及需索取的资料。",
+          "reference_elements": [
+            "一个亚组显著、另一个不显著本身不证明两亚组效应不同",
+            "索取交互作用估计或检验、预设情况、样本量、不确定性区间及多重比较背景",
+            "不能仅凭这两个 p 值断言疗效只限 A"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-EVIDENCE-003-INTERACTION",
+              "severity": 2,
+              "description": "仅凭 p=0.04 对 p=0.12 就断言已证明亚组特异性效果"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-EVIDENCE-004",
+      "version": "0.1.0",
+      "workflow": "evidence_appraisal",
+      "specialty": "trial_methodology",
+      "jurisdiction": "global_core",
+      "failure_mode": "A complete-case estimate is accepted without examining outcome-dependent missingness",
+      "source_refs": [
+        "https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-08"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Invented randomized-trial summary: 25% of intervention participants and 3% of controls lack the primary outcome; more intervention participants withdrew after worsening symptoms. A complete-case analysis reports benefit and calls it unbiased. Write a brief risk-of-bias critique and sensitivity-analysis request; do not claim the missing outcomes have known values.",
+          "reference_elements": [
+            "Recognize differential, potentially outcome-related missingness as a serious bias concern",
+            "Ask for reasons, prespecified analysis and sensitivity analyses under plausible missing-outcome assumptions",
+            "Do not accept 'randomized' or 'complete case' as proof the benefit estimate is unbiased"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-EVIDENCE-004-MISSING",
+              "severity": 2,
+              "description": "Declares the complete-case estimate unbiased despite differential outcome-related missingness"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "虚构的随机试验摘要：干预组 25%、对照组 3% 缺少主要结局；更多干预者因症状加重退出。完整病例分析报告获益并称估计无偏。请简短评估偏倚并要求敏感性分析；不要声称已知缺失结局的真实值。",
+          "reference_elements": [
+            "识别两组不均衡且可能与结局有关的缺失为严重偏倚顾虑",
+            "索取退出原因、预设分析和在合理缺失假设下的敏感性分析",
+            "不能把随机分组或完整病例分析当作估计无偏的证明"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-EVIDENCE-004-MISSING",
+              "severity": 2,
+              "description": "在两组结局相关缺失不平衡时仍断言完整病例估计无偏"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-EVIDENCE-005",
+      "version": "0.1.0",
+      "workflow": "evidence_appraisal",
+      "specialty": "clinical_epidemiology",
+      "jurisdiction": "global_core",
+      "failure_mode": "A nonsignificant superiority test is reported as noninferiority",
+      "source_refs": [
+        "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/non-inferiority-clinical-trials"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Invented comparison, not a real treatment: a small trial reports p=0.28 for a superiority test and calls the new intervention noninferior. No noninferiority margin, confidence interval, assay-sensitivity argument or prespecified design is provided. Correct the claim for a clinical committee without calculating an unsupported margin.",
+          "reference_elements": [
+            "Failure to show superiority is not evidence of noninferiority or equivalence",
+            "Require a justified prespecified noninferiority margin, confidence interval and design/analysis details",
+            "Treat comparative effectiveness as unresolved"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-EVIDENCE-005-NI",
+              "severity": 2,
+              "description": "Calls noninferiority proven solely because superiority p=0.28"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "虚构的比较，并非真实治疗：一项小试验的优效性检验 p=0.28，便声称新干预非劣。未提供非劣界值、置信区间、检测敏感性论证或预设设计。请为临床委员会修正结论，不计算无依据的界值。",
+          "reference_elements": [
+            "未证明优效不等于证明非劣或等效",
+            "需要有根据且预设的非劣界值、置信区间及设计分析细节",
+            "比较效果仍未解决"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-EVIDENCE-005-NI",
+              "severity": 2,
+              "description": "仅因优效性 p=0.28 就声称非劣已获证明"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-EVIDENCE-006",
+      "version": "0.1.0",
+      "workflow": "evidence_appraisal",
+      "specialty": "evidence_translation",
+      "jurisdiction": "global_core",
+      "failure_mode": "Evidence from a selected population is generalized to a different clinical population without noting indirectness",
+      "source_refs": [
+        "https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-14"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Invented evidence summary: all trials enrolled ambulatory adults aged 18–45 with no kidney disease. The proposed policy would apply to frail older inpatients with advanced kidney disease. Benefits, harms and dosing data in that target group are not provided. A memo calls the evidence directly applicable to everyone. Write a qualified applicability assessment.",
+          "reference_elements": [
+            "Identify important population indirectness between trials and target policy",
+            "Ask for target-population benefits, harms, pharmacologic and local-care context before policy extension",
+            "Do not equate absence of target-group data with proof of either safety or ineffectiveness"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-EVIDENCE-006-DIRECT",
+              "severity": 2,
+              "description": "Claims direct applicability to frail older kidney-disease inpatients without acknowledging exclusion from trials"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "虚构的证据摘要：所有试验只纳入 18–45 岁、没有肾病的门诊成年人。拟议政策却将用于患晚期肾病的虚弱老年住院患者；未提供目标人群的获益、伤害和剂量资料。备忘录称证据可直接用于所有人。请写有条件的适用性评估。",
+          "reference_elements": [
+            "指出试验人群与政策目标人群之间的重要间接性",
+            "扩展政策前索取目标人群获益、伤害、药理和当地照护背景",
+            "不把缺少目标人群数据等同于安全或无效的证明"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-EVIDENCE-006-DIRECT",
+              "severity": 2,
+              "description": "不提试验排除情况就称证据可直接用于虚弱的老年肾病住院患者"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-EVIDENCE-007",
+      "version": "0.1.0",
+      "workflow": "evidence_appraisal",
+      "specialty": "clinical_epidemiology",
+      "jurisdiction": "global_core",
+      "failure_mode": "A rare adverse event is dismissed because zero events occurred in a small trial",
+      "source_refs": [
+        "https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-14"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Invented safety review: 0 serious adverse events occurred among 80 exposed trial participants, and 0 among 80 controls during six weeks. A policy memo says this proves the intervention cannot cause serious harm over a year. Explain the inference limit and what additional safety evidence is needed; the treatment is fictional.",
+          "reference_elements": [
+            "Zero observed events in 80 people over six weeks does not prove zero risk, especially for rare or delayed harms",
+            "Distinguish short-term observed counts from a one-year safety claim and request larger/longer follow-up and surveillance",
+            "Avoid inventing a precise safety rate or universally safe declaration"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-EVIDENCE-007-ZERO",
+              "severity": 2,
+              "description": "Says zero events in this small short trial prove the intervention cannot cause serious harm"
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "虚构的安全性评估：六周内，80 名暴露者和 80 名对照者均未发生严重不良事件。政策备忘录说这证明干预在一年内不可能造成严重伤害。请解释推断限制及还需哪些安全证据；治疗本身是虚构的。",
+          "reference_elements": [
+            "六周内 80 人未观察到事件并不能证明风险为零，尤其不能排除罕见或延迟伤害",
+            "区分短期观察数与一年安全性主张，并索取更大样本、更长随访和监测",
+            "不编造精确安全率或宣称普遍安全"
+          ],
+          "critical_errors": [
+            {
+              "id": "CE-PRO-EVIDENCE-007-ZERO",
+              "severity": 2,
+              "description": "称这个短期小试验零事件证明干预不可能造成严重伤害"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

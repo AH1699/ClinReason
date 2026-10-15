@@ -15,6 +15,31 @@ LANGUAGES = ("en", "zh-Hans")
 WORKFLOWS = {"clinical_consult", "medication_reconciliation_handoff", "evidence_appraisal"}
 
 
+def combine_professional_datasets(datasets: list[dict[str, Any]]) -> dict[str, Any]:
+    """Validate separate authoring batches before presenting one professional track."""
+    if not datasets:
+        raise ValueError("Professional dataset list cannot be empty")
+    families: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for dataset in datasets:
+        validate_professional_dataset(dataset)
+        for family in dataset["families"]:
+            family_id = family["family_id"]
+            if family_id in seen:
+                raise ValueError(f"Duplicate professional family across batches: {family_id}")
+            seen.add(family_id)
+            families.append(family)
+    combined = {
+        "schema_version": "0.1.0",
+        "track": "clinician_facing_professional",
+        "status": "draft_development_only",
+        "scope": "Combined authoring batches; public evidence only; clinical and bilingual review pending.",
+        "families": families,
+    }
+    validate_professional_dataset(combined)
+    return combined
+
+
 def validate_case_adaptation_registry(registry: Any, dataset: dict[str, Any]) -> dict[str, int]:
     """Bind source-derived drafts to explicit article attribution and reuse status."""
     validate_professional_dataset(dataset)

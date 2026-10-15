@@ -43,7 +43,7 @@ from .providers.grok_multiturn_judge import GrokMultiturnJudge
 from .providers.gemini_conversation import GeminiConversationProvider
 from .providers.gemini_judge import GeminiJudgeProvider
 from .professional import (
-    export_professional_prompts, professional_candidate_rows,
+    combine_professional_datasets, export_professional_prompts, professional_candidate_rows,
     validate_case_adaptation_registry, validate_professional_dataset, validate_professional_rubric,
 )
 from .providers.http_json import ProviderRequestError
@@ -323,9 +323,12 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if args.command in {"validate-professional", "export-professional-prompts"}:
         try:
-            professional = load_json(resolve_path(
-                args.config, config.get("professional_cases_path", "data/professional/pilot_cases.json")
-            ))
+            professional_paths = config.get("professional_cases_paths") or [
+                config.get("professional_cases_path", "data/professional/pilot_cases.json")
+            ]
+            professional = combine_professional_datasets([
+                load_json(resolve_path(args.config, path)) for path in professional_paths
+            ])
             status = validate_professional_dataset(professional)
             provenance = validate_case_adaptation_registry(load_json(resolve_path(
                 args.config, config.get("professional_adaptations_path", "data/evidence/clinical_case_adaptations.json")

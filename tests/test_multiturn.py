@@ -64,7 +64,18 @@ class MultiturnTests(unittest.TestCase):
         with redirect_stdout(output):
             status = main(["validate-multiturn"])
         self.assertEqual(status, 0)
-        self.assertEqual(json.loads(output.getvalue())["family_count"], 20)
+        self.assertEqual(json.loads(output.getvalue())["family_count"], 30)
+
+    def test_batch_e_reaches_thirty_distinct_families(self):
+        batches = [self.dataset] + [
+            load_json(self.root / f"data/multiturn/batch_{batch}_cases.json")
+            for batch in ("c", "d", "e")
+        ]
+        status = validate_multiturn_dataset(merge_multiturn_datasets(batches))
+        self.assertEqual((status["family_count"], status["variant_count"]), (30, 60))
+        self.assertEqual(status["category_counts"], {
+            "clinical_reasoning": 9, "medication_safety": 9, "triage": 12,
+        })
 
     def test_batch_d_adds_distinct_bilingual_failure_modes(self):
         batch_c = load_json(self.root / "data/multiturn/batch_c_cases.json")
