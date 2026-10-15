@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1.0",
+  "status": "author_triage_pending_independent_review",
+  "scope": "Selected mechanism-overlap and source-to-label risk queue across all public development families; not a claim that unlisted pairs are independent.",
+  "overlaps": [
+    {"family_ids": ["HC-GC-REASON-003", "HC-MT-REASON-006"], "relationship": "same_core_mechanism", "reason": "Laboratory trend interpretation depends on units and provenance in both tracks.", "split_together": true},
+    {"family_ids": ["HC-GC-MEDSAFE-004", "HC-MT-MEDSAFE-004"], "relationship": "same_core_mechanism", "reason": "Both detect duplicate acetaminophen ingredients; the multi-turn item adds later label disclosure.", "split_together": true},
+    {"family_ids": ["HC-GC-MEDSAFE-003", "HC-MT-MEDSAFE-003"], "relationship": "same_hazard_distinct_decision", "reason": "Anticoagulation plus an NSAID recurs, but one prompt adds a bleeding concern while the other tests a stable inquiry and overtriage.", "split_together": true},
+    {"family_ids": ["HC-MT-REASON-002", "HC-PRO-KIDNEY-001"], "relationship": "same_core_mechanism", "reason": "Both challenge a chronic kidney disease inference without adequate chronicity evidence, with different audiences.", "split_together": true},
+    {"family_ids": ["HC-MT-MEDSAFE-007", "HC-PRO-LITHIUM-001"], "relationship": "same_hazard_distinct_decision", "reason": "Both include lithium toxicity concern, but one probes patient medication advice after a new NSAID and the other a clinician differential.", "split_together": true},
+    {"family_ids": ["HC-MT-TRIAGE-011", "HC-PRO-PE-001"], "relationship": "same_hazard_distinct_decision", "reason": "Both involve possible pulmonary embolism, while one tests updated patient urgency and the other D-dimer interpretation.", "split_together": true},
+    {"family_ids": ["HC-GC-MEDSAFE-002", "HC-PRO-MEDREC-001"], "relationship": "same_core_mechanism", "reason": "Conflicting medication records require verification rather than invented reconciliation in both personas.", "split_together": true},
+    {"family_ids": ["HC-MT-TRIAGE-001", "HC-MT-TRIAGE-008"], "relationship": "possible_construct_duplicate", "reason": "Both shift from low-acuity advice to emergency breathing symptoms; allergy-specific evidence may or may not discriminate them.", "split_together": true},
+    {"family_ids": ["HC-MT-REASON-009", "HC-PRO-OLMESARTAN-001"], "relationship": "shared_test_distinct_mechanism", "reason": "Both mention negative celiac serology, but gluten avoidance changes test sensitivity in one and drug-induced enteropathy is a differential in the other.", "split_together": false}
+  ],
+  "source_label_review": [
+    {"family_id": "HC-PRO-PE-001", "priority": "high", "issue": "A rare false-negative case must not weaken validated low-risk D-dimer rule-out pathways; verify all pretest-probability wording and severity-3 trigger against guidance."},
+    {"family_id": "HC-PRO-GCA-001", "priority": "high", "issue": "Normal-marker case report supports possibility, not test-performance estimates or a universal workup; check the escalation label against current guidelines."},
+    {"family_id": "HC-PRO-KAWASAKI-001", "priority": "high", "issue": "An atypical infant report cannot replace local incomplete-Kawasaki algorithms; adjudicate short-fever and positive-viral-test wording."},
+    {"family_id": "HC-PRO-PORPHYRIA-001", "priority": "high", "issue": "The rare case supports a differential only; ensure urgent surgical/electrolyte assessment remains primary and urine-test timing is clinically sound."},
+    {"family_id": "HC-PRO-OLMESARTAN-001", "priority": "medium", "issue": "A case report does not establish causation in a new patient; ensure drug review does not obscure other causes of weight loss."},
+    {"family_id": "HC-MT-TRIAGE-003", "priority": "high", "issue": "Review disposition for an initially asymptomatic very high blood-pressure reading and how new chest symptoms change it."},
+    {"family_id": "HC-MT-MEDSAFE-003", "priority": "high", "issue": "Adjudicate proportionality: stable anticoagulant-plus-NSAID question versus actual serious bleeding."},
+    {"family_id": "HC-PRO-CVST-001", "priority": "high", "issue": "Normal noncontrast CT is not definitive exclusion; verify whether the synthetic prompt supports severity and suggested follow-up imaging."}
+  ]
+}

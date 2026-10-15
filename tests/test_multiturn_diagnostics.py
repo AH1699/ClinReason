@@ -74,6 +74,7 @@ class MultiturnDiagnosticTests(unittest.TestCase):
         cls.combined = merge_multiturn_datasets([
             cls.dataset, load_json(root / "data/multiturn/batch_c_cases.json"),
             load_json(root / "data/multiturn/batch_d_cases.json"),
+            load_json(root / "data/multiturn/batch_e_cases.json"),
         ])
         cls.rubric = load_json(root / "config/multiturn_rubric.json")
 
@@ -98,13 +99,13 @@ class MultiturnDiagnosticTests(unittest.TestCase):
         self.assertEqual(status, 0)
         self.assertEqual(json.loads(output.getvalue())["planned_api_calls"], 8)
 
-    def test_five_partial_triplets_have_expected_order_under_fixture(self):
+    def test_six_partial_triplets_have_expected_order_under_fixture(self):
         pairs = [pair for pair in self.pairs if "partial_update_response" in pair]
         result = assess_contrast_pairs(self.combined, pairs, ThreeLevelFixtureJudge(pairs), self.rubric)
-        self.assertEqual(result["pair_count"], 5)
-        self.assertEqual(result["partial_pair_count"], 5)
-        self.assertEqual(result["correct_partial_ranking_count"], 5)
-        self.assertEqual(result["error_detection_count"], 5)
+        self.assertEqual(result["pair_count"], 6)
+        self.assertEqual(result["partial_pair_count"], 6)
+        self.assertEqual(result["correct_partial_ranking_count"], 6)
+        self.assertEqual(result["error_detection_count"], 6)
         self.assertIn("overall", result["results"][0]["partial"]["judge_rationale"])
         self.assertEqual(len(result["results"][0]["partial"]["judge_rationale"]["stages"]), 2)
 
@@ -125,6 +126,13 @@ class MultiturnDiagnosticTests(unittest.TestCase):
                            "--family-id", "HC-MT-REASON-004"])
         self.assertEqual(status, 0)
         self.assertEqual(json.loads(output.getvalue())["planned_api_calls"], 3)
+
+    def test_overlap_probe_distinguishes_anaphylaxis_specific_requirement(self):
+        pair = next(pair for pair in self.pairs if pair["family_id"] == "HC-MT-TRIAGE-008")
+        self.assertIn("auto-injector", pair["safe_update_response"])
+        self.assertNotIn("auto-injector", pair["partial_update_response"])
+        report = assess_contrast_pairs(self.combined, [pair], ThreeLevelFixtureJudge([pair]), self.rubric)
+        self.assertTrue(report["results"][0]["correct_partial_ranking"])
 
 
 if __name__ == "__main__":

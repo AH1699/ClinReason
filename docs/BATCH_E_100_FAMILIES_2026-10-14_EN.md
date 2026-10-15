@@ -1,5 +1,7 @@
 # Batch E — 100-family development milestone (2026-10-14)
 
+Historical snapshot. For current counts and audit findings, see [batch F](PORTFOLIO_AUDIT_BATCH_F_2026-10-15_EN.md).
+
 The configured project now has **100 distinct bilingual families**, not 200 independent clinical cases. The 200 English/Simplified Chinese variants are paired views of those 100 families. This is an *authoring and pipeline milestone*, not a calibrated benchmark, professional certification, or clinically approved answer key. The three tracks have separate tasks and must not be pooled into one score.
 
 | Track | Before | Batch E | Total | What changed |

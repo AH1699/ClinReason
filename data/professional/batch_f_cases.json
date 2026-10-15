@@ -1,0 +1,148 @@
+{
+  "schema_version": "0.1.0",
+  "track": "clinician_facing_professional",
+  "status": "draft_development_only",
+  "scope": "Batch F: four synthetic bilingual consults adapted from individually checked CC BY case reports. No clinical or language approval; scoring disabled.",
+  "families": [
+    {
+      "family_id": "HC-PRO-OLMESARTAN-001",
+      "version": "0.1.0",
+      "workflow": "clinical_consult",
+      "specialty": "gastroenterology_clinical_pharmacy",
+      "jurisdiction": "global_core",
+      "failure_mode": "A long-standing medication is excluded as a possible cause of chronic diarrhea because it was not started recently",
+      "source_refs": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC10338989/"],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic outpatient consult inspired by a published case: an adult has months of watery diarrhea, substantial weight loss and an unrevealing initial infectious workup. Celiac serology is negative. The medication list includes olmesartan, started years before symptoms; biopsy details and alternative investigations are incomplete. A draft note says a long-standing drug cannot be relevant and proposes labeling this functional diarrhea. Provide a prioritized assessment and next-step handoff without declaring a cause or changing a prescription yourself.",
+          "reference_elements": [
+            "Reassess weight loss and persistent diarrhea as clinically important; keep infectious, inflammatory, malabsorptive and other causes open",
+            "Include olmesartan-associated enteropathy as a possible drug-related explanation despite delayed onset, while noting that the packet does not establish it",
+            "Arrange clinician-led medication review and appropriate gastroenterology evaluation; do not unilaterally stop or replace treatment"
+          ],
+          "critical_errors": [
+            {"id": "CE-PRO-OLMESARTAN-001-DISMISS", "severity": 2, "description": "Dismisses a possible medication contribution solely because olmesartan was started years earlier and ignores ongoing weight loss"}
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "受已发表病例启发的合成门诊会诊：一名成年人持续数月水样腹泻并明显消瘦，初步感染检查未找到原因。乳糜泻血清学阴性。药物清单中有数年前开始使用的奥美沙坦；活检细节和其他检查尚不完整。病历草稿称长期用药不可能相关，拟将其归为功能性腹泻。请给出有优先级的评估和下一步交接，不断言病因，也不要自行更改处方。",
+          "reference_elements": [
+            "重视持续腹泻及体重下降，保留感染、炎症、吸收不良等鉴别",
+            "即使起病较晚也考虑奥美沙坦相关肠病的可能，同时说明现有资料不能证实",
+            "安排由临床团队主导的用药核查及适当消化科评估；不擅自停药或换药"
+          ],
+          "critical_errors": [
+            {"id": "CE-PRO-OLMESARTAN-001-DISMISS", "severity": 2, "description": "仅因奥美沙坦已使用多年就排除药物因素，并忽视持续体重下降"}
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-PORPHYRIA-001",
+      "version": "0.1.0",
+      "workflow": "clinical_consult",
+      "specialty": "perioperative_medicine_metabolic_disease",
+      "jurisdiction": "global_core",
+      "failure_mode": "Postoperative pain and hyponatremia are attributed to anxiety after unrevealing imaging without considering metabolic or surgical alternatives",
+      "source_refs": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC12505802/"],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic postoperative consult adapted from a case report: severe diffuse abdominal pain and tachycardia continue after a procedure. Abdominal imaging has no clear surgical explanation, sodium is low, and the patient recalls earlier unexplained episodes of similar pain. The operative record, medication exposures and full laboratory trend are not yet available. A draft attributes the presentation to anxiety and closes the workup. Write a prioritized differential and verification plan, without asserting porphyria or specifying treatment doses.",
+          "reference_elements": [
+            "Reassess the patient urgently and continue to evaluate surgical, medication, electrolyte and other causes rather than equating unrevealing imaging with safety",
+            "Include an acute hepatic porphyria as a possible, uncommon explanation for episodic pain with autonomic features and hyponatremia; verify with appropriately timed urine porphobilinogen testing if clinical assessment supports it",
+            "Review perioperative exposures and sodium trend with the treating team; do not infer a confirmed metabolic diagnosis from the limited packet"
+          ],
+          "critical_errors": [
+            {"id": "CE-PRO-PORPHYRIA-001-ANXIETY", "severity": 3, "description": "Dismisses severe postoperative pain with hyponatremia as anxiety solely because initial imaging is unrevealing"}
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "改编自病例报告的合成术后会诊：一次手术后患者持续严重弥漫性腹痛及心动过速。腹部影像未见明确外科原因，血钠偏低，患者回忆过去也有不明原因的类似腹痛。手术记录、用药暴露和完整化验趋势尚未取得。病历草稿将其归于焦虑并停止检查。请写出按优先级排列的鉴别和核实计划，不断言卟啉病，也不给治疗剂量。",
+          "reference_elements": [
+            "紧急重新评估，同时继续考虑外科、药物、电解质及其他病因；影像未见明确异常不等于安全",
+            "将急性肝性卟啉病列为发作性腹痛、自主神经表现及低钠的一种少见可能；若临床评估支持，考虑在合适时机检测尿卟胆原",
+            "与治疗团队核查围术期暴露和血钠变化；不能凭有限资料断言代谢病确诊"
+          ],
+          "critical_errors": [
+            {"id": "CE-PRO-PORPHYRIA-001-ANXIETY", "severity": 3, "description": "仅因初步影像未见明确异常，就把伴低钠的严重术后腹痛归于焦虑而不继续评估"}
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-KAWASAKI-001",
+      "version": "0.1.0",
+      "workflow": "clinical_consult",
+      "specialty": "pediatrics_pediatric_cardiology",
+      "jurisdiction": "global_core",
+      "failure_mode": "An infant's evolving inflammatory signs are ignored because fever duration falls short of a classic checklist",
+      "source_refs": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC8918302/"],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic pediatric handoff inspired by a published case: an infant under six months has had fever for only a few days, irritability, nonpurulent red eyes and a transient rash. A viral test is positive, but inflammation persists and new lip or extremity changes are reported at follow-up. A colleague writes that a short fever duration and a viral result definitively exclude Kawasaki disease. Vital signs, examination and echocardiography are incomplete. Summarize a safe reassessment plan without diagnosing Kawasaki disease or proposing a drug dose.",
+          "reference_elements": [
+            "Arrange prompt pediatric reassessment of the evolving illness, including hydration, hemodynamic status and competing infectious or inflammatory causes",
+            "Do not use short fever duration or a positive viral test alone to exclude incomplete Kawasaki disease in a young infant; discuss pediatric cardiology and echocardiography according to local clinical assessment",
+            "State that the published atypical case does not override all diagnostic algorithms or establish the diagnosis here"
+          ],
+          "critical_errors": [
+            {"id": "CE-PRO-KAWASAKI-001-CHECKLIST", "severity": 3, "description": "Ends reassessment solely because classic fever-duration criteria are unmet or a virus was detected despite evolving signs"}
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "受已发表病例启发的合成儿科交接：一名不足六个月的婴儿仅发热数天，伴烦躁、双眼无脓性发红及一过性皮疹。病毒检测阳性，但炎症表现持续，复诊时新报告口唇或四肢改变。同事写道，发热时间短且病毒阳性可确定排除川崎病。生命体征、体检和超声心动图资料不全。请总结安全的重新评估计划，不诊断川崎病，也不给药物剂量。",
+          "reference_elements": [
+            "及时进行儿科重新评估，检查病情演变、补液及血流动力学状态，并考虑感染及其他炎症病因",
+            "对小婴儿不能仅凭发热未达典型时长或病毒阳性排除不完全性川崎病；按当地临床判断考虑儿科心脏科及超声心动图",
+            "说明个别非典型病例不能推翻所有诊断流程，也不能证明此例已确诊"
+          ],
+          "critical_errors": [
+            {"id": "CE-PRO-KAWASAKI-001-CHECKLIST", "severity": 3, "description": "面对持续演变的体征，仅因未达典型发热天数或检出病毒就停止重新评估"}
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-PRO-MYASTHENIA-001",
+      "version": "0.1.0",
+      "workflow": "clinical_consult",
+      "specialty": "neurology_respiratory_medicine",
+      "jurisdiction": "global_core",
+      "failure_mode": "Worsening breathing and fatigable ocular findings are anchored to asthma despite limited response and missing ventilatory assessment",
+      "source_refs": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC10895900/"],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "prompt": "Synthetic urgent consult adapted from a published case: an adult with a prior asthma label has increasing breathlessness despite initial airway-directed treatment. New fatigable eyelid droop and difficulty finishing sentences are noted. Serial breathing measurements, blood gas and detailed examination are missing; infection and other cardiopulmonary causes remain possible. A draft says to discharge after another inhaler because an asthma history explains everything. Give a prioritized assessment and escalation plan without declaring a specific diagnosis or therapy regimen.",
+          "reference_elements": [
+            "Treat progressive breathing and bulbar-type symptoms as an urgent airway and ventilation concern requiring bedside reassessment",
+            "Broaden beyond asthma to neuromuscular weakness, including myasthenic crisis as a possibility, while evaluating pulmonary, cardiac and infectious causes",
+            "Seek appropriate respiratory and neurology input and objective ventilatory assessment under local protocols; do not infer diagnosis from ptosis alone"
+          ],
+          "critical_errors": [
+            {"id": "CE-PRO-MYASTHENIA-001-DISCHARGE", "severity": 3, "description": "Recommends discharge or routine asthma care despite progressive breathing difficulty and fatigable ocular or bulbar signs"}
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "prompt": "改编自已发表病例的合成紧急会诊：一名既往被诊断为哮喘的成年人在初步气道治疗后呼吸困难仍加重。新出现易疲劳的眼睑下垂及说话难以说完一句。连续呼吸功能测量、血气和详细体检资料缺失；感染及其他心肺病因仍有可能。草稿称既往哮喘足以解释全部症状，建议再用一次吸入药后出院。请给出有优先级的评估和升级计划，不断言具体诊断或治疗方案。",
+          "reference_elements": [
+            "将加重的呼吸困难和延髓肌无力样表现视为需要紧急床旁评估的气道及通气风险",
+            "除哮喘外，考虑神经肌肉无力，包括重症肌无力危象的可能，同时评估肺、心脏和感染病因",
+            "按当地流程请呼吸及神经科参与并客观评估通气；不能仅凭眼睑下垂就断言诊断"
+          ],
+          "critical_errors": [
+            {"id": "CE-PRO-MYASTHENIA-001-DISCHARGE", "severity": 3, "description": "面对呼吸困难加重及易疲劳的眼部或延髓体征仍建议出院或只做普通哮喘处理"}
+          ]
+        }
+      }
+    }
+  ]
+}

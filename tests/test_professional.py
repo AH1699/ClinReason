@@ -22,7 +22,8 @@ class ProfessionalPilotTests(unittest.TestCase):
         cls.root = Path(__file__).resolve().parents[1]
         cls.dataset = load_json(cls.root / "data/professional/pilot_cases.json")
         cls.batch_e = load_json(cls.root / "data/professional/batch_e_cases.json")
-        cls.combined = combine_professional_datasets([cls.dataset, cls.batch_e])
+        cls.batch_f = load_json(cls.root / "data/professional/batch_f_cases.json")
+        cls.combined = combine_professional_datasets([cls.dataset, cls.batch_e, cls.batch_f])
 
     def test_separate_unscored_bilingual_track(self):
         status = validate_professional_dataset(self.dataset)
@@ -45,12 +46,12 @@ class ProfessionalPilotTests(unittest.TestCase):
             with redirect_stdout(io.StringIO()):
                 self.assertEqual(main(["export-professional-prompts", "--output", str(target)]), 0)
                 self.assertEqual(main(["export-professional-prompts", "--output", str(target)]), 2)
-            self.assertEqual(len(load_jsonl(target)), 76)
+            self.assertEqual(len(load_jsonl(target)), 84)
 
     def test_published_case_adaptations_have_bound_provenance(self):
         registry = load_json(self.root / "data/evidence/clinical_case_adaptations.json")
         self.assertEqual(validate_case_adaptation_registry(registry, self.combined), {
-            "adapted_family_count": 22, "adapted_variant_count": 44,
+            "adapted_family_count": 26, "adapted_variant_count": 52,
         })
         corrupted = deepcopy(registry)
         corrupted["records"].pop()
@@ -65,17 +66,17 @@ class ProfessionalPilotTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_case_adaptation_registry(corrupted, self.combined)
 
-    def test_batch_e_combines_without_duplicate_families(self):
+    def test_batches_combine_without_duplicate_families(self):
         status = validate_professional_dataset(self.combined)
-        self.assertEqual((status["family_count"], status["variant_count"]), (38, 76))
+        self.assertEqual((status["family_count"], status["variant_count"]), (42, 84))
         self.assertEqual(status["workflow_counts"], {
-            "clinical_consult": 24, "evidence_appraisal": 7,
+            "clinical_consult": 28, "evidence_appraisal": 7,
             "medication_reconciliation_handoff": 7,
         })
         with self.assertRaises(ValueError):
             combine_professional_datasets([self.dataset, self.dataset])
 
-    def test_configured_tracks_reach_one_hundred_independent_families(self):
+    def test_configured_tracks_reach_one_hundred_four_distinct_families(self):
         alpha = {
             row["metadata"]["case_family_id"]
             for row in load_jsonl(self.root / "data/alpha/global_core_cases.jsonl")
@@ -90,8 +91,8 @@ class ProfessionalPilotTests(unittest.TestCase):
         ])
         identifiers = list(alpha) + [item["family_id"] for item in multiturn["families"]]
         identifiers.extend(item["family_id"] for item in self.combined["families"])
-        self.assertEqual(len(identifiers), 100)
-        self.assertEqual(len(set(identifiers)), 100)
+        self.assertEqual(len(identifiers), 104)
+        self.assertEqual(len(set(identifiers)), 104)
 
     def test_bilingual_mismatch_and_duplicate_rejected(self):
         corrupted = deepcopy(self.dataset)

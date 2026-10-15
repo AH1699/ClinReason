@@ -17,7 +17,7 @@
   "multiturn_judge_prompt_path": "config/multiturn_judge_prompt.txt",
   "multiturn_contrasts_path": "data/multiturn/contrast_transcripts.json",
   "multiturn_bilingual_probes_path": "data/multiturn/bilingual_judge_probes.json",
-  "professional_cases_paths": ["data/professional/pilot_cases.json", "data/professional/batch_e_cases.json"],
+  "professional_cases_paths": ["data/professional/pilot_cases.json", "data/professional/batch_e_cases.json", "data/professional/batch_f_cases.json"],
   "professional_adaptations_path": "data/evidence/clinical_case_adaptations.json",
   "professional_candidate_prompt_path": "config/professional_candidate_prompt.txt",
   "professional_rubric_path": "config/professional_rubric.json",

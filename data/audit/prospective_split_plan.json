@@ -1,0 +1,39 @@
+{
+  "schema_version": "0.1.0",
+  "as_of": "2026-10-15",
+  "status": "planning_only_no_cases_assigned",
+  "current_public_portfolio": {
+    "development_families": 104,
+    "calibration_families": 0,
+    "hidden_gold_families": 0
+  },
+  "first_prospective_tranche_targets_not_sample_size_claims": {
+    "calibration_new_families": {
+      "alpha_single_turn": 10,
+      "patient_multiturn": 10,
+      "professional": 10
+    },
+    "hidden_gold_new_families": {
+      "alpha_single_turn": 20,
+      "patient_multiturn": 20,
+      "professional": 20
+    }
+  },
+  "strata_to_balance": [
+    "track_and_workflow",
+    "English_Chinese_paired_family",
+    "triage_acuity_including_nonemergency_controls",
+    "clinical_specialty_and_care_setting",
+    "failure_mechanism_and_provenance_cluster",
+    "age_group_and_health_literacy_without_demographic_stereotypes",
+    "source_publication_and_possible_model_memorization"
+  ],
+  "allocation_rules": [
+    "Author prospective families after split registration; do not relabel any currently public family as hidden.",
+    "Place both language variants, paraphrases, sibling vignettes and adaptations of one source article in the same split.",
+    "For calibration, obtain independent clinician ratings and bilingual review before using cases to tune judges.",
+    "For hidden Gold, keep prompts and keys outside the public repository with access logs and sealed hashes; public case reports can inform domain coverage but should not be copied as recognizable hidden vignettes.",
+    "Do not publish per-stratum model comparisons until a statistician sets uncertainty and minimum-sample rules.",
+    "Professional documentation strata require a new validated contract before allocation; reserve rather than silently reassign those slots."
+  ]
+}
