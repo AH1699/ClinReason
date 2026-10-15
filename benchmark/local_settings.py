@@ -7,7 +7,8 @@ from pathlib import Path
 from typing import Mapping
 
 
-ALLOWED = {"GROK_API_KEY", "GROK_MODEL", "GEMINI_API_KEY", "GEMINI_JUDGE_MODEL"}
+ALLOWED = {"GROK_API_KEY", "GROK_MODEL", "GEMINI_API_KEY", "GEMINI_JUDGE_MODEL",
+           "MINIMAX_API_KEY"}
 
 
 def read_setting(

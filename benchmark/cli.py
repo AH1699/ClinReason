@@ -21,6 +21,7 @@ from .multiturn import (
     validate_multiturn_dataset, variant_id, write_batch,
 )
 from .multiturn_judging import GeminiMultiturnJudge, score_judgment
+from .model_matrix import compare_matrix_reports, prepare_matrix, run_matrix
 from .multiturn_diagnostics import assess_contrast_pairs
 from .multiturn_bilingual_probes import (
     compare_bilingual_probe_reports, run_bilingual_probes, validate_probe_set,
@@ -209,6 +210,25 @@ def build_parser() -> argparse.ArgumentParser:
     mt_candidates.add_argument("--first-report", required=True)
     mt_candidates.add_argument("--second-report", required=True)
     mt_candidates.add_argument("--output", help="Optional new JSON report path; never overwrites")
+    matrix = sub.add_parser(
+        "model-matrix", help="Plan or run bounded Gemini/Grok/MiniMax candidates with two AI judges"
+    )
+    matrix.add_argument("--roster", default="config/model_matrix.json")
+    matrix.add_argument("--candidate-id", help="Run just one roster candidate")
+    matrix.add_argument("--case-id", action="append",
+                        help="Select exact variant ID; repeat for a fixed multi-case panel")
+    matrix.add_argument("--env-file", default=".env.local")
+    matrix.add_argument("--output-dir", default="work/model_matrix_pilot")
+    matrix.add_argument("--max-api-calls", type=int, default=0,
+                        help="Required explicit call-count ceiling for --live")
+    matrix.add_argument("--timeout", type=float, default=240)
+    matrix.add_argument("--live", action="store_true")
+    matrix_compare = sub.add_parser(
+        "compare-model-matrix", help="Align completed one-candidate matrix reports on exact cases and judges"
+    )
+    matrix_compare.add_argument("--report", action="append", required=True,
+                                help="Repeat for each completed model-matrix report.json")
+    matrix_compare.add_argument("--output", required=True)
     contrast = sub.add_parser(
         "judge-contrast-gemini", help="Check a Gemini judge on synthetic good/unsafe pairs (dry-run unless --live)"
     )
@@ -588,6 +608,66 @@ def main(argv: list[str] | None = None) -> int:
             "exact_gap_agreement_count": result["exact_gap_agreement_count"],
             "challenge_review_flag_agreement_count": result["challenge_review_flag_agreement_count"],
         }, ensure_ascii=False, indent=2))
+        return 0
+
+    if args.command == "compare-model-matrix":
+        try:
+            comparison = compare_matrix_reports([
+                load_json(resolve_path(args.config, path)) for path in args.report
+            ])
+            target = resolve_path(args.config, args.output)
+            if target.exists():
+                raise FileExistsError("Model-matrix comparison already exists; choose a new output")
+            target.parent.mkdir(parents=True, exist_ok=True)
+            with target.open("x", encoding="utf-8") as handle:
+                json.dump(comparison, handle, ensure_ascii=False, indent=2)
+                handle.write("\n")
+        except (FileExistsError, ValueError, KeyError, TypeError, OSError) as exc:
+            print(f"Cannot compare model matrix: {exc}")
+            return 2
+        print(json.dumps({"output": str(target), "status": comparison["status"],
+                          "candidate_count": len(comparison["candidate_results"]),
+                          "case_count": len(comparison["case_revisions"])}, ensure_ascii=False, indent=2))
+        return 0
+
+    if args.command == "model-matrix":
+        try:
+            batch_paths = config.get("multiturn_cases_paths") or [
+                config.get("multiturn_cases_path", "data/multiturn/pilot_cases.json")
+            ]
+            dataset = merge_multiturn_datasets([
+                load_json(resolve_path(args.config, path)) for path in batch_paths
+            ])
+            roster = load_json(resolve_path(args.config, args.roster))
+            plan, selected, candidates, judges = prepare_matrix(
+                roster, dataset, candidate_id=args.candidate_id,
+                selected_case_ids=args.case_id,
+            )
+            if not args.live:
+                print(json.dumps(plan, ensure_ascii=False, indent=2))
+                return 0
+            candidate_instruction = resolve_path(
+                args.config, config.get("candidate_prompt_path", "config/candidate_prompt.txt")
+            ).read_text(encoding="utf-8").strip()
+            judge_instruction = resolve_path(
+                args.config, config.get("multiturn_judge_prompt_path", "config/multiturn_judge_prompt.txt")
+            ).read_text(encoding="utf-8").strip()
+            mt_rubric = load_json(resolve_path(
+                args.config, config.get("multiturn_rubric_path", "config/multiturn_rubric.json")
+            ))
+            result = run_matrix(
+                plan, selected, candidates, judges, dataset, mt_rubric,
+                output_dir=resolve_path(args.config, args.output_dir),
+                env_file=resolve_path(args.config, args.env_file),
+                candidate_instruction=candidate_instruction,
+                judge_instruction=judge_instruction,
+                max_api_calls=args.max_api_calls, timeout=args.timeout,
+                retries=0,
+            )
+        except (ProviderRequestError, FileExistsError, ValueError, KeyError, TypeError, OSError) as exc:
+            print(f"Cannot process model matrix: {exc}")
+            return 2
+        print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0
 
     if args.command in {"validate-multiturn", "generate-grok-multiturn", "generate-gemini-multiturn", "export-multiturn-judge-packets", "judge-multiturn-gemini", "judge-multiturn-contrast", "judge-multiturn-bilingual-probes", "difficulty-audit-multiturn", "compare-multiturn-judges"}:
