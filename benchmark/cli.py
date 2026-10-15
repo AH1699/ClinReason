@@ -44,7 +44,7 @@ from .providers.gemini_conversation import GeminiConversationProvider
 from .providers.gemini_judge import GeminiJudgeProvider
 from .professional import (
     export_professional_prompts, professional_candidate_rows,
-    validate_professional_dataset, validate_professional_rubric,
+    validate_case_adaptation_registry, validate_professional_dataset, validate_professional_rubric,
 )
 from .providers.http_json import ProviderRequestError
 from .review_packets import export_review_packets
@@ -327,6 +327,10 @@ def main(argv: list[str] | None = None) -> int:
                 args.config, config.get("professional_cases_path", "data/professional/pilot_cases.json")
             ))
             status = validate_professional_dataset(professional)
+            provenance = validate_case_adaptation_registry(load_json(resolve_path(
+                args.config, config.get("professional_adaptations_path", "data/evidence/clinical_case_adaptations.json")
+            )), professional)
+            status.update(provenance)
             validate_professional_rubric(load_json(resolve_path(
                 args.config, config.get("professional_rubric_path", "config/professional_rubric.json")
             )))

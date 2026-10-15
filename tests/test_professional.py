@@ -9,7 +9,7 @@ from pathlib import Path
 from benchmark.cli import main
 from benchmark.config import load_json, load_jsonl
 from benchmark.professional import (
-    professional_candidate_rows, validate_professional_dataset,
+    professional_candidate_rows, validate_case_adaptation_registry, validate_professional_dataset,
     validate_professional_rubric,
 )
 
@@ -22,7 +22,7 @@ class ProfessionalPilotTests(unittest.TestCase):
 
     def test_separate_unscored_bilingual_track(self):
         status = validate_professional_dataset(self.dataset)
-        self.assertEqual((status["family_count"], status["variant_count"]), (4, 8))
+        self.assertEqual((status["family_count"], status["variant_count"]), (10, 20))
         self.assertFalse(status["scoring_enabled"])
         self.assertFalse(status["clinical_review_complete"])
         self.assertFalse(status["language_review_complete"])
@@ -33,7 +33,7 @@ class ProfessionalPilotTests(unittest.TestCase):
 
     def test_export_contains_no_labels_or_sources_and_cannot_overwrite(self):
         rows = professional_candidate_rows(self.dataset, instruction="Fixture.", prompt_template_version="v1")
-        self.assertEqual(len(rows), 8)
+        self.assertEqual(len(rows), 20)
         forbidden = ("reference_elements", "critical_errors", "source_refs", "failure_mode")
         self.assertTrue(all(not any(key in row for key in forbidden) for row in rows))
         with tempfile.TemporaryDirectory() as directory:
@@ -41,7 +41,25 @@ class ProfessionalPilotTests(unittest.TestCase):
             with redirect_stdout(io.StringIO()):
                 self.assertEqual(main(["export-professional-prompts", "--output", str(target)]), 0)
                 self.assertEqual(main(["export-professional-prompts", "--output", str(target)]), 2)
-            self.assertEqual(len(load_jsonl(target)), 8)
+            self.assertEqual(len(load_jsonl(target)), 20)
+
+    def test_published_case_adaptations_have_bound_provenance(self):
+        registry = load_json(self.root / "data/evidence/clinical_case_adaptations.json")
+        self.assertEqual(validate_case_adaptation_registry(registry, self.dataset), {
+            "adapted_family_count": 6, "adapted_variant_count": 12,
+        })
+        corrupted = deepcopy(registry)
+        corrupted["records"].pop()
+        with self.assertRaises(ValueError):
+            validate_case_adaptation_registry(corrupted, self.dataset)
+        corrupted = deepcopy(registry)
+        corrupted["records"][0]["source_url"] = "https://example.invalid/unrelated"
+        with self.assertRaises(ValueError):
+            validate_case_adaptation_registry(corrupted, self.dataset)
+        corrupted = deepcopy(registry)
+        corrupted["records"][0]["license"] = "free-to-read"
+        with self.assertRaises(ValueError):
+            validate_case_adaptation_registry(corrupted, self.dataset)
 
     def test_bilingual_mismatch_and_duplicate_rejected(self):
         corrupted = deepcopy(self.dataset)

@@ -1,6 +1,8 @@
-# Project progress — 2026-10-11
+# Project progress — through 2026-10-14
 
 This is an engineering and authoring status log, **not** a clinical quality claim. Qualified clinical and bilingual review is intentionally deferred, as requested; all Alpha cases remain drafts.
+
+Latest: the [2026-10-14 published-case expansion](REAL_CASE_EXPANSION_2026-10-14_EN.md) added six bilingual clinician-facing families adapted from six distinct CC BY reports. The professional draft is now **10 families/20 prompts**; patient-facing Alpha remains 32/64 and two-turn remains 20/40. A source/license/attribution/change/limitation registry is checked during professional validation and export. These are synthetic development cases, not imported patient records or validated labels; professional scoring remains disabled. Next non-clinical priority: repeatable public-source intake and mechanism-level deduplication, followed by predeclared multi-model difficulty and judge-calibration audits. Volume alone does not establish expert difficulty.
 
 ## The four non-clinical gaps addressed in this iteration
 

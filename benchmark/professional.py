@@ -15,6 +15,47 @@ LANGUAGES = ("en", "zh-Hans")
 WORKFLOWS = {"clinical_consult", "medication_reconciliation_handoff", "evidence_appraisal"}
 
 
+def validate_case_adaptation_registry(registry: Any, dataset: dict[str, Any]) -> dict[str, int]:
+    """Bind source-derived drafts to explicit article attribution and reuse status."""
+    validate_professional_dataset(dataset)
+    if (not isinstance(registry, dict) or set(registry) != {
+        "schema_version", "status", "policy", "records",
+    } or registry["schema_version"] != "0.1.0"
+        or registry["status"] != "development_provenance_not_clinical_validation"
+        or not isinstance(registry["policy"], str) or not registry["policy"].strip()
+        or not isinstance(registry["records"], list) or not registry["records"]):
+        raise ValueError("Invalid case-adaptation registry")
+    families = {item["family_id"]: item for item in dataset["families"]}
+    seen: set[str] = set()
+    for record in registry["records"]:
+        if not isinstance(record, dict) or set(record) != {
+            "family_id", "source_type", "source_title", "source_url", "attribution",
+            "license", "license_url", "verified_on", "case_text_mode", "changes", "limitations",
+        }:
+            raise ValueError("Invalid case-adaptation record")
+        family_id = record["family_id"]
+        if family_id in seen or family_id not in families:
+            raise ValueError(f"Duplicate or unknown adaptation family: {family_id}")
+        seen.add(family_id)
+        if (record["source_type"] != "published_case_report"
+            or record["case_text_mode"] != "synthetic_adaptation"
+            or record["license"] not in {"CC BY", "CC BY 4.0"}
+            or record["license_url"] != "https://creativecommons.org/licenses/by/4.0/"
+            or record["source_url"] not in families[family_id]["source_refs"]
+            or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", record["verified_on"])
+            or any(not isinstance(record[key], str) or not record[key].strip()
+                   for key in ("source_title", "attribution", "changes", "limitations"))):
+            raise ValueError(f"Unverified adaptation provenance: {family_id}")
+    article_sourced = {
+        family_id for family_id, family in families.items()
+        if any(source.startswith("https://pmc.ncbi.nlm.nih.gov/articles/PMC")
+               for source in family["source_refs"])
+    }
+    if seen != article_sourced:
+        raise ValueError("Published-case families and adaptation records must match")
+    return {"adapted_family_count": len(seen), "adapted_variant_count": len(seen) * 2}
+
+
 def validate_professional_rubric(rubric: Any) -> None:
     if (not isinstance(rubric, dict) or rubric.get("id") != "clinreason-professional-rubric"
         or rubric.get("status") != "authoring_only_not_clinically_calibrated"

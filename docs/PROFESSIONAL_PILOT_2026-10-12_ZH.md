@@ -1,6 +1,6 @@
 # 面向临床专业人员的试点——独立开发构念
 
-这是 **4 个案例族、8 条题目的合成草稿**，不是专业能力分数、医疗建议或已验证标准答案。数据位于 `data/professional/pilot_cases.json`，仅供编写讨论的评分维度位于 `config/professional_rubric.json`。中英文均已建立，但中文明确标记为 `machine_translation_unreviewed`。未使用真实患者记录或付费数据。不得与面向患者的 32 族 Alpha 或 20 族双轮对话合并评分。
+这是 **10 个案例族、20 条题目的合成草稿**，不是专业能力分数、医疗建议或已验证标准答案。[2026-10-14 已发表病例扩展](REAL_CASE_EXPANSION_2026-10-14_ZH.md)新增六族，并另建来源记录。数据位于 `data/professional/pilot_cases.json`，仅供编写讨论的评分维度位于 `config/professional_rubric.json`。中英文均已建立，但中文明确标记为 `machine_translation_unreviewed`。未使用原始患者记录或付费数据。不得与面向患者的 32 族 Alpha 或 20 族双轮对话合并评分。
 
 ## 试点检验的推理陷阱
 

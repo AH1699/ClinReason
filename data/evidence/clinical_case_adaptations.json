@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.1.0",
+  "status": "development_provenance_not_clinical_validation",
+  "policy": "Only rewritten, de-identified synthetic prompts are stored; no article text, figures, original patient records, or patient-level data files are redistributed. Article licenses were checked on 2026-10-14, but a published case is not a clinical guideline or an approved answer key.",
+  "records": [
+    {
+      "family_id": "HC-PRO-DIABETES-001",
+      "source_type": "published_case_report",
+      "source_title": "SGLT-2 Inhibitor-Associated Euglycemic Diabetic Ketoacidosis: A Case Report and a Literature Review",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9313009/",
+      "attribution": "Mahfooz et al., Cureus (2022), doi:10.7759/cureus.26267",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "verified_on": "2026-10-14",
+      "case_text_mode": "synthetic_adaptation",
+      "changes": "Rewrote the clinical narrative, altered patient details and numerical glucose, removed treatment course, and inserted a false-negative handoff claim plus deliberately missing information.",
+      "limitations": "One report supports a diagnostic trap, not incidence, a universal threshold, or an independently adjudicated reference answer."
+    },
+    {
+      "family_id": "HC-PRO-TOX-001",
+      "source_type": "published_case_report",
+      "source_title": "Linezolid Toxicity: A Clinical Case Report",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10996881/",
+      "attribution": "Ferreira et al., Cureus (2024), doi:10.7759/cureus.55672",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "verified_on": "2026-10-14",
+      "case_text_mode": "synthetic_adaptation",
+      "changes": "Rewrote the narrative without age, operative details, organism, treatment timeline, or outcome; constructed a competing sepsis-versus-toxicity handoff.",
+      "limitations": "The report describes probable adverse effects, not proof that every similar presentation has the same cause."
+    },
+    {
+      "family_id": "HC-PRO-LAB-001",
+      "source_type": "published_case_report",
+      "source_title": "Sustained hyperkalemia in an asymptomatic primary care patient. When to suspect familial pseudohyperkalemia",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10197407/",
+      "attribution": "Castillo Pérez et al., Advances in Laboratory Medicine (2022), doi:10.1515/almed-2022-0057",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "verified_on": "2026-10-14",
+      "case_text_mode": "synthetic_adaptation",
+      "changes": "Changed values and sampling context, omitted inherited diagnosis and outcome, and framed a two-sided decision about true hyperkalemia versus specimen artifact.",
+      "limitations": "The source's rare mechanism must not be inferred from the rewritten prompt; true hyperkalemia remains possible."
+    },
+    {
+      "family_id": "HC-PRO-POSTPARTUM-001",
+      "source_type": "published_case_report",
+      "source_title": "Bilateral adrenal hemorrhage in a postpartum woman with multiple thromboemboli: A case report",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11515325/",
+      "attribution": "Jiang et al., Journal of Medical Case Reports (2024), doi:10.1186/s13256-024-04834-3",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "verified_on": "2026-10-14",
+      "case_text_mode": "synthetic_adaptation",
+      "changes": "Generalized postpartum timing, excluded demographics and original laboratory values, withheld definitive image interpretation, and introduced an unsafe sodium-based dismissal.",
+      "limitations": "A single report does not establish frequency or prove adrenal hemorrhage in the synthetic presentation."
+    },
+    {
+      "family_id": "HC-PRO-CARDIOONC-001",
+      "source_type": "published_case_report",
+      "source_title": "Ipilimumab- and nivolumab-induced myocarditis in a patient with metastatic cholangiocarcinoma: a case report",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9281161/",
+      "attribution": "Delombaerde et al., Journal of Medical Case Reports (2022), doi:10.1186/s13256-022-03487-4",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "verified_on": "2026-10-14",
+      "case_text_mode": "synthetic_adaptation",
+      "changes": "Removed cancer type, demographics, imaging outcome and exact treatment course; retained only the reasoning pattern of elevated troponin despite early unrevealing tests.",
+      "limitations": "Troponin elevation has several causes; the rewritten prompt does not establish myocarditis."
+    },
+    {
+      "family_id": "HC-PRO-ENDOONC-001",
+      "source_type": "published_case_report",
+      "source_title": "Potential pitfalls in diagnosis of immunotherapy-induced hypothalamic-pituitary-adrenal axis abnormalities: a clinical case",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10259291/",
+      "attribution": "Bi et al., Endocrine Oncology (2022), doi:10.1530/EO-21-0023",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "verified_on": "2026-10-14",
+      "case_text_mode": "synthetic_adaptation",
+      "changes": "Omitted demographics, tumor type, exact hormone values, assay brands, sequence and outcome; created an incomplete trend-assessment task.",
+      "limitations": "Assay interference is a possibility to investigate, not a conclusion from the synthetic facts."
+    }
+  ]
+}

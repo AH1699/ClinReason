@@ -1,6 +1,6 @@
 # Clinician-facing professional pilot — separate development construct
 
-This is a **four-family/eight-prompt synthetic draft**, not a professional-competence score, clinical advice, or validated answer key. The dataset lives at `data/professional/pilot_cases.json`; the authoring-only rubric is `config/professional_rubric.json`. Both languages are present, but Chinese is explicitly `machine_translation_unreviewed`. No real patient records or paid data are used. These prompts must never be pooled with the 32-family patient-facing Alpha or 20-family patient-facing two-turn track.
+This is a **10-family/20-prompt synthetic draft**, not a professional-competence score, clinical advice, or validated answer key. The [2026-10-14 published-case expansion](REAL_CASE_EXPANSION_2026-10-14_EN.md) added six source-derived families with a separate provenance registry. The dataset lives at `data/professional/pilot_cases.json`; the authoring-only rubric is `config/professional_rubric.json`. Both languages are present, but Chinese is explicitly `machine_translation_unreviewed`. No real patient records or paid data are used. These prompts must never be pooled with the 32-family patient-facing Alpha or 20-family patient-facing two-turn track.
 
 ## What the pilot probes
 
