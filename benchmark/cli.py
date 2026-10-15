@@ -22,7 +22,9 @@ from .multiturn import (
 )
 from .multiturn_judging import GeminiMultiturnJudge, score_judgment
 from .multiturn_diagnostics import assess_contrast_pairs
-from .multiturn_bilingual_probes import run_bilingual_probes, validate_probe_set
+from .multiturn_bilingual_probes import (
+    compare_bilingual_probe_reports, run_bilingual_probes, validate_probe_set,
+)
 from .provenance import sha256_json, sha256_text
 from .pipeline import (
     bootstrap,
@@ -171,9 +173,19 @@ def build_parser() -> argparse.ArgumentParser:
     )
     mt_bilingual.add_argument("--provider", choices=("gemini", "grok"), required=True)
     mt_bilingual.add_argument("--model", help="Override the selected judge model in local settings")
+    mt_bilingual.add_argument("--family-id", help="Run both languages of one exact family")
     mt_bilingual.add_argument("--env-file", default=".env.local")
+    mt_bilingual.add_argument("--timeout", type=float, default=240, help="Seconds per API request")
     mt_bilingual.add_argument("--output", default="work/multiturn_bilingual_probe_judgments.json")
     mt_bilingual.add_argument("--live", action="store_true")
+    mt_bilingual_compare = sub.add_parser(
+        "compare-multiturn-bilingual-probes",
+        help="Verify and compare a complete first judge report with one or more second-provider parts",
+    )
+    mt_bilingual_compare.add_argument("--first", required=True)
+    mt_bilingual_compare.add_argument("--second", action="append", required=True,
+                                      help="Repeat for nonoverlapping second-provider family files")
+    mt_bilingual_compare.add_argument("--output", default="work/multiturn_bilingual_probe_comparison.json")
     mt_audit = sub.add_parser(
         "difficulty-audit-multiturn", help="Describe a paired draft candidate/judge run without clinical claims"
     )
@@ -528,6 +540,49 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0
 
+    if args.command == "compare-multiturn-bilingual-probes":
+        try:
+            batch_paths = config.get("multiturn_cases_paths") or [
+                config.get("multiturn_cases_path", "data/multiturn/pilot_cases.json")
+            ]
+            dataset = merge_multiturn_datasets([
+                load_json(resolve_path(args.config, path)) for path in batch_paths
+            ])
+            probes = load_json(resolve_path(
+                args.config, config.get("multiturn_bilingual_probes_path", "data/multiturn/bilingual_judge_probes.json")
+            ))
+            mt_rubric = load_json(resolve_path(
+                args.config, config.get("multiturn_rubric_path", "config/multiturn_rubric.json")
+            ))
+            instruction = resolve_path(
+                args.config, config.get("multiturn_judge_prompt_path", "config/multiturn_judge_prompt.txt")
+            ).read_text(encoding="utf-8").strip()
+            target = resolve_path(args.config, args.output)
+            if target.exists():
+                raise FileExistsError(f"Refusing to overwrite bilingual comparison: {target}")
+            result = compare_bilingual_probe_reports(
+                dataset, probes, load_json(resolve_path(args.config, args.first)),
+                [load_json(resolve_path(args.config, path)) for path in args.second],
+                mt_rubric, sha256_text(instruction),
+            )
+            from datetime import datetime, timezone
+
+            result["generated_at"] = datetime.now(timezone.utc).isoformat()
+            target.parent.mkdir(parents=True, exist_ok=True)
+            with target.open("x", encoding="utf-8") as handle:
+                json.dump(result, handle, ensure_ascii=False, indent=2)
+                handle.write("\n")
+        except (ProviderRequestError, FileExistsError, ValueError, KeyError, TypeError, OSError) as exc:
+            print(f"Cannot compare bilingual probes: {exc}")
+            return 2
+        print(json.dumps({
+            "output": str(target), "pair_count": result["pair_count"],
+            "same_positive_direction_count": result["same_positive_direction_count"],
+            "exact_gap_agreement_count": result["exact_gap_agreement_count"],
+            "challenge_review_flag_agreement_count": result["challenge_review_flag_agreement_count"],
+        }, ensure_ascii=False, indent=2))
+        return 0
+
     if args.command in {"validate-multiturn", "generate-grok-multiturn", "generate-gemini-multiturn", "export-multiturn-judge-packets", "judge-multiturn-gemini", "judge-multiturn-contrast", "judge-multiturn-bilingual-probes", "difficulty-audit-multiturn", "compare-multiturn-judges"}:
         try:
             batch_paths = config.get("multiturn_cases_paths")
@@ -721,6 +776,11 @@ def main(argv: list[str] | None = None) -> int:
                 probes = load_json(resolve_path(
                     args.config, config.get("multiturn_bilingual_probes_path", "data/multiturn/bilingual_judge_probes.json")
                 ))
+                if args.family_id:
+                    selected = [pair for pair in probes["pairs"] if pair["family_id"] == args.family_id]
+                    if not selected:
+                        raise ValueError(f"Unknown bilingual probe family: {args.family_id}")
+                    probes = {**probes, "pairs": selected}
                 pairs = validate_probe_set(dataset, probes)
                 target = resolve_path(args.config, args.output)
                 if target.exists():
@@ -747,6 +807,7 @@ def main(argv: list[str] | None = None) -> int:
                     model=model,
                     api_key=read_setting(env_path, "GEMINI_API_KEY" if is_gemini_judge else "GROK_API_KEY", secret=True),
                     instruction=instruction,
+                    timeout=args.timeout,
                 )
                 result = run_bilingual_probes(dataset, probes, judge, mt_rubric)
                 from datetime import datetime, timezone
@@ -757,6 +818,7 @@ def main(argv: list[str] | None = None) -> int:
                     "judge_instruction_sha256": sha256_text(instruction),
                     "rubric_sha256": sha256_json(mt_rubric),
                     "actual_request_parameters": {"store": False, "response_format": "json_schema"},
+                    "timeout_seconds": args.timeout,
                     "sampling_policy": "provider_default_unpinned",
                     "provenance": candidate_provenance(config, mt_rubric, Path(__file__).resolve().parents[1]),
                 })

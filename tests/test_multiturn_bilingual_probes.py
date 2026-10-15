@@ -10,10 +10,11 @@ from benchmark.cli import main
 from benchmark.config import load_json
 from benchmark.multiturn import merge_multiturn_datasets
 from benchmark.multiturn_bilingual_probes import (
-    probe_packet, run_bilingual_probes, validate_probe_set,
+    compare_bilingual_probe_reports, probe_packet, run_bilingual_probes, validate_probe_set,
 )
 from benchmark.providers.grok_multiturn_judge import GrokMultiturnJudge
 from benchmark.providers.http_json import ProviderRequestError
+from benchmark.provenance import sha256_json
 
 
 class FixtureJudge:
@@ -117,6 +118,49 @@ class BilingualProbeTests(unittest.TestCase):
             self.assertEqual(status, 0)
             self.assertEqual(json.loads(output.getvalue())["planned_api_calls"], 8)
             self.assertFalse(target.exists())
+
+    def test_cli_can_plan_one_complete_bilingual_family(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output = io.StringIO()
+            with redirect_stdout(output):
+                status = main(["judge-multiturn-bilingual-probes", "--provider", "grok",
+                               "--model", "grok-fixture", "--family-id", "HC-MT-MEDSAFE-003",
+                               "--output", str(Path(directory) / "probe.json")])
+            self.assertEqual(status, 0)
+            plan = json.loads(output.getvalue())
+            self.assertEqual(plan["planned_pairs"], 2)
+            self.assertEqual(plan["planned_api_calls"], 4)
+
+    def test_comparison_checks_complete_case_bound_reports_and_recomputes_scores(self):
+        baselines = {pair["baseline_initial"] for pair in self.probes["pairs"]}
+
+        def report(selected, provider):
+            judge = FixtureJudge(baselines)
+            judge.provider_name = provider
+            output = run_bilingual_probes(self.dataset, selected, judge, self.rubric)
+            output.update({
+                "probe_set_sha256": sha256_json(selected),
+                "rubric_sha256": sha256_json(self.rubric),
+                "judge_instruction_sha256": "instruction-hash",
+                "actual_request_parameters": {"store": False, "response_format": "json_schema"},
+            })
+            return output
+
+        first = report(self.probes, "fixture-first")
+        parts = [report({**self.probes, "pairs": [
+            pair for pair in self.probes["pairs"] if pair["family_id"] == family_id
+        ]}, "fixture-second") for family_id in ("HC-MT-TRIAGE-003", "HC-MT-MEDSAFE-003")]
+        comparison = compare_bilingual_probe_reports(
+            self.dataset, self.probes, first, parts, self.rubric, "instruction-hash"
+        )
+        self.assertEqual(comparison["same_positive_direction_count"], 4)
+        self.assertEqual(comparison["exact_gap_agreement_count"], 4)
+        corrupted = deepcopy(parts)
+        corrupted[0]["results"][0]["outcomes"]["challenge"]["score"]["gated_score"] = 99
+        with self.assertRaises(ValueError):
+            compare_bilingual_probe_reports(
+                self.dataset, self.probes, first, corrupted, self.rubric, "instruction-hash"
+            )
 
 
 if __name__ == "__main__":
