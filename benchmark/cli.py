@@ -22,6 +22,7 @@ from .multiturn import (
 )
 from .multiturn_judging import GeminiMultiturnJudge, score_judgment
 from .multiturn_diagnostics import assess_contrast_pairs
+from .multiturn_bilingual_probes import run_bilingual_probes, validate_probe_set
 from .provenance import sha256_json, sha256_text
 from .pipeline import (
     bootstrap,
@@ -36,6 +37,7 @@ from .providers.mock import MockCandidateProvider, MockJudgeProvider
 from .providers.gemini import GeminiRunError, candidate_rows, local_api_key, run_gemini
 from .providers.grok import candidate_rows as grok_candidate_rows, run_grok
 from .providers.grok_conversation import GrokConversationProvider
+from .providers.grok_multiturn_judge import GrokMultiturnJudge
 from .providers.gemini_conversation import GeminiConversationProvider
 from .providers.gemini_judge import GeminiJudgeProvider
 from .professional import (
@@ -163,6 +165,15 @@ def build_parser() -> argparse.ArgumentParser:
     mt_contrast.add_argument("--family-id", help="Run one exact family, such as HC-MT-REASON-004")
     mt_contrast.add_argument("--output", default="work/multiturn_judge_contrasts.json")
     mt_contrast.add_argument("--live", action="store_true")
+    mt_bilingual = sub.add_parser(
+        "judge-multiturn-bilingual-probes",
+        help="Blinded matched EN/ZH near-miss probes (dry-run unless --live)",
+    )
+    mt_bilingual.add_argument("--provider", choices=("gemini", "grok"), required=True)
+    mt_bilingual.add_argument("--model", help="Override the selected judge model in local settings")
+    mt_bilingual.add_argument("--env-file", default=".env.local")
+    mt_bilingual.add_argument("--output", default="work/multiturn_bilingual_probe_judgments.json")
+    mt_bilingual.add_argument("--live", action="store_true")
     mt_audit = sub.add_parser(
         "difficulty-audit-multiturn", help="Describe a paired draft candidate/judge run without clinical claims"
     )
@@ -517,7 +528,7 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0
 
-    if args.command in {"validate-multiturn", "generate-grok-multiturn", "generate-gemini-multiturn", "export-multiturn-judge-packets", "judge-multiturn-gemini", "judge-multiturn-contrast", "difficulty-audit-multiturn", "compare-multiturn-judges"}:
+    if args.command in {"validate-multiturn", "generate-grok-multiturn", "generate-gemini-multiturn", "export-multiturn-judge-packets", "judge-multiturn-gemini", "judge-multiturn-contrast", "judge-multiturn-bilingual-probes", "difficulty-audit-multiturn", "compare-multiturn-judges"}:
         try:
             batch_paths = config.get("multiturn_cases_paths")
             if getattr(args, "cases_paths", None):
@@ -705,6 +716,61 @@ def main(argv: list[str] | None = None) -> int:
                     json.dump(result, handle, ensure_ascii=False, indent=2)
                     handle.write("\n")
                 print(json.dumps({"output": str(target), **result}, ensure_ascii=False, indent=2))
+                return 0
+            if args.command == "judge-multiturn-bilingual-probes":
+                probes = load_json(resolve_path(
+                    args.config, config.get("multiturn_bilingual_probes_path", "data/multiturn/bilingual_judge_probes.json")
+                ))
+                pairs = validate_probe_set(dataset, probes)
+                target = resolve_path(args.config, args.output)
+                if target.exists():
+                    raise FileExistsError(f"Refusing to overwrite bilingual probe output: {target}")
+                env_path = resolve_path(args.config, args.env_file)
+                is_gemini_judge = args.provider == "gemini"
+                model = args.model or read_setting(
+                    env_path, "GEMINI_JUDGE_MODEL" if is_gemini_judge else "GROK_MODEL"
+                )
+                if not args.live:
+                    print(json.dumps({"status": "dry_run_no_api_calls", "provider": args.provider,
+                                      "model": model, "planned_pairs": len(pairs),
+                                      "planned_api_calls": len(pairs) * 2,
+                                      "output": str(target)}, indent=2))
+                    return 0
+                instruction = resolve_path(
+                    args.config, config.get("multiturn_judge_prompt_path", "config/multiturn_judge_prompt.txt")
+                ).read_text(encoding="utf-8").strip()
+                mt_rubric = load_json(resolve_path(
+                    args.config, config.get("multiturn_rubric_path", "config/multiturn_rubric.json")
+                ))
+                judge_class = GeminiMultiturnJudge if is_gemini_judge else GrokMultiturnJudge
+                judge = judge_class(
+                    model=model,
+                    api_key=read_setting(env_path, "GEMINI_API_KEY" if is_gemini_judge else "GROK_API_KEY", secret=True),
+                    instruction=instruction,
+                )
+                result = run_bilingual_probes(dataset, probes, judge, mt_rubric)
+                from datetime import datetime, timezone
+
+                result.update({
+                    "generated_at": datetime.now(timezone.utc).isoformat(),
+                    "probe_set_sha256": sha256_json(probes),
+                    "judge_instruction_sha256": sha256_text(instruction),
+                    "rubric_sha256": sha256_json(mt_rubric),
+                    "actual_request_parameters": {"store": False, "response_format": "json_schema"},
+                    "sampling_policy": "provider_default_unpinned",
+                    "provenance": candidate_provenance(config, mt_rubric, Path(__file__).resolve().parents[1]),
+                })
+                target.parent.mkdir(parents=True, exist_ok=True)
+                with target.open("x", encoding="utf-8") as handle:
+                    json.dump(result, handle, ensure_ascii=False, indent=2)
+                    handle.write("\n")
+                print(json.dumps({
+                    "output": str(target), "judge_provider": result["judge_provider"],
+                    "judge_model_returned": result["judge_model_returned"],
+                    "probe_count": result["probe_count"],
+                    "positive_gap_count": result["positive_gap_count"],
+                    "family_language_gaps": result["family_language_gaps"],
+                }, ensure_ascii=False, indent=2))
                 return 0
             selected = ordered_variants(dataset)
             if args.family_ids:
