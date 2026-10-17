@@ -8,7 +8,8 @@
     {"id": "grok-46", "provider": "grok", "model": "grok-4.6"},
     {"id": "grok-47", "provider": "grok", "model": "grok-4.7"},
     {"id": "minimax-m27", "provider": "minimax", "model": "MiniMax-M2.7"},
-    {"id": "minimax-m3", "provider": "minimax", "model": "MiniMax-M3"}
+    {"id": "minimax-m3", "provider": "minimax", "model": "MiniMax-M3"},
+    {"id": "minimax-m31-flash-preview", "provider": "minimax", "model": "MiniMax-M3.1-Flash-Preview"}
   ],
   "judges": [
     {"id": "gemini-judge", "provider": "gemini", "model": "gemini-3.8-flash"},

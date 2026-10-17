@@ -59,11 +59,11 @@ class ModelMatrixTests(unittest.TestCase):
         ])
         cls.rubric = load_json(root / "config/multiturn_rubric.json")
 
-    def test_roster_plan_has_six_candidates_two_judges_and_fixed_hashes(self):
+    def test_roster_plan_has_seven_candidates_two_judges_and_fixed_hashes(self):
         plan, selected, candidates, judges = prepare_matrix(self.roster, self.dataset)
-        self.assertEqual((len(candidates), len(judges), len(selected)), (6, 2, 2))
+        self.assertEqual((len(candidates), len(judges), len(selected)), (7, 2, 2))
         self.assertEqual((plan["candidate_calls"], plan["judge_calls"], plan["total_api_calls"]),
-                         (24, 24, 48))
+                         (28, 28, 56))
         self.assertEqual(len({item["case_content_hash"] for item in plan["case_revisions"]}), 2)
         one, _, candidates, _ = prepare_matrix(
             self.roster, self.dataset, candidate_id="minimax-m27", case_id="HC-MT-TRIAGE-008-EN"

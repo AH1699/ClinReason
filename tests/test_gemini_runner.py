@@ -48,6 +48,13 @@ class GeminiRunnerTests(unittest.TestCase):
             with self.assertRaises(GeminiRunError):
                 local_api_key(path, {})
 
+    def test_local_key_allows_spaces_around_equals_without_executing_file(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / ".env.local"
+            path.write_text("GEMINI_API_KEY = fixture-key\nMINIMAX_API_KEY = fixture-minimax\n",
+                            encoding="utf-8")
+            self.assertEqual(local_api_key(path, {}), "fixture-key")
+
     def test_request_contains_only_instruction_prompt_and_store_false(self):
         seen = []
 

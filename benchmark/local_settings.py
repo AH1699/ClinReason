@@ -29,6 +29,7 @@ def read_setting(
             if not stripped or stripped.startswith("#"):
                 continue
             key, separator, literal = stripped.partition("=")
+            key = key.strip()
             if not separator or key not in ALLOWED or key in settings:
                 raise ValueError(".env.local has an unsupported or duplicate setting")
             literal = literal.strip()
