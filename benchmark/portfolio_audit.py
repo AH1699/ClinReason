@@ -15,6 +15,7 @@ from typing import Any
 from .config import load_json, load_jsonl
 from .multiturn import merge_multiturn_datasets
 from .professional import combine_professional_datasets, validate_case_adaptation_registry
+from .provenance import sha256_json
 
 
 RELATIONSHIPS = {
@@ -119,13 +120,39 @@ def audit_portfolio(root: Path) -> dict[str, Any]:
     _validate_queue(queue, family_ids)
     split_plan = load_json(root / "data/audit/prospective_split_plan.json")
     current_split = split_plan["current_public_portfolio"]
-    if (split_plan["status"] != "planning_only_no_cases_assigned"
+    if (split_plan["status"] != "prospective_drafts_started_no_approved_calibration_or_gold"
         or current_split != {
             "development_families": len(family_ids),
             "calibration_families": 0,
             "hidden_gold_families": 0,
         }):
         raise ValueError("Prospective split plan must match the public draft portfolio")
+    draft_counts = split_plan["prospective_draft_candidates_not_approved_counts"]
+    integrity = split_plan["prospective_draft_integrity"]
+    calibration_path = root / integrity["calibration_path"]
+    calibration = load_json(calibration_path)
+    calibration_status = merge_multiturn_datasets([calibration])
+    calibration_ids = {item["family_id"] for item in calibration_status["families"]}
+    if (calibration_ids & family_ids
+        or len(calibration_ids) != draft_counts["calibration_patient_multiturn"]
+        or sha256_json(calibration) != integrity["calibration_sha256"]
+        or integrity["calibration_path"] in config["multiturn_cases_paths"]):
+        raise ValueError("Calibration draft is not prospectively isolated or matches neither count nor hash")
+    hidden_path = root / integrity["hidden_local_path_not_in_git"]
+    hidden_verified: bool | None = None
+    hidden_sources: set[str] = set()
+    if hidden_path.exists():
+        hidden = load_json(hidden_path)
+        hidden_status = merge_multiturn_datasets([hidden])
+        hidden_ids = {item["family_id"] for item in hidden_status["families"]}
+        calibration_sources = {url for item in calibration_status["families"] for url in item["source_refs"]}
+        hidden_sources = {url for item in hidden_status["families"] for url in item["source_refs"]}
+        if (hidden_ids & (family_ids | calibration_ids)
+            or hidden_sources & calibration_sources
+            or len(hidden_ids) != draft_counts["hidden_local_patient_multiturn"]
+            or sha256_json(hidden) != integrity["hidden_local_sha256"]):
+            raise ValueError("Local hidden candidate failed isolation, count or integrity check")
+        hidden_verified = True
 
     public_sources = load_json(root / "data/evidence/public_sources.json")["sources"]
     registry_by_family: dict[str, set[str]] = defaultdict(set)
@@ -147,6 +174,11 @@ def audit_portfolio(root: Path) -> dict[str, Any]:
         for family in dataset["families"]:
             for url in family["source_refs"]:
                 source_users[url].add(family["family_id"])
+    calibration_sources = {url for item in calibration_status["families"] for url in item["source_refs"]}
+    if calibration_sources & source_users.keys():
+        raise ValueError("Calibration draft reuses a public development source URL")
+    if hidden_verified and hidden_sources & source_users.keys():
+        raise ValueError("Local hidden candidate reuses a public development source URL")
     shared_sources = {
         url: sorted(ids) for url, ids in source_users.items() if len(ids) > 1
     }
@@ -182,6 +214,9 @@ def audit_portfolio(root: Path) -> dict[str, Any]:
         ),
         "calibration_family_count": current_split["calibration_families"],
         "hidden_gold_family_count": current_split["hidden_gold_families"],
+        "prospective_calibration_draft_family_count": len(calibration_ids),
+        "prospective_hidden_local_draft_family_count_declared": draft_counts["hidden_local_patient_multiturn"],
+        "hidden_local_draft_integrity_verified": hidden_verified,
         "note": "This is a bounded author audit. Shared URL or mechanism is not proof of duplicate content; public draft cases cannot be made genuinely hidden retroactively.",
     }
 

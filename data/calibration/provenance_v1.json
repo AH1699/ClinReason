@@ -1,0 +1,17 @@
+{
+  "schema_version": "0.1.0",
+  "status": "author_draft_pending_independent_clinical_and_language_review",
+  "split": "prospective_calibration_candidate_not_gold",
+  "records": [
+    {
+      "family_id": "HC-MT-MEDSAFE-010",
+      "source_type": "synthetic_adaptation_of_published_case_plus_prescribing_information",
+      "case_report": "https://www.cureus.com/articles/179527-valproate-induced-hyperammonemic-encephalopathy-causing-new-onset-seizures",
+      "case_report_license": "CC BY 4.0; publisher PDF copyright notice checked 2026-10-18",
+      "clinical_source": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=64b509bc-f398-48ad-bdcb-9904e61d9225&type=display",
+      "checked_on": "2026-10-18",
+      "adaptation": "Original case narrative, patient attributes, numerical results, treatment and outcome were not copied. New two-turn patient-facing scenario contrasts nonspecific early symptoms with later confusion, vomiting, and false reassurance from reported tests.",
+      "limits": "The published report illustrates a possible mechanism, not incidence or confirmation in this synthetic patient. The prescribing information supports that hyperammonemia can occur despite normal liver tests; exact scoring boundaries, urgency and translation require independent review."
+    }
+  ]
+}

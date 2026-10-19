@@ -50,6 +50,10 @@ The benchmark must not be used to:
 
 Out of alpha scope: multimodal inputs, EHR integration, autonomous actions, tool execution, longitudinal care, model training, and real patient records.
 
+### Standing score-calibration objective (recorded 2026-10-18)
+
+The benchmark owner expects a representative **mid-tier general-purpose model to score around 80/100**, a pre-declared lower-tier set roughly **60–70**, and a pre-declared premium set roughly **90** on a mature, sufficiently difficult benchmark. Preserve this as a **design and interpretation target**, not a scoring formula, pass threshold, promised result, or claim about any named model. Define tiers without looking at ClinReason results; report actual scores, uncertainty, safety failures, domain and language gaps even if the target is missed. Never curve scores, choose reference models after seeing scores, change weights solely to hit a band, or penalize a clinically acceptable answer for being too good. See the [calibration plan](SCORING_CALIBRATION_PLAN_2026-10-16_EN.md).
+
 ## 5. Decisions required before case validation
 
 The Global Core jurisdiction decision is resolved: cases use `benchmark_layer=global_core` and `jurisdiction=global_core`. These remaining items block promotion beyond `draft`:
