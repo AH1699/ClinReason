@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 from .candidate_exchange import export_prompts, import_answers
+from .criterion_anchors import validate_anchor_set
 from .config import load_json, load_jsonl, resolve_path
 from .coverage import audit_coverage
 from .judge_diagnostics import assess_contrasts
@@ -18,10 +19,11 @@ from .live_judging import gemini_judge_status, judge_imported_grok
 from .local_settings import read_setting
 from .multiturn import (
     judge_packets_from_answers, merge_multiturn_datasets, ordered_variants,
-    validate_multiturn_dataset, variant_id, write_batch,
+    validate_multiturn_dataset, variant_hash, variant_id, write_batch,
 )
 from .multiturn_judging import GeminiMultiturnJudge, score_judgment
-from .model_matrix import compare_matrix_reports, prepare_matrix, run_matrix
+from .model_matrix import (assemble_matrix_artifacts, audit_matrix_report, compare_matrix_reports,
+                           judge_saved_matrix_answer, prepare_matrix, run_anchored_contrast, run_matrix)
 from .multiturn_diagnostics import assess_contrast_pairs
 from .multiturn_bilingual_probes import (
     compare_bilingual_probe_reports, run_bilingual_probes, validate_probe_set,
@@ -222,7 +224,40 @@ def build_parser() -> argparse.ArgumentParser:
     matrix.add_argument("--max-api-calls", type=int, default=0,
                         help="Required explicit call-count ceiling for --live")
     matrix.add_argument("--timeout", type=float, default=240)
+    matrix.add_argument("--anchors", help="Use exact-revision provisional criterion anchors and v2 judge contract")
     matrix.add_argument("--live", action="store_true")
+    matrix_recover = sub.add_parser(
+        "judge-saved-matrix-answer", help="Two-judge recovery of one saved answer; no candidate replay"
+    )
+    matrix_recover.add_argument("--source-dir", required=True)
+    matrix_recover.add_argument("--case-id", help="Required when the saved plan contains multiple cases")
+    matrix_recover.add_argument("--output-dir", required=True)
+    matrix_recover.add_argument("--anchors", default="config/multiturn_criterion_anchors_v1.json")
+    matrix_recover.add_argument("--env-file", default=".env.local")
+    matrix_recover.add_argument("--max-api-calls", type=int, default=0)
+    matrix_recover.add_argument("--timeout", type=float, default=240)
+    matrix_recover.add_argument("--live", action="store_true")
+    matrix_audit = sub.add_parser("audit-model-matrix", help="Describe two-judge ceilings and exact criterion disagreements")
+    matrix_audit.add_argument("--report", required=True)
+    matrix_audit.add_argument("--output", help="Optional new JSON report path; never overwrites")
+    matrix_assemble = sub.add_parser(
+        "assemble-model-matrix", help="Offline assembly of exact-revision partial and recovered matrix artifacts"
+    )
+    matrix_assemble.add_argument("--source-dir", action="append", required=True)
+    matrix_assemble.add_argument("--candidate-id", required=True)
+    matrix_assemble.add_argument("--case-id", action="append", required=True)
+    matrix_assemble.add_argument("--output-dir", required=True)
+    matrix_assemble.add_argument("--anchors", default="config/multiturn_criterion_anchors_v1.json")
+    matrix_contrast = sub.add_parser(
+        "judge-anchored-contrast", help="Two-judge six-call synthetic strong/partial/unsafe check"
+    )
+    matrix_contrast.add_argument("--probe", default="data/multiturn/criterion_contrast_v1.json")
+    matrix_contrast.add_argument("--anchors", default="config/multiturn_criterion_anchors_v1.json")
+    matrix_contrast.add_argument("--env-file", default=".env.local")
+    matrix_contrast.add_argument("--output-dir", required=True)
+    matrix_contrast.add_argument("--max-api-calls", type=int, default=0)
+    matrix_contrast.add_argument("--timeout", type=float, default=240)
+    matrix_contrast.add_argument("--live", action="store_true")
     matrix_compare = sub.add_parser(
         "compare-model-matrix", help="Align completed one-candidate matrix reports on exact cases and judges"
     )
@@ -630,6 +665,127 @@ def main(argv: list[str] | None = None) -> int:
                           "case_count": len(comparison["case_revisions"])}, ensure_ascii=False, indent=2))
         return 0
 
+    if args.command == "audit-model-matrix":
+        try:
+            report_path = resolve_path(args.config, args.report)
+            audit = audit_matrix_report(load_json(report_path), report_path.parent)
+            if args.output:
+                target = resolve_path(args.config, args.output)
+                target.parent.mkdir(parents=True, exist_ok=True)
+                with target.open("x", encoding="utf-8") as handle:
+                    json.dump(audit, handle, ensure_ascii=False, indent=2)
+                    handle.write("\n")
+        except (FileExistsError, ValueError, KeyError, TypeError, OSError) as exc:
+            print(f"Cannot audit model matrix: {exc}")
+            return 2
+        print(json.dumps(audit, ensure_ascii=False, indent=2))
+        return 0
+
+    if args.command == "assemble-model-matrix":
+        try:
+            batch_paths = config.get("multiturn_cases_paths") or [
+                config.get("multiturn_cases_path", "data/multiturn/pilot_cases.json")
+            ]
+            dataset = merge_multiturn_datasets([
+                load_json(resolve_path(args.config, path)) for path in batch_paths
+            ])
+            roster = load_json(resolve_path(args.config, "config/model_matrix.json"))
+            anchors = load_json(resolve_path(args.config, args.anchors))
+            rubric = load_json(resolve_path(
+                args.config, config.get("multiturn_rubric_path", "config/multiturn_rubric.json")
+            ))
+            candidate_instruction = resolve_path(
+                args.config, config.get("candidate_prompt_path", "config/candidate_prompt.txt")
+            ).read_text(encoding="utf-8").strip()
+            judge_instruction = resolve_path(
+                args.config, "config/multiturn_judge_prompt_v2.txt"
+            ).read_text(encoding="utf-8").strip()
+            result = assemble_matrix_artifacts(
+                [resolve_path(args.config, path) for path in args.source_dir],
+                roster, dataset, rubric, anchors, candidate_id=args.candidate_id,
+                case_ids=args.case_id, output_dir=resolve_path(args.config, args.output_dir),
+                candidate_instruction=candidate_instruction, judge_instruction=judge_instruction,
+            )
+        except (FileExistsError, ValueError, KeyError, TypeError, OSError) as exc:
+            print(f"Cannot assemble model matrix: {exc}")
+            return 2
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return 0
+
+    if args.command == "judge-anchored-contrast":
+        try:
+            batch_paths = config.get("multiturn_cases_paths") or [
+                config.get("multiturn_cases_path", "data/multiturn/pilot_cases.json")
+            ]
+            dataset = merge_multiturn_datasets([
+                load_json(resolve_path(args.config, path)) for path in batch_paths
+            ])
+            roster = load_json(resolve_path(args.config, "config/model_matrix.json"))
+            anchors = load_json(resolve_path(args.config, args.anchors))
+            probe = load_json(resolve_path(args.config, args.probe))
+            rubric = load_json(resolve_path(
+                args.config, config.get("multiturn_rubric_path", "config/multiturn_rubric.json")
+            ))
+            instruction = resolve_path(
+                args.config, "config/multiturn_judge_prompt_v2.txt"
+            ).read_text(encoding="utf-8").strip()
+            if not args.live:
+                print(json.dumps({"status": "dry_run_no_api_calls", "candidate_calls": 0,
+                                  "judge_calls": 6, "max_api_calls_required": 6,
+                                  "probe_sha256": sha256_json(probe)}, indent=2))
+                return 0
+            result = run_anchored_contrast(
+                probe, roster, dataset, rubric, anchors,
+                output_dir=resolve_path(args.config, args.output_dir),
+                env_file=resolve_path(args.config, args.env_file),
+                judge_instruction=instruction, max_api_calls=args.max_api_calls,
+                timeout=args.timeout,
+            )
+        except (ProviderRequestError, FileExistsError, ValueError, KeyError, TypeError, OSError) as exc:
+            print(f"Cannot judge anchored contrast: {exc}")
+            return 2
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return 0
+
+    if args.command == "judge-saved-matrix-answer":
+        try:
+            batch_paths = config.get("multiturn_cases_paths") or [
+                config.get("multiturn_cases_path", "data/multiturn/pilot_cases.json")
+            ]
+            dataset = merge_multiturn_datasets([
+                load_json(resolve_path(args.config, path)) for path in batch_paths
+            ])
+            roster = load_json(resolve_path(args.config, "config/model_matrix.json"))
+            anchors = load_json(resolve_path(args.config, args.anchors))
+            validate_anchor_set(anchors, dataset)
+            candidate_instruction = resolve_path(
+                args.config, config.get("candidate_prompt_path", "config/candidate_prompt.txt")
+            ).read_text(encoding="utf-8").strip()
+            judge_instruction = resolve_path(
+                args.config, "config/multiturn_judge_prompt_v2.txt"
+            ).read_text(encoding="utf-8").strip()
+            mt_rubric = load_json(resolve_path(
+                args.config, config.get("multiturn_rubric_path", "config/multiturn_rubric.json")
+            ))
+            if not args.live:
+                print(json.dumps({"status": "dry_run_no_api_calls", "candidate_calls": 0,
+                                  "judge_calls": 2, "max_api_calls_required": 2,
+                                  "criterion_anchors_sha256": sha256_json(anchors)}, indent=2))
+                return 0
+            result = judge_saved_matrix_answer(
+                resolve_path(args.config, args.source_dir), roster, dataset, mt_rubric,
+                output_dir=resolve_path(args.config, args.output_dir),
+                env_file=resolve_path(args.config, args.env_file),
+                candidate_instruction=candidate_instruction, judge_instruction=judge_instruction,
+                max_api_calls=args.max_api_calls, timeout=args.timeout, anchor_set=anchors,
+                case_id=args.case_id,
+            )
+        except (ProviderRequestError, FileExistsError, ValueError, KeyError, TypeError, OSError) as exc:
+            print(f"Cannot judge saved matrix answer: {exc}")
+            return 2
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return 0
+
     if args.command == "model-matrix":
         try:
             batch_paths = config.get("multiturn_cases_paths") or [
@@ -643,6 +799,16 @@ def main(argv: list[str] | None = None) -> int:
                 roster, dataset, candidate_id=args.candidate_id,
                 selected_case_ids=args.case_id,
             )
+            anchors = load_json(resolve_path(args.config, args.anchors)) if args.anchors else None
+            if anchors is not None:
+                validate_anchor_set(anchors, dataset)
+                for family, language in selected:
+                    if not any(item["family_id"] == family["family_id"]
+                               and item["case_hashes"].get(language) == variant_hash(family, language)
+                               for item in anchors["families"]):
+                        raise ValueError("Selected case lacks exact-revision criterion anchors")
+                plan["criterion_anchors_sha256"] = sha256_json(anchors)
+                plan["judge_contract"] = "criterion_v2"
             if not args.live:
                 print(json.dumps(plan, ensure_ascii=False, indent=2))
                 return 0
@@ -650,7 +816,8 @@ def main(argv: list[str] | None = None) -> int:
                 args.config, config.get("candidate_prompt_path", "config/candidate_prompt.txt")
             ).read_text(encoding="utf-8").strip()
             judge_instruction = resolve_path(
-                args.config, config.get("multiturn_judge_prompt_path", "config/multiturn_judge_prompt.txt")
+                args.config, "config/multiturn_judge_prompt_v2.txt" if anchors is not None
+                else config.get("multiturn_judge_prompt_path", "config/multiturn_judge_prompt.txt")
             ).read_text(encoding="utf-8").strip()
             mt_rubric = load_json(resolve_path(
                 args.config, config.get("multiturn_rubric_path", "config/multiturn_rubric.json")
@@ -662,7 +829,7 @@ def main(argv: list[str] | None = None) -> int:
                 candidate_instruction=candidate_instruction,
                 judge_instruction=judge_instruction,
                 max_api_calls=args.max_api_calls, timeout=args.timeout,
-                retries=0,
+                retries=0, anchor_set=anchors,
             )
         except (ProviderRequestError, FileExistsError, ValueError, KeyError, TypeError, OSError) as exc:
             print(f"Cannot process model matrix: {exc}")

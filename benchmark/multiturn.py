@@ -169,6 +169,8 @@ def play_variant(family: dict[str, Any], language: str, candidate: ConversationC
         if not isinstance(generated, dict) or not isinstance(generated.get("text"), str) or not generated["text"].strip():
             raise ValueError(f"Candidate returned an empty response for {variant_id(family, language)}")
         text = generated["text"]
+        if "<think>" in text or "</think>" in text:
+            raise ValueError(f"Candidate response contains embedded reasoning for {variant_id(family, language)}")
         transcript.append({"role": "assistant", "content": text})
         turn_outputs.append({
             "stage_id": turn["stage_id"], "text": text,
@@ -198,6 +200,8 @@ def build_judge_packet(family: dict[str, Any], language: str, response: dict[str
         or transcript[index * 2 + 1].get("role") != "assistant"
         or not isinstance(transcript[index * 2 + 1].get("content"), str)
         or not transcript[index * 2 + 1]["content"].strip()
+        or "<think>" in transcript[index * 2 + 1]["content"]
+        or "</think>" in transcript[index * 2 + 1]["content"]
         for index, turn in enumerate(turns)
     ):
         raise ValueError("Transcript does not match the scripted turn order")

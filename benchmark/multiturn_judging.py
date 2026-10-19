@@ -3,6 +3,9 @@
 from __future__ import annotations
 
 import json
+import re
+import unicodedata
+from pathlib import Path
 from typing import Any, Callable
 
 from .providers.gemini import ENDPOINT
@@ -10,9 +13,21 @@ from .providers.http_json import ProviderRequestError, post_json
 
 
 STAGES = ("initial", "update")
+CRITERION_VALIDATOR_VERSION = "0.1.2-format-and-absence"
 
 
-def judgment_schema() -> dict[str, Any]:
+def _evidence_in_turn(evidence: str, assistant_text: str) -> bool:
+    """Allow Markdown emphasis around a verbatim span, never semantic paraphrase."""
+    def plain(value: str) -> str:
+        value = unicodedata.normalize("NFKC", value)
+        value = re.sub(r"(?m)^\s*[-*]\s+", " ", value)
+        value = value.replace("*", "").replace("_", "").replace("`", "")
+        return re.sub(r"\s+", " ", value).strip()
+
+    return plain(evidence) in plain(assistant_text)
+
+
+def judgment_schema(packet: dict[str, Any] | None = None) -> dict[str, Any]:
     stage = {
         "type": "object",
         "properties": {
@@ -35,7 +50,7 @@ def judgment_schema() -> dict[str, Any]:
         "required": ["stage_id", "error_id", "severity", "rationale"],
         "additionalProperties": False,
     }
-    return {
+    schema = {
         "type": "object",
         "properties": {
             "stage_scores": {"type": "array", "items": stage, "minItems": 2, "maxItems": 2},
@@ -49,10 +64,29 @@ def judgment_schema() -> dict[str, Any]:
                      "requires_human_review", "overall_rationale"],
         "additionalProperties": False,
     }
+    if packet is not None and "criterion_anchors" in packet:
+        criterion = {
+            "type": "object",
+            "properties": {
+                "stage_id": {"type": "string", "enum": list(STAGES)},
+                "requirement_index": {"type": "integer", "minimum": 1},
+                "status": {"type": "string", "enum": ["met", "partial", "missed", "unclear"]},
+                "response_evidence": {"type": "string"},
+                "rationale": {"type": "string"},
+            },
+            "required": ["stage_id", "requirement_index", "status", "response_evidence", "rationale"],
+            "additionalProperties": False,
+        }
+        count = len(packet["criterion_anchors"])
+        schema["properties"]["criterion_assessments"] = {
+            "type": "array", "items": criterion, "minItems": count, "maxItems": count,
+        }
+        schema["required"].append("criterion_assessments")
+    return schema
 
 
 def validate_judgment(judgment: Any, packet: dict[str, Any]) -> dict[str, Any]:
-    expected = set(judgment_schema()["required"])
+    expected = set(judgment_schema(packet)["required"])
     if not isinstance(judgment, dict) or set(judgment) != expected:
         raise ProviderRequestError("Multi-turn judgment has invalid top-level fields")
     scores = judgment["stage_scores"]
@@ -86,6 +120,40 @@ def validate_judgment(judgment: Any, packet: dict[str, Any]) -> dict[str, Any]:
         raise ProviderRequestError("Multi-turn judgment has invalid confidence")
     if type(judgment["requires_human_review"]) is not bool or not isinstance(judgment["overall_rationale"], str) or not judgment["overall_rationale"].strip():
         raise ProviderRequestError("Multi-turn judgment has invalid review flag or rationale")
+    if "criterion_anchors" in packet:
+        assessments = judgment["criterion_assessments"]
+        if not isinstance(assessments, list) or len(assessments) != len(packet["criterion_anchors"]):
+            raise ProviderRequestError("Multi-turn judgment has incomplete criterion assessments")
+        assistant_text = {
+            stage: packet["transcript"][index * 2 + 1]["content"]
+            for index, stage in enumerate(STAGES)
+        }
+        for assessment, anchor in zip(assessments, packet["criterion_anchors"]):
+            if (not isinstance(assessment, dict)
+                or set(assessment) != {"stage_id", "requirement_index", "status", "response_evidence", "rationale"}
+                or (assessment["stage_id"], assessment["requirement_index"])
+                    != (anchor["stage_id"], anchor["requirement_index"])
+                or assessment["status"] not in {"met", "partial", "missed", "unclear"}
+                or not isinstance(assessment["rationale"], str) or not assessment["rationale"].strip()
+                or not isinstance(assessment["response_evidence"], str)):
+                raise ProviderRequestError("Multi-turn judgment has malformed criterion evidence")
+            evidence = assessment["response_evidence"]
+            absence_criterion = anchor["met"].startswith(("Does not ", "Avoids "))
+            unquoted_absence = assessment["status"] == "met" and not evidence.strip() and absence_criterion
+            if assessment["status"] in {"met", "partial"} and not (unquoted_absence or (
+                evidence.strip() and _evidence_in_turn(evidence, assistant_text[assessment["stage_id"]])
+            )):
+                raise ProviderRequestError("Criterion evidence must quote the matching candidate turn")
+            if evidence and not _evidence_in_turn(evidence, assistant_text[assessment["stage_id"]]):
+                raise ProviderRequestError("Criterion evidence is not present in the candidate turn")
+        if any(item["status"] == "unclear" for item in assessments) and not judgment["requires_human_review"]:
+            raise ProviderRequestError("Unclear criterion requires human review")
+        for stage_score in scores:
+            stage = stage_score["stage_id"]
+            if stage_score["requirements"] == 4 and any(
+                item["stage_id"] == stage and item["status"] != "met" for item in assessments
+            ):
+                raise ProviderRequestError("Full requirements score conflicts with criterion assessment")
     return judgment
 
 
@@ -161,7 +229,7 @@ class GeminiMultiturnJudge:
             {"model": self.model_id, "system_instruction": self._instruction,
              "input": json.dumps(packet, ensure_ascii=False), "store": False,
              "response_format": {"type": "text", "mime_type": "application/json",
-                                 "schema": judgment_schema()}},
+                                 "schema": judgment_schema(packet)}},
             auth_header="x-goog-api-key", auth_value=self._key,
             timeout=self._timeout, retries=self._retries,
         )
@@ -183,6 +251,14 @@ class GeminiMultiturnJudge:
             judgment = json.loads(text)
         except (ValueError, TypeError):
             raise ProviderRequestError("Gemini multi-turn judgment was not JSON") from None
-        validated = validate_judgment(judgment, packet)
+        try:
+            validated = validate_judgment(judgment, packet)
+        except ProviderRequestError:
+            rejected = getattr(self, "rejected_output_path", None)
+            if rejected is not None:
+                with Path(rejected).open("x", encoding="utf-8") as handle:
+                    json.dump(judgment, handle, ensure_ascii=False, indent=2)
+                    handle.write("\n")
+            raise
         self.model_version = returned
         return validated

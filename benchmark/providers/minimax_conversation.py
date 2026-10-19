@@ -8,6 +8,7 @@ from .http_json import ProviderRequestError, post_json
 
 
 ENDPOINT = "https://api.minimax.io/v1/chat/completions"
+MAX_COMPLETION_TOKENS = 8192
 
 
 class MiniMaxConversationProvider:
@@ -15,7 +16,9 @@ class MiniMaxConversationProvider:
     endpoint = ENDPOINT
     input_format = "native_role_messages"
     request_parameters = {"input_format": "native_role_messages",
-                          "max_completion_tokens": 2048,
+                          "max_completion_tokens": MAX_COMPLETION_TOKENS,
+                          "reasoning_split": True,
+                          "scored_text_policy": "content_only_reject_embedded_thinking",
                           "provider_storage_setting": "not_exposed"}
 
     def __init__(
@@ -47,7 +50,7 @@ class MiniMaxConversationProvider:
             ENDPOINT,
             {"model": self.model_id,
              "messages": [{"role": "system", "content": self._instruction}, *history],
-             "max_completion_tokens": 2048},
+             "max_completion_tokens": MAX_COMPLETION_TOKENS, "reasoning_split": True},
             auth_header="Authorization", auth_value=f"Bearer {self._key}",
             timeout=self._timeout, retries=self._retries,
         )
@@ -63,12 +66,16 @@ class MiniMaxConversationProvider:
         choices = result.get("choices")
         if not isinstance(choices, list) or not choices or not isinstance(choices[0], dict):
             raise ProviderRequestError("MiniMax response contained no choice")
+        if choices[0].get("finish_reason") == "length":
+            raise ProviderRequestError("MiniMax response reached its completion-token limit")
         if choices[0].get("finish_reason") != "stop":
             raise ProviderRequestError("MiniMax response did not finish normally")
         message = choices[0].get("message")
         text = message.get("content") if isinstance(message, dict) else None
         if not isinstance(text, str) or not text.strip():
             raise ProviderRequestError("MiniMax response contained no answer text")
+        if "<think>" in text or "</think>" in text:
+            raise ProviderRequestError("MiniMax returned reasoning inside answer content")
         self.model_version = returned
         response: dict[str, Any] = {"text": text, "latency_ms": latency}
         usage = result.get("usage")

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
 from typing import Any, Callable
 
 from ..multiturn_judging import judgment_schema, validate_judgment
@@ -41,7 +42,7 @@ class GrokMultiturnJudge:
                 ],
                 "store": False,
                 "text": {"format": {"type": "json_schema", "name": "multiturn_judgment",
-                                    "schema": judgment_schema(), "strict": True}},
+                                    "schema": judgment_schema(packet), "strict": True}},
             },
             auth_header="Authorization", auth_value=f"Bearer {self._key}",
             timeout=self._timeout, retries=self._retries,
@@ -63,6 +64,14 @@ class GrokMultiturnJudge:
             judgment = json.loads(text)
         except (ValueError, TypeError):
             raise ProviderRequestError("Grok multi-turn judgment was not JSON") from None
-        validated = validate_judgment(judgment, packet)
+        try:
+            validated = validate_judgment(judgment, packet)
+        except ProviderRequestError:
+            rejected = getattr(self, "rejected_output_path", None)
+            if rejected is not None:
+                with Path(rejected).open("x", encoding="utf-8") as handle:
+                    json.dump(judgment, handle, ensure_ascii=False, indent=2)
+                    handle.write("\n")
+            raise
         self.model_version = returned
         return validated
