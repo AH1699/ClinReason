@@ -129,15 +129,46 @@ def audit_portfolio(root: Path) -> dict[str, Any]:
         raise ValueError("Prospective split plan must match the public draft portfolio")
     draft_counts = split_plan["prospective_draft_candidates_not_approved_counts"]
     integrity = split_plan["prospective_draft_integrity"]
-    calibration_path = root / integrity["calibration_path"]
-    calibration = load_json(calibration_path)
-    calibration_status = merge_multiturn_datasets([calibration])
+    batches = integrity.get("calibration_batches")
+    if not isinstance(batches, list) or not batches:
+        raise ValueError("Calibration draft batch manifest is missing")
+    calibration_datasets = []
+    calibration_paths: set[str] = set()
+    for batch in batches:
+        if not isinstance(batch, dict) or set(batch) != {"path", "family_count", "sha256"}:
+            raise ValueError("Calibration draft batch manifest is invalid")
+        batch_path = batch["path"]
+        if (not isinstance(batch_path, str) or not batch_path.startswith("data/calibration/")
+            or not batch_path.endswith(".json") or ".." in Path(batch_path).parts
+            or batch_path in calibration_paths or batch_path in config["multiturn_cases_paths"]):
+            raise ValueError("Calibration draft batch path is not isolated")
+        calibration_paths.add(batch_path)
+        dataset = load_json(root / batch_path)
+        if (type(batch["family_count"]) is not int
+            or len(dataset.get("families", [])) != batch["family_count"]
+            or sha256_json(dataset) != batch["sha256"]):
+            raise ValueError("Calibration draft batch count or hash mismatch")
+        calibration_datasets.append(dataset)
+    calibration_status = merge_multiturn_datasets(calibration_datasets)
     calibration_ids = {item["family_id"] for item in calibration_status["families"]}
     if (calibration_ids & family_ids
-        or len(calibration_ids) != draft_counts["calibration_patient_multiturn"]
-        or sha256_json(calibration) != integrity["calibration_sha256"]
-        or integrity["calibration_path"] in config["multiturn_cases_paths"]):
+        or len(calibration_ids) != draft_counts["calibration_patient_multiturn"]):
         raise ValueError("Calibration draft is not prospectively isolated or matches neither count nor hash")
+    provenance_paths = ("data/calibration/provenance_v1.json", "data/calibration/provenance_batch_b.json")
+    if len(calibration_datasets) != len(provenance_paths):
+        raise ValueError("Calibration draft batch manifest lacks a paired provenance ledger")
+    for dataset, provenance_path in zip(calibration_datasets, provenance_paths):
+        provenance = load_json(root / provenance_path)
+        record_ids = [record["family_id"] for record in provenance["records"]]
+        source_by_id = {family["family_id"]: set(family["source_refs"]) for family in dataset["families"]}
+        if len(record_ids) != len(set(record_ids)) or set(record_ids) != set(source_by_id):
+            raise ValueError("Calibration draft provenance does not cover its batch")
+        for record in provenance["records"]:
+            ledger_sources = ({record["case_report"], record["clinical_source"]}
+                              if "case_report" in record else
+                              {record["published_case_or_series"], *record["supporting_sources"]})
+            if not ledger_sources <= source_by_id[record["family_id"]]:
+                raise ValueError("Calibration draft provenance source mismatch")
     hidden_path = root / integrity["hidden_local_path_not_in_git"]
     hidden_verified: bool | None = None
     hidden_sources: set[str] = set()

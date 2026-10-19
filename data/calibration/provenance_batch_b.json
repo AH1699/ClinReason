@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1.0",
+  "status": "author_draft_pending_independent_clinical_and_language_review",
+  "split": "prospective_calibration_candidate_not_gold",
+  "checked_on": "2026-10-19",
+  "reuse_policy": "Source articles are factual inspiration only. No case narrative, patient record, numeric result, image or table was copied. Licenses for articles other than the cited CC BY metoclopramide report have not been independently verified; do not republish or redistribute source text or images.",
+  "records": [
+    {
+      "family_id": "HC-MT-TRIAGE-013",
+      "published_case_or_series": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5624050/",
+      "supporting_sources": ["https://www.heart.org/en/health-topics/aortic-aneurysm/your-aorta-the-pulse-of-life"],
+      "adaptation": "Original synthetic dialogue contrasts a mild lifting-related ache with later abrupt chest-and-back pain and an apparently normal first chest radiograph; no published patient attributes, results, treatment or outcome copied.",
+      "source_to_label_limit": "Case report illustrates that a normal chest radiograph can occur with dissection; the AHA describes sudden severe chest/back pain as an aortic warning sign. Neither proves dissection in this synthetic patient or validates the exact scoring boundary."
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-014",
+      "published_case_or_series": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7029830/",
+      "supporting_sources": ["https://wjes.biomedcentral.com/articles/10.1186/s13017-022-00443-x"],
+      "adaptation": "Original synthetic dialysis-patient dialogue with mild symptoms becoming severe and an initially normal lactate; no report's numeric values, demographics, imaging, treatment or outcome copied.",
+      "source_to_label_limit": "Case report illustrates that normal lactate can coexist with mesenteric ischemia, not its probability in a new patient. The initial same-day assessment boundary and later emergency threshold require clinician review."
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-011",
+      "published_case_or_series": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10292171/",
+      "supporting_sources": ["https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d83c6ae4-a41c-4b14-94b3-2d93c9aa28d1"],
+      "adaptation": "Original synthetic cross-clinic prescription then exposure dialogue; no published patient attributes, doses, laboratory data or outcome copied.",
+      "source_to_label_limit": "DailyMed warns of fatal interactions with clarithromycin even at recommended doses. Reviewer must decide whether symptoms warrant emergency rather than urgent same-day assessment and how to grade medication-management advice."
+    },
+    {
+      "family_id": "HC-MT-REASON-011",
+      "published_case_or_series": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6659762/",
+      "supporting_sources": ["https://www.cdc.gov/niosh/rhabdo/signs-symptoms/"],
+      "adaptation": "Original synthetic exercise-and-follow-up dialogue. Dark urine and a dipstick/microscopy mismatch are generalized patterns; no case age, comorbidity, creatine kinase result, treatment or outcome copied.",
+      "source_to_label_limit": "CDC supports immediate medical attention for compatible symptoms. A heme-positive dipstick with few red cells is suggestive, not diagnostic; the exact phrasing of urgency and interpretation needs clinician review."
+    },
+    {
+      "family_id": "HC-MT-REASON-012",
+      "published_case_or_series": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13431902/",
+      "supporting_sources": ["https://academic.oup.com/jcem/article/96/2/273/2709487"],
+      "adaptation": "Original synthetic fragmented-medication-list dialogue with no copied age, prolactin value, comorbidity, symptom pattern or outcome. The cited report states CC BY 4.0; this dataset does not reproduce its narrative.",
+      "source_to_label_limit": "The report and endocrine guidance support medication reconciliation but cannot prove metoclopramide is the sole cause in this synthetic case. Clinical reviewer should assess whether MRI wording and follow-up recommendations are appropriately qualified."
+    }
+  ]
+}

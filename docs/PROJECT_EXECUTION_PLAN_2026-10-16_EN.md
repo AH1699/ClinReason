@@ -1,6 +1,10 @@
 # ClinReason current execution plan — 2026-10-16
 
-## Dated progress update — 2026-10-18 (current)
+## Dated progress update — 2026-10-19 (current)
+
+The [S5 calibration batch B checkpoint](S5_CALIBRATION_BATCH_B_2026-10-19_EN.md) supersedes the 2026-10-18 S5 draft *count*, while the earlier note below remains historical. Five new source-linked bilingual two-turn author drafts were added: **6 prospective calibration draft families / 12 variants total**, balanced 2 each across triage, medication safety, and clinical reasoning. The default public development portfolio is still **104 families**; approved calibration and hidden Gold are still **0**; the separate local hidden author draft remains **1**. No new case has been run or scored. The split audit now verifies separate batch counts and hashes, bilingual structure, and exact ID/source-URL separation. The score-band aspiration remains lower ~60–70, mid-tier ~80, premium ~90, chosen as a diagnostic rather than enforced output. **Next execution step:** draft answer-level met/partial/missed/unsafe anchors for this pool, then obtain independent clinical/source-to-criterion and language review before judge tuning or score-band measurement. Hidden storage governance remains open. See H43–H47 in the [review handoff](CLINICAL_REVIEW_HANDOFF_EN.md).
+
+## Dated progress update — 2026-10-18 (historical)
 
 The original 2026-10-16 checkpoint below remains as the decision record. [The bilingual criterion-scoring pilot](CRITERION_SCORING_PILOT_2026-10-18_EN.md) and [S5 prospective-case record](S5_PROSPECTIVE_CASES_2026-10-18_EN.md) are the current execution detail. The owner's desired mid-tier **~80/100** score (lower-tier **~60–70**, premium **~90**) is a standing, non-enforced [charter objective](BENCHMARK_CHARTER_EN.md), not a reason to curve results.
 

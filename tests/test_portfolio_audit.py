@@ -26,7 +26,7 @@ class PortfolioAuditTests(unittest.TestCase):
         self.assertEqual(report["families_with_criterion_level_verified_source_mapping"], 0)
         self.assertEqual(report["calibration_family_count"], 0)
         self.assertEqual(report["hidden_gold_family_count"], 0)
-        self.assertEqual(report["prospective_calibration_draft_family_count"], 1)
+        self.assertEqual(report["prospective_calibration_draft_family_count"], 6)
         self.assertEqual(report["prospective_hidden_local_draft_family_count_declared"], 1)
         self.assertTrue(report["hidden_local_draft_integrity_verified"])
         self.assertEqual(sum(report["max_critical_error_severity_counts"].values()), 104)
@@ -35,10 +35,9 @@ class PortfolioAuditTests(unittest.TestCase):
     def test_prospective_calibration_is_not_in_default_development_dataset(self):
         config = load_json(self.root / "config/benchmark.json")
         split = load_json(self.root / "data/audit/prospective_split_plan.json")
-        self.assertNotIn(
-            split["prospective_draft_integrity"]["calibration_path"],
-            config["multiturn_cases_paths"],
-        )
+        for batch in split["prospective_draft_integrity"]["calibration_batches"]:
+            self.assertNotIn(batch["path"], config["multiturn_cases_paths"])
+        self.assertEqual([batch["family_count"] for batch in split["prospective_draft_integrity"]["calibration_batches"]], [1, 5])
         self.assertEqual(split["current_public_portfolio"]["hidden_gold_families"], 0)
 
     def test_prospective_draft_tamper_or_overlap_is_rejected(self):
@@ -54,6 +53,30 @@ class PortfolioAuditTests(unittest.TestCase):
 
         with patch("benchmark.portfolio_audit.load_json", side_effect=altered_calibration):
             with self.assertRaisesRegex(ValueError, "Calibration draft"):
+                audit_portfolio(self.root)
+
+        batch_suffix = "data/calibration/multiturn_candidates_batch_b.json"
+
+        def altered_new_batch(path):
+            value = actual_load(path)
+            if str(path).endswith(batch_suffix):
+                value["families"][0]["variants"]["en"]["turns"][0]["user"] += " altered"
+            return value
+
+        with patch("benchmark.portfolio_audit.load_json", side_effect=altered_new_batch):
+            with self.assertRaisesRegex(ValueError, "Calibration draft"):
+                audit_portfolio(self.root)
+
+        provenance_suffix = "data/calibration/provenance_batch_b.json"
+
+        def altered_provenance(path):
+            value = actual_load(path)
+            if str(path).endswith(provenance_suffix):
+                value["records"][0]["published_case_or_series"] = "https://example.invalid/wrong-case"
+            return value
+
+        with patch("benchmark.portfolio_audit.load_json", side_effect=altered_provenance):
+            with self.assertRaisesRegex(ValueError, "Calibration draft provenance source mismatch"):
                 audit_portfolio(self.root)
 
         calibration = actual_load(self.root / calibration_suffix)

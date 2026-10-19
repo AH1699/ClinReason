@@ -1,5 +1,9 @@
 # Scoring difficulty and calibration plan — 2026-10-16
 
+## 2026-10-19 S5 batch B update
+
+The [prospective batch B record](S5_CALIBRATION_BATCH_B_2026-10-19_EN.md) tracks **6 unreviewed calibration drafts**, balanced 2/2/2 across patient-facing triage, medication safety and clinical reasoning. This is progress toward a *balanced sample*, not evidence that the panel is large enough or that any model will land near 60–70/80/90. No new model or judge calls, case scores, rubric changes, or tier selections were made. Create provisional answer anchors and review them independently before measuring judge validity. Approved calibration and hidden Gold remain zero.
+
 ## Decision and current evidence
 
 The desired rough score bands are **60–70 for a pre-declared lower-tier reference set, around 80 for a pre-declared mid-tier set, and around 90 for a pre-declared premium set**. These are *design diagnostics*, not target outputs, fixed pass thresholds, or claims about any named model. Model tiers must be specified independently of ClinReason scores before looking at them. If the observations differ, report the difference; do not curve scores, choose models after seeing results, or change weights merely to manufacture these bands.
