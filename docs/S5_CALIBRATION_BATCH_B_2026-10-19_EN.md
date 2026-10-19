@@ -1,5 +1,7 @@
 # S5 calibration batch B checkpoint — 2026-10-19
 
+**Later same-day update:** The next provisional [anchor and answer-contrast packet](S5_CALIBRATION_ANCHORS_2026-10-19_EN.md) is complete and structurally checked. The case-batch history below is unchanged; independent review is still pending.
+
 Five new bilingual, two-turn **calibration author drafts** were added to [`multiturn_candidates_batch_b.json`](../data/calibration/multiturn_candidates_batch_b.json). Together with the earlier valproate draft, the prospective calibration pool now has **6 families / 12 language variants**: 2 triage, 2 medication-safety and 2 clinical-reasoning. The **default public development set stays at 104 families**; approved calibration and hidden Gold remain **0**. The separate local Git-ignored hidden draft remains **1**, not sealed or approved. No new case was run on a model or judge, and no score or rubric weight changed.
 
 | Family | New information that changes the answer | Failure being probed |

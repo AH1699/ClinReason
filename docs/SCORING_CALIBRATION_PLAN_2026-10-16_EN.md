@@ -2,7 +2,7 @@
 
 ## 2026-10-19 S5 batch B update
 
-The [prospective batch B record](S5_CALIBRATION_BATCH_B_2026-10-19_EN.md) tracks **6 unreviewed calibration drafts**, balanced 2/2/2 across patient-facing triage, medication safety and clinical reasoning. This is progress toward a *balanced sample*, not evidence that the panel is large enough or that any model will land near 60–70/80/90. No new model or judge calls, case scores, rubric changes, or tier selections were made. Create provisional answer anchors and review them independently before measuring judge validity. Approved calibration and hidden Gold remain zero.
+The [prospective batch B record](S5_CALIBRATION_BATCH_B_2026-10-19_EN.md) tracks **6 unreviewed calibration drafts**, balanced 2/2/2 across patient-facing triage, medication safety and clinical reasoning. This is progress toward a *balanced sample*, not evidence that the panel is large enough or that any model will land near 60–70/80/90. The [provisional answer-anchor packet](S5_CALIBRATION_ANCHORS_2026-10-19_EN.md) now includes good/incomplete/unsafe contrasts for each language. No new model or judge calls, case scores, rubric changes, or tier selections were made. Independently adjudicate anchors and examples before measuring judge validity. Approved calibration and hidden Gold remain zero.
 
 ## Decision and current evidence
 

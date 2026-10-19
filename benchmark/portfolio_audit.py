@@ -12,6 +12,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
+from .calibration_drafts import validate_calibration_contrasts
 from .config import load_json, load_jsonl
 from .multiturn import merge_multiturn_datasets
 from .professional import combine_professional_datasets, validate_case_adaptation_registry
@@ -154,6 +155,21 @@ def audit_portfolio(root: Path) -> dict[str, Any]:
     if (calibration_ids & family_ids
         or len(calibration_ids) != draft_counts["calibration_patient_multiturn"]):
         raise ValueError("Calibration draft is not prospectively isolated or matches neither count nor hash")
+    for field in ("calibration_anchors_path", "calibration_contrasts_path"):
+        artifact_path = integrity[field]
+        if (not isinstance(artifact_path, str)
+            or not artifact_path.startswith("data/calibration/")
+            or not artifact_path.endswith(".json")
+            or ".." in Path(artifact_path).parts):
+            raise ValueError("Calibration draft artifact path is invalid")
+    calibration_anchors = load_json(root / integrity["calibration_anchors_path"])
+    calibration_contrasts = load_json(root / integrity["calibration_contrasts_path"])
+    if (sha256_json(calibration_anchors) != integrity["calibration_anchors_sha256"]
+        or sha256_json(calibration_contrasts) != integrity["calibration_contrasts_sha256"]):
+        raise ValueError("Calibration draft anchor or contrast hash mismatch")
+    calibration_probe_status = validate_calibration_contrasts(
+        calibration_contrasts, calibration_status, calibration_anchors
+    )
     provenance_paths = ("data/calibration/provenance_v1.json", "data/calibration/provenance_batch_b.json")
     if len(calibration_datasets) != len(provenance_paths):
         raise ValueError("Calibration draft batch manifest lacks a paired provenance ledger")
@@ -246,6 +262,8 @@ def audit_portfolio(root: Path) -> dict[str, Any]:
         "calibration_family_count": current_split["calibration_families"],
         "hidden_gold_family_count": current_split["hidden_gold_families"],
         "prospective_calibration_draft_family_count": len(calibration_ids),
+        "prospective_calibration_anchor_variant_count": calibration_probe_status["variant_count"],
+        "prospective_calibration_update_response_example_count": calibration_probe_status["update_response_example_count"],
         "prospective_hidden_local_draft_family_count_declared": draft_counts["hidden_local_patient_multiturn"],
         "hidden_local_draft_integrity_verified": hidden_verified,
         "note": "This is a bounded author audit. Shared URL or mechanism is not proof of duplicate content; public draft cases cannot be made genuinely hidden retroactively.",

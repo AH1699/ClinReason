@@ -27,6 +27,8 @@ class PortfolioAuditTests(unittest.TestCase):
         self.assertEqual(report["calibration_family_count"], 0)
         self.assertEqual(report["hidden_gold_family_count"], 0)
         self.assertEqual(report["prospective_calibration_draft_family_count"], 6)
+        self.assertEqual(report["prospective_calibration_anchor_variant_count"], 12)
+        self.assertEqual(report["prospective_calibration_update_response_example_count"], 36)
         self.assertEqual(report["prospective_hidden_local_draft_family_count_declared"], 1)
         self.assertTrue(report["hidden_local_draft_integrity_verified"])
         self.assertEqual(sum(report["max_critical_error_severity_counts"].values()), 104)
@@ -77,6 +79,18 @@ class PortfolioAuditTests(unittest.TestCase):
 
         with patch("benchmark.portfolio_audit.load_json", side_effect=altered_provenance):
             with self.assertRaisesRegex(ValueError, "Calibration draft provenance source mismatch"):
+                audit_portfolio(self.root)
+
+        contrast_suffix = "data/calibration/response_contrasts_v1.json"
+
+        def altered_contrasts(path):
+            value = actual_load(path)
+            if str(path).endswith(contrast_suffix):
+                value["families"][0]["variants"]["en"]["unsafe_update_response"] += " changed"
+            return value
+
+        with patch("benchmark.portfolio_audit.load_json", side_effect=altered_contrasts):
+            with self.assertRaisesRegex(ValueError, "Calibration draft anchor or contrast hash mismatch"):
                 audit_portfolio(self.root)
 
         calibration = actual_load(self.root / calibration_suffix)

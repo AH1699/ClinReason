@@ -24,6 +24,10 @@
         "sha256": "5c73d2c1d1b2f0963f32cc2e66ec31b17a12fe31ba192acea24662a24f5d957f"
       }
     ],
+    "calibration_anchors_path": "data/calibration/criterion_anchors_v1.json",
+    "calibration_anchors_sha256": "667010ac7e29ded3347ec559b5c0f4f8bfe2ee4eaf4408053db91bf47cde2ed3",
+    "calibration_contrasts_path": "data/calibration/response_contrasts_v1.json",
+    "calibration_contrasts_sha256": "b9e944037a3f1443690366a87b4d35ab2babf608a9c04c92997b6eb260847efe",
     "hidden_local_path_not_in_git": "work/hidden_candidates/multiturn_candidate_001.json",
     "hidden_local_sha256": "d56cce0edd0b06b6b336ea89d9a69c5e88abfa2c8e54d33b5ba50ec29e6c3eed",
     "warning": "The hidden candidate is an unreviewed local draft, not sealed Gold; it is absent from a clean clone. Its hash records local integrity only, not clinical correctness or future leakage resistance."
