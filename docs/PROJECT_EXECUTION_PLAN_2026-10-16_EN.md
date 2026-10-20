@@ -1,6 +1,10 @@
 # ClinReason current execution plan — 2026-10-16
 
-## Dated progress update — 2026-10-19 (current answer-packet checkpoint)
+## Dated progress update — 2026-10-19 (current blinded-handoff checkpoint)
+
+The [offline two-phase reviewer handoff](S5_BLINDED_REVIEW_HANDOFF_2026-10-19_EN.md) is implemented and generated locally for **10 prospective patient calibration drafts / 20 EN/ZH variants**. It separates randomized, anonymized phase-A response review from phase-B source/criterion/language adjudication and a coordinator-only option key. Both phases provide blank, hash-bound decision forms; no reviewer has been assigned or decision obtained. The split audit and **135 local tests pass**. Public development is **104 families**; approved calibration/hidden Gold remain **0/0**; the separate local hidden candidate is excluded. No model or judge was called, no score or rubric changed, and the ~60–70/~80/~90 bands remain non-enforced diagnostics. **Next gate:** qualified, conflict-screened independent clinical and bilingual review of exact versions, with phase A locked before phase B; keep all drafts unscored until that happens. See H41–H55 in the [review handoff](CLINICAL_REVIEW_HANDOFF_EN.md).
+
+## Dated progress update — 2026-10-19 (historical answer-packet checkpoint)
 
 The [batch-C provisional answer packet](S5_CALIBRATION_PACKET_C_2026-10-19_EN.md) adds case-hash-bound criterion anchors and EN/ZH strong/partial/unsafe response contrasts for the four newly drafted patient cases. All **10 prospective calibration draft families / 20 language variants** now have author-written anchors; **60 controlled update answer examples** are structurally checked across the two separate packets. The six-family packet and its hashes were not changed. The split audit validates both packet hashes, exact case bindings, bilingual targets and critical-error IDs; **132 local tests pass**. Public development remains **104 families**; approved calibration/hidden Gold remain **0/0**. No model/judge calls, scores, rubric weights or score-band targets changed. The ~60–70/~80/~90 aspiration remains diagnostic. **Next:** prepare a blinded reviewer handoff and secure independent clinical/source-to-criterion and bilingual decisions; until then, the packets are not judge ground truth. See H49–H54 in the [review handoff](CLINICAL_REVIEW_HANDOFF_EN.md).
 

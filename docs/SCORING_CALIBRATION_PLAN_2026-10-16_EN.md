@@ -1,6 +1,10 @@
 # Scoring difficulty and calibration plan — 2026-10-16
 
-## 2026-10-19 S5 provisional packet-C update
+## 2026-10-19 S5 blinded-handoff update
+
+An [offline, two-phase blinded handoff](S5_BLINDED_REVIEW_HANDOFF_2026-10-19_EN.md) now packages all 10 draft families for later independent clinical and bilingual review. Phase A rates paired-language answers without author labels; phase B evaluates exact-case sources, criteria, severity and language equivalence after phase A is locked. The private option key is separate. Forms remain blank: there is no human ground truth, approved calibration/Gold item, judge-validity estimate, model score or permission to tune to the ~60–70/~80/~90 aspiration. The next evidence-producing step is qualified, conflict-screened human adjudication, not more score adjustment.
+
+## 2026-10-19 S5 provisional packet-C update (historical)
 
 The [batch-C packet](S5_CALIBRATION_PACKET_C_2026-10-19_EN.md) extends provisional criterion anchors and controlled EN/ZH answer contrasts from 6 to **all 10** prospective patient calibration drafts. They are exact-case-bound author probes, not clinically approved ground truth; 60 update examples are structurally validated, **not model-judged**. Approved calibration and hidden Gold remain zero. No rubric weights or 60–70/80/90 score-band aspirations changed. The next valid calibration step is independent source-to-criterion, clinical and bilingual adjudication of the exact cases and examples, followed by preregistered judge-ordering checks—not a retrospective curve to the desired bands.
 

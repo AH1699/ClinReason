@@ -77,6 +77,8 @@ python -m benchmark.cli --config config/benchmark.json export-review-packets
 
 对于当前 Alpha，此命令在 `work/reviewer_packets/` 下为每个已配置的双语案例族生成材料包（目前为 30 个）和一个分配清单。每个材料包包含两种语言的题目、预期行为、关键要求与错误、来源引用、作者 ID 和内容哈希。分配清单中的审核者 ID 字段为空，等待项目组填写。命令要求开发模式验证通过，不会覆盖已有输出，也拒绝导出 Gold 案例。分配实际审核者后应限制材料包访问，因为其中含有参考答案。
 
+单独的前瞻性校准草案**不在**上述已配置 Alpha 导出中。日后若开展其独立审核，请用 `python3 -m benchmark.calibration_review_packets` 并遵循[两阶段盲审交接协议](S5_BLINDED_REVIEW_HANDOFF_2026-10-19_ZH.md)。其中空白 A／B 阶段表格不满足本工作流的批准关口，不得作为批准记录放入 `data/reviews/`。
+
 ## 7. 验证与监控
 
 ```bash

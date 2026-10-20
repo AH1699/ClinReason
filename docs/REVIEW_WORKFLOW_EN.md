@@ -77,6 +77,8 @@ python -m benchmark.cli --config config/benchmark.json export-review-packets
 
 This writes one packet per configured bilingual family (currently 30) and an assignment manifest under `work/reviewer_packets/` for the current Alpha. Each packet includes both prompts, expected behavior, critical requirements and errors, source references, author IDs, and content hashes. The manifest has empty reviewer ID fields for assignment. The command requires a clean development validation result, refuses to overwrite existing output, and refuses to export Gold cases. Keep the packets under controlled access when actual reviewers are assigned; they contain reference answers.
 
+The separate prospective calibration drafts are **not** in that configured Alpha export. For their later independent review, use `python3 -m benchmark.calibration_review_packets` and the [two-phase handoff protocol](S5_BLINDED_REVIEW_HANDOFF_2026-10-19_EN.md). Its blank phase-A/phase-B forms do not satisfy this workflow's approval gates and must not be placed in `data/reviews/` as approvals.
+
 ## 7. Validate and monitor
 
 ```bash
