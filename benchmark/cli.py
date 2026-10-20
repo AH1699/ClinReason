@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 from .candidate_exchange import export_prompts, import_answers
+from .batch_g_contrasts import select_contrast
 from .criterion_anchors import validate_anchor_set
 from .config import load_json, load_jsonl, resolve_path
 from .coverage import audit_coverage
@@ -225,6 +226,7 @@ def build_parser() -> argparse.ArgumentParser:
                         help="Required explicit call-count ceiling for --live")
     matrix.add_argument("--timeout", type=float, default=240)
     matrix.add_argument("--anchors", help="Use exact-revision provisional criterion anchors and v2 judge contract")
+    matrix.add_argument("--candidate-prompt", help="Versioned candidate instruction; default preserves historical protocol")
     matrix.add_argument("--live", action="store_true")
     matrix_recover = sub.add_parser(
         "judge-saved-matrix-answer", help="Two-judge recovery of one saved answer; no candidate replay"
@@ -234,6 +236,7 @@ def build_parser() -> argparse.ArgumentParser:
     matrix_recover.add_argument("--roster", default="config/model_matrix.json")
     matrix_recover.add_argument("--output-dir", required=True)
     matrix_recover.add_argument("--anchors", default="config/multiturn_criterion_anchors_v1.json")
+    matrix_recover.add_argument("--candidate-prompt", help="Must match the saved answer's candidate instruction")
     matrix_recover.add_argument("--env-file", default=".env.local")
     matrix_recover.add_argument("--max-api-calls", type=int, default=0)
     matrix_recover.add_argument("--timeout", type=float, default=240)
@@ -250,10 +253,13 @@ def build_parser() -> argparse.ArgumentParser:
     matrix_assemble.add_argument("--case-id", action="append", required=True)
     matrix_assemble.add_argument("--output-dir", required=True)
     matrix_assemble.add_argument("--anchors", default="config/multiturn_criterion_anchors_v1.json")
+    matrix_assemble.add_argument("--candidate-prompt", help="Must match the source artifacts' candidate instruction")
     matrix_contrast = sub.add_parser(
         "judge-anchored-contrast", help="Two-judge six-call synthetic strong/partial/unsafe check"
     )
     matrix_contrast.add_argument("--probe", default="data/multiturn/criterion_contrast_v1.json")
+    matrix_contrast.add_argument("--probe-set", help="Validated authored contrast collection, instead of --probe")
+    matrix_contrast.add_argument("--case-id", help="Exact variant to select from --probe-set")
     matrix_contrast.add_argument("--anchors", default="config/multiturn_criterion_anchors_v1.json")
     matrix_contrast.add_argument("--env-file", default=".env.local")
     matrix_contrast.add_argument("--output-dir", required=True)
@@ -697,7 +703,7 @@ def main(argv: list[str] | None = None) -> int:
                 args.config, config.get("multiturn_rubric_path", "config/multiturn_rubric.json")
             ))
             candidate_instruction = resolve_path(
-                args.config, config.get("candidate_prompt_path", "config/candidate_prompt.txt")
+                args.config, args.candidate_prompt or config.get("candidate_prompt_path", "config/candidate_prompt.txt")
             ).read_text(encoding="utf-8").strip()
             judge_instruction = resolve_path(
                 args.config, "config/multiturn_judge_prompt_v2.txt"
@@ -724,7 +730,17 @@ def main(argv: list[str] | None = None) -> int:
             ])
             roster = load_json(resolve_path(args.config, "config/model_matrix.json"))
             anchors = load_json(resolve_path(args.config, args.anchors))
-            probe = load_json(resolve_path(args.config, args.probe))
+            if args.probe_set:
+                if not args.case_id:
+                    raise ValueError("--case-id is required with --probe-set")
+                probe = select_contrast(
+                    load_json(resolve_path(args.config, args.probe_set)), args.case_id,
+                    dataset, anchors,
+                )
+            else:
+                if args.case_id:
+                    raise ValueError("--case-id requires --probe-set")
+                probe = load_json(resolve_path(args.config, args.probe))
             rubric = load_json(resolve_path(
                 args.config, config.get("multiturn_rubric_path", "config/multiturn_rubric.json")
             ))
@@ -761,7 +777,7 @@ def main(argv: list[str] | None = None) -> int:
             anchors = load_json(resolve_path(args.config, args.anchors))
             validate_anchor_set(anchors, dataset)
             candidate_instruction = resolve_path(
-                args.config, config.get("candidate_prompt_path", "config/candidate_prompt.txt")
+                args.config, args.candidate_prompt or config.get("candidate_prompt_path", "config/candidate_prompt.txt")
             ).read_text(encoding="utf-8").strip()
             judge_instruction = resolve_path(
                 args.config, "config/multiturn_judge_prompt_v2.txt"
@@ -811,12 +827,14 @@ def main(argv: list[str] | None = None) -> int:
                         raise ValueError("Selected case lacks exact-revision criterion anchors")
                 plan["criterion_anchors_sha256"] = sha256_json(anchors)
                 plan["judge_contract"] = "criterion_v2"
+            candidate_instruction = resolve_path(
+                args.config, args.candidate_prompt or config.get("candidate_prompt_path", "config/candidate_prompt.txt")
+            ).read_text(encoding="utf-8").strip()
+            if args.candidate_prompt:
+                plan["candidate_instruction_sha256"] = sha256_text(candidate_instruction)
             if not args.live:
                 print(json.dumps(plan, ensure_ascii=False, indent=2))
                 return 0
-            candidate_instruction = resolve_path(
-                args.config, config.get("candidate_prompt_path", "config/candidate_prompt.txt")
-            ).read_text(encoding="utf-8").strip()
             judge_instruction = resolve_path(
                 args.config, "config/multiturn_judge_prompt_v2.txt" if anchors is not None
                 else config.get("multiturn_judge_prompt_path", "config/multiturn_judge_prompt.txt")

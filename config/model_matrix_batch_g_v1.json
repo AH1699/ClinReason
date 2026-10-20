@@ -1,0 +1,23 @@
+{
+  "schema_version": "0.1.0",
+  "status": "development_only",
+  "case_ids": [
+    "HC-MT-TRIAGE-018-EN",
+    "HC-MT-TRIAGE-018-ZH-HANS",
+    "HC-MT-TRIAGE-019-EN",
+    "HC-MT-TRIAGE-019-ZH-HANS",
+    "HC-MT-TRIAGE-020-EN",
+    "HC-MT-TRIAGE-020-ZH-HANS",
+    "HC-MT-REASON-015-EN",
+    "HC-MT-REASON-015-ZH-HANS"
+  ],
+  "candidates": [
+    {"id": "gemini-35-flash-lite", "provider": "gemini", "model": "gemini-3.5-flash-lite"},
+    {"id": "grok-46", "provider": "grok", "model": "grok-4.6"},
+    {"id": "minimax-m27", "provider": "minimax", "model": "MiniMax-M2.7"}
+  ],
+  "judges": [
+    {"id": "gemini-judge", "provider": "gemini", "model": "gemini-3.8-flash"},
+    {"id": "grok-judge", "provider": "grok", "model": "grok-4.7"}
+  ]
+}

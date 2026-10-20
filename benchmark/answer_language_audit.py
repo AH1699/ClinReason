@@ -14,13 +14,15 @@ from typing import Any
 
 from .config import load_json, load_jsonl
 from .multiturn import merge_multiturn_datasets, ordered_variants, variant_hash, variant_id
+from .provenance import sha256_text
 
 
 HAN = re.compile(r"[\u3400-\u9fff]")
 LATIN_WORD = re.compile(r"[A-Za-z]{2,}")
 
 
-def audit_saved_answer_languages(root: Path, answer_files: list[Path]) -> dict[str, Any]:
+def audit_saved_answer_languages(root: Path, answer_files: list[Path], *,
+                                 expected_instruction: str | None = None) -> dict[str, Any]:
     """Bind answers to exact configured cases, then flag unmistakable script mismatch."""
     if not answer_files:
         raise ValueError("At least one saved answer file is required")
@@ -45,6 +47,16 @@ def audit_saved_answer_languages(root: Path, answer_files: list[Path]) -> dict[s
         if (case_id not in expected or not isinstance(model_id, str) or not model_id
             or (model_id, case_id) in seen or row.get("case_content_hash") != expected[case_id][0]):
             raise ValueError(f"Duplicate, unknown or wrong-revision saved answer: {path}")
+        if expected_instruction is not None:
+            manifest_path = path.with_suffix(".manifest.json")
+            manifest = load_json(manifest_path)
+            revisions = manifest.get("case_revisions") if isinstance(manifest, dict) else None
+            if (not isinstance(revisions, list)
+                or manifest.get("candidate_instruction_sha256") != sha256_text(expected_instruction)
+                or not any(isinstance(item, dict) and item.get("case_id") == case_id
+                           and item.get("case_content_hash") == row["case_content_hash"]
+                           for item in revisions)):
+                raise ValueError(f"Answer manifest does not match declared candidate protocol: {path}")
         seen.add((model_id, case_id))
         language = expected[case_id][1]
         turns = row.get("turn_outputs")
@@ -74,6 +86,9 @@ def audit_saved_answer_languages(root: Path, answer_files: list[Path]) -> dict[s
         "status": "offline_obvious_script_mismatch_flags_not_language_or_clinical_scoring",
         "answer_count": len(answer_files),
         "checked_turn_count": checked_turns,
+        "verified_candidate_instruction_sha256": (
+            sha256_text(expected_instruction) if expected_instruction is not None else None
+        ),
         "flags": sorted(flags, key=lambda item: (item["model_id"], item["case_id"], item["stage_id"])),
         "limits": [
             "An unflagged response is not evidence of correct language or bilingual equivalence.",
@@ -87,9 +102,12 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Flag obvious wrong-script saved answer turns offline")
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--answer-file", type=Path, action="append", required=True)
+    parser.add_argument("--candidate-prompt", type=Path,
+                        help="Verify each answer manifest used this exact versioned candidate instruction")
     parser.add_argument("--output", type=Path)
     args = parser.parse_args(argv)
-    report = audit_saved_answer_languages(args.root, args.answer_file)
+    instruction = args.candidate_prompt.read_text(encoding="utf-8").strip() if args.candidate_prompt else None
+    report = audit_saved_answer_languages(args.root, args.answer_file, expected_instruction=instruction)
     content = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
     if args.output:
         if args.output.exists():
