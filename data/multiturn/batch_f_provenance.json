@@ -1,0 +1,40 @@
+{
+  "schema_version": "0.1.0",
+  "status": "author_draft_pending_independent_clinical_and_language_review",
+  "split": "public_development_not_calibration_or_gold",
+  "checked_on": "2026-10-19",
+  "reuse_policy": "The three published patient reports illustrate mechanisms only; dialogues, ages, timing and numbers here are synthetic. No report's narrative, examination sequence, treatment or outcome is copied. Source licensing was not independently audited, so do not redistribute source content.",
+  "records": [
+    {
+      "family_id": "HC-MT-TRIAGE-017",
+      "published_case_or_series": "https://pubmed.ncbi.nlm.nih.gov/38333656/",
+      "supporting_sources": ["https://www.cdc.gov/carbon-monoxide/hcp/clinical-guidance/index.html"],
+      "adaptation": "A synthetic adult first reports an isolated mild headache, then a newly disclosed attached-garage generator, a symptomatic household cluster and a conventional fingertip oxygen reading. The published report concerns a child in a hotel; neither its age, setting, equipment availability nor outcome is reproduced.",
+      "source_to_label_limit": "CDC supports considering exposure clusters and says conventional pulse oximetry is inaccurate with carboxyhemoglobin. Neither source diagnoses this fictional household, specifies one global emergency number or proves the first-turn self-care threshold. Emergency/toxicology and bilingual reviewers must decide wording and severity."
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-013",
+      "published_case_or_series": "https://pubmed.ncbi.nlm.nih.gov/39246944/",
+      "supporting_sources": ["https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=334f1b3d-5670-6685-e063-6294a90a7e47"],
+      "adaptation": "Synthetic mild illness with reduced intake changes to vomiting, abdominal pain and rapid deep breathing at a non-high glucose reading. The report's older patient, urinary infection, cardiac disease, laboratory course and outcome are not copied.",
+      "source_to_label_limit": "The current US label says ketoacidosis can occur below 250 mg/dL and lists relevant symptoms, but it does not establish this patient's diagnosis or an individualized insulin plan. Endocrine/emergency and bilingual reviewers must adjudicate urgency, interim SGLT2 wording and acceptable equivalents."
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-014",
+      "published_case_or_series": "https://pubmed.ncbi.nlm.nih.gov/31031504/",
+      "supporting_sources": ["https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=bef116a8-427d-4855-86de-0017e01430b0&type=display"],
+      "adaptation": "Synthetic outpatient medication-reconciliation question changes to a fever, agitation, tremor, jerks and confusion cluster after linezolid. The report's age, sepsis course, examination, precise onset and outcome are not copied.",
+      "source_to_label_limit": "The US label warns of serotonin syndrome but allows closely supervised linezolid when clinically necessary; a case report cannot determine incidence or exclude sepsis and other causes. Infectious-disease/pharmacy/emergency and bilingual reviewers must assess the conditional exception, interim drug wording and severity."
+    },
+    {
+      "family_id": "HC-MT-REASON-014",
+      "published_case_or_series": null,
+      "supporting_sources": [
+        "https://gi.org/wp-content/uploads/2025/01/ACG-Hpylori-Guidelines-Highlights-2024-FINAL.pdf.pdf",
+        "https://gi.org/patients/gi-health/peptic-ulcer-disease/"
+      ],
+      "adaptation": "Original synthetic stable post-treatment follow-up dialogue; no published patient case was used. A negative stool-antigen test is obtained 10 days after antibiotics while the patient still takes omeprazole to test interpretation and proportionate follow-up.",
+      "source_to_label_limit": "ACG guidance says test of cure at least four weeks after therapy and holding PPI for two weeks helps avoid false negatives. It is US-focused and does not prove this individual remains infected, mandate self-stopping needed acid suppression or justify an automatic second antibiotic course. Gastroenterology/primary-care and bilingual reviewers should adjudicate alternative local pathways."
+    }
+  ]
+}

@@ -1,6 +1,10 @@
 # Scoring difficulty and calibration plan — 2026-10-16
 
-## 2026-10-19 S5 blinded-handoff update
+## 2026-10-19 S6 development-only diagnostic (current)
+
+The [S6 gap and saved-panel note](S6_DEVELOPMENT_GAPS_BATCH_F_2026-10-19_EN.md) adds four public patient development drafts and an offline comparison of two previously saved, matching eight-variant panels. Perfect-score and Gemini–Grok/EN–ZH disagreement counts identify cases to inspect, but no new model was called, no new score was created, and no judge-validity or population difficulty estimate follows. The new four cases were not run. Public development is 108 families; 10 unreviewed prospective calibration drafts remain separate; approved calibration/hidden Gold are 0/0. The desired ~60–70/~80/~90 bands remain non-enforced diagnostics, never a curve-fitting target. Independent expert review is deferred while partner discussions continue, so the blinded handoff stays blank and calibration/promotion remains closed.
+
+## 2026-10-19 S5 blinded-handoff update (historical)
 
 An [offline, two-phase blinded handoff](S5_BLINDED_REVIEW_HANDOFF_2026-10-19_EN.md) now packages all 10 draft families for later independent clinical and bilingual review. Phase A rates paired-language answers without author labels; phase B evaluates exact-case sources, criteria, severity and language equivalence after phase A is locked. The private option key is separate. Forms remain blank: there is no human ground truth, approved calibration/Gold item, judge-validity estimate, model score or permission to tune to the ~60–70/~80/~90 aspiration. The next evidence-producing step is qualified, conflict-screened human adjudication, not more score adjustment.
 

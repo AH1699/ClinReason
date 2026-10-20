@@ -1,6 +1,10 @@
 # ClinReason current execution plan — 2026-10-16
 
-## Dated progress update — 2026-10-19 (current blinded-handoff checkpoint)
+## Dated progress update — 2026-10-19 (current S6 development checkpoint)
+
+The [S6 bilingual checkpoint](S6_DEVELOPMENT_GAPS_BATCH_F_2026-10-19_EN.md) completes the next three development-only steps: measured the public patient-track coverage imbalance, added four source-linked synthetic two-turn families with a provenance ledger, and analyzed two matching saved eight-variant candidate panels offline for judge and paired-language gaps. Public development is now **108 bilingual families / 216 variants** (32 Alpha + 34 patient two-turn + 42 professional). The **10 separate prospective calibration drafts** and local hidden candidate did not change; approved calibration/hidden Gold remain **0/0**. No new candidate/judge API calls, model scores, rubric edits or weight changes occurred. The ~60–70/~80/~90 bands remain non-enforced diagnostics. Independent clinical and bilingual review is **deferred during partner discussions, not waived**; its handoff stays blank and no case is promoted. **Next development work:** stable low-acuity/de-escalation controls and answer-level review of four saved judge-gap flags; later, qualified adjudication before calibration or external claims.
+
+## Dated progress update — 2026-10-19 (historical blinded-handoff checkpoint)
 
 The [offline two-phase reviewer handoff](S5_BLINDED_REVIEW_HANDOFF_2026-10-19_EN.md) is implemented and generated locally for **10 prospective patient calibration drafts / 20 EN/ZH variants**. It separates randomized, anonymized phase-A response review from phase-B source/criterion/language adjudication and a coordinator-only option key. Both phases provide blank, hash-bound decision forms; no reviewer has been assigned or decision obtained. The split audit and **135 local tests pass**. Public development is **104 families**; approved calibration/hidden Gold remain **0/0**; the separate local hidden candidate is excluded. No model or judge was called, no score or rubric changed, and the ~60–70/~80/~90 bands remain non-enforced diagnostics. **Next gate:** qualified, conflict-screened independent clinical and bilingual review of exact versions, with phase A locked before phase B; keep all drafts unscored until that happens. See H41–H55 in the [review handoff](CLINICAL_REVIEW_HANDOFF_EN.md).
 
@@ -31,7 +35,7 @@ The S5 split and integrity changes pass **125 local tests** at this checkpoint.
 
 The first stopped M2.7 answer is protocol-confounded and must not be reused as a score. The 2,048- and 8,192-token M2.7 runs were not mixed. The earlier M3.1 saved answer had no embedded `<think>` block. Neither AI agreement nor the synthetic contrast confers clinical validity. Keep the original safety gates and weights unchanged. **Next checkpoint: S5 review and scaling decision**—obtain qualified source-to-criterion, clinical and language review for the new drafts; govern the local hidden candidate in secure storage; then choose any versioned case/anchor/rubric experiment. Do not widen to seven candidates or score a hidden draft to hit a preferred band. Public families remain 104; approved calibration and hidden Gold remain 0.
 
-This is the **current project checkpoint**. Earlier batch and progress notes remain historical evidence; update this page after each material batch. None of the current cases, AI judgments, translations, or model comparisons has clinical approval.
+This was the **2026-10-16 project checkpoint**; the latest dated update at the top supersedes its counts and next action. Earlier batch and progress notes remain historical evidence. None of the cases, AI judgments, translations, or model comparisons has clinical approval.
 
 ## Where the project stands
 

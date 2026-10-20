@@ -15,10 +15,10 @@ class PortfolioAuditTests(unittest.TestCase):
 
     def test_current_public_portfolio_and_provenance_boundaries(self):
         report = audit_portfolio(self.root)
-        self.assertEqual(report["family_count"], 104)
-        self.assertEqual(report["language_variant_count"], 208)
+        self.assertEqual(report["family_count"], 108)
+        self.assertEqual(report["language_variant_count"], 216)
         self.assertEqual(report["tracks"], {
-            "alpha_single_turn": 32, "patient_multiturn": 30, "professional": 42,
+            "alpha_single_turn": 32, "patient_multiturn": 34, "professional": 42,
         })
         self.assertEqual(report["published_case_adaptations"], 26)
         self.assertEqual(report["alpha_families_missing_source_registry"], [])
@@ -36,7 +36,7 @@ class PortfolioAuditTests(unittest.TestCase):
         self.assertEqual(report["prospective_calibration_update_response_example_count"], 60)
         self.assertEqual(report["prospective_hidden_local_draft_family_count_declared"], 1)
         self.assertTrue(report["hidden_local_draft_integrity_verified"])
-        self.assertEqual(sum(report["max_critical_error_severity_counts"].values()), 104)
+        self.assertEqual(sum(report["max_critical_error_severity_counts"].values()), 108)
         self.assertGreaterEqual(report["selected_overlap_pair_count"], 8)
 
     def test_prospective_calibration_is_not_in_default_development_dataset(self):

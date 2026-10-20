@@ -64,7 +64,29 @@ class MultiturnTests(unittest.TestCase):
         with redirect_stdout(output):
             status = main(["validate-multiturn"])
         self.assertEqual(status, 0)
-        self.assertEqual(json.loads(output.getvalue())["family_count"], 30)
+        self.assertEqual(json.loads(output.getvalue())["family_count"], 34)
+
+    def test_batch_f_adds_four_distinct_bilingual_draft_families(self):
+        batches = [self.dataset] + [
+            load_json(self.root / f"data/multiturn/batch_{batch}_cases.json")
+            for batch in ("c", "d", "e", "f")
+        ]
+        status = validate_multiturn_dataset(merge_multiturn_datasets(batches))
+        self.assertEqual((status["family_count"], status["variant_count"]), (34, 68))
+        self.assertEqual(status["category_counts"], {
+            "clinical_reasoning": 10, "medication_safety": 11, "triage": 13,
+        })
+        batch_f = batches[-1]
+        ledger = load_json(self.root / "data/multiturn/batch_f_provenance.json")
+        self.assertEqual({entry["family_id"] for entry in ledger["records"]},
+                         {family["family_id"] for family in batch_f["families"]})
+        for family in batch_f["families"]:
+            record = next(entry for entry in ledger["records"]
+                          if entry["family_id"] == family["family_id"])
+            self.assertEqual(set(family["source_refs"]),
+                             set(record["supporting_sources"]) |
+                             ({record["published_case_or_series"]} if record["published_case_or_series"] else set()))
+            self.assertTrue(record["source_to_label_limit"])
 
     def test_batch_e_reaches_thirty_distinct_families(self):
         batches = [self.dataset] + [

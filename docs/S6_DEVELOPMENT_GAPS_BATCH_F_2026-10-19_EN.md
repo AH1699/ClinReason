@@ -1,0 +1,34 @@
+# S6 public-development gap audit, batch F and saved-panel diagnostic — 2026-10-19
+
+This checkpoint performs the next three **development-only** tasks while independent clinical and bilingual review is deferred during partner discussions. It does not modify any of the ten prospective calibration drafts, their blinded handoff, the local hidden candidate, scoring weights or existing saved answers. No API call or new model score was made. All clinical requirements, critical-error severities and Chinese variants below remain author hypotheses.
+
+## 1. Coverage and difficulty-proxy audit
+
+Run `python3 -m benchmark.development_gap_audit` for a reproducible count from the configured portfolio. Before this batch the public set had **104 families** (32 single-turn, 30 patient two-turn, 42 professional). Of the 30 patient two-turn drafts, **23 cited one source**, and 10 of 12 triage families ended at emergency acuity; the remaining two ended at timely nonemergency. No triage family ended at routine or self-care. Counts of prompts, requirements and severity tags are **complexity proxies, not observed difficulty**. The current audit after batch F reports **108 families / 216 language variants** (32 + 34 + 42), 34 patient two-turn families with 42 distinct cited URLs, and still 23 single-source families. Eleven of 13 triage families now end at emergency and only two below it. Source-to-criterion mappings independently verified: **0**.
+
+The largest unresolved coverage issue is not case count: patient triage still emphasizes escalation and lacks stable low-acuity or genuine de-escalation controls. The next authored batch should deliberately add such controls, plus differing clinical specialties and source populations, without making an unsafe emergency appear safe. A multi-turn requirement count or a high AI-judge score cannot establish clinical reasoning difficulty.
+
+## 2. Four new public-evidence-based patient drafts
+
+[Batch F](../data/multiturn/batch_f_cases.json) and its [provenance ledger](../data/multiturn/batch_f_provenance.json) add four bilingual two-turn synthetic families to **public development only**:
+
+| Family | Discriminating update | Public evidence and limit |
+|---|---|---|
+| `HC-MT-TRIAGE-017` | A mild headache becomes a possible household carbon-monoxide exposure with several symptomatic people and a reassuring-looking conventional oxygen reading. | A [published pediatric report](https://pubmed.ncbi.nlm.nih.gov/38333656/) illustrates a missed exposure mechanism; [CDC clinical guidance](https://www.cdc.gov/carbon-monoxide/hcp/clinical-guidance/index.html) says ordinary two-wavelength pulse oximetry is inaccurate with COHb. Neither diagnoses this synthetic adult household or settles the initial self-care boundary. |
+| `HC-MT-MEDSAFE-013` | Illness during empagliflozin use becomes vomiting, abdominal pain and deep breathing despite glucose below 250 mg/dL. | A [published case](https://pubmed.ncbi.nlm.nih.gov/39246944/) illustrates an infection-associated mechanism; the [current US label](https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=334f1b3d-5670-6685-e063-6294a90a7e47) warns that ketoacidosis can occur below that glucose level. It does not establish diagnosis or an insulin dose for this patient. |
+| `HC-MT-MEDSAFE-014` | A sertraline–linezolid reconciliation question becomes fever, tremor, jerks and confusion. | A [published case](https://pubmed.ncbi.nlm.nih.gov/31031504/) illustrates the mechanism; the [US label](https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=bef116a8-427d-4855-86de-0017e01430b0&type=display) warns of serotonin syndrome but allows carefully supervised exceptions. The draft must not imply every combination is categorically forbidden or that infection is excluded. |
+| `HC-MT-REASON-014` | A negative *H. pylori* stool test is taken only ten days after treatment while still on a PPI; the patient asks to cancel follow-up or self-retreat. | This is guideline-derived, **not a published patient case**. [ACG 2024 highlights](https://gi.org/wp-content/uploads/2025/01/ACG-Hpylori-Guidelines-Highlights-2024-FINAL.pdf.pdf) advise test of cure at least four weeks after therapy and a PPI-free interval to reduce false negatives. The US timing is not a universal self-stop order or evidence that this person remains infected. |
+
+The three case reports informed mechanisms only; no report's patient narrative or outcome was copied. Exact source-to-label limits and future reviewer questions are in the ledger. The four case families are **not** approved calibration or hidden Gold, and their source URLs should not be mistaken for clinical endorsement of every author-written criterion.
+
+## 3. Offline judge diagnostic on saved development reports
+
+`python3 -m benchmark.saved_panel_diagnostics --report <saved-report-A> --report <saved-report-B> --contrast <saved-contrast>` checks exact report protocol and case hashes before computing descriptive flags. It reuses two previously saved, identical-protocol **eight-variant** panels (Gemini 3.5 Flash-Lite and MiniMax M2.7; Gemini and Grok judges); the new four families were **not run**. The local, ignored [diagnostic output](../work/saved_panel_diagnostic_2026-10-19.json) records:
+
+- Perfect-score counts across eight variants: Gemini candidate **4/8** under Gemini judge and **3/8** under Grok; MiniMax candidate **5/8** and **3/8** respectively. All 32 judge entries still say human review required.
+- Four candidate/case entries have a Gemini–Grok gap of at least five points; four paired-language candidate/judge/family entries have an EN–ZH gap of at least five points. These are selected-case investigation flags, **not** measured translation bias or model rankings.
+- On **one** previously authored safe/partial/unsafe contrast, both judges ordered the three responses and flagged the injected unsafe error. That does not measure natural-answer unsafe false-pass rates or validate the author labels.
+
+The script reports no aggregate model ranking or fit to the desired lower **~60–70**, middle **~80**, premium **~90** diagnostics. Those bands remain aspirations, never targets to manufacture. The selected eight-variant panel cannot estimate performance across 108 families. [OpenAI Docs evaluation guidance](https://developers.openai.com/api/docs/guides/evaluation-best-practices) stresses edge cases and calibrating automated metrics against human evaluation; we used this as design guidance, not an OpenAI-hosted eval.
+
+**Next development work:** create source-diverse, stable low-acuity and de-escalation controls; prepare answer-level error analyses for the four flagged judge gaps; only after independent clinical/language adjudication, preregister judge calibration and a broader reference-model panel. Partner discussions can continue without treating provisional labels or the private hidden draft as approved.

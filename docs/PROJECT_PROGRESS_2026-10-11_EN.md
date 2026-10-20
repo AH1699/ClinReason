@@ -1,4 +1,6 @@
-# Project progress — through 2026-10-14
+# Project progress — current pointer and historical 2026-10-14 record
+
+**Current 2026-10-19 checkpoint:** [S6 development gap audit, patient batch F and saved-panel diagnostic](S6_DEVELOPMENT_GAPS_BATCH_F_2026-10-19_EN.md): **108 public bilingual draft families** (32 Alpha + 34 patient two-turn + 42 professional), 10 separately tracked prospective calibration drafts, 0 approved calibration, 0 hidden Gold. Independent clinical/bilingual review is deferred during partner discussions, not waived. The dated snapshots below are historical.
 
 This is an engineering and authoring status log, **not** a clinical quality claim. Qualified clinical and bilingual review is intentionally deferred, as requested; all Alpha cases remain drafts.
 
