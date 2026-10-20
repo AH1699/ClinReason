@@ -30,10 +30,10 @@ class PortfolioAuditTests(unittest.TestCase):
         self.assertEqual(report["prospective_calibration_draft_category_counts"], {
             "triage": 4, "medication_safety": 3, "clinical_reasoning": 3,
         })
-        self.assertEqual(report["prospective_calibration_anchored_family_count"], 6)
-        self.assertEqual(report["prospective_calibration_unanchored_family_count"], 4)
-        self.assertEqual(report["prospective_calibration_anchor_variant_count"], 12)
-        self.assertEqual(report["prospective_calibration_update_response_example_count"], 36)
+        self.assertEqual(report["prospective_calibration_anchored_family_count"], 10)
+        self.assertEqual(report["prospective_calibration_unanchored_family_count"], 0)
+        self.assertEqual(report["prospective_calibration_anchor_variant_count"], 20)
+        self.assertEqual(report["prospective_calibration_update_response_example_count"], 60)
         self.assertEqual(report["prospective_hidden_local_draft_family_count_declared"], 1)
         self.assertTrue(report["hidden_local_draft_integrity_verified"])
         self.assertEqual(sum(report["max_critical_error_severity_counts"].values()), 104)
@@ -48,6 +48,9 @@ class PortfolioAuditTests(unittest.TestCase):
         self.assertEqual(
             [batch["provenance_path"] for batch in split["prospective_draft_integrity"]["calibration_batches"]],
             ["data/calibration/provenance_v1.json", "data/calibration/provenance_batch_b.json", "data/calibration/provenance_batch_c.json"],
+        )
+        self.assertEqual(
+            len(split["prospective_draft_integrity"]["calibration_anchor_packets"]), 2,
         )
         self.assertEqual(split["current_public_portfolio"]["hidden_gold_families"], 0)
 
@@ -123,6 +126,18 @@ class PortfolioAuditTests(unittest.TestCase):
             return value
 
         with patch("benchmark.portfolio_audit.load_json", side_effect=altered_contrasts):
+            with self.assertRaisesRegex(ValueError, "Calibration draft anchor or contrast hash mismatch"):
+                audit_portfolio(self.root)
+
+        new_anchor_suffix = "data/calibration/criterion_anchors_batch_c.json"
+
+        def altered_new_anchors(path):
+            value = actual_load(path)
+            if str(path).endswith(new_anchor_suffix):
+                value["families"][0]["stages"]["update"][0]["met"] += " altered"
+            return value
+
+        with patch("benchmark.portfolio_audit.load_json", side_effect=altered_new_anchors):
             with self.assertRaisesRegex(ValueError, "Calibration draft anchor or contrast hash mismatch"):
                 audit_portfolio(self.root)
 

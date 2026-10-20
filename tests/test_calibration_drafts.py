@@ -18,6 +18,9 @@ class CalibrationDraftTests(unittest.TestCase):
         ])
         cls.anchors = load_json(root / "data/calibration/criterion_anchors_v1.json")
         cls.contrasts = load_json(root / "data/calibration/response_contrasts_v1.json")
+        cls.batch_c = load_json(root / "data/calibration/multiturn_candidates_batch_c.json")
+        cls.anchors_c = load_json(root / "data/calibration/criterion_anchors_batch_c.json")
+        cls.contrasts_c = load_json(root / "data/calibration/response_contrasts_batch_c.json")
 
     def test_complete_bilingual_packet_is_provisional_and_isolated(self):
         result = validate_calibration_contrasts(self.contrasts, self.dataset, self.anchors)
@@ -32,6 +35,23 @@ class CalibrationDraftTests(unittest.TestCase):
         changed["families"][0]["variants"]["en"]["case_content_hash"] = "0" * 64
         with self.assertRaisesRegex(ValueError, "Stale calibration contrast"):
             validate_calibration_contrasts(changed, self.dataset, self.anchors)
+
+    def test_new_packet_c_is_bilingual_bound_and_provisional(self):
+        result = validate_calibration_contrasts(self.contrasts_c, self.batch_c, self.anchors_c)
+        self.assertEqual((result["family_count"], result["variant_count"], result["update_response_example_count"]), (4, 8, 24))
+        self.assertFalse(result["clinical_review_complete"])
+        self.assertFalse(result["language_review_complete"])
+        self.assertNotIn("data/calibration/multiturn_candidates_batch_c.json", self.config["multiturn_cases_paths"])
+
+    def test_new_packet_c_rejects_stale_case_and_bilingual_mismatch(self):
+        changed = deepcopy(self.anchors_c)
+        changed["families"][0]["case_hashes"]["zh-Hans"] = "0" * 64
+        with self.assertRaisesRegex(ValueError, "Stale criterion anchor"):
+            validate_calibration_contrasts(self.contrasts_c, self.batch_c, changed)
+        changed = deepcopy(self.contrasts_c)
+        changed["families"][0]["variants"]["zh-Hans"]["partial_target_requirement_index"] = 1
+        with self.assertRaisesRegex(ValueError, "targets differ"):
+            validate_calibration_contrasts(changed, self.batch_c, self.anchors_c)
 
     def test_wrong_unsafe_error_or_partial_index_is_rejected(self):
         changed = deepcopy(self.contrasts)

@@ -174,28 +174,45 @@ def audit_portfolio(root: Path) -> dict[str, Any]:
     if (calibration_ids & family_ids
         or len(calibration_ids) != draft_counts["calibration_patient_multiturn"]):
         raise ValueError("Calibration draft is not prospectively isolated or matches neither count nor hash")
-    for field in ("calibration_anchors_path", "calibration_contrasts_path"):
-        artifact_path = integrity[field]
-        if (not isinstance(artifact_path, str)
-            or not artifact_path.startswith("data/calibration/")
-            or not artifact_path.endswith(".json")
-            or ".." in Path(artifact_path).parts):
-            raise ValueError("Calibration draft artifact path is invalid")
-    calibration_anchors = load_json(root / integrity["calibration_anchors_path"])
-    calibration_contrasts = load_json(root / integrity["calibration_contrasts_path"])
-    if (sha256_json(calibration_anchors) != integrity["calibration_anchors_sha256"]
-        or sha256_json(calibration_contrasts) != integrity["calibration_contrasts_sha256"]):
-        raise ValueError("Calibration draft anchor or contrast hash mismatch")
-    anchor_ids = {item["family_id"] for item in calibration_anchors["families"]}
-    if not anchor_ids or not anchor_ids <= calibration_ids:
-        raise ValueError("Calibration draft anchors are not a subset of the registered cases")
-    anchored_subset = {
-        **calibration_status,
-        "families": [item for item in calibration_status["families"] if item["family_id"] in anchor_ids],
-    }
-    calibration_probe_status = validate_calibration_contrasts(
-        calibration_contrasts, anchored_subset, calibration_anchors
-    )
+    packets = integrity.get("calibration_anchor_packets")
+    if not isinstance(packets, list) or not packets:
+        raise ValueError("Calibration draft anchor packet manifest is missing")
+    anchor_ids: set[str] = set()
+    artifact_paths: set[str] = set()
+    anchor_variant_count = 0
+    update_response_example_count = 0
+    for packet in packets:
+        if (not isinstance(packet, dict) or set(packet) != {
+            "anchors_path", "anchors_sha256", "contrasts_path", "contrasts_sha256"
+        }):
+            raise ValueError("Calibration draft anchor packet manifest is invalid")
+        for field in ("anchors_path", "contrasts_path"):
+            artifact_path = packet[field]
+            if (not isinstance(artifact_path, str)
+                or not artifact_path.startswith("data/calibration/")
+                or not artifact_path.endswith(".json")
+                or ".." in Path(artifact_path).parts
+                or artifact_path in artifact_paths
+                or artifact_path in calibration_paths
+                or artifact_path in provenance_paths):
+                raise ValueError("Calibration draft artifact path is invalid")
+            artifact_paths.add(artifact_path)
+        anchors = load_json(root / packet["anchors_path"])
+        contrasts = load_json(root / packet["contrasts_path"])
+        if (sha256_json(anchors) != packet["anchors_sha256"]
+            or sha256_json(contrasts) != packet["contrasts_sha256"]):
+            raise ValueError("Calibration draft anchor or contrast hash mismatch")
+        packet_ids = {item["family_id"] for item in anchors["families"]}
+        if not packet_ids or packet_ids & anchor_ids or not packet_ids <= calibration_ids:
+            raise ValueError("Calibration draft anchors overlap or are not a subset of registered cases")
+        anchored_subset = {
+            **calibration_status,
+            "families": [item for item in calibration_status["families"] if item["family_id"] in packet_ids],
+        }
+        probe_status = validate_calibration_contrasts(contrasts, anchored_subset, anchors)
+        anchor_ids.update(packet_ids)
+        anchor_variant_count += probe_status["variant_count"]
+        update_response_example_count += probe_status["update_response_example_count"]
     hidden_path = root / integrity["hidden_local_path_not_in_git"]
     hidden_verified: bool | None = None
     hidden_sources: set[str] = set()
@@ -277,8 +294,8 @@ def audit_portfolio(root: Path) -> dict[str, Any]:
         "prospective_calibration_draft_triage_transitions": calibration_structure["triage_transitions"],
         "prospective_calibration_anchored_family_count": len(anchor_ids),
         "prospective_calibration_unanchored_family_count": len(calibration_ids - anchor_ids),
-        "prospective_calibration_anchor_variant_count": calibration_probe_status["variant_count"],
-        "prospective_calibration_update_response_example_count": calibration_probe_status["update_response_example_count"],
+        "prospective_calibration_anchor_variant_count": anchor_variant_count,
+        "prospective_calibration_update_response_example_count": update_response_example_count,
         "prospective_hidden_local_draft_family_count_declared": draft_counts["hidden_local_patient_multiturn"],
         "hidden_local_draft_integrity_verified": hidden_verified,
         "note": "This is a bounded author audit. Shared URL or mechanism is not proof of duplicate content; public draft cases cannot be made genuinely hidden retroactively.",

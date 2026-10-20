@@ -32,10 +32,20 @@
         "provenance_path": "data/calibration/provenance_batch_c.json"
       }
     ],
-    "calibration_anchors_path": "data/calibration/criterion_anchors_v1.json",
-    "calibration_anchors_sha256": "667010ac7e29ded3347ec559b5c0f4f8bfe2ee4eaf4408053db91bf47cde2ed3",
-    "calibration_contrasts_path": "data/calibration/response_contrasts_v1.json",
-    "calibration_contrasts_sha256": "b9e944037a3f1443690366a87b4d35ab2babf608a9c04c92997b6eb260847efe",
+    "calibration_anchor_packets": [
+      {
+        "anchors_path": "data/calibration/criterion_anchors_v1.json",
+        "anchors_sha256": "667010ac7e29ded3347ec559b5c0f4f8bfe2ee4eaf4408053db91bf47cde2ed3",
+        "contrasts_path": "data/calibration/response_contrasts_v1.json",
+        "contrasts_sha256": "b9e944037a3f1443690366a87b4d35ab2babf608a9c04c92997b6eb260847efe"
+      },
+      {
+        "anchors_path": "data/calibration/criterion_anchors_batch_c.json",
+        "anchors_sha256": "a38bbc7b42a54e08080cccfb21e722d4434ebad32842395957984b7e44c40af4",
+        "contrasts_path": "data/calibration/response_contrasts_batch_c.json",
+        "contrasts_sha256": "24db5d41f5c9df39b4ac00fc4d0746f0bd70e442f9b77024a35fbbeb5d81a35a"
+      }
+    ],
     "hidden_local_path_not_in_git": "work/hidden_candidates/multiturn_candidate_001.json",
     "hidden_local_sha256": "d56cce0edd0b06b6b336ea89d9a69c5e88abfa2c8e54d33b5ba50ec29e6c3eed",
     "warning": "The hidden candidate is an unreviewed local draft, not sealed Gold; it is absent from a clean clone. Its hash records local integrity only, not clinical correctness or future leakage resistance."
