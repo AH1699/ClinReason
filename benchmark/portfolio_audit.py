@@ -14,7 +14,7 @@ from typing import Any
 
 from .calibration_drafts import validate_calibration_contrasts
 from .config import load_json, load_jsonl
-from .multiturn import merge_multiturn_datasets
+from .multiturn import merge_multiturn_datasets, validate_multiturn_dataset
 from .professional import combine_professional_datasets, validate_case_adaptation_registry
 from .provenance import sha256_json
 
@@ -135,22 +135,41 @@ def audit_portfolio(root: Path) -> dict[str, Any]:
         raise ValueError("Calibration draft batch manifest is missing")
     calibration_datasets = []
     calibration_paths: set[str] = set()
+    provenance_paths: set[str] = set()
     for batch in batches:
-        if not isinstance(batch, dict) or set(batch) != {"path", "family_count", "sha256"}:
+        if not isinstance(batch, dict) or set(batch) != {"path", "family_count", "sha256", "provenance_path"}:
             raise ValueError("Calibration draft batch manifest is invalid")
         batch_path = batch["path"]
+        provenance_path = batch["provenance_path"]
         if (not isinstance(batch_path, str) or not batch_path.startswith("data/calibration/")
             or not batch_path.endswith(".json") or ".." in Path(batch_path).parts
             or batch_path in calibration_paths or batch_path in config["multiturn_cases_paths"]):
             raise ValueError("Calibration draft batch path is not isolated")
+        if (not isinstance(provenance_path, str) or not provenance_path.startswith("data/calibration/")
+            or not provenance_path.endswith(".json") or ".." in Path(provenance_path).parts
+            or provenance_path in provenance_paths or provenance_path == batch_path):
+            raise ValueError("Calibration draft provenance path is invalid")
         calibration_paths.add(batch_path)
+        provenance_paths.add(provenance_path)
         dataset = load_json(root / batch_path)
         if (type(batch["family_count"]) is not int
             or len(dataset.get("families", [])) != batch["family_count"]
             or sha256_json(dataset) != batch["sha256"]):
             raise ValueError("Calibration draft batch count or hash mismatch")
         calibration_datasets.append(dataset)
+        provenance = load_json(root / provenance_path)
+        record_ids = [record["family_id"] for record in provenance["records"]]
+        source_by_id = {family["family_id"]: set(family["source_refs"]) for family in dataset["families"]}
+        if len(record_ids) != len(set(record_ids)) or set(record_ids) != set(source_by_id):
+            raise ValueError("Calibration draft provenance does not cover its batch")
+        for record in provenance["records"]:
+            ledger_sources = ({record["case_report"], record["clinical_source"]}
+                              if "case_report" in record else
+                              {record["published_case_or_series"], *record["supporting_sources"]})
+            if not ledger_sources <= source_by_id[record["family_id"]]:
+                raise ValueError("Calibration draft provenance source mismatch")
     calibration_status = merge_multiturn_datasets(calibration_datasets)
+    calibration_structure = validate_multiturn_dataset(calibration_status)
     calibration_ids = {item["family_id"] for item in calibration_status["families"]}
     if (calibration_ids & family_ids
         or len(calibration_ids) != draft_counts["calibration_patient_multiturn"]):
@@ -167,24 +186,16 @@ def audit_portfolio(root: Path) -> dict[str, Any]:
     if (sha256_json(calibration_anchors) != integrity["calibration_anchors_sha256"]
         or sha256_json(calibration_contrasts) != integrity["calibration_contrasts_sha256"]):
         raise ValueError("Calibration draft anchor or contrast hash mismatch")
+    anchor_ids = {item["family_id"] for item in calibration_anchors["families"]}
+    if not anchor_ids or not anchor_ids <= calibration_ids:
+        raise ValueError("Calibration draft anchors are not a subset of the registered cases")
+    anchored_subset = {
+        **calibration_status,
+        "families": [item for item in calibration_status["families"] if item["family_id"] in anchor_ids],
+    }
     calibration_probe_status = validate_calibration_contrasts(
-        calibration_contrasts, calibration_status, calibration_anchors
+        calibration_contrasts, anchored_subset, calibration_anchors
     )
-    provenance_paths = ("data/calibration/provenance_v1.json", "data/calibration/provenance_batch_b.json")
-    if len(calibration_datasets) != len(provenance_paths):
-        raise ValueError("Calibration draft batch manifest lacks a paired provenance ledger")
-    for dataset, provenance_path in zip(calibration_datasets, provenance_paths):
-        provenance = load_json(root / provenance_path)
-        record_ids = [record["family_id"] for record in provenance["records"]]
-        source_by_id = {family["family_id"]: set(family["source_refs"]) for family in dataset["families"]}
-        if len(record_ids) != len(set(record_ids)) or set(record_ids) != set(source_by_id):
-            raise ValueError("Calibration draft provenance does not cover its batch")
-        for record in provenance["records"]:
-            ledger_sources = ({record["case_report"], record["clinical_source"]}
-                              if "case_report" in record else
-                              {record["published_case_or_series"], *record["supporting_sources"]})
-            if not ledger_sources <= source_by_id[record["family_id"]]:
-                raise ValueError("Calibration draft provenance source mismatch")
     hidden_path = root / integrity["hidden_local_path_not_in_git"]
     hidden_verified: bool | None = None
     hidden_sources: set[str] = set()
@@ -262,6 +273,10 @@ def audit_portfolio(root: Path) -> dict[str, Any]:
         "calibration_family_count": current_split["calibration_families"],
         "hidden_gold_family_count": current_split["hidden_gold_families"],
         "prospective_calibration_draft_family_count": len(calibration_ids),
+        "prospective_calibration_draft_category_counts": calibration_structure["category_counts"],
+        "prospective_calibration_draft_triage_transitions": calibration_structure["triage_transitions"],
+        "prospective_calibration_anchored_family_count": len(anchor_ids),
+        "prospective_calibration_unanchored_family_count": len(calibration_ids - anchor_ids),
         "prospective_calibration_anchor_variant_count": calibration_probe_status["variant_count"],
         "prospective_calibration_update_response_example_count": calibration_probe_status["update_response_example_count"],
         "prospective_hidden_local_draft_family_count_declared": draft_counts["hidden_local_patient_multiturn"],

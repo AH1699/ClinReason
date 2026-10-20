@@ -8,7 +8,7 @@
     "hidden_gold_families": 0
   },
   "prospective_draft_candidates_not_approved_counts": {
-    "calibration_patient_multiturn": 6,
+    "calibration_patient_multiturn": 10,
     "hidden_local_patient_multiturn": 1
   },
   "prospective_draft_integrity": {
@@ -16,12 +16,20 @@
       {
         "path": "data/calibration/multiturn_candidates_v1.json",
         "family_count": 1,
-        "sha256": "e3d0e5c05b547110daf134bbaba9d9f643c925284392cb792e2f97eb78e3417b"
+        "sha256": "e3d0e5c05b547110daf134bbaba9d9f643c925284392cb792e2f97eb78e3417b",
+        "provenance_path": "data/calibration/provenance_v1.json"
       },
       {
         "path": "data/calibration/multiturn_candidates_batch_b.json",
         "family_count": 5,
-        "sha256": "5c73d2c1d1b2f0963f32cc2e66ec31b17a12fe31ba192acea24662a24f5d957f"
+        "sha256": "5c73d2c1d1b2f0963f32cc2e66ec31b17a12fe31ba192acea24662a24f5d957f",
+        "provenance_path": "data/calibration/provenance_batch_b.json"
+      },
+      {
+        "path": "data/calibration/multiturn_candidates_batch_c.json",
+        "family_count": 4,
+        "sha256": "bdd32481cf9c6f953f6ea89332c144b618b220c4d7b51472459b12c36c8977c1",
+        "provenance_path": "data/calibration/provenance_batch_c.json"
       }
     ],
     "calibration_anchors_path": "data/calibration/criterion_anchors_v1.json",

@@ -26,7 +26,12 @@ class PortfolioAuditTests(unittest.TestCase):
         self.assertEqual(report["families_with_criterion_level_verified_source_mapping"], 0)
         self.assertEqual(report["calibration_family_count"], 0)
         self.assertEqual(report["hidden_gold_family_count"], 0)
-        self.assertEqual(report["prospective_calibration_draft_family_count"], 6)
+        self.assertEqual(report["prospective_calibration_draft_family_count"], 10)
+        self.assertEqual(report["prospective_calibration_draft_category_counts"], {
+            "triage": 4, "medication_safety": 3, "clinical_reasoning": 3,
+        })
+        self.assertEqual(report["prospective_calibration_anchored_family_count"], 6)
+        self.assertEqual(report["prospective_calibration_unanchored_family_count"], 4)
         self.assertEqual(report["prospective_calibration_anchor_variant_count"], 12)
         self.assertEqual(report["prospective_calibration_update_response_example_count"], 36)
         self.assertEqual(report["prospective_hidden_local_draft_family_count_declared"], 1)
@@ -39,7 +44,11 @@ class PortfolioAuditTests(unittest.TestCase):
         split = load_json(self.root / "data/audit/prospective_split_plan.json")
         for batch in split["prospective_draft_integrity"]["calibration_batches"]:
             self.assertNotIn(batch["path"], config["multiturn_cases_paths"])
-        self.assertEqual([batch["family_count"] for batch in split["prospective_draft_integrity"]["calibration_batches"]], [1, 5])
+        self.assertEqual([batch["family_count"] for batch in split["prospective_draft_integrity"]["calibration_batches"]], [1, 5, 4])
+        self.assertEqual(
+            [batch["provenance_path"] for batch in split["prospective_draft_integrity"]["calibration_batches"]],
+            ["data/calibration/provenance_v1.json", "data/calibration/provenance_batch_b.json", "data/calibration/provenance_batch_c.json"],
+        )
         self.assertEqual(split["current_public_portfolio"]["hidden_gold_families"], 0)
 
     def test_prospective_draft_tamper_or_overlap_is_rejected(self):
@@ -69,6 +78,18 @@ class PortfolioAuditTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "Calibration draft"):
                 audit_portfolio(self.root)
 
+        new_batch_suffix = "data/calibration/multiturn_candidates_batch_c.json"
+
+        def altered_third_batch(path):
+            value = actual_load(path)
+            if str(path).endswith(new_batch_suffix):
+                value["families"][0]["variants"]["en"]["turns"][1]["user"] += " altered"
+            return value
+
+        with patch("benchmark.portfolio_audit.load_json", side_effect=altered_third_batch):
+            with self.assertRaisesRegex(ValueError, "Calibration draft"):
+                audit_portfolio(self.root)
+
         provenance_suffix = "data/calibration/provenance_batch_b.json"
 
         def altered_provenance(path):
@@ -79,6 +100,18 @@ class PortfolioAuditTests(unittest.TestCase):
 
         with patch("benchmark.portfolio_audit.load_json", side_effect=altered_provenance):
             with self.assertRaisesRegex(ValueError, "Calibration draft provenance source mismatch"):
+                audit_portfolio(self.root)
+
+        third_provenance_suffix = "data/calibration/provenance_batch_c.json"
+
+        def altered_third_provenance(path):
+            value = actual_load(path)
+            if str(path).endswith(third_provenance_suffix):
+                value["records"][0]["family_id"] = "HC-MT-NOTREAL-001"
+            return value
+
+        with patch("benchmark.portfolio_audit.load_json", side_effect=altered_third_provenance):
+            with self.assertRaisesRegex(ValueError, "Calibration draft provenance does not cover"):
                 audit_portfolio(self.root)
 
         contrast_suffix = "data/calibration/response_contrasts_v1.json"

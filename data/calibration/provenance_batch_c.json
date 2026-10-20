@@ -1,0 +1,37 @@
+{
+  "schema_version": "0.1.0",
+  "status": "author_draft_pending_independent_clinical_and_language_review",
+  "split": "prospective_calibration_candidate_not_gold",
+  "checked_on": "2026-10-19",
+  "reuse_policy": "Published cases illustrate mechanisms only. These are original synthetic dialogues; no patient narrative, numeric result, image, table, treatment or outcome was copied. Source licenses were not independently audited, so do not redistribute source content.",
+  "records": [
+    {
+      "family_id": "HC-MT-TRIAGE-015",
+      "published_case_or_series": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5685448/",
+      "supporting_sources": ["https://www.rch.org.au/clinicalguide/guideline_index/intussusception_guideline/"],
+      "adaptation": "Synthetic one-off mild symptom becomes recurrent severe episodic pain with vomiting and lethargy; no report's siblings, ages, episode timings, test results or outcome copied.",
+      "source_to_label_limit": "The report and hospital guideline support well intervals and absence of the classic triad as insufficient reassurance. They do not establish the correct initial routing or precise urgency for every child; pediatric reviewer must adjudicate."
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-016",
+      "published_case_or_series": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1676140/",
+      "supporting_sources": ["https://www.moorfields.nhs.uk/for-patients/information-hub/narrow-angles"],
+      "adaptation": "Synthetic ordinary headache changes to a red painful eye with visual symptoms and an unremarkable head CT; no published patient's age, comorbidities, pressure readings, care sequence or outcome copied.",
+      "source_to_label_limit": "The report illustrates eye emergencies missed after headache workup, and Moorfields lists acute attack symptoms and emergency assessment. A normal head CT does not test intraocular pressure, but these sources do not diagnose this patient or settle all alternative causes and route wording."
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-012",
+      "published_case_or_series": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7793128/",
+      "supporting_sources": ["https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2f994aed-f8e7-4967-a167-b22b783b4192"],
+      "adaptation": "Synthetic cross-clinic prescription followed by fever, mouth ulcers and fatigue; no transplant history, dose, blood count, laboratory value or outcome copied.",
+      "source_to_label_limit": "The case and prescribing information support serious interaction and myelosuppression risk. Controlled co-prescribing with dose adjustment can occur, so do not label every supervised combination intrinsically wrong. Same-day versus emergency threshold and interim drug advice require pharmacist and clinician review."
+    },
+    {
+      "family_id": "HC-MT-REASON-013",
+      "published_case_or_series": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3139290/",
+      "supporting_sources": ["https://www.cdc.gov/mmwr/volumes/73/rr/rr7301a1.htm"],
+      "adaptation": "Synthetic rash and discordant laboratory dialogue; no published patient's age, serology titer, comorbidity, examination, treatment or outcome copied.",
+      "source_to_label_limit": "CDC says the prozone effect is uncommon and dilution testing is clinician-requested when symptoms suggest syphilis despite nonreactive undiluted nontreponemal testing. Reactive treponemal plus nonreactive RPR has other explanations, including previously treated infection; the case report cannot adjudicate this synthetic patient's diagnosis or treatment."
+    }
+  ]
+}
