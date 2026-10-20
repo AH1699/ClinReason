@@ -231,6 +231,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     matrix_recover.add_argument("--source-dir", required=True)
     matrix_recover.add_argument("--case-id", help="Required when the saved plan contains multiple cases")
+    matrix_recover.add_argument("--roster", default="config/model_matrix.json")
     matrix_recover.add_argument("--output-dir", required=True)
     matrix_recover.add_argument("--anchors", default="config/multiturn_criterion_anchors_v1.json")
     matrix_recover.add_argument("--env-file", default=".env.local")
@@ -244,6 +245,7 @@ def build_parser() -> argparse.ArgumentParser:
         "assemble-model-matrix", help="Offline assembly of exact-revision partial and recovered matrix artifacts"
     )
     matrix_assemble.add_argument("--source-dir", action="append", required=True)
+    matrix_assemble.add_argument("--roster", default="config/model_matrix.json")
     matrix_assemble.add_argument("--candidate-id", required=True)
     matrix_assemble.add_argument("--case-id", action="append", required=True)
     matrix_assemble.add_argument("--output-dir", required=True)
@@ -689,7 +691,7 @@ def main(argv: list[str] | None = None) -> int:
             dataset = merge_multiturn_datasets([
                 load_json(resolve_path(args.config, path)) for path in batch_paths
             ])
-            roster = load_json(resolve_path(args.config, "config/model_matrix.json"))
+            roster = load_json(resolve_path(args.config, args.roster))
             anchors = load_json(resolve_path(args.config, args.anchors))
             rubric = load_json(resolve_path(
                 args.config, config.get("multiturn_rubric_path", "config/multiturn_rubric.json")
@@ -755,7 +757,7 @@ def main(argv: list[str] | None = None) -> int:
             dataset = merge_multiturn_datasets([
                 load_json(resolve_path(args.config, path)) for path in batch_paths
             ])
-            roster = load_json(resolve_path(args.config, "config/model_matrix.json"))
+            roster = load_json(resolve_path(args.config, args.roster))
             anchors = load_json(resolve_path(args.config, args.anchors))
             validate_anchor_set(anchors, dataset)
             candidate_instruction = resolve_path(

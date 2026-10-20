@@ -1,6 +1,10 @@
 # Scoring difficulty and calibration plan — 2026-10-16
 
-## 2026-10-19 S6 development-only diagnostic (current)
+## 2026-10-19 batch-F bounded model pilot (current)
+
+The [predeclared public-development pilot](S6_BATCH_F_LIVE_PILOT_2026-10-19_EN.md) has two complete, protocol-matched eight-variant Gemini/Grok candidate panels and a six-variant MiniMax prefix; the MiniMax reasoning judge output failed the exact-quote contract and is unscored. New exact-case provisional anchors were fixed before model answers. `REASON-014` remained at 100/100 for both completed candidates and judges in EN/ZH, while medication cases yielded same-answer judge gaps up to 17.5 points. This diagnoses likely ceiling and judge-calibration questions; it does **not** estimate clinically correct scores, unsafe false-pass rates, model tiers or the desired ~60–70/~80/~90 distribution. Do not alter rubric weights or rescore retrospectively. The next development work is answer-level disagreement review and low-acuity/de-escalation case design. Formal calibration still awaits independent clinical/source-to-criterion and bilingual adjudication; approved calibration and hidden Gold remain zero.
+
+## 2026-10-19 S6 development-only diagnostic (historical)
 
 The [S6 gap and saved-panel note](S6_DEVELOPMENT_GAPS_BATCH_F_2026-10-19_EN.md) adds four public patient development drafts and an offline comparison of two previously saved, matching eight-variant panels. Perfect-score and Gemini–Grok/EN–ZH disagreement counts identify cases to inspect, but no new model was called, no new score was created, and no judge-validity or population difficulty estimate follows. The new four cases were not run. Public development is 108 families; 10 unreviewed prospective calibration drafts remain separate; approved calibration/hidden Gold are 0/0. The desired ~60–70/~80/~90 bands remain non-enforced diagnostics, never a curve-fitting target. Independent expert review is deferred while partner discussions continue, so the blinded handoff stays blank and calibration/promotion remains closed.
 
