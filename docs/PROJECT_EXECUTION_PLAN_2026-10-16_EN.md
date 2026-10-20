@@ -1,6 +1,10 @@
 # ClinReason current execution plan — 2026-10-16
 
-## Dated progress update — 2026-10-20 (current S8 protocol checkpoint)
+## Dated progress update — 2026-10-20 (current S9 paired-contrast checkpoint)
+
+The [paired batch-G contrast](S9_BATCH_G_PAIRED_CONTRAST_2026-10-20_EN.md) completed exactly **12 judge calls, no candidate calls**, on `TRIAGE-018` EN/ZH under unchanged provisional anchors and numeric rubric. Both judges ordered the authored strong/partial/unsafe updates and caught the injected appearance-only over-escalation error in both languages. Scores were Gemini EN 100/65/40, ZH 100/60/32.5; Grok EN and ZH both 100/65/40. Criterion statuses matched across all judge/language cells, while Gemini's Chinese partial and unsafe holistic dimensions differed; the severity-1 error is **not** an automatic hard-fail. This is a narrow smoke test, not clinical/language validation or score calibration. Public development remains **112 families / 224 variants**, approved calibration/hidden Gold **0/0**. **Next:** a second-mechanism, subtler paired near-miss before any bounded candidate pilot; then audit possible duplicate deductions across requirements, safety and revision. No rubric change to fit ~60–70/~80/~90.
+
+## Dated progress update — 2026-10-20 (historical S8 protocol checkpoint)
 
 The [batch-G protocol record](S8_BATCH_G_PROTOCOL_2026-10-20_EN.md) adds exact-case provisional anchors for all four G families/eight variants, eight bilingual strong/partial/unsafe controlled probes, an opt-in v2 candidate instruction requiring the user's response language, and a separate manifest-bound offline wrong-script audit. The default prompt and historical F reports are unchanged. Structural checks are offline only; no G judge or candidate call, clinical score, rubric weight, case promotion, or score-band fitting occurred. Public development remains **112 families / 224 variants**; approved calibration and hidden Gold remain **0/0**. **Next:** a small, call-capped EN/ZH controlled-contrast pilot to test two-judge ordering and injected-error detection, then—only if interpretable—a same-protocol bounded candidate pilot. Later qualified clinical, source-to-criterion, and bilingual review remains required before formal calibration. The lower ~60–70/middle ~80/premium ~90 aspiration remains diagnostic, not enforced.
 
