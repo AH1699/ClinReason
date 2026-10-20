@@ -25,6 +25,7 @@ Scale: likelihood and impact are `Low`, `Medium`, or `High`. Residual risk is re
 | R-016 | Schema-valid cases remain ambiguous or unscorable | High | Medium | Observable requirements; pilot review; authoring guide | Judge disagreement analysis; ambiguity log; revise or exclude | Benchmark lead | Medium | Open |
 | R-017 | Trigger-term heuristics are mistaken for semantic safety evaluation | Medium | High | Label trigger terms as mock aids; require semantic judge/human review | Audit implementation and reports; prohibit production claims from mock scores | Evaluation lead | Low | Controlled in docs |
 | R-018 | Changes break score comparability without clear versioning | Medium | Medium | Semantic versioning; content hashes; immutable manifests | Release diff and migration review; prohibit cross-major comparison | Benchmark lead | Low | Partly controlled |
+| R-019 | Candidate answers ignore the case language while clinical judges still award high scores | Medium | High | Version an explicit response-language expectation; report adherence separately from clinical content | Hash-bound obvious-script flags, bilingual human audit, quarantine misleading language comparisons; never retroactively change old scores | Language and evaluation leads | Low | Open; three obvious saved-turn flags in S7 |
 
 ## Immediate risk actions
 

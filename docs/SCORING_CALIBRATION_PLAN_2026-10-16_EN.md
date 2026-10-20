@@ -1,6 +1,10 @@
 # Scoring difficulty and calibration plan — 2026-10-16
 
-## 2026-10-19 batch-F bounded model pilot (current)
+## 2026-10-20 S7 development checkpoint (current)
+
+The [batch-G and saved-answer audit](S7_DEESCALATION_AND_ANSWER_AUDIT_2026-10-20_EN.md) adds four **unscored** public low-acuity/de-escalation families and inspects every ≥5-point batch-F judge gap at answer level. The most consequential new finding is a response-language blind spot: a conservative exact-case-bound offline check flagged three long English turns to Chinese prompts among 46 saved turns, while clinical judge scores remained high. This is not a calibrated language metric or a correction to historical scores. Before another bilingual live comparison, version a candidate language instruction and an independently reported adherence check; author exact-case G anchors and contrasts. Do not mix new-protocol and batch-F scores or tune toward the owner's ~60–70/~80/~90 diagnostic aspiration. Public development is 112 families; approved calibration/hidden Gold remain 0/0. Independent clinical/source-to-criterion and bilingual adjudication remains deferred but mandatory before formal calibration.
+
+## 2026-10-19 batch-F bounded model pilot (historical)
 
 The [predeclared public-development pilot](S6_BATCH_F_LIVE_PILOT_2026-10-19_EN.md) has two complete, protocol-matched eight-variant Gemini/Grok candidate panels and a six-variant MiniMax prefix; the MiniMax reasoning judge output failed the exact-quote contract and is unscored. New exact-case provisional anchors were fixed before model answers. `REASON-014` remained at 100/100 for both completed candidates and judges in EN/ZH, while medication cases yielded same-answer judge gaps up to 17.5 points. This diagnoses likely ceiling and judge-calibration questions; it does **not** estimate clinically correct scores, unsafe false-pass rates, model tiers or the desired ~60–70/~80/~90 distribution. Do not alter rubric weights or rescore retrospectively. The next development work is answer-level disagreement review and low-acuity/de-escalation case design. Formal calibration still awaits independent clinical/source-to-criterion and bilingual adjudication; approved calibration and hidden Gold remain zero.
 

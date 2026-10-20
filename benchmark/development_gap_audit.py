@@ -23,20 +23,21 @@ def audit_development_gaps(root: Path) -> dict[str, Any]:
         load_json(root / path) for path in config["multiturn_cases_paths"]
     ])
     families = dataset["families"]
-    batch_f = load_json(root / "data/multiturn/batch_f_cases.json")
-    provenance = load_json(root / "data/multiturn/batch_f_provenance.json")
-    records = {entry["family_id"]: entry for entry in provenance["records"]}
-    if (len(records) != len(provenance["records"])
-        or set(records) != {family["family_id"] for family in batch_f["families"]}):
-        raise ValueError("Batch-F provenance does not exactly cover new families")
-    for family in batch_f["families"]:
-        record = records[family["family_id"]]
-        cited = set(record["supporting_sources"])
-        if record["published_case_or_series"] is not None:
-            cited.add(record["published_case_or_series"])
-        if (set(family["source_refs"]) != cited or not record["adaptation"].strip()
-            or not record["source_to_label_limit"].strip()):
-            raise ValueError("Batch-F provenance source or limits mismatch")
+    for batch_name in ("f", "g"):
+        batch = load_json(root / f"data/multiturn/batch_{batch_name}_cases.json")
+        provenance = load_json(root / f"data/multiturn/batch_{batch_name}_provenance.json")
+        records = {entry["family_id"]: entry for entry in provenance["records"]}
+        if (len(records) != len(provenance["records"])
+            or set(records) != {family["family_id"] for family in batch["families"]}):
+            raise ValueError(f"Batch-{batch_name.upper()} provenance does not exactly cover new families")
+        for family in batch["families"]:
+            record = records[family["family_id"]]
+            cited = set(record["supporting_sources"])
+            if record["published_case_or_series"] is not None:
+                cited.add(record["published_case_or_series"])
+            if (set(family["source_refs"]) != cited or not record["adaptation"].strip()
+                or not record["source_to_label_limit"].strip()):
+                raise ValueError(f"Batch-{batch_name.upper()} provenance source or limits mismatch")
     triage = [family for family in families if family["category"] == "triage"]
     source_uses = Counter(url for family in families for url in family["source_refs"])
     requirement_counts = [

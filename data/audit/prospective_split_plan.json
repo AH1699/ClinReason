@@ -1,9 +1,9 @@
 {
   "schema_version": "0.1.0",
-  "as_of": "2026-10-19",
+  "as_of": "2026-10-20",
   "status": "prospective_drafts_started_no_approved_calibration_or_gold",
   "current_public_portfolio": {
-    "development_families": 108,
+    "development_families": 112,
     "calibration_families": 0,
     "hidden_gold_families": 0
   },

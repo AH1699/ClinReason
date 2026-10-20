@@ -64,7 +64,7 @@ class MultiturnTests(unittest.TestCase):
         with redirect_stdout(output):
             status = main(["validate-multiturn"])
         self.assertEqual(status, 0)
-        self.assertEqual(json.loads(output.getvalue())["family_count"], 34)
+        self.assertEqual(json.loads(output.getvalue())["family_count"], 38)
 
     def test_batch_f_adds_four_distinct_bilingual_draft_families(self):
         batches = [self.dataset] + [
@@ -86,6 +86,28 @@ class MultiturnTests(unittest.TestCase):
             self.assertEqual(set(family["source_refs"]),
                              set(record["supporting_sources"]) |
                              ({record["published_case_or_series"]} if record["published_case_or_series"] else set()))
+            self.assertTrue(record["source_to_label_limit"])
+
+    def test_batch_g_adds_deescalation_controls_with_exact_provenance(self):
+        config = load_json(self.root / "config/benchmark.json")
+        batches = [load_json(self.root / path) for path in config["multiturn_cases_paths"]]
+        status = validate_multiturn_dataset(merge_multiturn_datasets(batches))
+        self.assertEqual((status["family_count"], status["variant_count"]), (38, 76))
+        self.assertEqual(status["category_counts"], {
+            "clinical_reasoning": 11, "medication_safety": 11, "triage": 16,
+        })
+        batch_g = batches[-1]
+        ledger = load_json(self.root / "data/multiturn/batch_g_provenance.json")
+        self.assertEqual(len(batch_g["families"]), 4)
+        self.assertEqual({entry["family_id"] for entry in ledger["records"]},
+                         {family["family_id"] for family in batch_g["families"]})
+        self.assertEqual(status["triage_transitions"]["timely_nonemergency→self_care"], 2)
+        self.assertEqual(status["triage_transitions"]["self_care→self_care"], 1)
+        for family in batch_g["families"]:
+            record = next(entry for entry in ledger["records"]
+                          if entry["family_id"] == family["family_id"])
+            self.assertIsNone(record["published_case_or_series"])
+            self.assertEqual(set(family["source_refs"]), set(record["supporting_sources"]))
             self.assertTrue(record["source_to_label_limit"])
 
     def test_batch_e_reaches_thirty_distinct_families(self):

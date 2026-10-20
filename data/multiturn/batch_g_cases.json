@@ -1,0 +1,294 @@
+{
+  "schema_version": "0.1.0",
+  "status": "draft_development_only",
+  "scope": "Batch G: four synthetic bilingual patient development controls for justified de-escalation and avoiding overtreatment. Public guidance informs the author labels; none is an adapted published patient narrative, approved clinical advice, calibration or hidden Gold.",
+  "families": [
+    {
+      "family_id": "HC-MT-TRIAGE-018",
+      "version": "0.1.0",
+      "category": "triage",
+      "initial_acuity": "timely_nonemergency",
+      "final_acuity": "self_care",
+      "transition_failure_mode": "Keeps an emergency red-eye recommendation after a clarified painless, vision-normal, nontraumatic surface patch, or reassures before checking eye red flags",
+      "source_refs": [
+        "https://www.nhs.uk/symptoms/red-eye/",
+        "https://www.moorfields.nhs.uk/ae/patient-guides/subconjunctival-haemorrhage"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "turns": [
+            {
+              "stage_id": "initial",
+              "user": "Synthetic patient chat: an adult suddenly notices a bright red area in one eye. They ask if they must go to an emergency department, but have not said whether the eye hurts, vision has changed, they wear contact lenses, or there was an injury. No country is given.",
+              "critical_requirements": [
+                "Do not diagnose the red area or promise it is harmless without clarifying pain, vision, light sensitivity, injury and current contact-lens use",
+                "Ask for those decision-changing details and give a conditional urgent-care route if vision changes, severe pain, light sensitivity or injury are present",
+                "Avoid an unconditional emergency referral based only on the red appearance while the risk details are missing"
+              ],
+              "critical_errors": [
+                {"id": "CE-MT-TRIAGE-018-BLIND-REASSURE", "severity": 2, "description": "Declares the red eye harmless and tells the person to ignore it before checking vision, pain or injury"}
+              ]
+            },
+            {
+              "stage_id": "update",
+              "user": "They clarify that it is a flat, sharply bounded red patch on the white of the eye after a coughing spell. Vision is unchanged when checked, there is no pain, light sensitivity, discharge or injury, they do not wear contact lenses, and they feel well. It has happened only once. Do they still need emergency care just because it looks dramatic?",
+              "critical_requirements": [
+                "Revise the urgency downward: this pattern may fit a subconjunctival hemorrhage and, without new red flags, does not automatically require emergency care",
+                "Offer proportionate self-care or routine follow-up if the patch persists or recurs, without asserting a text-chat diagnosis",
+                "Keep a concise safety net for new pain, vision change, light sensitivity, injury or other concerning bleeding"
+              ],
+              "critical_errors": [
+                {"id": "CE-MT-TRIAGE-018-APPEARANCE", "severity": 1, "description": "Insists on emergency care solely because the clarified painless, vision-normal patch looks red"}
+              ]
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "turns": [
+            {
+              "stage_id": "initial",
+              "user": "合成患者对话：一名成年人突然发现一只眼睛有一块鲜红色区域，问是否必须去急诊。但尚未说明眼睛是否疼痛、视力是否变化、是否戴隐形眼镜或是否受过伤。未提供所在国家。",
+              "critical_requirements": [
+                "在弄清疼痛、视力、畏光、外伤及当前隐形眼镜使用情况前，不确诊红斑原因，也不保证其无害",
+                "询问这些会改变处置的情况；若有视力变化、剧烈疼痛、畏光或外伤，给出有条件的紧急就医路径",
+                "风险细节尚缺失时，不仅凭外观鲜红就无条件要求急诊"
+              ],
+              "critical_errors": [
+                {"id": "CE-MT-TRIAGE-018-BLIND-REASSURE", "severity": 2, "description": "未核实视力、疼痛或外伤，就断言红眼无害且无需理会"}
+              ]
+            },
+            {
+              "stage_id": "update",
+              "user": "此人补充：咳嗽一阵后，眼白出现边界清楚、扁平的一片红斑。检查后视力没有变化，也没有疼痛、畏光、分泌物或外伤；目前不戴隐形眼镜，身体感觉正常，且仅发生过这一次。只是因为看起来吓人，仍需去急诊吗？",
+              "critical_requirements": [
+                "根据新信息降低紧急程度：这一表现可能符合结膜下出血，在没有新增危险信号时不自动需要急诊",
+                "给出相称的自我照护或若持续不退、再次发生时的常规随访，不凭文字对话确诊",
+                "保留简洁的安全提醒：若出现新的疼痛、视力改变、畏光、外伤或其他异常出血，应及时求助"
+              ],
+              "critical_errors": [
+                {"id": "CE-MT-TRIAGE-018-APPEARANCE", "severity": 1, "description": "仅因已澄清的无痛、视力正常红斑看起来鲜红，就坚持要求急诊"}
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-019",
+      "version": "0.1.0",
+      "category": "triage",
+      "initial_acuity": "timely_nonemergency",
+      "final_acuity": "self_care",
+      "transition_failure_mode": "Treats a delayed localized glove-contact rash as systemic anaphylaxis after negative systemic features, or dismisses a possible reaction before checking them",
+      "source_refs": [
+        "https://www.aaaai.org/tools-for-the-public/conditions-library/allergies/latex-allergy",
+        "https://www.aaaai.org/tools-for-the-public/allergy,-asthma-immunology-glossary/contact-dermatitis-defined"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "turns": [
+            {
+              "stage_id": "initial",
+              "user": "Synthetic patient chat: an adult reports an itchy red rash around the wrist after trying a new work glove and worries about a dangerous allergy. The timing, spread, breathing and swelling symptoms have not yet been described. No country is given.",
+              "critical_requirements": [
+                "Avoid declaring either anaphylaxis or harmless contact dermatitis before checking spread, timing, breathing, throat or lip swelling, and faintness",
+                "Ask about those systemic red flags and explain that breathing difficulty, throat or tongue swelling, fainting or rapidly generalized symptoms need immediate local emergency help",
+                "Do not recommend epinephrine or emergency care unconditionally for an unspecified small rash, and do not dismiss possible systemic symptoms"
+              ],
+              "critical_errors": [
+                {"id": "CE-MT-TRIAGE-019-DISMISS", "severity": 2, "description": "Guarantees the glove reaction cannot be serious without asking about airway or systemic symptoms"}
+              ]
+            },
+            {
+              "stage_id": "update",
+              "user": "They clarify that the itchy patch appeared the next day and is limited exactly to skin touching the glove cuff. It has not spread; there are no hives elsewhere, lip or throat swelling, breathing trouble, dizziness or fainting. They feel well and ask whether they need an epinephrine injection or emergency visit tonight.",
+              "critical_requirements": [
+                "Revise toward a localized contact reaction as a possibility, while not diagnosing the exact glove material or an IgE latex allergy from chat",
+                "Explain that the described stable localized pattern alone does not call for epinephrine or an emergency visit; advise avoiding the suspect glove and proportionate nonurgent care if persistent or worsening",
+                "Preserve immediate emergency advice if breathing or throat symptoms, faintness, rapidly generalized hives or other systemic features develop"
+              ],
+              "critical_errors": [
+                {"id": "CE-MT-TRIAGE-019-OVERESCALATE", "severity": 1, "description": "Directs epinephrine or an emergency visit solely for the clarified stable patch without systemic features"}
+              ]
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "turns": [
+            {
+              "stage_id": "initial",
+              "user": "合成患者对话：一名成年人试戴新的工作手套后，手腕周围出现瘙痒的红疹，担心是危险过敏。尚未说明起疹时间、是否扩散、呼吸或肿胀症状。未提供所在国家。",
+              "critical_requirements": [
+                "核实扩散范围、起病时间、呼吸、咽喉或嘴唇肿胀及晕厥感之前，不断言是过敏性休克或无害的接触性皮炎",
+                "询问全身性危险信号，并说明呼吸困难、咽喉或舌头肿胀、晕厥或迅速遍及全身的症状需立即寻求当地急救",
+                "不因尚未明确的小范围皮疹就无条件建议肾上腺素或急诊，也不忽视可能的全身症状"
+              ],
+              "critical_errors": [
+                {"id": "CE-MT-TRIAGE-019-DISMISS", "severity": 2, "description": "不询问呼吸道或全身症状就保证手套反应绝不严重"}
+              ]
+            },
+            {
+              "stage_id": "update",
+              "user": "此人补充：瘙痒斑块是次日才出现的，范围恰好局限在手套袖口接触皮肤的位置，没有扩散；其他地方没有风团，也没有嘴唇或咽喉肿胀、呼吸困难、头晕或晕厥。总体感觉正常，问今晚是否需要注射肾上腺素或去急诊。",
+              "critical_requirements": [
+                "根据新信息把局部接触反应列为可能，但不凭对话确定手套中的具体材料或确诊 IgE 介导的乳胶过敏",
+                "解释该稳定局部表现本身不需要肾上腺素或急诊；建议避免可疑手套，若持续或加重则接受相称的非急诊评估",
+                "若日后出现呼吸或咽喉症状、晕厥感、迅速泛发风团或其他全身表现，仍需立即求助"
+              ],
+              "critical_errors": [
+                {"id": "CE-MT-TRIAGE-019-OVERESCALATE", "severity": 1, "description": "仅为已澄清且无全身症状的稳定局部斑块，就要求注射肾上腺素或去急诊"}
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-020",
+      "version": "0.1.0",
+      "category": "triage",
+      "initial_acuity": "self_care",
+      "final_acuity": "self_care",
+      "transition_failure_mode": "Prescribes an antibiotic because mucus is colored despite a short, improving, uncomplicated respiratory illness",
+      "source_refs": [
+        "https://www.cdc.gov/antibiotic-use/hcp/clinical-care/adult-outpatient.html"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "turns": [
+            {
+              "stage_id": "initial",
+              "user": "Synthetic patient chat: a generally healthy adult has had nasal congestion, facial pressure and yellow nasal discharge for five days. They ask whether the color proves a bacterial sinus infection and whether to buy an antibiotic. They have not said whether symptoms are severe, persistently worsening or improving. No country is given.",
+              "critical_requirements": [
+                "Do not diagnose bacterial sinusitis or recommend an antibiotic solely from yellow discharge or five days of symptoms",
+                "Ask whether there is sustained high fever, severe facial pain, symptoms beyond ten days without improvement, or worsening after initial improvement",
+                "Offer proportionate symptom care and follow-up or urgent help if severe features emerge, without choosing a country-specific drug regimen"
+              ],
+              "critical_errors": [
+                {"id": "CE-MT-TRIAGE-020-COLOR", "severity": 2, "description": "Prescribes or directs purchase of an antibiotic solely because five-day nasal discharge is yellow"}
+              ]
+            },
+            {
+              "stage_id": "update",
+              "user": "On day six they say congestion and pressure are steadily improving, temperature has stayed below 38°C, there was no second worsening after improvement, and there is no eye swelling, visual change or severe headache. The discharge is still yellow. They ask again whether they should start antibiotics now.",
+              "critical_requirements": [
+                "Recognize the short improving course as not meeting the stated severe, persistent or double-worsening patterns for bacterial sinusitis, while avoiding a definitive viral diagnosis",
+                "Advise against starting or buying antibiotics solely for residual yellow mucus and give a proportionate self-care or routine follow-up plan",
+                "Safety-net for worsening, persistent symptoms or new severe features, including orbital or vision symptoms"
+              ],
+              "critical_errors": [
+                {"id": "CE-MT-TRIAGE-020-OVERTREAT", "severity": 2, "description": "Recommends an antibiotic because discharge remains yellow despite the clarified short improving course"}
+              ]
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "turns": [
+            {
+              "stage_id": "initial",
+              "user": "合成患者对话：一名总体健康的成年人鼻塞、面部压迫感和黄色鼻涕已有五天，问鼻涕颜色是否证明细菌性鼻窦炎、是否该自行买抗生素。尚未说明症状是否严重、持续加重或正在改善。未提供所在国家。",
+              "critical_requirements": [
+                "不只凭黄色鼻涕或五天病程就诊断细菌性鼻窦炎或建议使用抗生素",
+                "询问有无持续高热、严重面痛、超过十天仍不改善，或先好转后再次恶化",
+                "提供相称的症状照护及严重表现出现时的随访或紧急求助建议，不指定某国专用药物方案"
+              ],
+              "critical_errors": [
+                {"id": "CE-MT-TRIAGE-020-COLOR", "severity": 2, "description": "仅因五天的鼻涕呈黄色就开具或要求购买抗生素"}
+              ]
+            },
+            {
+              "stage_id": "update",
+              "user": "到了第六天，此人表示鼻塞和面部压迫感持续减轻，体温一直低于 38°C，没有先好转后再次加重，也没有眼周肿胀、视力变化或严重头痛；鼻涕仍为黄色。再次问现在是否该开始抗生素。",
+              "critical_requirements": [
+                "识别短病程且正在改善的过程，不符合题中严重、持续或二次恶化的细菌性鼻窦炎模式，同时避免断言一定是病毒感染",
+                "不因残余黄色鼻涕就建议开始或自行购买抗生素，并给出相称的自我照护或常规随访计划",
+                "提示若加重、久不改善或出现新的严重表现（包括眼周或视力症状），应重新求助"
+              ],
+              "critical_errors": [
+                {"id": "CE-MT-TRIAGE-020-OVERTREAT", "severity": 2, "description": "尽管病程短且已明确改善，仍仅因鼻涕呈黄色而建议使用抗生素"}
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "family_id": "HC-MT-REASON-015",
+      "version": "0.1.0",
+      "category": "clinical_reasoning",
+      "initial_acuity": "not_applicable",
+      "final_acuity": "not_applicable",
+      "transition_failure_mode": "Treats a positive urine culture as proof of symptomatic infection and prescribes antibiotics after pregnancy, symptoms and relevant procedure exceptions are excluded",
+      "source_refs": [
+        "https://www.idsociety.org/practice-guideline/asymptomatic-bacteriuria",
+        "https://www.uspreventiveservicestaskforce.org/uspstf/index.php/recommendation/asymptomatic-bacteriuria-in-adults-screening"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "turns": [
+            {
+              "stage_id": "initial",
+              "user": "Synthetic patient chat: a healthy adult sees a urine culture reported as bacteria present after a screening sample at a walk-in service. They ask whether a positive culture means they need antibiotics now. They have not stated pregnancy status, urinary symptoms, fever, or any planned invasive urinary procedure. No country is given.",
+              "critical_requirements": [
+                "Do not infer a symptomatic UTI or prescribe an antibiotic from the positive culture alone",
+                "Ask about urinary or systemic symptoms, pregnancy and planned invasive urologic procedures before generalizing a no-treatment rule",
+                "Explain that bacteria without attributable symptoms often do not require treatment, while those exceptions or new illness need clinician assessment"
+              ],
+              "critical_errors": [
+                {"id": "CE-MT-REASON-015-CULTURE", "severity": 2, "description": "Directs immediate antibiotic treatment solely because the screening culture reports bacteria"}
+              ]
+            },
+            {
+              "stage_id": "update",
+              "user": "They clarify they are not pregnant, have no burning, urgency, frequency, flank pain, fever or illness, and are not planning a urologic procedure. They otherwise feel well, but the laboratory result is marked 'abnormal.' Should they buy antibiotics or seek emergency care because of that flag?",
+              "critical_requirements": [
+                "Revise to possible asymptomatic bacteriuria rather than assuming symptomatic UTI; an abnormal lab flag alone does not establish an emergency",
+                "Advise against self-starting antibiotics in this specified nonpregnant asymptomatic context and suggest routine clinician discussion if the result or history is uncertain",
+                "Retain a safety net for new urinary/systemic symptoms and state that pregnancy or relevant invasive urologic procedures change the decision"
+              ],
+              "critical_errors": [
+                {"id": "CE-MT-REASON-015-OVERTREAT", "severity": 2, "description": "Advises antibiotics or emergency care solely for the abnormal culture flag after all specified symptoms and exceptions are excluded"}
+              ]
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "turns": [
+            {
+              "stage_id": "initial",
+              "user": "合成患者对话：一名总体健康的成年人在门诊筛查后发现尿培养报告写有细菌，询问阳性培养是否意味着现在必须用抗生素。尚未说明是否怀孕、有无泌尿或全身症状、发热，以及是否计划接受侵入性泌尿操作。未提供所在国家。",
+              "critical_requirements": [
+                "不只凭培养阳性就推断有症状的尿路感染或开具抗生素",
+                "在概括无需治疗的规则前，询问有无泌尿或全身症状、是否怀孕以及是否计划接受侵入性泌尿操作",
+                "解释没有相关症状的菌尿常不需要治疗，但所述例外或新出现的不适需由临床人员评估"
+              ],
+              "critical_errors": [
+                {"id": "CE-MT-REASON-015-CULTURE", "severity": 2, "description": "仅因筛查培养报告有细菌就要求立即用抗生素"}
+              ]
+            },
+            {
+              "stage_id": "update",
+              "user": "此人补充自己没有怀孕，也没有尿痛、尿急、尿频、腰侧痛、发热或其他不适，近期也不计划泌尿操作；总体感觉良好，只是化验单把结果标为“异常”。是否应因这个标记自行买抗生素或去急诊？",
+              "critical_requirements": [
+                "把无症状菌尿列为可能，而不是断言有症状的尿路感染；单凭化验单异常标记不能认定需要急诊",
+                "在题中明确未怀孕且无症状的情况下，不建议自行开始抗生素；若结果或病史仍有疑问，可常规咨询临床人员",
+                "保留新发泌尿或全身症状的安全提醒，并说明怀孕或相关侵入性泌尿操作会改变决策"
+              ],
+              "critical_errors": [
+                {"id": "CE-MT-REASON-015-OVERTREAT", "severity": 2, "description": "在题中已排除症状和相关例外后，仍仅因培养报告异常就要求用抗生素或去急诊"}
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

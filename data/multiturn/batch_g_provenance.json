@@ -1,0 +1,48 @@
+{
+  "schema_version": "0.1.0",
+  "status": "author_draft_pending_independent_clinical_and_language_review",
+  "split": "public_development_not_calibration_or_gold",
+  "checked_on": "2026-10-20",
+  "reuse_policy": "All four dialogues, details and labels are original synthetic controls derived from publicly accessible guidance, not transcriptions or adaptations of published patient cases. No source text or figures are redistributed. Guidance is jurisdiction-specific and cannot independently validate the author-written criteria.",
+  "records": [
+    {
+      "family_id": "HC-MT-TRIAGE-018",
+      "published_case_or_series": null,
+      "supporting_sources": [
+        "https://www.nhs.uk/symptoms/red-eye/",
+        "https://www.moorfields.nhs.uk/ae/patient-guides/subconjunctival-haemorrhage"
+      ],
+      "adaptation": "Original synthetic uncertain-red-eye to localized-patch dialogue; no patient story was used.",
+      "source_to_label_limit": "NHS red-eye guidance distinguishes pain, visual change, injury and contact-lens use; Moorfields describes generally painless surface hemorrhage and usual spontaneous resolution. Neither source confirms the fictional diagnosis or settles the first-turn timely-versus-routine acuity tag. Eye-care and bilingual reviewers must adjudicate triage and follow-up wording."
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-019",
+      "published_case_or_series": null,
+      "supporting_sources": [
+        "https://www.aaaai.org/tools-for-the-public/conditions-library/allergies/latex-allergy",
+        "https://www.aaaai.org/tools-for-the-public/allergy,-asthma-immunology-glossary/contact-dermatitis-defined"
+      ],
+      "adaptation": "Original synthetic glove-cuff rash dialogue with delayed local onset and later negative systemic features; it does not identify the glove constituent.",
+      "source_to_label_limit": "AAAAI distinguishes delayed localized contact dermatitis from systemic latex reactions and lists anaphylaxis warning symptoms. It does not identify a particular glove allergen, establish this patient's diagnosis or approve a universal no-epinephrine rule. Allergy/dermatology and bilingual reviewers must assess the initial acuity and acceptable escalation language."
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-020",
+      "published_case_or_series": null,
+      "supporting_sources": [
+        "https://www.cdc.gov/antibiotic-use/hcp/clinical-care/adult-outpatient.html"
+      ],
+      "adaptation": "Original synthetic short-course improving rhinosinusitis dialogue with a colored-discharge distractor; no clinical case was adapted.",
+      "source_to_label_limit": "CDC adult outpatient guidance lists severe, persistent and double-worsening patterns used for bacterial rhinosinusitis assessment. The guidance is US-focused and does not prove a viral cause in this fictional adult or settle exact follow-up timing globally. Primary-care/ENT and bilingual reviewers must adjudicate the self-care boundary and red flags."
+    },
+    {
+      "family_id": "HC-MT-REASON-015",
+      "published_case_or_series": null,
+      "supporting_sources": [
+        "https://www.idsociety.org/practice-guideline/asymptomatic-bacteriuria",
+        "https://www.uspreventiveservicestaskforce.org/uspstf/index.php/recommendation/asymptomatic-bacteriuria-in-adults-screening"
+      ],
+      "adaptation": "Original synthetic incidental culture-result dialogue designed to test treatment de-escalation after absence of pregnancy, urinary/systemic symptoms and planned invasive urinary procedures is clarified.",
+      "source_to_label_limit": "IDSA gives a non-treatment recommendation for healthy nonpregnant adults with asymptomatic bacteriuria and exceptions for pregnancy and certain urologic procedures; USPSTF advises against screening asymptomatic nonpregnant adults. Neither proves the single fictional culture is persistent bacteriuria or authorizes diagnosis from chat. Infectious-disease/urology and bilingual reviewers must adjudicate scope and exceptions."
+    }
+  ]
+}
