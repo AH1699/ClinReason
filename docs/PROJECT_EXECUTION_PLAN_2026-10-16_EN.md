@@ -1,6 +1,10 @@
 # ClinReason current execution plan — 2026-10-16
 
-## Dated progress update — 2026-10-20 (current S11 near-miss scoring gate)
+## Dated progress update — 2026-10-20 (current S12 offline scoring-coherence gate)
+
+The [S12 versioned diagnostic](S12_SCORING_COHERENCE_DIAGNOSTIC_2026-10-20_EN.md) audited 56 saved judgments across S9, S11 and two complete batch-F candidate panels, with no model calls or changes to historical scores. It found 5/6/2/0 same-status numeric-gap flags by cohort, two S11 draft-pass splits (both involving the same authored English partial answer), 12 safety-net overlap-review flags across S9/S11, and one S11 severity-1 threshold dependency. The auditor binds raw exports to their reports and known case/rubric/prompt/anchor hashes; it is diagnostic only. Public development remains **112 families / 224 variants**, approved calibration/hidden Gold **0/0**. **Next:** preregister new controlled examples separating requirement omission, safety consequence and revision quality; test any proposed scoring contract before another bounded candidate pilot. The ~60–70/~80/~90 bands remain non-enforced aspirations; deferred clinical/bilingual review remains required.
+
+## Historical progress update — 2026-10-20 (S11 near-miss scoring gate)
 
 The [pre-registered glove-rash EN/ZH near miss](S11_GLOVE_NEAR_MISS_RESULT_2026-10-20_EN.md) completed 12 judge calls and zero candidate calls. Both judges found the injected precautionary emergency over-escalation and scored it below 70, but Grok's English raw 72.5 fell to 67.5 solely on the non-hard-fail severity-1 deduction. More importantly, **identical criterion statuses** for an authored partial answer gave Gemini **60 EN / 77.5 ZH**, flipping the experimental pass flag; Grok gave 72.5 in both. A new offline [paired audit](../benchmark/contrast_pair_audit.py) verifies exact protocol hashes and reports these gaps without rescoring. Public development remains **112 families / 224 variants**, approved calibration/hidden Gold **0/0**. **Next:** a versioned criterion-to-numeric coherence diagnostic on S9/S11 and saved F judgments, then controlled retest before any candidate pilot. Do not fit ~60–70/~80/~90 to authored examples; clinical/bilingual review remains deferred but required.
 

@@ -34,7 +34,8 @@ This package is **research/evaluation infrastructure, not medical advice**. All 
 - `docs/S8_BATCH_G_PROTOCOL_2026-10-20_EN.md` and `docs/S8_BATCH_G_PROTOCOL_2026-10-20_ZH.md`: batch-G exact-case anchors and controlled bilingual contrasts, opt-in language protocol, and offline checks.
 - `docs/S9_BATCH_G_PAIRED_CONTRAST_2026-10-20_EN.md` and `docs/S9_BATCH_G_PAIRED_CONTRAST_2026-10-20_ZH.md`: preceding 12-call English/Chinese two-judge controlled-answer result and the next near-miss gate.
 - `docs/S10_GLOVE_NEAR_MISS_PREREG_2026-10-20_EN.md` and `docs/S10_GLOVE_NEAR_MISS_PREREG_2026-10-20_ZH.md`: fixed before-results glove-rash near-miss protocol and exact EN/ZH probes.
-- `docs/S11_GLOVE_NEAR_MISS_RESULT_2026-10-20_EN.md` and `docs/S11_GLOVE_NEAR_MISS_RESULT_2026-10-20_ZH.md`: current paired near-miss result, cross-language score-coherence gap and next gate.
+- `docs/S11_GLOVE_NEAR_MISS_RESULT_2026-10-20_EN.md` and `docs/S11_GLOVE_NEAR_MISS_RESULT_2026-10-20_ZH.md`: paired near-miss result and cross-language score-coherence gap.
+- `docs/S12_SCORING_COHERENCE_DIAGNOSTIC_2026-10-20_EN.md` and `docs/S12_SCORING_COHERENCE_DIAGNOSTIC_2026-10-20_ZH.md`: current versioned offline scoring-coherence flags on saved S9/S11/F judgments and the next controlled-probe gate.
 - `docs/PROJECT_EXECUTION_PLAN_2026-10-16_EN.md` and `docs/PROJECT_EXECUTION_PLAN_2026-10-16_ZH.md`: current checkpoint, scoring issue SC-01, ordered work, acceptance gates, and tracking convention; start here for the next task.
 - `docs/CRITERION_SCORING_PILOT_2026-10-18_EN.md` and `docs/CRITERION_SCORING_PILOT_2026-10-18_ZH.md`: exact-revision provisional scoring anchors, criterion-evidence judge contract, judge-only recovery, and the pre-registered bilingual panel.
 - `docs/MULTITURN_BATCH_C_2026-10-11_EN.md` and `docs/MULTITURN_BATCH_C_2026-10-11_ZH.md`: source-linked 12-family two-turn expansion, partial-answer diagnostics, and pending review questions.
