@@ -1,6 +1,10 @@
 # ClinReason current execution plan — 2026-10-16
 
-## Dated progress update — 2026-10-20 (current S12 offline scoring-coherence gate)
+## Dated progress update — 2026-10-20 (current S13 scoring-separation preregistration)
+
+The [S13 EN/ZH one-edit packet](S13_SCORING_SEPARATION_PREREG_2026-10-20_EN.md) is frozen on unchanged `TRIAGE-020`: eight authored answer variants, exact case/anchor/rubric/prompt/roster hashes, author-only criterion hypotheses and an offline packet manifest. Zero model calls, scores, case changes or weight edits occurred. A future judge-only run is capped at 16 calls, but its opt-in runner and report comparator have **not** yet been implemented or executed. The next engineering step is to build and offline-test that bounded runner/comparator before any live calls; then assess targeted criterion status and safety-versus-revision gaps without fitting ~60–70/~80/~90 score bands. Public development remains **112 families / 224 variants**, approved calibration/hidden Gold **0/0**; clinical and bilingual review is still deferred but mandatory before formal claims.
+
+## Historical progress update — 2026-10-20 (S12 offline scoring-coherence gate)
 
 The [S12 versioned diagnostic](S12_SCORING_COHERENCE_DIAGNOSTIC_2026-10-20_EN.md) audited 56 saved judgments across S9, S11 and two complete batch-F candidate panels, with no model calls or changes to historical scores. It found 5/6/2/0 same-status numeric-gap flags by cohort, two S11 draft-pass splits (both involving the same authored English partial answer), 12 safety-net overlap-review flags across S9/S11, and one S11 severity-1 threshold dependency. The auditor binds raw exports to their reports and known case/rubric/prompt/anchor hashes; it is diagnostic only. Public development remains **112 families / 224 variants**, approved calibration/hidden Gold **0/0**. **Next:** preregister new controlled examples separating requirement omission, safety consequence and revision quality; test any proposed scoring contract before another bounded candidate pilot. The ~60–70/~80/~90 bands remain non-enforced aspirations; deferred clinical/bilingual review remains required.
 

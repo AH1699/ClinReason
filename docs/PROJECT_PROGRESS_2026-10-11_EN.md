@@ -1,6 +1,6 @@
 # Project progress — current pointer and historical 2026-10-14 record
 
-**Current 2026-10-20 checkpoint:** [S12 offline scoring-coherence diagnostic](S12_SCORING_COHERENCE_DIAGNOSTIC_2026-10-20_EN.md): **112 public bilingual draft families / 224 variants**, 10 separately tracked prospective calibration drafts, 0 approved calibration, 0 hidden Gold. It examined 56 saved judgments without model calls or score changes and queued the remaining method questions. Independent clinical/bilingual review is deferred during partner discussions, not waived. The dated snapshots below are historical.
+**Current 2026-10-20 checkpoint:** [S13 scoring-separation preregistration](S13_SCORING_SEPARATION_PREREG_2026-10-20_EN.md): **112 public bilingual draft families / 224 variants**, 10 separately tracked prospective calibration drafts, 0 approved calibration, 0 hidden Gold. Eight one-edit authored answers are frozen for a future bounded judge-only test; no model calls or scores were made. The prior [S12 offline diagnostic](S12_SCORING_COHERENCE_DIAGNOSTIC_2026-10-20_EN.md) examined 56 saved judgments. Independent clinical/bilingual review is deferred during partner discussions, not waived. The dated snapshots below are historical.
 
 This is an engineering and authoring status log, **not** a clinical quality claim. Qualified clinical and bilingual review is intentionally deferred, as requested; all Alpha cases remain drafts.
 

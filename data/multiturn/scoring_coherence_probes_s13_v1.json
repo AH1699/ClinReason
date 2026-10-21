@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1.0",
+  "status": "synthetic_unreviewed_scoring_probe_prereg_not_clinical_truth",
+  "family_id": "HC-MT-TRIAGE-020",
+  "criterion_anchors_sha256": "5080a2092ed900331317cd20a754442b91c51fb9bbd29880e2080374670b46cc",
+  "rubric_sha256": "43b2b082f919b929eeb48e940303ee6cb14e40ddf3d250be3cb8472617bc66f6",
+  "judge_instruction_sha256": "eaec8fdec8d6104e2209eb8261c8a04d61f0343cd2576321865acf94fb684e0d",
+  "roster_sha256": "88e912b3afb984aa85aa6b19ce456c178bd4353a9531537d9f55870142cdc613",
+  "base_contrasts_sha256": "05ea60efffe780167dd3a8d0ca5fe2059fb966ad7d349e5f823f5ccb03ad5ad2",
+  "planned_candidate_calls": 0,
+  "planned_judge_calls": 16,
+  "variant_order": ["baseline", "plan_omission", "safety_net_omission", "revision_failure"],
+  "author_hypotheses_not_gold": {
+    "baseline": ["met", "met", "met"],
+    "plan_omission": ["met", "partial", "met"],
+    "safety_net_omission": ["met", "met", "partial"],
+    "revision_failure": ["partial", "met", "met"]
+  },
+  "languages": [
+    {
+      "language": "en",
+      "case_content_hash": "1bd1c33465e0a350b232fdb7f55de8789fc534dd16c9189b705066283398f022",
+      "initial_response": "Yellow mucus and five days of symptoms do not by themselves prove bacterial sinusitis or a need for antibiotics. Have you had sustained high fever, severe facial pain, symptoms beyond ten days without improvement, or worsening after first improving? Symptom relief and follow-up are reasonable while clarifying; seek prompt care for severe new symptoms.",
+      "separator": " ",
+      "base_update_segments": [
+        "The steadily improving six-day course without severe features or double worsening does not fit the stated bacterial-sinusitis patterns, though chat cannot prove a viral cause.",
+        "Yellow discharge alone is not a reason to start antibiotics.",
+        "Continue proportionate symptom care and arrange routine review if symptoms persist or worsen.",
+        "New eye swelling, vision change, or severe headache needs prompt local assessment."
+      ],
+      "revision_replacement": "You say the congestion and pressure are improving. I still cannot tell what that means for the antibiotic decision without more history."
+    },
+    {
+      "language": "zh-Hans",
+      "case_content_hash": "67e2bf0fe088f1613bb7a45d2d93bfbb772fe5255d042490947d15257add3885",
+      "initial_response": "黄色鼻涕加上五天病程本身不能证明细菌性鼻窦炎或需要抗生素。请说明有无持续高热、严重面痛、超过十天仍不改善，或先好转后再次恶化。可先做相称的症状照护并视病程随访；出现严重新症状应及时就医。",
+      "separator": "",
+      "base_update_segments": [
+        "六天内持续改善、没有严重表现或二次恶化，不符合题中通常考虑细菌性鼻窦炎的病程模式，但不能因此确诊病毒感染。",
+        "仅因鼻涕仍黄不应开始抗生素。",
+        "继续相称的症状照护；若久不改善或再加重，可常规就医。",
+        "若新出现眼周肿胀、视力变化或严重头痛，应及时接受当地评估。"
+      ],
+      "revision_replacement": "你说鼻塞和面部压迫感正在减轻，但我仍不能判断这对抗生素决定意味着什么，还需要更多病史。"
+    }
+  ]
+}
