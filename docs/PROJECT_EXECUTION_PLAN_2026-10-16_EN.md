@@ -1,6 +1,10 @@
 # ClinReason current execution plan — 2026-10-16
 
-## Dated progress update — 2026-10-20 (current S9 paired-contrast checkpoint)
+## Dated progress update — 2026-10-20 (current S11 near-miss scoring gate)
+
+The [pre-registered glove-rash EN/ZH near miss](S11_GLOVE_NEAR_MISS_RESULT_2026-10-20_EN.md) completed 12 judge calls and zero candidate calls. Both judges found the injected precautionary emergency over-escalation and scored it below 70, but Grok's English raw 72.5 fell to 67.5 solely on the non-hard-fail severity-1 deduction. More importantly, **identical criterion statuses** for an authored partial answer gave Gemini **60 EN / 77.5 ZH**, flipping the experimental pass flag; Grok gave 72.5 in both. A new offline [paired audit](../benchmark/contrast_pair_audit.py) verifies exact protocol hashes and reports these gaps without rescoring. Public development remains **112 families / 224 variants**, approved calibration/hidden Gold **0/0**. **Next:** a versioned criterion-to-numeric coherence diagnostic on S9/S11 and saved F judgments, then controlled retest before any candidate pilot. Do not fit ~60–70/~80/~90 to authored examples; clinical/bilingual review remains deferred but required.
+
+## Dated progress update — 2026-10-20 (historical S9 paired-contrast checkpoint)
 
 The [paired batch-G contrast](S9_BATCH_G_PAIRED_CONTRAST_2026-10-20_EN.md) completed exactly **12 judge calls, no candidate calls**, on `TRIAGE-018` EN/ZH under unchanged provisional anchors and numeric rubric. Both judges ordered the authored strong/partial/unsafe updates and caught the injected appearance-only over-escalation error in both languages. Scores were Gemini EN 100/65/40, ZH 100/60/32.5; Grok EN and ZH both 100/65/40. Criterion statuses matched across all judge/language cells, while Gemini's Chinese partial and unsafe holistic dimensions differed; the severity-1 error is **not** an automatic hard-fail. This is a narrow smoke test, not clinical/language validation or score calibration. Public development remains **112 families / 224 variants**, approved calibration/hidden Gold **0/0**. **Next:** a second-mechanism, subtler paired near-miss before any bounded candidate pilot; then audit possible duplicate deductions across requirements, safety and revision. No rubric change to fit ~60–70/~80/~90.
 
