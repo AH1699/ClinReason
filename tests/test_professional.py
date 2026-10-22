@@ -76,7 +76,7 @@ class ProfessionalPilotTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             combine_professional_datasets([self.dataset, self.dataset])
 
-    def test_configured_tracks_reach_one_hundred_twelve_distinct_families(self):
+    def test_configured_tracks_reach_one_hundred_fourteen_distinct_families(self):
         alpha = {
             row["metadata"]["case_family_id"]
             for row in load_jsonl(self.root / "data/alpha/global_core_cases.jsonl")
@@ -89,12 +89,13 @@ class ProfessionalPilotTests(unittest.TestCase):
                 "data/multiturn/batch_e_cases.json",
                 "data/multiturn/batch_f_cases.json",
                 "data/multiturn/batch_g_cases.json",
+                "data/multiturn/batch_h_cases.json",
             )
         ])
         identifiers = list(alpha) + [item["family_id"] for item in multiturn["families"]]
         identifiers.extend(item["family_id"] for item in self.combined["families"])
-        self.assertEqual(len(identifiers), 112)
-        self.assertEqual(len(set(identifiers)), 112)
+        self.assertEqual(len(identifiers), 114)
+        self.assertEqual(len(set(identifiers)), 114)
 
     def test_bilingual_mismatch_and_duplicate_rejected(self):
         corrupted = deepcopy(self.dataset)

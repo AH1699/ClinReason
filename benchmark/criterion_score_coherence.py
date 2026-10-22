@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Any
 
 from .config import load_json
+from .frozen_batch_g import load_batch_g_dataset
 from .multiturn import merge_multiturn_datasets, variant_hash, variant_id
 from .provenance import sha256_json, sha256_text
 
@@ -285,8 +286,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     policy = load_json(args.policy)
     root = Path(__file__).resolve().parents[1]
-    config = load_json(root / "config/benchmark.json")
-    dataset = merge_multiturn_datasets([load_json(root / path) for path in config["multiturn_cases_paths"]])
+    dataset = load_batch_g_dataset(root)
     rubric = load_json(root / "config/multiturn_rubric.json")
     if rubric["pass_threshold"] != policy["pass_threshold"]:
         raise ValueError("Diagnostic pass threshold differs from current rubric")

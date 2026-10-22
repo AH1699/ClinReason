@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from .config import load_json
+from .frozen_batch_g import load_batch_g_dataset
 from .criterion_score_coherence import _normalize, _verify_directory_report, audit_cohort
 from .multiturn import merge_multiturn_datasets, variant_hash, variant_id
 from .provenance import sha256_json, sha256_text
@@ -131,8 +132,7 @@ def audit(root: Path, work_root: Path) -> dict[str, Any]:
         or [item["id"] for item in policy.get("cohorts", [])] !=
         ["s9_triage_018", "s11_triage_019", "s14_triage_020"]):
         raise ValueError("Unknown S15 policy")
-    config = load_json(root / "config/benchmark.json")
-    dataset = merge_multiturn_datasets([load_json(root / path) for path in config["multiturn_cases_paths"]])
+    dataset = load_batch_g_dataset(root)
     rubric = load_json(root / "config/multiturn_rubric.json")
     old_policy = load_json(root / OLD_POLICY_PATH)
     if old_policy["pass_threshold"] != rubric["pass_threshold"]:

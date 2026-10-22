@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from .config import load_json
+from .frozen_batch_g import load_batch_g_dataset
 from .criterion_anchors import validate_anchor_set
 from .multiturn import merge_multiturn_datasets, variant_hash, variant_id
 from .provenance import sha256_json, sha256_text
@@ -117,8 +118,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--zh-probe", type=Path, required=True)
     args = parser.parse_args(argv)
     root = args.root
-    config = load_json(root / "config/benchmark.json")
-    dataset = merge_multiturn_datasets([load_json(root / path) for path in config["multiturn_cases_paths"]])
+    dataset = load_batch_g_dataset(root)
     result = audit_contrast_pair(
         load_json(args.en_report), load_json(args.zh_report),
         load_json(args.en_probe), load_json(args.zh_probe), dataset,

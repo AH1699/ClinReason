@@ -1,0 +1,51 @@
+{
+  "schema_version": "0.1.0",
+  "status": "author_draft_pending_independent_clinical_language_rights_and_privacy_review",
+  "split": "public_development_not_calibration_or_gold",
+  "checked_on": "2026-10-21",
+  "reuse_policy": "The two original scenarios reuse no article wording, figures, patient timeline, exact demographics, procedure, medication identity, examination findings or outcome. The cited published reports motivate mechanisms only; the exact author requirements draw on independent public guidance. The source groups are public/leakage-exposed and cannot be moved into hidden Gold.",
+  "records": [
+    {
+      "family_id": "HC-MT-TRIAGE-021",
+      "source_group": "PM-S16-EYE-001",
+      "published_case_or_series": "https://pubmed.ncbi.nlm.nih.gov/41562822/",
+      "source_identity": {"pmid": "41562822", "pmcid": "PMC12821482", "doi": "10.3390/reports9010024"},
+      "license_and_consent": "Article-level CC BY 4.0 and written publication consent were reported in S16 intake; attribution here is for conceptual inspiration, not copied case content. Recheck before external release.",
+      "correction_retraction_status": "No signal found in a title/DOI web search on 2026-10-21; not a definitive PubMed/Crossmark check. External-release gate remains open.",
+      "supporting_sources": ["https://www.nhs.uk/symptoms/eye-pain/", "https://www.nhs.uk/conditions/glaucoma/"],
+      "mechanism_only": "An alternative benign explanation can anchor the responder away from sudden eye/vision danger signs; the source does not prove a medication caused the invented symptoms.",
+      "privacy_and_leakage_check": "Invented unspecified adult, unspecified prescription, no operation, exact age, bilateral findings, measured eye pressure, chronology, image, rare anatomy or published outcome. EN/ZH variants grouped together; public source makes memorization/leakage possible.",
+      "requirement_support": [
+        {"stage": "initial", "index": 1, "guidance_url": "https://www.nhs.uk/symptoms/eye-pain/", "basis": "NHS warns against self-diagnosing eye pain; attribution is an author inference, not a drug-causality finding."},
+        {"stage": "initial", "index": 2, "guidance_url": "https://www.nhs.uk/symptoms/eye-pain/", "basis": "NHS triage differentiates severity, redness and vision change; exact question list is author drafted."},
+        {"stage": "initial", "index": 3, "guidance_url": "https://www.nhs.uk/symptoms/eye-pain/", "basis": "Sudden eye symptoms, red eye with severe headache/nausea, and loss of vision trigger urgent routes; prescribing-team advice is general author safety wording."},
+        {"stage": "update", "index": 1, "guidance_url": "https://www.nhs.uk/symptoms/eye-pain/", "basis": "NHS immediate-action criteria support urgent disposition for sudden symptoms and red eye with headache/nausea; local route varies."},
+        {"stage": "update", "index": 2, "guidance_url": "https://www.nhs.uk/conditions/glaucoma/", "basis": "Acute glaucoma can cause pain, red eye, halos, blur and nausea; NHS notes other causes too. Drug causality is unsupported."},
+        {"stage": "update", "index": 3, "guidance_url": "https://www.nhs.uk/symptoms/eye-pain/", "basis": "NHS advises against self-diagnosis and driving oneself to emergency care and says to bring medicines; specific medication instructions need a prescriber."}
+      ],
+      "critical_error_basis": "The severity-3 delay error is author-proposed from NHS urgent symptom guidance, not clinician-validated; severity-2 initial over-reassurance also needs review.",
+      "review_questions": "Ophthalmology/emergency and bilingual reviewers: check first-turn acuity, red-flag and transport wording, whether the named glaucoma possibility is fair, medication advice boundaries, and EN/ZH equivalence."
+    },
+    {
+      "family_id": "HC-MT-REASON-016",
+      "source_group": "PM-S16-PE-002",
+      "published_case_or_series": "https://pubmed.ncbi.nlm.nih.gov/39193021/",
+      "source_identity": {"pmid": "39193021", "pmcid": "PMC11347338", "doi": "10.3389/fmed.2024.1411338"},
+      "license_and_consent": "Article-level CC BY 4.0 and written publication consent for potentially identifying material were reported in S16 intake; attribution here is for conceptual inspiration. Recheck before external release.",
+      "correction_retraction_status": "No signal found in a title/DOI web search on 2026-10-21; not a definitive PubMed/Crossmark check. External-release gate remains open.",
+      "supporting_sources": ["https://www.nice.org.uk/guidance/ng158/chapter/Recommendations", "https://www.nhs.uk/conditions/pulmonary-embolism/"],
+      "mechanism_only": "A prior respiratory label can distract from new features compatible with PE; the invented patient is not the published patient and no PE diagnosis is asserted.",
+      "privacy_and_leakage_check": "Invented nonpregnant adult with no exact age, location, organism, hemoptysis, edema, D-dimer, imaging sequence, family decision, treatment or outcome from the report. EN/ZH variants grouped together; public source makes memorization/leakage possible.",
+      "requirement_support": [
+        {"stage": "initial", "index": 1, "guidance_url": "https://www.nice.org.uk/guidance/ng158/chapter/Recommendations", "basis": "NICE requires history/examination and conditional probability assessment if PE is suspected; a prior telephone impression alone cannot settle the differential."},
+        {"stage": "initial", "index": 2, "guidance_url": "https://www.nice.org.uk/guidance/ng158/chapter/Recommendations", "basis": "NICE symptom examples and Wells factors support the broad question domains, not this exact scripted checklist as a validated key."},
+        {"stage": "initial", "index": 3, "guidance_url": "https://www.nhs.uk/conditions/pulmonary-embolism/", "basis": "NHS lists sudden breathing difficulty and chest pain as immediate-action features; local services vary."},
+        {"stage": "update", "index": 1, "guidance_url": "https://www.nhs.uk/conditions/pulmonary-embolism/", "basis": "New breathlessness and pleuritic chest pain fit the NHS immediate-help symptom list; PE is only a differential."},
+        {"stage": "update", "index": 2, "guidance_url": "https://www.nice.org.uk/guidance/ng158/chapter/Recommendations", "basis": "NICE uses overall history/examination and structured probability; a single home SpO2 value or old label is not a PE rule-out test. This is an inference requiring clinician review."},
+        {"stage": "update", "index": 3, "guidance_url": "https://www.nice.org.uk/guidance/ng158/chapter/Recommendations", "basis": "If PE is suspected, NICE uses two-level Wells and a conditional diagnostic pathway; it does not require universal CT angiography or patient-directed anticoagulation."}
+      ],
+      "critical_error_basis": "Severity-3 delayed evaluation despite new resting breathlessness and pleuritic pain is author proposed from NHS urgency guidance; not a verified hard-fail boundary.",
+      "review_questions": "Pulmonary/emergency, methods and bilingual reviewers: verify pregnancy exclusion, rest dyspnea urgency, SpO2 inference, acceptable probability/testing language, overlap with TRIAGE-011 and PRO-PE-001, and EN/ZH equivalence."
+    }
+  ]
+}

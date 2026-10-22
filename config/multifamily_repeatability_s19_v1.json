@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1.0",
+  "version": "s19-v1-preregistered-plan-no-calls",
+  "status": "prospective_development_protocol_not_scoring_contract",
+  "question": "Do exact same-packet judge scores, criterion statuses and critical-error flags repeat for non-ceiling and unsafe controls across more than one family?",
+  "family_ids": ["HC-MT-TRIAGE-018", "HC-MT-TRIAGE-019"],
+  "languages": ["en", "zh-Hans"],
+  "answer_types": ["safe", "partial", "unsafe"],
+  "judge_models": ["gemini-3.8-flash", "grok-4.7"],
+  "historical_first_observations": [
+    {"family_id": "HC-MT-TRIAGE-018", "language": "en", "source_dir": "work/batch_g_contrast_018_en_network_2026-10-20", "report_sha256": "166a125a4d5cf7953c6bf7ae91f7dbf4eb426486a79ab5c9339b7ff9ad16c2e0", "probe_path": "data/multiturn/batch_g_contrasts_v1.json", "source_commit": "01f7001"},
+    {"family_id": "HC-MT-TRIAGE-018", "language": "zh-Hans", "source_dir": "work/batch_g_contrast_018_zh_network_2026-10-20", "report_sha256": "f76720eb2eaaf3d2666fab808863ae3240dd1c8e82c5208b788c79a83034778c", "probe_path": "data/multiturn/batch_g_contrasts_v1.json", "source_commit": "01f7001"},
+    {"family_id": "HC-MT-TRIAGE-019", "language": "en", "source_dir": "work/batch_g_near_miss_019_en_2026-10-20", "report_sha256": "0e13f5f4f39eb59a241a98860423ef533d95f672912c0667ec959434adf58976", "probe_path": "data/multiturn/batch_g_near_miss_019_en_v1.json", "source_commit": "de176d4"},
+    {"family_id": "HC-MT-TRIAGE-019", "language": "zh-Hans", "source_dir": "work/batch_g_near_miss_019_zh_2026-10-20", "report_sha256": "c02d545b3e48a70dade257a6645ccd151de17ec8dfd548df29259d400316979a", "probe_path": "data/multiturn/batch_g_near_miss_019_zh_v1.json", "source_commit": "de176d4"}
+  ],
+  "adapter_sha256_at_source_and_now": {"benchmark/multiturn_judging.py": "ca572a33063375a5647adc58fddb0949c87b6ea0da61d8aa8ddfa696ace129e5", "benchmark/providers/grok_multiturn_judge.py": "547600182c3eb6e48e2ad54d53c29198d5799a17e0b05ad1c04c74cf1ac29c16"},
+  "planned_new_judge_calls_max": 24,
+  "planned_candidate_calls": 0,
+  "automatic_retries": 0,
+  "freeze_before_run": "Audit the historical reports and raw packets, then record exact case/answer/anchor/rubric/instruction/roster/adapter hashes and returned model IDs. If any cannot be matched to the proposed repeat, stop rather than combine incompatible observations.",
+  "sampling": "Current adapters use provider defaults and supply no seed, temperature or top-p; returned model ID is recorded but service drift remains possible.",
+  "primary_descriptive_comparisons": ["exact_numeric_score_match", "criterion_status_vector_match", "requirements_safety_revision_vector_match", "critical_error_id_and_severity_match", "provisional_pass_match", "human_review_request_match"],
+  "strata_to_report_separately": ["family", "language", "answer_type", "judge"],
+  "stop_conditions": ["packet_hash_or_protocol_mismatch", "returned_model_identity_mismatch", "ambiguous_delivery_or_failed_call", "call_cap_reached"],
+  "interpretation_limit": "The authored unsafe answers intentionally contain named errors; they are not independent clinical ground truth. One additional observation per cell cannot estimate a reliable error rate or fit threshold, weights or aspirational 60-70/80/90 model bands. Expert review remains later mandatory."
+}

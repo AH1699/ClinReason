@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from .config import load_json
+from .frozen_batch_g import load_batch_g_dataset
 from .criterion_anchors import attach_anchors, validate_anchor_set
 from .multiturn import build_judge_packet, merge_multiturn_datasets, variant_hash, variant_id
 from .provenance import sha256_json, sha256_text
@@ -137,8 +138,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
     args = parser.parse_args(argv)
     root = args.root
-    config = load_json(root / "config/benchmark.json")
-    dataset = merge_multiturn_datasets([load_json(root / path) for path in config["multiturn_cases_paths"]])
+    dataset = load_batch_g_dataset(root)
     result = validate_prereg(
         load_json(root / "data/multiturn/scoring_coherence_probes_s13_v1.json"), dataset,
         load_json(root / "config/multiturn_criterion_anchors_batch_g_v1.json"),

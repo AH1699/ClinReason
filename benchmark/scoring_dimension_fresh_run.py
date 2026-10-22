@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from .config import load_json
+from .frozen_batch_g import load_batch_g_dataset
 from .criterion_anchors import attach_anchors, validate_anchor_set
 from .local_settings import read_setting
 from .model_matrix import JUDGES, KEYS, _write_json_new
@@ -25,12 +26,10 @@ VARIANTS = ("baseline", "omission")
 
 
 def load_inputs(root: Path) -> dict[str, Any]:
-    config = load_json(root / "config/benchmark.json")
     return {
         "root": root,
         "policy": load_json(root / POLICY_PATH),
-        "dataset": merge_multiturn_datasets([load_json(root / path)
-                                              for path in config["multiturn_cases_paths"]]),
+        "dataset": load_batch_g_dataset(root),
         "anchors": load_json(root / "config/multiturn_criterion_anchors_batch_g_v1.json"),
         "rubric": load_json(root / "config/multiturn_rubric.json"),
         "roster": load_json(root / "config/model_matrix.json"),

@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from .config import load_json
+from .frozen_batch_g import load_batch_g_dataset
 from .local_settings import read_setting
 from .model_matrix import JUDGES, KEYS, _write_json_new
 from .multiturn import merge_multiturn_datasets, variant_id
@@ -23,11 +24,9 @@ AUDIT_STATUS = "descriptive_synthetic_scoring_probe_not_calibration_or_ranking"
 
 
 def load_inputs(root: Path) -> dict[str, Any]:
-    config = load_json(root / "config/benchmark.json")
     return {
         "prereg": load_json(root / "data/multiturn/scoring_coherence_probes_s13_v1.json"),
-        "dataset": merge_multiturn_datasets([load_json(root / path)
-                                              for path in config["multiturn_cases_paths"]]),
+        "dataset": load_batch_g_dataset(root),
         "anchors": load_json(root / "config/multiturn_criterion_anchors_batch_g_v1.json"),
         "rubric": load_json(root / "config/multiturn_rubric.json"),
         "roster": load_json(root / "config/model_matrix.json"),
