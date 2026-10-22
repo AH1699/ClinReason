@@ -1,6 +1,10 @@
 # ClinReason current execution plan — 2026-10-16
 
-## Dated progress update — 2026-10-22 (S22 replacement preregistered, no new scored calls yet)
+## Dated progress update — 2026-10-22 (S22 stopped at final first-pass call)
+
+The [S22 stopped-panel result](S22_ABORTED_PANEL_RESULT_2026-10-22_EN.md) records 24 attempted new judge requests, **23 saved and independently audited judgments**, and one final Grok transport timeout of unknown delivery/billing. Three EN/ZH case-language panels completed; `TRIAGE-020` Chinese lacks its Grok unsafe cell. The full first-stage audit rightly fails, so no eight-call repeat, repeatability claim, calibration or ranking followed. All 23 saved judgments have the requested rationale markers, but that is only a format check; the triage authored partial remains high (85–90), and clinical/bilingual validity is unreviewed. S21 and S22 ambiguous attempts remain separate, with no retry or pooling. **Next decision:** weigh any new, separately budgeted live probe against offline design work and later qualified review; do not spend the remaining S22 allowance as a continuation. Public development remains **115 families / 230 variants**, approved calibration/hidden Gold **0/0**, and ~60–70/~80/~90 remains a non-enforced aspiration.
+
+## Historical progress update — 2026-10-22 (S22 replacement preregistered, before scored calls)
 
 The owner authorized a separately versioned [S22 replacement judge panel](S22_REPLACEMENT_JUDGE_PANEL_2026-10-22_EN.md), with up to **32 additional judge calls** beyond the one uncertain S21 attempt. The exact 12 development packets, prompt, roster, rubric and underlying runner are bound to their frozen S21 hashes; a new wrapper requires keyless HTTP reachability to both provider hosts in the actual live environment before each stage. The 24-call first stage and optional eight-call partial repeat remain separate, with zero candidate calls and no automatic retries. No new S22 scored request has occurred at this checkpoint. Commit and offline-test this protocol before a live first stage; run the repeat only if the saved first stage independently audits cleanly. No clinical calibration, model rankings, rubric change or ~60–70/~80/~90 fitting follows from this author-control panel; later qualified clinical/bilingual/methods review remains mandatory.
 
