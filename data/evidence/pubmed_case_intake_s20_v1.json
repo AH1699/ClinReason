@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1.0",
+  "status": "derived_public_development_source_intake_not_clinical_or_rights_approval",
+  "checked_on": "2026-10-22",
+  "records": [
+    {
+      "intake_id": "PM-S20-STEROID-005",
+      "status": "candidate_pending_clinical_and_specific_consent_review",
+      "pmid": "41458680",
+      "pmcid": "PMC12740012",
+      "doi": "10.7759/cureus.97749",
+      "article_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12740012/",
+      "publication_date": "2025-11-25",
+      "publication_type": "case_report",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "license_evidence_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12740012/",
+      "publication_consent_reported": "obtained_or_waived_specific_status_unverified",
+      "correction_retraction_check": "pending_before_external_release",
+      "mechanism_for_possible_synthetic_case": "After recent long-term glucocorticoid cessation, intercurrent illness with vomiting or hemodynamic symptoms requires reconsideration of adrenal crisis rather than an assumed benign gastrointestinal cause. The published topical-steroid patient is not reused.",
+      "source_to_answer_evidence": "independent_2024_ese_endocrine_society_guideline_in_batch_i_ledger",
+      "privacy_and_leakage": "No published patient details, chronology, images, measured values, treatment, or outcome reused; new oral-steroid synthetic family remains public development and cannot be hidden Gold.",
+      "derived_case_ids": ["HC-MT-MEDSAFE-015"]
+    }
+  ]
+}

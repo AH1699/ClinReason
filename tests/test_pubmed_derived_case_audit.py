@@ -35,3 +35,16 @@ class PubmedDerivedCaseAuditTests(unittest.TestCase):
         altered["families"][0]["variants"]["en"]["turns"][0]["user"] += " tramadol"
         with self.assertRaisesRegex(ValueError, "distinctive published-case"):
             audit_derived_cases(altered, self.ledger)
+
+    def test_batch_i_requires_explicit_consent_exception_and_independent_sources(self):
+        root = Path(__file__).resolve().parents[1]
+        cases = load_json(root / "data/multiturn/batch_i_cases.json")
+        ledger = load_json(root / "data/multiturn/batch_i_provenance.json")
+        with self.assertRaisesRegex(ValueError, "eligible frozen PubMed"):
+            audit_derived_cases(cases, ledger)
+        result = audit_derived_cases(cases, ledger, allow_unresolved_consent=True)
+        self.assertEqual((result["families"], result["mapped_requirements"]), (1, 6))
+        changed = deepcopy(cases)
+        changed["families"][0]["variants"]["en"]["turns"][0]["user"] += " psoriasis"
+        with self.assertRaisesRegex(ValueError, "distinctive published-case"):
+            audit_derived_cases(changed, ledger, allow_unresolved_consent=True)

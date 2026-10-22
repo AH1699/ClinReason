@@ -11,11 +11,16 @@ from .multiturn import validate_multiturn_dataset
 from .provenance import sha256_json
 
 
-def audit_derived_cases(cases: dict[str, Any], ledger: dict[str, Any]) -> dict[str, Any]:
+def audit_derived_cases(cases: dict[str, Any], ledger: dict[str, Any],
+                        *, allow_unresolved_consent: bool = False) -> dict[str, Any]:
     structure = validate_multiturn_dataset(cases)
     root = Path(__file__).resolve().parents[1]
     intake = load_json(root / "data/evidence/pubmed_case_intake_s16_v1.json")
-    source_groups = {row["intake_id"]: row for row in intake["records"]
+    new_intake = load_json(root / "data/evidence/pubmed_case_intake_s20_v1.json")
+    if (new_intake.get("status") != "derived_public_development_source_intake_not_clinical_or_rights_approval"
+        or new_intake.get("schema_version") != "0.1.0"):
+        raise ValueError("Unknown S20 PubMed source intake")
+    source_groups = {row["intake_id"]: row for row in intake["records"] + new_intake["records"]
                      if row["status"].startswith("candidate_")}
     if (ledger.get("schema_version") != "0.1.0"
         or ledger.get("status") != "author_draft_pending_independent_clinical_language_rights_and_privacy_review"
@@ -35,7 +40,10 @@ def audit_derived_cases(cases: dict[str, Any], ledger: dict[str, Any]) -> dict[s
             or row.get("source_identity") != {key: source[key] for key in ("pmid", "pmcid", "doi")}
             or report != f"https://pubmed.ncbi.nlm.nih.gov/{source['pmid']}/"
             or source["license"] != "CC BY 4.0"
-            or not source["publication_consent_reported"].startswith("written_")):
+            or not (source["publication_consent_reported"].startswith("written_")
+                    or (allow_unresolved_consent and row.get("source_group") == "PM-S20-STEROID-005"
+                        and source["publication_consent_reported"]
+                        == "obtained_or_waived_specific_status_unverified"))):
             raise ValueError("Derived case does not match eligible frozen PubMed intake identity")
         if (not isinstance(report, str) or not report.startswith("https://pubmed.ncbi.nlm.nih.gov/")
             or not isinstance(guidance, list) or not guidance
@@ -48,6 +56,7 @@ def audit_derived_cases(cases: dict[str, Any], ledger: dict[str, Any]) -> dict[s
         prohibited = {
             "PM-S16-EYE-001": ("tramadol", "hysterectomy", "曲马多", "子宫切除", "45 mmhg", "39 mmhg"),
             "PM-S16-PE-002": ("mycoplasma", "支原体", "63-year-old", "63 岁", "d-dimer", "d－二聚体"),
+            "PM-S20-STEROID-005": ("clobetasol", "betamethasone", "psoriasis", "氯倍他索", "倍他米松", "银屑病", "synacthen", "25 nmol/l"),
         }
         if any(fragment in candidate_text for fragment in prohibited.get(row["source_group"], ())):
             raise ValueError("Candidate prompt contains a distinctive published-case detail")
@@ -85,11 +94,19 @@ def audit_derived_cases(cases: dict[str, Any], ledger: dict[str, Any]) -> dict[s
 
 def main() -> int:
     root = Path(__file__).resolve().parents[1]
-    result = audit_derived_cases(
+    batch_h = audit_derived_cases(
         load_json(root / "data/multiturn/batch_h_cases.json"),
         load_json(root / "data/multiturn/batch_h_provenance.json"),
     )
-    print(json.dumps(result, ensure_ascii=False, indent=2))
+    batch_i = audit_derived_cases(
+        load_json(root / "data/multiturn/batch_i_cases.json"),
+        load_json(root / "data/multiturn/batch_i_provenance.json"),
+        allow_unresolved_consent=True,
+    )
+    print(json.dumps({"batch_h": batch_h, "batch_i": batch_i,
+                      "total_families": batch_h["families"] + batch_i["families"],
+                      "total_mapped_requirements": batch_h["mapped_requirements"] + batch_i["mapped_requirements"],
+                      "limit": "Batch I specific publication consent is unresolved; no article narrative is reused. Neither batch has clinical, language, privacy or external-release approval."}, ensure_ascii=False, indent=2))
     return 0
 
 

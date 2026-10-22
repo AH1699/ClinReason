@@ -16,7 +16,8 @@
     {"family_ids": ["HC-MT-TRIAGE-012", "HC-MT-TRIAGE-018"], "relationship": "same_hazard_distinct_decision", "reason": "Both use red-eye triage and the NHS source, but one escalates new pain and visual change while the other de-escalates after those features are explicitly absent.", "split_together": true},
     {"family_ids": ["HC-MT-TRIAGE-012", "HC-MT-TRIAGE-021"], "relationship": "possible_construct_duplicate", "reason": "Both escalate new painful red eye and visual change; batch H adds an earlier medication-attribution distractor but may not add enough clinical difficulty.", "split_together": true},
     {"family_ids": ["HC-MT-TRIAGE-011", "HC-MT-REASON-016"], "relationship": "same_hazard_distinct_decision", "reason": "Both involve possible PE; H tests revision of a prior respiratory explanation and normal home oximetry rather than progression from unilateral leg symptoms.", "split_together": true},
-    {"family_ids": ["HC-PRO-PE-001", "HC-MT-REASON-016"], "relationship": "same_hazard_distinct_decision", "reason": "Both involve possible PE but H avoids the professional case's D-dimer interpretation; keep provenance and split together.", "split_together": true}
+    {"family_ids": ["HC-PRO-PE-001", "HC-MT-REASON-016"], "relationship": "same_hazard_distinct_decision", "reason": "Both involve possible PE but H avoids the professional case's D-dimer interpretation; keep provenance and split together.", "split_together": true},
+    {"family_ids": ["HC-MT-MEDSAFE-015", "HC-PRO-MEDREC-005"], "relationship": "same_hazard_distinct_decision", "reason": "Both involve glucocorticoid continuation uncertainty and avoiding an invented taper, but the new patient-facing case tests escalation after vomiting and near-syncope following recent cessation while the professional handoff tests record reconciliation.", "split_together": true}
   ],
   "source_label_review": [
     {"family_id": "HC-PRO-PE-001", "priority": "high", "issue": "A rare false-negative case must not weaken validated low-risk D-dimer rule-out pathways; verify all pretest-probability wording and severity-3 trigger against guidance."},
@@ -32,6 +33,7 @@
     {"family_id": "HC-MT-TRIAGE-020", "priority": "medium", "issue": "Verify antibiotic non-use and safety-net boundaries in short improving sinus symptoms, and avoid treating US diagnostic thresholds as universal."},
     {"family_id": "HC-MT-REASON-015", "priority": "high", "issue": "Adjudicate asymptomatic bacteriuria exceptions, the meaning of a single positive culture, and whether the case adequately excludes populations outside the cited guidance."},
     {"family_id": "HC-MT-TRIAGE-021", "priority": "high", "issue": "Check new eye-emergency disposition, medicine-attribution and no-driving criteria against NHS guidance, then assess possible duplication with TRIAGE-012 and the prospective TRIAGE-016 draft."},
-    {"family_id": "HC-MT-REASON-016", "priority": "high", "issue": "Check PE differential, home oxygen inference, probability/testing language and urgency in a nonpregnant adult; compare with TRIAGE-011 and PRO-PE-001."}
+    {"family_id": "HC-MT-REASON-016", "priority": "high", "issue": "Check PE differential, home oxygen inference, probability/testing language and urgency in a nonpregnant adult; compare with TRIAGE-011 and PRO-PE-001."},
+    {"family_id": "HC-MT-MEDSAFE-015", "priority": "high", "issue": "Endocrinology/emergency/pharmacy review of possible adrenal-crisis urgency after long-term oral steroid cessation, competing infection, no improvised dose, severity-3 delay boundary, and article consent/status plus bilingual equivalence."}
   ]
 }
