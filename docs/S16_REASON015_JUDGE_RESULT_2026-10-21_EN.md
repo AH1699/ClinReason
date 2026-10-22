@@ -1,0 +1,16 @@
+# S16 cross-mechanism scoring probe — 2026-10-21
+
+The frozen [S15 `REASON-015` packet](S15_SCORING_DIMENSION_HYPOTHESIS_2026-10-21_EN.md) was judged without candidate generation or scoring-rule changes. Its baseline and one-sentence safety-net omission were each presented in EN and ZH-HANS to Gemini 3.8 Flash and Grok 4.7: **8/8 judge calls, 0 candidate calls, no automatic retries**. The [bounded runner and independent saved-result auditor](../benchmark/scoring_dimension_fresh_run.py) verified the exact case/probe/anchor/rubric/prompt/roster bindings, returned models and recomputed scores. Raw provider responses and the audit are in local Git-ignored `work/s15_reason015_probe_network_2026-10-21/`, not the published dataset.
+
+| Language / judge | Baseline score | Omission score | Omission update criteria | Requirement / safety / revision change | Provisional pass | Judge requested human review |
+|---|---:|---:|---|---|---|---|
+| EN / Gemini | 100 | 90 | met / met / partial | −1 / 0 / −1 | yes | no |
+| EN / Grok | 100 | 77.5 | met / met / missed | −2 / −1 / −1 | yes | yes |
+| ZH / Gemini | 100 | 82.5 | met / met / partial | −1 / −1 / −1 | yes | no |
+| ZH / Grok | 100 | 82.5 | met / met / partial | −1 / −1 / −1 | yes | yes |
+
+The baseline criteria were `met/met/met` in every cell. No configured critical-error ID was returned. Grok EN alone rated criterion 3 `missed`, rather than the author's `partial` hypothesis; it reasoned that neither a prospective warning nor a statement that pregnancy/procedure changes management remained. The other cells treated the retained current absence of pregnancy/procedure and/or surrounding advice as partial. These are **AI interpretations**, not an adjudicated case key. An additional wording confound is that removing the Chinese sentence left a dangling `；`; Grok noted this in its review rationale. The frozen answers and results are preserved, not retrospectively repaired.
+
+The first local attempt stopped before a provider response because the sandbox could not resolve the provider host (0 completed calls); the explicitly network-enabled capped run above is the only scored run. This is descriptive evidence that requirement status, safety and revision deductions can diverge on a second clinical mechanism. Four provisional pass flags do **not** establish four false passes, a measured safety rate, acceptable EN/ZH equivalence, or clinical validity. No rubric weight, threshold, historical report, public case, or preferred model-score band was changed. The ~60–70/~80/~90 bands remain non-enforced aspirations, not targets for fitting this probe. Public development stays **112 bilingual families / 224 variants**; approved calibration and hidden Gold remain **0/0**.
+
+**Next gate:** retain [H77–H78](CLINICAL_REVIEW_HANDOFF_EN.md) for later infectious-disease/urology, bilingual and evaluation-method adjudication. Before another live scoring study, version a punctuation-clean EN/ZH one-edit probe and a non-enforced rule specifying which *independent evidence* supports requirements, direct safety, and revision deductions. Test that rule offline on saved judgments, then preregister a bounded prospective panel. Do not use this public authored item to tune the desired score distribution.
