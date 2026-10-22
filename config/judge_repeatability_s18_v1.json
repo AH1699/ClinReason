@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.1.0",
+  "version": "s18-v1-one-exact-repeat",
+  "status": "preregistered_development_repeatability_not_clinical_validation",
+  "source_run_path": "work/s17_reason015_clean_2026-10-21",
+  "source_report_sha256": "1bec2083e0d9e10feb4c2601027aa7d0cbdf349e01043c890f5e7beec201c244",
+  "source_probe_path": "data/multiturn/scoring_dimension_probe_reason015_s17_v2.json",
+  "design": "Repeat each of the same four S17 judge packets once with the same Gemini and Grok judge roster, instruction, anchors and rubric, in the same fixed call order. Compare the audited S17 and S18 outputs per exact case, answer and judge. No candidate replay.",
+  "planned_new_judge_calls_max": 8,
+  "planned_candidate_calls": 0,
+  "automatic_retries": 0,
+  "sampling": "Provider defaults: neither judge adapter supplies temperature, top-p or seed. Identical request construction is checked; deterministic outputs are not claimed.",
+  "cost_limit": "The hard limit is eight new API call attempts; a monetary ceiling cannot be guaranteed without provider billing telemetry.",
+  "descriptive_fields": [
+    "returned_model_identity", "update_criterion_statuses", "update_requirements",
+    "update_safety", "revision", "gated_score", "provisional_pass",
+    "judge_requested_human_review"
+  ],
+  "interpretation_limit": "Two observations per judge/case/answer cannot estimate stable error rates, clinical correctness, score reliability or a model rank. A changed result may reflect provider nondeterminism or service drift, not the candidate answer."
+}
