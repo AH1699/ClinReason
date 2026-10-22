@@ -35,6 +35,27 @@ def render_update(item: dict[str, Any], variant: str) -> str:
     return item["separator"].join(segments)
 
 
+def build_probe_packet(
+    family: dict[str, Any], item: dict[str, Any], variant: str,
+    anchors: dict[str, Any],
+) -> dict[str, Any]:
+    """Build the exact judge packet shared by preregistration and later runs."""
+    language = item["language"]
+    response = render_update(item, variant)
+    transcript = []
+    for turn, answer in zip(family["variants"][language]["turns"],
+                            (item["initial_response"], response)):
+        transcript.extend([{"role": "user", "content": turn["user"]},
+                           {"role": "assistant", "content": answer}])
+    candidate_response = {
+        "case_id": variant_id(family, language), "case_version": family["version"],
+        "case_content_hash": item["case_content_hash"], "transcript": transcript,
+        "turn_outputs": [{"stage_id": "initial", "text": item["initial_response"]},
+                         {"stage_id": "update", "text": response}],
+    }
+    return attach_anchors(build_judge_packet(family, language, candidate_response), anchors)
+
+
 def validate_prereg(
     prereg: dict[str, Any], dataset: dict[str, Any], anchors: dict[str, Any],
     rubric: dict[str, Any], roster: dict[str, Any], judge_instruction: str,
@@ -97,18 +118,7 @@ def validate_prereg(
                                      for text in [item["initial_response"], *rendered]):
             raise ValueError("S13 English-script sanity check failed")
         for variant, response in zip(VARIANTS, rendered):
-            transcript = []
-            for turn, answer in zip(family["variants"][language]["turns"],
-                                    (item["initial_response"], response)):
-                transcript.extend([{"role": "user", "content": turn["user"]},
-                                   {"role": "assistant", "content": answer}])
-            candidate_response = {
-                "case_id": variant_id(family, language), "case_version": family["version"],
-                "case_content_hash": item["case_content_hash"], "transcript": transcript,
-                "turn_outputs": [{"stage_id": "initial", "text": item["initial_response"]},
-                                 {"stage_id": "update", "text": response}],
-            }
-            packet = attach_anchors(build_judge_packet(family, language, candidate_response), anchors)
+            packet = build_probe_packet(family, item, variant, anchors)
             packets.append({"case_id": packet["case_id"], "variant": variant,
                             "packet_sha256": sha256_json(packet),
                             "update_response_sha256": sha256_text(response)})
