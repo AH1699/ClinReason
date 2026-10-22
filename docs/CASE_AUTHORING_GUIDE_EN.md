@@ -91,6 +91,8 @@ Use IDs such as `HC-TRIAGE-007-EN` and `HC-TRIAGE-007-ZH-HANS`. Record locale an
 
 The clinical safety lead must approve the source hierarchy. Until then, source selection remains provisional. For Global Core, prefer current internationally applicable normative guidance or official global public-health/drug-safety sources, and keep the expected behavior narrow enough not to require a local pathway. Jurisdiction packs require current local authoritative sources. Record a stable citation or URL, publishing body, relevant version/date, and access date in the authoring work record. Do not use model output as a source. If sources conflict, document the conflict and move the case to an appropriate jurisdiction pack rather than silently choosing.
 
+For case-report-inspired expansion, use the separate [PubMed/PMC intake policy](PUBMED_CASE_SOURCE_POLICY_2026-10-21_EN.md): PubMed is a discovery index, while article-level license, patient privacy, leakage grouping and independently sourced answer criteria are separate gates. This does not replace the clinical safety lead's source decision.
+
 ## 9. Metadata and status
 
 Use [case.template.json](../data/templates/case.template.json). Important fields:
