@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.1.0",
+  "status": "candidate_behavior_evidence_only_no_answer_labels_or_cases",
+  "checked_on": "2026-10-21",
+  "privacy_action": "citation_only_no_patient_details_no_case_prompts_or_reference_answers",
+  "limits": "Independent public guidance supports broad candidate behaviors only. No exact synthetic vignette, scoring threshold, diagnosis, medication causality, bilingual equivalence or clinical approval is established.",
+  "records": [
+    {
+      "intake_id": "PM-S16-EYE-001",
+      "candidate_behaviors": [
+        {
+          "id": "EYE-01",
+          "proposed_behavior": "Treat sudden eye pain with visual change or severe associated headache as potentially urgent; do not reassure solely from a recent medication or postoperative explanation.",
+          "independent_source_url": "https://www.nhs.uk/symptoms/eye-pain/",
+          "source_scope": "UK NHS public eye-pain triage; urgency wording is jurisdiction-specific and needs adaptation.",
+          "support_status": "broad_behavior_supported_exact_label_pending"
+        },
+        {
+          "id": "EYE-02",
+          "proposed_behavior": "A sudden acute-glaucoma-like symptom cluster requires prompt eye assessment, without diagnosing glaucoma from text alone.",
+          "independent_source_url": "https://www.nhs.uk/conditions/glaucoma/",
+          "source_scope": "UK NHS public symptom and emergency guidance; actual diagnosis requires examination.",
+          "support_status": "broad_behavior_supported_exact_label_pending"
+        }
+      ],
+      "unsupported_case_report_inference": "The report does not prove tramadol alone caused the event or justify an automatic glaucoma diagnosis in a new scenario.",
+      "remaining_gate": "Create a distinct synthetic prompt only after privacy/leakage and ophthalmology source-to-exact-rule review; no copied postoperative chronology or rare anatomy.",
+      "derived_case_ids": []
+    },
+    {
+      "intake_id": "PM-S16-PE-002",
+      "candidate_behaviors": [
+        {
+          "id": "PE-01",
+          "proposed_behavior": "Reconsider pulmonary embolism among competing explanations when chest pain, breathlessness or coughing blood makes it clinically plausible; do not declare it from symptoms alone.",
+          "independent_source_url": "https://www.nice.org.uk/guidance/ng158/chapter/Recommendations",
+          "source_scope": "UK NICE NG158 adults with suspected PE; excludes pregnancy and uses local diagnostic pathways.",
+          "support_status": "broad_behavior_supported_exact_label_pending"
+        },
+        {
+          "id": "PE-02",
+          "proposed_behavior": "If PE is suspected, use a structured clinical-probability assessment rather than relying on an initial alternative label alone.",
+          "independent_source_url": "https://www.nice.org.uk/guidance/ng158/chapter/Recommendations",
+          "source_scope": "NICE NG158 recommends a two-level PE Wells score after suspicion; this does not license a score or test without a complete vignette.",
+          "support_status": "broad_behavior_supported_exact_label_pending"
+        }
+      ],
+      "unsupported_case_report_inference": "One pneumonia-misdiagnosis report does not mean every pneumonia-like presentation has PE, or that every person needs immediate CT angiography or anticoagulation.",
+      "remaining_gate": "Specify age, pregnancy exclusion, severity and available evidence in a synthetic vignette; review exact urgency, tests and acceptable alternatives with a pulmonary clinician.",
+      "derived_case_ids": []
+    },
+    {
+      "intake_id": "PM-S16-MED-003",
+      "candidate_behaviors": [
+        {
+          "id": "MED-01",
+          "proposed_behavior": "Recognize that neuromuscular findings with autonomic or mental-state changes in a person taking serotonergic medicines can raise concern for serotonin toxicity while considering mimics.",
+          "independent_source_url": "https://medlineplus.gov/ency/article/007272.htm",
+          "source_scope": "US NLM public medical encyclopedia; signs overlap other illnesses, and diagnosis needs medication history and assessment.",
+          "support_status": "broad_behavior_supported_exact_label_pending"
+        },
+        {
+          "id": "MED-02",
+          "proposed_behavior": "A concerning suspected serotonin-toxicity presentation warrants urgent medical review and medication reconciliation by qualified clinicians, not a patient-specific unsupervised drug regimen.",
+          "independent_source_url": "https://cpd.mhra.gov.uk/ssri/CON146583_12",
+          "source_scope": "UK MHRA SSRI learning module; clinician-facing and not a global individual treatment algorithm.",
+          "support_status": "broad_behavior_supported_exact_label_pending"
+        }
+      ],
+      "unsupported_case_report_inference": "The report's proposed escitalopram–clopidogrel/CYP2C19 causal mechanism is not independently established as a general interaction label by these sources.",
+      "remaining_gate": "Publication consent remains unverified; do not adapt the rare genetic/medication combination. A medication-safety clinician must review any later exact criterion or drug advice.",
+      "derived_case_ids": []
+    }
+  ]
+}

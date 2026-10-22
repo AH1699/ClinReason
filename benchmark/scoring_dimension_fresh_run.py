@@ -92,8 +92,10 @@ def _filename(judge_id: str, case_id: str, variant: str) -> str:
 
 def run_live(inputs: dict[str, Any], *, output_dir: Path, env_file: Path,
              max_api_calls: int, timeout: float = 240,
-             judge_instances: dict[str, Any] | None = None) -> dict[str, Any]:
-    plan, packets = prepare_run(inputs)
+             judge_instances: dict[str, Any] | None = None,
+             prepared: tuple[dict[str, Any], list[tuple[str, str, dict[str, Any]]]] | None = None,
+             run_status: str = RUN_STATUS) -> dict[str, Any]:
+    plan, packets = prepared if prepared is not None else prepare_run(inputs)
     if type(max_api_calls) is not int or max_api_calls != 8 or timeout <= 0:
         raise ValueError("S15 live run requires exactly --max-api-calls 8 and positive timeout")
     if output_dir.exists():
@@ -158,24 +160,28 @@ def run_live(inputs: dict[str, Any], *, output_dir: Path, env_file: Path,
                 })
                 raise ProviderRequestError("S15 run stopped; see local failure.json") from None
     report = {
-        "status": RUN_STATUS, "completed_at": datetime.now(timezone.utc).isoformat(),
+        "status": run_status, "completed_at": datetime.now(timezone.utc).isoformat(),
         **{key: value for key, value in plan.items() if key not in ("status", "warning")},
         "candidate_calls": 0, "judge_calls": completed, "results": list(results.values()),
         "limits": "Synthetic authored answers, not clinical/bilingual validation or model ranking.",
     }
     _write_json_new(output_dir / "report.json", report)
-    return {"status": RUN_STATUS, "output_dir": str(output_dir), "judge_calls": completed,
+    return {"status": run_status, "output_dir": str(output_dir), "judge_calls": completed,
             "candidate_calls": 0, "report": str(output_dir / "report.json")}
 
 
-def audit_saved(inputs: dict[str, Any], directory: Path) -> dict[str, Any]:
-    plan, packets = prepare_run(inputs)
-    hypotheses = load_json(inputs["root"] / inputs["policy"]["fresh_probe_path"])["author_hypotheses_not_gold"]
+def audit_saved(inputs: dict[str, Any], directory: Path, *,
+                prepared: tuple[dict[str, Any], list[tuple[str, str, dict[str, Any]]]] | None = None,
+                hypotheses: dict[str, Any] | None = None,
+                run_status: str = RUN_STATUS, audit_status: str = AUDIT_STATUS) -> dict[str, Any]:
+    plan, packets = prepared if prepared is not None else prepare_run(inputs)
+    if hypotheses is None:
+        hypotheses = load_json(inputs["root"] / inputs["policy"]["fresh_probe_path"])["author_hypotheses_not_gold"]
     report = load_json(directory / "report.json")
     fields = ("policy_sha256", "probe_sha256", "dataset_sha256", "criterion_anchors_sha256",
               "rubric_sha256", "judge_instruction_sha256", "roster_sha256",
               "criterion_validator_version", "packet_hashes", "judges", "judge_calls_required")
-    if (report.get("status") != RUN_STATUS or report.get("candidate_calls") != 0
+    if (report.get("status") != run_status or report.get("candidate_calls") != 0
         or report.get("judge_calls") != 8
         or any(report.get(key) != plan[key] for key in fields)
         or not isinstance(report.get("results"), list) or len(report["results"]) != 4):
@@ -267,7 +273,7 @@ def audit_saved(inputs: dict[str, Any], directory: Path) -> dict[str, Any]:
                 "omission_critical_error_ids": omission["critical_error_ids"],
                 "omission_human_review_requested": omission["human_review_requested"],
             })
-    return {"status": AUDIT_STATUS, "candidate_calls": 0, "completed_judge_calls": 8,
+    return {"status": audit_status, "candidate_calls": 0, "completed_judge_calls": 8,
             "probe_sha256": plan["probe_sha256"], "pairs": pairs,
             "limits": "Author hypotheses and AI scores are not clinical truth; EN/ZH semantic equivalence unreviewed. No scores were changed."}
 
