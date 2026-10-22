@@ -25,6 +25,8 @@ class JudgeRepeatabilityS18Tests(unittest.TestCase):
         self.assertEqual(result["exact_score_repeats"], 8)
         self.assertEqual(result["criterion_status_repeats"], 8)
         self.assertEqual(result["dimension_repeats"], 8)
+        self.assertEqual(result["judge_review_request_repeats"], 8)
+        self.assertEqual(result["max_absolute_score_delta"], 0)
 
     def test_changes_are_described_not_averaged_or_rescored(self):
         source = self.cells()
@@ -40,6 +42,7 @@ class JudgeRepeatabilityS18Tests(unittest.TestCase):
         self.assertEqual(result["criterion_status_repeats"], 7)
         self.assertEqual(result["dimension_repeats"], 7)
         self.assertEqual(result["pass_flag_repeats"], 8)
+        self.assertEqual(result["max_absolute_score_delta"], 7.5)
         self.assertEqual((source, repeated), (original_source, original_repeat))
 
     def test_missing_cell_is_rejected(self):

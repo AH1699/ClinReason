@@ -111,7 +111,10 @@ def compare_cells(source: dict[tuple[str, str, str], dict[str, Any]],
         "criterion_status_repeats": sum(row["criterion_statuses_same"] for row in comparisons),
         "dimension_repeats": sum(row["dimensions_same"] for row in comparisons),
         "pass_flag_repeats": sum(row["pass_same"] for row in comparisons),
+        "judge_review_request_repeats": sum(row["judge_review_request_same"]
+                                            for row in comparisons),
         "returned_model_identity_repeats": sum(row["returned_model_same"] for row in comparisons),
+        "max_absolute_score_delta": max(abs(row["score_delta"]) for row in comparisons),
         "comparisons": comparisons,
     }
 
