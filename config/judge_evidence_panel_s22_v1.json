@@ -1,0 +1,31 @@
+{
+  "schema_version": "0.1.0",
+  "version": "s22-v1-prospective-operational-replacement",
+  "status": "development_only_new_run_not_s21_resume_or_clinical_calibration",
+  "question": "Can the separately versioned evidence-explicit judge instruction produce structurally usable rationales and repeat non-ceiling partial ratings on exact EN/ZH packets?",
+  "prior_attempt": {
+    "protocol": "s21-v1-preregistered-judge-instruction-panel",
+    "recorded_commit": "c6fda42",
+    "attempted_judge_requests": 1,
+    "verified_completed_judgments": 0,
+    "provider_receipt_or_billing": "unknown",
+    "disposition": "aborted_no_retry_no_resume_no_pooling"
+  },
+  "new_first_judge_calls": 24,
+  "new_partial_repeat_calls": 8,
+  "maximum_additional_judge_calls": 32,
+  "candidate_calls": 0,
+  "automatic_retries": 0,
+  "base_s21_policy_file_sha256": "5aaa5da28287f8acb032626c244d3775273312ba6d0e0a76bc8f8f032e2648e8",
+  "base_s21_runner_file_sha256": "1b6bfebbd2679e1254ada984bb60306f4891d3260b9affa46a7bc6729a0ddfd2",
+  "base_s21_plan_sha256": "fbce96415e6dabdb54a78a6d7005c9681e91af4638f9e0ee18acc94c75a3acb7",
+  "execution_format": "S22 outer authorization and connectivity records wrap unchanged S21 exact-packet first/repeat implementation; S21 inner status strings are implementation metadata, not an S21 resumed run",
+  "keyless_connectivity_preflight": {
+    "method": "HEAD",
+    "timeout_seconds": 10,
+    "urls": ["https://generativelanguage.googleapis.com/", "https://api.x.ai/"],
+    "pass_rule": "Both hosts must return an HTTP response before each live stage; no API keys or case data are sent"
+  },
+  "stop_conditions": ["preflight_failure", "source_or_packet_hash_mismatch", "failed_or_ambiguous_scored_call", "invalid_judgment_or_quote", "model_identity_drift", "call_cap_reached"],
+  "limits": "Separate prospective development diagnostic. The unknown-delivery S21 attempt is not counted as a verified judgment and is not erased from the audit trail. No result may be pooled with S21 or treated as clinical truth, model ranking, scoring calibration, bilingual equivalence or evidence for the 60-70/80/90 aspirations. Qualified clinical, bilingual and methods review remains later mandatory."
+}
