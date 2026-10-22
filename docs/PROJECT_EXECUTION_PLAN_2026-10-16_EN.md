@@ -1,6 +1,10 @@
 # ClinReason current execution plan — 2026-10-16
 
-## Dated progress update — 2026-10-20 (current S13 scoring-separation preregistration)
+## Dated progress update — 2026-10-21 (current S14 scoring-separation result)
+
+The [S14 bounded judge-only probe](S14_SCORING_PROBE_RESULT_2026-10-21_EN.md) completed all 16 frozen S13 calls (Gemini 3.8 Flash and Grok 4.7), zero candidate calls, with a separately recomputed saved-result audit. All 12 edited-answer criterion patterns matched author hypotheses, but all 16 draft scores still passed and the minimum was 82.5. Five of eight same-answer judge pairs differed by at least five points despite matching update statuses; Gemini's EN/ZH omitted-safety-net counterpart differed by 7.5 points because it lowered safety only in English. No weights, historical reports, cases or score-band targets changed. **Next major scoring choice:** define and offline-test a versioned, non-enforced safety-net dimension hypothesis across S9/S11/S14 plus a fresh family, or pause that rule until H76 clinical/bilingual/methods adjudication. Do not promote pass flags or a 60–70/80/90 fit from this authored batch. Public development remains **112 families / 224 variants**, approved calibration/hidden Gold **0/0**.
+
+## Historical progress update — 2026-10-20 (S13 scoring-separation preregistration)
 
 The [S13 EN/ZH one-edit packet](S13_SCORING_SEPARATION_PREREG_2026-10-20_EN.md) is frozen on unchanged `TRIAGE-020`: eight authored answer variants, exact case/anchor/rubric/prompt/roster hashes, author-only criterion hypotheses and an offline packet manifest. Zero model calls, scores, case changes or weight edits occurred. A future judge-only run is capped at 16 calls, but its opt-in runner and report comparator have **not** yet been implemented or executed. The next engineering step is to build and offline-test that bounded runner/comparator before any live calls; then assess targeted criterion status and safety-versus-revision gaps without fitting ~60–70/~80/~90 score bands. Public development remains **112 families / 224 variants**, approved calibration/hidden Gold **0/0**; clinical and bilingual review is still deferred but mandatory before formal claims.
 
