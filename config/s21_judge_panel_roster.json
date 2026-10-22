@@ -1,0 +1,8 @@
+{
+  "schema_version": "0.1.0",
+  "status": "development_only_judge_only_no_candidate_models",
+  "judges": [
+    {"id": "gemini-judge", "provider": "gemini", "model": "gemini-3.8-flash"},
+    {"id": "grok-judge", "provider": "grok", "model": "grok-4.7"}
+  ]
+}
