@@ -82,6 +82,29 @@ def recognize_boxes(png):
     return boxes
 
 
+def unit_review_bounds(boxes, selected, rows):
+    """Narrow image-only review of the shared unit column, never a unit guess.
+
+    Infer a column only from already-allowlisted units in these selected lab
+    rows. Do not extend to the page header or unrelated rows. This optional
+    pixel excerpt is still private and must be visually checked.
+    """
+    units = [boxes[i]['bounds'] for i in selected if UNIT.fullmatch(boxes[i]['text'].strip())]
+    if not units:
+        return []
+    left, right = min(b[0] for b in units), max(b[2] for b in units)
+    if right-left > 0.12:
+        return []  # Multiple columns or a suspiciously wide OCR unit.
+    bounds = []
+    for row in rows:
+        x0,y0,x1,y1 = row['label_bounds']
+        if x1 >= left:
+            continue
+        padding = (y1-y0)*0.15
+        bounds.append([max(0,left-0.008), max(0,y0-padding), min(1,right+0.008), min(1,y1+padding)])
+    return bounds
+
+
 def private_json(path, value):
     descriptor = os.open(str(path), os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
     with os.fdopen(descriptor, "w", encoding="utf-8") as stream:
@@ -94,6 +117,8 @@ def main():
     parser.add_argument("--hash-prefix", required=True)
     parser.add_argument("--page", type=int, default=1)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--unit-column-review", action="store_true",
+                        help="Also show narrow unit-column pixels on selected rows; never infer the unit")
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     if not args.output.resolve().is_relative_to((root/"work").resolve()) or args.output.exists():
@@ -117,6 +142,7 @@ def main():
         subprocess.run(["pdftoppm", "-f", str(args.page), "-l", str(args.page), "-r", "180", "-singlefile", "-png", str(source), str(png.with_suffix(""))], check=True, capture_output=True)
         boxes = recognize_boxes(png)
         selected, rows = select_cells(boxes)
+        extra_bounds = unit_review_bounds(boxes, selected, rows) if args.unit_column_review else []
         with Image.open(png) as original:
             masked = Image.new("RGB", original.size, "white")
             width, height = original.size
@@ -124,10 +150,14 @@ def main():
                 x0,y0,x1,y1 = boxes[index]["bounds"]
                 bounds = (int(x0*width), int(y0*height), int(x1*width)+1, int(y1*height)+1)
                 masked.paste(original.crop(bounds), bounds[:2])
+            for x0,y0,x1,y1 in extra_bounds:
+                bounds = (int(x0*width), int(y0*height), int(x1*width)+1, int(y1*height)+1)
+                masked.paste(original.crop(bounds), bounds[:2])
             masked.save(args.output/"masked_source.png")
             os.chmod(args.output/"masked_source.png", 0o600)
     private_json(args.output/"candidate_rows.json", {"source_sha256": record["sha256"], "page": args.page,
                  "status": "allowlisted_excerpt_pending_visual_and_clinical_review", "rows": rows,
+                 "unit_column_pixel_review_bounds": extra_bounds,
                  "limits": "No full-record de-identification or encounter linkage claim; masked boxes may contain OCR/column errors. Not for public case release."})
     print(json.dumps({"status": "private_masked_excerpt_created", "analyte_rows": len(rows),
                       "source_hash_prefix": record["sha256"][:16], "page": args.page,

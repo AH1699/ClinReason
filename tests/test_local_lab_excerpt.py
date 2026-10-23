@@ -1,5 +1,5 @@
 import unittest
-from benchmark.local_lab_excerpt import select_cells
+from benchmark.local_lab_excerpt import select_cells, unit_review_bounds
 
 
 class LabExcerptTests(unittest.TestCase):
@@ -22,6 +22,22 @@ class LabExcerptTests(unittest.TestCase):
             {"text":"患者钾偏低，联系家属", "bounds":[0.1,0.4,0.2,0.42]},
             {"text":"4.2", "bounds":[0.3,0.4,0.4,0.42]}])
         self.assertEqual((selected,rows), ([],[]))
+
+    def test_unit_review_stays_in_known_column_and_selected_rows(self):
+        boxes=[{'text':'K','bounds':[.1,.4,.2,.42]},
+               {'text':'4.2','bounds':[.3,.4,.4,.42]},
+               {'text':'mmol/L','bounds':[.65,.4,.72,.42]}]
+        selected,rows=select_cells(boxes)
+        bounds=unit_review_bounds(boxes,selected,rows)
+        self.assertEqual(len(bounds),1)
+        x0,y0,x1,y1=bounds[0]
+        self.assertGreater(x0,.6)
+        self.assertLess(x1,.75)
+        self.assertGreater(y0,.39)
+        self.assertLess(y1,.43)
+        self.assertEqual(unit_review_bounds(boxes,[],rows),[])
+        wide=[{'text':'mmol/L','bounds':[.3,.4,.9,.42]}]
+        self.assertEqual(unit_review_bounds(wide,[0],rows),[])
 
 
 if __name__ == "__main__":

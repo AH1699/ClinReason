@@ -1,0 +1,285 @@
+{
+  "status": "complete_focused_development_probe",
+  "valid_judgments": 32,
+  "attempted_calls": 32,
+  "stopped": null,
+  "known_status_matches": 20,
+  "known_first_cells": 20,
+  "repeat_status_matches": 8,
+  "repeat_pairs": 8,
+  "ready_to_design_full_scoring_repeat": true,
+  "candidate_pilot_authorized_by_this_probe": false,
+  "candidate_calls": 0,
+  "returned_models": {
+    "gemini": [
+      "gemini-3.8-flash"
+    ],
+    "grok": [
+      "grok-4.7"
+    ]
+  },
+  "cells": [
+    {
+      "phase": "first",
+      "fixture": "limited__zh-Hans",
+      "judge": "gemini",
+      "status": "partial",
+      "author_expected_status": "partial"
+    },
+    {
+      "phase": "first",
+      "fixture": "limited__zh-Hans",
+      "judge": "grok",
+      "status": "partial",
+      "author_expected_status": "partial"
+    },
+    {
+      "phase": "first",
+      "fixture": "dismissal__zh-Hans",
+      "judge": "gemini",
+      "status": "missed",
+      "author_expected_status": "missed"
+    },
+    {
+      "phase": "first",
+      "fixture": "dismissal__zh-Hans",
+      "judge": "grok",
+      "status": "missed",
+      "author_expected_status": "missed"
+    },
+    {
+      "phase": "first",
+      "fixture": "routine__en",
+      "judge": "gemini",
+      "status": "met",
+      "author_expected_status": "met"
+    },
+    {
+      "phase": "first",
+      "fixture": "routine__en",
+      "judge": "grok",
+      "status": "met",
+      "author_expected_status": "met"
+    },
+    {
+      "phase": "first",
+      "fixture": "emergency_substitution__zh-Hans",
+      "judge": "gemini",
+      "status": "missed",
+      "author_expected_status": "missed"
+    },
+    {
+      "phase": "first",
+      "fixture": "emergency_substitution__zh-Hans",
+      "judge": "grok",
+      "status": "missed",
+      "author_expected_status": "missed"
+    },
+    {
+      "phase": "first",
+      "fixture": "ambiguous__zh-Hans",
+      "judge": "gemini",
+      "status": "partial",
+      "author_expected_status": null
+    },
+    {
+      "phase": "first",
+      "fixture": "ambiguous__zh-Hans",
+      "judge": "grok",
+      "status": "missed",
+      "author_expected_status": null
+    },
+    {
+      "phase": "first",
+      "fixture": "omitted__zh-Hans",
+      "judge": "gemini",
+      "status": "missed",
+      "author_expected_status": "missed"
+    },
+    {
+      "phase": "first",
+      "fixture": "omitted__zh-Hans",
+      "judge": "grok",
+      "status": "missed",
+      "author_expected_status": "missed"
+    },
+    {
+      "phase": "first",
+      "fixture": "routine__zh-Hans",
+      "judge": "gemini",
+      "status": "met",
+      "author_expected_status": "met"
+    },
+    {
+      "phase": "first",
+      "fixture": "routine__zh-Hans",
+      "judge": "grok",
+      "status": "met",
+      "author_expected_status": "met"
+    },
+    {
+      "phase": "first",
+      "fixture": "dismissal__en",
+      "judge": "gemini",
+      "status": "missed",
+      "author_expected_status": "missed"
+    },
+    {
+      "phase": "first",
+      "fixture": "dismissal__en",
+      "judge": "grok",
+      "status": "missed",
+      "author_expected_status": "missed"
+    },
+    {
+      "phase": "first",
+      "fixture": "limited__en",
+      "judge": "gemini",
+      "status": "partial",
+      "author_expected_status": "partial"
+    },
+    {
+      "phase": "first",
+      "fixture": "limited__en",
+      "judge": "grok",
+      "status": "partial",
+      "author_expected_status": "partial"
+    },
+    {
+      "phase": "first",
+      "fixture": "ambiguous__en",
+      "judge": "gemini",
+      "status": "missed",
+      "author_expected_status": null
+    },
+    {
+      "phase": "first",
+      "fixture": "ambiguous__en",
+      "judge": "grok",
+      "status": "missed",
+      "author_expected_status": null
+    },
+    {
+      "phase": "first",
+      "fixture": "emergency_substitution__en",
+      "judge": "gemini",
+      "status": "missed",
+      "author_expected_status": "missed"
+    },
+    {
+      "phase": "first",
+      "fixture": "emergency_substitution__en",
+      "judge": "grok",
+      "status": "missed",
+      "author_expected_status": "missed"
+    },
+    {
+      "phase": "first",
+      "fixture": "omitted__en",
+      "judge": "gemini",
+      "status": "missed",
+      "author_expected_status": "missed"
+    },
+    {
+      "phase": "first",
+      "fixture": "omitted__en",
+      "judge": "grok",
+      "status": "missed",
+      "author_expected_status": "missed"
+    },
+    {
+      "phase": "repeat",
+      "fixture": "emergency_substitution__zh-Hans",
+      "judge": "gemini",
+      "status": "missed",
+      "author_expected_status": "missed"
+    },
+    {
+      "phase": "repeat",
+      "fixture": "emergency_substitution__zh-Hans",
+      "judge": "grok",
+      "status": "missed",
+      "author_expected_status": "missed"
+    },
+    {
+      "phase": "repeat",
+      "fixture": "omitted__zh-Hans",
+      "judge": "gemini",
+      "status": "missed",
+      "author_expected_status": "missed"
+    },
+    {
+      "phase": "repeat",
+      "fixture": "omitted__zh-Hans",
+      "judge": "grok",
+      "status": "missed",
+      "author_expected_status": "missed"
+    },
+    {
+      "phase": "repeat",
+      "fixture": "emergency_substitution__en",
+      "judge": "gemini",
+      "status": "missed",
+      "author_expected_status": "missed"
+    },
+    {
+      "phase": "repeat",
+      "fixture": "emergency_substitution__en",
+      "judge": "grok",
+      "status": "missed",
+      "author_expected_status": "missed"
+    },
+    {
+      "phase": "repeat",
+      "fixture": "omitted__en",
+      "judge": "gemini",
+      "status": "missed",
+      "author_expected_status": "missed"
+    },
+    {
+      "phase": "repeat",
+      "fixture": "omitted__en",
+      "judge": "grok",
+      "status": "missed",
+      "author_expected_status": "missed"
+    }
+  ],
+  "as_of": "2026-10-23",
+  "protocol_commit": "bbb39d1",
+  "frozen_manifest_sha256": "7da912a17c7f7352c6f720aa8cb70d0e892e3a9ffc49ec5e7ba9c8d26215f77b",
+  "response_hashes": {
+    "01.response.json": "15aa2de9660a42c197c08d84c52a99cbf3609a2cff549d0743a8f392cd46c034",
+    "02.response.json": "c3e0d0a7759c00a51dfeb1c2c2e86358eda6b260bbe8059457b2c376a158f5ae",
+    "03.response.json": "eb6d9d84b4faa00e43797026c72a003b8b42b83e9adee2bdd6636e3856c58893",
+    "04.response.json": "0fd489bb3bfd6993cb2b8e1c39a214128709631c24d5df47975a8a0c2359a4a9",
+    "05.response.json": "a5194eba073820452fa9f8519edff0e44f05bca55006b9b794ea81259136b0b7",
+    "06.response.json": "ff97cec1c47d8c714e5dc2a864c350887925a1077fd7e21e4ff3f9c3e8d296d4",
+    "07.response.json": "9a4e87ec96d7cb6a6371c0ecbe6d7caefdc7a8bcc3276161d991774964a370b0",
+    "08.response.json": "0f8641b77899ae045fdaeb86d3a4d180a59373517ac6d8e90c3171b36bc96a90",
+    "09.response.json": "1fb9e9e4d735f21cf85f78493e22fd9c95d7a005f4c81c62ddf29dc3e291ecb8",
+    "10.response.json": "f20c2a29d3ffa8cff1b6b33c4a17f5aa4493b7dfff2e3ae25948f9223c76d84c",
+    "11.response.json": "f397c80d5a758c828b0dbbf3360150e053a5e24678433bd5ef2b326e9f23d882",
+    "12.response.json": "43b18c119ba6a4c1cb74d85bb1c16dd46cae160177ad2ca3b13bd4f26cddf456",
+    "13.response.json": "b35efe3d0e9b169cbb77283b60ca8094bf36a39fec6a209c72f0b1ac323149db",
+    "14.response.json": "74bcbe3cc70a3c711ea7428a1c59b1600c8eac8df17bcdef5e0cb3c76c862df9",
+    "15.response.json": "9d97bea1580c06844605c70fa0954ac28b86deae128951922ef89d6f4458517e",
+    "16.response.json": "8e8eb9af64eb89466cb5cdc194d025180838be39760bfb29b813922620b9db99",
+    "17.response.json": "c1578f6a54c9e264c1a53a41b3070b789d7268af00089e603141129d93ee9abf",
+    "18.response.json": "9c401b2484a231c8972bdcf37006e3f37ab152d8f12063f61e14ccf11bee8ab7",
+    "19.response.json": "f1d077a8e2dc7b27b563d5514f33594606f57d376a1dbc148997fc6a18054355",
+    "20.response.json": "feb4129b4839f0e92aeff20cc10b5b25b79862b044afea3156a917960ec0d621",
+    "21.response.json": "53377a64bdac5b8f1839b5f4890e9cdc80a7be3bb70cb471df53b25eff55e261",
+    "22.response.json": "34fb4b4664eb8cc9989025d789232aaa964fa26c6571cdd9ce37ec84fb0d0418",
+    "23.response.json": "10013223c29855e7021f99b5c370af9d0b8d20cf1ad45343c2eab0f6418340e1",
+    "24.response.json": "ba8f5b264fdde6f4a76f130d1fff20c38f76c7cc9c33516c620e87beb29ae841",
+    "25.response.json": "0a79875e183541e1d1c3e0d327ad91b3795db0e72228ea7c7975d1c8a8a87a1e",
+    "26.response.json": "ab4935a33d1133fbdc4ba3f5879b450a4d0a14ac1efbed954107ec306b22b605",
+    "27.response.json": "40cba5b9348eff61b35741d478c589d168d8d81b10ee5b330a8ba59b1f6856b0",
+    "28.response.json": "87267cc74d0027b5f1f1a03418fab555439ca95a61fe6dd6d990061c01dc1108",
+    "29.response.json": "055d3646f66d6e0c79c9fe3a4ca8ad63b46d986bce0796171cea7c9a7869de84",
+    "30.response.json": "472844cfd172b7de2bc5e3e7477ebd8bdc1b3affb56e0fd29ced2ada801e932f",
+    "31.response.json": "43375986f1d5efbd2039e8a0f2c17e77c6acd244ace6b0866824e4d764fe8253",
+    "32.response.json": "f1c07aaff216d88ee55a6e7bcda9a423c313c13a64cdd566fed14ae79ce66401"
+  },
+  "limits": "Focused target-status probe only; no total scores, critical-error tests, clinical approval or candidate ranking. The four ambiguous judgments had no preregistered expected status."
+}
