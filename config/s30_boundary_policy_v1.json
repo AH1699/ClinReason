@@ -1,0 +1,19 @@
+{
+  "version": "s30-boundary-v1",
+  "status": "prospective_author_boundary_probe_not_clinical_calibration",
+  "judges": [
+    {"provider": "gemini", "model": "gemini-3.8-flash"},
+    {"provider": "grok", "model": "grok-4.7"}
+  ],
+  "first_calls": 20,
+  "repeat_calls": 4,
+  "maximum_calls": 24,
+  "automatic_retries": 0,
+  "candidate_calls": 0,
+  "sampling": "provider_defaults_unpinned",
+  "request_timeout_seconds": 240,
+  "order": "Packet SHA256 order, Gemini then Grok per packet; all first calls followed by exact observed-partial repeats. No score-based early stop or selection.",
+  "gate": "Complete all 24 valid judgments; all 32 known first-pass criterion statuses match the author hypotheses, and all 8 repeated criterion statuses match their first assessments. The four exploratory first judgments have no expected status and are reported separately. Passing only permits design of a separate full-score repeat experiment; it is neither clinical approval nor automatic permission for more calls.",
+  "score_policy": "No numerical score, critical-error penalty, weights, pass threshold or candidate-model ranking. Preserve historical S26-S29 and default judging.",
+  "stop_policy": "Stop at the first transport, response validation or exact-model mismatch; save a contiguous prefix and never retry, repair, resume or pool the run. A process interruption is incomplete, not a fresh call allowance."
+}

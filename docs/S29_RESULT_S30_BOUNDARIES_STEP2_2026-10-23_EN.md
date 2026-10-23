@@ -1,5 +1,7 @@
 # Two calls completed; scoring boundaries need a focused check
 
+**Later checkpoint:** S30's runner and protocol have since been frozen, and N answer controls are ready; see [current readiness and approval scope](S30_BOUNDARY_PROTOCOL_AND_N_CONTROLS_2026-10-23_EN.md). The S29 results below are unchanged. Descriptions of an unimplemented S30 runner record the earlier draft state.
+
 ## Result after owner approval
 
 S29 completed **2 attempted / 2 valid judge calls**, with no retries or candidate calls. Grok 4.7 took **133.301 seconds**; Gemini 3.8 Flash took **19.914 seconds**. Both returned the requested model identity. The protocol was committed as `57d8a93` before execution and its frozen inputs are unchanged.
