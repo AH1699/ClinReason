@@ -1,0 +1,37 @@
+{
+  "version": "s27-frozen-v1",
+  "files": {
+    "config/s27_boundary_policy_v1.json": "384ea6de9ae4ebea4f86ced45ad45a351fcda34bbf652dacd98aab4cd01b962e",
+    "data/multiturn/s27_boundary_fixtures_v1.json": "478ea176552378bbd71ce21a3158062159a494f599e50e28211c9907d60273a1",
+    "config/multiturn_criterion_anchors_batch_g_s27_v1.json": "ec68eea1ee29769e461415009ff0e79d3447f13e151435821b69769832701132",
+    "config/s27_boundary_judge.txt": "86056cd6104d2e6e9072eab8946af8aefe936bfac0f076add7b1d73c3cfef4ca",
+    "benchmark/boundary_s27.py": "5a2a29b19332211d1915a60dc1572b4be41b52526a6ddefb4b86d2d2befd4681",
+    "data/multiturn/batch_g_cases.json": "74d7a21f74d26a755286b858eb65cf29df3535397acd3ac972caf3795790f761",
+    "data/multiturn/batch_g_contrasts_v1.json": "06e04c612c0849d1b99d4144ceb135ed9409621d380b622aa1d98a5116183c01",
+    "benchmark/scoring_s26.py": "8b6d9b055c2ffb1b460b26b7d52c50d6734efcbb2d23c953ee7687ef432306b0",
+    "benchmark/criterion_anchors.py": "db467ce4abba1740c144a80f7f52de603660cf1c93bd3ff059ce639937be200f",
+    "benchmark/multiturn.py": "7dbc4575f144734040795f0a744636e80b511d69f0610193b55ae46b5301bcd7",
+    "benchmark/multiturn_diagnostics.py": "84d68d28c6bc9d8b0bf297b3bfc00289d4559ad80f71a2cae15e02cf93f00fb1",
+    "benchmark/provenance.py": "7855afa1e7e4890b664b7349c472584c319c31c2ad95dda76689b0d483a198bb",
+    "benchmark/config.py": "fdadd7ce3f5fbe09a79f0f71e12981782a1f7d9cd487593fe38b18c636604af3",
+    "benchmark/local_settings.py": "16240cec5ff8d90ad134293cdc04ebba28ac8224955a24c7efe80ebe2885b3b2",
+    "benchmark/providers/http_json.py": "54d06af250b29504bf74351337707077d892211bbe3a91fbfb8b7a26210c7da4",
+    "benchmark/providers/gemini.py": "aab30ea5a28e2594690285a33b4d4ac12f87e550501087f99a6e3ab7b1e96475",
+    "benchmark/providers/grok.py": "d2ea5d0a7b87be0086ec48825a5fe59af19625bc2bc13fb1dcff213653c9611e",
+    "benchmark/multiturn_judging.py": "ca572a33063375a5647adc58fddb0949c87b6ea0da61d8aa8ddfa696ace129e5"
+  },
+  "packets": {
+    "ambiguous__en": "9ddb2d1240a1273462e01cef22dfcd25ef347d9f4b9957f524ebe3851578da60",
+    "ambiguous__zh-Hans": "2c3434b1155aeac09c284f8832ccf9d068341d168654918521e75b2412cd2e8a",
+    "dismissal__en": "4771ae6962e484b6d862e4b72684a5f5e6d4734d3b1ec4bad10012338bf8c877",
+    "dismissal__zh-Hans": "1086eadd86d0a602c55c9902fcd8df06187cf66cc0ac063d32ebcf2fabf55ab7",
+    "emergency_substitution__en": "a2f58ba4cfe0fb19c95aefbaf77d7c7f9de476915414a0498851dca4e992f5ce",
+    "emergency_substitution__zh-Hans": "241047673f1482a4c53cfd92cc6ee08337f7f3207be2d4f55ece23a413190177",
+    "limited__en": "5f595985b74fea4456083136ac76c802d1fcaeec75ca62e801d8cd9ed50cf3d0",
+    "limited__zh-Hans": "0eeb186e014be3ac68aab4a33cc54b838973f58ddfd455de3459886a07f94099",
+    "omitted__en": "e958cc762fc4f5280b6a9c9bf43895f299f952ec80cac71cf360f87679682f2f",
+    "omitted__zh-Hans": "365b369ee0cb210edfe37fe5e164c776f46a48986f0e43eecc11f81227a69e18",
+    "routine__en": "12fa6560e022ad72ae0849f55371292a2528952c843f29891114d8fbfca70570",
+    "routine__zh-Hans": "36d310d80e68bfbdf6550a174b35157ee5436d2ac15f3f337aa83d8d46e5b344"
+  }
+}

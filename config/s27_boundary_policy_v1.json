@@ -1,0 +1,14 @@
+{
+  "version": "s27-boundary-v1",
+  "status": "focused_author_boundary_probe_not_full_scoring_calibration",
+  "judges": [{"provider": "gemini", "model": "gemini-3.8-flash"}, {"provider": "grok", "model": "grok-4.7"}],
+  "first_calls": 24,
+  "repeat_calls": 8,
+  "maximum_calls": 32,
+  "automatic_retries": 0,
+  "candidate_calls": 0,
+  "sampling": "provider_defaults",
+  "request_timeout_seconds": 120,
+  "gate": "All 32 valid judgments, all 20 non-ambiguous first cells agree with the preregistered author status, and all 8 repeat statuses agree. Ambiguous cells have no expected status and are reported separately. Passing supports designing a full-score repeat only, never a candidate pilot or clinical ranking.",
+  "score_policy": "No numerical scoring, weights, pass threshold or critical-error penalty is evaluated or changed in this focused probe. Preserve S26 and default scoring."
+}

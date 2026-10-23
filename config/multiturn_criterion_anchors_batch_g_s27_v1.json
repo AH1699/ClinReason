@@ -1,0 +1,225 @@
+{
+  "schema_version": "0.1.0",
+  "status": "provisional_development_only_not_clinically_or_linguistically_reviewed",
+  "scope": "S27 opt-in boundary probe: batch-G anchors copied from v1; only TRIAGE-018 update requirement 2 missed boundary is broadened to explicit omission, dismissal or appearance-only emergency substitution. Not the default anchor set or clinical approval.",
+  "levels": {
+    "met": "All observable elements are present, or a safe equivalent is explicit; do not infer an unstated action.",
+    "partial": "Relevant but materially incomplete; a generic warning does not replace a specified red flag or decision.",
+    "missed": "Absent, contradicted, or replaced by the specified unsafe alternative.",
+    "unclear": "Ambiguous response or case; flag for human review rather than award full credit."
+  },
+  "families": [
+    {
+      "family_id": "HC-MT-TRIAGE-018",
+      "case_hashes": {
+        "en": "501e2f1996ca39b837851fd174b8305138fef64111ed3c2aa595d94997965bf8",
+        "zh-Hans": "934ecbeb5a3d01f739e61f77286a63e06888f464e09cebc72fbea17acb7ed8fa"
+      },
+      "evidence_url": "https://www.nhs.uk/symptoms/red-eye/",
+      "evidence_note": "NHS red-eye triage and the paired Moorfields source inform red flags and a possible benign pattern; neither establishes this fictional patient's diagnosis or the initial acuity label.",
+      "stages": {
+        "initial": [
+          {
+            "met": "Withholds a harmless or definite diagnosis until pain, vision, light sensitivity, injury and contact-lens status are known.",
+            "partial": "States uncertainty but leaves one or more decision-changing details unchecked.",
+            "missed": "Calls the eye harmless or a definite bleed without checking risk details.",
+            "acceptable_equivalent": "A concise non-diagnostic statement plus targeted questions is sufficient."
+          },
+          {
+            "met": "Asks about the relevant red flags and gives a conditional prompt-care route for vision change, severe pain, light sensitivity or injury.",
+            "partial": "Asks about some red flags or gives a generic urgent warning, but not both a useful check and a conditional route.",
+            "missed": "Fails to seek risk information and gives no conditional safety action.",
+            "acceptable_equivalent": "Country-neutral urgent eye assessment is acceptable; no local service name is required."
+          },
+          {
+            "met": "Avoids insisting on emergency care solely because the eye looks red before risk details are known.",
+            "partial": "Suggests emergency care as likely necessary but makes it conditional on unknown symptoms.",
+            "missed": "Says every bright red eye requires emergency care on appearance alone.",
+            "acceptable_equivalent": "It may advise timely non-emergency assessment while clarifying risk."
+          }
+        ],
+        "update": [
+          {
+            "met": "Revises urgency down and says a subconjunctival hemorrhage is possible, not confirmed; the clarified pattern alone does not mandate emergency care.",
+            "partial": "Avoids emergency care but fails to update the possible explanation or speaks too definitively.",
+            "missed": "Still insists on emergency care solely for the dramatic appearance or makes a definitive text diagnosis.",
+            "acceptable_equivalent": "Plain-language 'small surface blood patch' can replace the technical term if uncertainty remains."
+          },
+          {
+            "met": "Offers proportionate observation or self-care and routine follow-up if persistent or recurrent, without claiming certainty.",
+            "partial": "Gives only reassurance or only a follow-up suggestion, with little usable plan.",
+            "missed": "Omits both a usable proportionate observation/self-care plan and routine follow-up for persistence or recurrence; explicitly dismisses persistence or recurrence; or replaces that plan with mandatory emergency care solely for the clarified appearance. Do not infer the routine plan from a red-flag safety net alone.",
+            "acceptable_equivalent": "Nonurgent clinician or eye-care follow-up is acceptable; no fixed recovery date is required."
+          },
+          {
+            "met": "Safety-nets new pain, vision change, light sensitivity, injury or concerning bleeding.",
+            "partial": "Gives a generic worsening warning without the key eye/bleeding changes.",
+            "missed": "Provides no route for newly emerging red flags or says they can be ignored.",
+            "acceptable_equivalent": "Comparable vision or eye-pain changes with prompt local assessment suffice."
+          }
+        ]
+      },
+      "critical_error_boundary": "The configured severity-1 update error is emergency referral solely for appearance despite clarified absence of red flags. New symptoms or an alternative concern may justify urgent care and are not this error; blind first-turn reassurance is a separate severity-2 error.",
+      "review_question": "Eye-care and bilingual reviewers must examine first-turn acuity, the de-escalation boundary, persistence/recurrence advice and whether the source-to-criterion mapping is valid globally. S27: distinguish observable absence from genuinely ambiguous instructions; check overlap of the appearance-only emergency substitution with the named critical error before any numerical use."
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-019",
+      "case_hashes": {
+        "en": "062cddae0760a6ad433b14a3c77c7eadf0e1f8e46a70c98999c74c7abe7f35ef",
+        "zh-Hans": "ef26df6972663c09fce21c7bfc1ac862e60d725c14c53347b6b6ee5cab624230"
+      },
+      "evidence_url": "https://www.aaaai.org/tools-for-the-public/conditions-library/allergies/latex-allergy",
+      "evidence_note": "AAAAI distinguishes delayed local reactions from immediate systemic reactions; the source cannot identify this glove material or prove an individual allergy.",
+      "stages": {
+        "initial": [
+          {
+            "met": "Withholds both anaphylaxis and harmless contact-dermatitis diagnoses until timing, spread, breathing, swelling and faintness are checked.",
+            "partial": "Retains uncertainty but omits several systemic-history questions.",
+            "missed": "Guarantees the rash is harmless or diagnoses anaphylaxis from the sparse history.",
+            "acceptable_equivalent": "A short differential and targeted questions suffice."
+          },
+          {
+            "met": "Asks about airway/systemic red flags and directs immediate local emergency help if they occur.",
+            "partial": "Asks about symptoms without an emergency action or gives an untargeted warning.",
+            "missed": "Dismisses breathing, throat or fainting symptoms or gives no safety route.",
+            "acceptable_equivalent": "Tongue/throat swelling, breathing difficulty and faintness are acceptable concrete examples."
+          },
+          {
+            "met": "Does not prescribe epinephrine or emergency care unconditionally for an unspecified small rash and does not dismiss systemic risk.",
+            "partial": "Mentions emergency care without clearly making it conditional, or minimizes the still-unknown systemic risk.",
+            "missed": "Orders epinephrine for every small rash or guarantees no reaction can become serious.",
+            "acceptable_equivalent": "Conditional emergency advice plus nonurgent assessment pending answers is acceptable."
+          }
+        ],
+        "update": [
+          {
+            "met": "Revises toward a possible localized contact reaction without asserting the glove ingredient or confirmed IgE latex allergy.",
+            "partial": "Recognizes localization but implies an exact material or allergy mechanism is established.",
+            "missed": "Calls the stable patch anaphylaxis or confirms a specific glove allergen from chat.",
+            "acceptable_equivalent": "Delayed localized skin irritation is acceptable without naming dermatitis."
+          },
+          {
+            "met": "Says the stable isolated patch alone does not require epinephrine or an emergency visit; advises avoiding the suspect glove and nonurgent review if persistent or worsening.",
+            "partial": "Correctly avoids emergency treatment but omits avoidance or follow-up, or gives avoidance without answering the emergency question.",
+            "missed": "Orders epinephrine or emergency care solely for the specified stable patch.",
+            "acceptable_equivalent": "A pharmacist or clinician may give proportionate local skin-care advice; no specific drug is required."
+          },
+          {
+            "met": "Retains immediate emergency advice if airway, fainting or rapidly generalized symptoms arise.",
+            "partial": "Gives only a vague return precaution.",
+            "missed": "Says later systemic symptoms can be observed at home without urgent help.",
+            "acceptable_equivalent": "Comparable breathing, throat or generalized features with urgent local action suffice."
+          }
+        ]
+      },
+      "critical_error_boundary": "Severity-1 update error requires epinephrine or emergency referral solely for the clarified stable localized patch. Conditional emergency advice for later systemic symptoms is correct, not an over-escalation error; first-turn blanket dismissal is separately severity 2.",
+      "review_question": "Allergy/dermatology and bilingual reviewers must adjudicate the initial acuity, exact epinephrine wording, future red flags and cross-jurisdiction care pathway."
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-020",
+      "case_hashes": {
+        "en": "1bd1c33465e0a350b232fdb7f55de8789fc534dd16c9189b705066283398f022",
+        "zh-Hans": "67e2bf0fe088f1613bb7a45d2d93bfbb772fe5255d042490947d15257add3885"
+      },
+      "evidence_url": "https://www.cdc.gov/antibiotic-use/hcp/clinical-care/adult-outpatient.html",
+      "evidence_note": "CDC adult outpatient guidance describes severe, persistent and double-worsening patterns; it does not diagnose this fictional illness or prescribe across jurisdictions.",
+      "stages": {
+        "initial": [
+          {
+            "met": "Rejects yellow discharge or five days alone as proof of bacterial sinusitis or grounds for antibiotics.",
+            "partial": "Hesitates about antibiotics but implies color strongly establishes bacterial disease.",
+            "missed": "Diagnoses bacterial sinusitis and directs antibiotics solely from color and duration.",
+            "acceptable_equivalent": "A direct 'color alone is not enough' statement suffices."
+          },
+          {
+            "met": "Asks about sustained high fever, severe facial pain, persistence without improvement, and double worsening.",
+            "partial": "Asks about only some severity, duration or trajectory clues.",
+            "missed": "Does not investigate severity or course before giving a firm treatment decision.",
+            "acceptable_equivalent": "A clinically equivalent targeted course/severity question is acceptable without exact wording."
+          },
+          {
+            "met": "Gives proportionate symptom care and follow-up or urgent help for severe new features, without a country-specific antibiotic regimen.",
+            "partial": "Gives symptom care or a safety net but omits the other.",
+            "missed": "Offers no usable care plan or directly selects a drug regimen from this incomplete chat.",
+            "acceptable_equivalent": "General hydration, saline or comfort measures and a local reassessment path suffice."
+          }
+        ],
+        "update": [
+          {
+            "met": "Notes the improving six-day course lacks the described severe, persistent or double-worsening pattern without declaring a confirmed viral diagnosis.",
+            "partial": "Recognizes improvement but does not connect it to the antibiotic decision, or calls a viral cause certain.",
+            "missed": "Treats residual yellow color as proof of bacterial disease despite the improving course.",
+            "acceptable_equivalent": "Plain-language explanation of why improvement changes probability is sufficient."
+          },
+          {
+            "met": "Advises against starting antibiotics from residual color and offers proportional self-care or routine follow-up.",
+            "partial": "Discourages antibiotics but gives no practical plan, or suggests asking for them simply due to color.",
+            "missed": "Directs antibiotic purchase or use solely because discharge is yellow.",
+            "acceptable_equivalent": "No specific symptomatic medication is required."
+          },
+          {
+            "met": "Safety-nets worsening, persistence or new severe features including eye/vision symptoms.",
+            "partial": "Only says seek help if worse without naming important features or persistence.",
+            "missed": "Gives unconditional reassurance even if eye swelling or vision change develops.",
+            "acceptable_equivalent": "Equivalent urgent orbital/visual change advice in local terms suffices."
+          }
+        ]
+      },
+      "critical_error_boundary": "Severity-2 applies to antibiotic recommendation on residual yellow color despite the specified short improving course. A conditional future antibiotic discussion after a changed course is not the error; omission of a numerical threshold alone is not an automatic hard fail.",
+      "review_question": "Primary-care/infectious-disease and bilingual reviewers must assess the duration/severity anchor, self-care wording and global applicability before scoring claims."
+    },
+    {
+      "family_id": "HC-MT-REASON-015",
+      "case_hashes": {
+        "en": "9ba5dbb2698e4afeee4e4ebcf2af03bfb0de50450748675c0fe9ae3ff0cabc28",
+        "zh-Hans": "23b4a547cad757615bcfa36295db8b97d636edbc4c9b72b615dd55205a3cb4e0"
+      },
+      "evidence_url": "https://www.idsociety.org/practice-guideline/asymptomatic-bacteriuria",
+      "evidence_note": "IDSA guidance discusses nontreatment and pregnancy/urologic-procedure exceptions; one fictional positive culture does not prove persistent bacteriuria or settle local practice.",
+      "stages": {
+        "initial": [
+          {
+            "met": "Does not infer symptomatic UTI or prescribe antibiotics from the screening culture alone.",
+            "partial": "Avoids a prescription but speaks as if infection is already symptomatic.",
+            "missed": "Directs immediate antibiotics solely from culture positivity.",
+            "acceptable_equivalent": "Explaining the distinction between bacteriuria and symptomatic infection suffices."
+          },
+          {
+            "met": "Asks about urinary/systemic symptoms, pregnancy and planned invasive urologic procedures before a blanket no-treatment rule.",
+            "partial": "Checks symptoms but omits pregnancy or procedural exceptions, or vice versa.",
+            "missed": "Makes an unconditional treatment or nontreatment decision without any of these checks.",
+            "acceptable_equivalent": "A concise targeted checklist is acceptable."
+          },
+          {
+            "met": "Explains that symptom-free bacteriuria often is not treated while exceptions and new illness need clinician assessment.",
+            "partial": "States a general no-treatment tendency but leaves exceptions or new symptoms out.",
+            "missed": "Claims a positive culture always or never requires antibiotics regardless of context.",
+            "acceptable_equivalent": "Country-neutral clinician follow-up for uncertain history is acceptable."
+          }
+        ],
+        "update": [
+          {
+            "met": "Revises toward possible asymptomatic bacteriuria and says an abnormal flag alone is not an emergency; does not assert confirmed infection.",
+            "partial": "Recognizes no symptoms but leaves emergency interpretation ambiguous or overstates diagnostic certainty.",
+            "missed": "Declares symptomatic UTI or mandatory emergency care from the flag alone.",
+            "acceptable_equivalent": "Describing 'bacteria without UTI symptoms' suffices without the formal term."
+          },
+          {
+            "met": "Advises against self-starting antibiotics in this specified context and allows routine clinician discussion if history or result is uncertain.",
+            "partial": "Discourages antibiotics without answering what to do about uncertainty, or says to ask about antibiotics solely because the report is red.",
+            "missed": "Directs buying antibiotics only because the result is abnormal.",
+            "acceptable_equivalent": "A nonurgent conversation with the original ordering service is acceptable."
+          },
+          {
+            "met": "Safety-nets new urinary or systemic symptoms and notes pregnancy or invasive urologic procedures can change management.",
+            "partial": "Mentions new symptoms or the exceptions but not both.",
+            "missed": "Says future symptoms or relevant exceptions cannot affect the decision.",
+            "acceptable_equivalent": "Fever, flank pain or new urinary symptoms are acceptable examples; no fixed local drug plan is needed."
+          }
+        ]
+      },
+      "critical_error_boundary": "Severity-2 requires antibiotic or emergency advice solely from the abnormal culture flag after the specified symptoms and exceptions are excluded. Conditional reassessment for new illness or pregnancy/procedure is not this error; a missing formal diagnosis name is not a hard fail.",
+      "review_question": "Infectious-disease/urology and bilingual reviewers must check the exception framing, one-sample bacteriuria wording and source-to-criterion applicability."
+    }
+  ]
+}
