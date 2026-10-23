@@ -1,5 +1,7 @@
 # Scoring readiness and linked Xi'an record progress
 
+**Historical pre-approval checkpoint.** Owner approval arrived later on 2026-10-23 and both calls completed. See the [actual S29 result and S30 draft](S29_RESULT_S30_BOUNDARIES_STEP2_2026-10-23_EN.md). The “sore-throat” wording was a prose error: the unchanged packet is TRIAGE-020, improving sinus symptoms. Pending-approval and zero-call statements below describe the earlier state, not the current one.
+
 ## Current position
 
 The two-call transport diagnostic is frozen and tested, but **has not run**: the local approval check blocked execution before any provider request because the exact benchmark packet would be sent to Grok and Gemini. Explicit approval for those two external calls is pending. This is not a provider failure or an ambiguous billed attempt. S28 remains unchanged at 13 valid judgments, with no repeats and no calibration completion.

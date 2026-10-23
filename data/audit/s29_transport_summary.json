@@ -1,0 +1,56 @@
+{
+  "status": "complete_transport_diagnostic_only",
+  "attempted_calls": 2,
+  "valid_judgments": 2,
+  "candidate_calls": 0,
+  "automatic_retries": 0,
+  "timeout_seconds": 240,
+  "stopped": null,
+  "rows": [
+    {
+      "provider": "grok",
+      "model": "grok-4.7",
+      "latency_ms": 133301,
+      "response_sha256": "400747bb2d5b24e715d922660b6b58029b039443ced27f2ac73685c192dd5d55",
+      "score": {
+        "score_version": "s28-v1-criterion-derived-anchor-integration",
+        "criterion_score_interval": [
+          41.67,
+          88.33
+        ],
+        "point_score": null,
+        "provisional_pass": null,
+        "hard_fail": false,
+        "unclear_criterion": true,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      }
+    },
+    {
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "latency_ms": 19914,
+      "response_sha256": "570cd1021643959d07f97e031565690462eed7ba28f1c61ffe6eb5004c4a2ffa",
+      "score": {
+        "score_version": "s28-v1-criterion-derived-anchor-integration",
+        "criterion_score_interval": [
+          65,
+          65
+        ],
+        "point_score": 65,
+        "provisional_pass": false,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      }
+    }
+  ],
+  "may_design_fresh_full_panel": true,
+  "calibration_complete": false,
+  "limits": "Two calls cannot establish reliability or repeatability. No historical repair, pooling, score-based selection or model ranking.",
+  "as_of": "2026-10-23",
+  "protocol_commit": "57d8a93",
+  "approval": "Direct owner approval of the two-call synthetic-packet export before execution",
+  "frozen_manifest_sha256": "1a6ea1ac2f220accaaa43445db270ca2de1415d28edc09327247cf0b5497a4a1"
+}

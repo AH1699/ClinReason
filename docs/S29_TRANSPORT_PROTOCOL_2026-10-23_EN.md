@@ -1,5 +1,7 @@
 # Two request transport diagnostic
 
+**Post-run editorial note, 2026-10-23:** both approved calls completed; see the [result](S29_RESULT_S30_BOUNDARIES_STEP2_2026-10-23_EN.md). “Sore-throat” below was an inaccurate shorthand for the frozen TRIAGE-020 improving sinus-symptom packet. This note does not alter any protocol input or authorize another run.
+
 Before another full scoring panel, S29 tests the exact English sore-throat partial packet whose Grok request stopped S28. This is a new diagnostic, not a retry, continuation or repair of S28. Its output cannot be pooled with earlier panels.
 
 The frozen sequence is **Grok 4.7, then Gemini 3.8 Flash**, at most **two judge requests**, zero candidate calls and zero retries. The prospective socket timeout is **240 seconds**, compared with S28's 120 seconds. This is a diagnostic choice, not evidence of a fix or a hard wall-clock deadline. Prompt, case, answer, anchors, response schema, scoring arithmetic and provider sampling defaults remain exactly those of S28. Requested and returned model IDs must match.

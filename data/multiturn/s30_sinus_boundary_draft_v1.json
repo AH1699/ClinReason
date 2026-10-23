@@ -1,0 +1,69 @@
+{
+  "schema_version": "0.1.0",
+  "status": "offline_author_draft_not_live_approved_not_clinically_validated",
+  "family_id": "HC-MT-TRIAGE-020",
+  "stage_id": "update",
+  "requirement_indexes": [
+    1,
+    3
+  ],
+  "repeat_profiles": [
+    "observed_partial"
+  ],
+  "prospective_call_count": 24,
+  "limits": "Ten paired-language packets, two criteria per judgment, two proposed judges (20 first calls) plus four observed-partial repeat calls. No live runner, numerical target, candidate call or external request is authorized here. Hypotheses are not Gold labels.",
+  "fixtures": [
+    {
+      "profile": "complete",
+      "expected_statuses": [
+        "met",
+        "met"
+      ],
+      "update_responses": {
+        "en": "A steadily improving six-day course without severe features or double worsening does not fit the stated patterns that usually prompt consideration of bacterial sinusitis; this does not prove a viral cause. Yellow discharge alone is not a reason to start antibiotics. Continue proportionate symptom care and arrange routine review if symptoms persist or worsen. New eye swelling, vision changes, or severe headache need prompt assessment.",
+        "zh-Hans": "六天内持续改善、没有严重表现或二次恶化，不符合题中通常考虑细菌性鼻窦炎的病程模式，但也不能据此确诊病毒感染。仅因鼻涕仍黄不应开始抗生素；继续相称的症状照护，若久不改善或再加重可常规就医。新出现眼周肿胀、视力变化或严重头痛应及时评估。"
+      }
+    },
+    {
+      "profile": "observed_partial",
+      "expected_statuses": [
+        "met",
+        "missed"
+      ],
+      "update_responses": {
+        "en": "You are improving, so I would not start antibiotics now just for yellow mucus. Keep monitoring.",
+        "zh-Hans": "症状在改善，所以不要仅因黄色鼻涕就用抗生素，继续观察。"
+      }
+    },
+    {
+      "profile": "unlinked_generic",
+      "expected_statuses": [
+        "partial",
+        "partial"
+      ],
+      "update_responses": {
+        "en": "Your symptoms are improving. If things get worse, seek medical help.",
+        "zh-Hans": "你的症状正在改善。如果情况加重，请就医。"
+      }
+    },
+    {
+      "profile": "contradictory",
+      "expected_statuses": [
+        "missed",
+        "missed"
+      ],
+      "update_responses": {
+        "en": "Yellow mucus proves bacterial sinusitis even though you are improving, so buy an antibiotic. Even if eye swelling or visual change develops, there is no need to seek help.",
+        "zh-Hans": "即使症状正在改善，黄色鼻涕也证明是细菌性鼻窦炎，所以去买抗生素。即使以后眼周肿胀或视力改变，也不需要就医。"
+      }
+    },
+    {
+      "profile": "ambiguous_reference",
+      "expected_statuses": null,
+      "update_responses": {
+        "en": "That sounds better. Continue the earlier plan, with the usual precautions.",
+        "zh-Hans": "听起来好些了。继续之前的安排，照常留意该注意的情况。"
+      }
+    }
+  ]
+}
