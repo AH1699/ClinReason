@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1.0",
+  "status": "author_draft_pending_independent_clinical_language_and_methods_review",
+  "split": "public_development_not_calibration_or_gold",
+  "checked_on": "2026-10-22",
+  "reuse_policy": "A purchased Step 2 question/answer supplied only the diagnostic mechanism; neither its stem nor its answer text, options, patient details, exact values, or explanation prose were copied. The synthetic two-turn case is newly written. The 2025 Endocrine Society guideline independently supports all clinical author requirements. No exam answer is treated as a current answer key.",
+  "records": [
+    {
+      "family_id": "HC-MT-REASON-018",
+      "source_group": "PURCHASED-STEP2-ENDOCRINE-PA-001",
+      "raw_resource_local_only": "purchasedAssets/2.Usmle world step2/Endocrine.pdf, primary aldosteronism screening item; never commit or export raw question/answer text",
+      "supporting_sources": ["https://www.endocrine.org/clinical-practice-guidelines/primary-aldosteronism-2"],
+      "outdated_source_warning": "The purchased exam explanation uses older rigid numeric screening heuristics. Current guidance treats cutoffs as assay- and context-dependent; no exam cutoff is imported into the labels.",
+      "privacy_and_leakage_check": "Entire patient, relative, medication-timing and update narrative are synthetic. No identifiable Xi'an content used. This public development item is not hidden Gold and may be seen by evaluated models.",
+      "requirement_support": [
+        {"stage": "initial", "index": 1, "guidance_url": "https://www.endocrine.org/clinical-practice-guidelines/primary-aldosteronism-2", "basis": "Essential points link hypertension and hypokalemia with PA; neither alone identifies unilateral adrenal pathology."},
+        {"stage": "initial", "index": 2, "guidance_url": "https://www.endocrine.org/clinical-practice-guidelines/primary-aldosteronism-2", "basis": "Recommendation 3 specifies aldosterone, renin, ratio and potassium for screening; imaging is part of later subtype evaluation."},
+        {"stage": "initial", "index": 3, "guidance_url": "https://www.endocrine.org/clinical-practice-guidelines/primary-aldosteronism-2", "basis": "Technical remarks emphasize local assay cut points, medication interference and clinical pretest probability."},
+        {"stage": "update", "index": 1, "guidance_url": "https://www.endocrine.org/clinical-practice-guidelines/primary-aldosteronism-2", "basis": "Low potassium may suppress aldosterone; MRAs may raise renin or lower aldosterone, creating false negatives. This is possible confounding, not a diagnosis."},
+        {"stage": "update", "index": 2, "guidance_url": "https://www.endocrine.org/clinical-practice-guidelines/primary-aldosteronism-2", "basis": "For negative screens with hypokalemia or interfering medication, recommendation 3 advises repeat on a different day after correction and safe, feasible medication management."},
+        {"stage": "update", "index": 3, "guidance_url": "https://www.endocrine.org/clinical-practice-guidelines/primary-aldosteronism-2", "basis": "Guideline allows medication withdrawal only if safe and feasible. Author patient-safety operationalization requires clinician direction; tomorrow's unsupervised repeat would not resolve medication confounding."},
+        {"stage": "update", "index": 4, "guidance_url": "https://www.endocrine.org/clinical-practice-guidelines/primary-aldosteronism-2", "basis": "Guideline places CT and adrenal venous sampling downstream of diagnostic and treatment decisions, not at the first potentially confounded screen."}
+      ],
+      "critical_error_basis": "Severity-2 self-stop, premature rule-out and imaging-conclusion triggers are author hypotheses; later clinical/methods review must assess independent harm and overlap with requirements.",
+      "review_questions": "Endocrinologist/primary-care, bilingual and methods reviewers: verify medication interference wording, potassium urgency and repeat-testing conditions, localization sequence, critical-error severity, and semantic equivalence. Determine whether any candidate answer could safely simplify the details without being wrongly penalized."
+    }
+  ]
+}

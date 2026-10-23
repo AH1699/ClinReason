@@ -1,0 +1,8 @@
+{
+  "version": "s25-v1-offline-reportability",
+  "status": "non_enforced_development_diagnostic_not_calibration",
+  "purpose": "Keep provisional numeric outputs separate from comparison-ready scores; do not silently convert incomplete or unstable judge evidence into a model ranking.",
+  "required_for_comparison": ["complete_frozen_panel", "stable_exact_packet_pass", "independent_clinical_and_bilingual_labels", "methodology_release_review"],
+  "sources": ["S19 exact-packet repeat", "S22 stopped first stage", "S23 boundary audit", "S24 evidence contract"],
+  "limits": "This author reporting proposal is not enforced by the scoring runner, does not select a correct judge rating, and does not alter any score, weight, threshold, or label. The S19 and S22 panels use different protocols and must not be pooled."
+}
