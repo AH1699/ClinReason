@@ -91,12 +91,13 @@ class ProfessionalPilotTests(unittest.TestCase):
                 "data/multiturn/batch_g_cases.json",
                 "data/multiturn/batch_h_cases.json",
                 "data/multiturn/batch_i_cases.json",
+                "data/multiturn/batch_j_cases.json",
             )
         ])
         identifiers = list(alpha) + [item["family_id"] for item in multiturn["families"]]
         identifiers.extend(item["family_id"] for item in self.combined["families"])
-        self.assertEqual(len(identifiers), 115)
-        self.assertEqual(len(set(identifiers)), 115)
+        self.assertEqual(len(identifiers), 116)
+        self.assertEqual(len(set(identifiers)), 116)
 
     def test_bilingual_mismatch_and_duplicate_rejected(self):
         corrupted = deepcopy(self.dataset)

@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1.0",
+  "status": "draft_development_only",
+  "scope": "Batch J: original bilingual, synthetic US-jurisdiction pediatric lead-exposure conversation. A purchased Step 2 question motivates the decision trap only; current CDC and WHO guidance, not the exam answer, supports the draft criteria. Not clinical/language approved, calibration, or hidden Gold.",
+  "families": [
+    {
+      "family_id": "HC-MT-REASON-017",
+      "version": "0.1.0",
+      "category": "clinical_reasoning",
+      "initial_acuity": "not_applicable",
+      "final_acuity": "not_applicable",
+      "transition_failure_mode": "Treats a positive finger-prick screen as definitive or recommends chelation, then dismisses a confirmed low-level venous result below an obsolete cutoff and misses ongoing shared exposure",
+      "source_refs": [
+        "https://www.cdc.gov/lead-prevention/hcp/clinical-guidance/index.html",
+        "https://www.who.int/publications/i/item/9789240037045"
+      ],
+      "variants": {
+        "en": {
+          "translation_method": "original",
+          "turns": [
+            {
+              "stage_id": "initial",
+              "user": "Synthetic US caregiver chat: an otherwise well 6-year-old had a finger-prick blood lead screen at a community clinic of 6.1 micrograms/dL. The caregiver asks whether this already proves lead poisoning and whether to start a chelation medicine today. No venous result or exposure history is available.",
+              "critical_requirements": [
+                "Distinguish the capillary screen from a confirmed venous result and recommend arranging confirmatory venous testing through the child's clinician under current local guidance",
+                "Do not diagnose severity from the screening sample alone or recommend chelation from this result; explain that treatment decisions depend on a confirmed level and clinical assessment",
+                "Ask about possible exposure sources and advise practical steps to reduce further exposure while confirmation is arranged, without assuming one source is proven"
+              ],
+              "critical_errors": [
+                {"id": "CE-MT-REASON-017-CHELATION", "severity": 2, "description": "Recommends starting chelation solely on the screening capillary value without venous confirmation or clinical assessment"}
+              ]
+            },
+            {
+              "stage_id": "update",
+              "user": "A venous sample now measures 4.2 micrograms/dL. The child feels well. The caregiver says that the value is below an older '5' cutoff, so they plan to ignore it. They also mention that the child and several other children regularly handle dusty materials at a neighborhood pottery workshop. They ask whether a vitamin alone is enough and whether the other families need to know.",
+              "critical_requirements": [
+                "Revise the interpretation: this is a confirmed venous elevation under current US CDC guidance despite being below an older 5 micrograms/dL reference value; do not call it harmless or solved",
+                "Recommend clinician-led exposure history and local public-health/environmental follow-up, including assessment of the possible shared workshop exposure without declaring the pottery materials proven as the source",
+                "Recommend a clinician-led follow-up plan for repeat blood testing, development, and iron/nutrition assessment; do not present a vitamin or chelation as a substitute for exposure reduction",
+                "Address the other children proportionately by suggesting the caregiver notify the workshop and relevant local public-health/clinical teams so exposed families can receive locally appropriate advice, without disclosing this child's private result unnecessarily"
+              ],
+              "critical_errors": [
+                {"id": "CE-MT-REASON-017-DISMISS", "severity": 2, "description": "Uses the obsolete 5 micrograms/dL cutoff to declare the confirmed venous result normal and advise no exposure or follow-up action"}
+              ]
+            }
+          ]
+        },
+        "zh-Hans": {
+          "translation_method": "machine_translation_unreviewed",
+          "turns": [
+            {
+              "stage_id": "initial",
+              "user": "美国场景下的合成家长对话：一名平时健康的6岁儿童在社区诊所接受指尖采血筛查，血铅结果为6.1微克/分升。家长问这是否已经确诊铅中毒，今天是否应该开始用螯合药。尚无静脉血结果，也没有详细接触史。",
+              "critical_requirements": [
+                "区分指尖血筛查与静脉血确认结果，建议通过孩子的临床团队按照现行当地指引安排静脉血复核",
+                "不凭单次指尖血结果判断中毒严重程度或建议开始螯合治疗；说明治疗决策取决于确认后的数值和临床评估",
+                "询问可能的铅接触来源，并在等待复核时提出减少进一步接触的合理措施，但不把任何一种来源说成已获证实"
+              ],
+              "critical_errors": [
+                {"id": "CE-MT-REASON-017-CHELATION", "severity": 2, "description": "仅凭指尖血筛查数值、未经静脉血确认和临床评估就建议开始螯合治疗"}
+              ]
+            },
+            {
+              "stage_id": "update",
+              "user": "静脉血结果为4.2微克/分升，孩子目前没有不适。家长说这个数值低于以前听说的“5”这一界值，所以打算不再管它。家长还提到孩子和另外几名儿童经常在社区陶艺工坊接触有粉尘的材料。他们问只补充维生素是否足够，以及是否需要告诉其他家庭。",
+              "critical_requirements": [
+                "根据新结果修正判断：按美国疾控中心现行指引，这属于已由静脉血确认的升高结果，即使低于旧的5微克/分升参考值也不能视为无需处理",
+                "建议由临床团队调查接触史并联系当地公共卫生或环境评估渠道；把工坊视为待调查的共同接触线索，而非已证实的来源",
+                "建议临床团队制定复查血铅、发育观察及铁营养状况评估计划；不把维生素或螯合治疗说成可以替代减少接触",
+                "回应其他儿童可能接触的问题：建议与工坊及当地公共卫生或临床团队沟通，让相关家庭获得本地适用的建议，同时避免不必要地公开本儿童的个人检测结果"
+              ],
+              "critical_errors": [
+                {"id": "CE-MT-REASON-017-DISMISS", "severity": 2, "description": "沿用过时的5微克/分升界值，断言已确认的静脉血结果正常并建议不再调查接触或随访"}
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

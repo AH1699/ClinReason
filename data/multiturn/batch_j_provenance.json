@@ -1,0 +1,31 @@
+{
+  "schema_version": "0.1.0",
+  "status": "author_draft_pending_independent_clinical_language_and_methods_review",
+  "split": "public_development_not_calibration_or_gold",
+  "checked_on": "2026-10-22",
+  "reuse_policy": "Purchased Step 2 question/answer material is used as a reasoning-pattern resource, not copied into the case or used as the current clinical answer key. Source identity and raw text remain outside tracked data. This synthetic case changes the patient age, setting, values, exposure context, turn structure, and task. The current CDC page independently supports US-specific labels; WHO is a secondary cross-jurisdiction check. Not hidden Gold.",
+  "records": [
+    {
+      "family_id": "HC-MT-REASON-017",
+      "source_group": "PURCHASED-STEP2-LEAD-001",
+      "raw_resource_local_only": "purchasedAssets/2.Usmle world step2/Poisoning and Environmental exposure.pdf, lead item; do not commit or export raw question/answer text",
+      "supporting_sources": [
+        "https://www.cdc.gov/lead-prevention/hcp/clinical-guidance/index.html",
+        "https://www.who.int/publications/i/item/9789240037045"
+      ],
+      "outdated_source_warning": "The purchased exam explanation uses an older 5 micrograms/dL reference value. The current US CDC guidance uses 3.5 micrograms/dL; no old numeric threshold is imported as an answer key.",
+      "privacy_and_leakage_check": "Original synthetic workshop scenario; no purchased stem, answer options, explanation prose, patient details, exact values, or exam response statistics reused. Public development material may be leaked to evaluated models and cannot count as hidden Gold.",
+      "requirement_support": [
+        {"stage": "initial", "index": 1, "guidance_url": "https://www.cdc.gov/lead-prevention/hcp/clinical-guidance/index.html", "basis": "CDC initial capillary screening at or above the blood lead reference value calls for venous confirmation; the 6.1 value is in its 3.5-9 confirmation band."},
+        {"stage": "initial", "index": 2, "guidance_url": "https://www.cdc.gov/lead-prevention/hcp/clinical-guidance/index.html", "basis": "CDC separates screening from confirmed venous management and reserves chelation consideration for much higher levels with specialist care."},
+        {"stage": "initial", "index": 3, "guidance_url": "https://www.cdc.gov/lead-prevention/hcp/clinical-guidance/index.html", "basis": "CDC recommends education on exposure sources and preventing further exposure after an elevated screen; the source in this invented scenario is unknown."},
+        {"stage": "update", "index": 1, "guidance_url": "https://www.cdc.gov/lead-prevention/hcp/clinical-guidance/index.html", "basis": "CDC's current blood lead reference value is 3.5 micrograms/dL, so a confirmed venous value of 4.2 falls in its 3.5-19 management band."},
+        {"stage": "update", "index": 2, "guidance_url": "https://www.cdc.gov/lead-prevention/hcp/clinical-guidance/index.html", "basis": "CDC recommends exposure history, health-department reporting and environmental investigation according to local requirements for confirmed 3.5-19; a workshop is a hypothesis, not a confirmed source."},
+        {"stage": "update", "index": 3, "guidance_url": "https://www.cdc.gov/lead-prevention/hcp/clinical-guidance/index.html", "basis": "CDC recommends iron-deficiency assessment, nutrition discussion, development checks and follow-up testing for confirmed 3.5-19; chelation appears only in much higher-level specialist management."},
+        {"stage": "update", "index": 4, "guidance_url": "https://www.cdc.gov/lead-prevention/hcp/clinical-guidance/index.html", "basis": "Shared-exposure notification and privacy wording are author operationalizations of exposure prevention and local public-health follow-up, not a direct CDC quote; independent clinical/public-health/methods review required."}
+      ],
+      "critical_error_basis": "The chelation and dismissal triggers are proposed author safety hypotheses, not clinically adjudicated severities. Assess whether dismissing 4.2 should be severity 2 and whether a partial answer should trigger an error.",
+      "review_questions": "Pediatric environmental-health and bilingual reviewers: verify current US threshold, confirmation timing, follow-up scope, shared-exposure notification without unjustified accusation or privacy disclosure, Chinese equivalence, and severity boundaries. Confirm no exam-text leakage before external use."
+    }
+  ]
+}

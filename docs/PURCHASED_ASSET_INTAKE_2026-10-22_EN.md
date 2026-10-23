@@ -1,5 +1,7 @@
 # Raw-data handoff and case-building workflow
 
+**Processing update (later on 2026-10-22):** the [S24 checkpoint](S24_ASSET_PILOT_AND_SCORING_CONTRACT_2026-10-22_EN.md) records a completed local Xi'an inventory and on-device OCR pass for all 50 PDFs; raw transcription is unverified and no clinical case is privacy-cleared. Separately, one newly authored Step 2–informed, public-development lead case has been added with independent current CDC answer support. The delivery instructions below remain unchanged.
+
 This is the revised handoff for the data team. **The team acquires and delivers raw, linkable material. ClinReason does the privacy checks, extraction, case writing, draft answers, evidence mapping and bilingual work.** The data team does not need to create benchmark questions or labels. The first batch is a **target of about 30 distinct clinical episodes**, not 30 PDFs and not 30 ready-to-score cases. Fewer complete episodes are more useful than many disconnected pages.
 
 ## What we need from the data team
@@ -49,4 +51,4 @@ The privacy pass is our responsibility, but it is **not a promise that automated
 - `2.Usmle world step2` has 68 PDFs (about 57,687 pages). Its case-style questions may help us find hard reasoning patterns and coverage gaps, but copied or lightly paraphrased items can be familiar to models. If we use them, we will deduplicate, write genuinely new prompts and independently verify answer labels.
 - `4.Usmle world step1` has 283 PDFs plus eight archives (about 51,166 PDF pages). It is lower priority for patient-facing decision cases; it can help with a basic-science coverage map.
 
-This batch has **not** been converted into cases or sent to a model. The raw `purchasedAssets/` folder remains Git-ignored. The [S23 scoring-boundary hold](S23_OFFLINE_SCORING_BOUNDARIES_2026-10-22_EN.md) is unaffected; acquired records cannot by themselves settle disputed scoring ratings.
+No **Xi'an clinical record** has been converted into a case or sent to a model. The raw `purchasedAssets/` folder remains Git-ignored. The [S23 scoring-boundary hold](S23_OFFLINE_SCORING_BOUNDARIES_2026-10-22_EN.md) is unaffected; acquired records cannot by themselves settle disputed scoring ratings.
