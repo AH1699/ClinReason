@@ -1,0 +1,38 @@
+{
+  "version": "s28-frozen-v1",
+  "files": {
+    "benchmark/config.py": "fdadd7ce3f5fbe09a79f0f71e12981782a1f7d9cd487593fe38b18c636604af3",
+    "benchmark/criterion_anchors.py": "db467ce4abba1740c144a80f7f52de603660cf1c93bd3ff059ce639937be200f",
+    "benchmark/local_settings.py": "16240cec5ff8d90ad134293cdc04ebba28ac8224955a24c7efe80ebe2885b3b2",
+    "benchmark/multiturn.py": "7dbc4575f144734040795f0a744636e80b511d69f0610193b55ae46b5301bcd7",
+    "benchmark/multiturn_diagnostics.py": "84d68d28c6bc9d8b0bf297b3bfc00289d4559ad80f71a2cae15e02cf93f00fb1",
+    "benchmark/multiturn_judging.py": "ca572a33063375a5647adc58fddb0949c87b6ea0da61d8aa8ddfa696ace129e5",
+    "benchmark/provenance.py": "7855afa1e7e4890b664b7349c472584c319c31c2ad95dda76689b0d483a198bb",
+    "benchmark/providers/gemini.py": "aab30ea5a28e2594690285a33b4d4ac12f87e550501087f99a6e3ab7b1e96475",
+    "benchmark/providers/grok.py": "d2ea5d0a7b87be0086ec48825a5fe59af19625bc2bc13fb1dcff213653c9611e",
+    "benchmark/providers/http_json.py": "54d06af250b29504bf74351337707077d892211bbe3a91fbfb8b7a26210c7da4",
+    "benchmark/scoring_s26.py": "8b6d9b055c2ffb1b460b26b7d52c50d6734efcbb2d23c953ee7687ef432306b0",
+    "benchmark/scoring_s28.py": "cf04ffa67f6bb6dd0476fb89a4207ec02d16c398a7e32c3094c35f8171d25d40",
+    "config/multiturn_criterion_anchors_batch_g_s27_v1.json": "ec68eea1ee29769e461415009ff0e79d3447f13e151435821b69769832701132",
+    "config/multiturn_criterion_anchors_batch_g_v1.json": "c3b44fd7c847810c5bbf3ddf0863cf1476f28a82347ed1ec15a7ffbb1576fb91",
+    "config/scoring_s26_judge.txt": "f45af5039a39c1df5b76951c40cc6bc8ec7634ab9abee679bae72e1c46c22c3a",
+    "config/scoring_s26_v1.json": "310cfba6e9dadca21afed3e6d92aa554f784a03bc4ebcdd3053108307034a2dc",
+    "config/scoring_s28_v1.json": "952ce05b87d48253111ce0f020ddd8f495129fe156a6eefee490b893e15bfbfc",
+    "data/multiturn/batch_g_cases.json": "74d7a21f74d26a755286b858eb65cf29df3535397acd3ac972caf3795790f761",
+    "data/multiturn/batch_g_contrasts_v1.json": "06e04c612c0849d1b99d4144ceb135ed9409621d380b622aa1d98a5116183c01"
+  },
+  "packets": {
+    "HC-MT-TRIAGE-018__en__partial": "f7aa0d8c4283ec6fdc18f9f475bbb87963a7ff421f63a271d74be57612712bec",
+    "HC-MT-TRIAGE-018__en__safe": "922bd1932e5fdc8202452450fd4477c81dcb4eec1988b8c7248d568a397edfbc",
+    "HC-MT-TRIAGE-018__en__unsafe": "4fb2cc484ed2d351fbbdcd3549aaf9d892dee4023329cfaed4a4a7c5f55ade6b",
+    "HC-MT-TRIAGE-018__zh-Hans__partial": "1f00fd91bbf430e64aef57ed0bf7a3a91abb70cd3ad200404ba525fb1c0dea98",
+    "HC-MT-TRIAGE-018__zh-Hans__safe": "29da01ac4cbae14add44a2eee71fd5d79f67c48fbb0f856e2b2005e05224f9e8",
+    "HC-MT-TRIAGE-018__zh-Hans__unsafe": "1f268ba956a202682acf21223a8673ff2d3eb59b56252fbaa558d8ba9a40f528",
+    "HC-MT-TRIAGE-020__en__partial": "9e10f092b8c29a10b14992f4236e2ce0a268ed41e4e99e345a1f7f85ff09a68e",
+    "HC-MT-TRIAGE-020__en__safe": "24b743124e5a800ca213f0e74fee26f4d3cb9c02352a973f961ee8dbae2c19e9",
+    "HC-MT-TRIAGE-020__en__unsafe": "90449f3d2a0d650c4597c266e50a295d1352adb4a3e3667253734ef03e768500",
+    "HC-MT-TRIAGE-020__zh-Hans__partial": "da8991aeff335de55d075f9430b877c0b259ece95bcb8116acc08ca9f606229b",
+    "HC-MT-TRIAGE-020__zh-Hans__safe": "9d3182b0383d1b6571f744d86b494de1b94e1510c3139f4ac31e526e73ccbee6",
+    "HC-MT-TRIAGE-020__zh-Hans__unsafe": "9658f0a5e5e165d3319d1567da9f67bf1b2abb09618a7dce1d468f8e9d7faaaa"
+  }
+}
