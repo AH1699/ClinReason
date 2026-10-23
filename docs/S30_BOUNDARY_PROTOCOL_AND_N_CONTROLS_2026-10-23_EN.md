@@ -1,6 +1,10 @@
 # Focused scoring boundary protocol and new answer controls
 
-## Ready for approval
+## Post-run status — 2026-10-23
+
+After specific approval, S30 completed 24/24 valid calls, 32/32 known first criterion matches and 8/8 repeated matches. The focused gate passed; full-score calibration remains incomplete. See the [audited result and next plan](S30_BOUNDARY_RESULT_2026-10-23_EN.md). The remaining text preserves the prospective protocol and its pre-run checkpoint; it is not a request or permission to run S30 again.
+
+## Historical pre-run status: ready for approval
 
 The S30 runner, judge instruction, response schema, cases, answers, anchors and request order are now frozen for a **maximum of 24 judge calls**. No S30 live request has been made. This is the next bounded experiment after S29, not an extension of its two-call approval.
 

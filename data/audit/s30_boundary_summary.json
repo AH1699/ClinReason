@@ -1,0 +1,395 @@
+{
+  "status": "complete_focused_development_probe",
+  "attempted_calls": 24,
+  "valid_judgments": 24,
+  "stopped": null,
+  "known_first_criterion_matches": 32,
+  "known_first_criterion_count": 32,
+  "repeat_criterion_matches": 8,
+  "repeat_criterion_count": 8,
+  "exploratory_first_judgments": 4,
+  "ready_to_design_full_scoring_repeat": true,
+  "calibration_complete": false,
+  "candidate_pilot_authorized": false,
+  "candidate_calls": 0,
+  "automatic_retries": 0,
+  "cells": [
+    {
+      "phase": "first",
+      "fixture": "unlinked_generic__en",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "statuses": [
+        "partial",
+        "partial"
+      ],
+      "author_expected_statuses": [
+        "partial",
+        "partial"
+      ],
+      "latency_ms": 6372,
+      "response_sha256": "b17550e1627d6d3b293d2942c187f803c936702fac7e6ab7897829e38664a056"
+    },
+    {
+      "phase": "first",
+      "fixture": "unlinked_generic__en",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "statuses": [
+        "partial",
+        "partial"
+      ],
+      "author_expected_statuses": [
+        "partial",
+        "partial"
+      ],
+      "latency_ms": 10653,
+      "response_sha256": "44bad4973d94005dd9d88b6cf8dd20731cc32572218ad69e9e179532a5ec8cbb"
+    },
+    {
+      "phase": "first",
+      "fixture": "observed_partial__zh-Hans",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "statuses": [
+        "met",
+        "missed"
+      ],
+      "author_expected_statuses": [
+        "met",
+        "missed"
+      ],
+      "latency_ms": 7442,
+      "response_sha256": "a37adff935d61360dc7319d855c5b4dad1b21efcf4325ebaca7bdf3e6ce57174"
+    },
+    {
+      "phase": "first",
+      "fixture": "observed_partial__zh-Hans",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "statuses": [
+        "met",
+        "missed"
+      ],
+      "author_expected_statuses": [
+        "met",
+        "missed"
+      ],
+      "latency_ms": 12843,
+      "response_sha256": "2d82a22b0e6adfa76a333044f74bac3396cada091c1afe4992d07f220d890788"
+    },
+    {
+      "phase": "first",
+      "fixture": "complete__en",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "statuses": [
+        "met",
+        "met"
+      ],
+      "author_expected_statuses": [
+        "met",
+        "met"
+      ],
+      "latency_ms": 8420,
+      "response_sha256": "122df9b118e4e47af57409eae62135d8e0a4eef35b4713c2d3d10a4a4fadcb84"
+    },
+    {
+      "phase": "first",
+      "fixture": "complete__en",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "statuses": [
+        "met",
+        "met"
+      ],
+      "author_expected_statuses": [
+        "met",
+        "met"
+      ],
+      "latency_ms": 13399,
+      "response_sha256": "d4147df06ce594e9401afd1eff808aa26a5cc79e6071bc02dbd3ac5590291ca8"
+    },
+    {
+      "phase": "first",
+      "fixture": "contradictory__zh-Hans",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "statuses": [
+        "missed",
+        "missed"
+      ],
+      "author_expected_statuses": [
+        "missed",
+        "missed"
+      ],
+      "latency_ms": 7364,
+      "response_sha256": "6795c1a6f144c782c42aff8d33160f786b6b20ad50ea2859540389c963f825dc"
+    },
+    {
+      "phase": "first",
+      "fixture": "contradictory__zh-Hans",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "statuses": [
+        "missed",
+        "missed"
+      ],
+      "author_expected_statuses": [
+        "missed",
+        "missed"
+      ],
+      "latency_ms": 7093,
+      "response_sha256": "eb15abdfe1c773437a1327de89a08f275c09eff92050985961b50f9999b84385"
+    },
+    {
+      "phase": "first",
+      "fixture": "observed_partial__en",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "statuses": [
+        "met",
+        "missed"
+      ],
+      "author_expected_statuses": [
+        "met",
+        "missed"
+      ],
+      "latency_ms": 7218,
+      "response_sha256": "df98270df72d7e67e7dd1183d779fbbb450194fcfcbdea624e5cc2fd0b881073"
+    },
+    {
+      "phase": "first",
+      "fixture": "observed_partial__en",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "statuses": [
+        "met",
+        "missed"
+      ],
+      "author_expected_statuses": [
+        "met",
+        "missed"
+      ],
+      "latency_ms": 26263,
+      "response_sha256": "fb2631ea6e237fbad3db79d554f70fc8a30dbdd8cf1153cf313e0635c29d1cab"
+    },
+    {
+      "phase": "first",
+      "fixture": "unlinked_generic__zh-Hans",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "statuses": [
+        "partial",
+        "partial"
+      ],
+      "author_expected_statuses": [
+        "partial",
+        "partial"
+      ],
+      "latency_ms": 6722,
+      "response_sha256": "2b93b72b58a8d6f82f0b35c0426215ce98aee5a78d7a5b24da11e1f17cd61877"
+    },
+    {
+      "phase": "first",
+      "fixture": "unlinked_generic__zh-Hans",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "statuses": [
+        "partial",
+        "partial"
+      ],
+      "author_expected_statuses": [
+        "partial",
+        "partial"
+      ],
+      "latency_ms": 19137,
+      "response_sha256": "8a16a648a9d011b9a9207c81dc64af82322222a33958547fa2b50fc26ef3db30"
+    },
+    {
+      "phase": "first",
+      "fixture": "ambiguous_reference__en",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "statuses": [
+        "partial",
+        "missed"
+      ],
+      "author_expected_statuses": null,
+      "latency_ms": 6701,
+      "response_sha256": "dc07df82a8d5700a01c7f1785b70e512e1ed650c45807a3b42366eb5effb82d8"
+    },
+    {
+      "phase": "first",
+      "fixture": "ambiguous_reference__en",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "statuses": [
+        "partial",
+        "missed"
+      ],
+      "author_expected_statuses": null,
+      "latency_ms": 28677,
+      "response_sha256": "b3939c7a213da39b894eb5a9f1a1731402e6551b0dd3e4b2c86f8d6b4cc7fd06"
+    },
+    {
+      "phase": "first",
+      "fixture": "complete__zh-Hans",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "statuses": [
+        "met",
+        "met"
+      ],
+      "author_expected_statuses": [
+        "met",
+        "met"
+      ],
+      "latency_ms": 8696,
+      "response_sha256": "0dfb1dc41cf910ca62727c3c7c1963f7f6c2d75d4b4a3309f4f74c3feeca8bdc"
+    },
+    {
+      "phase": "first",
+      "fixture": "complete__zh-Hans",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "statuses": [
+        "met",
+        "met"
+      ],
+      "author_expected_statuses": [
+        "met",
+        "met"
+      ],
+      "latency_ms": 20725,
+      "response_sha256": "d668400fc304f63ab90b06ba3ff1f94781b5c32cd6bbafeb8da1f3be9ccf822f"
+    },
+    {
+      "phase": "first",
+      "fixture": "ambiguous_reference__zh-Hans",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "statuses": [
+        "partial",
+        "missed"
+      ],
+      "author_expected_statuses": null,
+      "latency_ms": 8694,
+      "response_sha256": "f50542e6e46e627aaa7216588cb32a8e01f45008f7b28bb37aaf59d765c370d2"
+    },
+    {
+      "phase": "first",
+      "fixture": "ambiguous_reference__zh-Hans",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "statuses": [
+        "partial",
+        "missed"
+      ],
+      "author_expected_statuses": null,
+      "latency_ms": 27259,
+      "response_sha256": "379389916d341f91b60ab4c156dbf62be7e2bd08cc25b22502578691ac426028"
+    },
+    {
+      "phase": "first",
+      "fixture": "contradictory__en",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "statuses": [
+        "missed",
+        "missed"
+      ],
+      "author_expected_statuses": [
+        "missed",
+        "missed"
+      ],
+      "latency_ms": 6388,
+      "response_sha256": "7681a322429cdc3cfcbfa7ca9a7ea61959ceecd6f107e6ad03e1099d30b51f6b"
+    },
+    {
+      "phase": "first",
+      "fixture": "contradictory__en",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "statuses": [
+        "missed",
+        "missed"
+      ],
+      "author_expected_statuses": [
+        "missed",
+        "missed"
+      ],
+      "latency_ms": 6844,
+      "response_sha256": "1e4c28d34122e786039799aba199e00188dc4c78c17835c1a495e2f403201996"
+    },
+    {
+      "phase": "repeat",
+      "fixture": "observed_partial__zh-Hans",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "statuses": [
+        "met",
+        "missed"
+      ],
+      "author_expected_statuses": [
+        "met",
+        "missed"
+      ],
+      "latency_ms": 7779,
+      "response_sha256": "958f31634b7a261d67532041c3c1d92257ceac99a0f1eeecf30105e76084fa68"
+    },
+    {
+      "phase": "repeat",
+      "fixture": "observed_partial__zh-Hans",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "statuses": [
+        "met",
+        "missed"
+      ],
+      "author_expected_statuses": [
+        "met",
+        "missed"
+      ],
+      "latency_ms": 19219,
+      "response_sha256": "174cb6a1678bec12c6c11f998f36b98d255b79b733961cb671052ccc7a314183"
+    },
+    {
+      "phase": "repeat",
+      "fixture": "observed_partial__en",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "statuses": [
+        "met",
+        "missed"
+      ],
+      "author_expected_statuses": [
+        "met",
+        "missed"
+      ],
+      "latency_ms": 7954,
+      "response_sha256": "e5732668b3470529f47b84bf372fd0ee3cad0ba2bf3ddd1a0e25e82abe1ae1a7"
+    },
+    {
+      "phase": "repeat",
+      "fixture": "observed_partial__en",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "statuses": [
+        "met",
+        "missed"
+      ],
+      "author_expected_statuses": [
+        "met",
+        "missed"
+      ],
+      "latency_ms": 18032,
+      "response_sha256": "eadb31c30380a001fb5c256e8578bc044f025032a23ee34a30cc40bc45bc6564"
+    }
+  ],
+  "limits": "Author-hypothesis agreement and repeatability only; no numerical scoring, clinical adjudication, default adoption, pooling or further-call permission.",
+  "as_of": "2026-10-23",
+  "protocol_commit": "7158f17",
+  "approval": "Direct owner approval of the 24-call synthetic-packet export and possible API billing before execution",
+  "frozen_manifest_sha256": "23161d0b53e3cb3604ee4d2e294bda4284f7c765e881702e3a91d7676b5de4f6"
+}
