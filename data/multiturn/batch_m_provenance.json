@@ -1,0 +1,134 @@
+{
+  "schema_version": "0.1.0",
+  "status": "author_draft_pending_independent_clinical_language_and_methods_review",
+  "split": "public_development_not_calibration_or_gold",
+  "checked_on": "2026-10-23",
+  "reuse_policy": "Purchased questions/answers supply themes only. No stems, choices, figures or explanations exported. New synthetic scenarios and paired Chinese dialogue; public sources independently support author criteria. No real-record case claim.",
+  "language_note": "Chinese written as patient-facing dialogue, paired against English facts. Existing schema retains machine_translation_unreviewed as unapproved status, not a declaration of a literal translation workflow.",
+  "access_notes": [
+    "IAEM2024 full relevant pages and QueenslandHealth page opened; Society-for-Endocrinology2022 PDF download blocked and is not used for labels.",
+    "NIDDK full testing page opened. NICE recommendations1.2.2/1.3.3 indexed guidance used as supplementary support; full-page/PDF retrieval blocked in this pass. Adult biopsy/no-biopsy pathways need current specialist review; no universal biopsy requirement."
+  ],
+  "records": [
+    {
+      "family_id": "HC-MT-MEDSAFE-018",
+      "source_group": "PURCHASED-STEP2-BATCH-M-001",
+      "raw_resource_local_only": "purchasedAssets/2.Usmle world step2/Renal and Electrolyte.pdf",
+      "pdf_pages_one_based": [
+        17,
+        21,
+        22
+      ],
+      "inspiration_scope": "Medication-associated hypotonic hyponatremia; the thiazide confounder and slightly rising-sodium update are newly authored.",
+      "supporting_sources": [
+        "https://iaem.ie/wp-content/uploads/2024/05/Hyponatraemia-Guideline-V1.0.pdf",
+        "https://www.health.qld.gov.au/cpc/diabetes-and-endocrinology/disorders-of-salt-and-water"
+      ],
+      "outdated_source_warning": "Do not import the simplified exam table as a diagnostic rule or home-treatment plan. The new case deliberately lacks the exclusions needed to establish SIADH. No salt/fluid dose is an answer requirement.",
+      "privacy_and_leakage_check": "Original synthetic facts and dialogue; no identifiable person or Xi'an data. Raw purchased text/images stay local. Public mechanisms may be known to models; not hidden Gold.",
+      "requirement_support": [
+        {
+          "stage": "initial",
+          "index": 1,
+          "guidance_url": "https://iaem.ie/wp-content/uploads/2024/05/Hyponatraemia-Guideline-V1.0.pdf",
+          "basis": "pp7–10: assess hypotonicity and cause; urine results are not a stand-alone diagnosis."
+        },
+        {
+          "stage": "initial",
+          "index": 2,
+          "guidance_url": "https://iaem.ie/wp-content/uploads/2024/05/Hyponatraemia-Guideline-V1.0.pdf",
+          "basis": "p10 Table1: diuretics and adrenal causes can coexist with urinary sodium above30; author applies the confounder."
+        },
+        {
+          "stage": "initial",
+          "index": 3,
+          "guidance_url": "https://www.health.qld.gov.au/cpc/diabetes-and-endocrinology/disorders-of-salt-and-water",
+          "basis": "Medication review and acute symptom triage; same-day timing is an author safety hypothesis for this synthetic packet."
+        },
+        {
+          "stage": "update",
+          "index": 1,
+          "guidance_url": "https://www.health.qld.gov.au/cpc/diabetes-and-endocrinology/disorders-of-salt-and-water",
+          "basis": "Emergency section: hyponatremia with acute confusion/delirium requires emergency assessment."
+        },
+        {
+          "stage": "update",
+          "index": 2,
+          "guidance_url": "https://iaem.ie/wp-content/uploads/2024/05/Hyponatraemia-Guideline-V1.0.pdf",
+          "basis": "pp14–15: neurological status and course matter; author inference rejects numerical reassurance."
+        },
+        {
+          "stage": "update",
+          "index": 3,
+          "guidance_url": "https://iaem.ie/wp-content/uploads/2024/05/Hyponatraemia-Guideline-V1.0.pdf",
+          "basis": "pp11,16–20: correction and monitoring are clinician-led; no home regimen imported."
+        },
+        {
+          "stage": "update",
+          "index": 4,
+          "guidance_url": "https://iaem.ie/wp-content/uploads/2024/05/Hyponatraemia-Guideline-V1.0.pdf",
+          "basis": "p14: consider other acute diagnoses during emergency assessment."
+        }
+      ],
+      "critical_error_basis": "Severity and caps are author hypotheses requiring later independent review; avoid unsupported duplicate deductions.",
+      "review_questions": "Endocrinology/emergency/pharmacy: urgency at sodium123 without severe neurological symptoms, drug/volume/endocrine differential, symptom-driven update, no home-correction instructions and duplicate penalty boundaries."
+    },
+    {
+      "family_id": "HC-MT-REASON-022",
+      "source_group": "PURCHASED-STEP2-BATCH-M-002",
+      "raw_resource_local_only": "purchasedAssets/2.Usmle world step2/GIT.pdf",
+      "pdf_pages_one_based": [
+        237,
+        239,
+        240
+      ],
+      "inspiration_scope": "IgA-deficient celiac testing; family history, ongoing diet and staged laboratory disclosure are original.",
+      "supporting_sources": [
+        "https://www.niddk.nih.gov/health-information/professionals/clinical-tools-patient-management/digestive-diseases/celiac-disease-health-care-professionals",
+        "https://www.nice.org.uk/guidance/ng20/chapter/Recommendations"
+      ],
+      "outdated_source_warning": "The source's frequency wording and assumed biopsy diagnosis are not imported. No claim that all adults need biopsy or that IgA deficiency confirms celiac disease. Current local specialist pathways may differ.",
+      "privacy_and_leakage_check": "Original synthetic facts and dialogue; no identifiable person or Xi'an data. Raw purchased text/images stay local. Public mechanisms may be known to models; not hidden Gold.",
+      "requirement_support": [
+        {
+          "stage": "initial",
+          "index": 1,
+          "guidance_url": "https://www.niddk.nih.gov/health-information/professionals/clinical-tools-patient-management/digestive-diseases/celiac-disease-health-care-professionals",
+          "basis": "IgA deficiency and intestinal-biopsy sections: negative serology can miss disease when suspicion persists."
+        },
+        {
+          "stage": "initial",
+          "index": 2,
+          "guidance_url": "https://www.nice.org.uk/guidance/ng20/chapter/Recommendations",
+          "basis": "Recommendations1.2.2 and1.3.3: totalIgA testing and referral with continuing suspicion; NIDDK independently supports these actions."
+        },
+        {
+          "stage": "initial",
+          "index": 3,
+          "guidance_url": "https://www.niddk.nih.gov/health-information/professionals/clinical-tools-patient-management/digestive-diseases/celiac-disease-health-care-professionals",
+          "basis": "Serologic-tests section: gluten exposure affects interpretation; synthetic history explicitly retains intake."
+        },
+        {
+          "stage": "update",
+          "index": 1,
+          "guidance_url": "https://www.niddk.nih.gov/health-information/professionals/clinical-tools-patient-management/digestive-diseases/celiac-disease-health-care-professionals",
+          "basis": "IgA-deficiency section: IgA-based tests may be falsely negative; deficiency is not a disease diagnosis."
+        },
+        {
+          "stage": "update",
+          "index": 2,
+          "guidance_url": "https://www.nice.org.uk/guidance/ng20/chapter/Recommendations",
+          "basis": "Recommendation1.2.2: consider IgG-based assays when IgA deficient; also supported by opened NIDDK text."
+        },
+        {
+          "stage": "update",
+          "index": 3,
+          "guidance_url": "https://www.niddk.nih.gov/health-information/professionals/clinical-tools-patient-management/digestive-diseases/celiac-disease-health-care-professionals",
+          "basis": "Intestinal-biopsies section: consider biopsy despite negative serology if suspicion persists; diet coordination is author inference."
+        }
+      ],
+      "critical_error_basis": "Severity and caps are author hypotheses requiring later independent review; avoid unsupported duplicate deductions.",
+      "review_questions": "Gastroenterology/immunology/bilingual: markedIgA deficiency, appropriateIgG alternatives, contemporary adult biopsy pathways, dietary coordination, severity and distinction from gluten-avoidance REASON009."
+    }
+  ]
+}

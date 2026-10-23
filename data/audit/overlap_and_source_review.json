@@ -3,6 +3,8 @@
   "status": "author_triage_pending_independent_review",
   "scope": "Selected mechanism-overlap and source-to-label risk queue across all public development families; not a claim that unlisted pairs are independent.",
   "overlaps": [
+    {"family_ids": ["HC-MT-REASON-022", "HC-MT-REASON-009"], "relationship": "shared_test_distinct_mechanism", "reason": "Both concern negative celiac serology; new case tests IgA deficiency despite ongoing gluten, old case tests gluten avoidance. Keep related mechanisms together across future splits.", "split_together": true},
+    {"family_ids": ["HC-MT-MEDSAFE-018", "HC-PRO-PORPHYRIA-001"], "relationship": "same_hazard_distinct_decision", "reason": "Shared hyponatremia hazard; new patient case tests urine/medication confounding and symptom-led re-triage, not the postoperative porphyria differential.", "split_together": true},
     {"family_ids": ["HC-MT-REASON-015", "HC-MT-REASON-021"], "relationship": "possible_construct_duplicate", "reason": "Both challenge treating a positive microbiology result without compatible symptoms. Batch L adds discordant assay interpretation, a laxative confounder and symptom resolution, but independent difficulty has not been demonstrated.", "split_together": true},
     {"family_ids": ["HC-GC-REASON-003", "HC-MT-REASON-006"], "relationship": "same_core_mechanism", "reason": "Laboratory trend interpretation depends on units and provenance in both tracks.", "split_together": true},
     {"family_ids": ["HC-GC-MEDSAFE-004", "HC-MT-MEDSAFE-004"], "relationship": "same_core_mechanism", "reason": "Both detect duplicate acetaminophen ingredients; the multi-turn item adds later label disclosure.", "split_together": true},
@@ -21,6 +23,8 @@
     {"family_ids": ["HC-MT-MEDSAFE-015", "HC-PRO-MEDREC-005"], "relationship": "same_hazard_distinct_decision", "reason": "Both involve glucocorticoid continuation uncertainty and avoiding an invented taper, but the new patient-facing case tests escalation after vomiting and near-syncope following recent cessation while the professional handoff tests record reconciliation.", "split_together": true}
   ],
   "source_label_review": [
+    {"family_id": "HC-MT-MEDSAFE-018", "priority": "high", "issue": "Review drug/volume/endocrine confounding, same-day initial urgency and emergency confusion despite sodium rise, home-correction boundaries and severity."},
+    {"family_id": "HC-MT-REASON-022", "priority": "high", "issue": "Review marked IgA deficiency, appropriate IgG tests, contemporary adult biopsy alternatives, ongoing gluten history and overlap with REASON-009."},
     {"family_id": "HC-MT-REASON-019", "priority": "high", "issue": "Review iron-response versus etiology, bidirectional evaluation in an asymptomatic adult man, cancellation severity and patient-facing shared decisions; do not infer confirmed cancer."},
     {"family_id": "HC-MT-REASON-020", "priority": "high", "issue": "Review crystals/negative Gram/cell-count uncertainty, worsening-joint urgency, steroid-substitution inference and error severity; exclude outdated exam reassurance."},
     {"family_id": "HC-MT-REASON-021", "priority": "high", "issue": "Review discordant C. difficile assays, resolved diarrhea and laxative confounding without a universal exclusion/no-treatment rule; check test-of-cure and overlap with REASON-015."},

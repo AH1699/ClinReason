@@ -12,7 +12,7 @@
   "family_labels_path": "data/alpha/family_labels.json",
   "family_splits_path": "data/alpha/family_splits.json",
   "judge_contrasts_path": "data/alpha/judge_contrasts.json",
-  "multiturn_cases_paths": ["data/multiturn/pilot_cases.json", "data/multiturn/batch_c_cases.json", "data/multiturn/batch_d_cases.json", "data/multiturn/batch_e_cases.json", "data/multiturn/batch_f_cases.json", "data/multiturn/batch_g_cases.json", "data/multiturn/batch_h_cases.json", "data/multiturn/batch_i_cases.json", "data/multiturn/batch_j_cases.json", "data/multiturn/batch_k_cases.json", "data/multiturn/batch_l_cases.json"],
+  "multiturn_cases_paths": ["data/multiturn/pilot_cases.json", "data/multiturn/batch_c_cases.json", "data/multiturn/batch_d_cases.json", "data/multiturn/batch_e_cases.json", "data/multiturn/batch_f_cases.json", "data/multiturn/batch_g_cases.json", "data/multiturn/batch_h_cases.json", "data/multiturn/batch_i_cases.json", "data/multiturn/batch_j_cases.json", "data/multiturn/batch_k_cases.json", "data/multiturn/batch_l_cases.json", "data/multiturn/batch_m_cases.json"],
   "multiturn_rubric_path": "config/multiturn_rubric.json",
   "multiturn_judge_prompt_path": "config/multiturn_judge_prompt.txt",
   "multiturn_contrasts_path": "data/multiturn/contrast_transcripts.json",

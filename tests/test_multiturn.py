@@ -64,7 +64,7 @@ class MultiturnTests(unittest.TestCase):
         with redirect_stdout(output):
             status = main(["validate-multiturn"])
         self.assertEqual(status, 0)
-        self.assertEqual(json.loads(output.getvalue())["family_count"], 48)
+        self.assertEqual(json.loads(output.getvalue())["family_count"], 50)
 
     def test_batch_f_adds_four_distinct_bilingual_draft_families(self):
         batches = [self.dataset] + [
@@ -91,7 +91,7 @@ class MultiturnTests(unittest.TestCase):
     def test_batch_g_adds_deescalation_controls_with_exact_provenance(self):
         config = load_json(self.root / "config/benchmark.json")
         batches = [load_json(self.root / path) for path in config["multiturn_cases_paths"]
-                   if not path.endswith(("batch_h_cases.json", "batch_i_cases.json", "batch_j_cases.json", "batch_k_cases.json", "batch_l_cases.json"))]
+                   if not path.endswith(("batch_h_cases.json", "batch_i_cases.json", "batch_j_cases.json", "batch_k_cases.json", "batch_l_cases.json", "batch_m_cases.json"))]
         status = validate_multiturn_dataset(merge_multiturn_datasets(batches))
         self.assertEqual((status["family_count"], status["variant_count"]), (38, 76))
         self.assertEqual(status["category_counts"], {
