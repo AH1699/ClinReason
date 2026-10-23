@@ -1,0 +1,15 @@
+{
+  "version": "s29-v1-bounded-transport-characterization",
+  "packet_key": "HC-MT-TRIAGE-020__en__partial",
+  "judges": [
+    {"provider": "grok", "model": "grok-4.7"},
+    {"provider": "gemini", "model": "gemini-3.8-flash"}
+  ],
+  "timeout_seconds": 240,
+  "maximum_calls": 2,
+  "automatic_retries": 0,
+  "candidate_calls": 0,
+  "stop_rule": "Stop on the first transport, model-identity, or judgment-validation failure; never resume or repair this run.",
+  "purpose": "Fresh transport characterization of the S28 failed English sore-throat partial packet. The 240-second socket timeout is a prospective diagnostic choice, not a proven fix or a wall-clock deadline. Provider sampling defaults are unchanged.",
+  "gate": "Two saved, valid judgments with exactly the requested model IDs permit designing a fresh full scoring panel; they do not establish transport reliability, repeatability, calibration, rankings or clinical correctness. No score-based selection."
+}
