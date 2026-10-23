@@ -1,5 +1,7 @@
 # S30 result: focused boundaries passed; full-score testing is next
 
+Follow-up: the [S31 full-score protocol](S31_FULL_SCORE_PROTOCOL_2026-10-23_EN.md) is now implemented and frozen, with separate live-call approval pending. The S30 result and dated plan below are preserved; no S30 input or result was changed.
+
 ## What completed
 
 After specific owner approval, the frozen S30 experiment completed **24/24 valid judge calls**: 20 first assessments and four exact-packet repeats. Gemini `gemini-3.8-flash` and Grok `grok-4.7` each made 12 calls. There were no retries, candidate calls, transport stops or model-name mismatches. No frozen input changed during execution.
