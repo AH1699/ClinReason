@@ -17,3 +17,4 @@ work/preliminary_reviews/
 work/candidate_*.jsonl
 work/candidate_*.manifest.json
 *.log
+purchasedAssets/
