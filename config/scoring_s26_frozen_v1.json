@@ -1,0 +1,35 @@
+{
+  "version": "s26-frozen-v1",
+  "files": {
+    "config/scoring_s26_v1.json": "310cfba6e9dadca21afed3e6d92aa554f784a03bc4ebcdd3053108307034a2dc",
+    "config/scoring_s26_judge.txt": "f45af5039a39c1df5b76951c40cc6bc8ec7634ab9abee679bae72e1c46c22c3a",
+    "benchmark/scoring_s26.py": "8b6d9b055c2ffb1b460b26b7d52c50d6734efcbb2d23c953ee7687ef432306b0",
+    "data/multiturn/batch_g_cases.json": "74d7a21f74d26a755286b858eb65cf29df3535397acd3ac972caf3795790f761",
+    "data/multiturn/batch_g_contrasts_v1.json": "06e04c612c0849d1b99d4144ceb135ed9409621d380b622aa1d98a5116183c01",
+    "config/multiturn_criterion_anchors_batch_g_v1.json": "c3b44fd7c847810c5bbf3ddf0863cf1476f28a82347ed1ec15a7ffbb1576fb91",
+    "benchmark/criterion_anchors.py": "db467ce4abba1740c144a80f7f52de603660cf1c93bd3ff059ce639937be200f",
+    "benchmark/multiturn.py": "7dbc4575f144734040795f0a744636e80b511d69f0610193b55ae46b5301bcd7",
+    "benchmark/multiturn_diagnostics.py": "84d68d28c6bc9d8b0bf297b3bfc00289d4559ad80f71a2cae15e02cf93f00fb1",
+    "benchmark/multiturn_judging.py": "ca572a33063375a5647adc58fddb0949c87b6ea0da61d8aa8ddfa696ace129e5",
+    "benchmark/providers/http_json.py": "54d06af250b29504bf74351337707077d892211bbe3a91fbfb8b7a26210c7da4",
+    "benchmark/providers/gemini.py": "aab30ea5a28e2594690285a33b4d4ac12f87e550501087f99a6e3ab7b1e96475",
+    "benchmark/providers/grok.py": "d2ea5d0a7b87be0086ec48825a5fe59af19625bc2bc13fb1dcff213653c9611e",
+    "benchmark/local_settings.py": "16240cec5ff8d90ad134293cdc04ebba28ac8224955a24c7efe80ebe2885b3b2",
+    "benchmark/provenance.py": "7855afa1e7e4890b664b7349c472584c319c31c2ad95dda76689b0d483a198bb",
+    "benchmark/config.py": "fdadd7ce3f5fbe09a79f0f71e12981782a1f7d9cd487593fe38b18c636604af3"
+  },
+  "packets": {
+    "HC-MT-TRIAGE-018__en__partial": "0a6fd7ef3017904328b75b6d93e370ecf87b70b38ecf14a33b353950e45e5f7d",
+    "HC-MT-TRIAGE-018__en__safe": "121625c2a98777f01c5a18e245710f377c2fa2202ff28954b9fa05e2b9eed5f8",
+    "HC-MT-TRIAGE-018__en__unsafe": "d0c2faf1e77a0d82f9fb2d42307e37cf11c9ace81455be53ac8e8c98cba4551f",
+    "HC-MT-TRIAGE-018__zh-Hans__partial": "a9f6cc609c96d5e2b856b923f097723ddc3a8d6e1c8a6d20d255ed2bf22e6626",
+    "HC-MT-TRIAGE-018__zh-Hans__safe": "a44c5a47cda1e02d297cceaeb922582557acd2ed5d3fa01db4546bc1892129cd",
+    "HC-MT-TRIAGE-018__zh-Hans__unsafe": "98765f14b26790e7e4819d98dc77ea59112ff5c76cf3e1123298c5d4da942398",
+    "HC-MT-TRIAGE-020__en__partial": "7959985829f8f49f6b6cbe47d1ae287444671d661b8142420e6d09c5985730e7",
+    "HC-MT-TRIAGE-020__en__safe": "74c9f8d7fab429ff4cb79eb57f14c7da7d4e8f09ebb8ebf4d5cf8377fb786b6e",
+    "HC-MT-TRIAGE-020__en__unsafe": "5b6a6e6d00ae88246edace5bdebd3c2cc040bcbbb27e52825fdb5ed03fa10115",
+    "HC-MT-TRIAGE-020__zh-Hans__partial": "4b99091c4ff04f754633cbe8456ce1e62a3a5a046fdc9f1411ce2fccf4bac872",
+    "HC-MT-TRIAGE-020__zh-Hans__safe": "db7a876c5f700eb752e989c8c11ffe54eee92cf65bbe82614defb16ce3c5eb8f",
+    "HC-MT-TRIAGE-020__zh-Hans__unsafe": "cc56a36fca75f054581ed5282edd44b1d6e29aa6c60b5a52f65f8f51920d6eba"
+  }
+}
