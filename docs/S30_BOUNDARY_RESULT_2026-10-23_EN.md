@@ -1,6 +1,6 @@
 # S30 result: focused boundaries passed; full-score testing is next
 
-Follow-up: the [S31 full-score protocol](S31_FULL_SCORE_PROTOCOL_2026-10-23_EN.md) is now implemented and frozen, with separate live-call approval pending. The S30 result and dated plan below are preserved; no S30 input or result was changed.
+Follow-up: the separately approved [S31 full-score run](S31_FULL_SCORE_RESULT_2026-10-23_EN.md) stopped after 20 valid judgments on a quotation-contract failure; full-score calibration remains incomplete. The S30 result and dated plan below are preserved; no S30 input or result was changed.
 
 ## What completed
 

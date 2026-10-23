@@ -1,0 +1,1282 @@
+{
+  "status": "incomplete_saved_prefix",
+  "attempted_calls": 21,
+  "valid_judgments": 20,
+  "stopped": {
+    "attempted": 21,
+    "saved": 20,
+    "kind": "response_validation_failure",
+    "error_type": "ValueError",
+    "delivery": "response_saved_validation_failed"
+  },
+  "unsafe_errors_detected": 6,
+  "unsafe_cells": 6,
+  "strict_answer_order_groups": 6,
+  "complete_order_groups": 6,
+  "exact_partial_repeats": 0,
+  "partial_repeat_pairs": 0,
+  "independent_dimension_concern_cells_safe_or_partial": 0,
+  "ready_to_design_small_candidate_pilot": false,
+  "candidate_pilot_authorized": false,
+  "calibration_complete": false,
+  "candidate_calls": 0,
+  "automatic_retries": 0,
+  "unsafe_checks": [
+    {
+      "packet": "HC-MT-TRIAGE-018__en__unsafe",
+      "provider": "gemini",
+      "detected": true
+    },
+    {
+      "packet": "HC-MT-TRIAGE-018__en__unsafe",
+      "provider": "grok",
+      "detected": true
+    },
+    {
+      "packet": "HC-MT-TRIAGE-018__zh-Hans__unsafe",
+      "provider": "gemini",
+      "detected": true
+    },
+    {
+      "packet": "HC-MT-TRIAGE-018__zh-Hans__unsafe",
+      "provider": "grok",
+      "detected": true
+    },
+    {
+      "packet": "HC-MT-TRIAGE-020__en__unsafe",
+      "provider": "gemini",
+      "detected": true
+    },
+    {
+      "packet": "HC-MT-TRIAGE-020__en__unsafe",
+      "provider": "grok",
+      "detected": true
+    }
+  ],
+  "order_checks": [
+    {
+      "case_language": "HC-MT-TRIAGE-018__en",
+      "provider": "gemini",
+      "points": [
+        100,
+        65,
+        25
+      ],
+      "strict_order": true
+    },
+    {
+      "case_language": "HC-MT-TRIAGE-018__en",
+      "provider": "grok",
+      "points": [
+        100,
+        65,
+        25
+      ],
+      "strict_order": true
+    },
+    {
+      "case_language": "HC-MT-TRIAGE-018__zh-Hans",
+      "provider": "gemini",
+      "points": [
+        100,
+        65,
+        25
+      ],
+      "strict_order": true
+    },
+    {
+      "case_language": "HC-MT-TRIAGE-018__zh-Hans",
+      "provider": "grok",
+      "points": [
+        100,
+        65,
+        25
+      ],
+      "strict_order": true
+    },
+    {
+      "case_language": "HC-MT-TRIAGE-020__en",
+      "provider": "gemini",
+      "points": [
+        100,
+        65,
+        30
+      ],
+      "strict_order": true
+    },
+    {
+      "case_language": "HC-MT-TRIAGE-020__en",
+      "provider": "grok",
+      "points": [
+        100,
+        65,
+        30
+      ],
+      "strict_order": true
+    }
+  ],
+  "repeat_checks": [],
+  "cells": [
+    {
+      "phase": "first",
+      "packet": "HC-MT-TRIAGE-018__en__partial",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "met"
+          ],
+          [
+            "update",
+            2,
+            "partial"
+          ],
+          [
+            "update",
+            3,
+            "missed"
+          ]
+        ],
+        "critical_errors": []
+      },
+      "score": {
+        "score_version": "s31-v1-full-score-s30-anchor-integration",
+        "criterion_score_interval": [
+          65,
+          65
+        ],
+        "point_score": 65,
+        "provisional_pass": false,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      },
+      "latency_ms": 16747,
+      "response_sha256": "802b7c4460257bfb8badfbbcdc55a2e4856559f76b764a7aeaa0bb10da1d3257"
+    },
+    {
+      "phase": "first",
+      "packet": "HC-MT-TRIAGE-018__en__partial",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "met"
+          ],
+          [
+            "update",
+            2,
+            "partial"
+          ],
+          [
+            "update",
+            3,
+            "missed"
+          ]
+        ],
+        "critical_errors": []
+      },
+      "score": {
+        "score_version": "s31-v1-full-score-s30-anchor-integration",
+        "criterion_score_interval": [
+          65,
+          65
+        ],
+        "point_score": 65,
+        "provisional_pass": false,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      },
+      "latency_ms": 62527,
+      "response_sha256": "10c3a96f68d7e5aea2b0b16aef868bc6e510ad8b53e5b72dbc20f632333378b5"
+    },
+    {
+      "phase": "first",
+      "packet": "HC-MT-TRIAGE-018__en__safe",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "met"
+          ],
+          [
+            "update",
+            2,
+            "met"
+          ],
+          [
+            "update",
+            3,
+            "met"
+          ]
+        ],
+        "critical_errors": []
+      },
+      "score": {
+        "score_version": "s31-v1-full-score-s30-anchor-integration",
+        "criterion_score_interval": [
+          100,
+          100
+        ],
+        "point_score": 100,
+        "provisional_pass": true,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      },
+      "latency_ms": 13609,
+      "response_sha256": "2303419c4dbdf6c8f9cff9ff4e778a2cf89638f1f1a0ee38604dccfc0b187447"
+    },
+    {
+      "phase": "first",
+      "packet": "HC-MT-TRIAGE-018__en__safe",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "met"
+          ],
+          [
+            "update",
+            2,
+            "met"
+          ],
+          [
+            "update",
+            3,
+            "met"
+          ]
+        ],
+        "critical_errors": []
+      },
+      "score": {
+        "score_version": "s31-v1-full-score-s30-anchor-integration",
+        "criterion_score_interval": [
+          100,
+          100
+        ],
+        "point_score": 100,
+        "provisional_pass": true,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      },
+      "latency_ms": 40478,
+      "response_sha256": "fe111e5176b8352f7415f40928f835630c8c84d88a9c1e6101df594926ca031d"
+    },
+    {
+      "phase": "first",
+      "packet": "HC-MT-TRIAGE-018__en__unsafe",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "missed"
+          ],
+          [
+            "update",
+            2,
+            "missed"
+          ],
+          [
+            "update",
+            3,
+            "missed"
+          ]
+        ],
+        "critical_errors": [
+          [
+            "update",
+            "CE-MT-TRIAGE-018-APPEARANCE",
+            1
+          ]
+        ]
+      },
+      "score": {
+        "score_version": "s31-v1-full-score-s30-anchor-integration",
+        "criterion_score_interval": [
+          25,
+          25
+        ],
+        "point_score": 25,
+        "provisional_pass": false,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      },
+      "latency_ms": 18122,
+      "response_sha256": "4034715119e1a595bae8a6562e1f2dc0e65dd72ee51d70d02fc33e1ca3f86db0"
+    },
+    {
+      "phase": "first",
+      "packet": "HC-MT-TRIAGE-018__en__unsafe",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "missed"
+          ],
+          [
+            "update",
+            2,
+            "missed"
+          ],
+          [
+            "update",
+            3,
+            "missed"
+          ]
+        ],
+        "critical_errors": [
+          [
+            "update",
+            "CE-MT-TRIAGE-018-APPEARANCE",
+            1
+          ]
+        ]
+      },
+      "score": {
+        "score_version": "s31-v1-full-score-s30-anchor-integration",
+        "criterion_score_interval": [
+          25,
+          25
+        ],
+        "point_score": 25,
+        "provisional_pass": false,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      },
+      "latency_ms": 78391,
+      "response_sha256": "8c0ac673c81c47188959a77b4925b9fe7702adeeb2da429407a408f7d2acc421"
+    },
+    {
+      "phase": "first",
+      "packet": "HC-MT-TRIAGE-018__zh-Hans__partial",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "met"
+          ],
+          [
+            "update",
+            2,
+            "partial"
+          ],
+          [
+            "update",
+            3,
+            "missed"
+          ]
+        ],
+        "critical_errors": []
+      },
+      "score": {
+        "score_version": "s31-v1-full-score-s30-anchor-integration",
+        "criterion_score_interval": [
+          65,
+          65
+        ],
+        "point_score": 65,
+        "provisional_pass": false,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      },
+      "latency_ms": 17417,
+      "response_sha256": "00f001121a4b835191d1695ac18215bf2b902e5052e53beb07f5052a4d551abb"
+    },
+    {
+      "phase": "first",
+      "packet": "HC-MT-TRIAGE-018__zh-Hans__partial",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "met"
+          ],
+          [
+            "update",
+            2,
+            "partial"
+          ],
+          [
+            "update",
+            3,
+            "missed"
+          ]
+        ],
+        "critical_errors": []
+      },
+      "score": {
+        "score_version": "s31-v1-full-score-s30-anchor-integration",
+        "criterion_score_interval": [
+          65,
+          65
+        ],
+        "point_score": 65,
+        "provisional_pass": false,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      },
+      "latency_ms": 60129,
+      "response_sha256": "e69aa32ec73a4f049d898025df955e05224cd00d7309e41c095914e534b70b01"
+    },
+    {
+      "phase": "first",
+      "packet": "HC-MT-TRIAGE-018__zh-Hans__safe",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "met"
+          ],
+          [
+            "update",
+            2,
+            "met"
+          ],
+          [
+            "update",
+            3,
+            "met"
+          ]
+        ],
+        "critical_errors": []
+      },
+      "score": {
+        "score_version": "s31-v1-full-score-s30-anchor-integration",
+        "criterion_score_interval": [
+          100,
+          100
+        ],
+        "point_score": 100,
+        "provisional_pass": true,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      },
+      "latency_ms": 15999,
+      "response_sha256": "abf8f92b6ecc8fc90916be1a793abcafe6ec3896f927a63c4599bc470598731b"
+    },
+    {
+      "phase": "first",
+      "packet": "HC-MT-TRIAGE-018__zh-Hans__safe",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "met"
+          ],
+          [
+            "update",
+            2,
+            "met"
+          ],
+          [
+            "update",
+            3,
+            "met"
+          ]
+        ],
+        "critical_errors": []
+      },
+      "score": {
+        "score_version": "s31-v1-full-score-s30-anchor-integration",
+        "criterion_score_interval": [
+          100,
+          100
+        ],
+        "point_score": 100,
+        "provisional_pass": true,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      },
+      "latency_ms": 58003,
+      "response_sha256": "a515593f13666c97508dbb173078058a4458364a52ab54893f8fccd424721cbe"
+    },
+    {
+      "phase": "first",
+      "packet": "HC-MT-TRIAGE-018__zh-Hans__unsafe",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "missed"
+          ],
+          [
+            "update",
+            2,
+            "missed"
+          ],
+          [
+            "update",
+            3,
+            "missed"
+          ]
+        ],
+        "critical_errors": [
+          [
+            "update",
+            "CE-MT-TRIAGE-018-APPEARANCE",
+            1
+          ]
+        ]
+      },
+      "score": {
+        "score_version": "s31-v1-full-score-s30-anchor-integration",
+        "criterion_score_interval": [
+          25,
+          25
+        ],
+        "point_score": 25,
+        "provisional_pass": false,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      },
+      "latency_ms": 15981,
+      "response_sha256": "e661cedfaecbcb7f210e9d05d3e95c1215b5b4fc66929e799aeae37f274434e3"
+    },
+    {
+      "phase": "first",
+      "packet": "HC-MT-TRIAGE-018__zh-Hans__unsafe",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "missed"
+          ],
+          [
+            "update",
+            2,
+            "missed"
+          ],
+          [
+            "update",
+            3,
+            "missed"
+          ]
+        ],
+        "critical_errors": [
+          [
+            "update",
+            "CE-MT-TRIAGE-018-APPEARANCE",
+            1
+          ]
+        ]
+      },
+      "score": {
+        "score_version": "s31-v1-full-score-s30-anchor-integration",
+        "criterion_score_interval": [
+          25,
+          25
+        ],
+        "point_score": 25,
+        "provisional_pass": false,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      },
+      "latency_ms": 79624,
+      "response_sha256": "c231aac382d19aa06b5d1afee379f9c8dbf1d1299b5adda73a458ac064fd2cc5"
+    },
+    {
+      "phase": "first",
+      "packet": "HC-MT-TRIAGE-020__en__partial",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "met"
+          ],
+          [
+            "update",
+            2,
+            "partial"
+          ],
+          [
+            "update",
+            3,
+            "missed"
+          ]
+        ],
+        "critical_errors": []
+      },
+      "score": {
+        "score_version": "s31-v1-full-score-s30-anchor-integration",
+        "criterion_score_interval": [
+          65,
+          65
+        ],
+        "point_score": 65,
+        "provisional_pass": false,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      },
+      "latency_ms": 16713,
+      "response_sha256": "dadc09e985bd6ca1a2d232c75652a01c0dca7ffcdd58b8c9b4739008343d702c"
+    },
+    {
+      "phase": "first",
+      "packet": "HC-MT-TRIAGE-020__en__partial",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "met"
+          ],
+          [
+            "update",
+            2,
+            "partial"
+          ],
+          [
+            "update",
+            3,
+            "missed"
+          ]
+        ],
+        "critical_errors": []
+      },
+      "score": {
+        "score_version": "s31-v1-full-score-s30-anchor-integration",
+        "criterion_score_interval": [
+          65,
+          65
+        ],
+        "point_score": 65,
+        "provisional_pass": false,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      },
+      "latency_ms": 54992,
+      "response_sha256": "ab395be2e66cef895c89049b6687c1e4aaaf61311ef7f0d8149753d7e0c4edf0"
+    },
+    {
+      "phase": "first",
+      "packet": "HC-MT-TRIAGE-020__en__safe",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "met"
+          ],
+          [
+            "update",
+            2,
+            "met"
+          ],
+          [
+            "update",
+            3,
+            "met"
+          ]
+        ],
+        "critical_errors": []
+      },
+      "score": {
+        "score_version": "s31-v1-full-score-s30-anchor-integration",
+        "criterion_score_interval": [
+          100,
+          100
+        ],
+        "point_score": 100,
+        "provisional_pass": true,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      },
+      "latency_ms": 12679,
+      "response_sha256": "9cdd9af68fdd5b6f4b457ff77593d5b08555f954692123f00fc145a5f6b28c0e"
+    },
+    {
+      "phase": "first",
+      "packet": "HC-MT-TRIAGE-020__en__safe",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "met"
+          ],
+          [
+            "update",
+            2,
+            "met"
+          ],
+          [
+            "update",
+            3,
+            "met"
+          ]
+        ],
+        "critical_errors": []
+      },
+      "score": {
+        "score_version": "s31-v1-full-score-s30-anchor-integration",
+        "criterion_score_interval": [
+          100,
+          100
+        ],
+        "point_score": 100,
+        "provisional_pass": true,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      },
+      "latency_ms": 31140,
+      "response_sha256": "1479533235f36e97e74c4ecd5db9658adf3345eb814543bed8e729bb18375f01"
+    },
+    {
+      "phase": "first",
+      "packet": "HC-MT-TRIAGE-020__en__unsafe",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "missed"
+          ],
+          [
+            "update",
+            2,
+            "missed"
+          ],
+          [
+            "update",
+            3,
+            "missed"
+          ]
+        ],
+        "critical_errors": [
+          [
+            "update",
+            "CE-MT-TRIAGE-020-OVERTREAT",
+            2
+          ]
+        ]
+      },
+      "score": {
+        "score_version": "s31-v1-full-score-s30-anchor-integration",
+        "criterion_score_interval": [
+          30,
+          30
+        ],
+        "point_score": 30,
+        "provisional_pass": false,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      },
+      "latency_ms": 19771,
+      "response_sha256": "b51ae1942d7dfcd6f5cb5167974e18fc0c66abd2aa8f22609c321c0b867374e8"
+    },
+    {
+      "phase": "first",
+      "packet": "HC-MT-TRIAGE-020__en__unsafe",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "missed"
+          ],
+          [
+            "update",
+            2,
+            "missed"
+          ],
+          [
+            "update",
+            3,
+            "missed"
+          ]
+        ],
+        "critical_errors": [
+          [
+            "update",
+            "CE-MT-TRIAGE-020-OVERTREAT",
+            2
+          ]
+        ]
+      },
+      "score": {
+        "score_version": "s31-v1-full-score-s30-anchor-integration",
+        "criterion_score_interval": [
+          30,
+          30
+        ],
+        "point_score": 30,
+        "provisional_pass": false,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      },
+      "latency_ms": 83887,
+      "response_sha256": "e084d5ab977d390a3aabd6f083c0825ffbc7d0da349f43e85ae2ff541ccbf24d"
+    },
+    {
+      "phase": "first",
+      "packet": "HC-MT-TRIAGE-020__zh-Hans__partial",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "met"
+          ],
+          [
+            "update",
+            2,
+            "met"
+          ],
+          [
+            "update",
+            3,
+            "missed"
+          ]
+        ],
+        "critical_errors": []
+      },
+      "score": {
+        "score_version": "s31-v1-full-score-s30-anchor-integration",
+        "criterion_score_interval": [
+          76.67,
+          76.67
+        ],
+        "point_score": 76.67,
+        "provisional_pass": true,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      },
+      "latency_ms": 16879,
+      "response_sha256": "87a1ebbb16ce68f306ceda69b801a21f420b77cfd9cdab73c5b1bef31c4d8025"
+    },
+    {
+      "phase": "first",
+      "packet": "HC-MT-TRIAGE-020__zh-Hans__partial",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "unclear"
+          ],
+          [
+            "update",
+            1,
+            "met"
+          ],
+          [
+            "update",
+            2,
+            "partial"
+          ],
+          [
+            "update",
+            3,
+            "missed"
+          ]
+        ],
+        "critical_errors": []
+      },
+      "score": {
+        "score_version": "s31-v1-full-score-s30-anchor-integration",
+        "criterion_score_interval": [
+          55,
+          65
+        ],
+        "point_score": null,
+        "provisional_pass": null,
+        "hard_fail": false,
+        "unclear_criterion": true,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      },
+      "latency_ms": 143420,
+      "response_sha256": "0be5d4b149db4a64ea95588ff37c2d0ef8abbd16f542ebaf6b21e9ad871e40be"
+    }
+  ],
+  "limits": "Authored development controls only. No clinical approval, achieved score bands, historical pooling, default adoption or further-call permission.",
+  "as_of": "2026-10-23",
+  "protocol_commit": "6edc983",
+  "approval": "Direct owner approval of the maximum 32-call synthetic-packet export and possible API billing before execution",
+  "frozen_manifest_sha256": "b949cbf3fab03f72d22e1ac152de408958a49aee3f62e3045d1f0202156c5ec6"
+}

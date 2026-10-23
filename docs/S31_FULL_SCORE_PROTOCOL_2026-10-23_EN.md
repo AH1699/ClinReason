@@ -1,6 +1,10 @@
 # S31 full scoring and repeatability protocol
 
-## Ready for a separate call decision
+## Post-run status
+
+The approved run stopped after 21 requests and 20 valid judgments on an observation-quote validation failure. No repeats or retries ran; the advance gate is false. See the [audited result and offline next work](S31_FULL_SCORE_RESULT_2026-10-23_EN.md). The prospective protocol below is preserved as history, not permission to resume or rerun it.
+
+## Historical pre-run status
 
 S31 is implemented, offline-tested and frozen. **No S31 provider call has been made.** It is a fresh, maximum **32-call** experiment after the [completed S30 boundary check](S30_BOUNDARY_RESULT_2026-10-23_EN.md), not a continuation of an earlier call allowance.
 
