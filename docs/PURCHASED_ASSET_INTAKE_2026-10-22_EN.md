@@ -1,49 +1,52 @@
-# Data-team acquisition brief — plain-language version
+# Raw-data handoff and case-building workflow
 
-**The goal:** bring us real clinical evidence from which we can *draft* challenging bilingual benchmark cases. We need complete, permissioned clinical stories and a proposed answer key—not a pile of PDFs or copied exam questions. This is a request for a **30-episode pilot**, not a purchase authorization or a claim that 30 cases will be ready to score.
+This is the revised handoff for the data team. **The team acquires and delivers raw, linkable material. ClinReason does the privacy checks, extraction, case writing, draft answers, evidence mapping and bilingual work.** The data team does not need to create benchmark questions or labels. The first batch is a **target of about 30 distinct clinical episodes**, not 30 PDFs and not 30 ready-to-score cases. Fewer complete episodes are more useful than many disconnected pages.
 
-## What to acquire first
+## What we need from the data team
 
-Ask for **30 different patient episodes**: 10 with an evolving triage decision, 10 with a medication-safety decision, and 10 with a diagnostic-reasoning decision. An episode is one person's linked care journey; its admission note, tests, operation note and discharge summary still count as **one** episode. At least 20 episodes should have two meaningful moments when the right next action might change.
+Look for records that show a decision unfolding over time. A useful episode has the initial presentation, relevant tests and medicines, follow-up notes, and an outcome or discharge note. Aim for a mix of urgent and non-urgent situations, medication problems and diagnostic uncertainty. Prefer episodes in which new information changes the sensible next step; at least two meaningful time points are ideal. Do not select only rare or dramatic final diagnoses. We will decide which benchmark category and question, if any, each episode supports.
 
-Choose a mix of ordinary and serious outcomes. Look for cases where the model must weigh changing symptoms, competing explanations, missing information, test results that do not neatly agree, other illnesses, or multiple medicines. A rare diagnosis alone does not make a good case. Include age groups and pregnancy/postpartum settings only where the team can obtain the right permissions and later specialist review.
+For each episode, provide the **original files as received**, grouped together. PDFs and scans are acceptable; searchable text, CSV, JSON or FHIR exports are even better when available. Keep lab values, units, reference ranges, medication details and chronological order intact. Include the later outcome if available, but do not turn the material into a question or tell us what the “correct” answer is.
 
-For each episode, ask the supplier for four things:
+Add a small file index so we can understand the bundle without guessing. Each row should say: a new episode ID, file path, document type (for example admission note, lab report or discharge note), language, approximate sequence or relative time, and whether the source says it is already de-identified (`yes`, `no` or `unknown`). If a file belongs to several visits for the same person, mark the linkage. A short `README.md` can explain abbreviations, units, missing files or unusual source formats. Do not put patient names or source medical-record numbers in the index.
 
-1. **Proof we may use it.** The actual owner of the material must permit our intended commercial benchmark use. The permission should say whether we may adapt cases, translate them into English and Chinese, show them to reviewers, send de-identified prompts to named model providers, and publish prompts, labels or results. Ask for restrictions, expiry and deletion terms. A reseller invoice or ordinary exam-bank subscription is not enough evidence of these rights.
-2. **A privacy-cleared record.** The data controller should de-identify the record and document how it checked names, dates, free text, scans and embedded images. It must approve the planned processing and transfer route. Keep original identifiers and the identity crosswalk with the controller; do not send them to us. Use relative time such as “six hours after arrival” in the delivered record.
-3. **A linked timeline, not just scans.** Summarize what was known at each moment: symptoms and important negatives; relevant history, allergies and medicines; vital signs; tests with values, units and reference ranges; imaging/pathology interpretations; treatments; and later outcome. Mark uncertain or missing facts. Keep the original units and, if helpful, add standardized units beside them. Each extracted fact should point back to a source document and page; manually check OCR facts used to write the answer key.
-4. **A proposed question and answer key.** For each decision moment, show exactly what the tested model would see *then*. Keep later tests, diagnosis and outcome hidden until a later turn. State the safe range of acceptable answers, a short list of observable must-do actions, serious actions the model must avoid, and plausible alternatives. Link each proposed answer requirement to an independent, current guideline or drug label. What the treating team actually did is part of the record, **not automatically the correct answer**.
+That is the whole data-team handoff. **No answer labels, translations, guideline research, manual OCR, privacy report or case formatting are requested from the team.** If some of those already exist, send them as optional context, clearly separated from the raw records; we will still verify them ourselves.
 
-Please draft both English and Simplified Chinese versions, preserving the same facts and risk level. Mark all answer keys **draft**. Clinical, language and methods reviewers will decide later whether any key can be approved; machine translation alone is not approval.
-
-## Delivery layout
-
-One folder is enough. These are the files we want; the names are suggestions, so a team with an existing export format can map it to the same contents.
+## Simple delivery layout
 
 ```text
-delivery/
-  README.md                 how this batch was prepared; column/field explanations
-  permissions.csv           one row per source: owner, permission proof, allowed uses, limits
-  episodes.jsonl            one row per patient episode: de-identified linked timeline
-  decision_points.jsonl     one row per proposed question/turn and language: facts visible then
-  answer_labels.jsonl       separate draft answer key for each question/turn and language
-  evidence.csv              each must-do answer requirement and the source supporting it
-  review_status.csv         rights, privacy, OCR, clinical and language check status
-  privacy_report.pdf        de-identification method, reviewer and remaining restrictions
-  source_docs/               original records; send separately by an approved secure route
+raw_batch_001/
+  README.md                 optional notes about the collection and file formats
+  file_index.csv            one row per file; links files to the same episode
+  records/
+    EP001/                  all original files for episode 1
+    EP002/                  all original files for episode 2
+    ...
 ```
 
-**How to choose a format:** use UTF-8 CSV for simple tables (it opens in Excel) and UTF-8 JSONL for records with a changing timeline or several facts per case (one complete record per line). If labs or medicines are too large to keep clearly in `episodes.jsonl`, add `observations.csv` and `medications.csv` with the same episode IDs. Include a data dictionary in `README.md`. Use stable, made-up IDs to link files; do not use patient, hospital or original document IDs as case IDs. The prompts in `decision_points.jsonl` must never include `answer_labels.jsonl` content or facts learned only later.
+`file_index.csv` is the only requested table. Recommended columns: `episode_id, file_path, document_type, language, sequence_or_relative_time, deid_status, notes`. A source dataset that already comes as tables can stay in CSV/JSON/FHIR rather than being converted to PDFs; put the tables under `records/` and explain their patient/encounter linkage in the index or README. Use UTF-8 for the index and text files. Preserve original source files, rather than merging them into one giant PDF. Send the bundle through the agreed secure local handoff, **not** via chat, email, Git or a model API.
 
-For every entry in `permissions.csv`, record at least the source, original rightsholder/data controller, written-proof location, allowed commercial/adaptation/translation/model-API/publication uses, geographic scope, expiry and restrictions. Use **yes / no / unknown** for each use; `unknown` means **hold**. For each label, record the decision-point ID, language, acceptable answer, must-do actions, serious errors, evidence IDs, unresolved questions and review status. For each evidence item, record publisher, title, version/date, link or DOI, relevant section, applicable population/jurisdiction and limitations. This lets us convert accepted drafts into the project's [case schema](../schemas/case.schema.json) or [multi-turn schema](../schemas/multiturn-pilot.schema.json) without losing provenance.
+For example, one index row could say `EP001,records/EP001/admission.pdf,admission note,zh-Hans,first,unknown,`. It describes the file; it does **not** contain the patient's name or any answer label.
 
-## What we can do with the three folders already here
+## What ClinReason will do after receiving a batch
 
-- **`ClinicalDataXiAn`: start here for a *single* pilot episode after permission and privacy clearance.** Its 50 image-only PDFs (90 pages) appear to be one linked hospital journey, not 50 independent cases. The most useful documents to join are `入院记录.pdf`, `病程记录.pdf`, `其他报告单*.pdf`, `常规化验报告单*.pdf`, `手术记录单*.pdf`, `病理报告.pdf` and `出院记录_死亡记录.pdf`. OCR and verify them inside the approved environment; send only the cleared, structured extract.
-- **`2.Usmle world step2`: possible later source, subject to actual rightsholder permission.** It has 68 PDFs (about 57,687 pages / 16 GB). `Cardiovascular.pdf` contains case-style material; `UW - Objectives - System - ALL.pdf` is useful as a topic list. Some files are screenshots. Do not copy or paraphrase questions into this benchmark while rights remain unverified.
-- **`4.Usmle world step1`: lower priority.** It has 283 PDFs and eight archives (about 51,166 PDF pages / 14 GB). If rights are established, use it to check basic-science topic coverage rather than to populate patient-facing cases.
+| Stage | Our work | What comes out |
+|---|---|---|
+| 1. Inventory | Count episodes, hash files, detect duplicates, check linkage and chronological gaps. | An intake report and a list of files needing clarification. |
+| 2. Privacy pass | Check source claims of de-identification; inspect text, OCR, PDF metadata and images for remaining names, IDs, exact dates, locations and unusual identifying combinations. Remove or generalize identifiers while preserving clinically important intervals. Recheck the resulting text and images. | A local de-identified working copy and a recorded privacy decision. If identification risk remains, the episode stays on hold; it is not sent to external models. |
+| 3. Clinical extraction | OCR scans where needed and build a structured timeline of symptoms, negatives, history, medicines, vitals, test results, interventions and outcomes. Keep page-level links and original units; manually verify facts that will affect an answer. | An evidence-linked episode summary, still not a benchmark case. |
+| 4. Case and answer drafting | Pick a decision time, hide all later facts from the candidate prompt, and write an original patient-facing or professional scenario. Draft an acceptable answer range, observable must-do requirements, serious prohibited errors and uncertainty. Actual care and final diagnosis are not automatically the correct answer. | Separate English/Chinese draft questions and answer labels. |
+| 5. Evidence and quality checks | Check every answer requirement against independent, current clinical guidance or drug information; review source overlap, difficulty, bilingual meaning and leakage between development/calibration/hidden groups. Run schema and benchmark validation. | Source-to-answer map, QA record and review queue. |
+| 6. Later approval | Qualified clinical, language and methods reviewers assess the draft. | Only reviewed cases can advance beyond draft; no automatic Gold promotion. |
 
-No rights paperwork was found inside these folders. That does not prove the team's purchase is invalid, but we need evidence that the grantor can license *these* files for *these* uses. Some exam files show redistribution indicators; [standard UWorld terms](https://www.uworld.com/terms_conditions.aspx) restrict commercial copying. The Xi'an scans have blank ID fields but also exact dates and image content, so blank fields alone do not establish anonymity. Have a qualified privacy/legal reviewer address the applicable rules, including [China's Personal Information Protection Law](https://www.cac.gov.cn/2021-08/20/c_1631050028355286.htm). [HHS de-identification guidance](https://www.hhs.gov/hipaa/for-professionals/special-topics/de-identification/index.html) is a useful technical reference, not a substitute for China-law review.
+The privacy pass is our responsibility, but it is **not a promise that automated redaction alone proves anonymity**. We will keep raw and intermediate files local and restricted. A case with unresolved identity risk or an unclear permitted processing path remains on hold until the appropriate privacy decision is made. We will not expose raw scans or original clinical text to candidate or judge APIs. This reflects the need to inspect free text and images as well as obvious ID fields; see [HHS technical de-identification guidance](https://www.hhs.gov/hipaa/for-professionals/special-topics/de-identification/index.html) and [China's Personal Information Protection Law](https://www.cac.gov.cn/2021-08/20/c_1631050028355286.htm) for context.
 
-**Acceptance rule:** do not put raw scans or purchased questions into `data/alpha/`, Git, or candidate/judge model APIs. One episode enters internal case authoring only after permission, privacy, deduplication, OCR, decision-time leakage and source-to-answer checks pass. It is still a draft until qualified review. The raw `purchasedAssets/` folder is Git-ignored; this scan imported no purchased content and changed no scores. The [S23 scoring-boundary hold](S23_OFFLINE_SCORING_BOUNDARIES_2026-10-22_EN.md) remains in effect.
+**Where outputs go:** raw material and OCR/de-identification intermediates stay in ignored, restricted local storage. Only a privacy-cleared, newly authored draft and its provenance can be proposed for the benchmark dataset. Existing [single-turn](../schemas/case.schema.json) and [multi-turn](../schemas/multiturn-pilot.schema.json) schemas are conversion targets, not formats the data team must prepare. An episode and all its language variants remain in one split to prevent leakage. No real patient text is copied into the public Alpha.
+
+## Starting with the three folders already here
+
+- `ClinicalDataXiAn` is the first processing pilot. Its 50 image-only PDFs (90 pages) appear to represent **one linked hospital episode**, not 50 cases. We should inventory, group, OCR and run the privacy pass locally before drafting a decision-point question. The admission, progress, laboratory, other-report, surgery, pathology and discharge files are the useful sequence; consent and risk forms may provide context but are less likely to become question facts.
+- `2.Usmle world step2` has 68 PDFs (about 57,687 pages). Its case-style questions may help us find hard reasoning patterns and coverage gaps, but copied or lightly paraphrased items can be familiar to models. If we use them, we will deduplicate, write genuinely new prompts and independently verify answer labels.
+- `4.Usmle world step1` has 283 PDFs plus eight archives (about 51,166 PDF pages). It is lower priority for patient-facing decision cases; it can help with a basic-science coverage map.
+
+This batch has **not** been converted into cases or sent to a model. The raw `purchasedAssets/` folder remains Git-ignored. The [S23 scoring-boundary hold](S23_OFFLINE_SCORING_BOUNDARIES_2026-10-22_EN.md) is unaffected; acquired records cannot by themselves settle disputed scoring ratings.
