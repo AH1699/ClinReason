@@ -1,0 +1,103 @@
+{
+  "version": "s41-first-phase-live-v1",
+  "status": "ready_for_explicit_authorization_not_approved",
+  "budget_policy_selected": true,
+  "data_export_approved": false,
+  "paid_calls_approved": false,
+  "phase": "first",
+  "maximum_attempts": 816,
+  "candidate_attempts": 216,
+  "judge_attempts": 600,
+  "automatic_retries": 0,
+  "max_in_flight": 1,
+  "stop_threshold_usd": "55.00",
+  "hard_ceiling": false,
+  "candidate_models": [
+    {
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "input_per_million": 0.3,
+      "output_per_million": 2.5
+    },
+    {
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "input_per_million": 0.75,
+      "output_per_million": 3.75
+    },
+    {
+      "provider": "grok",
+      "model": "grok-4.6",
+      "input_per_million": 2,
+      "output_per_million": 6
+    },
+    {
+      "provider": "grok",
+      "model": "grok-4.7",
+      "input_per_million": 2,
+      "output_per_million": 6
+    },
+    {
+      "provider": "minimax",
+      "model": "MiniMax-M3.1-Flash",
+      "input_per_million": 0.15,
+      "output_per_million": 0.6
+    },
+    {
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "input_per_million": 0.3,
+      "output_per_million": 1.2
+    }
+  ],
+  "judges": [
+    {
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "input_per_million": 0.75,
+      "output_per_million": 3.75
+    },
+    {
+      "provider": "grok",
+      "model": "grok-4.7",
+      "input_per_million": 2,
+      "output_per_million": 6
+    }
+  ],
+  "family_ids": [
+    "HC-MT-MEDSAFE-013",
+    "HC-MT-MEDSAFE-014",
+    "HC-MT-MEDSAFE-019",
+    "HC-MT-REASON-014",
+    "HC-MT-REASON-015",
+    "HC-MT-REASON-020",
+    "HC-MT-REASON-022",
+    "HC-MT-TRIAGE-019",
+    "HC-MT-TRIAGE-020"
+  ],
+  "languages": [
+    "en",
+    "zh-Hans"
+  ],
+  "candidate_data": "Public synthetic case turns and that candidate's visible prior answer; no labels or future turn",
+  "judge_data": "Stage-isolated prompts, visible answers, scoring instructions and criterion/error labels; no model identity",
+  "excluded": [
+    "Confirmation-only cases",
+    "Xi'an encounter",
+    "Purchased source files",
+    "Local secrets"
+  ],
+  "schedule_sha256": "b36ab066053b2b530ad13f59732bb85f9f24ee2580245815bb2ab66684d1cf37",
+  "policy_sha256": "01f8c0bfc95b085ddb74a44d7cbdd552f97fb2f5cbdb7808003d0fb9f45886d4",
+  "confirmation_authorized": false,
+  "live_call_allowance": 0,
+  "protocol_sha256": "e1010f46ac255475b21124abf978c351c3dcfe3767a26aba378ae1d8cbc58697",
+  "production_connector": "verified_TLS_fixed_hosts_no_redirects_or_retries",
+  "authorization": "one_run_one_receipt_consumed_before_keys_or_network",
+  "conversation_mode": "visible_text_history_only_not_provider_native_reasoning_continuation",
+  "generation_settings": "S38 unchanged; Gemini medium/provider sampling defaults; Grok high/0.7/0.95; MiniMax adaptive/M3.1 max/fixed 1/0.95",
+  "output_limits": "8192; Gemini thought+answer, Grok visible-only, MiniMax generated completion; not equal compute",
+  "provider_retention": "store=false for Gemini/Grok; not a guarantee of zero provider retention; MiniMax account policy applies",
+  "truncation": "technical_stop_not_clinical_zero",
+  "approval_template": "docs/S41_LIVE_RUN_2026-10-24_EN.md"
+}

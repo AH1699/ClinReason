@@ -1,0 +1,21 @@
+{
+  "version": "s41-first-phase-live-v1",
+  "phase": "first",
+  "max_attempts": 816,
+  "max_in_flight": 1,
+  "automatic_retries": 0,
+  "resume_allowed": false,
+  "max_request_bytes": 1048576,
+  "max_response_bytes": 8388608,
+  "socket_timeout_seconds": 900,
+  "exchange_deadline_seconds": 1800,
+  "approval_validity_max_hours": 24,
+  "stop_threshold_usd": "55.00",
+  "hard_ceiling": false,
+  "unknown_charge_policy": "stop_no_retry",
+  "confirmation_authorized": false,
+  "conversation_mode": "visible_text_history_only",
+  "provider_native_reasoning_continuation": false,
+  "generation_settings": "unchanged_S38_request_builder",
+  "truncation_policy": "technical_stop_not_clinical_zero"
+}

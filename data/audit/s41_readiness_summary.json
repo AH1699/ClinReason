@@ -1,0 +1,7 @@
+{
+  "version": "s41-first-phase-live-v1",
+  "protocol_sha256": "e1010f46ac255475b21124abf978c351c3dcfe3767a26aba378ae1d8cbc58697",
+  "production_capable": true,
+  "live_authorized": false,
+  "calls_in_this_audit": 0
+}

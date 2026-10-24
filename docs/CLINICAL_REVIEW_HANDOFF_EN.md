@@ -1,5 +1,9 @@
 # Living human-review handoff — opened 2026-10-07
 
+## S41 later methods-review question H131
+
+**H131 / medium:** Review what the [first-phase configuration](S41_LIVE_RUN_2026-10-24_EN.md) can support. It carries visible answers only, not native hidden reasoning state; 8,192-token limits have different provider scopes and reasoning/sampling settings are not equal-compute controls. Check whether subsequent claims need a separately preregistered native-continuation or resource-matched comparison. Preserve truncations, missing outcomes, mutable-model/default caveats and separate judge results; do not convert technical failure into a clinical zero or fit the six-model mean to ~80. Raw responses can include private reasoning metadata and remain local. The runner is implemented but this batch made no paid calls and created no approval receipt. Clinical/linguistic validation remains deferred, not completed; H125–H130 remain open.
+
 ## S40 later methods-review question H130
 
 **H130 / medium:** Review the reporting consequences of the [owner-selected first-phase spending threshold](S40_SPENDING_THRESHOLD_2026-10-24_EN.md). A cost stop can leave an uneven prefix of the ordered model/family schedule; do not treat the remaining sample as representative or renormalize it into a complete-panel mean. Preserve the final over-threshold response and all technical/unknown-cost attempts, fixed denominators and missing-result intervals. Clinical ability, completion reliability and recorded cost remain separate measures. The roughly 80-point mean objective cannot justify omitting unfinished cells. This policy choice covers neither a new paid run nor confirmation spending; expert review remains later, and H125–H129 stay open.
