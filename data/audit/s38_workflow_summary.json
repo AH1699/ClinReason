@@ -1,0 +1,26 @@
+{
+  "version": "s38-offline-workflow-v1",
+  "live_calls": 0,
+  "live_ready": false,
+  "first_phase_steps": 816,
+  "first_phase_kind_counts": {
+    "judge": 600,
+    "candidate": 216
+  },
+  "control_steps": 72,
+  "repeat_judge_steps": 96,
+  "confirmation_steps": 432,
+  "confirmation_with_optional_recheck_steps": 504,
+  "candidate_models": [
+    "gemini-3.5-flash-lite",
+    "gemini-3.8-flash",
+    "grok-4.6",
+    "grok-4.7",
+    "MiniMax-M3.1-Flash",
+    "MiniMax-M3"
+  ],
+  "roster_changed": "owner_approved_M2.7_to_stable_M3.1_Flash",
+  "new_cases": 0,
+  "new_model_scores": 0,
+  "snapshot_sha256": "19be0c85f0dfcca1774369314b1d6d2dd3ff98680658f751b666abd98ae321de"
+}

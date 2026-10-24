@@ -1,0 +1,69 @@
+{
+  "version": "s38-readiness-v1",
+  "status": "offline_rehearsal_owner_roster_selected_spending_policy_unresolved",
+  "checked_on": "2026-10-23",
+  "live_call_allowance": 0,
+  "resolved": [
+    {
+      "item": "Gemini Interactions output ceiling",
+      "source": "https://ai.google.dev/gemini-api/docs/thinking",
+      "finding": "The Interactions-specific guide explicitly states max_output_tokens includes thought tokens and is an infrastructure cutoff; incomplete replies remain terminal. Input counting is a separate unresolved issue."
+    },
+    {
+      "item": "MiniMax roster",
+      "finding": "Owner selected M3 plus stable M3.1 Flash. config/reference_mix_s38_v1.json replaces M2.7 prospectively; M2.7 price/eligibility is no longer a readiness dependency for this new roster."
+    }
+  ],
+  "blocking_findings": [
+    "Grok Responses visible-output cap excludes reasoning; no verified all-billed-token upper bound.",
+    "Input-token upper bounds/provider overhead remain unverified; new-model account entitlement is not tested.",
+    "No live transport, account-spend guarantee, usage reconciliation, or owner approval fingerprint is enabled by this offline rehearsal."
+  ],
+  "minimax_lifecycle": {
+    "source": "https://platform.minimax.io/docs/faq/models",
+    "new_user_cutoff": "2026-10-19",
+    "retirement_date": "2026-11-18",
+    "pay_as_you_go": "Existing users can access until retirement; account eligibility not inspected.",
+    "subscription": "M Plan/Token Plan M2.5/M2.7 requests routed to M3.1 Flash since 2026-10-19; legacy names remain accepted.",
+    "implication": "Exact returned-name checks cannot prove backend identity when providers route a legacy name. Confirm account plan or prospectively change the roster.",
+    "proposed_choice": "Approved owner choice: MiniMax-M3 and MiniMax-M3.1-Flash, in a new roster version. Historical M2.7 results and freezes unchanged."
+  },
+  "sources": [
+    {
+      "url": "https://docs.x.ai/developers/model-capabilities/text/best-practices",
+      "finding": "max_output_tokens covers visible answer only; reasoning excluded."
+    },
+    {
+      "url": "https://docs.x.ai/developers/model-capabilities/text/reasoning",
+      "finding": "Grok 4.6/4.7 support reasoning.effort low/medium/high/xhigh; high default; reasoning cannot be disabled. Explicit high preserves documented default, not a cost bound."
+    },
+    {
+      "url": "https://platform.minimax.io/docs/pricing/overview",
+      "finding": "M3.1 Flash standard price 0.15 input/0.60 output USD per million; M3 <=512k standard discounted 0.30/1.20. The owner-approved S38 overlay replaces M2.7 prospectively; historical rosters remain unchanged."
+    },
+    {
+      "url": "https://platform.minimax.io/docs/faq/about-account",
+      "finding": "Balance alerts and auto-billing documented; alerts are not experiment-level hard caps."
+    },
+    {
+      "url": "https://platform.minimax.io/docs/api-reference/text-chat-openai",
+      "finding": "Stable M3.1 Flash accepted; omit unsupported service_tier. Preserve documented adaptive thinking and max effort, with reasoning_split true and content-only scoring."
+    }
+  ],
+  "implemented": [
+    "Ordered 816-step first-phase schedule",
+    "Separate 432-step confirmation or 504 including one optional recheck",
+    "Candidate input isolation, actual previous candidate answers in updates, stage-isolated judge packets",
+    "Exact-model/completion/content decoding, no reasoning text injected into conversation",
+    "72-record control gate before any development candidate",
+    "First/repeat separation and fixed-denominator separate-judge reporting",
+    "Private fixture journal integration with raw-before-parse and first-failure stop"
+  ],
+  "remaining": [
+    "Owner spending-policy decision plus verified limits before live authorization",
+    "Actual HTTP capture and transport tests, all-billed usage accounting",
+    "Complete effective sampling and phase authorization freeze"
+  ],
+  "simulation_limit": "Mock replies and one micro-USD per fixture attempt test control flow only. They are not provider results, expenses, expected clinical labels, or proof of empirical stability.",
+  "no_private_data": "No keys read, no provider/model calls, no account setting changes, no private case material."
+}

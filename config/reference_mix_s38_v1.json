@@ -1,0 +1,66 @@
+{
+  "version": "s38-reference-roster-v1",
+  "status": "owner_selected_not_live_approved",
+  "base_plan_sha256": "47cdd6ec2a8cec4df623a7cd07263bd0242d86ae521bc713276394943a537b2c",
+  "live_call_allowance": 0,
+  "owner_choice": "Use M3 + M3.1 Flash (recommended)",
+  "selection_reason": "Owner approved prospective replacement of retiring MiniMax-M2.7 with stable MiniMax-M3.1-Flash; no observed ClinReason score drove selection.",
+  "candidates": [
+    {
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "input_per_million": 0.3,
+      "output_per_million": 2.5
+    },
+    {
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "input_per_million": 0.75,
+      "output_per_million": 3.75
+    },
+    {
+      "provider": "grok",
+      "model": "grok-4.6",
+      "input_per_million": 2,
+      "output_per_million": 6
+    },
+    {
+      "provider": "grok",
+      "model": "grok-4.7",
+      "input_per_million": 2,
+      "output_per_million": 6
+    },
+    {
+      "provider": "minimax",
+      "model": "MiniMax-M3.1-Flash",
+      "input_per_million": 0.15,
+      "output_per_million": 0.6
+    },
+    {
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "input_per_million": 0.3,
+      "output_per_million": 1.2
+    }
+  ],
+  "judges": [
+    {
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "input_per_million": 0.75,
+      "output_per_million": 3.75
+    },
+    {
+      "provider": "grok",
+      "model": "grok-4.7",
+      "input_per_million": 2,
+      "output_per_million": 6
+    }
+  ],
+  "model_source": "https://platform.minimax.io/docs/api-reference/text-chat-openai",
+  "price_source": "https://platform.minimax.io/docs/pricing/overview",
+  "lifecycle_source": "https://platform.minimax.io/docs/faq/models",
+  "verified_on": "2026-10-23",
+  "historical_files": "Keep model_matrix.json and S26-S37 freezes unchanged. This overlay controls S38 schedule and requests; .env.local model names do not override a fixed experiment roster.",
+  "remaining_limit": "Provider rates and model names do not establish account entitlement or an enforceable experiment spending ceiling."
+}
