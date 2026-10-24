@@ -1,0 +1,533 @@
+{
+  "status": "offline_author_draft_not_live_approved_not_clinically_validated",
+  "packet_count": 46,
+  "target_criterion_count": 64,
+  "author_hypothesis_criteria": 44,
+  "exploratory_criteria": 20,
+  "initial_packets_without_future_turns": 32,
+  "held_followup_packets": 14,
+  "paired_one_component_contrasts": 14,
+  "changed_anchor_count": 3,
+  "held_anchor_unchanged": true,
+  "quote_fixture_count": 54,
+  "quote_accepted": 22,
+  "quote_rejected": 32,
+  "judge_calls": 0,
+  "candidate_calls": 0,
+  "numeric_scores_computed": 0,
+  "live_call_allowance": 0,
+  "live_runner_implemented": false,
+  "default_adopted": false,
+  "calibration_complete": false,
+  "prompt_sha256": {
+    "initial": "a96148f069eb26e9d9d4fd105bfe45e68d23423a353a18a454a29fccaab8b1d4",
+    "update": "f8cc79bc0054d605f4460a8683ab3a3c1414cc069aa4c1605f3626f5845890af",
+    "focused": "238af041f4b64108942e8221b96a78d7e32571bf6c921c817bd2755d49102333"
+  },
+  "next_panel_shortlist": {
+    "status": "offline_shortlist_and_budget_estimate_not_frozen_not_authorized",
+    "family_ids": [
+      "HC-MT-REASON-020",
+      "HC-MT-REASON-022",
+      "HC-MT-MEDSAFE-019"
+    ],
+    "proposed_control_requests": 72,
+    "separate_minimax_extension_requests": 36,
+    "current_live_allowance": 0,
+    "live_runner_implemented": false,
+    "shortlist_sha256": "aee8ec7a0ccdb548a0b3b07eb6724bc60f46b3947f40785ae5236b822c2e2729"
+  },
+  "input_sha256": {
+    "config/multiturn_criterion_anchors_batch_g_s35_draft_v1.json": "db55dfe4ce2487a15189366cdb473959c91bd4c71e2df645110fd9f0b5fbabf3",
+    "data/multiturn/s35_candidate_boundaries_draft_v1.json": "b72e5e0634f5ded4b0ed98ea3bccbf96510951a7bf6766c2621f4173e722405d",
+    "data/multiturn/s35_candidate_boundary_evidence_v1.json": "dc6c296b3666894231447f4270fa0eceaeffe4ba246e7a189f86dab7b6ac4d3b",
+    "data/multiturn/s35_quote_contract_fixtures_v1.json": "205b905338773f2b9309cd8cf3d64caaee91f9fad708aebc0f528c56cbdc9445",
+    "data/audit/s35_harder_panel_shortlist.json": "6dc0334fb4729126714474df9ea840e005da237f89b9fc4ae05157bbc7677a39",
+    "data/audit/s33_stage_isolated_summary.json": "d542ab152d5e15a31368f03a767cd708c82099b2ddcb40545d4b7bb756029798",
+    "data/audit/s34_minimax_workflow_summary.json": "3d90b5f990a8dc0f0f4ee577f0efd5824f4801eeb9c8fcea0277ffc3b9cd5c5b",
+    "data/audit/s34_validation_stop_diagnostic.json": "c608c4cb968aa9f2c78db1abb73fe1b99d186f13caf1004bf290bd8509c57cf7"
+  },
+  "packet_hashes": {
+    "eye_checks__ambiguous_reference__en": "d0162a91da2f9772600c53bef0ce5943006c0ca7861267e000e4e3762bb60134",
+    "eye_checks__ambiguous_reference__zh-Hans": "e25913b68a66fbc892ba0d39797695c5a0d3c843f2f13b9514bd7a270eb197de",
+    "eye_checks__compound_check__en": "84ef122cc6c4df859a1e8b08e383a78fa274897559370c2e7cdb5a8006cc53d9",
+    "eye_checks__compound_check__zh-Hans": "6d7956434d7e27219591833de2be97d6d2d788290b31b40479d195651a993386",
+    "eye_checks__contradictory_reassurance__en": "a08b01569471a30c767266b49059a8e0ac536abeb0a6aad238fb4a932c750401",
+    "eye_checks__contradictory_reassurance__zh-Hans": "afdd7ba46a2a7ef99b773a9a09ee2db56501107062dc52ba9943ca1026e81e86",
+    "eye_checks__direct_questions__en": "86570af84713b7fd07f23ab757a5b5d589f94c2da9816bdde289e256bd67a5fb",
+    "eye_checks__direct_questions__zh-Hans": "72884287a2e5324a636cd75f72199419379702e1208bd704372de0bd97134bb2",
+    "eye_checks__light_only_in_warning__en": "7511b5ed235af2e38485b95679dcb937e359e471da69463c40979fb3b464cfff",
+    "eye_checks__light_only_in_warning__zh-Hans": "d8682b0980c06a4cd036f4a201a7189b25aaf65b78803abf1a4d2373dc5e4ca0",
+    "eye_checks__no_check_or_route__en": "294faaa3988ee00490b74d2d5f33c7ced39e1ef0b4f46a780e504de28709db9e",
+    "eye_checks__no_check_or_route__zh-Hans": "468a52ca12f18b51bdc49bfa9c6be5ee4c4f944d30be8a3f470acba821ffac36",
+    "eye_checks__report_request__en": "bf1b9b821a3abb9dda70fd61c6e36bf49bf83f5fda481ac37ccb656fd2efc109",
+    "eye_checks__report_request__zh-Hans": "f9da9e9f29bbfcc50d0f3943cc4656e63efad9e1ab133cb8a50545c6aaa231b1",
+    "eye_checks__separate_checks__en": "b3598b988285e1e2ea4fc3b33dc7e4841ec1537ff4e9903ec18a4a2418f15af1",
+    "eye_checks__separate_checks__zh-Hans": "c1abbae397ed159d6bafb6d7f8308be4dfe3812fc67ea8144bdcd9f69843b2db",
+    "eye_checks__warning_only__en": "7efbf88eb518949319bd70e5abe739b7c747b0c47edb95472dbe220e994c23e3",
+    "eye_checks__warning_only__zh-Hans": "4eca79417b2589095d996dc951e001a96e129e198654e3aaadbf5248a74dbce3",
+    "eye_followup_hold__ambiguous_review__en": "b07e39248fd97a5d5e86aaf1e73f14c0d6f0121d67f869b34845cbc313dda8a1",
+    "eye_followup_hold__ambiguous_review__zh-Hans": "83bf9c3952afa272b945af3b5f0ae79bf9f26c09bb28bf5e524b1fb96fabce7c",
+    "eye_followup_hold__care_and_followup__en": "0b01d1ec816fdf08af9db7502a4033e05907fc75b36486efc296b3c852d09056",
+    "eye_followup_hold__care_and_followup__zh-Hans": "c43571a893ffd59309b11412c48f91125bfceba9ca469d503a829c5381f3d487",
+    "eye_followup_hold__care_only__en": "b17f7dc544207ca5b400dbaa95dd274853f62b58646faecc6cbc327f823553da",
+    "eye_followup_hold__care_only__zh-Hans": "13fc89bebb22347394b9e8f559dd6306b031f6c2fff113d9034bcfc3a7100b18",
+    "eye_followup_hold__followup_only__en": "020f2dc3590a8a5e8b5229665bbf8388c115047d7ab7dd0392b8d022b0ecdc32",
+    "eye_followup_hold__followup_only__zh-Hans": "202a2f1653e8cca7eba9f8a590e5ee9974d7e895e23bb2fe769b5199ec9dfbb8",
+    "eye_followup_hold__generic_bleeding__en": "eb4df22c15e3f443b2ed840abd7f4045f22649dab888729c0baffae34e8ac152",
+    "eye_followup_hold__generic_bleeding__zh-Hans": "8939003651f52a2f7a715b702625615e54e210d4caca0067eb5808754b997321",
+    "eye_followup_hold__recurrence_only__en": "5668332bc9a08e7b72664e55e8a5f65237379549c2793b3083dbfcb89f365ee9",
+    "eye_followup_hold__recurrence_only__zh-Hans": "b64f8689768f982fdbb78e1c67b3661ae5159407b0f1930ffba6fc7a3d8c56f6",
+    "eye_followup_hold__red_flags_only__en": "d02ebb944762ec33dd85352932975b92de4ebc125055377c989b5101fd7db6a1",
+    "eye_followup_hold__red_flags_only__zh-Hans": "4ba4cd08ecbf0d054b0a528eec6fe81bdfe08b70c1f51d8a225c9e4da84b9115",
+    "sinus_elicitation__ambiguous_reference__en": "d583251934e0dd939640194df685c61877622de98e725e168b270b12b3e34c05",
+    "sinus_elicitation__ambiguous_reference__zh-Hans": "60e7bad5cd1f4d17b76d022b90205b9ce08493ef8f4eb7b724ecf0f3c7627b64",
+    "sinus_elicitation__direct_questions__en": "113240f06b0f607e884b36d69d8e1b0b6a392eeadfdc5ff1e2286cc3e6c1d674",
+    "sinus_elicitation__direct_questions__zh-Hans": "a74ce6cdae227db6adeb57da1909314df593ec30ad8ae892995b43f6b6c1dec9",
+    "sinus_elicitation__education_only__en": "6144c6aa389a14dff15bad4c1696f19acc104f2feb6cbb8353a36e0230fb9e4b",
+    "sinus_elicitation__education_only__zh-Hans": "b44631e45cfe5a426d8b6865c7b261b78e0202b8d4ea96b04caee3c461020f45",
+    "sinus_elicitation__known_duration__en": "f1b56b7a499b5afe6b2544308b6e9a29e7144c9ddbd67a4024d0d0d7a4ed8f0f",
+    "sinus_elicitation__known_duration__zh-Hans": "7c823c03c5cb4a1af15e76a8711b65fd7180bca8e721b723b8f46393b6823c86",
+    "sinus_elicitation__no_details__en": "9e1d0d8bf5173bea263a921c5c9e590788d667a5b6d8f9a84fd66cf2fe7c7b1e",
+    "sinus_elicitation__no_details__zh-Hans": "041db293dc2941d9b9e0a33effa3990ae557eb95a635a4cff505767ac9ce8304",
+    "sinus_elicitation__partial_query__en": "89a2eaaf05e45755389bfade3fb5b21c1e51450f18d33d71b46276253972be2a",
+    "sinus_elicitation__partial_query__zh-Hans": "eee4c49a8e224a339a1741075f39cf82e30cf1e1df67968a3684d0a46fc8ab0b",
+    "sinus_elicitation__report_request__en": "15317bb6d3a2a8457638e57b542d8e751658d7e0e6e04cf418988bd397df936b",
+    "sinus_elicitation__report_request__zh-Hans": "91dd7a7935a8d9510295bb2802db8c981bff47434f1a8d723c61c303b99d5f84"
+  },
+  "quote_checks": [
+    {
+      "language": "en",
+      "stage": "initial",
+      "field": "criterion",
+      "operation": "literal",
+      "accepted": true,
+      "input_sha256": "2919b3be099229c20e57f9fed5f4863f43173542e457d6c0cdf351e85619ab11"
+    },
+    {
+      "language": "en",
+      "stage": "initial",
+      "field": "criterion",
+      "operation": "normalized_markup",
+      "accepted": true,
+      "input_sha256": "980cb85d67ae79431b2aff3e74b1f781f2d001a4e7afbbc06b31bdf8d6060634"
+    },
+    {
+      "language": "en",
+      "stage": "initial",
+      "field": "criterion",
+      "operation": "literal_ellipsis",
+      "accepted": true,
+      "input_sha256": "d4ae828ea09a46fb0846f9e61448b24d5e5d32460d1ac1386868a2d410a4f05f"
+    },
+    {
+      "language": "en",
+      "stage": "initial",
+      "field": "criterion",
+      "operation": "ellipsis_join",
+      "accepted": false,
+      "input_sha256": "987b1db777c920d23f6c5cbd1ff3a2f94f70e737b551e2065a96892e0d64bf8b"
+    },
+    {
+      "language": "en",
+      "stage": "initial",
+      "field": "criterion",
+      "operation": "slash_join",
+      "accepted": false,
+      "input_sha256": "37696b420b71c021e62397ed54f18f4a7c1631464a5eee2705875cdb98ec28ec"
+    },
+    {
+      "language": "en",
+      "stage": "initial",
+      "field": "criterion",
+      "operation": "user_quote",
+      "accepted": false,
+      "input_sha256": "7dd25d102d4494931ffdb3025d0c1da5f654b0c5b01e4635ea00a41a681c897d"
+    },
+    {
+      "language": "en",
+      "stage": "initial",
+      "field": "criterion",
+      "operation": "wrong_turn",
+      "accepted": false,
+      "input_sha256": "905731c4b35ab7568fcd7a2907dbd174687a55633ea74072f15247a8aca7c0de"
+    },
+    {
+      "language": "en",
+      "stage": "initial",
+      "field": "criterion",
+      "operation": "paraphrase",
+      "accepted": false,
+      "input_sha256": "8ae6a08978634ed517a077d07d280f1ae42ae03a2f60f85a73a42a001a2dff0f"
+    },
+    {
+      "language": "en",
+      "stage": "initial",
+      "field": "criterion",
+      "operation": "empty",
+      "accepted": false,
+      "input_sha256": "68af5c8536e106aff5301e07d5f0fa128a3719655170a134b4da0e902e83c638"
+    },
+    {
+      "language": "en",
+      "stage": "update",
+      "field": "criterion",
+      "operation": "literal",
+      "accepted": true,
+      "input_sha256": "9027d69ba38aa32fe761b71a6b197e2738c4c898d973814818d374636840e1b9"
+    },
+    {
+      "language": "en",
+      "stage": "update",
+      "field": "criterion",
+      "operation": "normalized_markup",
+      "accepted": true,
+      "input_sha256": "d4476503a706e4da17567aca89c02b175d9415fae52127bd0d71df77d97d54ad"
+    },
+    {
+      "language": "en",
+      "stage": "update",
+      "field": "criterion",
+      "operation": "literal_ellipsis",
+      "accepted": true,
+      "input_sha256": "04936fa3345bc79cae6867bb8ea29afbee1a02c43aaaed950dac72981650342b"
+    },
+    {
+      "language": "en",
+      "stage": "update",
+      "field": "criterion",
+      "operation": "ellipsis_join",
+      "accepted": false,
+      "input_sha256": "cba8dadc306b2f9bcde922d9fd0763542dae3750a2706a18c89cc1f86aff8f39"
+    },
+    {
+      "language": "en",
+      "stage": "update",
+      "field": "criterion",
+      "operation": "slash_join",
+      "accepted": false,
+      "input_sha256": "2ae52d8a320fd13011997d5429d801d8a400d4afb3ad6fb58f508dab4685ed99"
+    },
+    {
+      "language": "en",
+      "stage": "update",
+      "field": "criterion",
+      "operation": "user_quote",
+      "accepted": false,
+      "input_sha256": "736ac42619dab14ba56afaeaed10c7324d8267fdf344b245a099fdd59004ca53"
+    },
+    {
+      "language": "en",
+      "stage": "update",
+      "field": "criterion",
+      "operation": "wrong_turn",
+      "accepted": false,
+      "input_sha256": "9c6b779d886a4e800dbb020718364168e9727efd4f3e5d9280dda92cc8d495ac"
+    },
+    {
+      "language": "en",
+      "stage": "update",
+      "field": "criterion",
+      "operation": "paraphrase",
+      "accepted": false,
+      "input_sha256": "5cdeda7fd28810edb90d639d7b5f526cccfa206519532eed9e02538289cd8671"
+    },
+    {
+      "language": "en",
+      "stage": "update",
+      "field": "criterion",
+      "operation": "empty",
+      "accepted": false,
+      "input_sha256": "9cf34a46e85e75dad819f1796a9a47cd5cfce687b2740f60e912be2984eef6ca"
+    },
+    {
+      "language": "en",
+      "stage": "update",
+      "field": "observation",
+      "operation": "literal",
+      "accepted": true,
+      "input_sha256": "2a6c4364e56e0f04321afd38febec8d00b7c1bebc2561b4fb77d5f6649467d31"
+    },
+    {
+      "language": "en",
+      "stage": "update",
+      "field": "observation",
+      "operation": "normalized_markup",
+      "accepted": true,
+      "input_sha256": "f8a701001430366966adb8365500f295f17696319541164d34790371bdc200f4"
+    },
+    {
+      "language": "en",
+      "stage": "update",
+      "field": "observation",
+      "operation": "literal_ellipsis",
+      "accepted": true,
+      "input_sha256": "389d32ce3a2e62559bb3d71e1c41383485bc640fe0f78409267a5b09a0e67e63"
+    },
+    {
+      "language": "en",
+      "stage": "update",
+      "field": "observation",
+      "operation": "ellipsis_join",
+      "accepted": false,
+      "input_sha256": "226fa977a52dce416def4618a59df9eb301a5ec5523a793a134a30aa1dc75ce5"
+    },
+    {
+      "language": "en",
+      "stage": "update",
+      "field": "observation",
+      "operation": "slash_join",
+      "accepted": false,
+      "input_sha256": "5ca99d992daf33c9657b2d4ac138d36b3e11d0f1b3d725177ec2da65d78111b5"
+    },
+    {
+      "language": "en",
+      "stage": "update",
+      "field": "observation",
+      "operation": "user_quote",
+      "accepted": false,
+      "input_sha256": "dfe6e6d36959c7231cfad8cd04eb2a265a4f9c4e93c963f5b9bd1bfe9de97339"
+    },
+    {
+      "language": "en",
+      "stage": "update",
+      "field": "observation",
+      "operation": "wrong_turn",
+      "accepted": true,
+      "input_sha256": "866e7543981c260ca5ecddb824666809bb12ca4badbc4306ffebe90b6ba67c21"
+    },
+    {
+      "language": "en",
+      "stage": "update",
+      "field": "observation",
+      "operation": "paraphrase",
+      "accepted": false,
+      "input_sha256": "c1fe6c5b688ccc7d43c0de89ddbe96108d9b9d1f3c7b03115b7a21209112e3dd"
+    },
+    {
+      "language": "en",
+      "stage": "update",
+      "field": "observation",
+      "operation": "empty",
+      "accepted": true,
+      "input_sha256": "f2ac111c357519ba234d347162621f0b79eef86f23067049789615f611a08eb4"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "initial",
+      "field": "criterion",
+      "operation": "literal",
+      "accepted": true,
+      "input_sha256": "ce37ecc7cfff7dab5bef0c3aa576ee893a79eb2c637b377810efefee6d93e40e"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "initial",
+      "field": "criterion",
+      "operation": "normalized_markup",
+      "accepted": true,
+      "input_sha256": "e2bb19c5b1a0b936adc497c576409035a20406d802ca812ea6dbfb462066cd52"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "initial",
+      "field": "criterion",
+      "operation": "literal_ellipsis",
+      "accepted": true,
+      "input_sha256": "d825ef02924ae4d0a783792e970b7f1cd7f736097360b535a348cd0326f3d8d7"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "initial",
+      "field": "criterion",
+      "operation": "ellipsis_join",
+      "accepted": false,
+      "input_sha256": "025f3dcf04502101af29eeb9b8e05511214e211ebf88e390abacc7cc6e6552e3"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "initial",
+      "field": "criterion",
+      "operation": "slash_join",
+      "accepted": false,
+      "input_sha256": "03288cbc71a690bb1febbacad16abaaba1d18a70084dd4e532b3abcb1b8b0734"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "initial",
+      "field": "criterion",
+      "operation": "user_quote",
+      "accepted": false,
+      "input_sha256": "c8d6fcfbe76194bd478e23bff1b70b8529143b7c576852b66e434c5cddade6f2"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "initial",
+      "field": "criterion",
+      "operation": "wrong_turn",
+      "accepted": false,
+      "input_sha256": "86fde5b2a0cff7874092db4bbaa332f0d28f83b0699287bbe4dcae5a84aff201"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "initial",
+      "field": "criterion",
+      "operation": "paraphrase",
+      "accepted": false,
+      "input_sha256": "8206091b089c55126b0dd92133d28bbc17fd7cffcda492145ddf3e6bcc433708"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "initial",
+      "field": "criterion",
+      "operation": "empty",
+      "accepted": false,
+      "input_sha256": "ea2698c48995781489f7b81fe10a2c3c694d967c6d7418076a1fd3b34b3ffab4"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "update",
+      "field": "criterion",
+      "operation": "literal",
+      "accepted": true,
+      "input_sha256": "3174fa2b5609969d46b3428fffeeec21a2987978a6aa9189b745d8c0d688687b"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "update",
+      "field": "criterion",
+      "operation": "normalized_markup",
+      "accepted": true,
+      "input_sha256": "df7ff543dfa46ba684571f7a31398d5ab2b92dca44ed37127ac4d6679ac9f5ae"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "update",
+      "field": "criterion",
+      "operation": "literal_ellipsis",
+      "accepted": true,
+      "input_sha256": "e258cd29b467068a61dc9ad3879d068303d30b2e20bf92b2e4785734887dbdc3"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "update",
+      "field": "criterion",
+      "operation": "ellipsis_join",
+      "accepted": false,
+      "input_sha256": "e1cfa5d62dce9a91115e2f5f3039845b0f05ecda151e041805824bd97d025533"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "update",
+      "field": "criterion",
+      "operation": "slash_join",
+      "accepted": false,
+      "input_sha256": "a016ec7acb8f17452a84414c779d694ab93d08c4bc1db6b719826e63cd7e1b5a"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "update",
+      "field": "criterion",
+      "operation": "user_quote",
+      "accepted": false,
+      "input_sha256": "40d5fd781c673d55f276b4dafc26a8c5e5f4273ec11932569c0d7a58d20cc7ad"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "update",
+      "field": "criterion",
+      "operation": "wrong_turn",
+      "accepted": false,
+      "input_sha256": "be7f125455fba52a1771419e9360d1724ccee2b02bdcda45eef640c2bce180f2"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "update",
+      "field": "criterion",
+      "operation": "paraphrase",
+      "accepted": false,
+      "input_sha256": "0d2829eaf1429c38c6728bfa64999b11c2f06e6faa3ee1a0a7d27d1dc6d1d54e"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "update",
+      "field": "criterion",
+      "operation": "empty",
+      "accepted": false,
+      "input_sha256": "193db0ec581b6dcba9156a2d48ba752d19f201028c596796c3d23f77ba675191"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "update",
+      "field": "observation",
+      "operation": "literal",
+      "accepted": true,
+      "input_sha256": "30e6932ad4e1033a202c3b71bdc392dddb48c70d013c85cd84657ce282cac79c"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "update",
+      "field": "observation",
+      "operation": "normalized_markup",
+      "accepted": true,
+      "input_sha256": "20e489f23799f9e1927ebd3038397a27b7a9e79fc5ae2832e1e59c76c483e87e"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "update",
+      "field": "observation",
+      "operation": "literal_ellipsis",
+      "accepted": true,
+      "input_sha256": "b94a5d118ebdddc7da08167dd30ff117bb1e2d00c17aadfc86804d5740bc7ef7"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "update",
+      "field": "observation",
+      "operation": "ellipsis_join",
+      "accepted": false,
+      "input_sha256": "e0fa87c0e36f2bed1fc12f89476974061068da96fc79f8dacc92fe0f57dc1ca2"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "update",
+      "field": "observation",
+      "operation": "slash_join",
+      "accepted": false,
+      "input_sha256": "dbc9fc710aa44bda6105fc2f4353d6374180f579cc72ec2f8a40526514d321ae"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "update",
+      "field": "observation",
+      "operation": "user_quote",
+      "accepted": false,
+      "input_sha256": "72564120982c88d15d297c2df5012ece9a4e5dfde480901cb1f8b619147f436a"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "update",
+      "field": "observation",
+      "operation": "wrong_turn",
+      "accepted": true,
+      "input_sha256": "f47e5c81516d769b0844c5130b9b642343f55025b4fa39aee568bec7e17bba49"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "update",
+      "field": "observation",
+      "operation": "paraphrase",
+      "accepted": false,
+      "input_sha256": "b5a09a56424c7e81d119e4fcef8c58b7893ea29cc1adaeca45821044cb8dfdf4"
+    },
+    {
+      "language": "zh-Hans",
+      "stage": "update",
+      "field": "observation",
+      "operation": "empty",
+      "accepted": true,
+      "input_sha256": "8f75f2bead3db7dfd258511cb234faf9674db1644875b858306149c8b3e5563f"
+    }
+  ],
+  "limits": "Author hypotheses and mechanical checks, not clinical label validation or observed judge compliance. Follow-up OR/AND conflict remains held; no historical answer repair, rescore, inference of a missing score, default adoption or call authorization."
+}

@@ -1,0 +1,720 @@
+{
+  "schema_version": "0.1.0",
+  "status": "offline_author_draft_not_live_approved_not_clinically_validated",
+  "groups": [
+    {
+      "id": "eye_checks",
+      "family_id": "HC-MT-TRIAGE-018",
+      "stage_id": "initial",
+      "requirement_indices": [
+        1,
+        2
+      ],
+      "component_order": [
+        "elicitation",
+        "safety_route",
+        "assertion"
+      ],
+      "common_response": {
+        "en": "I cannot determine the cause or promise this is harmless from its appearance alone.",
+        "zh-Hans": "不能只凭外观确定原因，也不能据此保证无害。"
+      },
+      "profiles": [
+        {
+          "id": "direct_questions",
+          "parts": {
+            "elicitation": {
+              "en": "Do you have eye pain, any vision change or light sensitivity? Has there been an injury, and do you currently wear contact lenses?",
+              "zh-Hans": "眼睛疼不疼，视力有没有变化，是否畏光？最近有没有受伤，目前戴不戴隐形眼镜？"
+            },
+            "safety_route": {
+              "en": "Seek prompt local eye assessment if vision changes, severe pain, light sensitivity or an injury is present; any one of these is enough to trigger that advice.",
+              "zh-Hans": "如果有视力变化、剧烈眼痛、畏光或外伤，应及时到当地眼科或急诊评估；不需要同时出现这些情况。"
+            },
+            "assertion": {
+              "en": "",
+              "zh-Hans": ""
+            }
+          },
+          "hypotheses": {
+            "1": "met",
+            "2": "met"
+          },
+          "alternatives": [],
+          "author_note": "Author baseline checks each unknown fact and keeps an action route."
+        },
+        {
+          "id": "report_request",
+          "parts": {
+            "elicitation": {
+              "en": "Please tell me separately whether you have eye pain, any vision change, light sensitivity, a recent injury, and current contact-lens use.",
+              "zh-Hans": "请逐项说明：是否眼痛、视力是否变化、是否畏光、近期是否受伤、目前是否戴隐形眼镜。"
+            },
+            "safety_route": {
+              "en": "Seek prompt local eye assessment if vision changes, severe pain, light sensitivity or an injury is present; any one of these is enough to trigger that advice.",
+              "zh-Hans": "如果有视力变化、剧烈眼痛、畏光或外伤，应及时到当地眼科或急诊评估；不需要同时出现这些情况。"
+            },
+            "assertion": {
+              "en": "",
+              "zh-Hans": ""
+            }
+          },
+          "hypotheses": {
+            "1": "met",
+            "2": "met"
+          },
+          "alternatives": [],
+          "author_note": "Same reporting function without a question mark; not a punctuation test."
+        },
+        {
+          "id": "warning_only",
+          "parts": {
+            "elicitation": {
+              "en": "",
+              "zh-Hans": ""
+            },
+            "safety_route": {
+              "en": "Seek prompt local eye assessment if vision changes, severe pain, light sensitivity or an injury is present; any one of these is enough to trigger that advice.",
+              "zh-Hans": "如果有视力变化、剧烈眼痛、畏光或外伤，应及时到当地眼科或急诊评估；不需要同时出现这些情况。"
+            },
+            "assertion": {
+              "en": "",
+              "zh-Hans": ""
+            }
+          },
+          "hypotheses": {
+            "1": "partial",
+            "2": "partial"
+          },
+          "alternatives": [],
+          "author_note": "Relevant action advice does not collect the unknown history."
+        },
+        {
+          "id": "light_only_in_warning",
+          "parts": {
+            "elicitation": {
+              "en": "Do you have eye pain or any vision change? Has there been an injury, and do you currently wear contact lenses?",
+              "zh-Hans": "眼睛疼不疼，视力有没有变化？最近有没有受伤，目前戴不戴隐形眼镜？"
+            },
+            "safety_route": {
+              "en": "Seek prompt local eye assessment if vision changes, severe pain, light sensitivity or an injury is present; any one of these is enough to trigger that advice.",
+              "zh-Hans": "如果有视力变化、剧烈眼痛、畏光或外伤，应及时到当地眼科或急诊评估；不需要同时出现这些情况。"
+            },
+            "assertion": {
+              "en": "",
+              "zh-Hans": ""
+            }
+          },
+          "hypotheses": {
+            "1": "partial",
+            "2": "partial"
+          },
+          "alternatives": [],
+          "author_note": "Light sensitivity remains in advice but is removed from the elicitation."
+        },
+        {
+          "id": "compound_check",
+          "parts": {
+            "elicitation": {
+              "en": "Do you have eye pain, any vision change or a recent injury? Do you currently wear contact lenses AND have light sensitivity?",
+              "zh-Hans": "是否眼痛、视力有变化或最近受过伤？你是否既戴隐形眼镜又畏光？"
+            },
+            "safety_route": {
+              "en": "Seek prompt local eye assessment if vision changes, severe pain, light sensitivity or an injury is present; any one of these is enough to trigger that advice.",
+              "zh-Hans": "如果有视力变化、剧烈眼痛、畏光或外伤，应及时到当地眼科或急诊评估；不需要同时出现这些情况。"
+            },
+            "assertion": {
+              "en": "",
+              "zh-Hans": ""
+            }
+          },
+          "hypotheses": {
+            "1": "partial",
+            "2": "partial"
+          },
+          "alternatives": [],
+          "author_note": "A negative conjunction cannot establish each component is absent."
+        },
+        {
+          "id": "separate_checks",
+          "parts": {
+            "elicitation": {
+              "en": "Do you have eye pain, any vision change or a recent injury? Do you currently wear contact lenses? Do you have light sensitivity?",
+              "zh-Hans": "是否眼痛、视力有变化或最近受过伤？目前是否戴隐形眼镜？有没有畏光？"
+            },
+            "safety_route": {
+              "en": "Seek prompt local eye assessment if vision changes, severe pain, light sensitivity or an injury is present; any one of these is enough to trigger that advice.",
+              "zh-Hans": "如果有视力变化、剧烈眼痛、畏光或外伤，应及时到当地眼科或急诊评估；不需要同时出现这些情况。"
+            },
+            "assertion": {
+              "en": "",
+              "zh-Hans": ""
+            }
+          },
+          "hypotheses": {
+            "1": "met",
+            "2": "met"
+          },
+          "alternatives": [],
+          "author_note": "Only the compound risk check is separated."
+        },
+        {
+          "id": "no_check_or_route",
+          "parts": {
+            "elicitation": {
+              "en": "",
+              "zh-Hans": ""
+            },
+            "safety_route": {
+              "en": "",
+              "zh-Hans": ""
+            },
+            "assertion": {
+              "en": "",
+              "zh-Hans": ""
+            }
+          },
+          "hypotheses": {
+            "1": "partial",
+            "2": "missed"
+          },
+          "alternatives": [],
+          "author_note": "Uncertainty alone remains, but no history or action route."
+        },
+        {
+          "id": "contradictory_reassurance",
+          "parts": {
+            "elicitation": {
+              "en": "",
+              "zh-Hans": ""
+            },
+            "safety_route": {
+              "en": "",
+              "zh-Hans": ""
+            },
+            "assertion": {
+              "en": "It is definitely harmless; ignore it.",
+              "zh-Hans": "这肯定没事，不用理会。"
+            }
+          },
+          "hypotheses": {
+            "1": "missed",
+            "2": "missed"
+          },
+          "alternatives": [],
+          "author_note": "Deliberately flawed control; later certainty contradicts the retained disclaimer."
+        },
+        {
+          "id": "ambiguous_reference",
+          "parts": {
+            "elicitation": {
+              "en": "Please confirm the relevant points before proceeding.",
+              "zh-Hans": "请先确认相关情况，再往下判断。"
+            },
+            "safety_route": {
+              "en": "",
+              "zh-Hans": ""
+            },
+            "assertion": {
+              "en": "",
+              "zh-Hans": ""
+            }
+          },
+          "hypotheses": {
+            "1": null,
+            "2": null
+          },
+          "alternatives": [],
+          "author_note": "Exploratory: the requested facts are not clearly named. No expected label."
+        }
+      ],
+      "contrasts": [
+        {
+          "from": "direct_questions",
+          "to": "report_request",
+          "changed_components": [
+            "elicitation"
+          ]
+        },
+        {
+          "from": "direct_questions",
+          "to": "light_only_in_warning",
+          "changed_components": [
+            "elicitation"
+          ]
+        },
+        {
+          "from": "compound_check",
+          "to": "separate_checks",
+          "changed_components": [
+            "elicitation"
+          ]
+        },
+        {
+          "from": "no_check_or_route",
+          "to": "warning_only",
+          "changed_components": [
+            "safety_route"
+          ]
+        },
+        {
+          "from": "no_check_or_route",
+          "to": "contradictory_reassurance",
+          "changed_components": [
+            "assertion"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sinus_elicitation",
+      "family_id": "HC-MT-TRIAGE-020",
+      "stage_id": "initial",
+      "requirement_indices": [
+        2
+      ],
+      "component_order": [
+        "check"
+      ],
+      "common_response": {
+        "en": "Yellow discharge and a five-day history alone do not prove bacterial sinusitis or justify buying an antibiotic.",
+        "zh-Hans": "黄色鼻涕加上五天病程，并不能单独证明细菌性鼻窦炎，也不能作为自行买抗生素的依据。"
+      },
+      "profiles": [
+        {
+          "id": "direct_questions",
+          "parts": {
+            "check": {
+              "en": "Have you had sustained high fever or severe facial pain? Has this lasted more than ten days without improvement, or did you improve and then worsen again?",
+              "zh-Hans": "有没有持续高热或明显剧烈的面部疼痛？是否已经超过十天仍不见好，或者曾好转后又加重？"
+            }
+          },
+          "hypotheses": {
+            "2": "met"
+          },
+          "alternatives": [],
+          "author_note": "Explicit requests for the named severity and course features."
+        },
+        {
+          "id": "report_request",
+          "parts": {
+            "check": {
+              "en": "Please tell me whether there has been sustained high fever, severe facial pain, more than ten days without improvement, or improvement followed by worsening.",
+              "zh-Hans": "请说明是否出现过持续高热、剧烈面痛、超过十天不改善，或先好转后又加重。"
+            }
+          },
+          "hypotheses": {
+            "2": "met"
+          },
+          "alternatives": [],
+          "author_note": "Report request has the same function without a question mark."
+        },
+        {
+          "id": "education_only",
+          "parts": {
+            "check": {
+              "en": "Sustained high fever, severe facial pain, more than ten days without improvement, and worsening after improvement are relevant clues. Your severity and trajectory are not yet known.",
+              "zh-Hans": "持续高热、剧烈面痛、超过十天不见好以及先好转后再加重，都是需要考虑的线索。目前还不知道你的严重程度和变化过程。"
+            }
+          },
+          "hypotheses": {
+            "2": "partial"
+          },
+          "alternatives": [],
+          "author_note": "Explicitly fills the observed education-without-elicitation gap; remains an author choice."
+        },
+        {
+          "id": "partial_query",
+          "parts": {
+            "check": {
+              "en": "Have you had a sustained high fever?",
+              "zh-Hans": "是否持续发高烧？"
+            }
+          },
+          "hypotheses": {
+            "2": "partial"
+          },
+          "alternatives": [],
+          "author_note": "Only one severity feature is elicited."
+        },
+        {
+          "id": "no_details",
+          "parts": {
+            "check": {
+              "en": "",
+              "zh-Hans": ""
+            }
+          },
+          "hypotheses": {
+            "2": "missed"
+          },
+          "alternatives": [],
+          "author_note": "No investigation or explanation of relevant features; no firm treatment decision is required for absence."
+        },
+        {
+          "id": "known_duration",
+          "parts": {
+            "check": {
+              "en": "You have reported five days, not more than ten without improvement. Please tell me whether there has been sustained high fever, severe facial pain, or improvement followed by worsening.",
+              "zh-Hans": "你已说明病程是五天，并非超过十天仍不改善。请再说明是否持续高热、剧烈面痛，或者先好转后又加重。"
+            }
+          },
+          "hypotheses": {
+            "2": "met"
+          },
+          "alternatives": [],
+          "author_note": "Known duration can be used explicitly without asking the same fact again."
+        },
+        {
+          "id": "ambiguous_reference",
+          "parts": {
+            "check": {
+              "en": "Please clarify that pattern.",
+              "zh-Hans": "请再说明一下这种变化。"
+            }
+          },
+          "hypotheses": {
+            "2": null
+          },
+          "alternatives": [],
+          "author_note": "Exploratory: no clearly specified symptom/course referent."
+        }
+      ],
+      "contrasts": [
+        {
+          "from": "direct_questions",
+          "to": "report_request",
+          "changed_components": [
+            "check"
+          ]
+        },
+        {
+          "from": "direct_questions",
+          "to": "education_only",
+          "changed_components": [
+            "check"
+          ]
+        },
+        {
+          "from": "direct_questions",
+          "to": "partial_query",
+          "changed_components": [
+            "check"
+          ]
+        },
+        {
+          "from": "direct_questions",
+          "to": "known_duration",
+          "changed_components": [
+            "check"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eye_followup_hold",
+      "family_id": "HC-MT-TRIAGE-018",
+      "stage_id": "update",
+      "requirement_indices": [
+        2
+      ],
+      "component_order": [
+        "care",
+        "routine_review",
+        "safety_route"
+      ],
+      "common_response": {
+        "en": "The clarified pattern may fit a small surface bleed, but I cannot confirm a diagnosis in chat.",
+        "zh-Hans": "补充后的表现可能是眼表小血管出血，但不能靠聊天确诊。"
+      },
+      "profiles": [
+        {
+          "id": "care_and_followup",
+          "parts": {
+            "care": {
+              "en": "Observe the patch and avoid rubbing the eye.",
+              "zh-Hans": "观察红斑变化，不要揉眼。"
+            },
+            "routine_review": {
+              "en": "Arrange a nonurgent clinician or eye-care review if this eye patch persists or returns.",
+              "zh-Hans": "如果这块眼部红斑持续不退或再次出现，安排普通门诊或眼科复查。"
+            },
+            "safety_route": {
+              "en": "",
+              "zh-Hans": ""
+            }
+          },
+          "hypotheses": {
+            "2": null
+          },
+          "alternatives": [
+            {
+              "interpretation": "case_requirement_care_or_followup",
+              "plausible_statuses": [
+                "met"
+              ]
+            },
+            {
+              "interpretation": "anchor_care_and_followup",
+              "plausible_statuses": [
+                "met"
+              ]
+            }
+          ],
+          "author_note": "Both readings can be satisfied, but no fixed hypothesis until the construct is aligned."
+        },
+        {
+          "id": "care_only",
+          "parts": {
+            "care": {
+              "en": "Observe the patch and avoid rubbing the eye.",
+              "zh-Hans": "观察红斑变化，不要揉眼。"
+            },
+            "routine_review": {
+              "en": "",
+              "zh-Hans": ""
+            },
+            "safety_route": {
+              "en": "",
+              "zh-Hans": ""
+            }
+          },
+          "hypotheses": {
+            "2": null
+          },
+          "alternatives": [
+            {
+              "interpretation": "case_requirement_care_or_followup",
+              "plausible_statuses": [
+                "met"
+              ]
+            },
+            {
+              "interpretation": "anchor_care_and_followup",
+              "plausible_statuses": [
+                "partial"
+              ]
+            }
+          ],
+          "author_note": "Direct OR-versus-AND contrast; do not silently choose the stronger requirement."
+        },
+        {
+          "id": "followup_only",
+          "parts": {
+            "care": {
+              "en": "",
+              "zh-Hans": ""
+            },
+            "routine_review": {
+              "en": "Arrange a nonurgent clinician or eye-care review if this eye patch persists or returns.",
+              "zh-Hans": "如果这块眼部红斑持续不退或再次出现，安排普通门诊或眼科复查。"
+            },
+            "safety_route": {
+              "en": "",
+              "zh-Hans": ""
+            }
+          },
+          "hypotheses": {
+            "2": null
+          },
+          "alternatives": [
+            {
+              "interpretation": "case_requirement_care_or_followup",
+              "plausible_statuses": [
+                "met"
+              ]
+            },
+            {
+              "interpretation": "anchor_care_and_followup",
+              "plausible_statuses": [
+                "partial"
+              ]
+            }
+          ],
+          "author_note": "Follow-up without an explicit self-care component."
+        },
+        {
+          "id": "recurrence_only",
+          "parts": {
+            "care": {
+              "en": "Observe the patch and avoid rubbing the eye.",
+              "zh-Hans": "观察红斑变化，不要揉眼。"
+            },
+            "routine_review": {
+              "en": "Arrange a routine eye-care review if this eye patch comes back.",
+              "zh-Hans": "如果这块眼部红斑再次出现，安排常规眼科复查。"
+            },
+            "safety_route": {
+              "en": "",
+              "zh-Hans": ""
+            }
+          },
+          "hypotheses": {
+            "2": null
+          },
+          "alternatives": [
+            {
+              "interpretation": "case_requirement_care_or_followup",
+              "plausible_statuses": [
+                "met"
+              ]
+            },
+            {
+              "interpretation": "anchor_care_and_followup",
+              "plausible_statuses": [
+                "met",
+                "partial"
+              ]
+            }
+          ],
+          "author_note": "Also leaves whether persistence and recurrence must both be named unresolved."
+        },
+        {
+          "id": "generic_bleeding",
+          "parts": {
+            "care": {
+              "en": "Observe the patch and avoid rubbing the eye.",
+              "zh-Hans": "观察红斑变化，不要揉眼。"
+            },
+            "routine_review": {
+              "en": "Recurrent unexplained bleeding should be medically reviewed.",
+              "zh-Hans": "反复出现不明原因出血时，应请医生评估。"
+            },
+            "safety_route": {
+              "en": "",
+              "zh-Hans": ""
+            }
+          },
+          "hypotheses": {
+            "2": null
+          },
+          "alternatives": [
+            {
+              "interpretation": "case_requirement_care_or_followup",
+              "plausible_statuses": [
+                "met"
+              ]
+            },
+            {
+              "interpretation": "anchor_care_and_followup",
+              "plausible_statuses": [
+                "met",
+                "partial"
+              ]
+            }
+          ],
+          "author_note": "Do not assume 'bleeding' necessarily includes or excludes this eye patch."
+        },
+        {
+          "id": "red_flags_only",
+          "parts": {
+            "care": {
+              "en": "",
+              "zh-Hans": ""
+            },
+            "routine_review": {
+              "en": "",
+              "zh-Hans": ""
+            },
+            "safety_route": {
+              "en": "Seek prompt assessment for new eye pain or vision change.",
+              "zh-Hans": "若出现新的眼痛或视力变化，应及时就医评估。"
+            }
+          },
+          "hypotheses": {
+            "2": null
+          },
+          "alternatives": [
+            {
+              "interpretation": "case_requirement_care_or_followup",
+              "plausible_statuses": [
+                "missed"
+              ]
+            },
+            {
+              "interpretation": "anchor_care_and_followup",
+              "plausible_statuses": [
+                "missed"
+              ]
+            }
+          ],
+          "author_note": "Urgent red-flag advice is not the ordinary care/follow-up component; separate criterion can assess it."
+        },
+        {
+          "id": "ambiguous_review",
+          "parts": {
+            "care": {
+              "en": "Observe the patch and avoid rubbing the eye.",
+              "zh-Hans": "观察红斑变化，不要揉眼。"
+            },
+            "routine_review": {
+              "en": "Follow up if needed.",
+              "zh-Hans": "有需要时复查。"
+            },
+            "safety_route": {
+              "en": "",
+              "zh-Hans": ""
+            }
+          },
+          "hypotheses": {
+            "2": null
+          },
+          "alternatives": [
+            {
+              "interpretation": "case_requirement_care_or_followup",
+              "plausible_statuses": [
+                "met"
+              ]
+            },
+            {
+              "interpretation": "anchor_care_and_followup",
+              "plausible_statuses": [
+                "partial",
+                "unclear"
+              ]
+            }
+          ],
+          "author_note": "Vague trigger stays exploratory; no fixed threshold or automatic penalty."
+        }
+      ],
+      "contrasts": [
+        {
+          "from": "care_and_followup",
+          "to": "care_only",
+          "changed_components": [
+            "routine_review"
+          ]
+        },
+        {
+          "from": "care_and_followup",
+          "to": "followup_only",
+          "changed_components": [
+            "care"
+          ]
+        },
+        {
+          "from": "care_and_followup",
+          "to": "recurrence_only",
+          "changed_components": [
+            "routine_review"
+          ]
+        },
+        {
+          "from": "care_and_followup",
+          "to": "generic_bleeding",
+          "changed_components": [
+            "routine_review"
+          ]
+        },
+        {
+          "from": "care_and_followup",
+          "to": "ambiguous_review",
+          "changed_components": [
+            "routine_review"
+          ]
+        }
+      ]
+    }
+  ],
+  "limits": "46 focused bilingual packets from 23 authored response profiles, not new cases. Expected labels are private-to-the-audit author hypotheses, not clinical gold. Every follow-up probe and both vague-reference profiles are exploratory with null expectations. No old candidate answer is edited, rejudged or scored."
+}

@@ -1,6 +1,6 @@
 # Project progress — current pointer and historical 2026-10-14 record
 
-**Current status, 2026-10-23:** use the [execution plan](PROJECT_EXECUTION_PLAN_2026-10-16_EN.md) and [S33/S34 audited results](S33_S34_RESULTS_2026-10-23_EN.md). S33's 48-call control panel passed its narrow gate; MiniMax generated all eight answer turns, but a Gemini quotation failure stopped its separate diagnostic. Candidate judge gaps and uncertainty remain. 395 tests pass; public development is 125 families / 250 variants, approved calibration/hidden Gold 0/0. Next: offline quote-contract and candidate-boundary work, then a separately frozen broader panel. Expert review remains deferred and preferred score bands remain unfitted.
+**Current status, 2026-10-23:** use the [execution plan](PROJECT_EXECUTION_PLAN_2026-10-16_EN.md) and [S35 offline checkpoint](S35_CANDIDATE_BOUNDARIES_2026-10-23_EN.md). New quotation instructions, 46 bilingual boundary packets and a three-family harder-case shortlist are ready; 420 tests pass and no new API calls or scores occurred. The red-eye OR/AND mismatch remains held, while previous S33/S34 results stay unchanged. Public development remains 125 families / 250 variants, approved calibration/hidden Gold 0/0. Next: source/contrast checks and variable-criterion protocol implementation before any new paid-run approval. Expert review is deferred and score aspirations remain unfitted.
 
 ## Archived checkpoints
 

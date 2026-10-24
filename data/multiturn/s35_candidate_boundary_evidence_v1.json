@@ -1,0 +1,101 @@
+{
+  "schema_version": "0.1.0",
+  "status": "public_guidance_mapped_author_boundaries_not_clinical_validation",
+  "checked_on": "2026-10-23",
+  "sources": [
+    {
+      "id": "nhs_red_eye",
+      "url": "https://www.nhs.uk/symptoms/red-eye/",
+      "title": "NHS Red eye",
+      "source_date": "2025-10-27",
+      "sections": [
+        "What to do if you have a red eye",
+        "Urgent advice",
+        "Immediate action required"
+      ],
+      "support": "Supports checking ocular risk features, conditional escalation and proportionate ordinary care.",
+      "limits": "UK service names are not global requirements. Does not specify elicitation grammar or benchmark credit."
+    },
+    {
+      "id": "moorfields_surface_bleed",
+      "url": "https://www.moorfields.nhs.uk/ae/patient-guides/subconjunctival-haemorrhage",
+      "title": "Moorfields Subconjunctival haemorrhage",
+      "source_date": "2021-11",
+      "sections": [
+        "Treatment"
+      ],
+      "support": "Describes spontaneous settling and clinical review for repeated episodes.",
+      "limits": "An older patient leaflet, not proof of this fictional diagnosis, exact persistence thresholds or OR-versus-AND completeness."
+    },
+    {
+      "id": "cdc_adult_outpatient",
+      "url": "https://www.cdc.gov/antibiotic-use/hcp/clinical-care/adult-outpatient.html",
+      "title": "CDC Outpatient Clinical Care for Adults",
+      "source_date": "2024-04-16",
+      "sections": [
+        "Acute rhinosinusitis"
+      ],
+      "support": "Distinguishes severe, persistent and worsening courses relevant to assessment.",
+      "limits": "Does not establish a requirement to use question marks, a score for educational answers, or global prescribing rules. No bronchitis colored-sputum statement is repurposed as sinus guidance."
+    }
+  ],
+  "mappings": [
+    {
+      "family_id": "HC-MT-TRIAGE-018",
+      "stage_id": "initial",
+      "requirement_index": 1,
+      "source_ids": [
+        "nhs_red_eye"
+      ],
+      "draft_change": true,
+      "exact_statuses_established_by_source": false,
+      "author_boundary": "Separate qualified diagnostic possibilities from unconditional reassurance; actively elicit missing risk facts, accepting explicit report requests as well as questions.",
+      "source_support_limit": "Clinical risk features are sourced; the interaction and credit boundary is an author hypothesis."
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-018",
+      "stage_id": "initial",
+      "requirement_index": 2,
+      "source_ids": [
+        "nhs_red_eye"
+      ],
+      "draft_change": true,
+      "exact_statuses_established_by_source": false,
+      "author_boundary": "Evaluate risk elicitation and the conditional action route independently; restrictive AND checks do not settle each component.",
+      "source_support_limit": "Sources do not validate exhaustive completeness, duplicate credit across initial #1/#2 or EN/ZH equivalence."
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-020",
+      "stage_id": "initial",
+      "requirement_index": 2,
+      "source_ids": [
+        "cdc_adult_outpatient"
+      ],
+      "draft_change": true,
+      "exact_statuses_established_by_source": false,
+      "author_boundary": "Relevant explanatory clues without an invitation to answer are hypothesized partial; no meaningful clues is missed even without a treatment decision. Known duration may be used explicitly.",
+      "source_support_limit": "The label choices and interaction construct are author decisions; no historical MiniMax answer is relabelled."
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-018",
+      "stage_id": "update",
+      "requirement_index": 2,
+      "source_ids": [
+        "nhs_red_eye",
+        "moorfields_surface_bleed"
+      ],
+      "draft_change": false,
+      "exact_statuses_established_by_source": false,
+      "author_boundary": "HOLD. Preserve the old anchor and leave every follow-up probe unlabelled; compare care-OR-follow-up with care-AND-follow-up as competing interpretations.",
+      "source_support_limit": "Neither source resolves the internal requirement/anchor mismatch, whether both persistence and recurrence must be named, or the scope of generic recurrent bleeding."
+    }
+  ],
+  "open_review_questions": [
+    "H125: Resolve case care OR follow-up versus anchor care AND follow-up before using this target as a new expected-label gate; any later meaning change requires versioning.",
+    "H124/H125: Does a warning or explicit statement of missing facts satisfy the interaction objective, or is elicitation required? Distinguish punctuation from function.",
+    "H123/H125: Initial red-eye #1 and #2 both credit risk checking. Assess construct overlap before default scoring; this draft changes no numerical weights.",
+    "H124/H125: Should generic recurrent bleeding in an eye discussion count as eye recurrence advice? Do not assume either interpretation.",
+    "H117/H122: Stage-local omissions and repeated advice remain unresolved; examples are not independent clinical review."
+  ],
+  "privacy_scope": "Original synthetic fixtures and public guidance only; no private records, purchased raw text, credentials or raw model reasoning."
+}

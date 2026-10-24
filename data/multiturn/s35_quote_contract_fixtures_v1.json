@@ -1,0 +1,84 @@
+{
+  "schema_version": "0.1.0",
+  "status": "format_only_not_clinical_labels",
+  "corpora": {
+    "en": {
+      "user": "USER_ONLY_REQUEST",
+      "initial": {
+        "first": "Initial first statement.",
+        "middle": "Initial middle statement.",
+        "last": "Initial last statement.",
+        "literal_ellipsis": "Initial literal ... token."
+      },
+      "update": {
+        "first": "Update first statement.",
+        "middle": "Update middle statement.",
+        "last": "Update last statement.",
+        "literal_ellipsis": "Update literal ... token."
+      }
+    },
+    "zh-Hans": {
+      "user": "仅限用户问题",
+      "initial": {
+        "first": "首轮第一句。",
+        "middle": "首轮中间句。",
+        "last": "首轮最后一句。",
+        "literal_ellipsis": "首轮原文……符号。"
+      },
+      "update": {
+        "first": "更新轮第一句。",
+        "middle": "更新轮中间句。",
+        "last": "更新轮最后一句。",
+        "literal_ellipsis": "更新轮原文……符号。"
+      }
+    }
+  },
+  "checks": [
+    {
+      "id": "literal",
+      "criterion_accepted": true,
+      "observation_accepted": true
+    },
+    {
+      "id": "normalized_markup",
+      "criterion_accepted": true,
+      "observation_accepted": true
+    },
+    {
+      "id": "literal_ellipsis",
+      "criterion_accepted": true,
+      "observation_accepted": true
+    },
+    {
+      "id": "ellipsis_join",
+      "criterion_accepted": false,
+      "observation_accepted": false
+    },
+    {
+      "id": "slash_join",
+      "criterion_accepted": false,
+      "observation_accepted": false
+    },
+    {
+      "id": "user_quote",
+      "criterion_accepted": false,
+      "observation_accepted": false
+    },
+    {
+      "id": "wrong_turn",
+      "criterion_accepted": false,
+      "observation_accepted": true
+    },
+    {
+      "id": "paraphrase",
+      "criterion_accepted": false,
+      "observation_accepted": false
+    },
+    {
+      "id": "empty",
+      "criterion_accepted": false,
+      "observation_accepted": true
+    }
+  ],
+  "limits": "The update observation contract intentionally permits a single span from either visible assistant turn; criterion evidence is stage-local. Empty observation evidence still requires explanations. Corpus strings are software-only, not clinical answers. No semantic adequacy, model compliance or score is tested."
+}

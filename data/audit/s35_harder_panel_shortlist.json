@@ -1,0 +1,127 @@
+{
+  "schema_version": "0.1.0",
+  "status": "offline_shortlist_and_budget_estimate_not_frozen_not_authorized",
+  "selection_reason": "Three distinct reasoning mechanisms beyond the red-eye/sinus controls, one from each existing unscored L/M/N batch. Complexity is a design hypothesis, not measured difficulty.",
+  "selections": [
+    {
+      "family_id": "HC-MT-REASON-020",
+      "batch": "l",
+      "paths": {
+        "cases": "data/multiturn/batch_l_cases.json",
+        "contrasts": "data/multiturn/batch_l_contrasts_v1.json",
+        "anchors": "config/multiturn_criterion_anchors_batch_l_v1.json"
+      },
+      "file_sha256": {
+        "cases": "93b769011d2b0109a61ed192515aa4a4cefadb519a52cea881da078607ae98e9",
+        "contrasts": "0845337491eba7650a776bee06e00974f261407b6ed1aae62f577043c282e17d",
+        "anchors": "dd0024885815bbaedb01f3b7d89806115208c173488433717c3274b5d4b8b643"
+      },
+      "case_hashes": {
+        "en": "1a0f8865afd3b64b802645db10220797f59f5a96045f10823e39673cf528beff",
+        "zh-Hans": "6aa819be64f5fc17f05459ddcddfa95020b021b3d2f76e42f009e6550278d522"
+      },
+      "mechanism": "Accepts crystals, an intermediate synovial cell count and negative Gram stain as exclusion of a joint infection despite worsening systemic features",
+      "criterion_counts": {
+        "initial": 3,
+        "update": 4
+      },
+      "unsafe_edit_scope": "one declared component; not proof of an isolated clinical effect"
+    },
+    {
+      "family_id": "HC-MT-REASON-022",
+      "batch": "m",
+      "paths": {
+        "cases": "data/multiturn/batch_m_cases.json",
+        "contrasts": "data/multiturn/batch_m_contrasts_v1.json",
+        "anchors": "config/multiturn_criterion_anchors_batch_m_v1.json"
+      },
+      "file_sha256": {
+        "cases": "4b9c2735c785c7384495e387d2f0954141d866450d44ccacef24cf5f8567ec1f",
+        "contrasts": "89fed702b5859b097bb61d5cf0b2c33914187470cd664559dee274bb5841d37f",
+        "anchors": "da9843d7d146fd61677071f8d4245fd9bf4dced9e0785b47c91c48356e30ffbf"
+      },
+      "case_hashes": {
+        "en": "4f81dc17d90ffc8bc88e3adf0723ff6978db2466e365f278df46ead36d427517",
+        "zh-Hans": "5429d2323eb55adf5cad8dc6a26a87c407d507fecc07a3aa228072f8bcd2ee39"
+      },
+      "mechanism": "Uses negative IgA-based celiac serology as exclusion despite newly documented marked IgA deficiency while gluten intake is adequate",
+      "criterion_counts": {
+        "initial": 3,
+        "update": 3
+      },
+      "unsafe_edit_scope": "multiple linked components, not a single-criterion intervention"
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-019",
+      "batch": "n",
+      "paths": {
+        "cases": "data/multiturn/batch_n_cases.json",
+        "contrasts": "data/multiturn/batch_n_contrasts_v1.json",
+        "anchors": "config/multiturn_criterion_anchors_batch_n_v1.json"
+      },
+      "file_sha256": {
+        "cases": "e079f6ac48a818c5664a4c72ddef79ae44e4230c4a089c12bbc29f1f86a29700",
+        "contrasts": "c3cf16234ffb297315fd6cacde5c1f5ef71158fc2f07d9a1ca764ec1e14b9dc0",
+        "anchors": "1b077bf8adaa3b676bfef8dc265e2d4a92ed50134dc1b3847ff86e413a8a2dd3"
+      },
+      "case_hashes": {
+        "en": "c0f65e37e64db97e5ef3263298e227e04b68a84fb644a0461fdc51ef71000ea9",
+        "zh-Hans": "0f1b820286a5cd3f2d0a2f3ac5e8c0b580185d8eb90913a97067b1871d9df735"
+      },
+      "mechanism": "Uses near-normal pH to exclude mixed acid-base toxicity, then treats a falling salicylate concentration or a 100 mg/dL cutoff as reassurance despite new confusion, acidemia and worsening kidney function",
+      "criterion_counts": {
+        "initial": 3,
+        "update": 4
+      },
+      "unsafe_edit_scope": "multiple linked components, not a single-criterion intervention"
+    }
+  ],
+  "judge_ids": [
+    {
+      "provider": "gemini",
+      "model": "gemini-3.8-flash"
+    },
+    {
+      "provider": "grok",
+      "model": "grok-4.7"
+    }
+  ],
+  "proposed_control_design": {
+    "languages": [
+      "en",
+      "zh-Hans"
+    ],
+    "update_profiles": [
+      "safe",
+      "partial",
+      "unsafe"
+    ],
+    "shared_initial": true,
+    "repeat_partial_both_stages": true,
+    "first_initial_requests": 12,
+    "first_update_requests": 36,
+    "repeat_initial_requests": 12,
+    "repeat_partial_update_requests": 12,
+    "estimated_maximum_requests": 72,
+    "candidate_requests": 0
+  },
+  "separate_minimax_extension_estimate": {
+    "status": "not_part_of_control_budget_not_authorized",
+    "candidate_model": "MiniMax-M2.7",
+    "conversations": 6,
+    "candidate_requests": 12,
+    "judge_requests": 24,
+    "total_requests": 36
+  },
+  "current_live_allowance": 0,
+  "live_runner_implemented": false,
+  "clinical_review_status": "deferred_not_waived",
+  "required_before_execution": [
+    "Verify the selected source-to-answer mappings and case-specific contrast hypotheses without changing labels to obtain an expected score.",
+    "Implement and test new versioned prompts, runner and schema for three initial criteria and three or four update criteria; S33 and the additive S35 stage prompts still describe three update criteria and cannot simply be pointed at these files.",
+    "Freeze exact sources, prompts, anchors, schedule, model IDs, timeout, stopping and repeat gates, and interpretation before paid calls.",
+    "Keep the red-eye OR/AND target out of any expected-label advance gate until its requirement and anchor are aligned in a new version.",
+    "Obtain explicit approval of the finished protocol and synthetic-material disclosure/call budget; estimates here are not an allowance."
+  ],
+  "limits": "No case added, no scores calculated, no old run resumed or pooled. Selected cases remain public development, not hidden Gold. A 72-request control design and a possible 36-request MiniMax extension are separate future decisions; no model availability or difficulty claim."
+}
