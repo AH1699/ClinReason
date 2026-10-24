@@ -1,0 +1,18 @@
+{
+  "version": "s34-v1-minimax-stage-isolated-workflow-diagnostic",
+  "status": "user_requested_integration_diagnostic_not_calibrated_candidate_comparison",
+  "candidate": {"provider": "minimax", "model": "MiniMax-M2.7"},
+  "case_keys": ["HC-MT-TRIAGE-018__en", "HC-MT-TRIAGE-018__zh-Hans", "HC-MT-TRIAGE-020__en", "HC-MT-TRIAGE-020__zh-Hans"],
+  "candidate_prompt": "config/candidate_prompt_bilingual_v2.txt",
+  "candidate_calls": 8,
+  "judge_calls": 16,
+  "maximum_calls": 24,
+  "timeout_seconds": 240,
+  "automatic_retries": 0,
+  "sampling": "provider_defaults_unpinned",
+  "order": "per_case_two_candidate_turns_then_initial_gemini_grok_then_update_gemini_grok",
+  "scoring_contract": "frozen_s33_stage_prompts_anchors_schema_and_arithmetic",
+  "interpretation": "Independent workflow diagnostic requested alongside the 48-call S33 controls. Neither run authorizes or repairs the other. Report case-wise provisional scores only; comparison_ready is always false, even if both runs complete. No ranking, model-tier assignment, score fitting or clinical approval.",
+  "stop_policy": "Stop this run on first transport, malformed response, evidence failure, embedded reasoning, truncation or exact-model mismatch. No retry, resume, replacement, fallback model or pooling. Preserve raw responses before validation.",
+  "disclosure": "MiniMax receives only synthetic user messages, its own previous answer and the candidate instruction, never reference answers/labels. Google/xAI receive synthetic conversations with MiniMax's answer text, draft labels and judge instructions. No private records or purchased raw data. Provider billing may apply; no dollar cap is claimed."
+}
