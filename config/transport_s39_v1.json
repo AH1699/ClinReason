@@ -1,0 +1,32 @@
+{
+  "version": "s39-capture-accounting-v1",
+  "live_call_allowance": 0,
+  "automatic_retries": 0,
+  "max_request_bytes": 1048576,
+  "max_response_bytes": 8388608,
+  "socket_timeout_seconds": 240,
+  "exchange_deadline_seconds": 300,
+  "deadline_note": "Checked between reads; one blocking read may last up to the socket timeout. Closing locally cannot prove cancellation of provider work or prevent billing.",
+  "status": "injected_http_tests_only_spending_policy_and_live_approval_unresolved",
+  "checked_on": "2026-10-23",
+  "sources": [
+    {
+      "url": "https://ai.google.dev/api/interactions-api",
+      "finding": "Interactions reports input, answer output, thought, total and cache counters separately. Text-only examples reconcile total as input + output + thought. Reject other totals; do not drop thoughts from an output-price estimate."
+    },
+    {
+      "url": "https://docs.x.ai/developers/cost-tracking",
+      "finding": "usage.cost_in_usd_ticks is the provider-reported per-request charge, including applicable discounts and token/tool costs; 10^10 ticks = 1 USD. It arrives after the request, not a prospective spending bound."
+    },
+    {
+      "url": "https://platform.minimax.io/docs/api-reference/text-chat-openai",
+      "finding": "Chat Completions reports prompt_tokens, completion_tokens, total_tokens and optional cache details. Preserve reported completion aggregate without adding reasoning again; resulting roster-price calculation is only an undiscounted estimate."
+    }
+  ],
+  "remaining": [
+    "Choose and verify a prospective spending-control policy; input/output bounds still not proven for all providers",
+    "Wire the capture component to an approval-bound real HTTPS connector and exact S38 schedule; test end to end before enabling",
+    "Freeze effective generation settings, phase-specific request/data scope and approval fingerprint",
+    "Obtain explicit paid-run approval; no account settings changed or model credentials loaded"
+  ]
+}

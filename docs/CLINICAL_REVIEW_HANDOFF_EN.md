@@ -1,5 +1,9 @@
 # Living human-review handoff — opened 2026-10-07
 
+## S39 later methods-review question H129
+
+**H129 / medium:** When reviewing [capture and accounting](S39_CAPTURE_AND_ACCOUNTING_2026-10-23_EN.md), keep technical completeness separate from clinical performance. Missing usage, provider failures and truncated answers must remain visible in the denominator rather than becoming zero clinical scores or disappearing. Raw local bodies can contain reasoning and sensitive echoes; review retention/access before any wider sharing. Provider-reported charges, token estimates and unknown costs are distinct; neither a timeout nor a missing reply proves zero expense. Compare provider compute settings before interpreting cost/quality differences. These are methods and data-handling checks, not a substitute for the open clinical/language items H125–H128; expert review remains deferred, not waived.
+
 ## S38 later methods-review question H128
 
 **H128 / high:** Review how [the prospective roster and workflow](S38_ROSTER_AND_WORKFLOW_2026-10-23_EN.md) will be described in external comparisons. Stable MiniMax M3.1 Flash replaces M2.7 before new measurements; historical M2.7 results must retain their original identity and protocol. Provider alias routing, different reasoning settings and unequal output-cap scopes can confound comparisons: an identical number in a token-limit field does not establish equal compute. Inspect effective settings, truncation/technical-failure exclusions, missing-result intervals, stage isolation and fixed repeat/agreement denominators before interpreting differences as clinical ability. The 515 passing software tests and synthetic rehearsal results do not establish clinical validity or achieved difficulty. Keep H125–H127 and clinical/language reviews open; these later reviews do not block provisional engineering or authorize paid calls.

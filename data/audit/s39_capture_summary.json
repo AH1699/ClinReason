@@ -1,0 +1,12 @@
+{
+  "version": "s39-capture-accounting-v1",
+  "live_ready": false,
+  "live_calls": 0,
+  "new_cases": 0,
+  "new_model_scores": 0,
+  "http_capture": "injected_connections_tested",
+  "provider_usage": "gemini_thoughts_minimax_completion_grok_billed_ticks",
+  "budget_guarantee": false,
+  "production_entry": "unconditionally_disabled",
+  "snapshot_sha256": "5d5deff5ef588eb3a31569f2ac9889bf46debc04e9497d4fea3942bf23f34e7a"
+}

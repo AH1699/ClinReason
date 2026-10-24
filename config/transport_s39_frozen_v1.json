@@ -1,0 +1,13 @@
+{
+  "version": "s39-capture-accounting-v1",
+  "live_call_allowance": 0,
+  "sha256": {
+    "config/transport_s39_v1.json": "1aba8575d85cfdcd8156781afe2d8aa8345fa11820a3341cb38f55f6bd1ac491",
+    "config/workflow_s38_offline_frozen_v1.json": "3037c3edb1d1cf73e0e4cb6dcd0eb7f1abce1ab49708454ca33eaf41fdf2e9de",
+    "config/reference_mix_s38_v1.json": "7712db0d6d234991d89374bd9170a9f121e221b5e352c7955d2e6047f4fbd02a",
+    "benchmark/transport_s39.py": "8ec88ddf431c091772e81342520b720fc0b8ccfada7078d13f83475a14f1becd",
+    "benchmark/usage_s39.py": "4ca81e5a1a86149d65638b8614c1ff3c14a0d14938e7ac347525fb057217e4b3",
+    "tests/test_transport_s39.py": "a2df7a1b0814a721aa12d978ea8413c3df5a8b9f3bde7b25825a92dc6c3f5ace",
+    "tests/test_usage_s39.py": "27f062f3de5469b2d7d41e87a26cdf16cb0924834db3e4cd0b799cdd27f63e37"
+  }
+}
