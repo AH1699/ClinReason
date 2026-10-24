@@ -1,0 +1,30 @@
+{
+  "version": "s40-first-phase-stop-threshold-v1",
+  "selected_on": "2026-10-24",
+  "owner_choice": "Accept a stop threshold with possible overrun",
+  "approval_scope": "Budget-policy choice only; not permission to send data or make paid calls",
+  "phase": "first",
+  "threshold_usd": "55.00",
+  "threshold_usd_ticks": 550000000000,
+  "usd_ticks_per_dollar": 10000000000,
+  "usd_ticks_per_microusd": 10000,
+  "max_attempts": 816,
+  "max_in_flight": 1,
+  "automatic_retries": 0,
+  "resume_allowed": false,
+  "live_call_allowance": 0,
+  "monitoring_basis": "Grok provider-reported billing ticks plus Gemini/MiniMax undiscounted token estimates converted to ticks; keep the subtotals separate",
+  "dispatch_rule": "Start only while monitoring amount is below the threshold, all previous attempts have known accounting, no request is in flight, and the exact next scheduled row is eligible",
+  "settlement_rule": "Retain and count the last response, then stop when the monitoring amount reaches or exceeds the threshold; unknown accounting or any technical failure stops immediately",
+  "overshoot_accepted": true,
+  "hard_ceiling": false,
+  "limits": "Final-request overrun is not numerically bounded. Estimates are not an invoice; missing replies can still incur charges, and local cancellation does not prove remote cancellation. No account-wide spending guarantee.",
+  "confirmation_policy_selected": false,
+  "confirmation_threshold_usd": null,
+  "confirmation_live_call_allowance": 0,
+  "remaining": [
+    "Real HTTPS connector and production schedule integration with approval admission",
+    "Final generation settings and complete live-protocol freeze",
+    "Explicit first-phase data-export, request-count and billing approval; confirmation needs its own later authorization"
+  ]
+}

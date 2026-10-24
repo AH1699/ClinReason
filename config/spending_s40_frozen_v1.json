@@ -1,0 +1,11 @@
+{
+  "version": "s40-stop-threshold-rehearsal-v1",
+  "live_call_allowance": 0,
+  "files": {
+    "config/spending_s40_v1.json": "21edf3259323b2c3ae6db4dbf7731370e758b3606e965816e904d14534b25eb3",
+    "config/transport_s39_frozen_v1.json": "fe52d19db47b256b36cef403752b451803250cbfcd2f4beb667100dcd6485a6d",
+    "benchmark/spending_s40.py": "5500fb3b4022ac4f053313fef58f6c81084a2002b73446bcd9acd1aa877f5abf",
+    "tests/test_spending_s40.py": "8c80a9bd20f9c6dd9c5e34bce9a71e49eb2ebbae6f0296a56d409dcf2f0aeeba"
+  },
+  "approval_scope_sha256": "3d20d86d3cd351f6636e952e4bffaa9d328fd7e1f14ef2c01be55978d3946e39"
+}

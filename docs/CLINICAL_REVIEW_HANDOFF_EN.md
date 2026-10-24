@@ -1,5 +1,9 @@
 # Living human-review handoff — opened 2026-10-07
 
+## S40 later methods-review question H130
+
+**H130 / medium:** Review the reporting consequences of the [owner-selected first-phase spending threshold](S40_SPENDING_THRESHOLD_2026-10-24_EN.md). A cost stop can leave an uneven prefix of the ordered model/family schedule; do not treat the remaining sample as representative or renormalize it into a complete-panel mean. Preserve the final over-threshold response and all technical/unknown-cost attempts, fixed denominators and missing-result intervals. Clinical ability, completion reliability and recorded cost remain separate measures. The roughly 80-point mean objective cannot justify omitting unfinished cells. This policy choice covers neither a new paid run nor confirmation spending; expert review remains later, and H125–H129 stay open.
+
 ## S39 later methods-review question H129
 
 **H129 / medium:** When reviewing [capture and accounting](S39_CAPTURE_AND_ACCOUNTING_2026-10-23_EN.md), keep technical completeness separate from clinical performance. Missing usage, provider failures and truncated answers must remain visible in the denominator rather than becoming zero clinical scores or disappearing. Raw local bodies can contain reasoning and sensitive echoes; review retention/access before any wider sharing. Provider-reported charges, token estimates and unknown costs are distinct; neither a timeout nor a missing reply proves zero expense. Compare provider compute settings before interpreting cost/quality differences. These are methods and data-handling checks, not a substitute for the open clinical/language items H125–H128; expert review remains deferred, not waived.

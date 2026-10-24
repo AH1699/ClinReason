@@ -1,0 +1,12 @@
+{
+  "version": "s40-stop-threshold-rehearsal-v1",
+  "live_calls": 0,
+  "new_cases": 0,
+  "new_model_scores": 0,
+  "policy_selected": "first_phase_55_usd_soft_stop_threshold",
+  "hard_ceiling": false,
+  "overshoot_accepted": true,
+  "confirmation_policy_selected": false,
+  "live_authorized": false,
+  "snapshot_sha256": "929f84e0fb8dab5b5aed6b5e5622554072287b2674ed4ee26c6a61ce6973a474"
+}
