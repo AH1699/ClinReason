@@ -1,5 +1,7 @@
 # S32 care plan boundaries and quotation draft
 
+Follow-up: the [S33 stage-isolated full-score protocol](S33_STAGE_ISOLATED_PROTOCOL_2026-10-23_EN.md) is now implemented and frozen, awaiting separate approval for up to 48 requests. This offline draft and historical results remain unchanged.
+
 ## What is ready
 
 The two care-plan disagreements from [S31](S31_FULL_SCORE_RESULT_2026-10-23_EN.md) now have a separate **offline draft**: two revised anchors, 16 bilingual answer controls producing **32 focused packets**, and a clearer observation-quotation instruction. These are not new case families or validated labels. No model request, numerical score, historical rescore or default-rule change occurred.
