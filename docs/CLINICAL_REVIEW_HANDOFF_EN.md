@@ -1,5 +1,9 @@
 # Living human-review handoff — opened 2026-10-07
 
+## S42 later methods-review question H132
+
+**H132 / medium:** The [first live phase](S42_FIRST_PHASE_STOP_2026-10-24_EN.md) ended on a Grok 403 while judging an authored English salicylate-case initial answer. Only nine control judgments were accepted, with no candidate calls. Decide how future reports should distinguish API access/refusal, incomplete judge gates and clinical performance. Do not count a non-answer as a clinical zero, quietly remove the case or infer an unsafe false-pass rate from this prefix. Permission versus request-specific restriction remains unresolved; changes intended to evade provider restrictions are not part of the plan. No scoring adjustments follow from this event. Expert review remains later; H125–H131 stay open.
+
 ## S41 later methods-review question H131
 
 **H131 / medium:** Review what the [first-phase configuration](S41_LIVE_RUN_2026-10-24_EN.md) can support. It carries visible answers only, not native hidden reasoning state; 8,192-token limits have different provider scopes and reasoning/sampling settings are not equal-compute controls. Check whether subsequent claims need a separately preregistered native-continuation or resource-matched comparison. Preserve truncations, missing outcomes, mutable-model/default caveats and separate judge results; do not convert technical failure into a clinical zero or fit the six-model mean to ~80. Raw responses can include private reasoning metadata and remain local. The runner is implemented but this batch made no paid calls and created no approval receipt. Clinical/linguistic validation remains deferred, not completed; H125–H130 remain open.

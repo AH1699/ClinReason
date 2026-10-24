@@ -1,0 +1,32 @@
+{
+  "version": "s42-s41-control-stop-audit-v1",
+  "protocol_sha256": "e1010f46ac255475b21124abf978c351c3dcfe3767a26aba378ae1d8cbc58697",
+  "run_report_sha256": "2ce7cc19a3df7b763c589a28d618fedbc96377738a478316a15f6eea07375c2f",
+  "offline_replay_pass": true,
+  "attempts": 10,
+  "accepted_control_judgments": 9,
+  "candidate_requests": 0,
+  "candidate_scores": 0,
+  "attempts_by_model": {
+    "gemini-3.8-flash": 5,
+    "grok-4.7": 5
+  },
+  "terminal": "http_status",
+  "failed_request": {
+    "sequence": 10,
+    "model": "grok-4.7",
+    "family_id": "HC-MT-MEDSAFE-019",
+    "language": "en",
+    "stage": "initial",
+    "http_status": 403,
+    "body_sha256": "2128843b8397bbfec67be56adc2f13078def0ab21e47ac937cb1d20bbb4bbf88"
+  },
+  "recorded_amount_usd": "0.066317",
+  "grok_reported_usd": "0.043892",
+  "token_estimate_usd": "0.022425",
+  "unknown_charge_attempts": 1,
+  "invoice_total_usd": null,
+  "control_gate_complete": false,
+  "calibration_complete": false,
+  "retry_performed": false
+}
