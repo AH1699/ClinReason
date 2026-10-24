@@ -1,0 +1,38 @@
+{
+  "status": "offline_saved_response_diagnostic_not_repair",
+  "attempted_call": 21,
+  "valid_prefix": 20,
+  "valid_candidate_turns": 8,
+  "valid_judge_stages": 12,
+  "case_key": "HC-MT-TRIAGE-020__zh-Hans",
+  "kind": "judge",
+  "stage": "initial",
+  "provider": "gemini",
+  "model": "gemini-3.8-flash",
+  "returned_model": "gemini-3.8-flash",
+  "model_matches": true,
+  "response_sha256": "aff042128908b95f4a26c9c1c7f02808bfb3e4007a7301b7c41fe75d718cd6c6",
+  "validation_failure": "initial_criterion_quote_not_contained_in_initial_answer",
+  "violations": [
+    {
+      "requirement_index": 2,
+      "rejected_quote": "通常：\n\n- 症状持续超过10天且没有改善；\n- 出现高热（≥39℃）并伴明显脓性鼻涕或面部疼痛，持续3～4天以上；\n- 或先好转后再次明显加重（“二次恶化”）。\n\n若出现上述情况，应就医评估……由于目前还不知道症状是在加重还是改善及具体严重程度，应补充确认",
+      "whole_quote_matches_initial_answer": false,
+      "separator": "……",
+      "pieces": [
+        {
+          "text": "通常：\n\n- 症状持续超过10天且没有改善；\n- 出现高热（≥39℃）并伴明显脓性鼻涕或面部疼痛，持续3～4天以上；\n- 或先好转后再次明显加重（“二次恶化”）。\n\n若出现上述情况，应就医评估",
+          "matches_initial_answer": true
+        },
+        {
+          "text": "由于目前还不知道症状是在加重还是改善及具体严重程度，应补充确认",
+          "matches_initial_answer": true
+        }
+      ]
+    }
+  ],
+  "repaired": false,
+  "rescored": false,
+  "new_calls": 0,
+  "limits": "Matching pieces do not satisfy the frozen evidence contract. The rejected judgment stays unscored; this diagnosis does not authorize repair or resumption."
+}

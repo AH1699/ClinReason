@@ -1,5 +1,7 @@
 # S33 stage isolated scoring protocol
 
+**Post-run status:** The owner approved this protocol; S33 completed 48/48 valid calls and passed its narrow gate. See the [S33/S34 result](S33_S34_RESULTS_2026-10-23_EN.md), including the separately requested MiniMax diagnostic. The prospective rules and pre-run claims below are retained as a dated record, not current execution status.
+
 ## Ready for a separate approval decision
 
 S33 is implemented, tested and frozen, but **no live call has run**. It tests the [S32 care boundaries and quotation guidance](S32_CARE_BOUNDARIES_DRAFT_2026-10-23_EN.md) in full-score calculations while preventing the initial-stage judge from seeing later clinical facts. It uses the unchanged synthetic red-eye and sinus controls from S31, not new cases or private records.

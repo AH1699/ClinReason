@@ -1,5 +1,7 @@
 # S34 MiniMax workflow diagnostic alongside S33
 
+**Post-run status:** All eight MiniMax answer calls succeeded. S34 stopped at request 21 on Gemini's nonliteral criterion quote, leaving 12 valid judge stages and six derived records; it was not resumed. See the [separate S33/S34 outcomes](S33_S34_RESULTS_2026-10-23_EN.md). The pre-run protocol below is unchanged.
+
 ## Authorized scope and interpretation
 
 The owner approved proceeding with S33 and explicitly requested MiniMax in this test run. S33 keeps its frozen **48-call judge-control protocol**. S34 adds a separately bounded **24-call MiniMax workflow diagnostic** on the same two synthetic families in English and Chinese, for a combined ceiling of **72 requests**. This is a request ceiling, not a currency cap.

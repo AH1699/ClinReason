@@ -1,0 +1,565 @@
+{
+  "status": "incomplete_saved_prefix",
+  "experiment": "s34-v1-minimax-stage-isolated-workflow-diagnostic",
+  "candidate": {
+    "provider": "minimax",
+    "model": "MiniMax-M2.7"
+  },
+  "attempted_calls": 21,
+  "valid_candidate_turns": 8,
+  "valid_judge_stages": 12,
+  "complete_candidate_conversations": 4,
+  "derived_conversation_judge_scores": 6,
+  "stopped": {
+    "attempted": 21,
+    "saved": 20,
+    "kind": "response_validation_failure",
+    "error_type": "ValueError",
+    "delivery": "response_saved_validation_failed"
+  },
+  "comparison_ready": false,
+  "calibration_complete": false,
+  "s33_gate_overridden": false,
+  "automatic_retries": 0,
+  "score_cells": [
+    {
+      "case_key": "HC-MT-TRIAGE-018__en",
+      "candidate_model": "MiniMax-M2.7",
+      "judge": {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash"
+      },
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "met"
+          ],
+          [
+            "update",
+            2,
+            "met"
+          ],
+          [
+            "update",
+            3,
+            "met"
+          ]
+        ],
+        "critical_errors": []
+      },
+      "score": {
+        "score_version": "s33-v1-stage-isolated-s32-integration",
+        "criterion_score_interval": [
+          100,
+          100
+        ],
+        "point_score": 100,
+        "provisional_pass": true,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      }
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-018__en",
+      "candidate_model": "MiniMax-M2.7",
+      "judge": {
+        "provider": "grok",
+        "model": "grok-4.7"
+      },
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "partial"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "met"
+          ],
+          [
+            "update",
+            2,
+            "partial"
+          ],
+          [
+            "update",
+            3,
+            "met"
+          ]
+        ],
+        "critical_errors": []
+      },
+      "score": {
+        "score_version": "s33-v1-stage-isolated-s32-integration",
+        "criterion_score_interval": [
+          83.33,
+          83.33
+        ],
+        "point_score": 83.33,
+        "provisional_pass": true,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      }
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-018__zh-Hans",
+      "candidate_model": "MiniMax-M2.7",
+      "judge": {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash"
+      },
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "met"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "met"
+          ],
+          [
+            "update",
+            2,
+            "met"
+          ],
+          [
+            "update",
+            3,
+            "met"
+          ]
+        ],
+        "critical_errors": []
+      },
+      "score": {
+        "score_version": "s33-v1-stage-isolated-s32-integration",
+        "criterion_score_interval": [
+          100,
+          100
+        ],
+        "point_score": 100,
+        "provisional_pass": true,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      }
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-018__zh-Hans",
+      "candidate_model": "MiniMax-M2.7",
+      "judge": {
+        "provider": "grok",
+        "model": "grok-4.7"
+      },
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "partial"
+          ],
+          [
+            "initial",
+            2,
+            "partial"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "met"
+          ],
+          [
+            "update",
+            2,
+            "met"
+          ],
+          [
+            "update",
+            3,
+            "met"
+          ]
+        ],
+        "critical_errors": []
+      },
+      "score": {
+        "score_version": "s33-v1-stage-isolated-s32-integration",
+        "criterion_score_interval": [
+          90,
+          90
+        ],
+        "point_score": 90,
+        "provisional_pass": true,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      }
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-020__en",
+      "candidate_model": "MiniMax-M2.7",
+      "judge": {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash"
+      },
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "partial"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "met"
+          ],
+          [
+            "update",
+            2,
+            "met"
+          ],
+          [
+            "update",
+            3,
+            "met"
+          ]
+        ],
+        "critical_errors": []
+      },
+      "score": {
+        "score_version": "s33-v1-stage-isolated-s32-integration",
+        "criterion_score_interval": [
+          95,
+          95
+        ],
+        "point_score": 95,
+        "provisional_pass": true,
+        "hard_fail": false,
+        "unclear_criterion": false,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      }
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-020__en",
+      "candidate_model": "MiniMax-M2.7",
+      "judge": {
+        "provider": "grok",
+        "model": "grok-4.7"
+      },
+      "criterion_error_vector": {
+        "criteria": [
+          [
+            "initial",
+            1,
+            "met"
+          ],
+          [
+            "initial",
+            2,
+            "unclear"
+          ],
+          [
+            "initial",
+            3,
+            "met"
+          ],
+          [
+            "update",
+            1,
+            "met"
+          ],
+          [
+            "update",
+            2,
+            "met"
+          ],
+          [
+            "update",
+            3,
+            "met"
+          ]
+        ],
+        "critical_errors": []
+      },
+      "score": {
+        "score_version": "s33-v1-stage-isolated-s32-integration",
+        "criterion_score_interval": [
+          90,
+          100
+        ],
+        "point_score": null,
+        "provisional_pass": null,
+        "hard_fail": false,
+        "unclear_criterion": true,
+        "independent_dimension_review": [],
+        "clinical_review_status": "unreviewed"
+      }
+    }
+  ],
+  "call_cells": [
+    {
+      "case_key": "HC-MT-TRIAGE-018__en",
+      "kind": "candidate",
+      "stage": "initial",
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latency_ms": 20405,
+      "input_sha256": "72fb6bf9b08ff24d403ad0df2d4e9abfacd2a7775ef5c8a9e1736a03ec78b9dd",
+      "response_sha256": "7a7b61754d83ae9af519cade2c5695fe575e80cb95410d1379af7d4a74de90d6"
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-018__en",
+      "kind": "candidate",
+      "stage": "update",
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latency_ms": 18309,
+      "input_sha256": "c1e8266f44f9f1e28c4616977efda74d02c72d311a68441ab74806840d9f44f2",
+      "response_sha256": "2ab083d7e5b8b26cf33f8c77c3aebdac740d3c6b3e3832f77b55f90d74c85b7e"
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-018__en",
+      "kind": "judge",
+      "stage": "initial",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "latency_ms": 8503,
+      "input_sha256": "f3b6248b93df6f8168016ac13c2d41efce551206ae41d54ec8a85f82b4f6eaef",
+      "response_sha256": "f5b5593b506ea759a02e60af3789d282e399fcf5e620a2defbdddf80c64e328e"
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-018__en",
+      "kind": "judge",
+      "stage": "initial",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "latency_ms": 135883,
+      "input_sha256": "f3b6248b93df6f8168016ac13c2d41efce551206ae41d54ec8a85f82b4f6eaef",
+      "response_sha256": "75cfe4d29b209dc106673a032f8075d11e2887e4957f75ce237fc854525c181e"
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-018__en",
+      "kind": "judge",
+      "stage": "update",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "latency_ms": 12823,
+      "input_sha256": "88bd9bdbf225f19d1b1fc11214f1337ee793c7f1d2144e1a9c864660b090f70c",
+      "response_sha256": "c4ac58a5343749f3d5229628e7ca22e067575e44ef5fdd192a0ace9665bdba1f"
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-018__en",
+      "kind": "judge",
+      "stage": "update",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "latency_ms": 94429,
+      "input_sha256": "88bd9bdbf225f19d1b1fc11214f1337ee793c7f1d2144e1a9c864660b090f70c",
+      "response_sha256": "d071ec766e915afa724f328f8b9dc5cca0a2bf7d9d4de34e197ac381a9a67b99"
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-018__zh-Hans",
+      "kind": "candidate",
+      "stage": "initial",
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latency_ms": 7155,
+      "input_sha256": "3a4b080198ee49905d3d1506066e071ee61c147bcc631d67dbe30f0e66fda71a",
+      "response_sha256": "c2a9f150702852779214b7a5539f92e70af8d559a8560dd59ee7ed7e89643489"
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-018__zh-Hans",
+      "kind": "candidate",
+      "stage": "update",
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latency_ms": 4890,
+      "input_sha256": "f41d1b7f20192cad87b1d1260b757361e9c28c1d5b3ec7173f8f0f4f7a231de4",
+      "response_sha256": "86a0140f32364f69f7e6f649603eba72eea3963ca21435ad6ad6e5c7fe3a742b"
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-018__zh-Hans",
+      "kind": "judge",
+      "stage": "initial",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "latency_ms": 10165,
+      "input_sha256": "1d70f5ebb617f5bebf361c8b221dc4c48905eecfdc3e92c43e1631a61b6c9d68",
+      "response_sha256": "6759478c1598aff6ae47af6691484bfa57a3eff2cdfd20992fb4b5962c8b3d69"
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-018__zh-Hans",
+      "kind": "judge",
+      "stage": "initial",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "latency_ms": 125392,
+      "input_sha256": "1d70f5ebb617f5bebf361c8b221dc4c48905eecfdc3e92c43e1631a61b6c9d68",
+      "response_sha256": "c6683b9d4741a05fbde53257388cfb471956361c708c435c43e57c5fa4441806"
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-018__zh-Hans",
+      "kind": "judge",
+      "stage": "update",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "latency_ms": 15324,
+      "input_sha256": "34dd8f7352e33257312effef1f07cd57d231736f1983ebfb52805ecb983b9382",
+      "response_sha256": "61c3db508ccb5151214e8b3578ac11ff1907232b9f2b31a258c0d2d5df7175f4"
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-018__zh-Hans",
+      "kind": "judge",
+      "stage": "update",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "latency_ms": 162055,
+      "input_sha256": "34dd8f7352e33257312effef1f07cd57d231736f1983ebfb52805ecb983b9382",
+      "response_sha256": "c57cf16eeadb9043d22be7a8bb2d06289151cdd8d079d8a70e2f478cfd43108d"
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-020__en",
+      "kind": "candidate",
+      "stage": "initial",
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latency_ms": 4624,
+      "input_sha256": "906d6acdd1ce8d4bd8784233258b5a55ae2ddf2bcdcec6e805974bcd9c4861bc",
+      "response_sha256": "ca6f57e91e70bdc655e556880918c8baa95fd33c9af5072f4b6790afebab3f84"
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-020__en",
+      "kind": "candidate",
+      "stage": "update",
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latency_ms": 2754,
+      "input_sha256": "2e687667d21d643d4d4d2768d8655d624e0398515b6be1283e256bf3c3d82ff1",
+      "response_sha256": "9d42c3033334e04115912d201b9eec4438975a3ba05ce9b717c2ea3b9af44094"
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-020__en",
+      "kind": "judge",
+      "stage": "initial",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "latency_ms": 20782,
+      "input_sha256": "512f061cd1780ddf4bbddf6f7afe5adf5570cc6bd457af935e652d9329db944b",
+      "response_sha256": "a492a2dfb8a0234d4bc394a28d9aeb731e5580b76d3e66c1dceb5f657fa2a604"
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-020__en",
+      "kind": "judge",
+      "stage": "initial",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "latency_ms": 55500,
+      "input_sha256": "512f061cd1780ddf4bbddf6f7afe5adf5570cc6bd457af935e652d9329db944b",
+      "response_sha256": "6c5aa266b16e312bdae0916e2dbd48bba121689fbd3548005a05caf283a2a013"
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-020__en",
+      "kind": "judge",
+      "stage": "update",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "latency_ms": 12154,
+      "input_sha256": "ddb53628c561b086c87d9ec43846e6bd6879911a8f015b16ee97c247d6fcf659",
+      "response_sha256": "97ae2264db4c71aefeebb8b21a816a8be36b2a2ab01097479131ef7911712829"
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-020__en",
+      "kind": "judge",
+      "stage": "update",
+      "provider": "grok",
+      "model": "grok-4.7",
+      "latency_ms": 62744,
+      "input_sha256": "ddb53628c561b086c87d9ec43846e6bd6879911a8f015b16ee97c247d6fcf659",
+      "response_sha256": "46707f8eb685390c22b26cbf912a74b7d7d7cc2642dea643959ec96fd40f9a10"
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-020__zh-Hans",
+      "kind": "candidate",
+      "stage": "initial",
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latency_ms": 15950,
+      "input_sha256": "006da76ad9367363d495ef6859fb8c8bcf9d060a23301edef632c43257464b74",
+      "response_sha256": "a79bc52353726c58f279abc50a538228a6e159e603173b86b9ad8c7ef74b65c5"
+    },
+    {
+      "case_key": "HC-MT-TRIAGE-020__zh-Hans",
+      "kind": "candidate",
+      "stage": "update",
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latency_ms": 8724,
+      "input_sha256": "5974ff91f84aae9a6ced64fad0d8abee6e31c96c780c5e23f6bd405044606ee8",
+      "response_sha256": "1930a6dfd3e4dd8467031a98248f8e14dc4fbb8c2c6903068828cf125072c28d"
+    }
+  ],
+  "limits": "User-requested workflow diagnostic, not a comparative pilot. Case-wise draft scores only, no aggregate ranking, score-band fit, historical pooling or clinical approval. S33 control results remain separate; completing this run cannot turn a failed S33 gate into a pass."
+}
