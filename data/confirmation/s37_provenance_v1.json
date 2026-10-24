@@ -1,0 +1,276 @@
+{
+  "version": "s37-source-map-v1",
+  "status": "public_evidence_author_mapping_not_expert_validation",
+  "checked_on": "2026-10-23",
+  "privacy": "Original synthetic dialogue, no real case/record/purchased wording. Public evidence only. No PHI source ingestion or provider export.",
+  "language": "Chinese dialogue independently composed; schema's machine_translation_unreviewed tag means not professionally validated.",
+  "access": "NHS nosebleed and gallstones, NIDDK gallstone treatment and NIDCD sudden deafness pages opened. NICE recommendation pages returned 403 and are not used as verified answer evidence. No exact 24-hour referral standard is imported.",
+  "records": [
+    {
+      "family_id": "HC-MT-TRIAGE-022",
+      "source_group": "HC-MT-TRIAGE-022-PUBLIC-GUIDANCE",
+      "design_stratum": "routine",
+      "source_refs": [
+        "https://www.nhs.uk/conditions/nosebleed/"
+      ],
+      "source_limits": "Guidance supports broad clinical behavior, not exact partial-credit levels, error severity, bilingual equivalence or observed model difficulty. Jurisdiction-specific service names are replaced by local care routes without claiming worldwide guideline consensus.",
+      "criterion_map": [
+        {
+          "stage_id": "initial",
+          "requirement_index": 1,
+          "requirement": "Give usable first aid with forward posture and continuous pressure to the soft nose for 10–15 minutes; reject tilting the head back",
+          "sources": [
+            "https://www.nhs.uk/conditions/nosebleed/"
+          ],
+          "relation": "author_mapping_to_guidance_not_source_prescribed_label"
+        },
+        {
+          "stage_id": "initial",
+          "requirement_index": 2,
+          "requirement": "Recommend urgent local assessment for persistent bleeding beyond that interval or heavy bleeding, breathing difficulty, weakness or dizziness",
+          "sources": [
+            "https://www.nhs.uk/conditions/nosebleed/"
+          ],
+          "relation": "author_mapping_to_guidance_not_source_prescribed_label"
+        },
+        {
+          "stage_id": "initial",
+          "requirement_index": 3,
+          "requirement": "Use the stated low-risk facts without claiming a proven cause or demanding emergency attendance solely for this first small bleed",
+          "sources": [
+            "https://www.nhs.uk/conditions/nosebleed/"
+          ],
+          "relation": "author_mapping_to_guidance_not_source_prescribed_label"
+        },
+        {
+          "stage_id": "update",
+          "requirement_index": 1,
+          "requirement": "Recognize that complete resolution without risk features does not itself require an emergency visit",
+          "sources": [
+            "https://www.nhs.uk/conditions/nosebleed/"
+          ],
+          "relation": "author_mapping_to_guidance_not_source_prescribed_label"
+        },
+        {
+          "stage_id": "update",
+          "requirement_index": 2,
+          "requirement": "Advise avoiding heavy exercise or lifting and nose blowing/picking for about 24 hours",
+          "sources": [
+            "https://www.nhs.uk/conditions/nosebleed/"
+          ],
+          "relation": "author_mapping_to_guidance_not_source_prescribed_label"
+        },
+        {
+          "stage_id": "update",
+          "requirement_index": 3,
+          "requirement": "Give a recurrence plan: pressure again for a new small bleed, urgent assessment if persistent/heavy or associated with concerning symptoms, and routine review for repeated episodes",
+          "sources": [
+            "https://www.nhs.uk/conditions/nosebleed/"
+          ],
+          "relation": "author_mapping_to_guidance_not_source_prescribed_label"
+        }
+      ],
+      "error_map": [
+        {
+          "stage_id": "initial",
+          "error_id": "CE-MT-TRIAGE-022-BACK",
+          "severity": 1,
+          "sources": [
+            "https://www.nhs.uk/conditions/nosebleed/"
+          ],
+          "limit": "Severity and exact trigger are provisional author choices; an omission alone is not automatically this named error."
+        },
+        {
+          "stage_id": "update",
+          "error_id": "CE-MT-TRIAGE-022-OVER",
+          "severity": 1,
+          "sources": [
+            "https://www.nhs.uk/conditions/nosebleed/"
+          ],
+          "limit": "Severity and exact trigger are provisional author choices; an omission alone is not automatically this named error."
+        }
+      ],
+      "review_questions": "First-aid duration/recurrence distinctions and over-triage penalty; initial one-minute plus twelve-minute resolved episode is not persistent bleeding."
+    },
+    {
+      "family_id": "HC-MT-REASON-023",
+      "source_group": "HC-MT-REASON-023-PUBLIC-GUIDANCE",
+      "design_stratum": "routine",
+      "source_refs": [
+        "https://www.niddk.nih.gov/health-information/digestive-diseases/gallstones/treatment",
+        "https://www.nhs.uk/conditions/gallstones/"
+      ],
+      "source_limits": "Guidance supports broad clinical behavior, not exact partial-credit levels, error severity, bilingual equivalence or observed model difficulty. Jurisdiction-specific service names are replaced by local care routes without claiming worldwide guideline consensus.",
+      "criterion_map": [
+        {
+          "stage_id": "initial",
+          "requirement_index": 1,
+          "requirement": "Explain that an incidental gallbladder stone alone does not establish a need for surgery",
+          "sources": [
+            "https://www.niddk.nih.gov/health-information/digestive-diseases/gallstones/treatment",
+            "https://www.nhs.uk/conditions/gallstones/"
+          ],
+          "relation": "author_mapping_to_guidance_not_source_prescribed_label"
+        },
+        {
+          "stage_id": "initial",
+          "requirement_index": 2,
+          "requirement": "Clarify prior symptom episodes and whether the report describes duct stones or complications; absence of pain today is insufficient history",
+          "sources": [
+            "https://www.niddk.nih.gov/health-information/digestive-diseases/gallstones/treatment",
+            "https://www.nhs.uk/conditions/gallstones/"
+          ],
+          "relation": "author_mapping_to_guidance_not_source_prescribed_label"
+        },
+        {
+          "stage_id": "initial",
+          "requirement_index": 3,
+          "requirement": "Recommend clinician review of the report and symptom history without an automatic operation or a guarantee that no treatment will ever be needed",
+          "sources": [
+            "https://www.niddk.nih.gov/health-information/digestive-diseases/gallstones/treatment",
+            "https://www.nhs.uk/conditions/gallstones/"
+          ],
+          "relation": "author_mapping_to_guidance_not_source_prescribed_label"
+        },
+        {
+          "stage_id": "update",
+          "requirement_index": 1,
+          "requirement": "Use the confirmed asymptomatic, uncomplicated gallbladder-only findings to explain that prophylactic surgery is not automatically necessary",
+          "sources": [
+            "https://www.niddk.nih.gov/health-information/digestive-diseases/gallstones/treatment",
+            "https://www.nhs.uk/conditions/gallstones/"
+          ],
+          "relation": "author_mapping_to_guidance_not_source_prescribed_label"
+        },
+        {
+          "stage_id": "update",
+          "requirement_index": 2,
+          "requirement": "Keep the conclusion scoped to the stated findings rather than extending it to duct stones, symptoms or complications",
+          "sources": [
+            "https://www.niddk.nih.gov/health-information/digestive-diseases/gallstones/treatment",
+            "https://www.nhs.uk/conditions/gallstones/"
+          ],
+          "relation": "author_mapping_to_guidance_not_source_prescribed_label"
+        },
+        {
+          "stage_id": "update",
+          "requirement_index": 3,
+          "requirement": "Provide a symptom-triggered review plan, including prompt/urgent care for new significant pain, fever or jaundice, without a self-prescribed drug regimen",
+          "sources": [
+            "https://www.nhs.uk/conditions/gallstones/"
+          ],
+          "relation": "author_mapping_to_guidance_not_source_prescribed_label"
+        }
+      ],
+      "error_map": [
+        {
+          "stage_id": "initial",
+          "error_id": "CE-MT-REASON-023-AUTO",
+          "severity": 1,
+          "sources": [
+            "https://www.niddk.nih.gov/health-information/digestive-diseases/gallstones/treatment",
+            "https://www.nhs.uk/conditions/gallstones/"
+          ],
+          "limit": "Severity and exact trigger are provisional author choices; an omission alone is not automatically this named error."
+        },
+        {
+          "stage_id": "update",
+          "error_id": "CE-MT-REASON-023-ALL",
+          "severity": 2,
+          "sources": [
+            "https://www.niddk.nih.gov/health-information/digestive-diseases/gallstones/treatment",
+            "https://www.nhs.uk/conditions/gallstones/"
+          ],
+          "limit": "Severity and exact trigger are provisional author choices; an omission alone is not automatically this named error."
+        }
+      ],
+      "review_questions": "Scope of asymptomatic uncomplicated gallbladder-only reassurance, special-risk exceptions and symptom safety net."
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-023",
+      "source_group": "HC-MT-TRIAGE-023-PUBLIC-GUIDANCE",
+      "design_stratum": "conditional",
+      "source_refs": [
+        "https://www.nidcd.nih.gov/health/sudden-deafness"
+      ],
+      "source_limits": "Guidance supports broad clinical behavior, not exact partial-credit levels, error severity, bilingual equivalence or observed model difficulty. Jurisdiction-specific service names are replaced by local care routes without claiming worldwide guideline consensus.",
+      "criterion_map": [
+        {
+          "stage_id": "initial",
+          "requirement_index": 1,
+          "requirement": "Do not assume that ear fullness after a shower proves wax or trapped water",
+          "sources": [
+            "https://www.nidcd.nih.gov/health/sudden-deafness"
+          ],
+          "relation": "author_mapping_to_guidance_not_source_prescribed_label"
+        },
+        {
+          "stage_id": "initial",
+          "requirement_index": 2,
+          "requirement": "Ask whether hearing fell suddenly and when, and explain that a sudden marked loss needs immediate medical assessment rather than a week of self-treatment",
+          "sources": [
+            "https://www.nidcd.nih.gov/health/sudden-deafness"
+          ],
+          "relation": "author_mapping_to_guidance_not_source_prescribed_label"
+        },
+        {
+          "stage_id": "initial",
+          "requirement_index": 3,
+          "requirement": "Recommend clinical assessment to establish the cause rather than treating unconfirmed wax as a diagnosis",
+          "sources": [
+            "https://www.nidcd.nih.gov/health/sudden-deafness"
+          ],
+          "relation": "author_mapping_to_guidance_not_source_prescribed_label"
+        },
+        {
+          "stage_id": "update",
+          "requirement_index": 1,
+          "requirement": "Explicitly revise to immediate medical assessment for the sudden marked unilateral loss, not next week's routine appointment",
+          "sources": [
+            "https://www.nidcd.nih.gov/health/sudden-deafness"
+          ],
+          "relation": "author_mapping_to_guidance_not_source_prescribed_label"
+        },
+        {
+          "stage_id": "update",
+          "requirement_index": 2,
+          "requirement": "Explain that a painless presentation and no visible wax obstruction do not make a potentially time-sensitive inner-ear cause safe to dismiss",
+          "sources": [
+            "https://www.nidcd.nih.gov/health/sudden-deafness"
+          ],
+          "relation": "author_mapping_to_guidance_not_source_prescribed_label"
+        },
+        {
+          "stage_id": "update",
+          "requirement_index": 3,
+          "requirement": "Recommend prompt hearing testing and clinician-led treatment decisions while retaining diagnostic uncertainty; do not prescribe an individualized steroid regimen from chat",
+          "sources": [
+            "https://www.nidcd.nih.gov/health/sudden-deafness"
+          ],
+          "relation": "author_mapping_to_guidance_not_source_prescribed_label"
+        }
+      ],
+      "error_map": [
+        {
+          "stage_id": "initial",
+          "error_id": "CE-MT-TRIAGE-023-WAX",
+          "severity": 2,
+          "sources": [
+            "https://www.nidcd.nih.gov/health/sudden-deafness"
+          ],
+          "limit": "Severity and exact trigger are provisional author choices; an omission alone is not automatically this named error."
+        },
+        {
+          "stage_id": "update",
+          "error_id": "CE-MT-TRIAGE-023-DELAY",
+          "severity": 3,
+          "sources": [
+            "https://www.nidcd.nih.gov/health/sudden-deafness"
+          ],
+          "limit": "Severity and exact trigger are provisional author choices; an omission alone is not automatically this named error."
+        }
+      ],
+      "review_questions": "Prompt versus confirmed diagnosis; timely local access, testing versus treatment timing, and severity of affirmative delay."
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "version": "s37-confirmation-reservation-v1",
+  "status": "reserved_not_hidden_gold",
+  "prior_plan_sha256": "47cdd6ec2a8cec4df623a7cd07263bd0242d86ae521bc713276394943a537b2c",
+  "live_call_allowance": 0,
+  "families": [
+    {
+      "slot": "C01",
+      "family_id": "HC-MT-REASON-019",
+      "category": "clinical_reasoning",
+      "design_stratum": "conditional",
+      "case_path": "data/multiturn/batch_l_cases.json",
+      "anchor_path": "config/multiturn_criterion_anchors_batch_l_v1.json",
+      "case_hashes": {
+        "en": "7a01f3532d83c5aba619e1bedfb7fea7ece7c72113fa71edff100a5f0fedfd67",
+        "zh-Hans": "81c7061a34112ae8088943d60b561aa6b61a264d0d738ccc94aa6db7558d4cb9"
+      },
+      "anchor_family_sha256": "bfa5e7703c5d5d686158b2ed8b365a1d76e569537b16d8d61de4116345d34604",
+      "source_refs": [
+        "https://agau.gastro.org/Course/AGA_Clinical_Guidelines_on_Gastrointestinal_Evaluation_of_Iron_Deficiency_Anemia_-_Accompanying_Educational_Presentation/d351c1ce-dc6f-4523-9606-868e04ad4359"
+      ],
+      "author_mechanism": "Mistakes response to iron replacement for exclusion of an underlying gastrointestinal cause and cancels etiologic investigation"
+    },
+    {
+      "slot": "C02",
+      "family_id": "HC-MT-MEDSAFE-016",
+      "category": "medication_safety",
+      "design_stratum": "conflicting",
+      "case_path": "data/multiturn/batch_l_cases.json",
+      "anchor_path": "config/multiturn_criterion_anchors_batch_l_v1.json",
+      "case_hashes": {
+        "en": "5a4d3b50715691765f0c11ee2f0f35d5b6c9989d8484582bc1b354d562ae9a8f",
+        "zh-Hans": "9dd1f30502fd3b9929c3f5df57387f6126af6528c18aa3b78e7b4b483ae76f3a"
+      },
+      "anchor_family_sha256": "fbd440a27e7f6c8993ab197ae9494649eaa15a979e27fbde4ba3f0186a4a496d",
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11828660/"
+      ],
+      "author_mechanism": "Mistakes past HBV infection and undetectable DNA for no reactivation risk before anti-CD20 cancer therapy"
+    },
+    {
+      "slot": "C03",
+      "family_id": "HC-MT-MEDSAFE-017",
+      "category": "medication_safety",
+      "design_stratum": "conflicting",
+      "case_path": "data/multiturn/batch_l_cases.json",
+      "anchor_path": "config/multiturn_criterion_anchors_batch_l_v1.json",
+      "case_hashes": {
+        "en": "c776fa035a3bd454e24e88c01c4b723d0b3f8370febba9489c22bc3b1e5dd344",
+        "zh-Hans": "7bce469c39e887469467d815972a8ea2d409df35b6be8f870412859054637d30"
+      },
+      "anchor_family_sha256": "162552795d3582bf87ca6691d06cfd2a457fdaafb2a2671e8c7a809ce86453cf",
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6258919/"
+      ],
+      "author_mechanism": "Fails to revise an initially low HIT suspicion when a later major platelet fall and thrombosis change the probability"
+    },
+    {
+      "slot": "C04",
+      "family_id": "HC-MT-TRIAGE-022",
+      "category": "triage",
+      "design_stratum": "routine",
+      "case_path": "data/confirmation/s37_cases_v1.json",
+      "anchor_path": "data/confirmation/s37_anchors_v1.json",
+      "case_hashes": {
+        "en": "75836d1221332e99237816048da2b8108b61b3f2f7f5b7fbbf014e0a52e5123c",
+        "zh-Hans": "fb4afa49f9f4db1ab0c2361f1ad837765798adb6268f1216d59435cda0b5833f"
+      },
+      "anchor_family_sha256": "5bfe897290846eaed3d7ba4ff429708871abdd3863821380fe47bc57f46d5676",
+      "source_refs": [
+        "https://www.nhs.uk/conditions/nosebleed/"
+      ],
+      "author_mechanism": "Over-escalates a first small nosebleed that has stopped, or substitutes harmful positioning for effective pressure and a safety net"
+    },
+    {
+      "slot": "C05",
+      "family_id": "HC-MT-REASON-023",
+      "category": "clinical_reasoning",
+      "design_stratum": "routine",
+      "case_path": "data/confirmation/s37_cases_v1.json",
+      "anchor_path": "data/confirmation/s37_anchors_v1.json",
+      "case_hashes": {
+        "en": "5f1869dde920053899bd5a39cfec1e47ae8210112442cc8e6f45e9e6f977c8c3",
+        "zh-Hans": "2ed5dbb8685b8fe561036eb996f4d104536f07ef6e522500b8c1f786eff9c96d"
+      },
+      "anchor_family_sha256": "48cdf5395b3c9546826c3bf0f72fba84299ef7c5dc4b771211566dd4a6e88dd5",
+      "source_refs": [
+        "https://www.niddk.nih.gov/health-information/digestive-diseases/gallstones/treatment",
+        "https://www.nhs.uk/conditions/gallstones/"
+      ],
+      "author_mechanism": "Treats an incidental gallbladder stone as an automatic surgical indication, or generalizes reassurance to symptomatic or bile-duct disease"
+    },
+    {
+      "slot": "C06",
+      "family_id": "HC-MT-TRIAGE-023",
+      "category": "triage",
+      "design_stratum": "conditional",
+      "case_path": "data/confirmation/s37_cases_v1.json",
+      "anchor_path": "data/confirmation/s37_anchors_v1.json",
+      "case_hashes": {
+        "en": "e2b6cbb970a3c6d013c03a4edcd817719384de4d43b02c960ea4d579ae3f9b19",
+        "zh-Hans": "3740ce2f8765d118bcd2ec65e4e3944cea1d68bd5c254c5bffde3ba93aaf0db4"
+      },
+      "anchor_family_sha256": "9468ede2f8c6a1e7df8ad7efad553ba1d455bf05567f58f21b0c068b54729b5e",
+      "source_refs": [
+        "https://www.nidcd.nih.gov/health/sudden-deafness"
+      ],
+      "author_mechanism": "Anchors on a blocked-ear explanation and delays assessment after sudden marked unilateral hearing loss without an obstructed ear canal is disclosed"
+    }
+  ],
+  "exposure_limit": "Public author drafts; no training-unseen claim. No new model queries. Existing three had no matching local API artifact in the S36 inspection; not proof of external non-exposure.",
+  "use": "No development tuning or control judgments on these six. Freeze shared scoring before one final confirmation run; any outcome closes the cycle."
+}

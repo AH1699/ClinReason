@@ -1,0 +1,74 @@
+{
+  "version": "s37-offline-readiness-v1",
+  "status": "blocked_before_live_protocol_freeze",
+  "checked_on": "2026-10-23",
+  "live_call_allowance": 0,
+  "prior_cost_estimate_correction": "S36 token-ceiling calculations are hypothetical scenarios, NOT an enforceable ceiling. In particular xAI max_output_tokens excludes reasoning. Do not present $55/$35/$90 as approved or guaranteed spending limits.",
+  "blocking_findings": [
+    "No verified all-billed-output token cap for Grok Responses; max_output_tokens limits visible text, not reasoning.",
+    "No verified prompt-token upper-bound method for these exact payloads/endpoints. Character/token heuristics omit possible provider-added tokens.",
+    "MiniMax-M2.7 current direct price verification outstanding; legacy model mention and S34 success do not establish today's rate or entitlement.",
+    "Gemini Interactions endpoint-specific cap semantics need verification; Generate Content guidance alone must not silently migrate endpoints.",
+    "Full scheduled live dispatcher, raw HTTP capture, per-request admission, usage reconciliation and exact approval fingerprint not implemented or authorized."
+  ],
+  "providers": {
+    "grok": {
+      "output_limit_field": "max_output_tokens",
+      "draft_value": 8192,
+      "bound_scope": "visible_answer_only",
+      "source": "https://docs.x.ai/developers/model-capabilities/text/best-practices",
+      "sampling": {
+        "temperature": 0.7,
+        "top_p": 0.95
+      },
+      "store": false
+    },
+    "gemini": {
+      "output_limit_field": "generation_config.max_output_tokens",
+      "draft_value": 8192,
+      "bound_scope": "needs_exact_interactions_confirmation",
+      "source": "https://ai.google.dev/api/interactions-api",
+      "related_source": "https://ai.google.dev/gemini-api/docs/generate-content/thinking.md",
+      "related_source_limit": "Generate Content guide states combined thought/output cap; not automatically proof for Interactions.",
+      "sampling": {
+        "thinking_level": "medium",
+        "temperature": "provider_default_unfixed",
+        "top_p": "provider_default_unfixed"
+      },
+      "store": false
+    },
+    "minimax": {
+      "output_limit_field": "max_completion_tokens",
+      "draft_value": 8192,
+      "bound_scope": "generation_including_thinking_documented; input and M2.7 price unresolved",
+      "source": "https://platform.minimax.io/docs/api-reference/text-openai-api",
+      "price_source": "https://platform.minimax.io/docs/pricing/overview",
+      "sampling": {
+        "M3": "temperature fixed internally at 1 and top_p at 0.95; not user-adjustable",
+        "M2_7": "provider defaults not yet frozen"
+      },
+      "store": "no equivalent request flag verified"
+    }
+  },
+  "budget_alternative": {
+    "source": "https://docs.x.ai/console/billing",
+    "note": "Provider documentation describes rejection after prepaid balance is exhausted with invoiced billing limit zero. This is account/team-wide, not a verified $55 experiment ceiling; auto top-ups and other usage matter. No account settings inspected or changed.",
+    "owner_decision": "If per-request billable caps cannot be verified, agree on dedicated provider-side spending controls or an explicitly revised cost policy before live work. Do not drop Grok or MiniMax to evade the issue."
+  },
+  "implemented": [
+    "Three new bilingual confirmation drafts and source-mapped anchors",
+    "All six reservations bound to exact case/anchor revisions",
+    "Offline candidate payload drafts with provider-specific output fields",
+    "Decimal prospective reservation arithmetic",
+    "Private exclusive attempt/payload/raw/accepted/rejected fixture journal with fsync; no resume/retries",
+    "Fail-closed live admission"
+  ],
+  "not_implemented": [
+    "Live HTTP dispatcher and response streaming capture",
+    "Complete ordered 816/504-call orchestration and gates",
+    "Verified all-billed-token ceilings and current per-model price registry",
+    "Provider usage reconciliation and approval-bound phase authorization"
+  ],
+  "privacy": "No credentials read, no provider calls, no private records. Local future raw response retention is not a claim of provider zero retention; store=false is only a request parameter.",
+  "confirmation_rule": "No target-model queries or tuning on reserved confirmation cases before the single final version."
+}

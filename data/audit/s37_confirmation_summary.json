@@ -1,0 +1,18 @@
+{
+  "version": "s37-offline-confirmation-v1",
+  "new_families": 3,
+  "new_language_variants": 6,
+  "reserved_families": 6,
+  "reserved_language_variants": 12,
+  "source_mapped_requirements": 18,
+  "source_mapped_named_errors": 6,
+  "structural_example_stage_packets": 12,
+  "numerically_scored_examples": 0,
+  "selected_split_source_and_declared_mechanism_check": "pass_with_documented_limits",
+  "default_development_changed": false,
+  "clinical_approval": false,
+  "live_call_allowance": 0,
+  "live_ready": false,
+  "reservation_sha256": "6f5eb0382af0a39414a035ce99536046287b77b60735936d91d15ce1f6b6c7ad",
+  "offline_snapshot_sha256": "beb359f6e7e32f3ba297aa39e2251c584bc45dc585cedbfac09b46e2b6dff9bb"
+}

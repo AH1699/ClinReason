@@ -1,5 +1,9 @@
 # Living human-review handoff — opened 2026-10-07
 
+## S37 later review question H127
+
+**H127 / high:** Review the [three new confirmation drafts](S37_CONFIRMATION_AND_RUN_GUARDS_2026-10-23_EN.md) and [exact source mappings](../data/confirmation/s37_provenance_v1.json): resolved versus persistent nosebleed timing, recurrence advice and the over-triage penalty; uncomplicated asymptomatic gallbladder findings versus symptom/duct exceptions; sudden hearing-loss urgency despite no pain/visible blockage, testing and treatment uncertainty. Check conjunctive partial-credit boundaries, affirmative errors versus omissions, severity, equivalent local care routes and EN/ZH meaning. Routine/conditional strata are author intent, not measured difficulty; public guidance does not approve these labels. Clinical and language review remain deferred, not waived. Do not tune on the final confirmation results; a material later correction requires a new version and appropriate new evaluation, never a silent historical rescore. H126/H125 stay open.
+
 ## S36 later review question H126
 
 **H126 / high:** Review the [version-1 construct choices](S36_REFERENCE_MIX_PLAN_2026-10-23_EN.md): functional elicitation, stage-local versus conversation-level credit, overlap, held eye follow-up OR/AND, equal roster/family/language weighting and same-provider judge effects. These defaults permit provisional engineering only; no clinical question is closed. Independent review remains a later validation/release gate, not a prerequisite for current offline work. A mean near 80 does not establish validity. S35/H125 remains unchanged.
