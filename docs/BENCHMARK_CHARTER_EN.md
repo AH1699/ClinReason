@@ -50,9 +50,11 @@ The benchmark must not be used to:
 
 Out of alpha scope: multimodal inputs, EHR integration, autonomous actions, tool execution, longitudinal care, model training, and real patient records.
 
-### Standing score-calibration objective (recorded 2026-10-18)
+### Standing score objective clarified 2026-10-23
 
-The benchmark owner expects a representative **mid-tier general-purpose model to score around 80/100**, a pre-declared lower-tier set roughly **60–70**, and a pre-declared premium set roughly **90** on a mature, sufficiently difficult benchmark. Preserve this as a **design and interpretation target**, not a scoring formula, pass threshold, promised result, or claim about any named model. Define tiers without looking at ClinReason results; report actual scores, uncertainty, safety failures, domain and language gaps even if the target is missed. Never curve scores, choose reference models after seeing scores, change weights solely to hit a band, or penalize a clinically acceptable answer for being too good. See the [calibration plan](SCORING_CALIBRATION_PLAN_2026-10-16_EN.md).
+The current objective is **approximately 80/100 averaged across a fixed broader reference mix of stronger and mid-tier LLMs**, not 80 for every model or one mid-tier model. The old lower/mid/premium bands remain historical aspirations, superseded as the primary objective. Predeclare roster, case mix and weights; do not infer tiers from names or choose models after results. S36 proposes equal model/family weights, balanced EN/ZH and separate judge reports. Report actual scores, uncertainty, safety and language/domain gaps even when the objective is missed. Never curve scores, weaken safety or penalize correct answers to manufacture 80. See [S36](S36_REFERENCE_MIX_PLAN_2026-10-23_EN.md).
+
+Clinical/bilingual expert review is intentionally later and does not block provisional scoring engineering or difficulty measurement. Clinical validation, approved calibration, hidden Gold and external clinical comparisons remain separate later gates. Deferral is not clinical approval; provisional results remain explicitly unvalidated.
 
 ## 5. Decisions required before case validation
 

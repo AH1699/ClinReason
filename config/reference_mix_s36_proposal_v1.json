@@ -1,0 +1,272 @@
+{
+  "version": "s36-reference-mix-proposal-v1",
+  "status": "offline_proposal_not_frozen_or_authorized",
+  "live_call_allowance": 0,
+  "scope": "Patient-facing two-turn pilot; not all 125 development families or global clinical competence",
+  "objective": {
+    "statistic": "equal-model/equal-family/balanced-language reference-roster mean, separately per judge",
+    "approximate_target": 80,
+    "diagnostic_band": [
+      75,
+      85
+    ],
+    "band_status": "proposed engineering diagnostic, not a validity gate or score transform",
+    "tiers_assigned": false
+  },
+  "candidates": [
+    {
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "input_per_million": 0.3,
+      "output_per_million": 2.5
+    },
+    {
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "input_per_million": 0.75,
+      "output_per_million": 3.75
+    },
+    {
+      "provider": "grok",
+      "model": "grok-4.6",
+      "input_per_million": 2,
+      "output_per_million": 6
+    },
+    {
+      "provider": "grok",
+      "model": "grok-4.7",
+      "input_per_million": 2,
+      "output_per_million": 6
+    },
+    {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "input_per_million": 0.3,
+      "output_per_million": 1.2
+    },
+    {
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "input_per_million": 0.3,
+      "output_per_million": 1.2
+    }
+  ],
+  "judges": [
+    {
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "input_per_million": 0.75,
+      "output_per_million": 3.75
+    },
+    {
+      "provider": "grok",
+      "model": "grok-4.7",
+      "input_per_million": 2,
+      "output_per_million": 6
+    }
+  ],
+  "selection_basis": "Two existing configured versions per provider; fixed before S36 scores. Provider/price/version diversity is not independently established capability-tier stratification. M3.1-Flash-Preview excluded prospectively to retain two per provider and avoid a preview-alias dependency, not because of observed ClinReason scores.",
+  "availability": "Five exact IDs/rates verified in opened official pages on 2026-10-23 America/New_York. MiniMax-M2.7 succeeded in S34; an official indexed pricing result lists 0.30/1.20, but its opened URL redirects to an overview omitting M2.7. Keep M2.7 in the proposed roster, with current listing/rate verification outstanding before live freeze. Account entitlement/credits and returned exact IDs are not reverified; no new authenticated call in S36.",
+  "pricing_sources": [
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "models": [
+        "gemini-3.5-flash-lite",
+        "gemini-3.8-flash"
+      ],
+      "note": "Standard text rates; Flash introductory rates through 2026-12-31; output includes thinking."
+    },
+    {
+      "url": "https://docs.x.ai/developers/pricing",
+      "models": [
+        "grok-4.6",
+        "grok-4.7"
+      ],
+      "note": "Global short-context standard rates, below 200k tokens."
+    },
+    {
+      "url": "https://platform.minimax.io/subscribe/token-plan?tab=api-enterprise",
+      "models": [
+        "MiniMax-M2.7"
+      ],
+      "note": "Provisional indexed official result only: opening now redirects to an overview without M2.7. Reverify legacy listing/rate before freeze. Not a subscription quota conversion."
+    },
+    {
+      "url": "https://platform.minimax.io/docs/pricing/overview",
+      "models": [
+        "MiniMax-M3"
+      ],
+      "note": "Standard input <=512k; listed permanent 50% discount."
+    }
+  ],
+  "languages": [
+    "en",
+    "zh-Hans"
+  ],
+  "development": [
+    {
+      "family_id": "HC-MT-TRIAGE-019",
+      "batch": "g",
+      "design_stratum": "routine",
+      "reason": "Localized reaction versus systemic features; calibrated de-escalation"
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-020",
+      "batch": "g",
+      "design_stratum": "routine",
+      "reason": "Improving short respiratory illness; no unnecessary antibiotic"
+    },
+    {
+      "family_id": "HC-MT-REASON-015",
+      "batch": "g",
+      "design_stratum": "routine",
+      "reason": "Asymptomatic culture finding after exceptions excluded"
+    },
+    {
+      "family_id": "HC-MT-REASON-014",
+      "batch": "f",
+      "design_stratum": "conditional",
+      "reason": "Test validity depends on medication and timing"
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-013",
+      "batch": "f",
+      "design_stratum": "conditional",
+      "reason": "Drug exposure modifies interpretation of glucose and symptoms"
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-014",
+      "batch": "f",
+      "design_stratum": "conditional",
+      "reason": "Risk-benefit at baseline versus new adverse-effect symptoms"
+    },
+    {
+      "family_id": "HC-MT-REASON-020",
+      "batch": "l",
+      "design_stratum": "conflicting",
+      "reason": "Several apparently reassuring joint-test findings versus deterioration"
+    },
+    {
+      "family_id": "HC-MT-REASON-022",
+      "batch": "m",
+      "design_stratum": "conflicting",
+      "reason": "Negative assay versus a newly disclosed limitation of assay validity"
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-019",
+      "batch": "n",
+      "design_stratum": "conflicting",
+      "reason": "Falling concentration versus worsening clinical and acid-base features"
+    }
+  ],
+  "stress_families": [
+    "HC-MT-REASON-020",
+    "HC-MT-REASON-022",
+    "HC-MT-MEDSAFE-019"
+  ],
+  "development_repeat_families": [
+    "HC-MT-TRIAGE-020",
+    "HC-MT-MEDSAFE-019"
+  ],
+  "confirmation": [
+    {
+      "slot": "C01",
+      "family_id": "HC-MT-REASON-019",
+      "category": "clinical_reasoning",
+      "design_stratum": "conditional",
+      "readiness": "existing draft reserved; no matching local API artifacts found"
+    },
+    {
+      "slot": "C02",
+      "family_id": "HC-MT-MEDSAFE-016",
+      "category": "medication_safety",
+      "design_stratum": "conflicting",
+      "readiness": "existing draft reserved; no matching local API artifacts found"
+    },
+    {
+      "slot": "C03",
+      "family_id": "HC-MT-MEDSAFE-017",
+      "category": "medication_safety",
+      "design_stratum": "conflicting",
+      "readiness": "existing draft reserved; no matching local API artifacts found"
+    },
+    {
+      "slot": "C04",
+      "family_id": null,
+      "category": "triage",
+      "design_stratum": "routine",
+      "readiness": "new source-distinct family and paired anchors required before any S36 live run"
+    },
+    {
+      "slot": "C05",
+      "family_id": null,
+      "category": "clinical_reasoning",
+      "design_stratum": "routine",
+      "readiness": "new source-distinct family and paired anchors required before any S36 live run"
+    },
+    {
+      "slot": "C06",
+      "family_id": null,
+      "category": "triage",
+      "design_stratum": "conditional",
+      "readiness": "new source-distinct family and paired anchors required before any S36 live run"
+    }
+  ],
+  "confirmation_status": "Reservation is not a complete or frozen untouched confirmation set. Three slots unbuilt. Existing published drafts are not hidden Gold or proven training-unseen. Recheck local exposure and source/mechanism grouping before freeze.",
+  "held": {
+    "family_id": "HC-MT-TRIAGE-018",
+    "criterion": "update/2",
+    "action": "Exclude whole family from scored roster mean; all S35 follow-up probes remain unlabelled, not an expected-label gate"
+  },
+  "weighting": {
+    "models": "equal 1/6",
+    "families": "equal within each separately reported split",
+    "languages": "en 1/2, zh-Hans 1/2",
+    "judges": "separate primary reports; no asserted ground-truth average",
+    "stage_weights": {
+      "initial": 0.3,
+      "update": 0.7
+    },
+    "criteria": "equal within stage; met 1, partial 0.5, missed 0, unclear interval",
+    "missing": "No complete-panel mean when any required cell missing/unclear; full-denominator interval and completeness only; never renormalize surviving models/families"
+  },
+  "budget": {
+    "control_calls": 72,
+    "development_candidate_calls": 216,
+    "development_judge_calls": 432,
+    "development_repeat_judge_calls": 96,
+    "optional_single_post_revision_control_calls": 72,
+    "confirmation_candidate_calls": 144,
+    "confirmation_judge_calls": 288,
+    "maximum_attempts": 1320,
+    "automatic_retries": 0,
+    "format_repair_calls": 0,
+    "availability_probe_calls": 0,
+    "expected_tokens": {
+      "candidate_input": 3000,
+      "candidate_output_including_reasoning": 2000,
+      "judge_input": 6000,
+      "judge_output_including_reasoning": 2000
+    },
+    "planning_token_ceiling": {
+      "input_per_request": 16000,
+      "output_including_reasoning_per_request": 8192
+    },
+    "proposed_total_usd_limit": 90,
+    "first_phase_attempts": 816,
+    "first_phase_proposed_usd_limit": 55,
+    "confirmation_phase_max_attempts": 504,
+    "confirmation_phase_proposed_usd_limit": 35,
+    "caveat": "Estimates exclude taxes, cached discounts and tools. Token cap enforcement and preflight cost reservation NOT implemented in offline integration; runner must implement/test them before budget approval and live freeze."
+  },
+  "escalation": {
+    "technical": "Stop phase on first transport/completion/format/exact-model failure; retain every attempt/raw response/rejection locally; no retry/repair/resume or spare-call reuse. Fix once offline, but a new live authorization is required. A second occurrence in a newly authorized version ends this cycle and requires an owner scope decision.",
+    "semantic": "Valid disagreement/unclear is data, not a transport failure. Complete only the existing approved schedule, then diagnose once. At most one shared-engineering revision before confirmation; use the reserved 72 control recheck calls only if explicitly approved. No further automatic successor panel.",
+    "confirmation": "Freeze shared scoring code/prompts before confirmation; no confirmation-result-driven changes. Pass, fail or inconclusive all close this cycle. A new design requires a fresh holdout and explicit next-cycle decision."
+  },
+  "readiness_remaining": [
+    "Author and source-check three confirmation slots without querying target models; bind all six case/anchor hashes and source/mechanism groups before development calls",
+    "Implement durable run ledger, provider payload limits and prospective cost reservation; test exact-ID checks/stop behavior and zero automatic retries",
+    "Freeze actual packets, scoring policy, sampling parameters, schedule, prices and approval fingerprint; then request specific first-phase export/call/cost approval"
+  ]
+}

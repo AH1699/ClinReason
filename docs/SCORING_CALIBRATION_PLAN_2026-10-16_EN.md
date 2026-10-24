@@ -1,6 +1,12 @@
 # Scoring difficulty and calibration plan — 2026-10-16
 
-## 2026-10-20 S7 development checkpoint (current)
+## Current direction clarified 2026-10-23
+
+**451 tests pass, including 31 new; zero paid calls, new model scores or cases.** [S36](S36_REFERENCE_MIX_PLAN_2026-10-23_EN.md) implements variable-criterion stage prompts/schema/validation/scoring and fixed-roster reporting. All 54 S35 quote checks, 46 boundary packets, the OR/AND hold and old scores are preserved. The objective is **around 80 across a fixed broader roster**, not each model. Expert review is later and does not block provisional engineering. The proposal includes two models each from Gemini/Grok/MiniMax, nine development families and six confirmation slots. Three confirmation slots and the budget-enforcing live runner remain unfinished. Next: complete those offline prerequisites, reverify MiniMax M2.7 listing/rate, freeze, then request specific first-phase approval (at most 816 calls/$55; later phase separately at most 504/$35). Current allowance zero. Development **125/250**, approved calibration/Gold **0/0**, Xi'an local-only. Finite revision/stop rules are recorded; H126 is a later review item, not an engineering blocker.
+
+Below are historical plans/results, not instructions to wait for experts before provisional engineering.
+
+## 2026-10-20 S7 development checkpoint (historical)
 
 The [batch-G and saved-answer audit](S7_DEESCALATION_AND_ANSWER_AUDIT_2026-10-20_EN.md) adds four **unscored** public low-acuity/de-escalation families and inspects every ≥5-point batch-F judge gap at answer level. The most consequential new finding is a response-language blind spot: a conservative exact-case-bound offline check flagged three long English turns to Chinese prompts among 46 saved turns, while clinical judge scores remained high. This is not a calibrated language metric or a correction to historical scores. Before another bilingual live comparison, version a candidate language instruction and an independently reported adherence check; author exact-case G anchors and contrasts. Do not mix new-protocol and batch-F scores or tune toward the owner's ~60–70/~80/~90 diagnostic aspiration. Public development is 112 families; approved calibration/hidden Gold remain 0/0. Independent clinical/source-to-criterion and bilingual adjudication remains deferred but mandatory before formal calibration.
 
@@ -28,7 +34,7 @@ The [current tranche record](S5_CALIBRATION_TRANCHE_2026-10-19_EN.md) documents 
 
 The [prospective batch B record](S5_CALIBRATION_BATCH_B_2026-10-19_EN.md) tracks **6 unreviewed calibration drafts**, balanced 2/2/2 across patient-facing triage, medication safety and clinical reasoning. This is progress toward a *balanced sample*, not evidence that the panel is large enough or that any model will land near 60–70/80/90. The [provisional answer-anchor packet](S5_CALIBRATION_ANCHORS_2026-10-19_EN.md) now includes good/incomplete/unsafe contrasts for each language. No new model or judge calls, case scores, rubric changes, or tier selections were made. Independently adjudicate anchors and examples before measuring judge validity. Approved calibration and hidden Gold remain zero.
 
-## Decision and current evidence
+## Original decision and evidence preserved as history
 
 The desired rough score bands are **60–70 for a pre-declared lower-tier reference set, around 80 for a pre-declared mid-tier set, and around 90 for a pre-declared premium set**. These are *design diagnostics*, not target outputs, fixed pass thresholds, or claims about any named model. Model tiers must be specified independently of ClinReason scores before looking at them. If the observations differ, report the difference; do not curve scores, choose models after seeing results, or change weights merely to manufacture these bands.
 
@@ -36,7 +42,7 @@ The only completed four-candidate/two-judge matrix comparison used one English, 
 
 The current rubric awards full marks when the AI judge assigns 4/4 to initial safety, initial requirements, update safety, update requirements, and revision, with no listed critical error. Its safety weights and hard-fail caps are explicit in [`config/multiturn_rubric.json`](../config/multiturn_rubric.json). A 100 is therefore an *uncalibrated judge assessment against a draft item*, not evidence of perfect clinical reasoning. Do not deduct points from an otherwise correct response only because we want a lower number.
 
-## Prospective calibration workflow
+## Original workflow superseded by S36
 
 1. **Freeze reference models and cases.** Define model-tier membership without benchmark results. Use the same frozen case revisions, visible instructions, two-turn protocol, and two blinded judges for every model. Keep English and Chinese results separate until language review. Record provider defaults, model versions, and token-cap differences.
 2. **Build a balanced difficulty panel.** Start with `HC-MT-TRIAGE-010`, `HC-MT-MEDSAFE-007`, and `HC-MT-REASON-009`, each in English and Chinese, plus easier non-emergency/negative controls. These are proposed diagnostic items, not approved calibration cases. Add genuinely distinct public-evidence adaptations and near-miss reasoning cases without duplicating a source mechanism across development and future holdout. Do not call public cases “hidden.”

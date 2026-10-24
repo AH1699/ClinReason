@@ -1,5 +1,10 @@
 # Living human-review handoff — opened 2026-10-07
 
+## S36 later review question H126
+
+**H126 / high:** Review the [version-1 construct choices](S36_REFERENCE_MIX_PLAN_2026-10-23_EN.md): functional elicitation, stage-local versus conversation-level credit, overlap, held eye follow-up OR/AND, equal roster/family/language weighting and same-provider judge effects. These defaults permit provisional engineering only; no clinical question is closed. Independent review remains a later validation/release gate, not a prerequisite for current offline work. A mean near 80 does not establish validity. S35/H125 remains unchanged.
+
+
 Purpose: preserve unresolved questions while the synthetic benchmark is developed. This queue is not an approval record. All items are **open**; an AI preliminary audit cannot close them. For source links and case-level context, see the [preliminary audit](PRELIMINARY_CLINICAL_REVIEW_EN.md) and [public evidence registry](../data/evidence/public_sources.json). Do not add patient-level data to this repository.
 
 ## Priority decisions

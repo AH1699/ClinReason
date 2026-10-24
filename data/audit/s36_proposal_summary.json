@@ -1,0 +1,30 @@
+{
+  "version": "s36-reference-mix-proposal-v1",
+  "plan_sha256": "47cdd6ec2a8cec4df623a7cd07263bd0242d86ae521bc713276394943a537b2c",
+  "candidate_models": 6,
+  "development_families": 9,
+  "confirmation_existing_reservations": 3,
+  "confirmation_unbuilt_slots": 3,
+  "existing_split_source_and_declared_mechanism_check": "pass",
+  "live_ready": false,
+  "live_call_allowance": 0,
+  "budget_scenarios": {
+    "control_calls": 72,
+    "development_candidate_calls": 216,
+    "development_judge_calls": 432,
+    "development_repeat_judge_calls": 96,
+    "optional_single_post_revision_control_calls": 72,
+    "confirmation_candidate_calls": 144,
+    "confirmation_judge_calls": 288,
+    "maximum_attempts": 1320,
+    "first_phase_attempts": 816,
+    "confirmation_phase_max_attempts": 504,
+    "expected_scenario_usd": 20.775,
+    "expected_first_phase_usd": 12.897,
+    "expected_confirmation_phase_usd": 7.878,
+    "token_ceiling_scenario_usd": 75.0324,
+    "ceiling_first_phase_usd": 46.5059,
+    "ceiling_confirmation_phase_usd": 28.5265,
+    "estimate_not_runtime_spend_enforcement": true
+  }
+}

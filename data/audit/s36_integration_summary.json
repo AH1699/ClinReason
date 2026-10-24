@@ -1,0 +1,19 @@
+{
+  "version": "s36-v1-variable-criteria-provisional",
+  "status": "offline_integration_not_live_frozen_or_clinically_validated",
+  "full_control_packets": 18,
+  "stage_packets": 36,
+  "criterion_counts": [
+    3,
+    4
+  ],
+  "quote_fixtures": 54,
+  "quote_accepted": 22,
+  "quote_rejected": 32,
+  "stage_integration_sha256": "2cfb23bcf8c54e2571a87ecc8d6c2c6173ff1f32f7c42efbd0a1f1565dbed6bb",
+  "arithmetic_sha256": "9e996d3676a2aeb3621edb3d1ede31a65a26f059a5012e4fc3c0183a7dd8c8c2",
+  "live_calls": 0,
+  "live_call_allowance": 0,
+  "live_runner_implemented": false,
+  "clinically_validated": false
+}
