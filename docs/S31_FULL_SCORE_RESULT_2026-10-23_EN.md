@@ -1,5 +1,7 @@
 # S31 results and remaining scoring boundaries
 
+Follow-up: the [S32 offline care-boundary and quotation draft](S32_CARE_BOUNDARIES_DRAFT_2026-10-23_EN.md) completes the offline drafting steps below. It does not resume or rescore this run.
+
 ## Stopped with 20 valid judgments
 
 The approved S31 run made **21 requests and saved 20 valid judgments**, then stopped on a response-validation failure. No repeat-stage call ran; no retry, replacement, repair or candidate call occurred. The predeclared advance gate is **false**, and scoring calibration remains incomplete.
