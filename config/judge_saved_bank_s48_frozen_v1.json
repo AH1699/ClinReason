@@ -1,0 +1,10 @@
+{
+  "version": "s48-saved-bank-judge-only-v1",
+  "s47_protocol_sha256": "bf4eda0e5820ef92eb5e75219a2ebf8feff35fd7f13a4d5c1af2b7363e6fadd6",
+  "files": {
+    "config/judge_saved_bank_s48_v1.json": "328c9cfdf6840b8558171503e3153e0eb32aaac44a876782d62b594cbd9ca6ab",
+    "scripts/judge_saved_bank_s48.py": "2f6f0a7dc00a0ade07220178b0793465bcf0fc9ce3583c8d2ef264b03fd93a86",
+    "tests/test_judge_saved_bank_s48.py": "8ad26643a359b982a1d901d66aae2892baf4a6331c1e2b94bc968d19a05eb1c1"
+  },
+  "schedule_sha256": "2e8bc56b455f912d378f1c242682831a4394a590bd2b3a719535e82846cc183d"
+}
