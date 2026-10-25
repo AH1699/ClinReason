@@ -1,0 +1,11 @@
+{
+  "version": "s45-independent-development-v1",
+  "plan_path": "config/independent_s45_pilot_v1.json",
+  "files": {
+    "config/independent_s45_pilot_v1.json": "a3e10f2d750ef535ed709f4dd7b0539ddfee986c1b952575de4a20241dec329e",
+    "scripts/independent_eval_s45.py": "908ac71f06380830a7f5b77e591b336e32b6802891d22f781f7fad3e88129fba",
+    "tests/test_independent_eval_s45.py": "91811954b19e4c070fc0c1ac508b763cdc917609b774045a4fdf162ac16486a2"
+  },
+  "prior_s41_protocol_sha256": "e1010f46ac255475b21124abf978c351c3dcfe3767a26aba378ae1d8cbc58697",
+  "schedule_sha256": "f7cf2472b178068fc7429342670f9d16ac08ab8d0136606da16488748fd98646"
+}
