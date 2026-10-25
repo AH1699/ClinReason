@@ -1,0 +1,12 @@
+{
+  "version": "s47-observation-completeness-v1",
+  "s46_protocol_sha256": "5ab33f905bccc603c582fa53c4260c01a4ae46ea263eaf83c954710c44cadb1b",
+  "files": {
+    "config/judge_observation_s47_v1.json": "dd605219833ebf4bc2cb6c897cae363fca1569a2f162f81e03932db4e9732abb",
+    "scripts/judge_observation_s47.py": "403921cf7882d2ba59cf16d3526dc179557503895f115f0dc5a9ed29ccf13a53",
+    "scripts/judge_observation_draft.py": "ce70e692232cd5d3bc36fb2d8411e0ae8001ad8da0fd56024001bb0b42bccaf9",
+    "tests/test_judge_observation_s47.py": "8d7c8869ea9635bfbdcf0c8490897b7154d15c5337a698edc17eb342f8b2576d",
+    "tests/test_judge_observation_draft.py": "2cee612004a5a6e8bda40ecf8d9d2316d9f1245200dbb47cbe972241e0e125a2"
+  },
+  "jobs_sha256": "33746a62243a96b978c8cd2c90a8ffe28c6f17224bd4a168a1f97ec75e8c6338"
+}
