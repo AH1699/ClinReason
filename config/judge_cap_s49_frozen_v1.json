@@ -1,0 +1,16 @@
+{
+  "version": "s49-one-cell-output-cap-v1",
+  "s48_protocol_sha256": "4b94f3b8062c68d589bb5857d0ff3dc86feea188554cfd1e1ab2ee0e29c1b5bd",
+  "files": {
+    "config/judge_cap_s49_v1.json": "e3980af464db4000e5eaae9ba1add86244bb2ed28f19298d1b721a03be0283c0",
+    "scripts/judge_cap_s49.py": "1654178932329bd41f67757a3e841fea445bf4e7d93cf2fc921eaefecb9b32ce",
+    "tests/test_judge_cap_s49.py": "911ceb1a51a289049554e018bc172118f97c65fa494c5804a3ee11ebc0392fef"
+  },
+  "source_pins": {
+    "source_sha256": "535a587a605158e0d993865a2372bdce709b247fdf3c1b66409136f74a4b633d",
+    "source_protocol_sha256": "4b94f3b8062c68d589bb5857d0ff3dc86feea188554cfd1e1ab2ee0e29c1b5bd",
+    "bundle_sha256": "6936c040882d8844c0ffc6cbe8ef711dba8f4a0d31d24da616c3e00823221ada",
+    "original_payload_sha256": "b3607e1d1c8996f369d6557dc1d617d6c5ba123ad1be6edbec69cf3741c8e6e3",
+    "supplemental_payload_sha256": "4fb122219b8b0626da513368275b291c8bc444273bf1e4a1b0c7ec92e1366a83"
+  }
+}
