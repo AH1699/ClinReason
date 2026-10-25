@@ -1,0 +1,22 @@
+{
+  "version": "s46-m3-tier-compatibility-v1",
+  "source_directory": "work/s45-runs/79978a7f-6246-4d3b-a8f2-6e6f076b2bc4",
+  "source_sha256": "4a4151370cfcfb811f370ad5e8bf1a190873a2faa9a97f7302165aba0d81107b",
+  "source_attempts": 7,
+  "source_monitoring_microusd": 32628,
+  "maximum_new_attempts": 61,
+  "overall_maximum_attempts": 68,
+  "stop_threshold_usd": "5.00",
+  "automatic_retries": 0,
+  "hard_ceiling": false,
+  "first_new_original_sequence": 8,
+  "new_candidate_requests": 9,
+  "new_control_requests": 36,
+  "new_candidate_judgment_requests": 16,
+  "changed_policy": "Only explicit-standard MiniMax-M3 requests returning undocumented tier default use higher published short-context priority rates for monitoring. No claim of verified tier or invoice. All other unknown accounting still stops.",
+  "recovery": "Reuse six S45 accepted answers plus independently decoded seventh saved HTTP200 answer. No candidate regeneration, score change, prompt change or repeat of any request.",
+  "historical_record": "S45 remains stopped with its own unknown-tier accounting. S46 records a separate conservative estimate and carries all seven attempts and their monitored spending forward.",
+  "sources_verified_on": "2026-10-25",
+  "pricing_source": "https://platform.minimax.io/docs/pricing/overview",
+  "request_tier_source": "https://platform.minimax.io/docs/api-reference/text-chat-openai"
+}

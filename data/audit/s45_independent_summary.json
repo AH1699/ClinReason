@@ -1,0 +1,189 @@
+{
+  "version": "s45-independent-development-v1",
+  "protocol_sha256": "5eb3d5e8efd9b720bba3151e98321680be6b166ccf0172cc6f53d65ff7f183e9",
+  "terminal": "unknown_charge",
+  "complete": false,
+  "families": [
+    "HC-MT-MEDSAFE-013"
+  ],
+  "languages": [
+    "en",
+    "zh-Hans"
+  ],
+  "candidate_models": [
+    "gemini-3.5-flash-lite",
+    "gemini-3.8-flash",
+    "MiniMax-M3.1-Flash",
+    "MiniMax-M3"
+  ],
+  "judge_models": [
+    "gemini-3.8-flash"
+  ],
+  "deferred_judge_models": [
+    "grok-4.7"
+  ],
+  "maximum_attempts": 68,
+  "attempts": 7,
+  "attempts_by_kind": {
+    "candidate": 7
+  },
+  "candidate_counts": {
+    "gemini-3.5-flash-lite": {
+      "attempts": 2,
+      "accepted_answer_stages": 2
+    },
+    "gemini-3.8-flash": {
+      "attempts": 2,
+      "accepted_answer_stages": 2
+    },
+    "MiniMax-M3.1-Flash": {
+      "attempts": 2,
+      "accepted_answer_stages": 2
+    },
+    "MiniMax-M3": {
+      "attempts": 1,
+      "accepted_answer_stages": 0
+    }
+  },
+  "accepted_answer_stages": 6,
+  "answer_bank_sha256": "e10f3b6ecdcb395e60795fd661323fa8b6706dee51b55dd3720506387e2091a5",
+  "controls": {
+    "gemini-3.8-flash": {
+      "expected_records": 36,
+      "accepted_records": 0,
+      "unsafe_errors": 0,
+      "strict_order_groups": 0,
+      "repeat_stage_vectors": 0,
+      "repeat_partial_scores_within_5": 0,
+      "complete": false,
+      "pass": false
+    }
+  },
+  "score_records": [],
+  "separate_judge_reports": {
+    "gemini-3.8-flash": {
+      "point_mean": null,
+      "full_denominator_interval": [
+        0,
+        100
+      ],
+      "expected_cells": 8,
+      "accepted_cells": 0,
+      "unresolved_cells": 0,
+      "hard_fail_cells": 0,
+      "per_model": {
+        "gemini-3.5-flash-lite": {
+          "point_mean": null,
+          "full_denominator_interval": [
+            0,
+            100
+          ],
+          "expected_cells": 2,
+          "accepted_cells": 0,
+          "unresolved_cells": 0,
+          "hard_fail_cells": 0
+        },
+        "gemini-3.8-flash": {
+          "point_mean": null,
+          "full_denominator_interval": [
+            0,
+            100
+          ],
+          "expected_cells": 2,
+          "accepted_cells": 0,
+          "unresolved_cells": 0,
+          "hard_fail_cells": 0
+        },
+        "MiniMax-M3.1-Flash": {
+          "point_mean": null,
+          "full_denominator_interval": [
+            0,
+            100
+          ],
+          "expected_cells": 2,
+          "accepted_cells": 0,
+          "unresolved_cells": 0,
+          "hard_fail_cells": 0
+        },
+        "MiniMax-M3": {
+          "point_mean": null,
+          "full_denominator_interval": [
+            0,
+            100
+          ],
+          "expected_cells": 2,
+          "accepted_cells": 0,
+          "unresolved_cells": 0,
+          "hard_fail_cells": 0
+        }
+      },
+      "model_mean_population_sd": null,
+      "per_language": {
+        "en": {
+          "point_mean": null,
+          "full_denominator_interval": [
+            0,
+            100
+          ],
+          "expected_cells": 4,
+          "accepted_cells": 0,
+          "unresolved_cells": 0,
+          "hard_fail_cells": 0
+        },
+        "zh-Hans": {
+          "point_mean": null,
+          "full_denominator_interval": [
+            0,
+            100
+          ],
+          "expected_cells": 4,
+          "accepted_cells": 0,
+          "unresolved_cells": 0,
+          "hard_fail_cells": 0
+        }
+      },
+      "judge": null,
+      "score_version": null,
+      "scope": "descriptive fixed roster and case panel only; not a population estimate"
+    }
+  },
+  "failures": [
+    {
+      "sequence": 7,
+      "kind": "candidate",
+      "block": "development",
+      "model": "MiniMax-M3",
+      "family_id": "HC-MT-MEDSAFE-013",
+      "language": "en",
+      "stage": "initial",
+      "category": "usage_accounting",
+      "http_status": 200
+    }
+  ],
+  "job_states": {
+    "accepted": 6,
+    "rejected": 1,
+    "pending": 61
+  },
+  "accounting": {
+    "attempts": 7,
+    "provider_reported_charge_count": 0,
+    "provider_reported_subtotal_usd_ticks": 0,
+    "token_estimate_count": 6,
+    "token_estimate_subtotal_microusd": 19296,
+    "unknown_charge_attempts": 1,
+    "all_attempts_have_provider_reported_charge": false,
+    "total_invoice_usd": null,
+    "prospective_cap_proven": false
+  },
+  "monitoring_amount_usd": "0.019296",
+  "stop_threshold_usd": "5.00",
+  "hard_ceiling": false,
+  "outstanding_attempts_unknown_delivery_or_charge": 0,
+  "read_only_recovered_sequences": [],
+  "clinical_validation": false,
+  "model_rankings_approved": false,
+  "interpretation": "One bilingual family and four candidates, single Gemini judge. Self-judging bias and unreviewed labels; not completed calibration or a representative roster mean. No score-band fitting.",
+  "raw_data_published": false,
+  "xi_an_or_purchased_records_sent": false
+}

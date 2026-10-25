@@ -1,0 +1,11 @@
+{
+  "version": "s46-m3-tier-compatibility-v1",
+  "s45_protocol_sha256": "5eb3d5e8efd9b720bba3151e98321680be6b166ccf0172cc6f53d65ff7f183e9",
+  "files": {
+    "config/independent_s46_amendment_v1.json": "8d968c8c462a9951ee84326299e44d800aee497748eeeed75c99a64332c8dde2",
+    "scripts/independent_eval_s46.py": "103b8fcb817b54a2e254040e6ee58a78106ec6beb07980dd1b84219a93a3c069",
+    "scripts/transport_s46.py": "0fb012e1f44046a370eabec92b8dca888c4509804ab5b00c793be93d216ac84f",
+    "scripts/minimax_accounting_s46.py": "58b248a3a291535cf7142ad42328ef65608d0259cd3da4b6276e9eca8e9668f9",
+    "tests/test_independent_eval_s46.py": "6b1cddf91a274da7d3a64beab1a37bd35cec3f8eccc47a9fde52d707578d1b88"
+  }
+}
