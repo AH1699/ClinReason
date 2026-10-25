@@ -1,8 +1,12 @@
 # Scoring difficulty and calibration plan — 2026-10-16
 
-## Current direction clarified 2026-10-24
+## Current direction updated 2026-10-25
 
-**Current checkpoint S48:** The [saved-answer run](S48_SAVED_ANSWER_RESULT_EN.md) passed all 36 controls, including 12/12 repeated criterion/error vectors, and produced **7/8 provisional conversation scores**. Request 52 returned incomplete near the 8,192 combined output/thinking cap; the MiniMax M3 Chinese score remains missing, not zero. All 52 authorized requests were used, no retries; monitoring estimate **$0.561627**, 791 offline tests pass. H140 flags possible semantic over-credit in MiniMax M3.1 Flash Chinese; its recorded 95 is preserved with a separate review flag. Next prepare a [one-call supplemental cap proposal](../config/judge_cap_followup_proposal.json), separately approved and reported, plus offline medication-hold/plan-component contrasts before the [nine-family expansion](NEXT_DEVELOPMENT_PANEL_EN.md). All 16 candidate answer stages remain reusable. Registered development **125/250**, two standalone [Batch O](BATCH_O_STANDALONE_EN.md) drafts, three reserved confirmation families and approved calibration/Gold **0/0** are unchanged. Xi'an stays local, expert review stays later and 60–70/~80/~90 remain unfitted aspirations.
+**Current checkpoint S49:** The [one-call supplement](S49_CAP_SUPPLEMENT_RESULT_EN.md) succeeded: MiniMax M3 Chinese has a separate **88.33** conversation score, using the saved initial judgment and a new update judgment with a 32,768 cap. One attempt, no retry or candidate generation; monitoring estimate **$0.028182**, not an invoice. It used 6,925 generated tokens, so success does not prove the raised cap caused completion. S48 remains unchanged at seven of eight scores; no pooled eight-cell mean or ranking. H140 remains open; H141 adds an extra-advice review question without changing scores.
+
+The [offline boundary draft](S49_MEDICATION_BOUNDARIES_EN.md) contains **28 bilingual packets, 16 author hypotheses, 12 unlabelled packets and 22 one-component pairs**. No boundary calls or label changes. **815 offline tests pass.** Next implement and freeze a focused blinded boundary adapter and repeat plan, then obtain bounded call authorization. The [nine-family mixed import/generation panel](NEXT_DEVELOPMENT_PANEL_EN.md) follows that narrow check, with a uniform prospective judging policy; its larger paid run remains unauthorized.
+
+All 16 candidate answer stages remain reusable. Registered development **125 families / 250 variants**, two standalone [Batch O](BATCH_O_STANDALONE_EN.md) drafts, three reserved confirmation families and approved calibration/Gold **0/0** are unchanged. Xi'an stays local; expert review stays later. Lower 60–70, average ~80 and premium ~90 remain diagnostic aspirations, never score-fitting targets.
 
 Historical S44 record (superseded execution direction):
 

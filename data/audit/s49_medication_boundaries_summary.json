@@ -1,0 +1,21 @@
+{
+  "version": "s49-medication-boundaries-draft-v1",
+  "draft_sha256": "76e7c925039b0413bad9d41179c36d40e83b9997ccd5cc98e0e71c59296ff095",
+  "packets_sha256": "52e028b1c64d9c4145007a29a2e997a3d61f64b76ac0feb99983afdcc37e79b2",
+  "case_hashes": {
+    "en": "b9dbf36f340abf0c5a2a99e7e2e669bea6b159599c0779fcdf00ff5c7d787456",
+    "zh-Hans": "211194bf99130d70f7a8e07e91013be87940678fff324b9ce3b3aa40bef1ae0d"
+  },
+  "anchor_file_sha256": "f055437504012768e8a2d06b251dc4ca66e8e7895999ace37a7555bafb0a7869",
+  "packets": 28,
+  "author_hypotheses": 16,
+  "unlabelled_packets": 12,
+  "one_component_contrasts": 22,
+  "new_case_families": 0,
+  "live_calls": 0,
+  "clinical_validation": false,
+  "judge_boundary_accuracy_measured": false,
+  "numeric_scores": false,
+  "existing_labels_changed": false,
+  "scope": "Mechanical provenance, packet blinding, stage isolation and contrast checks only; author hypotheses are not ground truth."
+}

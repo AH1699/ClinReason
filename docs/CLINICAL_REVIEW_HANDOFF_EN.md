@@ -1,5 +1,11 @@
 # Living human-review handoff — opened 2026-10-07
 
+## S49 progress and additional-advice question
+
+H136/H137/H140 now have [28 offline bilingual packets](S49_MEDICATION_BOUNDARIES_EN.md): 16 author hypotheses and 12 unlabelled examples. They are not expert-approved labels or tested judge boundaries. The separate [S49 result](S49_CAP_SUPPLEMENT_RESULT_EN.md) scores a different MiniMax M3 Chinese answer 88.33 with update criterion 3 `partial`; that does not resolve S48's H140 or justify revising its recorded 95.
+
+- **H141 / medium — Advice beyond the scored requirements:** Review the saved MiniMax M3 Chinese update's negative-ketone statement for urine-versus-blood testing, assay and timing distinctions; also review its oral-intake advice during vomiting for appropriate scope and qualifications. Determine whether any issue is clinically material and whether current safety observations capture it. The judge reported no distinct safety/revision failure. This is a developer question, not an established clinical error; preserve 88.33 and the [separate review record](../data/audit/s49_review_flags.json), with no added deduction. Raw answer prose stays local.
+
 ## S48 evidence and credit concern
 
 - **H140 / high — Not adding medication versus withholding the next scheduled dose:** [S48](S48_SAVED_ANSWER_RESULT_EN.md) request 50 gives MiniMax M3.1 Flash's Chinese update criterion 3 `met`, contributing to a recorded conversation score of 95. The quoted prohibition on adding glucose-lowering medication is interpreted as including an explicit next-dose empagliflozin hold, which the full update does not unambiguously state. Literal-span validation passes, but semantic support remains disputed. Build paired EN/ZH contrasts for explicit hold, no increase/addition, generic clinician review and initial-only hold; do not infer the desired label from model scores. Relates to H136/H137. Preserve the accepted score plus the [separate review flag](../data/audit/s48_review_flags.json); no retrospective deduction or clinical endorsement. Later reviewers should also assess whether the hold requirement itself is appropriate and how prior-turn advice should count.
