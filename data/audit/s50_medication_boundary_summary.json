@@ -1,0 +1,1419 @@
+{
+  "version": "s50-medication-boundary-v1",
+  "protocol_sha256": "f994eae382aa615718a77f9f1ac5c5d3f0ef6bbdd68031cff7dd054494d3949f",
+  "mode": "live",
+  "terminal": "schedule_complete",
+  "attempts": 56,
+  "maximum_attempts": 56,
+  "candidate_calls": 0,
+  "automatic_retries": 0,
+  "monitoring_known_subtotal_usd": "0.200815",
+  "accounting": {
+    "attempts": 56,
+    "provider_reported_charge_count": 0,
+    "provider_reported_subtotal_usd_ticks": 0,
+    "token_estimate_count": 56,
+    "token_estimate_subtotal_microusd": 200815,
+    "unknown_charge_attempts": 0,
+    "all_attempts_have_provider_reported_charge": false,
+    "total_invoice_usd": null,
+    "prospective_cap_proven": false
+  },
+  "stop_threshold_usd": "3.00",
+  "hard_ceiling": false,
+  "failures": [],
+  "analysis": {
+    "mode": "live",
+    "simulation_only": false,
+    "valid_judgments": 56,
+    "expected_judgments": 56,
+    "first_author_hypothesis_observed": 16,
+    "first_author_hypothesis_expected": 16,
+    "first_author_hypothesis_matches": 16,
+    "exploratory_first_observed": 12,
+    "exploratory_first_expected": 12,
+    "repeat_pairs_observed": 28,
+    "repeat_pairs_expected": 28,
+    "exact_status_repeats": 27,
+    "complete": true,
+    "author_boundary_gate": false,
+    "cells": [
+      {
+        "sequence": 1,
+        "phase": "first",
+        "packet_key": "clinician_hold_only__zh-Hans",
+        "packet_sha256": "18a6f4eddcba62d3cd7b30ba9cb74ea68d41d1bbc476e5b57219ad8996b3b4dc",
+        "language": "zh-Hans",
+        "stage": "initial",
+        "status": "partial",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 2,
+        "phase": "first",
+        "packet_key": "no_addition__en",
+        "packet_sha256": "29d51f0708d8a9bd6c0e2afa6d303980f3f2ca47f8285f4b6678460e8e717915",
+        "language": "en",
+        "stage": "update",
+        "status": "partial",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 3,
+        "phase": "first",
+        "packet_key": "no_update_action__en",
+        "packet_sha256": "303cec2804bdabc3b6adc033a48846dc52b9464774c4e22c4a5e8ab32591d2c4",
+        "language": "en",
+        "stage": "update",
+        "status": "partial",
+        "author_hypothesis": "partial"
+      },
+      {
+        "sequence": 4,
+        "phase": "first",
+        "packet_key": "no_increase__en",
+        "packet_sha256": "3a26e480e3c1d358bd95d30fa9fa2eb75367493674416120a8a38272e727a03f",
+        "language": "en",
+        "stage": "update",
+        "status": "partial",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 5,
+        "phase": "first",
+        "packet_key": "clinician_neither__zh-Hans",
+        "packet_sha256": "497c0e9fc44cce9398b38b84a6bdd929035ab93c3043554f13c4994cd03583ec",
+        "language": "zh-Hans",
+        "stage": "initial",
+        "status": "partial",
+        "author_hypothesis": "partial"
+      },
+      {
+        "sequence": 6,
+        "phase": "first",
+        "packet_key": "no_update_action__zh-Hans",
+        "packet_sha256": "49f85c7d94e83a6a98c0eb6006104d784304246af53e4d8c0af372467b39d7ba",
+        "language": "zh-Hans",
+        "stage": "update",
+        "status": "partial",
+        "author_hypothesis": "partial"
+      },
+      {
+        "sequence": 7,
+        "phase": "first",
+        "packet_key": "contact_only__en",
+        "packet_sha256": "5d50c1645b6871a1c94f72ce0aca9a97da996477a649070a9ee65714850ff5b8",
+        "language": "en",
+        "stage": "update",
+        "status": "partial",
+        "author_hypothesis": "partial"
+      },
+      {
+        "sequence": 8,
+        "phase": "first",
+        "packet_key": "self_directed_both__zh-Hans",
+        "packet_sha256": "63736711155549150cd69a603f0d1dd73c4ce6180df6896e3ec8d293ef9efe2f",
+        "language": "zh-Hans",
+        "stage": "initial",
+        "status": "partial",
+        "author_hypothesis": "partial"
+      },
+      {
+        "sequence": 9,
+        "phase": "first",
+        "packet_key": "clinician_neither__en",
+        "packet_sha256": "647df0d8ad4831d38f293e76742b478869bc2155b2b3020ccbbc5831df6058ca",
+        "language": "en",
+        "stage": "initial",
+        "status": "partial",
+        "author_hypothesis": "partial"
+      },
+      {
+        "sequence": 10,
+        "phase": "first",
+        "packet_key": "generic_plan_plus_direct_actions__en",
+        "packet_sha256": "693885d4cb063bf3844da6572f63435031e33407497dd8afc0205aed20f83d50",
+        "language": "en",
+        "stage": "initial",
+        "status": "partial",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 11,
+        "phase": "first",
+        "packet_key": "explicit_hold__en",
+        "packet_sha256": "798b5d109c83a753570f335969d28f00c0947fec8f934367398fdbef52f65205",
+        "language": "en",
+        "stage": "update",
+        "status": "met",
+        "author_hypothesis": "met"
+      },
+      {
+        "sequence": 12,
+        "phase": "first",
+        "packet_key": "ambiguous_reference__en",
+        "packet_sha256": "8243a51901ad3ee7d55580872178e92b39255ac6196614b8e29bacf2fbf31f42",
+        "language": "en",
+        "stage": "update",
+        "status": "met",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 13,
+        "phase": "first",
+        "packet_key": "contact_only__zh-Hans",
+        "packet_sha256": "83f4a234167a463383ba00e0a0d2de0c9bd1d50517bb385ff984ce0e9d2b81df",
+        "language": "zh-Hans",
+        "stage": "update",
+        "status": "partial",
+        "author_hypothesis": "partial"
+      },
+      {
+        "sequence": 14,
+        "phase": "first",
+        "packet_key": "skip_equivalent__zh-Hans",
+        "packet_sha256": "869f9389c7fe8206306e9a9e4a1b460d6b467d76525f6a9d007abb6e7fb9e434",
+        "language": "zh-Hans",
+        "stage": "update",
+        "status": "met",
+        "author_hypothesis": "met"
+      },
+      {
+        "sequence": 15,
+        "phase": "first",
+        "packet_key": "initial_only_hold__en",
+        "packet_sha256": "8b05f94e2b220907fe7fa17ae5f21204deba099efa7a677ecbdf4b675a519395",
+        "language": "en",
+        "stage": "update",
+        "status": "partial",
+        "author_hypothesis": "partial"
+      },
+      {
+        "sequence": 16,
+        "phase": "first",
+        "packet_key": "ambiguous_reference__zh-Hans",
+        "packet_sha256": "94a020372618cf20c47aabcd7fbd30828c970a3b0434ab9d09e91c255d5aeb73",
+        "language": "zh-Hans",
+        "stage": "update",
+        "status": "met",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 17,
+        "phase": "first",
+        "packet_key": "generic_plan_plus_direct_actions__zh-Hans",
+        "packet_sha256": "a7d391e42f11ba02e543d938008a8643bbb1dec5a77f3cdadb9afb48a15462ba",
+        "language": "zh-Hans",
+        "stage": "initial",
+        "status": "partial",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 18,
+        "phase": "first",
+        "packet_key": "no_addition__zh-Hans",
+        "packet_sha256": "b440ad1538ac85bdb9ea4b0ebda15359e4ec70414c4f8b166c7fcc9fd6bc0e3d",
+        "language": "zh-Hans",
+        "stage": "update",
+        "status": "partial",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 19,
+        "phase": "first",
+        "packet_key": "clinician_ketone_only__zh-Hans",
+        "packet_sha256": "b636d4cef27257e06850ac7c1705f9995df889769dc32d0b491da539b5ae3ad3",
+        "language": "zh-Hans",
+        "stage": "initial",
+        "status": "partial",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 20,
+        "phase": "first",
+        "packet_key": "clinician_both__en",
+        "packet_sha256": "b9963b265c4a9a433502e15db02d3dddc13e52a85e18447c5032590928e214da",
+        "language": "en",
+        "stage": "initial",
+        "status": "met",
+        "author_hypothesis": "met"
+      },
+      {
+        "sequence": 21,
+        "phase": "first",
+        "packet_key": "no_increase__zh-Hans",
+        "packet_sha256": "be12e45b8f0f1013afc63e6df2dbf14c269e4150888c5a675e33864b5dd36df9",
+        "language": "zh-Hans",
+        "stage": "update",
+        "status": "partial",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 22,
+        "phase": "first",
+        "packet_key": "skip_equivalent__en",
+        "packet_sha256": "ce0813144050f6c0e204033b5bec693070a9026732de862c2fcbcf50bc2ac6a9",
+        "language": "en",
+        "stage": "update",
+        "status": "met",
+        "author_hypothesis": "met"
+      },
+      {
+        "sequence": 23,
+        "phase": "first",
+        "packet_key": "clinician_both__zh-Hans",
+        "packet_sha256": "d5e63edea9430619d6381d90b4f73be3bda084293ec3824495bf534814802223",
+        "language": "zh-Hans",
+        "stage": "initial",
+        "status": "met",
+        "author_hypothesis": "met"
+      },
+      {
+        "sequence": 24,
+        "phase": "first",
+        "packet_key": "clinician_hold_only__en",
+        "packet_sha256": "d815d0b938844c8b5f76b21ebd1ede7c300d6e338bc3975a748376b606f2a5cb",
+        "language": "en",
+        "stage": "initial",
+        "status": "partial",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 25,
+        "phase": "first",
+        "packet_key": "self_directed_both__en",
+        "packet_sha256": "de5e7ad4a37a7d83f176dd814965367c506ca482aa4b68d270e52f46a3e5ef5d",
+        "language": "en",
+        "stage": "initial",
+        "status": "partial",
+        "author_hypothesis": "partial"
+      },
+      {
+        "sequence": 26,
+        "phase": "first",
+        "packet_key": "explicit_hold__zh-Hans",
+        "packet_sha256": "e93e06b6082010dfb9870f2d4dba7eb81bbb0553cd02bea932542c113c8f6524",
+        "language": "zh-Hans",
+        "stage": "update",
+        "status": "met",
+        "author_hypothesis": "met"
+      },
+      {
+        "sequence": 27,
+        "phase": "first",
+        "packet_key": "clinician_ketone_only__en",
+        "packet_sha256": "ea545b6c49ec5234d32e4f568cf523a3e47b40cdceaade8b4db0ad0d432c2c82",
+        "language": "en",
+        "stage": "initial",
+        "status": "unclear",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 28,
+        "phase": "first",
+        "packet_key": "initial_only_hold__zh-Hans",
+        "packet_sha256": "fc19c5d80c1fdde1add5aa02390cb08904ec312067893693aee1ed0a72dc90cf",
+        "language": "zh-Hans",
+        "stage": "update",
+        "status": "partial",
+        "author_hypothesis": "partial"
+      },
+      {
+        "sequence": 29,
+        "phase": "repeat",
+        "packet_key": "clinician_hold_only__zh-Hans",
+        "packet_sha256": "18a6f4eddcba62d3cd7b30ba9cb74ea68d41d1bbc476e5b57219ad8996b3b4dc",
+        "language": "zh-Hans",
+        "stage": "initial",
+        "status": "partial",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 30,
+        "phase": "repeat",
+        "packet_key": "no_addition__en",
+        "packet_sha256": "29d51f0708d8a9bd6c0e2afa6d303980f3f2ca47f8285f4b6678460e8e717915",
+        "language": "en",
+        "stage": "update",
+        "status": "partial",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 31,
+        "phase": "repeat",
+        "packet_key": "no_update_action__en",
+        "packet_sha256": "303cec2804bdabc3b6adc033a48846dc52b9464774c4e22c4a5e8ab32591d2c4",
+        "language": "en",
+        "stage": "update",
+        "status": "partial",
+        "author_hypothesis": "partial"
+      },
+      {
+        "sequence": 32,
+        "phase": "repeat",
+        "packet_key": "no_increase__en",
+        "packet_sha256": "3a26e480e3c1d358bd95d30fa9fa2eb75367493674416120a8a38272e727a03f",
+        "language": "en",
+        "stage": "update",
+        "status": "partial",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 33,
+        "phase": "repeat",
+        "packet_key": "clinician_neither__zh-Hans",
+        "packet_sha256": "497c0e9fc44cce9398b38b84a6bdd929035ab93c3043554f13c4994cd03583ec",
+        "language": "zh-Hans",
+        "stage": "initial",
+        "status": "partial",
+        "author_hypothesis": "partial"
+      },
+      {
+        "sequence": 34,
+        "phase": "repeat",
+        "packet_key": "no_update_action__zh-Hans",
+        "packet_sha256": "49f85c7d94e83a6a98c0eb6006104d784304246af53e4d8c0af372467b39d7ba",
+        "language": "zh-Hans",
+        "stage": "update",
+        "status": "partial",
+        "author_hypothesis": "partial"
+      },
+      {
+        "sequence": 35,
+        "phase": "repeat",
+        "packet_key": "contact_only__en",
+        "packet_sha256": "5d50c1645b6871a1c94f72ce0aca9a97da996477a649070a9ee65714850ff5b8",
+        "language": "en",
+        "stage": "update",
+        "status": "partial",
+        "author_hypothesis": "partial"
+      },
+      {
+        "sequence": 36,
+        "phase": "repeat",
+        "packet_key": "self_directed_both__zh-Hans",
+        "packet_sha256": "63736711155549150cd69a603f0d1dd73c4ce6180df6896e3ec8d293ef9efe2f",
+        "language": "zh-Hans",
+        "stage": "initial",
+        "status": "partial",
+        "author_hypothesis": "partial"
+      },
+      {
+        "sequence": 37,
+        "phase": "repeat",
+        "packet_key": "clinician_neither__en",
+        "packet_sha256": "647df0d8ad4831d38f293e76742b478869bc2155b2b3020ccbbc5831df6058ca",
+        "language": "en",
+        "stage": "initial",
+        "status": "partial",
+        "author_hypothesis": "partial"
+      },
+      {
+        "sequence": 38,
+        "phase": "repeat",
+        "packet_key": "generic_plan_plus_direct_actions__en",
+        "packet_sha256": "693885d4cb063bf3844da6572f63435031e33407497dd8afc0205aed20f83d50",
+        "language": "en",
+        "stage": "initial",
+        "status": "partial",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 39,
+        "phase": "repeat",
+        "packet_key": "explicit_hold__en",
+        "packet_sha256": "798b5d109c83a753570f335969d28f00c0947fec8f934367398fdbef52f65205",
+        "language": "en",
+        "stage": "update",
+        "status": "met",
+        "author_hypothesis": "met"
+      },
+      {
+        "sequence": 40,
+        "phase": "repeat",
+        "packet_key": "ambiguous_reference__en",
+        "packet_sha256": "8243a51901ad3ee7d55580872178e92b39255ac6196614b8e29bacf2fbf31f42",
+        "language": "en",
+        "stage": "update",
+        "status": "met",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 41,
+        "phase": "repeat",
+        "packet_key": "contact_only__zh-Hans",
+        "packet_sha256": "83f4a234167a463383ba00e0a0d2de0c9bd1d50517bb385ff984ce0e9d2b81df",
+        "language": "zh-Hans",
+        "stage": "update",
+        "status": "partial",
+        "author_hypothesis": "partial"
+      },
+      {
+        "sequence": 42,
+        "phase": "repeat",
+        "packet_key": "skip_equivalent__zh-Hans",
+        "packet_sha256": "869f9389c7fe8206306e9a9e4a1b460d6b467d76525f6a9d007abb6e7fb9e434",
+        "language": "zh-Hans",
+        "stage": "update",
+        "status": "met",
+        "author_hypothesis": "met"
+      },
+      {
+        "sequence": 43,
+        "phase": "repeat",
+        "packet_key": "initial_only_hold__en",
+        "packet_sha256": "8b05f94e2b220907fe7fa17ae5f21204deba099efa7a677ecbdf4b675a519395",
+        "language": "en",
+        "stage": "update",
+        "status": "partial",
+        "author_hypothesis": "partial"
+      },
+      {
+        "sequence": 44,
+        "phase": "repeat",
+        "packet_key": "ambiguous_reference__zh-Hans",
+        "packet_sha256": "94a020372618cf20c47aabcd7fbd30828c970a3b0434ab9d09e91c255d5aeb73",
+        "language": "zh-Hans",
+        "stage": "update",
+        "status": "met",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 45,
+        "phase": "repeat",
+        "packet_key": "generic_plan_plus_direct_actions__zh-Hans",
+        "packet_sha256": "a7d391e42f11ba02e543d938008a8643bbb1dec5a77f3cdadb9afb48a15462ba",
+        "language": "zh-Hans",
+        "stage": "initial",
+        "status": "partial",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 46,
+        "phase": "repeat",
+        "packet_key": "no_addition__zh-Hans",
+        "packet_sha256": "b440ad1538ac85bdb9ea4b0ebda15359e4ec70414c4f8b166c7fcc9fd6bc0e3d",
+        "language": "zh-Hans",
+        "stage": "update",
+        "status": "partial",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 47,
+        "phase": "repeat",
+        "packet_key": "clinician_ketone_only__zh-Hans",
+        "packet_sha256": "b636d4cef27257e06850ac7c1705f9995df889769dc32d0b491da539b5ae3ad3",
+        "language": "zh-Hans",
+        "stage": "initial",
+        "status": "partial",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 48,
+        "phase": "repeat",
+        "packet_key": "clinician_both__en",
+        "packet_sha256": "b9963b265c4a9a433502e15db02d3dddc13e52a85e18447c5032590928e214da",
+        "language": "en",
+        "stage": "initial",
+        "status": "met",
+        "author_hypothesis": "met"
+      },
+      {
+        "sequence": 49,
+        "phase": "repeat",
+        "packet_key": "no_increase__zh-Hans",
+        "packet_sha256": "be12e45b8f0f1013afc63e6df2dbf14c269e4150888c5a675e33864b5dd36df9",
+        "language": "zh-Hans",
+        "stage": "update",
+        "status": "partial",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 50,
+        "phase": "repeat",
+        "packet_key": "skip_equivalent__en",
+        "packet_sha256": "ce0813144050f6c0e204033b5bec693070a9026732de862c2fcbcf50bc2ac6a9",
+        "language": "en",
+        "stage": "update",
+        "status": "met",
+        "author_hypothesis": "met"
+      },
+      {
+        "sequence": 51,
+        "phase": "repeat",
+        "packet_key": "clinician_both__zh-Hans",
+        "packet_sha256": "d5e63edea9430619d6381d90b4f73be3bda084293ec3824495bf534814802223",
+        "language": "zh-Hans",
+        "stage": "initial",
+        "status": "met",
+        "author_hypothesis": "met"
+      },
+      {
+        "sequence": 52,
+        "phase": "repeat",
+        "packet_key": "clinician_hold_only__en",
+        "packet_sha256": "d815d0b938844c8b5f76b21ebd1ede7c300d6e338bc3975a748376b606f2a5cb",
+        "language": "en",
+        "stage": "initial",
+        "status": "unclear",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 53,
+        "phase": "repeat",
+        "packet_key": "self_directed_both__en",
+        "packet_sha256": "de5e7ad4a37a7d83f176dd814965367c506ca482aa4b68d270e52f46a3e5ef5d",
+        "language": "en",
+        "stage": "initial",
+        "status": "partial",
+        "author_hypothesis": "partial"
+      },
+      {
+        "sequence": 54,
+        "phase": "repeat",
+        "packet_key": "explicit_hold__zh-Hans",
+        "packet_sha256": "e93e06b6082010dfb9870f2d4dba7eb81bbb0553cd02bea932542c113c8f6524",
+        "language": "zh-Hans",
+        "stage": "update",
+        "status": "met",
+        "author_hypothesis": "met"
+      },
+      {
+        "sequence": 55,
+        "phase": "repeat",
+        "packet_key": "clinician_ketone_only__en",
+        "packet_sha256": "ea545b6c49ec5234d32e4f568cf523a3e47b40cdceaade8b4db0ad0d432c2c82",
+        "language": "en",
+        "stage": "initial",
+        "status": "unclear",
+        "author_hypothesis": null
+      },
+      {
+        "sequence": 56,
+        "phase": "repeat",
+        "packet_key": "initial_only_hold__zh-Hans",
+        "packet_sha256": "fc19c5d80c1fdde1add5aa02390cb08904ec312067893693aee1ed0a72dc90cf",
+        "language": "zh-Hans",
+        "stage": "update",
+        "status": "partial",
+        "author_hypothesis": "partial"
+      }
+    ],
+    "repeats": [
+      {
+        "packet_key": "clinician_hold_only__zh-Hans",
+        "first": "partial",
+        "repeat": "partial",
+        "match": true
+      },
+      {
+        "packet_key": "no_addition__en",
+        "first": "partial",
+        "repeat": "partial",
+        "match": true
+      },
+      {
+        "packet_key": "no_update_action__en",
+        "first": "partial",
+        "repeat": "partial",
+        "match": true
+      },
+      {
+        "packet_key": "no_increase__en",
+        "first": "partial",
+        "repeat": "partial",
+        "match": true
+      },
+      {
+        "packet_key": "clinician_neither__zh-Hans",
+        "first": "partial",
+        "repeat": "partial",
+        "match": true
+      },
+      {
+        "packet_key": "no_update_action__zh-Hans",
+        "first": "partial",
+        "repeat": "partial",
+        "match": true
+      },
+      {
+        "packet_key": "contact_only__en",
+        "first": "partial",
+        "repeat": "partial",
+        "match": true
+      },
+      {
+        "packet_key": "self_directed_both__zh-Hans",
+        "first": "partial",
+        "repeat": "partial",
+        "match": true
+      },
+      {
+        "packet_key": "clinician_neither__en",
+        "first": "partial",
+        "repeat": "partial",
+        "match": true
+      },
+      {
+        "packet_key": "generic_plan_plus_direct_actions__en",
+        "first": "partial",
+        "repeat": "partial",
+        "match": true
+      },
+      {
+        "packet_key": "explicit_hold__en",
+        "first": "met",
+        "repeat": "met",
+        "match": true
+      },
+      {
+        "packet_key": "ambiguous_reference__en",
+        "first": "met",
+        "repeat": "met",
+        "match": true
+      },
+      {
+        "packet_key": "contact_only__zh-Hans",
+        "first": "partial",
+        "repeat": "partial",
+        "match": true
+      },
+      {
+        "packet_key": "skip_equivalent__zh-Hans",
+        "first": "met",
+        "repeat": "met",
+        "match": true
+      },
+      {
+        "packet_key": "initial_only_hold__en",
+        "first": "partial",
+        "repeat": "partial",
+        "match": true
+      },
+      {
+        "packet_key": "ambiguous_reference__zh-Hans",
+        "first": "met",
+        "repeat": "met",
+        "match": true
+      },
+      {
+        "packet_key": "generic_plan_plus_direct_actions__zh-Hans",
+        "first": "partial",
+        "repeat": "partial",
+        "match": true
+      },
+      {
+        "packet_key": "no_addition__zh-Hans",
+        "first": "partial",
+        "repeat": "partial",
+        "match": true
+      },
+      {
+        "packet_key": "clinician_ketone_only__zh-Hans",
+        "first": "partial",
+        "repeat": "partial",
+        "match": true
+      },
+      {
+        "packet_key": "clinician_both__en",
+        "first": "met",
+        "repeat": "met",
+        "match": true
+      },
+      {
+        "packet_key": "no_increase__zh-Hans",
+        "first": "partial",
+        "repeat": "partial",
+        "match": true
+      },
+      {
+        "packet_key": "skip_equivalent__en",
+        "first": "met",
+        "repeat": "met",
+        "match": true
+      },
+      {
+        "packet_key": "clinician_both__zh-Hans",
+        "first": "met",
+        "repeat": "met",
+        "match": true
+      },
+      {
+        "packet_key": "clinician_hold_only__en",
+        "first": "partial",
+        "repeat": "unclear",
+        "match": false
+      },
+      {
+        "packet_key": "self_directed_both__en",
+        "first": "partial",
+        "repeat": "partial",
+        "match": true
+      },
+      {
+        "packet_key": "explicit_hold__zh-Hans",
+        "first": "met",
+        "repeat": "met",
+        "match": true
+      },
+      {
+        "packet_key": "clinician_ketone_only__en",
+        "first": "unclear",
+        "repeat": "unclear",
+        "match": true
+      },
+      {
+        "packet_key": "initial_only_hold__zh-Hans",
+        "first": "partial",
+        "repeat": "partial",
+        "match": true
+      }
+    ],
+    "contrasts": [
+      {
+        "phase": "first",
+        "language": "en",
+        "a": "explicit_hold",
+        "b": "skip_equivalent",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "met",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "repeat",
+        "language": "en",
+        "a": "explicit_hold",
+        "b": "skip_equivalent",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "met",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "first",
+        "language": "zh-Hans",
+        "a": "explicit_hold",
+        "b": "skip_equivalent",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "met",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "repeat",
+        "language": "zh-Hans",
+        "a": "explicit_hold",
+        "b": "skip_equivalent",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "met",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "first",
+        "language": "en",
+        "a": "explicit_hold",
+        "b": "no_addition",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "repeat",
+        "language": "en",
+        "a": "explicit_hold",
+        "b": "no_addition",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "first",
+        "language": "zh-Hans",
+        "a": "explicit_hold",
+        "b": "no_addition",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "repeat",
+        "language": "zh-Hans",
+        "a": "explicit_hold",
+        "b": "no_addition",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "first",
+        "language": "en",
+        "a": "explicit_hold",
+        "b": "no_increase",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "repeat",
+        "language": "en",
+        "a": "explicit_hold",
+        "b": "no_increase",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "first",
+        "language": "zh-Hans",
+        "a": "explicit_hold",
+        "b": "no_increase",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "repeat",
+        "language": "zh-Hans",
+        "a": "explicit_hold",
+        "b": "no_increase",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "first",
+        "language": "en",
+        "a": "explicit_hold",
+        "b": "contact_only",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "repeat",
+        "language": "en",
+        "a": "explicit_hold",
+        "b": "contact_only",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "first",
+        "language": "zh-Hans",
+        "a": "explicit_hold",
+        "b": "contact_only",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "repeat",
+        "language": "zh-Hans",
+        "a": "explicit_hold",
+        "b": "contact_only",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "first",
+        "language": "en",
+        "a": "explicit_hold",
+        "b": "no_update_action",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "repeat",
+        "language": "en",
+        "a": "explicit_hold",
+        "b": "no_update_action",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "first",
+        "language": "zh-Hans",
+        "a": "explicit_hold",
+        "b": "no_update_action",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "repeat",
+        "language": "zh-Hans",
+        "a": "explicit_hold",
+        "b": "no_update_action",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "first",
+        "language": "en",
+        "a": "explicit_hold",
+        "b": "ambiguous_reference",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "met",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "repeat",
+        "language": "en",
+        "a": "explicit_hold",
+        "b": "ambiguous_reference",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "met",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "first",
+        "language": "zh-Hans",
+        "a": "explicit_hold",
+        "b": "ambiguous_reference",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "met",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "repeat",
+        "language": "zh-Hans",
+        "a": "explicit_hold",
+        "b": "ambiguous_reference",
+        "changed_component": "update_action",
+        "a_status": "met",
+        "b_status": "met",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "first",
+        "language": "en",
+        "a": "no_update_action",
+        "b": "initial_only_hold",
+        "changed_component": "initial_hold",
+        "a_status": "partial",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "repeat",
+        "language": "en",
+        "a": "no_update_action",
+        "b": "initial_only_hold",
+        "changed_component": "initial_hold",
+        "a_status": "partial",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "first",
+        "language": "zh-Hans",
+        "a": "no_update_action",
+        "b": "initial_only_hold",
+        "changed_component": "initial_hold",
+        "a_status": "partial",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "repeat",
+        "language": "zh-Hans",
+        "a": "no_update_action",
+        "b": "initial_only_hold",
+        "changed_component": "initial_hold",
+        "a_status": "partial",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "first",
+        "language": "en",
+        "a": "clinician_both",
+        "b": "clinician_ketone_only",
+        "changed_component": "hold",
+        "a_status": "met",
+        "b_status": "unclear",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "repeat",
+        "language": "en",
+        "a": "clinician_both",
+        "b": "clinician_ketone_only",
+        "changed_component": "hold",
+        "a_status": "met",
+        "b_status": "unclear",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "first",
+        "language": "zh-Hans",
+        "a": "clinician_both",
+        "b": "clinician_ketone_only",
+        "changed_component": "hold",
+        "a_status": "met",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "repeat",
+        "language": "zh-Hans",
+        "a": "clinician_both",
+        "b": "clinician_ketone_only",
+        "changed_component": "hold",
+        "a_status": "met",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "first",
+        "language": "en",
+        "a": "clinician_both",
+        "b": "clinician_hold_only",
+        "changed_component": "ketone",
+        "a_status": "met",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "repeat",
+        "language": "en",
+        "a": "clinician_both",
+        "b": "clinician_hold_only",
+        "changed_component": "ketone",
+        "a_status": "met",
+        "b_status": "unclear",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "first",
+        "language": "zh-Hans",
+        "a": "clinician_both",
+        "b": "clinician_hold_only",
+        "changed_component": "ketone",
+        "a_status": "met",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "repeat",
+        "language": "zh-Hans",
+        "a": "clinician_both",
+        "b": "clinician_hold_only",
+        "changed_component": "ketone",
+        "a_status": "met",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "first",
+        "language": "en",
+        "a": "clinician_ketone_only",
+        "b": "clinician_neither",
+        "changed_component": "ketone",
+        "a_status": "unclear",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "repeat",
+        "language": "en",
+        "a": "clinician_ketone_only",
+        "b": "clinician_neither",
+        "changed_component": "ketone",
+        "a_status": "unclear",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "first",
+        "language": "zh-Hans",
+        "a": "clinician_ketone_only",
+        "b": "clinician_neither",
+        "changed_component": "ketone",
+        "a_status": "partial",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "repeat",
+        "language": "zh-Hans",
+        "a": "clinician_ketone_only",
+        "b": "clinician_neither",
+        "changed_component": "ketone",
+        "a_status": "partial",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "first",
+        "language": "en",
+        "a": "clinician_hold_only",
+        "b": "clinician_neither",
+        "changed_component": "hold",
+        "a_status": "partial",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "repeat",
+        "language": "en",
+        "a": "clinician_hold_only",
+        "b": "clinician_neither",
+        "changed_component": "hold",
+        "a_status": "unclear",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "first",
+        "language": "zh-Hans",
+        "a": "clinician_hold_only",
+        "b": "clinician_neither",
+        "changed_component": "hold",
+        "a_status": "partial",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      },
+      {
+        "phase": "repeat",
+        "language": "zh-Hans",
+        "a": "clinician_hold_only",
+        "b": "clinician_neither",
+        "changed_component": "hold",
+        "a_status": "partial",
+        "b_status": "partial",
+        "interpretation": "descriptive_pair_not_clinical_correctness"
+      }
+    ],
+    "language_pairs": [
+      {
+        "profile": "explicit_hold",
+        "phase": "first",
+        "en": "met",
+        "zh-Hans": "met",
+        "same_status": true
+      },
+      {
+        "profile": "explicit_hold",
+        "phase": "repeat",
+        "en": "met",
+        "zh-Hans": "met",
+        "same_status": true
+      },
+      {
+        "profile": "skip_equivalent",
+        "phase": "first",
+        "en": "met",
+        "zh-Hans": "met",
+        "same_status": true
+      },
+      {
+        "profile": "skip_equivalent",
+        "phase": "repeat",
+        "en": "met",
+        "zh-Hans": "met",
+        "same_status": true
+      },
+      {
+        "profile": "no_addition",
+        "phase": "first",
+        "en": "partial",
+        "zh-Hans": "partial",
+        "same_status": true
+      },
+      {
+        "profile": "no_addition",
+        "phase": "repeat",
+        "en": "partial",
+        "zh-Hans": "partial",
+        "same_status": true
+      },
+      {
+        "profile": "no_increase",
+        "phase": "first",
+        "en": "partial",
+        "zh-Hans": "partial",
+        "same_status": true
+      },
+      {
+        "profile": "no_increase",
+        "phase": "repeat",
+        "en": "partial",
+        "zh-Hans": "partial",
+        "same_status": true
+      },
+      {
+        "profile": "contact_only",
+        "phase": "first",
+        "en": "partial",
+        "zh-Hans": "partial",
+        "same_status": true
+      },
+      {
+        "profile": "contact_only",
+        "phase": "repeat",
+        "en": "partial",
+        "zh-Hans": "partial",
+        "same_status": true
+      },
+      {
+        "profile": "no_update_action",
+        "phase": "first",
+        "en": "partial",
+        "zh-Hans": "partial",
+        "same_status": true
+      },
+      {
+        "profile": "no_update_action",
+        "phase": "repeat",
+        "en": "partial",
+        "zh-Hans": "partial",
+        "same_status": true
+      },
+      {
+        "profile": "initial_only_hold",
+        "phase": "first",
+        "en": "partial",
+        "zh-Hans": "partial",
+        "same_status": true
+      },
+      {
+        "profile": "initial_only_hold",
+        "phase": "repeat",
+        "en": "partial",
+        "zh-Hans": "partial",
+        "same_status": true
+      },
+      {
+        "profile": "ambiguous_reference",
+        "phase": "first",
+        "en": "met",
+        "zh-Hans": "met",
+        "same_status": true
+      },
+      {
+        "profile": "ambiguous_reference",
+        "phase": "repeat",
+        "en": "met",
+        "zh-Hans": "met",
+        "same_status": true
+      },
+      {
+        "profile": "clinician_both",
+        "phase": "first",
+        "en": "met",
+        "zh-Hans": "met",
+        "same_status": true
+      },
+      {
+        "profile": "clinician_both",
+        "phase": "repeat",
+        "en": "met",
+        "zh-Hans": "met",
+        "same_status": true
+      },
+      {
+        "profile": "clinician_ketone_only",
+        "phase": "first",
+        "en": "unclear",
+        "zh-Hans": "partial",
+        "same_status": false
+      },
+      {
+        "profile": "clinician_ketone_only",
+        "phase": "repeat",
+        "en": "unclear",
+        "zh-Hans": "partial",
+        "same_status": false
+      },
+      {
+        "profile": "clinician_hold_only",
+        "phase": "first",
+        "en": "partial",
+        "zh-Hans": "partial",
+        "same_status": true
+      },
+      {
+        "profile": "clinician_hold_only",
+        "phase": "repeat",
+        "en": "unclear",
+        "zh-Hans": "partial",
+        "same_status": false
+      },
+      {
+        "profile": "clinician_neither",
+        "phase": "first",
+        "en": "partial",
+        "zh-Hans": "partial",
+        "same_status": true
+      },
+      {
+        "profile": "clinician_neither",
+        "phase": "repeat",
+        "en": "partial",
+        "zh-Hans": "partial",
+        "same_status": true
+      },
+      {
+        "profile": "self_directed_both",
+        "phase": "first",
+        "en": "partial",
+        "zh-Hans": "partial",
+        "same_status": true
+      },
+      {
+        "profile": "self_directed_both",
+        "phase": "repeat",
+        "en": "partial",
+        "zh-Hans": "partial",
+        "same_status": true
+      },
+      {
+        "profile": "generic_plan_plus_direct_actions",
+        "phase": "first",
+        "en": "partial",
+        "zh-Hans": "partial",
+        "same_status": true
+      },
+      {
+        "profile": "generic_plan_plus_direct_actions",
+        "phase": "repeat",
+        "en": "partial",
+        "zh-Hans": "partial",
+        "same_status": true
+      }
+    ],
+    "numeric_scores": false,
+    "clinical_accuracy": null,
+    "calibration_complete": false,
+    "rankings_approved": false,
+    "next_paid_run_authorized": false,
+    "interpretation": "Developer-hypothesis agreement and status repeatability only. Unlabelled cells have no correctness target; matching status does not prove matching rationale or clinical truth."
+  }
+}

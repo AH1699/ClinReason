@@ -6,7 +6,7 @@
 
 The longer-term target remains **at least 500 distinct clinical cases/families**, not 500 language versions or scoring-contrast packets. Current registered coverage is still 125; no cases were added by S49/S50. Next inspect Batch O's acceptable alternatives and bundled requirements, then select new public-report/Step-2-informed cases for distinct consequential decisions, especially low-acuity restraint, competing risks and longitudinal interpretation. Each needs exact source-to-requirement mapping and contrasting answers, with development/confirmation separation preserved.
 
-Case authoring proceeds alongside the [bounded S50 scoring check](S50_MEDICATION_BOUNDARY_PROTOCOL_EN.md) and offline nine-family scheduler work; it does not wait for every scoring question to close. Clinical and bilingual review remains a later validation gate. The [main milestones](PROJECT_EXECUTION_PLAN_2026-10-16_EN.md) distinguish authoring progress from readiness for scores or release. The following checkpoints record earlier counts and do not replace current totals.
+The [S50 scoring check is closed](S50_MEDICATION_BOUNDARY_RESULT_EN.md): 56 valid judgments, 16/16 author matches and 27/28 repeats, with the medication item still review-held. Case authoring and offline nine-family scheduler work proceed without waiting for every scoring question to close. Clinical and bilingual review remains a later validation gate. The [main milestones](PROJECT_EXECUTION_PLAN_2026-10-16_EN.md) distinguish authoring progress from readiness for scores or release. The following checkpoints record earlier counts and do not replace current totals.
 
 ## Historical expansion checkpoints
 

@@ -1,5 +1,7 @@
 # A bounded test of medication scoring boundaries
 
+Historical preregistration, preserved below. The approved run is now complete; see the [S50 result and disposition](S50_MEDICATION_BOUNDARY_RESULT_EN.md). Its predeclared gate did not pass, and no further calls are authorized by this document.
+
 The focused judge runner is implemented and frozen for **28 authored packets judged twice, at most 56 Gemini 3.8 Flash requests**. No live request has been made. This is the next scoring task in the execution plan, not a new benchmark direction. It checks whether the judge applies the existing medication requirements consistently before broader model comparison.
 
 ## Scope and fixed inputs

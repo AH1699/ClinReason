@@ -2,7 +2,7 @@
 
 This is a planning handoff after the S45/S46 workflow pilot, not another paid run or permission to use an earlier experiment's remaining allowance. The immediate prerequisite is a completed control gate and an audit of any missing or rejected judgments. A failing gate must be investigated without weakening acceptance rules just to obtain scores.
 
-Current checkpoint: [S50](S50_MEDICATION_BOUNDARY_PROTOCOL_EN.md) has implemented and frozen the 28-packet, 56-request focused boundary trial; it has not run live. Obtain fresh bounded approval, execute at most one trial, then record a disposition for the affected requirements. S49's separate 88.33 and S48's seven of eight scores remain unchanged; H136/H137/H140 stay open. Before paid comparison below, settle a uniform prospective judging policy and examine the boundary evidence without score fitting. **Offline mixed-scheduler implementation and case authoring can proceed alongside S50**; a disputed item limits claims about that item, not all engineering. Neither this expansion nor boundary calls can reuse the consumed S49 approval.
+Current checkpoint: [S50 is complete](S50_MEDICATION_BOUNDARY_RESULT_EN.md), with 56 valid judgments, 16/16 author matches and 27/28 exact status repeats. Its gate failed because an English one-component initial plan changed from `partial` to `unclear` against conflicting “or/both” instructions. The bounded trial is closed, not awaiting a retry. S49's separate 88.33 and S48's seven of eight scores remain unchanged. Keep `MEDSAFE-013` review-held for comparative claims under current labels; retain it in the fixed manifest, with no silent exclusion or reweighting. H136/H137/H140/H141 stay open. **Offline mixed-scheduler implementation and case authoring are next**. Before paid comparison, freeze a uniform judging policy and explicit disputed-item treatment, without score fitting. S49/S50 approvals are consumed; the broader run needs its own budget and authorization.
 
 ## Fixed case selection
 
@@ -23,6 +23,17 @@ Use the same four working Gemini/MiniMax candidates and Gemini 3.8 Flash judge f
 Reuse the exact 16 S45/S46 saved candidate turns if all case, prompt, model and response bindings remain compatible; obtain only the other 128. This requires a **new mixed import/generation scheduler**: the frozen S45 runner supports whole-bank judge-only import or new generation, and S46 is deliberately restricted to one fixed suffix. Neither currently implements this broader mixed panel. Add offline tests for exact-bank provenance, no duplicate calls, follow-up history, fixed denominators and inherited cost tracking before freezing a new experiment.
 
 A proposed complete schedule is 128 new candidate turns + 36 judge controls + 144 first-pass stage judgments + 144 repeated stage judgments = **452 new requests**. This is a request-count proposal, not a budget or live authorization. Rejudge the one-family pilot answers under the new panel's declared judging protocol; retain pilot scores separately. Run repeats against identical saved packets and report them separately rather than averaging away disagreement. Set the new spending policy and obtain a fresh bounded authorization before any calls.
+
+## Next offline engineering deliverable
+
+Implement this as a new version; do not edit the frozen S45/S46 runners or their historical banks.
+
+1. Build the complete 72-conversation manifest first. Bind each of the 16 imported stages to its saved request, raw response, model identity, case version and answer hash. Reject incompatible or duplicate imports instead of quietly regenerating them.
+2. Produce a dry-run schedule with exactly 128 generation jobs. Each update uses its own verified initial answer and matching user follow-up; no missing initial stage may be replaced with a different model's answer.
+3. Add the 36 controls, 144 first judgments and 144 identical-payload repeats. Test missing-stage handling, closed provider lanes, unknown usage, stop thresholds and no dispatch after a stop. Keep all 72 conversation cells in reporting, including missing and review-held ones.
+4. Export an offline readiness report. Before a live freeze, declare one judging policy for the panel, the treatment of disputed medication criteria and a new budget. The proposed 452-request schedule is still not authorized.
+
+This is the next implementation task, not a claim that mixed scheduling is already available. It can proceed while the medication-label decisions are documented separately.
 
 ## What the readout must answer
 
