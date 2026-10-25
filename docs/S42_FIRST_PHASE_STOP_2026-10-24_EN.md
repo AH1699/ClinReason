@@ -1,7 +1,7 @@
 # S42 first phase stopped on a Grok API rejection
 Date: 2026-10-24
 
-Follow-up: [S43](S43_GROK_DIAGNOSTIC_2026-10-24_EN.md) records the owner's missing-console-log observation and the prepared diagnostic. The saved 403 is confirmed; attribution to a specific upstream component is not.
+Follow-up: the approved [S43 diagnostic](S43_GROK_DIAGNOSTIC_2026-10-24_EN.md) reproduced the identical 403 after a successful neutral request and captured a request ID. The owner confirms the earlier successes are visible in the console and only the error is missing. Attribution to a specific upstream component remains unresolved.
 
 ## Outcome
 

@@ -2,7 +2,7 @@
 
 ## S42 later methods-review question H132
 
-S43 clarification: [current tracing work](S43_GROK_DIAGNOSTIC_2026-10-24_EN.md) has not established which upstream component returned the 403. Keep technical rejection separate from a model-generated refusal; neither is a clinical score. No new clinical judgment or scoring change follows from the connection checks.
+S43 clarification: the [approved two-call diagnostic](S43_GROK_DIAGNOSTIC_2026-10-24_EN.md) reproduced the same 403 after a successful neutral call and captured tracing IDs. The rejecting component and rule remain unresolved; differing request content, size and structured-output requirements prevent isolating a content-filter cause. Keep technical rejection separate from a model-generated refusal; neither is a clinical score. No new clinical judgment or scoring change follows.
 
 **H132 / medium:** The [first live phase](S42_FIRST_PHASE_STOP_2026-10-24_EN.md) ended on a Grok 403 while judging an authored English salicylate-case initial answer. Only nine control judgments were accepted, with no candidate calls. Decide how future reports should distinguish API access/refusal, incomplete judge gates and clinical performance. Do not count a non-answer as a clinical zero, quietly remove the case or infer an unsafe false-pass rate from this prefix. Permission versus request-specific restriction remains unresolved; changes intended to evade provider restrictions are not part of the plan. No scoring adjustments follow from this event. Expert review remains later; H125–H131 stay open.
 
