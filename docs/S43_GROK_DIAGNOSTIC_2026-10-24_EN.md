@@ -2,6 +2,8 @@
 
 Date: 2026-10-24, New York time
 
+Follow-up: [S44](S44_OUTPUT_CAP_DIAGNOSTIC_2026-10-24_EN.md) separately tested omission of only `max_output_tokens`; the same 403 persisted. The S43 records below remain unchanged historical results.
+
 The separately approved two-call diagnostic is complete. **The neutral request succeeded; the unchanged clinical judge request again returned HTTP 403**, with the same error body as the [stopped first phase](S42_FIRST_PHASE_STOP_2026-10-24_EN.md). This time the rejected response included a request ID for provider tracing. The specific rejecting component and reason remain unresolved.
 
 | Diagnostic request | Result | Elapsed time | Reported charge |

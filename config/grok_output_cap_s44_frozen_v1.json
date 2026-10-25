@@ -1,0 +1,14 @@
+{
+  "version": "s44-single-output-cap-diagnostic-v1",
+  "s43_protocol_sha256": "077b4c39d6b39348c709857bb3ecfc1aafeea8f99f112e6764a3621c435c14d9",
+  "maximum_attempts": 1,
+  "automatic_retries": 0,
+  "stop_threshold_usd": "1.00",
+  "hard_ceiling": false,
+  "only_change": "omit_max_output_tokens",
+  "payload_sha256": "fd81f302f2e4fe0828d2d63005b7099e0635d9a9c080ff4b827ec0aa39ff4856",
+  "files": {
+    "scripts/grok_output_cap_s44.py": "b81adae67366fb17bbc241b1bbba685d4e06b2715c2468820730ef59f0c6b981",
+    "tests/test_grok_output_cap_s44.py": "56c4f7a3ee82a00fe69b2a7e641364fb52a2102803a32d30c2cec9bb54e0186a"
+  }
+}
