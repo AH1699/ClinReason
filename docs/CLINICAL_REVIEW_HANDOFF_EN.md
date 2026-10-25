@@ -1,5 +1,9 @@
 # Living human-review handoff — opened 2026-10-07
 
+## S52 separate author draft for the two open Batch O questions
+
+[S52](S52_DURABLE_REPLAY_AND_WORDING_EN.md) adds 18 bilingual controls under a separate wording version. H142 provisionally requires three warning domains, treating confusion and dizziness/fainting as alternatives within one domain. H143 separates an absent dosing regimen from an omitted disclaimer and permits conditional supervised continuation/temporary hold. The requirement to explicitly state both feeding limits remains an author hypothesis; review whether implicit recovery planning is sufficient. Original labels are unchanged, all expectations are provisional, and H142/H143 remain open. No clinical source revalidation or default adoption occurred.
+
 ## S51 Batch O wording and equivalence decisions
 
 The [twelve-position developer review](../data/audit/batch_o_boundary_review_s51.json) is bound to the current Batch O cases and anchors. It changes no label and establishes no clinical validity. Ten entries queue component/alternative controls; two need an explicit wording decision first:
