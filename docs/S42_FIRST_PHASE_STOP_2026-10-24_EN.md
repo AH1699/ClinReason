@@ -1,6 +1,8 @@
 # S42 first phase stopped on a Grok API rejection
 Date: 2026-10-24
 
+Follow-up: [S43](S43_GROK_DIAGNOSTIC_2026-10-24_EN.md) records the owner's missing-console-log observation and the prepared diagnostic. The saved 403 is confirmed; attribution to a specific upstream component is not.
+
 ## Outcome
 
 The owner approved one S41 first-phase run. It started and **stopped at request 10 after Grok returned HTTP 403**. The first nine judge-control responses passed the frozen response validator. No candidate model was asked to answer a case, so this run produced **no candidate scores and no calibration conclusion**.
