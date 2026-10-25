@@ -1,0 +1,216 @@
+{
+  "version": "s46-m3-tier-compatibility-v1",
+  "mode": "live",
+  "terminal": "schedule_complete",
+  "maximum_attempts": 68,
+  "attempts": 23,
+  "outstanding_attempts_unknown_delivery_or_charge": 0,
+  "read_only_recovered_sequences": [],
+  "accepted_answer_stages": 16,
+  "expected_answer_stages": 16,
+  "answer_bank_sha256": "0ff1ab29f2c7e9d2079c773432e74da34679e4cad55bc76e80a4b49fc859ff39",
+  "controls": {
+    "gemini-3.8-flash": {
+      "expected_records": 36,
+      "accepted_records": 6,
+      "unsafe_errors": 0,
+      "strict_order_groups": 0,
+      "repeat_stage_vectors": 0,
+      "repeat_partial_scores_within_5": 0,
+      "complete": false,
+      "pass": false
+    }
+  },
+  "score_records": [],
+  "separate_judge_reports": {
+    "gemini-3.8-flash": {
+      "point_mean": null,
+      "full_denominator_interval": [
+        0,
+        100
+      ],
+      "expected_cells": 8,
+      "accepted_cells": 0,
+      "unresolved_cells": 0,
+      "hard_fail_cells": 0,
+      "per_model": {
+        "gemini-3.5-flash-lite": {
+          "point_mean": null,
+          "full_denominator_interval": [
+            0,
+            100
+          ],
+          "expected_cells": 2,
+          "accepted_cells": 0,
+          "unresolved_cells": 0,
+          "hard_fail_cells": 0
+        },
+        "gemini-3.8-flash": {
+          "point_mean": null,
+          "full_denominator_interval": [
+            0,
+            100
+          ],
+          "expected_cells": 2,
+          "accepted_cells": 0,
+          "unresolved_cells": 0,
+          "hard_fail_cells": 0
+        },
+        "MiniMax-M3.1-Flash": {
+          "point_mean": null,
+          "full_denominator_interval": [
+            0,
+            100
+          ],
+          "expected_cells": 2,
+          "accepted_cells": 0,
+          "unresolved_cells": 0,
+          "hard_fail_cells": 0
+        },
+        "MiniMax-M3": {
+          "point_mean": null,
+          "full_denominator_interval": [
+            0,
+            100
+          ],
+          "expected_cells": 2,
+          "accepted_cells": 0,
+          "unresolved_cells": 0,
+          "hard_fail_cells": 0
+        }
+      },
+      "model_mean_population_sd": null,
+      "per_language": {
+        "en": {
+          "point_mean": null,
+          "full_denominator_interval": [
+            0,
+            100
+          ],
+          "expected_cells": 4,
+          "accepted_cells": 0,
+          "unresolved_cells": 0,
+          "hard_fail_cells": 0
+        },
+        "zh-Hans": {
+          "point_mean": null,
+          "full_denominator_interval": [
+            0,
+            100
+          ],
+          "expected_cells": 4,
+          "accepted_cells": 0,
+          "unresolved_cells": 0,
+          "hard_fail_cells": 0
+        }
+      },
+      "judge": null,
+      "score_version": null,
+      "scope": "descriptive fixed roster and case panel only; not a population estimate"
+    }
+  },
+  "complete": false,
+  "closed_lanes": {
+    "judge:gemini-3.8-flash": "response_validation"
+  },
+  "accounting": {
+    "attempts": 23,
+    "provider_reported_charge_count": 0,
+    "provider_reported_subtotal_usd_ticks": 0,
+    "token_estimate_count": 23,
+    "token_estimate_subtotal_microusd": 105648,
+    "unknown_charge_attempts": 0,
+    "all_attempts_have_provider_reported_charge": false,
+    "total_invoice_usd": null,
+    "prospective_cap_proven": false
+  },
+  "monitoring_amount_usd": "0.105648",
+  "stop_threshold_usd": "5.00",
+  "hard_ceiling": false,
+  "deferred_judges": [
+    "grok-4.7"
+  ],
+  "clinical_validation": false,
+  "model_rankings_approved": false,
+  "self_judging_bias": "Gemini judges Gemini answers; single-judge pilot is provisional.",
+  "target_bands": "60–70 / ~80 / ~90 are diagnostic aspirations; no score fitting.",
+  "maximum_new_attempts": 61,
+  "new_attempts": 16,
+  "source_attempts": 7,
+  "source_monitoring_microusd": 32628,
+  "historical_s45_unknown_unchanged": true,
+  "new_tier_estimate": {
+    "status": "token_estimate_only",
+    "provider_billed_usd_ticks": null,
+    "undiscounted_token_estimate_microusd": 13332,
+    "usage": {
+      "input_tokens": 402,
+      "reported_output_tokens": 7306,
+      "thought_tokens": 6819,
+      "total_tokens": 7708,
+      "cached_input_tokens": 128,
+      "output_tokens_for_estimate": 7306,
+      "provider_billed_usd_ticks": null,
+      "basis": "reported_completion_tokens"
+    },
+    "prospective_cap_proven": false,
+    "tier_status": "unverified_default_response_to_explicit_standard_request",
+    "monitoring_policy": "higher_published_short_context_priority_rates_no_cache_discount",
+    "rates_per_million": {
+      "input_per_million": 0.45,
+      "output_per_million": 1.8
+    },
+    "invoice_or_tier_verified": false
+  },
+  "protocol_sha256": "5ab33f905bccc603c582fa53c4260c01a4ae46ea263eaf83c954710c44cadb1b",
+  "source_sha256": "4a4151370cfcfb811f370ad5e8bf1a190873a2faa9a97f7302165aba0d81107b",
+  "candidate_models": [
+    "gemini-3.5-flash-lite",
+    "gemini-3.8-flash",
+    "MiniMax-M3.1-Flash",
+    "MiniMax-M3"
+  ],
+  "families": [
+    "HC-MT-MEDSAFE-013"
+  ],
+  "languages": [
+    "en",
+    "zh-Hans"
+  ],
+  "judge_models": [
+    "gemini-3.8-flash"
+  ],
+  "job_states_in_continuation": {
+    "accepted": 15,
+    "rejected": 1,
+    "skipped": 45
+  },
+  "failures": [
+    {
+      "original_sequence": 23,
+      "kind": "judge",
+      "block": "control",
+      "model": "gemini-3.8-flash",
+      "family_id": "HC-MT-REASON-020",
+      "language": "en",
+      "stage": "update",
+      "category": "response_validation",
+      "http_status": 200,
+      "missing_mandatory_observation_fields": [
+        "dimension_observations[0].overlap_note",
+        "dimension_observations[1].overlap_note",
+        "dimension_observations[1].new_fact"
+      ]
+    }
+  ],
+  "answer_stage_counts": {
+    "MiniMax-M3.1-Flash": 4,
+    "gemini-3.5-flash-lite": 4,
+    "gemini-3.8-flash": 4,
+    "MiniMax-M3": 4
+  },
+  "numeric_judgment_details": [],
+  "control_scores_are_author_hypothesis_diagnostics_not_model_scores": true,
+  "raw_data_published": false,
+  "xi_an_or_purchased_records_sent": false
+}
