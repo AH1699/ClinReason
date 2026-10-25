@@ -2,6 +2,8 @@
 
 This is a planning handoff after the S45/S46 workflow pilot, not another paid run or permission to use an earlier experiment's remaining allowance. The immediate prerequisite is a completed control gate and an audit of any missing or rejected judgments. A failing gate must be investigated without weakening acceptance rules just to obtain scores.
 
+Current checkpoint: the [S47 explanation diagnostic](S47_JUDGE_COMPLETENESS_RESULT_EN.md) passed all eight requests, but it is not the full control gate. The [next separate proposal](../config/judge_saved_bank_next_proposal.json) is 36 full controls followed, only on passage, by 16 judgments of the saved candidate answers. Its import adapter, freeze and new live authorization remain pending. No new candidate generation is needed for that step; the 452-request expansion below still comes afterward.
+
 ## Fixed case selection
 
 Keep the existing S38 selection; do not select replacements after seeing candidate scores.
