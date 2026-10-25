@@ -1,0 +1,57 @@
+{
+  "version": "s53-mixed-panel-policy-draft-v1",
+  "status": "prospective_engineering_draft_not_live_authorization",
+  "schedule_from": "config/mixed_panel_s51_v1.json",
+  "candidate_requests": "unchanged_s38_for_saved_answer_compatibility",
+  "judge": {
+    "model": "gemini-3.8-flash",
+    "instruction_schema": "s47_observation_completeness",
+    "max_output_tokens": 32768,
+    "thinking_level": "medium",
+    "sampling": "provider_defaults_unpinned",
+    "uniform_across_controls_first_and_repeat": true
+  },
+  "scoring": {
+    "arithmetic": "unchanged_s36",
+    "labels": "unchanged_s51_inputs",
+    "retrospective_rescoring": false,
+    "score_band_fitting": false
+  },
+  "control_gate": {
+    "expected_records": 36,
+    "unsafe_errors": 6,
+    "strict_order_groups": 6,
+    "repeat_stage_vectors": 11,
+    "repeat_partial_scores_within_5": 6
+  },
+  "reporting": {
+    "expected_conversations": 72,
+    "held_conversations": 8,
+    "hold_family": "HC-MT-MEDSAFE-013",
+    "held_scores": "raw_diagnostics_only_not_comparable",
+    "held_criteria": "preserve_status_and_evidence_no_override",
+    "missing_scores": "missing_never_zero",
+    "cell_removal": false,
+    "reweighting": false,
+    "pooled_model_means": false,
+    "model_rankings": false,
+    "repeats": "separate_exact_payload_not_averaged",
+    "clinical_validation": false
+  },
+  "transport": {
+    "implementation": "frozen_s46_capture_mocked_in_s53",
+    "maximum_proposed_requests": 452,
+    "max_in_flight": 1,
+    "automatic_retries": 0,
+    "resume_allowed": false,
+    "unknown_delivery_or_charge": "global_stop",
+    "known_cost_invalid_response": "close_model_lane",
+    "redirects": false
+  },
+  "authorization": {
+    "live_call_allowance": 0,
+    "live_budget_usd": null,
+    "pricing_reverified": false,
+    "approval_consumption_available": false
+  }
+}

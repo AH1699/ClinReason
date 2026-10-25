@@ -1,6 +1,6 @@
 # Two new cases on competing clinical risks
 
-Current authoring status: [S52](S52_DURABLE_REPLAY_AND_WORDING_EN.md) adds a separate two-criterion wording draft and 18 bilingual controls, preserving the original files described below. H142/H143 remain open; the other ten criterion positions still need their component/alternative controls. No live comparison or default registration has occurred.
+Current authoring status: [S53](S53_POLICY_TRANSPORT_AND_CONTROLS_EN.md) completes structural control coverage for all twelve positions. The combined S52/S53 package has 72 targeted records sharing 58 unique blinded packets, including eight unlabelled exploratory records. The original files below and S52's separate wording draft remain unchanged; H142/H143/H144 stay open. No live comparison or default registration has occurred. Next author distinct source-backed cases while these finite review questions remain queued.
 
 Batch O adds **two standalone authoring drafts / four English and Chinese variants**, with twelve mapped requirements, four initial reference answers and twelve update examples. They are ready for structural inspection and a future development experiment. Their intended complexity has not been measured against a model.
 

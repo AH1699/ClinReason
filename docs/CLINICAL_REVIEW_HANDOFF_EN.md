@@ -1,5 +1,9 @@
 # Living human-review handoff — opened 2026-10-07
 
+## S53 complete control coverage and unresolved interpretation
+
+**H144 / medium — Grouped language, implication and overlapping uncertainty:** [S53's control package](S53_POLICY_TRANSPORT_AND_CONTROLS_EN.md) covers all twelve positions but leaves eight paired-language records unlabelled. Adjudicate `REASON-024/update/2/grouped_monitoring`, `MEDSAFE-020/initial/2/grouped_electrolytes`, `MEDSAFE-020/update/1/omit_calorie_inference_explanation`, and `MEDSAFE-020/update/2/omit_other_causes_clause`. Determine whether broad monitoring covers the listed elements, whether the explanation already rejects a calorie-only inference, and whether uncertainty elsewhere in the current answer suffices. Consider clinical adequacy, plain-language equivalence and duplicate deductions together; do not infer truth from model agreement. Other authored expectations remain provisional. H142/H143 stay open; no issue is closed by structural coverage.
+
 ## S52 separate author draft for the two open Batch O questions
 
 [S52](S52_DURABLE_REPLAY_AND_WORDING_EN.md) adds 18 bilingual controls under a separate wording version. H142 provisionally requires three warning domains, treating confusion and dizziness/fainting as alternatives within one domain. H143 separates an absent dosing regimen from an omitted disclaimer and permits conditional supervised continuation/temporary hold. The requirement to explicitly state both feeding limits remains an author hypothesis; review whether implicit recovery planning is sufficient. Original labels are unchanged, all expectations are provisional, and H142/H143 remain open. No clinical source revalidation or default adoption occurred.

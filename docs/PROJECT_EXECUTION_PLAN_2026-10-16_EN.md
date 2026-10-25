@@ -1,10 +1,10 @@
 # ClinReason current execution plan — 2026-10-16
 
-## Current checkpoint S52 with the main project milestones
+## Current checkpoint S53 with the main project milestones
 
-**Current checkpoint S52:** [Durable offline capture and replay](S52_DURABLE_REPLAY_AND_WORDING_EN.md) now wrap the nine-family mixed schedule, preserving **16 imported stages, 72 conversation cells and 452 proposed new requests**. Complete supplied-byte simulations and interrupted journals can be checked from disk; there is no network transport, retry or resume. Batch O has a separate two-criterion wording draft and **18 bilingual blinded controls**, with original files unchanged and H142/H143 still open. No paid calls, newly registered families or model scores.
+**Current checkpoint S53:** [The policy draft and mocked transport integration](S53_POLICY_TRANSPORT_AND_CONTROLS_EN.md) preserve all **72 conversation cells and 452 proposed new requests**. Eight medication cells remain raw diagnostics only; no pooled model means or rankings are allowed by the draft. Full fixture transport/replay and failure handling pass focused tests; no live entry point is enabled. Batch O now covers all twelve criterion positions: **54 new targeted records, 72 total records sharing 58 blinded packets**, including eight unlabelled exploratory records. No paid calls, new model scores or registered families.
 
-The latest live evidence remains [S50](S50_MEDICATION_BOUNDARY_RESULT_EN.md): 56/56 valid judgments, 16/16 author matches and 27/28 repeats; its gate failed. Its estimated $0.200815 spending, S48 results and the [separate S49 88.33](S49_CAP_SUPPLEMENT_RESULT_EN.md) remain historical and unchanged. Next settle the prospective judging/held-item policy, add and mock-test a separate live transport integration, and finish controls for Batch O's remaining ten criterion positions. Then continue distinct source-backed case expansion. Paid work still requires current pricing, a new freeze and fresh bounded approval; no further single-medication diagnostic is scheduled.
+The latest live evidence remains [S50](S50_MEDICATION_BOUNDARY_RESULT_EN.md): 56/56 valid judgments, 16/16 author matches and 27/28 repeats; its gate failed. Its estimated $0.200815 spending, S48 results and the [separate S49 88.33](S49_CAP_SUPPLEMENT_RESULT_EN.md) remain unchanged. Next prepare an approval-consuming live entry point and prospective freeze, then refresh pricing and seek a new bounded budget. Case authoring returns to distinct source-backed mechanisms; Batch O's structural control coverage is complete, while H142/H143/H144 remain open. No further single-medication diagnostic is scheduled.
 
 All 16 candidate answer stages remain reusable. Registered development **125 families / 250 variants**, two standalone [Batch O](BATCH_O_STANDALONE_EN.md) drafts, three reserved confirmation families and approved calibration/Gold **0/0** are unchanged. Xi'an stays local; expert review stays later. Lower 60–70, average ~80 and premium ~90 remain diagnostic aspirations, never score-fitting targets.
 
@@ -17,8 +17,8 @@ Recent work has concentrated on scoring and provider diagnostics while registere
 | Workstream | Current state | Next deliverable |
 |---|---|---|
 | Scoring boundaries | S50 complete; 16/16 author matches, 27/28 repeats; gate failed | Trial closed; keep medication item review-held, version any future “or/both” or ambiguous-reference decision; no automatic next diagnostic |
-| Broader model comparison | Durable offline capture/replay implemented; 16 stages verified, 72 cells retained | Settle prospective judging/held-item policy, implement and mock-test a separate live adapter, then freeze and seek run approval |
-| Case expansion | 125 registered families; Batch O has 18 controls for two separately revised criteria | Complete controls for the other ten positions; then draft distinct public-report/Step-2-informed cases for coverage gaps |
+| Broader model comparison | Uniform policy draft and mocked capture integration tested; 16 imports and 72 cells retained | Build the approval-consuming live entry point, verify pricing and freeze; seek fresh bounded approval including the reporting policy |
+| Case expansion | 125 registered families; Batch O controls cover all 12 positions, with eight unlabelled records | Draft distinct public-report/Step-2-informed cases for coverage gaps; retain the bounded interpretation questions for review |
 | Source and privacy | Public evidence mappings and private Xi'an processing remain separate | Continue source-to-answer checks; Xi'an stays local until its case/privacy readiness issues are resolved |
 | Expert review | Deferred during partner discussions | Maintain the clinical/bilingual question register now; obtain review before release or comparative clinical claims |
 | Product interface | Local CLI first | Dashboard/API-key UI after the broader workflow and reporting contract are established |

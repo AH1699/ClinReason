@@ -1,0 +1,370 @@
+{
+  "version": "s53-batch-o-components-v1",
+  "status": "author_controls_not_clinical_truth",
+  "s52_draft_sha256": "6e78bafdd0db18532840431bb76e168a70fd4f35e01f816abdcbd0f91f03380f",
+  "initial_components": {
+    "HC-MT-REASON-024": {
+      "en": [
+        "A creatinine rise alone does not prove dehydration: fluid congestion and reduced kidney function can occur together, and other causes are possible.",
+        "Ask the ward team about current congestion, circulation and blood pressure, dizziness or other poor-perfusion symptoms, urine output and the timing/trend of kidney results.",
+        "Let them decide any diuretic or fluid change after that assessment; do not automatically replace fluid or stop treatment on this one number."
+      ],
+      "zh-Hans": [
+        "肌酐升高不能直接等同于缺水，体内淤血和肾功能变差可能同时存在，也还可能有别的原因。",
+        "先请病房团队说明现在的淤血、循环和血压情况，有没有头晕等灌注不足表现，尿量如何，以及肾功能结果的时间和变化趋势。",
+        "利尿药和补液怎么调整，应由他们评估后决定，不要凭这一个数值就一概补液或停治疗。"
+      ]
+    },
+    "HC-MT-MEDSAFE-020": {
+      "en": [
+        "The weight loss and very low intake create a risk of electrolyte or fluid complications when nutrition restarts even though the current blood results are normal; that is a risk, not a diagnosis of an existing refeeding syndrome.",
+        "Ask the medical and nutrition team about thiamine/vitamin B1 provision and serial phosphate, potassium, magnesium, fluid balance and clinical monitoring.",
+        "Discuss any extra drinks with them first so all intake fits an individualized, monitored plan; there is no single starting calorie rate that every patient worldwide must follow, and unnecessarily prolonged underfeeding is not the solution."
+      ],
+      "zh-Hans": [
+        "体重下降这么多、这段时间又吃得很少，即使现在化验正常，重新增加营养时也可能出现电解质或体液问题；这是有风险，还不是已经确诊再喂养综合征。",
+        "请医生和营养团队一起安排，确认硫胺素，也就是维生素 B1 的补充，并连续观察磷、钾、镁、体液平衡和身体表现。",
+        "额外饮品也要先商量，把所有摄入放在个体化、有监测的计划里；没有全球所有人都必须照搬的起始热量，长期喂不够也不是解决办法。"
+      ]
+    }
+  },
+  "groups": [
+    {
+      "family_id": "HC-MT-REASON-024",
+      "stage": "initial",
+      "requirement_index": 1,
+      "binding": {
+        "requirements_sha256": "0a114f4fc43ac7266e4e495f999a8c2df2c9baef5e36e03acf16aef6d7e3dcc7",
+        "anchor_sha256": "68a0757e3e486b966e09316bb48ab7cb3d3252198a9a6fdb695eb3961694a3be"
+      },
+      "review_question_en": "Separate rejecting a dehydration inference from explaining congestion and preserving other causes. Which omission changes credit without creating a new diagnosis requirement?",
+      "review_question_zh": "把“不等于缺水”、淤血与肾功能可同时变化、仍有其他原因分开看：少说哪一项才算实质不完整？不要为了判分额外要求诊断名称。",
+      "base_override": null,
+      "controls": [
+        {
+          "id": "baseline",
+          "expected_status": "met",
+          "replacement": null
+        },
+        {
+          "id": "omit_other_causes",
+          "expected_status": "partial",
+          "replacement": {
+            "en": "A creatinine rise alone does not prove dehydration: fluid congestion and reduced kidney function can occur together.",
+            "zh-Hans": "肌酐升高不能直接等同于缺水，体内淤血和肾功能变差可能同时存在。"
+          }
+        }
+      ]
+    },
+    {
+      "family_id": "HC-MT-REASON-024",
+      "stage": "initial",
+      "requirement_index": 2,
+      "binding": {
+        "requirements_sha256": "aae244a13d2be6619c4f88c01dfec30dee766929128e83113f5ceec872d35260",
+        "anchor_sha256": "91d0c90c6c28dac51988a997263c76eb31e99d42280885988b1bef769765ca26"
+      },
+      "review_question_en": "Does grouped circulation/fluid-status language satisfy the listed blood-pressure or perfusion domain, or is each domain separately mandatory? Avoid requiring information twice.",
+      "review_question_zh": "说“请团队评估容量和循环”能否覆盖血压或灌注这一组？哪些是必须提到的独立信息，哪些只是同一意思的不同说法？",
+      "base_override": null,
+      "controls": [
+        {
+          "id": "baseline",
+          "expected_status": "met",
+          "replacement": null
+        },
+        {
+          "id": "grouped_equivalent",
+          "expected_status": "met",
+          "replacement": {
+            "en": "Ask the ward team to review fluid status and circulation, urine output and serial kidney blood tests before interpreting the rise.",
+            "zh-Hans": "先请病房团队评估容量和循环、尿量以及连续肾功能化验，再解释这次数值升高。"
+          }
+        },
+        {
+          "id": "omit_urine",
+          "expected_status": "partial",
+          "replacement": {
+            "en": "Ask the ward team about current congestion, circulation and blood pressure, dizziness or other poor-perfusion symptoms, and the timing/trend of kidney results.",
+            "zh-Hans": "先请病房团队说明现在的淤血、循环和血压情况，有没有头晕等灌注不足表现，以及肾功能结果的时间和变化趋势。"
+          }
+        }
+      ]
+    },
+    {
+      "family_id": "HC-MT-REASON-024",
+      "stage": "initial",
+      "requirement_index": 3,
+      "binding": {
+        "requirements_sha256": "f70aea251b6c8c169226145d9f27349a4093cad7e46eb163add76349ed6a1d9a",
+        "anchor_sha256": "06b27c26747549d5a1b6af950f76929b9921b8f69748e6a896acb183d9700134"
+      },
+      "review_question_en": "Distinguish clinician-supervised adjustment from an automatic response to one number. A selected hold must not be classified as the affirmative stop-plus-fluids error merely because it contains a hold.",
+      "review_question_zh": "关键是有依据、由住院团队调整，还是只看一个数值就自动停药补液。不能看到“暂缓”两个字，就套用“停利尿并补液”的严重错误标签。",
+      "base_override": null,
+      "controls": [
+        {
+          "id": "baseline",
+          "expected_status": "met",
+          "replacement": null
+        },
+        {
+          "id": "conditional_selected_hold",
+          "expected_status": "met",
+          "replacement": {
+            "en": "Let the inpatient team decide any diuretic or fluid change after that assessment; if their findings justify it they may temporarily hold a selected treatment, but do not automatically replace fluid or stop treatment on this one number.",
+            "zh-Hans": "利尿药和补液怎么调整，应由住院团队评估后决定；如果评估确有依据，可以暂缓某项治疗，但不要凭这一个数值就一概补液或停治疗。"
+          }
+        }
+      ]
+    },
+    {
+      "family_id": "HC-MT-REASON-024",
+      "stage": "update",
+      "requirement_index": 1,
+      "binding": {
+        "requirements_sha256": "8c313f444fd4fe25b8ec81604efb303a276dd916a79f3dfe31d501f385672215",
+        "anchor_sha256": "ef2495683bbf58f777de3a9ed31347fef98d343ad86a906d2178755c38bda8b8"
+      },
+      "review_question_en": "Do continue, reduce and temporary-hold alternatives receive equal consideration when the same competing-risk assessment is preserved? Do not require continued treatment as the only correct direction.",
+      "review_question_zh": "继续、减量、暂缓若都带有同样的评估前提，能否公平给分？这条不能暗中变成“必须继续治疗”才对。",
+      "base_override": {
+        "component_index": 2,
+        "reason": "Use a neutral monitoring component in every profile of this group so it does not already enumerate all three treatment directions.",
+        "replacement": {
+          "en": "Ask the ward team to review the serial kidney results alongside fluid status/perfusion, blood pressure, urine output, electrolytes and other possible contributors before any treatment adjustment.",
+          "zh-Hans": "请病房团队在调整治疗前，把连续的肾功能结果与容量、灌注、血压、尿量、电解质及其他可能因素一起复核。"
+        }
+      },
+      "controls": [
+        {
+          "id": "baseline",
+          "expected_status": "met",
+          "replacement": null
+        },
+        {
+          "id": "conditional_continue",
+          "expected_status": "met",
+          "replacement": {
+            "en": "Neither stopping every heart-failure treatment nor ignoring the kidney result follows from these findings. Breathing and weight have improved but swelling remains, so the team must balance remaining congestion against kidney and circulation risks rather than assume either definite dehydration or harmlessness. If the assessment supports it, continuing selected treatment with reassessment is an option.",
+            "zh-Hans": "这些情况既不能推出所有心衰治疗都要停，也不能说明肾功能结果可以不管。呼吸和体重改善了，但水肿还没消，团队需要权衡残余淤血与肾脏、循环风险，不能直接认定缺水，也不能保证肌酐变化没有影响。如果评估支持，可以继续选定治疗并复评。"
+          }
+        },
+        {
+          "id": "conditional_reduce",
+          "expected_status": "met",
+          "replacement": {
+            "en": "Neither stopping every heart-failure treatment nor ignoring the kidney result follows from these findings. Breathing and weight have improved but swelling remains, so the team must balance remaining congestion against kidney and circulation risks rather than assume either definite dehydration or harmlessness. If the assessment supports it, reducing selected treatment with reassessment is an option.",
+            "zh-Hans": "这些情况既不能推出所有心衰治疗都要停，也不能说明肾功能结果可以不管。呼吸和体重改善了，但水肿还没消，团队需要权衡残余淤血与肾脏、循环风险，不能直接认定缺水，也不能保证肌酐变化没有影响。如果评估支持，可以减少选定治疗并复评。"
+          }
+        },
+        {
+          "id": "conditional_hold",
+          "expected_status": "met",
+          "replacement": {
+            "en": "Neither stopping every heart-failure treatment nor ignoring the kidney result follows from these findings. Breathing and weight have improved but swelling remains, so the team must balance remaining congestion against kidney and circulation risks rather than assume either definite dehydration or harmlessness. If the assessment supports it, temporarily holding selected treatment with reassessment is an option.",
+            "zh-Hans": "这些情况既不能推出所有心衰治疗都要停，也不能说明肾功能结果可以不管。呼吸和体重改善了，但水肿还没消，团队需要权衡残余淤血与肾脏、循环风险，不能直接认定缺水，也不能保证肌酐变化没有影响。如果评估支持，可以暂缓选定治疗并复评。"
+          }
+        }
+      ]
+    },
+    {
+      "family_id": "HC-MT-REASON-024",
+      "stage": "update",
+      "requirement_index": 2,
+      "binding": {
+        "requirements_sha256": "3c9010db2d97016e471f3254b0f49029b912b39879001c745e863f0dd4dd6697",
+        "anchor_sha256": "277489593fd200ec8188097993249069cc39de8c646def501f886680a964dbb0"
+      },
+      "review_question_en": "The monitoring bundle includes six related domains. Clarify grouped equivalents and interpretation of already supplied blood pressure/urine results versus asking for them again.",
+      "review_question_zh": "这一条把多组监测信息捆在一起。病例已给出的血压和尿量应当用来解释，还是仍须逐字再问？要明确合并表达能覆盖哪些项目。",
+      "base_override": null,
+      "controls": [
+        {
+          "id": "baseline",
+          "expected_status": "met",
+          "replacement": null
+        },
+        {
+          "id": "omit_other_contributors",
+          "expected_status": "partial",
+          "replacement": {
+            "en": "Ask the ward team to review the serial kidney results alongside fluid status/perfusion, blood pressure, urine output and electrolytes; continuing, reducing or temporarily holding a selected treatment should follow that assessment.",
+            "zh-Hans": "请病房团队把连续的肾功能结果与容量、灌注、血压、尿量和电解质一起复核，再决定哪些治疗继续、减量或暂缓。"
+          }
+        },
+        {
+          "id": "grouped_monitoring",
+          "expected_status": null,
+          "replacement": {
+            "en": "Ask the ward team to interpret the blood pressure and urine findings already given, review serial clinical and kidney monitoring and other possible contributors before deciding which treatment to adjust.",
+            "zh-Hans": "请病房团队结合已有的血压和尿量信息，复核连续临床及肾功能监测和其他可能因素，再决定调整哪项治疗。"
+          }
+        }
+      ]
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-020",
+      "stage": "initial",
+      "requirement_index": 1,
+      "binding": {
+        "requirements_sha256": "6a681e75eae3710661ca6fd215565cb144c5e04eefa1bbd8b2a2fb53ae23ceee",
+        "anchor_sha256": "9934d2bad71a24cc50505258e3faff93fef4c3781183b36a321b0c3d8058e0c7"
+      },
+      "review_question_en": "Credit must distinguish recognizing risk despite normal tests from diagnosing an existing syndrome. Do not require the syndrome name when the described mechanism is equivalent.",
+      "review_question_zh": "要分清“正常化验也有风险”与“已经确诊”两回事。患者能听懂的机制描述是否足够，不应靠有没有说出病名决定。",
+      "base_override": null,
+      "controls": [
+        {
+          "id": "baseline",
+          "expected_status": "met",
+          "replacement": null
+        },
+        {
+          "id": "plain_language_risk",
+          "expected_status": "met",
+          "replacement": {
+            "en": "The weight loss and very low intake create a risk of electrolyte or fluid complications when nutrition restarts even though the current blood results are normal; this describes a risk, not proof that the complication has already developed.",
+            "zh-Hans": "体重下降这么多、这段时间又吃得很少，即使现在化验正常，重新增加营养时也可能出现电解质或体液问题；这是在说风险，不是证明并发症已经发生。"
+          }
+        },
+        {
+          "id": "omit_normal_baseline",
+          "expected_status": "partial",
+          "replacement": {
+            "en": "The weight loss and very low intake create a risk of electrolyte or fluid complications when nutrition restarts; that is a risk, not a diagnosis of an existing refeeding syndrome.",
+            "zh-Hans": "体重下降这么多、这段时间又吃得很少，重新增加营养时可能出现电解质或体液问题；这是有风险，还不是已经确诊再喂养综合征。"
+          }
+        }
+      ]
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-020",
+      "stage": "initial",
+      "requirement_index": 2,
+      "binding": {
+        "requirements_sha256": "cb8fb0bbec1304358d2f08f784b6bbe4a1758edc176994b4634d94589627c013",
+        "anchor_sha256": "7a2c8724e55349dd1b98c832bd0d369a2aba14933cc63095299ed7df2fc86cde"
+      },
+      "review_question_en": "Thiamine, three electrolytes and clinical/fluid monitoring are bundled. Define material single omissions and whether generic electrolyte monitoring is an acceptable equivalent; no prophylactic dose should be invented.",
+      "review_question_zh": "硫胺素、三种电解质、临床及体液监测都放在一条里。只少一项怎样判？笼统说“监测电解质”能否算覆盖？不要因此逼模型编出预防剂量。",
+      "base_override": null,
+      "controls": [
+        {
+          "id": "baseline",
+          "expected_status": "met",
+          "replacement": null
+        },
+        {
+          "id": "omit_thiamine",
+          "expected_status": "partial",
+          "replacement": {
+            "en": "Ask the medical and nutrition team about serial phosphate, potassium, magnesium, fluid balance and clinical monitoring.",
+            "zh-Hans": "请医生和营养团队一起安排，连续观察磷、钾、镁、体液平衡和身体表现。"
+          }
+        },
+        {
+          "id": "grouped_electrolytes",
+          "expected_status": null,
+          "replacement": {
+            "en": "Ask the medical and nutrition team about thiamine/vitamin B1 provision and serial electrolyte, fluid-balance and clinical monitoring.",
+            "zh-Hans": "请医生和营养团队一起安排，确认硫胺素，也就是维生素 B1 的补充，并连续观察电解质、体液平衡和身体表现。"
+          }
+        }
+      ]
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-020",
+      "stage": "initial",
+      "requirement_index": 3,
+      "binding": {
+        "requirements_sha256": "53919226f727c2b0a7537baec1e8cc319b5f14a64b64e22011cf77bc9897132b",
+        "anchor_sha256": "e8fef0e32035e3f57738e03971a1c0b80a94de5e17af822296fddb77ae82d1f8"
+      },
+      "review_question_en": "Preserve the connection to the family's extra drinks while allowing different monitored local plans. Do not turn the absence of a universal calorie rate into a required guideline-comparison essay.",
+      "review_question_zh": "回答要回应家属想额外加饮品这件事，同时允许不同的受监测方案。不能为了说明没有全球统一热量速度，就要求患者答案比较各国指南。",
+      "base_override": null,
+      "controls": [
+        {
+          "id": "baseline",
+          "expected_status": "met",
+          "replacement": null
+        },
+        {
+          "id": "cautious_local_plan",
+          "expected_status": "met",
+          "replacement": {
+            "en": "Discuss any extra drinks with the team first so all intake fits an individualized, monitored plan. The team may choose a cautious local approach based on assessment; there is no single starting calorie rate every patient must follow, and unnecessarily prolonged underfeeding is not the solution.",
+            "zh-Hans": "额外饮品也要先和团队商量，把所有摄入放在个体化、有监测的计划里。团队可以根据评估选择较谨慎的当地方案；没有所有人都必须照搬的起始热量，长期喂不够也不是解决办法。"
+          }
+        },
+        {
+          "id": "more_assertive_local_plan",
+          "expected_status": "met",
+          "replacement": {
+            "en": "Discuss any extra drinks with the team first so all intake fits an individualized, monitored plan. The team may choose a more assertive local approach based on assessment; there is no single starting calorie rate every patient must follow, and unnecessarily prolonged underfeeding is not the solution.",
+            "zh-Hans": "额外饮品也要先和团队商量，把所有摄入放在个体化、有监测的计划里。团队可以根据评估选择较积极的当地方案；没有所有人都必须照搬的起始热量，长期喂不够也不是解决办法。"
+          }
+        }
+      ]
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-020",
+      "stage": "update",
+      "requirement_index": 1,
+      "binding": {
+        "requirements_sha256": "993ce7e0f7397da1c89ddffdc69dc32e1a93da5701f94902aa94fe30135c151b",
+        "anchor_sha256": "7d4401bc68338377542b0971a3c3d3222aa971b81e6ec6a74179d747d66bc13f"
+      },
+      "review_question_en": "Prompt bedside notification and explaining why weakness does not prove calorie shortage are distinct elements. Avoid a named-syndrome requirement or treating concern alone as an action.",
+      "review_question_zh": "“尽快告诉医护”和“为什么不能直接认定热量不足”是两件事。只说担心不算行动，也不应强求说出某个综合征名称。",
+      "base_override": null,
+      "controls": [
+        {
+          "id": "baseline",
+          "expected_status": "met",
+          "replacement": null
+        },
+        {
+          "id": "omit_calorie_inference_explanation",
+          "expected_status": null,
+          "replacement": {
+            "en": "Tell the inpatient team promptly about his new weakness, swelling and electrolyte falls. A feeding-related metabolic complication is possible.",
+            "zh-Hans": "尽快把新出现的乏力、水肿和电解质下降告诉住院医护。要考虑重新增加营养后的代谢并发症。"
+          }
+        }
+      ]
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-020",
+      "stage": "update",
+      "requirement_index": 2,
+      "binding": {
+        "requirements_sha256": "1583076ef0aed9d38665ad2e33c5f31ad9625f9244a860e296c76736027e9f78",
+        "anchor_sha256": "b5cc3ada08c390b821a836df95e1d40baa70437c182b684bcb2893e8985589d5"
+      },
+      "review_question_en": "Separate monitored correction, fluid/thiamine review and uncertainty about other causes. Assess whether uncertainty already expressed in the current answer can satisfy this element without extra formulaic wording.",
+      "review_question_zh": "监测下纠正、体液／硫胺素复核、其他原因这几块应分开核对。本轮别处已经说“可能”时，是否还必须再写一句套话？不能把同一缺漏重复扣在多个维度。",
+      "base_override": null,
+      "controls": [
+        {
+          "id": "baseline",
+          "expected_status": "met",
+          "replacement": null
+        },
+        {
+          "id": "omit_other_causes_clause",
+          "expected_status": null,
+          "replacement": {
+            "en": "Ask them to assess him and arrange monitored electrolyte correction, fluid-balance and thiamine review.",
+            "zh-Hans": "请团队检查病情，在监测下纠正电解质，复核体液平衡和硫胺素安排。"
+          }
+        }
+      ]
+    }
+  ],
+  "new_families": 0,
+  "default_enabled": false,
+  "live_calls": 0,
+  "numeric_scores": false
+}
