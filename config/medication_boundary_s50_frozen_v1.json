@@ -1,0 +1,35 @@
+{
+  "version": "s50-medication-boundary-v1",
+  "s49_protocol_sha256": "073880f8394df4be444834130ec2ededd0e99711417c9486807ea31498e93a6f",
+  "files": {
+    "config/medication_boundary_s50_v1.json": "88f183726ee72146dc85f1a99fe86ce62a1519f73d4cb7221b43d9166630cee6",
+    "config/medication_boundary_s50_judge.txt": "ed245800b245fa4cfd2610642c03a7ab06c5e2a96ef14c20e92e1d2738982e51",
+    "data/multiturn/s49_medication_boundaries_draft_v1.json": "a1c3ed3e2f33e03e9546b2a249e797ac38b3d0cf3b6550d1f4f8cb9f9c6f8831",
+    "scripts/medication_boundaries_s49.py": "9be5eb3fe275022ef0f67b326b2f72273380544cc74c805e275c0fd75465baad",
+    "scripts/medication_boundary_s50.py": "591d21e045b157e4d249f4b5113fab5ea76383186b1b09a5139a108cbd525c76",
+    "tests/test_medication_boundary_s50.py": "7b5f1ffdfb64695ddf89150e7a04c6bf223968f71bca8e3012da4a0898da6b90"
+  },
+  "draft_audit": {
+    "version": "s49-medication-boundaries-draft-v1",
+    "draft_sha256": "76e7c925039b0413bad9d41179c36d40e83b9997ccd5cc98e0e71c59296ff095",
+    "packets_sha256": "52e028b1c64d9c4145007a29a2e997a3d61f64b76ac0feb99983afdcc37e79b2",
+    "case_hashes": {
+      "en": "b9dbf36f340abf0c5a2a99e7e2e669bea6b159599c0779fcdf00ff5c7d787456",
+      "zh-Hans": "211194bf99130d70f7a8e07e91013be87940678fff324b9ce3b3aa40bef1ae0d"
+    },
+    "anchor_file_sha256": "f055437504012768e8a2d06b251dc4ca66e8e7895999ace37a7555bafb0a7869",
+    "packets": 28,
+    "author_hypotheses": 16,
+    "unlabelled_packets": 12,
+    "one_component_contrasts": 22,
+    "new_case_families": 0,
+    "live_calls": 0,
+    "clinical_validation": false,
+    "judge_boundary_accuracy_measured": false,
+    "numeric_scores": false,
+    "existing_labels_changed": false,
+    "scope": "Mechanical provenance, packet blinding, stage isolation and contrast checks only; author hypotheses are not ground truth."
+  },
+  "schedule_sha256": "82369baf3c1e4466d45d5708cb4a58de4ad561a750aadf90dca7050aed12e28f",
+  "requests_sha256": "8a4a66f7bf7cfe87b95a8821c8a31ffa3da132e25422ba59a7435dba927d71dc"
+}

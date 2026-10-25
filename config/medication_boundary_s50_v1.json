@@ -1,0 +1,25 @@
+{
+  "version": "s50-medication-boundary-v1",
+  "judge_provider": "gemini",
+  "judge_model": "gemini-3.8-flash",
+  "family_id": "HC-MT-MEDSAFE-013",
+  "first_pass_requests": 28,
+  "repeat_requests": 28,
+  "maximum_attempts": 56,
+  "candidate_calls": 0,
+  "automatic_retries": 0,
+  "max_output_tokens": 32768,
+  "thinking_level": "medium",
+  "sampling": "provider_defaults_unpinned",
+  "stop_threshold_usd": "3.00",
+  "hard_ceiling": false,
+  "schedule": "packet_sha256_ascending_first_then_identical_repeat",
+  "reference_status": "author_hypotheses_not_clinical_gold",
+  "gate": {
+    "accepted_judgments": 56,
+    "first_author_hypothesis_matches": 16,
+    "exact_status_repeats": 28,
+    "exploratory_packets_have_no_expected_status": 12
+  },
+  "live_authorization": "requires_separate_user_approval"
+}

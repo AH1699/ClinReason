@@ -2,6 +2,8 @@
 
 ## S49 progress and additional-advice question
 
+S50 now provides a [frozen 56-request focused protocol](S50_MEDICATION_BOUNDARY_PROTOCOL_EN.md) for the existing H136/H137/H140 drafts, with no live judgments yet. Author-hypothesis agreement will remain separate from clinical adjudication. No issue is closed by implementing the runner.
+
 H136/H137/H140 now have [28 offline bilingual packets](S49_MEDICATION_BOUNDARIES_EN.md): 16 author hypotheses and 12 unlabelled examples. They are not expert-approved labels or tested judge boundaries. The separate [S49 result](S49_CAP_SUPPLEMENT_RESULT_EN.md) scores a different MiniMax M3 Chinese answer 88.33 with update criterion 3 `partial`; that does not resolve S48's H140 or justify revising its recorded 95.
 
 - **H141 / medium — Advice beyond the scored requirements:** Review the saved MiniMax M3 Chinese update's negative-ketone statement for urine-versus-blood testing, assay and timing distinctions; also review its oral-intake advice during vomiting for appropriate scope and qualifications. Determine whether any issue is clinically material and whether current safety observations capture it. The judge reported no distinct safety/revision failure. This is a developer question, not an established clinical error; preserve 88.33 and the [separate review record](../data/audit/s49_review_flags.json), with no added deduction. Raw answer prose stays local.

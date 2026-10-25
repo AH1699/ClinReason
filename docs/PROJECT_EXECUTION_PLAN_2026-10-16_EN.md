@@ -1,12 +1,31 @@
 # ClinReason current execution plan — 2026-10-16
 
-## Current checkpoint S49: supplemental score accepted; boundary drafts ready
+## Current checkpoint S50 with the main project milestones
 
-**Current checkpoint S49:** The [one-call supplement](S49_CAP_SUPPLEMENT_RESULT_EN.md) succeeded: MiniMax M3 Chinese has a separate **88.33** conversation score, using the saved initial judgment and a new update judgment with a 32,768 cap. One attempt, no retry or candidate generation; monitoring estimate **$0.028182**, not an invoice. It used 6,925 generated tokens, so success does not prove the raised cap caused completion. S48 remains unchanged at seven of eight scores; no pooled eight-cell mean or ranking. H140 remains open; H141 adds an extra-advice review question without changing scores.
+**Current checkpoint S50:** The [blinded boundary runner](S50_MEDICATION_BOUNDARY_PROTOCOL_EN.md) is implemented and frozen for **56 judge requests: 28 packets, each judged twice**. It keeps 16 author hypotheses separate from 12 unlabelled packets, preserves identical repeat payloads and reconstructs results from captured responses. **844 offline tests pass**, including 29 new tests. No live S50 calls, candidate generation, label changes or new scores. The proposed $3.00 recorded-spending threshold permits last-request overrun and needs fresh approval; S49's authorization cannot be reused.
 
-The [offline boundary draft](S49_MEDICATION_BOUNDARIES_EN.md) contains **28 bilingual packets, 16 author hypotheses, 12 unlabelled packets and 22 one-component pairs**. No boundary calls or label changes. **815 offline tests pass.** Next implement and freeze a focused blinded boundary adapter and repeat plan, then obtain bounded call authorization. The [nine-family mixed import/generation panel](NEXT_DEVELOPMENT_PANEL_EN.md) follows that narrow check, with a uniform prospective judging policy; its larger paid run remains unauthorized.
+The [S49 supplemental 88.33](S49_CAP_SUPPLEMENT_RESULT_EN.md) and S48's original seven of eight scores remain separate and unchanged. H136/H137/H140/H141 remain open. Next make one bounded boundary run after approval, then record a specific disposition for affected criteria rather than starting an open-ended diagnostic loop. Offline [nine-family scheduler development](NEXT_DEVELOPMENT_PANEL_EN.md) and case authoring can proceed alongside this check; broader paid runs still need their own frozen protocol and authorization.
 
 All 16 candidate answer stages remain reusable. Registered development **125 families / 250 variants**, two standalone [Batch O](BATCH_O_STANDALONE_EN.md) drafts, three reserved confirmation families and approved calibration/Gold **0/0** are unchanged. Xi'an stays local; expert review stays later. Lower 60–70, average ~80 and premium ~90 remain diagnostic aspirations, never score-fitting targets.
+
+## Project direction and next milestones
+
+The destination is unchanged: a local-first bilingual healthcare benchmark that accepts a candidate provider/model, collects answers, applies transparent case-specific labels and reports reproducible scores. The long-term expansion target is **at least 500 distinct clinical cases/families**; English and Chinese versions do not count as two independent cases. Patient-facing and professional results remain separate. The dashboard and a trained evaluator are later product work, not the current priority.
+
+Recent work has concentrated on scoring and provider diagnostics while registered case growth has slowed. Those checks exposed real problems, but an unlimited sequence of single-case experiments would become a delivery risk. S50 is a bounded check with an explicit disposition, not a reason to suspend all other work.
+
+| Workstream | Current state | Next deliverable |
+|---|---|---|
+| Scoring boundaries | S50 built and frozen; no live calls | One approved 56-request trial, one readout, then a documented decision on affected requirements; no automatic next diagnostic |
+| Broader model comparison | Fixed nine-family design; 16 reusable answer stages | Implement mixed saved/new-answer scheduling offline, then freeze a uniform judging policy and seek separate run approval |
+| Case expansion | 125 registered families; two standalone Batch O drafts | Audit O's acceptable alternatives and bundled requirements, then draft new public-report/Step-2-informed cases selected for coverage gaps; keep this moving alongside scoring |
+| Source and privacy | Public evidence mappings and private Xi'an processing remain separate | Continue source-to-answer checks; Xi'an stays local until its case/privacy readiness issues are resolved |
+| Expert review | Deferred during partner discussions | Maintain the clinical/bilingual question register now; obtain review before release or comparative clinical claims |
+| Product interface | Local CLI first | Dashboard/API-key UI after the broader workflow and reporting contract are established |
+
+After S50, a failed or ambiguous requirement limits claims for that item; it does not automatically halt new case authoring or scheduler engineering. Any repair requires a named version and rationale, not fitting to the desired score bands. Each checkpoint should report case counts, scoring evidence, broader-run readiness and the next decision—not just the number of tests.
+
+## Historical checkpoints
 
 Historical S44 record (superseded execution direction):
 
@@ -198,7 +217,7 @@ The first stopped M2.7 answer is protocol-confounded and must not be reused as a
 
 This was the **2026-10-16 project checkpoint**; the latest dated update at the top supersedes its counts and next action. Earlier batch and progress notes remain historical evidence. None of the cases, AI judgments, translations, or model comparisons has clinical approval.
 
-## Where the project stands
+## Historical project state on 2026-10-16
 
 | Area | Verified current state | Open gate |
 |---|---|---|
@@ -210,7 +229,7 @@ This was the **2026-10-16 project checkpoint**; the latest dated update at the t
 
 The count and split status are reproducible with `python3 -m benchmark.portfolio_audit`; the run and model details are in [the matrix pilot](MODEL_MATRIX_PILOT_2026-10-15_EN.md), [roster](../config/model_matrix.json), and [calibration plan](SCORING_CALIBRATION_PLAN_2026-10-16_EN.md).
 
-## Decision: address scoring validity next
+## Historical decision to address scoring validity
 
 Do **not** change the rubric weights, subtract points from a correct answer, average the two judges into a purported truth, or tune to make lower/mid/premium models land at 60–70/80/90. Those bands are diagnostic aspirations. First separate three possible causes of high scores: an easy item, an underspecified criterion, or a judge that misses an explicit requirement. Keep critical-safety caps and first-turn safety visible.
 
@@ -223,7 +242,7 @@ Do **not** change the rubric weights, subtract points from a correct answer, ave
 - [NIDDK's public diagnosis page](https://www.niddk.nih.gov/health-information/digestive-diseases/celiac-disease/diagnosis) supports that a gluten-free diet can affect diagnostic tests and that symptoms alone do not establish diagnosis. It does not by itself settle the scoring-equivalence question or verify the candidate's specific challenge regimen. Record this as a source-to-criterion review need, not as clinical approval.
 - Disposition today: **no adjudicated score, case-label edit, or rubric-weight change**. Both original judgments and their disagreement remain visible and require later qualified review.
 
-## Execution sequence and acceptance gates
+## Historical execution sequence and acceptance gates
 
 | ID | Work, in order | Evidence required before advancing | Status |
 |---|---|---|---|
@@ -237,4 +256,4 @@ If an unsafe answer passes, a severity-2/3 error is disputed, or an item lacks a
 
 ## Tracking convention
 
-After each batch, update this page's state, SC issue register, artifact links, decision, next action, and test count; add a dated note when a decision changes. Keep key values in ignored `.env.local` and raw model outputs in ignored `work/`, not in Git. Commit source, labels, rubrics, and plans with explicit version/provenance; publish only reviewed aggregate claims. The immediate next decision is how to independently review and securely govern the new prospective drafts before spending on a wider model panel.
+After each batch, update this page's state, SC issue register, artifact links, decision, next action, and test count; add a dated note when a decision changes. Keep key values in ignored `.env.local` and raw model outputs in ignored `work/`, not in Git. Commit source, labels, rubrics, and plans with explicit version/provenance; publish only reviewed aggregate claims. Use the current milestones at the top of this page for next actions; historical tables are not instructions to restart earlier work.

@@ -4,7 +4,9 @@
 
 [Standalone Batch O](BATCH_O_STANDALONE_EN.md) adds two separate authoring drafts / four variants on heart-failure/renal tradeoffs and nutrition/electrolyte changes. They are not registered in the above counts or any frozen run. Three newly authored confirmation families / six variants are separately reserved; three existing confirmation reservations are already in 125 and must not be counted twice. Approved calibration and hidden Gold remain 0/0. Professional scoring remains disabled.
 
-The next authoring work is to test distinct consequential decisions with exact source-to-requirement mapping and contrasting answers, preserving development/confirmation separation. Clinical and bilingual review remains a later validation gate; provisional engineering can continue meanwhile. The following checkpoints record earlier counts and do not replace the current totals.
+The longer-term target remains **at least 500 distinct clinical cases/families**, not 500 language versions or scoring-contrast packets. Current registered coverage is still 125; no cases were added by S49/S50. Next inspect Batch O's acceptable alternatives and bundled requirements, then select new public-report/Step-2-informed cases for distinct consequential decisions, especially low-acuity restraint, competing risks and longitudinal interpretation. Each needs exact source-to-requirement mapping and contrasting answers, with development/confirmation separation preserved.
+
+Case authoring proceeds alongside the [bounded S50 scoring check](S50_MEDICATION_BOUNDARY_PROTOCOL_EN.md) and offline nine-family scheduler work; it does not wait for every scoring question to close. Clinical and bilingual review remains a later validation gate. The [main milestones](PROJECT_EXECUTION_PLAN_2026-10-16_EN.md) distinguish authoring progress from readiness for scores or release. The following checkpoints record earlier counts and do not replace current totals.
 
 ## Historical expansion checkpoints
 
