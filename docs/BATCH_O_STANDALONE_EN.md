@@ -1,5 +1,7 @@
 # Two new cases on competing clinical risks
 
+Current authoring status: [S51 reviewed all twelve criterion positions](S51_MIXED_PANEL_OFFLINE_EN.md) for bundled requirements and acceptable alternatives. Two wording decisions and ten component/alternative control tasks are recorded; no case, anchor or reference answer changed. Next produce separate-version controls before any live comparison or registration.
+
 Batch O adds **two standalone authoring drafts / four English and Chinese variants**, with twelve mapped requirements, four initial reference answers and twelve update examples. They are ready for structural inspection and a future development experiment. Their intended complexity has not been measured against a model.
 
 | Family | Decision to examine | Actual published case inspiration |

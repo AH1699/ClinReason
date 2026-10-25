@@ -1,0 +1,941 @@
+{
+  "version": "s51-mixed-panel-offline-v1",
+  "mode": "offline_readiness",
+  "live_calls": 0,
+  "live_execution_available": false,
+  "live_authorization": false,
+  "live_budget_usd": null,
+  "s50_protocol_sha256": "f994eae382aa615718a77f9f1ac5c5d3f0ef6bbdd68031cff7dd054494d3949f",
+  "files": {
+    "config/mixed_panel_s51_v1.json": "757e46d40042f1fc94090dda041c55d399d3fdb0485e8cd2d7491d5af1124f9c",
+    "scripts/mixed_panel_s51.py": "ae20f1c40bd564ee7cd205e56e62d10045ae4e436f034c86de31547ec1c22509",
+    "tests/test_mixed_panel_s51.py": "4e16ab36fdf3395e35cfbd24ced66bc35f80e794c90ca90ecea48765f7c6d761"
+  },
+  "schedule_sha256": "cba83b689dd72007d9ea8e692a411308674d2a94ddadb9a2171f488ed99010f9",
+  "manifest_sha256": "be0646a08d8be38adb273b74bd57ccc1968e3dd00e3ab3f1b0b5b259241d8f6f",
+  "expected_conversations": 72,
+  "expected_answer_stages": 144,
+  "imported_answer_stages_required": 16,
+  "private_source_verified": true,
+  "verified_imported_stages": 16,
+  "source": {
+    "source_sha256": "4e47ac60621d8cda9354e668e022ad9f57bdb9b39f4d576d7fb2b72b8d368413",
+    "source_protocol_sha256": "5ab33f905bccc603c582fa53c4260c01a4ae46ea263eaf83c954710c44cadb1b",
+    "bank_sha256": "0ff1ab29f2c7e9d2079c773432e74da34679e4cad55bc76e80a4b49fc859ff39"
+  },
+  "proposed_new_requests": 452,
+  "new_candidate_stages": 128,
+  "control_judgments": 36,
+  "first_development_judgments": 144,
+  "repeat_development_judgments": 144,
+  "candidate_models": [
+    "gemini-3.5-flash-lite",
+    "gemini-3.8-flash",
+    "MiniMax-M3.1-Flash",
+    "MiniMax-M3"
+  ],
+  "judge_models": [
+    "gemini-3.8-flash"
+  ],
+  "review_held_conversations": 8,
+  "review_holds": {
+    "HC-MT-MEDSAFE-013": {
+      "initial": {
+        "2": [
+          "H137"
+        ]
+      },
+      "update": {
+        "3": [
+          "H136",
+          "H140"
+        ]
+      },
+      "additional_advice": [
+        "H141"
+      ],
+      "comparative_claims": "held_no_cell_removal_or_reweighting"
+    }
+  },
+  "judge_draft": {
+    "instruction_schema": "s47_observation_completeness",
+    "max_output_tokens": 32768,
+    "thinking_level": "medium",
+    "sampling": "provider_defaults_unpinned",
+    "status": "offline_draft_pending_prospective_decision"
+  },
+  "conversations": [
+    {
+      "family_id": "HC-MT-TRIAGE-019",
+      "language": "en",
+      "candidate_model": "gemini-3.5-flash-lite",
+      "case_version": "0.1.0",
+      "case_content_hash": "062cddae0760a6ad433b14a3c77c7eadf0e1f8e46a70c98999c74c7abe7f35ef",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-019",
+      "language": "en",
+      "candidate_model": "gemini-3.8-flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "062cddae0760a6ad433b14a3c77c7eadf0e1f8e46a70c98999c74c7abe7f35ef",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-019",
+      "language": "en",
+      "candidate_model": "MiniMax-M3.1-Flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "062cddae0760a6ad433b14a3c77c7eadf0e1f8e46a70c98999c74c7abe7f35ef",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-019",
+      "language": "en",
+      "candidate_model": "MiniMax-M3",
+      "case_version": "0.1.0",
+      "case_content_hash": "062cddae0760a6ad433b14a3c77c7eadf0e1f8e46a70c98999c74c7abe7f35ef",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-019",
+      "language": "zh-Hans",
+      "candidate_model": "gemini-3.5-flash-lite",
+      "case_version": "0.1.0",
+      "case_content_hash": "ef26df6972663c09fce21c7bfc1ac862e60d725c14c53347b6b6ee5cab624230",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-019",
+      "language": "zh-Hans",
+      "candidate_model": "gemini-3.8-flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "ef26df6972663c09fce21c7bfc1ac862e60d725c14c53347b6b6ee5cab624230",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-019",
+      "language": "zh-Hans",
+      "candidate_model": "MiniMax-M3.1-Flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "ef26df6972663c09fce21c7bfc1ac862e60d725c14c53347b6b6ee5cab624230",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-019",
+      "language": "zh-Hans",
+      "candidate_model": "MiniMax-M3",
+      "case_version": "0.1.0",
+      "case_content_hash": "ef26df6972663c09fce21c7bfc1ac862e60d725c14c53347b6b6ee5cab624230",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-020",
+      "language": "en",
+      "candidate_model": "gemini-3.5-flash-lite",
+      "case_version": "0.1.0",
+      "case_content_hash": "1bd1c33465e0a350b232fdb7f55de8789fc534dd16c9189b705066283398f022",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-020",
+      "language": "en",
+      "candidate_model": "gemini-3.8-flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "1bd1c33465e0a350b232fdb7f55de8789fc534dd16c9189b705066283398f022",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-020",
+      "language": "en",
+      "candidate_model": "MiniMax-M3.1-Flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "1bd1c33465e0a350b232fdb7f55de8789fc534dd16c9189b705066283398f022",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-020",
+      "language": "en",
+      "candidate_model": "MiniMax-M3",
+      "case_version": "0.1.0",
+      "case_content_hash": "1bd1c33465e0a350b232fdb7f55de8789fc534dd16c9189b705066283398f022",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-020",
+      "language": "zh-Hans",
+      "candidate_model": "gemini-3.5-flash-lite",
+      "case_version": "0.1.0",
+      "case_content_hash": "67e2bf0fe088f1613bb7a45d2d93bfbb772fe5255d042490947d15257add3885",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-020",
+      "language": "zh-Hans",
+      "candidate_model": "gemini-3.8-flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "67e2bf0fe088f1613bb7a45d2d93bfbb772fe5255d042490947d15257add3885",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-020",
+      "language": "zh-Hans",
+      "candidate_model": "MiniMax-M3.1-Flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "67e2bf0fe088f1613bb7a45d2d93bfbb772fe5255d042490947d15257add3885",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-020",
+      "language": "zh-Hans",
+      "candidate_model": "MiniMax-M3",
+      "case_version": "0.1.0",
+      "case_content_hash": "67e2bf0fe088f1613bb7a45d2d93bfbb772fe5255d042490947d15257add3885",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-015",
+      "language": "en",
+      "candidate_model": "gemini-3.5-flash-lite",
+      "case_version": "0.1.0",
+      "case_content_hash": "9ba5dbb2698e4afeee4e4ebcf2af03bfb0de50450748675c0fe9ae3ff0cabc28",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-015",
+      "language": "en",
+      "candidate_model": "gemini-3.8-flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "9ba5dbb2698e4afeee4e4ebcf2af03bfb0de50450748675c0fe9ae3ff0cabc28",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-015",
+      "language": "en",
+      "candidate_model": "MiniMax-M3.1-Flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "9ba5dbb2698e4afeee4e4ebcf2af03bfb0de50450748675c0fe9ae3ff0cabc28",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-015",
+      "language": "en",
+      "candidate_model": "MiniMax-M3",
+      "case_version": "0.1.0",
+      "case_content_hash": "9ba5dbb2698e4afeee4e4ebcf2af03bfb0de50450748675c0fe9ae3ff0cabc28",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-015",
+      "language": "zh-Hans",
+      "candidate_model": "gemini-3.5-flash-lite",
+      "case_version": "0.1.0",
+      "case_content_hash": "23b4a547cad757615bcfa36295db8b97d636edbc4c9b72b615dd55205a3cb4e0",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-015",
+      "language": "zh-Hans",
+      "candidate_model": "gemini-3.8-flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "23b4a547cad757615bcfa36295db8b97d636edbc4c9b72b615dd55205a3cb4e0",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-015",
+      "language": "zh-Hans",
+      "candidate_model": "MiniMax-M3.1-Flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "23b4a547cad757615bcfa36295db8b97d636edbc4c9b72b615dd55205a3cb4e0",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-015",
+      "language": "zh-Hans",
+      "candidate_model": "MiniMax-M3",
+      "case_version": "0.1.0",
+      "case_content_hash": "23b4a547cad757615bcfa36295db8b97d636edbc4c9b72b615dd55205a3cb4e0",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-014",
+      "language": "en",
+      "candidate_model": "gemini-3.5-flash-lite",
+      "case_version": "0.1.0",
+      "case_content_hash": "f2825adba624953afd965ff16af722676924b74e9961b954d91dbca7342552cf",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-014",
+      "language": "en",
+      "candidate_model": "gemini-3.8-flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "f2825adba624953afd965ff16af722676924b74e9961b954d91dbca7342552cf",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-014",
+      "language": "en",
+      "candidate_model": "MiniMax-M3.1-Flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "f2825adba624953afd965ff16af722676924b74e9961b954d91dbca7342552cf",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-014",
+      "language": "en",
+      "candidate_model": "MiniMax-M3",
+      "case_version": "0.1.0",
+      "case_content_hash": "f2825adba624953afd965ff16af722676924b74e9961b954d91dbca7342552cf",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-014",
+      "language": "zh-Hans",
+      "candidate_model": "gemini-3.5-flash-lite",
+      "case_version": "0.1.0",
+      "case_content_hash": "a144f9575e6c3e0e8c42f037f4649a47e814fab1586c8ccbe2d5817c237f1dc9",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-014",
+      "language": "zh-Hans",
+      "candidate_model": "gemini-3.8-flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "a144f9575e6c3e0e8c42f037f4649a47e814fab1586c8ccbe2d5817c237f1dc9",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-014",
+      "language": "zh-Hans",
+      "candidate_model": "MiniMax-M3.1-Flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "a144f9575e6c3e0e8c42f037f4649a47e814fab1586c8ccbe2d5817c237f1dc9",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-014",
+      "language": "zh-Hans",
+      "candidate_model": "MiniMax-M3",
+      "case_version": "0.1.0",
+      "case_content_hash": "a144f9575e6c3e0e8c42f037f4649a47e814fab1586c8ccbe2d5817c237f1dc9",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-013",
+      "language": "en",
+      "candidate_model": "gemini-3.5-flash-lite",
+      "case_version": "0.1.0",
+      "case_content_hash": "b9dbf36f340abf0c5a2a99e7e2e669bea6b159599c0779fcdf00ff5c7d787456",
+      "answer_stage_origins": {
+        "initial": "imported",
+        "update": "imported"
+      },
+      "comparative_review_hold": true
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-013",
+      "language": "en",
+      "candidate_model": "gemini-3.8-flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "b9dbf36f340abf0c5a2a99e7e2e669bea6b159599c0779fcdf00ff5c7d787456",
+      "answer_stage_origins": {
+        "initial": "imported",
+        "update": "imported"
+      },
+      "comparative_review_hold": true
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-013",
+      "language": "en",
+      "candidate_model": "MiniMax-M3.1-Flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "b9dbf36f340abf0c5a2a99e7e2e669bea6b159599c0779fcdf00ff5c7d787456",
+      "answer_stage_origins": {
+        "initial": "imported",
+        "update": "imported"
+      },
+      "comparative_review_hold": true
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-013",
+      "language": "en",
+      "candidate_model": "MiniMax-M3",
+      "case_version": "0.1.0",
+      "case_content_hash": "b9dbf36f340abf0c5a2a99e7e2e669bea6b159599c0779fcdf00ff5c7d787456",
+      "answer_stage_origins": {
+        "initial": "imported",
+        "update": "imported"
+      },
+      "comparative_review_hold": true
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-013",
+      "language": "zh-Hans",
+      "candidate_model": "gemini-3.5-flash-lite",
+      "case_version": "0.1.0",
+      "case_content_hash": "211194bf99130d70f7a8e07e91013be87940678fff324b9ce3b3aa40bef1ae0d",
+      "answer_stage_origins": {
+        "initial": "imported",
+        "update": "imported"
+      },
+      "comparative_review_hold": true
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-013",
+      "language": "zh-Hans",
+      "candidate_model": "gemini-3.8-flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "211194bf99130d70f7a8e07e91013be87940678fff324b9ce3b3aa40bef1ae0d",
+      "answer_stage_origins": {
+        "initial": "imported",
+        "update": "imported"
+      },
+      "comparative_review_hold": true
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-013",
+      "language": "zh-Hans",
+      "candidate_model": "MiniMax-M3.1-Flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "211194bf99130d70f7a8e07e91013be87940678fff324b9ce3b3aa40bef1ae0d",
+      "answer_stage_origins": {
+        "initial": "imported",
+        "update": "imported"
+      },
+      "comparative_review_hold": true
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-013",
+      "language": "zh-Hans",
+      "candidate_model": "MiniMax-M3",
+      "case_version": "0.1.0",
+      "case_content_hash": "211194bf99130d70f7a8e07e91013be87940678fff324b9ce3b3aa40bef1ae0d",
+      "answer_stage_origins": {
+        "initial": "imported",
+        "update": "imported"
+      },
+      "comparative_review_hold": true
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-014",
+      "language": "en",
+      "candidate_model": "gemini-3.5-flash-lite",
+      "case_version": "0.1.0",
+      "case_content_hash": "89f7e254b62eb33dce6f762f30dae6a9576e0b4df49b9de0a13b7079cd9c92b0",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-014",
+      "language": "en",
+      "candidate_model": "gemini-3.8-flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "89f7e254b62eb33dce6f762f30dae6a9576e0b4df49b9de0a13b7079cd9c92b0",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-014",
+      "language": "en",
+      "candidate_model": "MiniMax-M3.1-Flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "89f7e254b62eb33dce6f762f30dae6a9576e0b4df49b9de0a13b7079cd9c92b0",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-014",
+      "language": "en",
+      "candidate_model": "MiniMax-M3",
+      "case_version": "0.1.0",
+      "case_content_hash": "89f7e254b62eb33dce6f762f30dae6a9576e0b4df49b9de0a13b7079cd9c92b0",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-014",
+      "language": "zh-Hans",
+      "candidate_model": "gemini-3.5-flash-lite",
+      "case_version": "0.1.0",
+      "case_content_hash": "262dc0d158f107f68b7f5f4db67726ec2d68f7251f652b8838f294a3f2ec694b",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-014",
+      "language": "zh-Hans",
+      "candidate_model": "gemini-3.8-flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "262dc0d158f107f68b7f5f4db67726ec2d68f7251f652b8838f294a3f2ec694b",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-014",
+      "language": "zh-Hans",
+      "candidate_model": "MiniMax-M3.1-Flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "262dc0d158f107f68b7f5f4db67726ec2d68f7251f652b8838f294a3f2ec694b",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-014",
+      "language": "zh-Hans",
+      "candidate_model": "MiniMax-M3",
+      "case_version": "0.1.0",
+      "case_content_hash": "262dc0d158f107f68b7f5f4db67726ec2d68f7251f652b8838f294a3f2ec694b",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-020",
+      "language": "en",
+      "candidate_model": "gemini-3.5-flash-lite",
+      "case_version": "0.1.0",
+      "case_content_hash": "1a0f8865afd3b64b802645db10220797f59f5a96045f10823e39673cf528beff",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-020",
+      "language": "en",
+      "candidate_model": "gemini-3.8-flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "1a0f8865afd3b64b802645db10220797f59f5a96045f10823e39673cf528beff",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-020",
+      "language": "en",
+      "candidate_model": "MiniMax-M3.1-Flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "1a0f8865afd3b64b802645db10220797f59f5a96045f10823e39673cf528beff",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-020",
+      "language": "en",
+      "candidate_model": "MiniMax-M3",
+      "case_version": "0.1.0",
+      "case_content_hash": "1a0f8865afd3b64b802645db10220797f59f5a96045f10823e39673cf528beff",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-020",
+      "language": "zh-Hans",
+      "candidate_model": "gemini-3.5-flash-lite",
+      "case_version": "0.1.0",
+      "case_content_hash": "6aa819be64f5fc17f05459ddcddfa95020b021b3d2f76e42f009e6550278d522",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-020",
+      "language": "zh-Hans",
+      "candidate_model": "gemini-3.8-flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "6aa819be64f5fc17f05459ddcddfa95020b021b3d2f76e42f009e6550278d522",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-020",
+      "language": "zh-Hans",
+      "candidate_model": "MiniMax-M3.1-Flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "6aa819be64f5fc17f05459ddcddfa95020b021b3d2f76e42f009e6550278d522",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-020",
+      "language": "zh-Hans",
+      "candidate_model": "MiniMax-M3",
+      "case_version": "0.1.0",
+      "case_content_hash": "6aa819be64f5fc17f05459ddcddfa95020b021b3d2f76e42f009e6550278d522",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-022",
+      "language": "en",
+      "candidate_model": "gemini-3.5-flash-lite",
+      "case_version": "0.1.0",
+      "case_content_hash": "4f81dc17d90ffc8bc88e3adf0723ff6978db2466e365f278df46ead36d427517",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-022",
+      "language": "en",
+      "candidate_model": "gemini-3.8-flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "4f81dc17d90ffc8bc88e3adf0723ff6978db2466e365f278df46ead36d427517",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-022",
+      "language": "en",
+      "candidate_model": "MiniMax-M3.1-Flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "4f81dc17d90ffc8bc88e3adf0723ff6978db2466e365f278df46ead36d427517",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-022",
+      "language": "en",
+      "candidate_model": "MiniMax-M3",
+      "case_version": "0.1.0",
+      "case_content_hash": "4f81dc17d90ffc8bc88e3adf0723ff6978db2466e365f278df46ead36d427517",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-022",
+      "language": "zh-Hans",
+      "candidate_model": "gemini-3.5-flash-lite",
+      "case_version": "0.1.0",
+      "case_content_hash": "5429d2323eb55adf5cad8dc6a26a87c407d507fecc07a3aa228072f8bcd2ee39",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-022",
+      "language": "zh-Hans",
+      "candidate_model": "gemini-3.8-flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "5429d2323eb55adf5cad8dc6a26a87c407d507fecc07a3aa228072f8bcd2ee39",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-022",
+      "language": "zh-Hans",
+      "candidate_model": "MiniMax-M3.1-Flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "5429d2323eb55adf5cad8dc6a26a87c407d507fecc07a3aa228072f8bcd2ee39",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-REASON-022",
+      "language": "zh-Hans",
+      "candidate_model": "MiniMax-M3",
+      "case_version": "0.1.0",
+      "case_content_hash": "5429d2323eb55adf5cad8dc6a26a87c407d507fecc07a3aa228072f8bcd2ee39",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-019",
+      "language": "en",
+      "candidate_model": "gemini-3.5-flash-lite",
+      "case_version": "0.1.0",
+      "case_content_hash": "c0f65e37e64db97e5ef3263298e227e04b68a84fb644a0461fdc51ef71000ea9",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-019",
+      "language": "en",
+      "candidate_model": "gemini-3.8-flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "c0f65e37e64db97e5ef3263298e227e04b68a84fb644a0461fdc51ef71000ea9",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-019",
+      "language": "en",
+      "candidate_model": "MiniMax-M3.1-Flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "c0f65e37e64db97e5ef3263298e227e04b68a84fb644a0461fdc51ef71000ea9",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-019",
+      "language": "en",
+      "candidate_model": "MiniMax-M3",
+      "case_version": "0.1.0",
+      "case_content_hash": "c0f65e37e64db97e5ef3263298e227e04b68a84fb644a0461fdc51ef71000ea9",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-019",
+      "language": "zh-Hans",
+      "candidate_model": "gemini-3.5-flash-lite",
+      "case_version": "0.1.0",
+      "case_content_hash": "0f1b820286a5cd3f2d0a2f3ac5e8c0b580185d8eb90913a97067b1871d9df735",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-019",
+      "language": "zh-Hans",
+      "candidate_model": "gemini-3.8-flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "0f1b820286a5cd3f2d0a2f3ac5e8c0b580185d8eb90913a97067b1871d9df735",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-019",
+      "language": "zh-Hans",
+      "candidate_model": "MiniMax-M3.1-Flash",
+      "case_version": "0.1.0",
+      "case_content_hash": "0f1b820286a5cd3f2d0a2f3ac5e8c0b580185d8eb90913a97067b1871d9df735",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-019",
+      "language": "zh-Hans",
+      "candidate_model": "MiniMax-M3",
+      "case_version": "0.1.0",
+      "case_content_hash": "0f1b820286a5cd3f2d0a2f3ac5e8c0b580185d8eb90913a97067b1871d9df735",
+      "answer_stage_origins": {
+        "initial": "new",
+        "update": "new"
+      },
+      "comparative_review_hold": false
+    }
+  ],
+  "numeric_scores": false,
+  "clinical_validation": false,
+  "new_cases": 0,
+  "remaining": [
+    "versioned decision on disputed criteria and uniform prospective judge policy",
+    "durable mixed-run capture/replay and fresh freeze",
+    "current pricing verification, new spending policy and explicit paid-call approval"
+  ]
+}

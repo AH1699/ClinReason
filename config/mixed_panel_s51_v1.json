@@ -1,0 +1,35 @@
+{
+  "version": "s51-mixed-panel-offline-v1",
+  "status": "offline_design_not_live_protocol",
+  "families": ["HC-MT-TRIAGE-019", "HC-MT-TRIAGE-020", "HC-MT-REASON-015", "HC-MT-REASON-014", "HC-MT-MEDSAFE-013", "HC-MT-MEDSAFE-014", "HC-MT-REASON-020", "HC-MT-REASON-022", "HC-MT-MEDSAFE-019"],
+  "languages": ["en", "zh-Hans"],
+  "candidate_models": ["gemini-3.5-flash-lite", "gemini-3.8-flash", "MiniMax-M3.1-Flash", "MiniMax-M3"],
+  "judge_models": ["gemini-3.8-flash"],
+  "source_pins_from": "config/judge_saved_bank_s48_v1.json",
+  "imported_answer_stages": 16,
+  "expected_conversations": 72,
+  "new_candidate_stages": 128,
+  "control_judgments": 36,
+  "first_development_judgments": 144,
+  "repeat_development_judgments": 144,
+  "proposed_new_requests": 452,
+  "live_call_allowance": 0,
+  "live_budget_usd": null,
+  "automatic_retries": 0,
+  "resume_allowed": false,
+  "judge_draft": {
+    "instruction_schema": "s47_observation_completeness",
+    "max_output_tokens": 32768,
+    "thinking_level": "medium",
+    "sampling": "provider_defaults_unpinned",
+    "status": "offline_draft_pending_prospective_decision"
+  },
+  "review_holds": {
+    "HC-MT-MEDSAFE-013": {
+      "initial": {"2": ["H137"]},
+      "update": {"3": ["H136", "H140"]},
+      "additional_advice": ["H141"],
+      "comparative_claims": "held_no_cell_removal_or_reweighting"
+    }
+  }
+}

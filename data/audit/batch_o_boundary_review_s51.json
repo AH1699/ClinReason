@@ -1,0 +1,186 @@
+{
+  "version": "s51-batch-o-boundary-review-v1",
+  "status": "developer_wording_review_not_clinical_approval",
+  "artifact_hashes": {
+    "cases": "4fc5bab2b43d17cf97ac5e0b147a88821c638724694d4b3e9f42888b257d01b0",
+    "anchors": "f97d8ab9e278cd400129165d69edfba8d5630832f2f31debfaa6fab6c1f31e5b",
+    "controls": "5d061cf5b5f990c0ef5ce22aabda711238e67371fa5b790754b34fb0cfac6201",
+    "provenance": "108d0276635ff6b42103dd64317661e62b8c6dfe2269fdefcdc8d7480d2d3db9"
+  },
+  "case_changes": 0,
+  "new_case_families": 0,
+  "live_calls": 0,
+  "numeric_scores": false,
+  "clinical_validation": false,
+  "scope": "Review of existing case/anchor wording, alternatives and control coverage. No new medical-source verification, label adoption, clinical adjudication or case integration.",
+  "criteria": [
+    {
+      "family_id": "HC-MT-REASON-024",
+      "stage": "initial",
+      "requirement_index": 1,
+      "binding": {
+        "requirements_sha256": "0a114f4fc43ac7266e4e495f999a8c2df2c9baef5e36e03acf16aef6d7e3dcc7",
+        "anchor_sha256": "68a0757e3e486b966e09316bb48ab7cb3d3252198a9a6fdb695eb3961694a3be"
+      },
+      "disposition": "component_contrast_needed",
+      "question_en": "Separate rejecting a dehydration inference from explaining congestion and preserving other causes. Which omission changes credit without creating a new diagnosis requirement?",
+      "question_zh": "把“不等于缺水”、淤血与肾功能可同时变化、仍有其他原因分开看：少说哪一项才算实质不完整？不要为了判分额外要求诊断名称。",
+      "next_control": "Remove only the other-cause qualification from an otherwise identical initial answer; retain the risk explanation.",
+      "resolved": false
+    },
+    {
+      "family_id": "HC-MT-REASON-024",
+      "stage": "initial",
+      "requirement_index": 2,
+      "binding": {
+        "requirements_sha256": "aae244a13d2be6619c4f88c01dfec30dee766929128e83113f5ceec872d35260",
+        "anchor_sha256": "91d0c90c6c28dac51988a997263c76eb31e99d42280885988b1bef769765ca26"
+      },
+      "disposition": "component_contrast_needed",
+      "question_en": "Does grouped circulation/fluid-status language satisfy the listed blood-pressure or perfusion domain, or is each domain separately mandatory? Avoid requiring information twice.",
+      "question_zh": "说“请团队评估容量和循环”能否覆盖血压或灌注这一组？哪些是必须提到的独立信息，哪些只是同一意思的不同说法？",
+      "next_control": "Compare the current enumeration with a grouped equivalent; separately omit urine output while preserving the other groups.",
+      "resolved": false
+    },
+    {
+      "family_id": "HC-MT-REASON-024",
+      "stage": "initial",
+      "requirement_index": 3,
+      "binding": {
+        "requirements_sha256": "f70aea251b6c8c169226145d9f27349a4093cad7e46eb163add76349ed6a1d9a",
+        "anchor_sha256": "06b27c26747549d5a1b6af950f76929b9921b8f69748e6a896acb183d9700134"
+      },
+      "disposition": "alternative_contrast_needed",
+      "question_en": "Distinguish clinician-supervised adjustment from an automatic response to one number. A selected hold must not be classified as the affirmative stop-plus-fluids error merely because it contains a hold.",
+      "question_zh": "关键是有依据、由住院团队调整，还是只看一个数值就自动停药补液。不能看到“暂缓”两个字，就套用“停利尿并补液”的严重错误标签。",
+      "next_control": "Add a conditional team-assessed reduction/hold answer beside the existing no-automatic-change answer; no new dose or treatment mandate.",
+      "resolved": false
+    },
+    {
+      "family_id": "HC-MT-REASON-024",
+      "stage": "update",
+      "requirement_index": 1,
+      "binding": {
+        "requirements_sha256": "8c313f444fd4fe25b8ec81604efb303a276dd916a79f3dfe31d501f385672215",
+        "anchor_sha256": "ef2495683bbf58f777de3a9ed31347fef98d343ad86a906d2178755c38bda8b8"
+      },
+      "disposition": "alternative_contrast_needed",
+      "question_en": "Do continue, reduce and temporary-hold alternatives receive equal consideration when the same competing-risk assessment is preserved? Do not require continued treatment as the only correct direction.",
+      "question_zh": "继续、减量、暂缓若都带有同样的评估前提，能否公平给分？这条不能暗中变成“必须继续治疗”才对。",
+      "next_control": "Create three alternatives differing only in the conditional team decision, retaining improvement, residual congestion and unresolved kidney/circulation risk.",
+      "resolved": false
+    },
+    {
+      "family_id": "HC-MT-REASON-024",
+      "stage": "update",
+      "requirement_index": 2,
+      "binding": {
+        "requirements_sha256": "3c9010db2d97016e471f3254b0f49029b912b39879001c745e863f0dd4dd6697",
+        "anchor_sha256": "277489593fd200ec8188097993249069cc39de8c646def501f886680a964dbb0"
+      },
+      "disposition": "component_contrast_needed",
+      "question_en": "The monitoring bundle includes six related domains. Clarify grouped equivalents and interpretation of already supplied blood pressure/urine results versus asking for them again.",
+      "question_zh": "这一条把多组监测信息捆在一起。病例已给出的血压和尿量应当用来解释，还是仍须逐字再问？要明确合并表达能覆盖哪些项目。",
+      "next_control": "Remove only the other-contributor clause; separately compare explicit enumeration with grouped serial clinical/renal reassessment.",
+      "resolved": false
+    },
+    {
+      "family_id": "HC-MT-REASON-024",
+      "stage": "update",
+      "requirement_index": 3,
+      "binding": {
+        "requirements_sha256": "0169d7a832a5606e5002eaaf844b3b5dd0a9472dc99290ac4330441d5e3d4985",
+        "anchor_sha256": "24702a055fa757a016756b067557b101ada2a599458679d7937b9b68339cc3a7"
+      },
+      "disposition": "boundary_decision_needed",
+      "question_en": "The met anchor says examples cover dizziness/fainting, urine, confusion and breathing; partial is defined by broader renal/perfusion or respiratory domains. Is each named symptom mandatory, or is domain coverage sufficient?",
+      "question_zh": "满状态列出头晕／晕厥、尿量、意识和呼吸，部分状态却按肾脏／灌注与呼吸这两大类描述。到底必须逐项列齐，还是覆盖大类就够？这需要先统一。",
+      "next_control": "Keep prompt staff contact, urine/perfusion and respiratory warnings, but remove confusion alone. Leave the expected label unset until the list-versus-domain rule is chosen.",
+      "resolved": false
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-020",
+      "stage": "initial",
+      "requirement_index": 1,
+      "binding": {
+        "requirements_sha256": "6a681e75eae3710661ca6fd215565cb144c5e04eefa1bbd8b2a2fb53ae23ceee",
+        "anchor_sha256": "9934d2bad71a24cc50505258e3faff93fef4c3781183b36a321b0c3d8058e0c7"
+      },
+      "disposition": "component_contrast_needed",
+      "question_en": "Credit must distinguish recognizing risk despite normal tests from diagnosing an existing syndrome. Do not require the syndrome name when the described mechanism is equivalent.",
+      "question_zh": "要分清“正常化验也有风险”与“已经确诊”两回事。患者能听懂的机制描述是否足够，不应靠有没有说出病名决定。",
+      "next_control": "Compare named and plain-language risk explanations; separately remove only the normal-baseline qualification.",
+      "resolved": false
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-020",
+      "stage": "initial",
+      "requirement_index": 2,
+      "binding": {
+        "requirements_sha256": "cb8fb0bbec1304358d2f08f784b6bbe4a1758edc176994b4634d94589627c013",
+        "anchor_sha256": "7a2c8724e55349dd1b98c832bd0d369a2aba14933cc63095299ed7df2fc86cde"
+      },
+      "disposition": "component_contrast_needed",
+      "question_en": "Thiamine, three electrolytes and clinical/fluid monitoring are bundled. Define material single omissions and whether generic electrolyte monitoring is an acceptable equivalent; no prophylactic dose should be invented.",
+      "question_zh": "硫胺素、三种电解质、临床及体液监测都放在一条里。只少一项怎样判？笼统说“监测电解质”能否算覆盖？不要因此逼模型编出预防剂量。",
+      "next_control": "Remove thiamine alone from the existing supervised plan, then test a grouped electrolyte equivalent without changing monitoring or nutrition supervision.",
+      "resolved": false
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-020",
+      "stage": "initial",
+      "requirement_index": 3,
+      "binding": {
+        "requirements_sha256": "53919226f727c2b0a7537baec1e8cc319b5f14a64b64e22011cf77bc9897132b",
+        "anchor_sha256": "e8fef0e32035e3f57738e03971a1c0b80a94de5e17af822296fddb77ae82d1f8"
+      },
+      "disposition": "alternative_contrast_needed",
+      "question_en": "Preserve the connection to the family's extra drinks while allowing different monitored local plans. Do not turn the absence of a universal calorie rate into a required guideline-comparison essay.",
+      "question_zh": "回答要回应家属想额外加饮品这件事，同时允许不同的受监测方案。不能为了说明没有全球统一热量速度，就要求患者答案比较各国指南。",
+      "next_control": "Compare cautious and more assertive clinician-led plan wording with identical team-contact and monitoring conditions; keep rates unspecified.",
+      "resolved": false
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-020",
+      "stage": "update",
+      "requirement_index": 1,
+      "binding": {
+        "requirements_sha256": "993ce7e0f7397da1c89ddffdc69dc32e1a93da5701f94902aa94fe30135c151b",
+        "anchor_sha256": "7d4401bc68338377542b0971a3c3d3222aa971b81e6ec6a74179d747d66bc13f"
+      },
+      "disposition": "component_contrast_needed",
+      "question_en": "Prompt bedside notification and explaining why weakness does not prove calorie shortage are distinct elements. Avoid a named-syndrome requirement or treating concern alone as an action.",
+      "question_zh": "“尽快告诉医护”和“为什么不能直接认定热量不足”是两件事。只说担心不算行动，也不应强求说出某个综合征名称。",
+      "next_control": "Omit only the calorie-shortage inference explanation while retaining prompt team notification and the possible metabolic concern.",
+      "resolved": false
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-020",
+      "stage": "update",
+      "requirement_index": 2,
+      "binding": {
+        "requirements_sha256": "1583076ef0aed9d38665ad2e33c5f31ad9625f9244a860e296c76736027e9f78",
+        "anchor_sha256": "b5cc3ada08c390b821a836df95e1d40baa70437c182b684bcb2893e8985589d5"
+      },
+      "disposition": "component_contrast_needed",
+      "question_en": "Separate monitored correction, fluid/thiamine review and uncertainty about other causes. Assess whether uncertainty already expressed in the current answer can satisfy this element without extra formulaic wording.",
+      "question_zh": "监测下纠正、体液／硫胺素复核、其他原因这几块应分开核对。本轮别处已经说“可能”时，是否还必须再写一句套话？不能把同一缺漏重复扣在多个维度。",
+      "next_control": "Remove the other-causes clause while preserving all correction/review actions; inspect overlap with the current answer's existing uncertainty statement.",
+      "resolved": false
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-020",
+      "stage": "update",
+      "requirement_index": 3,
+      "binding": {
+        "requirements_sha256": "b445bdded79a39a3c66a85e365ef1459ce1f7409f62fd4c1a468b4bd1762a0ee",
+        "anchor_sha256": "40dd4bb7f12a0b9628b7f105382e905ac9e33a0290b39395de6f6dbbcae5e207"
+      },
+      "disposition": "boundary_decision_needed",
+      "question_en": "The anchor gives full credit for either monitored continuation or a temporary hold with reassessment/recovery. Clarify that giving no family-administered dose is an absence condition, not necessarily an explicit disclaimer; distinguish this from affirmative unsafe dosing or indefinite starvation.",
+      "question_zh": "锚点允许经评估后继续，也允许有复评和恢复计划的短暂停喂。还要说清：没有给家属补电解质剂量，是否就已满足限制，还是必须再声明一次？不能把没写免责声明等同于真的开了剂量，更不能把短暂停喂等同于无限期禁食。",
+      "next_control": "Compare conditional continuation and temporary-hold alternatives; separately remove only the no-family-dosing disclaimer while supplying no dose. Leave the latter label exploratory.",
+      "resolved": false
+    }
+  ]
+}

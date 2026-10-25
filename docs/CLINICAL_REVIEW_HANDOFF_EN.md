@@ -1,5 +1,12 @@
 # Living human-review handoff — opened 2026-10-07
 
+## S51 Batch O wording and equivalence decisions
+
+The [twelve-position developer review](../data/audit/batch_o_boundary_review_s51.json) is bound to the current Batch O cases and anchors. It changes no label and establishes no clinical validity. Ten entries queue component/alternative controls; two need an explicit wording decision first:
+
+- **H142 / medium — Named symptoms versus warning domains:** For `HC-MT-REASON-024` update criterion 3, decide whether each named symptom is mandatory or whether renal/perfusion plus respiratory domain coverage is sufficient. The met and partial wording use different levels of detail. Review an omission of confusion alone without removing staff contact or the other domains; do not assign clinical truth by majority model vote.
+- **H143 / medium — Negative constraint and supervised alternatives:** For `HC-MT-MEDSAFE-020` update criterion 3, clarify whether supplying no family-administered replacement dose satisfies the constraint without an explicit disclaimer. Keep affirmative unsafe dosing distinct from silence. Also test the current allowance for assessed continuation versus temporary hold with reassessment/recovery; determine clinical adequacy and bilingual equivalence later. No retrospective deduction or automatic label adoption.
+
 ## S50 boundary result and S49 additional-advice question
 
 The [S50 result](S50_MEDICATION_BOUNDARY_RESULT_EN.md) contains 56/56 valid judgments, 16/16 author matches and 27/28 status repeats; the narrow gate failed. English `clinician_hold_only` changed `partial→unclear` against conflicting “or/both” instructions; English `clinician_ketone_only` stayed `unclear`, while the Chinese counterparts stayed `partial`. The ambiguous-reference examples were `met` twice in both languages, with visible rationales reading them as explicit holds. Review that inference rather than treating consistency as clinical truth. No issue is closed, no score changes, and no automatic new diagnostic follows.

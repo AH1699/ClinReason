@@ -2,7 +2,7 @@
 
 This is a planning handoff after the S45/S46 workflow pilot, not another paid run or permission to use an earlier experiment's remaining allowance. The immediate prerequisite is a completed control gate and an audit of any missing or rejected judgments. A failing gate must be investigated without weakening acceptance rules just to obtain scores.
 
-Current checkpoint: [S50 is complete](S50_MEDICATION_BOUNDARY_RESULT_EN.md), with 56 valid judgments, 16/16 author matches and 27/28 exact status repeats. Its gate failed because an English one-component initial plan changed from `partial` to `unclear` against conflicting “or/both” instructions. The bounded trial is closed, not awaiting a retry. S49's separate 88.33 and S48's seven of eight scores remain unchanged. Keep `MEDSAFE-013` review-held for comparative claims under current labels; retain it in the fixed manifest, with no silent exclusion or reweighting. H136/H137/H140/H141 stay open. **Offline mixed-scheduler implementation and case authoring are next**. Before paid comparison, freeze a uniform judging policy and explicit disputed-item treatment, without score fitting. S49/S50 approvals are consumed; the broader run needs its own budget and authorization.
+Current checkpoint: [S51's offline schedule and supplied-response rehearsal are implemented](S51_MIXED_PANEL_OFFLINE_EN.md). All 16 saved stages are verified for import; 128 generation jobs and all 72 conversation cells are retained. There is no live-run command or durable mixed-run capture/replay yet. [S50](S50_MEDICATION_BOUNDARY_RESULT_EN.md) remains closed with 16/16 author matches but 27/28 repeats and a failed gate. S48/S49 scores remain unchanged. Keep `MEDSAFE-013` review-held, with no silent exclusion or reweighting. Next add durable capture/replay and Batch O's separate-version controls. Before paid comparison, freeze a uniform judging policy and explicit disputed-item treatment, reverify prices and obtain a fresh budget/authorization.
 
 ## Fixed case selection
 
@@ -20,20 +20,20 @@ All IDs have the `HC-MT-` prefix. These are author-defined strata, not empirical
 
 Use the same four working Gemini/MiniMax candidates and Gemini 3.8 Flash judge for a provisional continuity panel; leave Grok unavailable rather than assigning it a clinical zero. Preserve both languages and two turns: **72 conversations / 144 candidate turns** across nine families.
 
-Reuse the exact 16 S45/S46 saved candidate turns if all case, prompt, model and response bindings remain compatible; obtain only the other 128. This requires a **new mixed import/generation scheduler**: the frozen S45 runner supports whole-bank judge-only import or new generation, and S46 is deliberately restricted to one fixed suffix. Neither currently implements this broader mixed panel. Add offline tests for exact-bank provenance, no duplicate calls, follow-up history, fixed denominators and inherited cost tracking before freezing a new experiment.
+S51 has verified the exact 16 S45/S46 saved candidate turns against raw captures and current candidate-request bindings; only the other 128 are generation jobs. Its new mixed scheduler is separate from frozen S45 (whole-bank import or all-new generation) and S46 (one fixed suffix). Offline tests cover exact-bank compatibility, no duplicate generation, follow-up history, fixed denominators and inherited usage/stop handling. Durable per-job capture/replay, a future judging contract and a fresh protocol freeze remain prerequisites to live execution.
 
 A proposed complete schedule is 128 new candidate turns + 36 judge controls + 144 first-pass stage judgments + 144 repeated stage judgments = **452 new requests**. This is a request-count proposal, not a budget or live authorization. Rejudge the one-family pilot answers under the new panel's declared judging protocol; retain pilot scores separately. Run repeats against identical saved packets and report them separately rather than averaging away disagreement. Set the new spending policy and obtain a fresh bounded authorization before any calls.
 
-## Next offline engineering deliverable
+## Offline implementation status and remaining engineering
 
-Implement this as a new version; do not edit the frozen S45/S46 runners or their historical banks.
+The new [S51 module](../scripts/mixed_panel_s51.py) leaves frozen S45/S46 and their banks untouched. These four offline checks are implemented:
 
 1. Build the complete 72-conversation manifest first. Bind each of the 16 imported stages to its saved request, raw response, model identity, case version and answer hash. Reject incompatible or duplicate imports instead of quietly regenerating them.
 2. Produce a dry-run schedule with exactly 128 generation jobs. Each update uses its own verified initial answer and matching user follow-up; no missing initial stage may be replaced with a different model's answer.
 3. Add the 36 controls, 144 first judgments and 144 identical-payload repeats. Test missing-stage handling, closed provider lanes, unknown usage, stop thresholds and no dispatch after a stop. Keep all 72 conversation cells in reporting, including missing and review-held ones.
 4. Export an offline readiness report. Before a live freeze, declare one judging policy for the panel, the treatment of disputed medication criteria and a new budget. The proposed 452-request schedule is still not authorized.
 
-This is the next implementation task, not a claim that mixed scheduling is already available. It can proceed while the medication-label decisions are documented separately.
+S51 supplies the manifest, schedule, verified import and in-memory failure/repeat rehearsal above. The next engineering deliverable is durable per-job capture and independent replay, including interruption handling and proof that stopped work cannot resume. These are not yet implemented for the mixed panel. The medication-label decision and a new live authorization remain separate.
 
 ## What the readout must answer
 
@@ -46,4 +46,4 @@ The desired lower-tier 60–70, average around 80 and premium around 90 remain d
 
 ## Case expansion alongside testing
 
-[Batch O](BATCH_O_STANDALONE_EN.md) supplies two harder public-report-informed drafts, with exact-case anchors and strong/partial/unsafe answer examples. They stay outside this fixed nine-family panel and the registered 125/250 portfolio until explicitly integrated into a new version. Next inspect acceptable alternatives, bundled requirements and EN/ZH equivalence, then test their authored contrasts in a separately declared development batch. Expert review remains deferred, never waived for release. Xi'an remains local and is not yet a cleared test case.
+[Batch O](BATCH_O_STANDALONE_EN.md) supplies two intended harder public-report-informed drafts, with exact-case anchors and strong/partial/unsafe answer examples. They stay outside this fixed panel and the registered 125/250 portfolio. S51 reviewed all twelve criterion positions and queued two wording decisions (H142/H143) plus ten component/alternative control tasks. Next write separate-version wording and bilingual controls, then select a distinct new coverage mechanism. Intended difficulty is still unmeasured. Expert review remains deferred, never waived for release; Xi'an remains local and uncleared for testing.
