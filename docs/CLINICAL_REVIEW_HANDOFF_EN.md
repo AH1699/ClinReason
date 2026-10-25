@@ -1,5 +1,13 @@
 # Living human-review handoff — opened 2026-10-07
 
+## S45 and standalone Batch O — later review
+
+- **H133 / medium — Independent execution and single-judge interpretation:** Review the [S45 workflow](S45_INDEPENDENT_WORKFLOW_EN.md), including separate judge gates, saved-answer reuse, fixed missing-cell denominators and Gemini self-judging. A 36-record gate is not evidence that the earlier two-judge gate passed. Check what can be learned from one bilingual family and four selected models before a wider panel; provider exclusion is based on access, not observed scores. No score-band fitting or completed calibration is implied.
+- **H134 / high — Heart-failure/renal trade-off:** Cardiology, nephrology and bilingual reviewers should inspect `HC-MT-REASON-024` in [Batch O](BATCH_O_STANDALONE_EN.md). Resolve the synthetic renal trajectory, residual congestion/perfusion evidence, acceptable team-directed continuation/reduction/hold alternatives, bundled monitoring requirements, inpatient warning signs and severity-2 boundaries. The source recommendation about mild renal change does not establish that this particular fictional change is harmless. Compare overlap with existing renal-trend families before assigning future splits.
+- **H135 / high — Refeeding versus underfeeding:** Nutrition, acute medicine, pharmacy and bilingual reviewers should inspect `HC-MT-MEDSAFE-020` and its [source-to-requirement ledger](../data/multiturn/batch_o_provenance.json). Check risk despite normal baseline electrolytes, the new symptomatic multi-electrolyte decline, competing causes, thiamine/monitoring requirements and severity-3 escalation versus severity-2 indefinite-starvation errors. Resolve differing guideline approaches without imposing a universal calorie rate or mandatory feed cessation. The linked ASPEN erratum remains unchecked. Clinical plausibility, exact boundary independence and language equivalence are unapproved.
+
+These are queued questions, not prerequisites for the authorized provisional engineering work. Expert review remains deferred; both O families stay standalone, unscored drafts outside the registered portfolio and frozen pilot.
+
 ## S42 later methods-review question H132
 
 S44 adds a single parameter-omitted diagnostic: removing only the output cap still produced the identical 403. This is technical evidence, not a new clinical score or justification for dropping the case. The new request ID is in the private, unsent support note.

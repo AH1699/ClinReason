@@ -1,0 +1,178 @@
+{
+  "schema_version": "0.1.0",
+  "status": "author_draft_pending_independent_clinical_language_and_methods_review",
+  "split": "standalone_public_authoring_draft_not_default_development_calibration_or_gold",
+  "checked_on": "2026-10-25",
+  "reuse_policy": "Two published actual case reports supplied reasoning mechanisms. The patient chats, numbers, chronology and answers are original synthetic material. No report text, images, actual-patient combinations, purchased question or Xi'an record is reproduced. No patient reconstruction is claimed.",
+  "language_note": "Chinese was composed as a natural family conversation and checked against the English facts. The inherited machine_translation_unreviewed flag records absent professional language validation; it is not a claim that machine translation was used.",
+  "access_notes": [
+    "The heart-failure report's full PMC text and the AHA official guideline landing page/slide set were opened. Recommendation tables on congestion/perfusion, continuation and decongestion were read as text. Browser PDF screenshots returned no image through the tool, so visual layout inspection is not claimed.",
+    "The nutrition report's PubMed abstract, publisher full PDF and indexed full PMC text were read. Some direct PMC opens returned a browser challenge; no challenge was bypassed.",
+    "AuSPEN's official 2025 resource page and complete consensus PDF, plus ASPEN's publisher full text, were read. ASPEN links an erratum that could not be opened; no dosing or corrected table transcription is imported. This limitation requires later source review.",
+    "NICE CG32 direct HTML/PDF opens returned 403. Indexed snippets suggest differing feeding conventions, but unseen NICE full text is not a verified source for these labels.",
+    "Two other nutrition reports (PMC5624659 and PMC7871053) were rejected as adaptation sources because their displayed licenses are CC BY-NC. Neither patient narrative nor numerical course is reused.",
+    "This is a bounded evidence check, not a complete current-guideline, correction/retraction, rights or privacy clearance. Recheck article status and exact versions before external clinical use."
+  ],
+  "records": [
+    {
+      "family_id": "HC-MT-REASON-024",
+      "source_group": "PUBLIC-PM-O-CARDIORENAL-001",
+      "report": {
+        "title": "Congestive Nephropathy: A Neglected Entity in Heart Failure",
+        "authors": "Avci M, Avci Merdin F, Guven Avci E",
+        "publication_date": "2025-10-09",
+        "pmid": "41079490",
+        "pmcid": "PMC12510399",
+        "doi": "10.7759/cureus.94211",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12510399/",
+        "license": "CC BY 4.0",
+        "license_evidence": "The opened article's copyright/license section explicitly identifies CC BY 4.0.",
+        "consent_status": "publication consent obtained or waived; specific individual status not resolved",
+        "status_check": "No correction/retraction banner found in the opened record; complete formal status check remains pending before release."
+      },
+      "inspiration_scope": "The report illustrates how renal impairment and congestion can coexist and how an unsupported dehydration assumption may misdirect care. The new case instead tests a fictional monitored decongestion course and asks for balanced review. No original age, comorbidity combination, values, timeline, intervention or outcome is reused.",
+      "supporting_sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12510399/",
+        "https://professional.heart.org/en/science-news/2022-guideline-for-the-management-of-heart-failure",
+        "https://www.heart.org/-/media/832EA0F4E73948848612F228F7FA2D35.pdf"
+      ],
+      "requirement_support": [
+        {
+          "stage": "initial",
+          "index": 1,
+          "guidance_url": "https://www.heart.org/-/media/832EA0F4E73948848612F228F7FA2D35.pdf",
+          "source_locator": "PDF page 139: Assessment of Patients Hospitalized With Decompensated HF; corroborating case report Discussion",
+          "basis": "Assess congestion/perfusion together. Applying this to reject dehydration from one creatinine is an author inference, not a source-provided diagnosis."
+        },
+        {
+          "stage": "initial",
+          "index": 2,
+          "guidance_url": "https://www.heart.org/-/media/832EA0F4E73948848612F228F7FA2D35.pdf",
+          "source_locator": "PDF page 139: assessment recommendations; page 148: shock clinical criteria",
+          "basis": "Clinical trajectory and perfusion assessment inform therapy. The exact family-facing information bundle is author-selected."
+        },
+        {
+          "stage": "initial",
+          "index": 3,
+          "guidance_url": "https://www.heart.org/-/media/832EA0F4E73948848612F228F7FA2D35.pdf",
+          "source_locator": "PDF pages 141–142: maintenance and decongestion recommendations",
+          "basis": "Treatment decisions depend on assessment rather than automatic discontinuation for mild renal change. Family supervision/no automatic fluids is the patient-facing application."
+        },
+        {
+          "stage": "update",
+          "index": 1,
+          "guidance_url": "https://www.heart.org/-/media/832EA0F4E73948848612F228F7FA2D35.pdf",
+          "source_locator": "PDF pages 141–142: renal/BP change and remaining congestion",
+          "basis": "Supports evaluating continued decongestion alongside renal change. Does not prove the synthetic rise is benign or rule out acute kidney injury."
+        },
+        {
+          "stage": "update",
+          "index": 2,
+          "guidance_url": "https://www.heart.org/-/media/832EA0F4E73948848612F228F7FA2D35.pdf",
+          "source_locator": "PDF page 139: trajectory, perfusion and reversible factors; page 142: treatment titration",
+          "basis": "Supports serial clinical reassessment; exact monitoring/alternative-cause coverage and credit are author choices."
+        },
+        {
+          "stage": "update",
+          "index": 3,
+          "guidance_url": "https://www.heart.org/-/media/832EA0F4E73948848612F228F7FA2D35.pdf",
+          "source_locator": "PDF page 148: poor-perfusion clinical features; page 139: congestion assessment",
+          "basis": "Warning domains support asking for prompt bedside review. The selected symptom list is not a universally validated lay triage rule."
+        }
+      ],
+      "critical_error_basis": "Severity 2 and the affirmative-action thresholds are provisional author decisions. A context-supported clinical dose reduction/hold or fluid intervention is not prohibited. No numeric score is keyed.",
+      "privacy_and_leakage_check": "Synthetic family, changed clinical task and no published patient attributes/images. Public mechanism/report may be in training data. Not hidden Gold. No claim of de-identifying a source patient.",
+      "related_families": [
+        {"family_id": "HC-MT-REASON-006", "relationship": "shared renal-trend interpretation, distinct congestion/perfusion decision", "future_split_together": true},
+        {"family_id": "HC-PRO-KIDNEY-001", "relationship": "related renal-evidence construct, different persona/chronicity question", "future_split_together": true}
+      ],
+      "review_questions": [
+        "Are the renal timeline, residual congestion and stable perfusion sufficiently explicit without predetermining treatment?",
+        "Does the monitoring/safety-net bundle overcount one construct or demand too much detail for a family conversation?",
+        "Which clinician-supported reduction/hold/fluid alternatives should earn full credit?",
+        "Check severity, EN/ZH equivalence and independence from existing renal-trend items."
+      ]
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-020",
+      "source_group": "PUBLIC-PM-O-REFEEDING-002",
+      "report": {
+        "title": "When Two Syndromes Collide: Managing Fanconi and Refeeding Syndrome in a Single Patient",
+        "authors": "Gallegos Koyner FJ, Barrera N, Subedi P, Shrestha K, Cerrud-Rodriguez R",
+        "publication_date": "2024-01-12",
+        "pmid": "38344551",
+        "pmcid": "PMC10859126",
+        "doi": "10.7759/cureus.52169",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10859126/",
+        "publisher_pdf": "https://www.cureus.com/articles/205890-when-two-syndromes-collide-managing-fanconi-and-refeeding-syndrome-in-a-single-patient.pdf",
+        "license": "CC BY 4.0",
+        "license_evidence": "Publisher PDF page 1 and indexed PMC copyright section explicitly identify CC BY 4.0.",
+        "consent_status": "consent obtained or waived; specific individual publication-consent status not resolved",
+        "status_check": "PubMed identity and publisher article checked; complete correction/retraction and individual-consent verification remains pending. The 2023 CHEST abstract is the same report source group, not a second independent case."
+      },
+      "inspiration_scope": "The actual report highlights concurrent nutrition-related and other electrolyte mechanisms. The synthetic family uses a different, unspecified adult, new nutrition history and new values. The report's HIV, antiretroviral exposure, renal-wasting evidence, exact chronology, invasive procedures and fatal outcome are not reused; Fanconi syndrome or a drug cause is not an expected answer.",
+      "supporting_sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/38344551/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10859126/",
+        "https://www.auspen.org.au/resources-3/2025/5/28/-auspen-consensus-statements-on-refeeding-syndrome",
+        "https://static1.squarespace.com/static/5a963e1a1137a60b45455f0c/t/68366c5a6b553145a61b8c85/1748397150638/AuSPEN%2BConsensus%2Bstatements%2Bon%2Brefeeding%2Bsyndrome.pdf",
+        "https://aspenjournals.onlinelibrary.wiley.com/doi/10.1002/ncp.10474"
+      ],
+      "requirement_support": [
+        {
+          "stage": "initial",
+          "index": 1,
+          "guidance_url": "https://aspenjournals.onlinelibrary.wiley.com/doi/10.1002/ncp.10474",
+          "source_locator": "Adult risk Table 3 and its normal-electrolyte footnote; corroborating AuSPEN 2025 section 3.2",
+          "basis": "Nutritional history can confer risk with normal circulating electrolytes. This fictional history is not a diagnosed syndrome."
+        },
+        {
+          "stage": "initial",
+          "index": 2,
+          "guidance_url": "https://static1.squarespace.com/static/5a963e1a1137a60b45455f0c/t/68366c5a6b553145a61b8c85/1748397150638/AuSPEN%2BConsensus%2Bstatements%2Bon%2Brefeeding%2Bsyndrome.pdf",
+          "source_locator": "Sections 3.1, 3.4 and 3.6; corroborating ASPEN Table 6",
+          "basis": "Team care, thiamine and serial biochemical/clinical surveillance are supported; exact grouping and partial-credit boundaries are authored."
+        },
+        {
+          "stage": "initial",
+          "index": 3,
+          "guidance_url": "https://static1.squarespace.com/static/5a963e1a1137a60b45455f0c/t/68366c5a6b553145a61b8c85/1748397150638/AuSPEN%2BConsensus%2Bstatements%2Bon%2Brefeeding%2Bsyndrome.pdf",
+          "source_locator": "Sections 3.5 and 3.5.3–3.5.4; compare ASPEN Table 6",
+          "basis": "Nutrition remains necessary and must be supervised. Societies differ on initial provision/advancement, so a fixed rate or prolonged low feeding is not keyed."
+        },
+        {
+          "stage": "update",
+          "index": 1,
+          "guidance_url": "https://static1.squarespace.com/static/5a963e1a1137a60b45455f0c/t/68366c5a6b553145a61b8c85/1748397150638/AuSPEN%2BConsensus%2Bstatements%2Bon%2Brefeeding%2Bsyndrome.pdf",
+          "source_locator": "Sections 3.3 and 3.7: symptomatic electrolyte change after nutrition",
+          "basis": "The new intake, trajectory and symptoms warrant immediate clinical concern. Exact syndrome attribution/severity is not proven by the case."
+        },
+        {
+          "stage": "update",
+          "index": 2,
+          "guidance_url": "https://static1.squarespace.com/static/5a963e1a1137a60b45455f0c/t/68366c5a6b553145a61b8c85/1748397150638/AuSPEN%2BConsensus%2Bstatements%2Bon%2Brefeeding%2Bsyndrome.pdf",
+          "source_locator": "Sections 3.4, 3.6 and 3.7; report provides coexistence illustration only",
+          "basis": "Supports monitored correction and assessing other contributors; no urine test, drug attribution or specific replacement dose is inferred."
+        },
+        {
+          "stage": "update",
+          "index": 3,
+          "guidance_url": "https://static1.squarespace.com/static/5a963e1a1137a60b45455f0c/t/68366c5a6b553145a61b8c85/1748397150638/AuSPEN%2BConsensus%2Bstatements%2Bon%2Brefeeding%2Bsyndrome.pdf",
+          "source_locator": "Section 3.5: stabilization before further advancement; compare ASPEN Table 6",
+          "basis": "Both approaches support reassessment before further escalation with serious abnormalities. AuSPEN does not routinely require cessation; ASPEN allows reduction or temporary cessation for severe changes. Neither supports indefinite unplanned starvation."
+        }
+      ],
+      "critical_error_basis": "Severity 2/3 and the exact affirmative boundaries are author proposals. Omissions alone do not establish the named escalation/starvation errors. A supervised temporary reduction or hold with reassessment is an acceptable clinical alternative, not an unsafe label.",
+      "privacy_and_leakage_check": "Original synthetic values/history; no report patient demographics, rare identifiers or images. Public concept may be memorized. No Xi'an or purchased content. Not hidden Gold.",
+      "related_families": [
+        {"family_id": "HC-MT-MEDSAFE-018", "relationship": "shared electrolyte/clinical-change reasoning but distinct nutrition mechanism and competing underfeeding risk", "future_split_together": true}
+      ],
+      "review_questions": [
+        "Are the fictional intake, time course, symptoms and laboratory ranges clinically plausible and sufficiently informative?",
+        "Do acceptable supervised feeding alternatives fairly cover ASPEN/AuSPEN differences without rewarding indefinite underfeeding?",
+        "Does any requirement double-count escalation, monitoring or uncertainty?",
+        "Check exact source status/erratum, publication-consent disposition, severity, patient-facing detail and EN/ZH equivalence before promotion."
+      ]
+    }
+  ]
+}
