@@ -1,0 +1,23 @@
+{
+  "sequence": 52,
+  "judge_model": "gemini-3.8-flash",
+  "candidate_model": "MiniMax-M3",
+  "language": "zh-Hans",
+  "stage": "update",
+  "http_status": 200,
+  "response_status": "incomplete",
+  "raw_sha256": "d68d36dd4c3b0847f002786a08b65f40f9336c88bd4c1b73ce9d64e77121ec6a",
+  "payload_sha256": "b3607e1d1c8996f369d6557dc1d617d6c5ba123ad1be6edbec69cf3741c8e6e3",
+  "max_output_tokens": 8192,
+  "input_tokens": 2950,
+  "thought_tokens": 7864,
+  "output_tokens": 314,
+  "combined_generated_tokens": 8178,
+  "visible_json_complete": false,
+  "visible_json_error": "Unterminated string",
+  "explicit_provider_stop_reason": null,
+  "monitoring_estimate_microusd": 32880,
+  "interpretation": "Truncation near combined output/thinking cap is strongly indicated; no explicit stop reason was supplied. Not a 403 or a MiniMax candidate API failure.",
+  "repaired": false,
+  "retried": false
+}

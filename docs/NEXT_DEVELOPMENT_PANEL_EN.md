@@ -2,7 +2,7 @@
 
 This is a planning handoff after the S45/S46 workflow pilot, not another paid run or permission to use an earlier experiment's remaining allowance. The immediate prerequisite is a completed control gate and an audit of any missing or rejected judgments. A failing gate must be investigated without weakening acceptance rules just to obtain scores.
 
-Current checkpoint: the [S47 explanation diagnostic](S47_JUDGE_COMPLETENESS_RESULT_EN.md) passed all eight requests, but it is not the full control gate. The [next separate proposal](../config/judge_saved_bank_next_proposal.json) is 36 full controls followed, only on passage, by 16 judgments of the saved candidate answers. Its import adapter, freeze and new live authorization remain pending. No new candidate generation is needed for that step; the 452-request expansion below still comes afterward.
+Current checkpoint: [S48](S48_SAVED_ANSWER_RESULT_EN.md) passed the full 36-control gate and produced seven of eight saved-conversation scores. Its final judgment was truncated; a possible semantic over-credit also requires offline boundary work (H140). The [one-cell supplemental proposal](../config/judge_cap_followup_proposal.json) is not yet implemented or authorized. Before the 452-request expansion below, set a uniform prospective output/thinking cap, test the medication-hold contrasts, and preserve S48's missing cell and any supplemental result separately. The S46 import adapter is now verified; the broader mixed import/generation scheduler is still needed.
 
 ## Fixed case selection
 

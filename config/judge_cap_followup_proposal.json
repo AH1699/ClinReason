@@ -1,0 +1,22 @@
+{
+  "status": "proposal_not_implemented_frozen_or_authorized",
+  "live_call_allowance": 0,
+  "maximum_attempts_if_approved": 1,
+  "stop_threshold_usd_if_approved": "0.25",
+  "hard_ceiling": false,
+  "automatic_retries": 0,
+  "purpose": "Supplemental judgment of the one incomplete S48 cell; do not rerun the whole panel",
+  "source_directory": "work/s48-runs/599d4390-fd99-4185-a627-b152034637b0",
+  "source_protocol_sha256": "4b94f3b8062c68d589bb5857d0ff3dc86feea188554cfd1e1ab2ee0e29c1b5bd",
+  "source_sequence": 52,
+  "source_payload_sha256": "b3607e1d1c8996f369d6557dc1d617d6c5ba123ad1be6edbec69cf3741c8e6e3",
+  "judge_model": "gemini-3.8-flash",
+  "candidate_model": "MiniMax-M3",
+  "family_id": "HC-MT-MEDSAFE-013",
+  "language": "zh-Hans",
+  "stage": "update",
+  "only_payload_change": {"generation_config.max_output_tokens": {"from": 8192, "to": 32768}},
+  "candidate_generation": 0,
+  "comparison_policy": "Preserve S48 as 7/8 and publish any new result separately with its changed cap. Do not overwrite the failed capture, silently pool versions or claim a uniform-cap completed panel.",
+  "parallel_offline_work": "Author non-enforced EN/ZH contrasts for no extra medication versus explicit next-dose hold, and clinician-led plan components; preserve existing accepted scores pending prospective review."
+}
