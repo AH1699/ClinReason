@@ -1,5 +1,11 @@
 # Living human-review handoff — opened 2026-10-07
 
+## New Batch P clinical and bilingual questions
+
+**H145 / medium — Platelet specimen validity:** Review `HC-MT-REASON-025` for dual-anticoagulant clumping, coexistence with true thrombocytopenia, suitable local confirmation and the stated prompt-review/bleeding safety net. Check whether omitting the safety-net component warrants the proposed partial status without duplicate deductions. Steroid initiation and cancellation errors require affirmative advice; severity is provisional. Related HIT and laboratory-trend constructs need grouped split review.
+
+**H146 / medium — Stable blood pressure and follow-up:** Review `HC-MT-TRIAGE-024` for adequate ambulatory evidence, routine disposition, individual-risk follow-up, acceptable symptom equivalents and EN/ZH meaning. Do not generalize the source report's extreme course to this synthetic screening patient. A missing follow-up sentence is not the explicit lifelong no-risk error. Both issues remain open; [the source and answer package](S54_LIVE_ADMISSION_AND_BATCH_P_EN.md) is authoring work, not clinical approval.
+
 ## S53 complete control coverage and unresolved interpretation
 
 **H144 / medium — Grouped language, implication and overlapping uncertainty:** [S53's control package](S53_POLICY_TRANSPORT_AND_CONTROLS_EN.md) covers all twelve positions but leaves eight paired-language records unlabelled. Adjudicate `REASON-024/update/2/grouped_monitoring`, `MEDSAFE-020/initial/2/grouped_electrolytes`, `MEDSAFE-020/update/1/omit_calorie_inference_explanation`, and `MEDSAFE-020/update/2/omit_other_causes_clause`. Determine whether broad monitoring covers the listed elements, whether the explanation already rejects a calorie-only inference, and whether uncertainty elsewhere in the current answer suffices. Consider clinical adequacy, plain-language equivalence and duplicate deductions together; do not infer truth from model agreement. Other authored expectations remain provisional. H142/H143 stay open; no issue is closed by structural coverage.

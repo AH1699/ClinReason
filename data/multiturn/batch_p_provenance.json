@@ -1,0 +1,247 @@
+{
+  "schema_version": "0.1.0",
+  "status": "author_draft_pending_independent_clinical_language_and_methods_review",
+  "split": "standalone_public_authoring_draft_not_default_development_calibration_or_gold",
+  "checked_on": "2026-10-25",
+  "reuse_policy": "Original synthetic conversations and labels; public reports provide mechanisms, guidance provides separate support. No purchased Step 2 question or Xi'an record used. These are not actual-patient records or hidden Gold.",
+  "language_note": "Chinese conversations and references were authored naturally and checked against the English facts. The inherited unreviewed translation flag denotes absence of professional validation.",
+  "access_notes": [
+    "NICE NG136 returned 403 and is not used for labels.",
+    "ESC search results exposed a restrictive AI-use notice; no ESC content is incorporated.",
+    "The laboratory guidance page links CC BY 4.0 but its prose says non-commercial; no text/figure is copied and license inconsistency remains recorded. All answer rules are original provisional authoring."
+  ],
+  "records": [
+    {
+      "family_id": "HC-MT-REASON-025",
+      "case_hashes": {
+        "en": "b28cecb27657183012e722d7e722fb88190b46b364edc9fe9f912e4859d4f900",
+        "zh-Hans": "72bdb869652f846a3e93b307c02952d11150ac04b41d2ed4a25d755f316f446a"
+      },
+      "source_group": "PUBLIC-PM-P-PLATELET-001",
+      "report": {
+        "title": "A case of EDTA-dependent pseudothrombocytopenia: simple recognition of an underdiagnosed and misleading phenomenon",
+        "authors": "Nagler M, Keller P, Siegrist D, Alberio L",
+        "publication_date": "2014-05-01",
+        "doi": "10.1186/1472-6890-14-19",
+        "pmcid": "PMC4012027",
+        "url": "https://link.springer.com/article/10.1186/1472-6890-14-19",
+        "access": "Publisher full HTML read; PMC direct access returned a challenge and was not bypassed.",
+        "reuse": "Mechanism only; no patient narrative, image or table copied. Publisher identifies open access; exact license version not verified here.",
+        "consent": "Publisher Consent section states written informed publication consent.",
+        "status": "No correction/retraction notice seen on opened publisher page; formal status recheck remains pending."
+      },
+      "inspiration_scope": "Specimen-dependent interference can misdirect clinical decisions. Synthetic adult, values, history and dual-clumping follow-up are newly authored; the report's infection, patient attributes and work-up are not reproduced.",
+      "supporting_sources": [
+        "https://link.springer.com/article/10.1186/1472-6890-14-19",
+        "https://hrcak.srce.hr/en/321333"
+      ],
+      "requirement_support": [
+        {
+          "stage": "initial",
+          "index": 1,
+          "guidance_url": "https://hrcak.srce.hr/en/321333",
+          "source_locator": "Recommended criteria and procedure sections 1–2",
+          "basis": "Clumps motivate checking a result, not a diagnosis.",
+          "case_hashes": {
+            "en": "b28cecb27657183012e722d7e722fb88190b46b364edc9fe9f912e4859d4f900",
+            "zh-Hans": "72bdb869652f846a3e93b307c02952d11150ac04b41d2ed4a25d755f316f446a"
+          }
+        },
+        {
+          "stage": "initial",
+          "index": 2,
+          "guidance_url": "https://hrcak.srce.hr/en/321333",
+          "source_locator": "Procedure sections 2–3",
+          "basis": "Smear and laboratory-directed repeat resolve interference.",
+          "case_hashes": {
+            "en": "b28cecb27657183012e722d7e722fb88190b46b364edc9fe9f912e4859d4f900",
+            "zh-Hans": "72bdb869652f846a3e93b307c02952d11150ac04b41d2ed4a25d755f316f446a"
+          }
+        },
+        {
+          "stage": "initial",
+          "index": 3,
+          "guidance_url": "https://hrcak.srce.hr/en/321333",
+          "source_locator": "Introduction on patient mismanagement",
+          "basis": "Treatment restraint follows unresolved measurement; bleeding urgency is an author safety-net inference.",
+          "case_hashes": {
+            "en": "b28cecb27657183012e722d7e722fb88190b46b364edc9fe9f912e4859d4f900",
+            "zh-Hans": "72bdb869652f846a3e93b307c02952d11150ac04b41d2ed4a25d755f316f446a"
+          }
+        },
+        {
+          "stage": "update",
+          "index": 1,
+          "guidance_url": "https://hrcak.srce.hr/en/321333",
+          "source_locator": "Procedure section 3",
+          "basis": "Citrate may also clump; numerical rise alone is not conclusive.",
+          "case_hashes": {
+            "en": "b28cecb27657183012e722d7e722fb88190b46b364edc9fe9f912e4859d4f900",
+            "zh-Hans": "72bdb869652f846a3e93b307c02952d11150ac04b41d2ed4a25d755f316f446a"
+          }
+        },
+        {
+          "stage": "update",
+          "index": 2,
+          "guidance_url": "https://hrcak.srce.hr/en/321333",
+          "source_locator": "Procedure sections 3–4",
+          "basis": "Laboratory alternatives and explicit reporting prevent treating an invalid count.",
+          "case_hashes": {
+            "en": "b28cecb27657183012e722d7e722fb88190b46b364edc9fe9f912e4859d4f900",
+            "zh-Hans": "72bdb869652f846a3e93b307c02952d11150ac04b41d2ed4a25d755f316f446a"
+          }
+        },
+        {
+          "stage": "update",
+          "index": 3,
+          "guidance_url": "https://hrcak.srce.hr/en/321333",
+          "source_locator": "Scope plus author clinical-safety inference",
+          "basis": "The laboratory document does not validate a lay urgency rule; absence of symptoms cannot replace a reliable count.",
+          "case_hashes": {
+            "en": "b28cecb27657183012e722d7e722fb88190b46b364edc9fe9f912e4859d4f900",
+            "zh-Hans": "72bdb869652f846a3e93b307c02952d11150ac04b41d2ed4a25d755f316f446a"
+          }
+        }
+      ],
+      "jurisdiction_limit": "Croatian laboratory consensus supports mechanism and local verification, not a mandatory worldwide tube/manual-count procedure.",
+      "critical_error_basis": "Severity and affirmative boundaries are provisional author decisions. An omitted sentence is not the named affirmative error. No score-band fit.",
+      "privacy_check": {
+        "result": "original_synthetic_no_direct_identifiers",
+        "source_patient_reconstructed": false,
+        "private_records_used": false,
+        "images_used": false,
+        "note": "No patient name, exact visit date, location, source narrative combination or private encounter copied. No claim that a real chart was de-identified."
+      },
+      "related_families": [
+        {
+          "family_id": "HC-MT-REASON-006",
+          "relationship": "Shared laboratory interpretation; new specimen-validity decision",
+          "future_split_together": true
+        },
+        {
+          "family_id": "HC-MT-MEDSAFE-017",
+          "relationship": "Platelet-theme overlap requires manual construct review; no claim of independence from every existing family",
+          "future_split_together": true
+        }
+      ],
+      "review_issues": [
+        "H145"
+      ],
+      "review_complete": false
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-024",
+      "case_hashes": {
+        "en": "7a6c84fad8d3adae5ac0e9e9455b2d02fcd6eca646ca3188a7820f0ac6dc3db3",
+        "zh-Hans": "4fd201bed80d48e7024c4ff49cc404117d5781344dfe613b3f3b04e9ac6262a4"
+      },
+      "source_group": "PUBLIC-PM-P-BP-002",
+      "report": {
+        "title": "A case of an extreme white coat effect",
+        "authors": "Nyvad J, Reinhard M, Christensen KL",
+        "publication_date": "2020-02",
+        "online_date": "2019-08-28",
+        "doi": "10.1080/08037051.2019.1658517",
+        "pmid": "31455097",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31455097/",
+        "access": "PubMed abstract read; publisher full text returned 403. No full-text inspection claimed.",
+        "reuse": "Mechanism-level bibliographic inspiration only. Free-to-read is not treated as a reuse license; no prose, images or original patient sequence copied.",
+        "consent": "Not verified from available abstract.",
+        "status": "No correction/retraction notice seen in opened PubMed record; formal status recheck remains pending."
+      },
+      "inspiration_scope": "Measurement context can complicate interpretation. The new stable untreated screening case is not the report's extreme labile-pressure case; its intervention, age, extreme pressures and adverse outcome are not imported or generalized.",
+      "supporting_sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/31455097/",
+        "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/hypertension-in-adults-screening"
+      ],
+      "requirement_support": [
+        {
+          "stage": "initial",
+          "index": 1,
+          "guidance_url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/hypertension-in-adults-screening",
+          "source_locator": "Screening Tests and Biological Understanding",
+          "basis": "Out-of-office confirmation distinguishes setting effects; an unverified device is insufficient.",
+          "case_hashes": {
+            "en": "7a6c84fad8d3adae5ac0e9e9455b2d02fcd6eca646ca3188a7820f0ac6dc3db3",
+            "zh-Hans": "4fd201bed80d48e7024c4ff49cc404117d5781344dfe613b3f3b04e9ac6262a4"
+          }
+        },
+        {
+          "stage": "initial",
+          "index": 2,
+          "guidance_url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/hypertension-in-adults-screening",
+          "source_locator": "Clinician Summary and Screening Tests",
+          "basis": "Validated device and correct technique support confirmation.",
+          "case_hashes": {
+            "en": "7a6c84fad8d3adae5ac0e9e9455b2d02fcd6eca646ca3188a7820f0ac6dc3db3",
+            "zh-Hans": "4fd201bed80d48e7024c4ff49cc404117d5781344dfe613b3f3b04e9ac6262a4"
+          }
+        },
+        {
+          "stage": "initial",
+          "index": 3,
+          "guidance_url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/hypertension-in-adults-screening",
+          "source_locator": "Clinician Summary and Treatment",
+          "basis": "Confirm before deciding treatment; borrowed-drug prohibition and routine acuity are author patient-safety applications.",
+          "case_hashes": {
+            "en": "7a6c84fad8d3adae5ac0e9e9455b2d02fcd6eca646ca3188a7820f0ac6dc3db3",
+            "zh-Hans": "4fd201bed80d48e7024c4ff49cc404117d5781344dfe613b3f3b04e9ac6262a4"
+          }
+        },
+        {
+          "stage": "update",
+          "index": 1,
+          "guidance_url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/hypertension-in-adults-screening",
+          "source_locator": "Biological Understanding",
+          "basis": "Office/out-of-office discordance supports the pattern; emergency exclusion is conditional on supplied clinical facts.",
+          "case_hashes": {
+            "en": "7a6c84fad8d3adae5ac0e9e9455b2d02fcd6eca646ca3188a7820f0ac6dc3db3",
+            "zh-Hans": "4fd201bed80d48e7024c4ff49cc404117d5781344dfe613b3f3b04e9ac6262a4"
+          }
+        },
+        {
+          "stage": "update",
+          "index": 2,
+          "guidance_url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/hypertension-in-adults-screening",
+          "source_locator": "Screening Intervals and Treatment",
+          "basis": "Ongoing checks and individualized risk/lifestyle discussion; no exact interval is keyed.",
+          "case_hashes": {
+            "en": "7a6c84fad8d3adae5ac0e9e9455b2d02fcd6eca646ca3188a7820f0ac6dc3db3",
+            "zh-Hans": "4fd201bed80d48e7024c4ff49cc404117d5781344dfe613b3f3b04e9ac6262a4"
+          }
+        },
+        {
+          "stage": "update",
+          "index": 3,
+          "guidance_url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/hypertension-in-adults-screening",
+          "source_locator": "Author clinical-safety inference",
+          "basis": "Screening guidance does not establish this symptom bundle; changed symptoms override a prior reassuring screen, pending expert review.",
+          "case_hashes": {
+            "en": "7a6c84fad8d3adae5ac0e9e9455b2d02fcd6eca646ca3188a7820f0ac6dc3db3",
+            "zh-Hans": "4fd201bed80d48e7024c4ff49cc404117d5781344dfe613b3f3b04e9ac6262a4"
+          }
+        }
+      ],
+      "jurisdiction_limit": "US preventive screening guidance supports confirmation; no national threshold, compulsory interval or universal treatment eligibility is keyed.",
+      "critical_error_basis": "Severity and affirmative boundaries are provisional author decisions. An omitted sentence is not the named affirmative error. No score-band fit.",
+      "privacy_check": {
+        "result": "original_synthetic_no_direct_identifiers",
+        "source_patient_reconstructed": false,
+        "private_records_used": false,
+        "images_used": false,
+        "note": "No patient name, exact visit date, location, source narrative combination or private encounter copied. No claim that a real chart was de-identified."
+      },
+      "related_families": [
+        {
+          "family_id": "HC-MT-TRIAGE-003",
+          "relationship": "Shared blood-pressure theme but stable routine surveillance instead of severe-pressure escalation",
+          "future_split_together": true
+        }
+      ],
+      "review_issues": [
+        "H146"
+      ],
+      "review_complete": false
+    }
+  ]
+}

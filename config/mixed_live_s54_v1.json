@@ -1,0 +1,55 @@
+{
+  "version": "s54-mixed-live-v1",
+  "status": "ready_for_explicit_approval",
+  "maximum_attempts": 452,
+  "stop_threshold_usd": "10.00",
+  "hard_ceiling": false,
+  "last_request_overrun_possible": true,
+  "automatic_retries": 0,
+  "resume_allowed": false,
+  "pricing_verification": {
+    "verified_at": "2026-10-26T01:01:25Z",
+    "verified_by": "Codex public-source check; not account or invoice verification",
+    "sources": {
+      "gemini": "https://ai.google.dev/gemini-api/docs/pricing",
+      "minimax": "https://platform.minimax.io/docs/pricing/overview"
+    },
+    "rates": {
+      "models": {
+        "gemini-3.5-flash-lite": {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "input_per_million": 0.3,
+          "output_per_million": 2.5
+        },
+        "gemini-3.8-flash": {
+          "provider": "gemini",
+          "model": "gemini-3.8-flash",
+          "input_per_million": 0.75,
+          "output_per_million": 3.75
+        },
+        "MiniMax-M3.1-Flash": {
+          "provider": "minimax",
+          "model": "MiniMax-M3.1-Flash",
+          "input_per_million": 0.15,
+          "output_per_million": 0.6
+        },
+        "MiniMax-M3": {
+          "provider": "minimax",
+          "model": "MiniMax-M3",
+          "input_per_million": 0.3,
+          "output_per_million": 1.2
+        }
+      },
+      "m3_default_echo_monitoring": {
+        "input_per_million": 0.45,
+        "output_per_million": 1.8
+      },
+      "input_token_scope_max": 16000,
+      "cache_discount_used": false,
+      "invoice_or_hard_cap": false
+    },
+    "evidence_note": "Opened official standard text pricing: Gemini 3.5 Flash-Lite 0.30/2.50 and Gemini 3.8 Flash 0.75/3.75 USD per million input/output tokens including thinking; Flash 3.8 prices are listed through 2026-12-31. MiniMax M3.1 Flash 0.15/0.60, M3 short-context standard 0.30/1.20 and priority 0.45/1.80. M3 default response tier remains unverified; the higher priority estimate is a monitoring convention, not proof of tier. Cache discounts not applied. Recheck required within 24 hours of admission."
+  },
+  "reporting_policy": "config/mixed_policy_s53_v1.json"
+}

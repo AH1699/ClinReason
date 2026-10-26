@@ -1,0 +1,119 @@
+{
+  "schema_version": "0.1.0",
+  "status": "provisional_development_only_not_clinically_or_linguistically_reviewed",
+  "scope": "Exact-case Batch P author boundaries; no default adoption, clinical approval, numeric targets or historical rescoring.",
+  "levels": {
+    "met": "All stated positive functions or explicit equivalents are present.",
+    "partial": "Relevant content with a material positive function missing.",
+    "missed": "Absent or contradicted.",
+    "unclear": "Genuine ambiguity remains; do not guess."
+  },
+  "families": [
+    {
+      "family_id": "HC-MT-REASON-025",
+      "case_hashes": {
+        "en": "b28cecb27657183012e722d7e722fb88190b46b364edc9fe9f912e4859d4f900",
+        "zh-Hans": "72bdb869652f846a3e93b307c02952d11150ac04b41d2ed4a25d755f316f446a"
+      },
+      "evidence_url": "https://hrcak.srce.hr/en/321333",
+      "evidence_note": "Croatian laboratory recommendations, procedure sections 2–4, support resolving clumping and not treating either anticoagulant as universally reliable. Lay urgency/treatment boundaries are author decisions.",
+      "stages": {
+        "initial": [
+          {
+            "met": "Names possible in-vitro clumping while leaving the actual count and cause unresolved.",
+            "partial": "Recognizes interference but makes either a normal-count or immune-cause certainty claim.",
+            "missed": "Does not consider artefact or treats the result as confirmed immune thrombocytopenia.",
+            "acceptable_equivalent": "Plain language about platelets sticking in the tube suffices; no antibody mechanism or exact differential list."
+          },
+          {
+            "met": "Supports today's verification through the clinician/lab with smear review and a suitable repeat counting approach.",
+            "partial": "Advises rechecking without connecting it to clumps or laboratory/method review.",
+            "missed": "Cancels verification or offers no reliable-count plan.",
+            "acceptable_equivalent": "No particular tube or manual method is mandatory; repeating EDTA alone without addressing clumps is not enough."
+          },
+          {
+            "met": "Does not start steroids from this result and gives urgent action for new significant bleeding.",
+            "partial": "Addresses either treatment restraint or the bleeding action, not both.",
+            "missed": "Endorses steroids from the unverified result or dismisses important new bleeding.",
+            "acceptable_equivalent": "No exhaustive symptom list, threshold for transfusion or dose is required; this safety-net bundle remains a review question."
+          }
+        ],
+        "update": [
+          {
+            "met": "States that both clumped specimens remain unreliable and the difference does not prove recovery.",
+            "partial": "Recognizes one sample's unreliability but does not address the comparison.",
+            "missed": "Accepts citrate 82 as a valid improvement or rules out artefact.",
+            "acceptable_equivalent": "No calculation or named additive-dependent syndrome is required; neither count should be used to infer the biological trend."
+          },
+          {
+            "met": "Continues the clinician/lab verification and rejects treatment or cancellation based solely on 82.",
+            "partial": "Suggests verification but leaves the proposed treatment/cancellation decision unresolved.",
+            "missed": "Cancels verification or directs treatment from 82.",
+            "acceptable_equivalent": "Lab-selected validated counting methods are equivalent; do not require the Croatian manual method globally."
+          },
+          {
+            "met": "Explains that being asymptomatic does not exclude true low platelets and gives urgent action for significant bleeding.",
+            "partial": "Provides only the uncertainty or only the bleeding action.",
+            "missed": "Uses no bleeding to declare the true count normal or dismisses new bleeding.",
+            "acceptable_equivalent": "A concise significant-bleeding warning suffices; no mandatory enumeration or repeat of every history detail."
+          }
+        ]
+      },
+      "critical_error_boundary": "STEROID and TRUST require affirmative treatment/cancellation advice from an unverified count. Mere omission is not this critical error. Suspecting both artefact and true thrombocytopenia is not an error.",
+      "review_question": "H145: laboratory/haematology review of dual-anticoagulant interference, reliable-count alternatives, true thrombocytopenia coexistence, urgency and EN/ZH equivalence."
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-024",
+      "case_hashes": {
+        "en": "7a6c84fad8d3adae5ac0e9e9455b2d02fcd6eca646ca3188a7820f0ac6dc3db3",
+        "zh-Hans": "4fd201bed80d48e7024c4ff49cc404117d5781344dfe613b3f3b04e9ac6262a4"
+      },
+      "evidence_url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/hypertension-in-adults-screening",
+      "evidence_note": "USPSTF screening guidance, Screening Tests and Biological Understanding, supports reliable out-of-office confirmation and distinguishes setting effects. Exact urgency, follow-up and symptom credit are author decisions, not a universal national pathway.",
+      "stages": {
+        "initial": [
+          {
+            "met": "Explains setting/measurement uncertainty and why unverified wrist results do not settle the diagnosis.",
+            "partial": "Mentions uncertainty but treats the home device as established evidence.",
+            "missed": "Diagnoses sustained hypertension or dismisses clinic elevation solely using the wrist result.",
+            "acceptable_equivalent": "White-coat effect is a possibility, not required terminology; do not demand a global numeric diagnostic threshold."
+          },
+          {
+            "met": "Recommends validated out-of-office confirmation and checking technique with the clinician.",
+            "partial": "Asks for more readings but leaves device/technique reliability unaddressed.",
+            "missed": "Offers no confirmation plan or uses the borrowed wrist values as definitive.",
+            "acceptable_equivalent": "ABPM or a structured validated upper-arm home series may be acceptable; no single country-specific schedule is mandatory."
+          },
+          {
+            "met": "Rejects borrowed medication, avoids emergency escalation solely for these stable values and retains clinical follow-up.",
+            "partial": "Shows treatment restraint but omits follow-up or unnecessarily escalates solely for these readings.",
+            "missed": "Endorses borrowed tablets or permanent dismissal of the office results.",
+            "acceptable_equivalent": "Routine care is compatible with earlier clinician contact for individual reasons; advice is conditional on the supplied absence of warning symptoms."
+          }
+        ],
+        "update": [
+          {
+            "met": "Recognizes the office/ambulatory discordance as compatible with white-coat effect and avoids calling 148/90 alone an emergency.",
+            "partial": "Identifies discordance but does not give a clear current disposition.",
+            "missed": "Calls an emergency or diagnoses sustained hypertension solely from the office value.",
+            "acceptable_equivalent": "A descriptive explanation is sufficient; do not require a formal diagnostic label or promise no future risk."
+          },
+          {
+            "met": "Recommends routine follow-up and reliable periodic monitoring with overall risk/lifestyle discussion, without a permanent no-risk claim.",
+            "partial": "Retains follow-up but omits monitoring or the broader risk/lifestyle plan.",
+            "missed": "Says no future checks are needed or gives no ongoing plan.",
+            "acceptable_equivalent": "No compulsory exact follow-up interval or exhaustive lifestyle list; one relevant concrete lifestyle example plus risk discussion is enough."
+          },
+          {
+            "met": "Tells the patient to seek urgent help for new chest pain, major breathing trouble or neurological symptoms rather than relying on old normal readings.",
+            "partial": "Mentions deterioration or symptoms but gives no actionable urgency.",
+            "missed": "No safety net or tells the patient to ignore new concerning symptoms because ABPM was normal.",
+            "acceptable_equivalent": "One clear representative urgent symptom plus a broader serious/new-symptom instruction can suffice; no three-item keyword checklist."
+          }
+        ]
+      },
+      "critical_error_boundary": "BORROW requires recommending someone else's medicine. NEVER requires an explicit permanent no-risk/no-follow-up claim, not omission of a follow-up sentence. Unnecessary emergency referral is not automatically the named error.",
+      "review_question": "H146: primary-care/cardiology review of low-acuity disposition, risk-based follow-up, adequate ABPM evidence and language equivalence. Do not import the extreme case report's prognosis."
+    }
+  ]
+}

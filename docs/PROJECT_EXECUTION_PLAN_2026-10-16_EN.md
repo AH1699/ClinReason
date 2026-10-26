@@ -1,12 +1,12 @@
 # ClinReason current execution plan — 2026-10-16
 
-## Current checkpoint S53 with the main project milestones
+## Current checkpoint S54 with the main project milestones
 
-**Current checkpoint S53:** [The policy draft and mocked transport integration](S53_POLICY_TRANSPORT_AND_CONTROLS_EN.md) preserve all **72 conversation cells and 452 proposed new requests**. Eight medication cells remain raw diagnostics only; no pooled model means or rankings are allowed by the draft. Full fixture transport/replay and failure handling pass focused tests; no live entry point is enabled. Batch O now covers all twelve criterion positions: **54 new targeted records, 72 total records sharing 58 blinded packets**, including eight unlabelled exploratory records. No paid calls, new model scores or registered families.
+**Current checkpoint S54:** [The approval-bound runner and Batch P](S54_LIVE_ADMISSION_AND_BATCH_P_EN.md) add a separately versioned live entry point tested through the full **452-request simulated schedule**. Fresh protocol-bound, single-use approval is required before credentials or network access; none has been created. The proposed stop threshold is **$10 with possible last-request overrun**, not a hard ceiling. All 72 cells and 16 imported stages remain; eight medication cells stay raw diagnostics only, with no pooled means or rankings.
 
-The latest live evidence remains [S50](S50_MEDICATION_BOUNDARY_RESULT_EN.md): 56/56 valid judgments, 16/16 author matches and 27/28 repeats; its gate failed. Its estimated $0.200815 spending, S48 results and the [separate S49 88.33](S49_CAP_SUPPLEMENT_RESULT_EN.md) remain unchanged. Next prepare an approval-consuming live entry point and prospective freeze, then refresh pricing and seek a new bounded budget. Case authoring returns to distinct source-backed mechanisms; Batch O's structural control coverage is complete, while H142/H143/H144 remain open. No further single-medication diagnostic is scheduled.
+Batch P adds **two distinct standalone families / four EN/ZH variants**, with twelve mapped criterion positions, four initial references and twelve update examples: unresolved platelet-count interference and routine blood-pressure confirmation/surveillance. Batch O's controls and H142/H143/H144 are unchanged; H145/H146 record the new clinical/bilingual questions. No paid calls or new model scores. S50's failed gate, historical $0.200815 estimate, S48 and S49 results remain unchanged.
 
-All 16 candidate answer stages remain reusable. Registered development **125 families / 250 variants**, two standalone [Batch O](BATCH_O_STANDALONE_EN.md) drafts, three reserved confirmation families and approved calibration/Gold **0/0** are unchanged. Xi'an stays local; expert review stays later. Lower 60–70, average ~80 and premium ~90 remain diagnostic aspirations, never score-fitting targets.
+Registered development remains **125 families / 250 variants**; standalone O and P now total **four families / eight variants**. Confirmation reservations remain separate and approved calibration/Gold stay **0/0**. Next review the frozen paid proposal, refreshing pricing if stale, and obtain explicit bounded approval before execution. Continue distinct case authoring toward at least 500 families. Xi'an stays local and expert review stays later. Lower 60–70, average ~80 and premium ~90 remain diagnostics, never fitted targets.
 
 ## Project direction and next milestones
 
@@ -17,8 +17,8 @@ Recent work has concentrated on scoring and provider diagnostics while registere
 | Workstream | Current state | Next deliverable |
 |---|---|---|
 | Scoring boundaries | S50 complete; 16/16 author matches, 27/28 repeats; gate failed | Trial closed; keep medication item review-held, version any future “or/both” or ambiguous-reference decision; no automatic next diagnostic |
-| Broader model comparison | Uniform policy draft and mocked capture integration tested; 16 imports and 72 cells retained | Build the approval-consuming live entry point, verify pricing and freeze; seek fresh bounded approval including the reporting policy |
-| Case expansion | 125 registered families; Batch O controls cover all 12 positions, with eight unlabelled records | Draft distinct public-report/Step-2-informed cases for coverage gaps; retain the bounded interpretation questions for review |
+| Broader model comparison | Approval-bound entry point tested; 16 imports and 72 cells retained; current prices checked | Review prospective freeze and $10 stop-threshold proposal; obtain fresh explicit approval before any paid call |
+| Case expansion | 125 registered families plus four standalone O/P families; P adds 12 mapped requirements | Continue distinct source-backed cases and a new authoring catalog without changing historical run inputs |
 | Source and privacy | Public evidence mappings and private Xi'an processing remain separate | Continue source-to-answer checks; Xi'an stays local until its case/privacy readiness issues are resolved |
 | Expert review | Deferred during partner discussions | Maintain the clinical/bilingual question register now; obtain review before release or comparative clinical claims |
 | Product interface | Local CLI first | Dashboard/API-key UI after the broader workflow and reporting contract are established |
