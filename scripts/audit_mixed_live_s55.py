@@ -113,6 +113,8 @@ def audit(root, directory, freeze):
     result = diagnostics(core)
     cells = result["conversations"]
     return {"version": VERSION, "protocol_sha256": protocol,
+        "reporter_files": {p: journal.digest((root / p).read_bytes()) for p in
+            ("scripts/audit_mixed_live_s55.py", "tests/test_audit_mixed_live_s55.py")},
         "mode": checked["mode"], "simulation_only": checked["simulation_only"],
         "terminal": checked["terminal"], "scope_exhausted": core.index == len(core.rows),
         "live_calls": checked["live_calls"], "transport_attempts": checked["transport_attempts"],

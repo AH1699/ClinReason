@@ -104,6 +104,8 @@ class JournalAuditTests(unittest.TestCase):
         self.assertEqual(value["first_complete_conversation_judgments"], 0)
         self.assertFalse(value["scope_exhausted"])
         self.assertFalse(value["reporting"]["pooled_model_means"])
+        self.assertEqual(value["reporter_files"], {p: live.journal.digest((ROOT / p).read_bytes()) for p in
+            ("scripts/audit_mixed_live_s55.py", "tests/test_audit_mixed_live_s55.py")})
 
     def test_transport_failure_preserves_unknown_cost(self):
         self.step(status=403)

@@ -1,5 +1,9 @@
 # Living human-review handoff — opened 2026-10-07
 
+## S55 negative requirements and evidence expectations
+
+**H147 / medium — Absence versus explicit warning:** The [S55 run](S55_MIXED_PANEL_RUN_EN.md) rejected a met judgment on `HC-MT-REASON-020` update criterion 4 because its evidence was empty. The anchor begins “Do not”; the frozen empty-quote exception recognizes only “Does not” and “Avoids.” Review which negative requirements are satisfied by absence of prohibited advice, which require an affirmative warning, and how EN/ZH equivalents should be treated. The format failure itself is reproducible without clinical adjudication. Do not infer that the rejected met status is clinically correct or silently broaden the exception. A prospective per-criterion evidence contract can first preserve current semantics; any semantic change needs a separate rationale/version. H147 remains open. The 36-record control pass does not close H136–H146 or validate clinical scores.
+
 ## New Batch P clinical and bilingual questions
 
 **H145 / medium — Platelet specimen validity:** Review `HC-MT-REASON-025` for dual-anticoagulant clumping, coexistence with true thrombocytopenia, suitable local confirmation and the stated prompt-review/bleeding safety net. Check whether omitting the safety-net component warrants the proposed partial status without duplicate deductions. Steroid initiation and cancellation errors require affirmative advice; severity is provisional. Related HIT and laboratory-trend constructs need grouped split review.
