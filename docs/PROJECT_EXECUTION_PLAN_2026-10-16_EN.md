@@ -1,12 +1,12 @@
 # ClinReason current execution plan — 2026-10-16
 
-## Current checkpoint S55 with the main project milestones
+## Current checkpoint S56 with the main project milestones
 
-**Current checkpoint S55:** [The nine-family run](S55_MIXED_PANEL_RUN_EN.md) closed after **264 requests / $1.990560 estimated cost**, below the approved $20 stop threshold. All 144 answer stages are present and the 36-record control gate passed. One judge reply violated the required-evidence contract, closing the judge lane: 99 accepted first-stage judgments form 49 complete conversation pairs, but no candidate repeats ran. All 72 cells remain; eight medication conversations stay review-held, with no pooled means or rankings.
+**Current checkpoint S56:** [The offline judge-only preparation](S56_EVIDENCE_AND_SAVED_BANK_EN.md) makes the existing quote requirement explicit for each criterion and status. It preserves the S36 validator, scoring arithmetic, case labels and S47 observation requirements. The rejected S55 reply remains rejected; no historical score is repaired.
 
-The failure was an empty quote for a met criterion whose anchor starts “Do not”; the frozen absence exception recognizes only “Does not” or “Avoids.” The reply remains rejected, 188 later requests remain skipped, and no retry, label change or retrospective repair occurred. The read-only report and four new contract-regression tests preserve this boundary. H147 records the semantic-review question; S50's failed gate and historical S48/S49 results remain unchanged.
+All **144 saved answer stages / 72 conversations** have been checked against sealed requests and raw replies, including the upstream chain for 16 imported stages. The prospective schedule contains **36 fresh controls, 144 first judgments and 144 repeats**, with no new candidate generation. All judgments would use the new instructions uniformly; S55 judgments and its control pass cannot substitute for this new run. This is offline preparation, not an executable live protocol or spending approval. No new provider calls were made.
 
-Registered development remains **125 families / 250 variants**; standalone O/P total **four families / eight variants**, with H142–H147 open. Approved calibration/Gold remain **0/0**. Next make per-criterion evidence requirements explicit under a prospective version, verify the 144-answer bank for judge-only work, and obtain fresh bounded approval before any new calls. Continue source-backed expansion toward at least 500 families. Xi'an stays local and expert review stays later. Lower 60–70, average ~80 and premium ~90 remain unfitted diagnostics; ceiling effects persist in two fully observed families, but the harder-case and repeat coverage is incomplete.
+Next build and test the separately versioned judge-only execution engine, freeze its inputs, check current prices and obtain fresh bounded approval. Then measure completion, repeat stability and ceiling effects before interpreting model differences. Keep all 72 cells and eight medication review holds; no pooled means or rankings. Registered development remains **125 families / 250 variants**, with four standalone O/P families / eight variants outside the registry. Approved calibration/Gold remain **0/0**; H142–H147 stay open, Xi'an stays local and expert review remains later. Expand toward at least 500 distinct families. Lower 60–70, average ~80 and premium ~90 remain unfitted diagnostic aspirations.
 
 ## Project direction and next milestones
 
@@ -17,7 +17,7 @@ Recent work has concentrated on scoring and provider diagnostics while registere
 | Workstream | Current state | Next deliverable |
 |---|---|---|
 | Scoring boundaries | S50 complete; 16/16 author matches, 27/28 repeats; gate failed | Trial closed; keep medication item review-held, version any future “or/both” or ambiguous-reference decision; no automatic next diagnostic |
-| Broader model comparison | 144 answer stages saved; controls passed; 49 complete first pairs before evidence-format lane closure; no repeats | Explicit per-criterion evidence contract, verified saved-answer bank and prospective judge-only plan; new approval required |
+| Broader model comparison | S56 evidence instructions and raw-verified 144-stage bank ready offline; S55 remains partial with no candidate repeats | Versioned judge-only engine and tests, frozen protocol, current prices and fresh approval; then 36 controls + 144 first judgments + 144 repeats |
 | Case expansion | 125 registered families plus four standalone O/P families; P adds 12 mapped requirements | Continue distinct source-backed cases and a new authoring catalog without changing historical run inputs |
 | Source and privacy | Public evidence mappings and private Xi'an processing remain separate | Continue source-to-answer checks; Xi'an stays local until its case/privacy readiness issues are resolved |
 | Expert review | Deferred during partner discussions | Maintain the clinical/bilingual question register now; obtain review before release or comparative clinical claims |

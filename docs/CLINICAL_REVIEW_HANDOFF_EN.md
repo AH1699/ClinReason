@@ -2,6 +2,8 @@
 
 ## S55 negative requirements and evidence expectations
 
+[S56](S56_EVIDENCE_AND_SAVED_BANK_EN.md) now exposes the existing quote rule per criterion and status without changing acceptance. This is an engineering clarification, not a resolution of H147: the clinical distinction between absence and an affirmative warning, and its bilingual equivalence, still needs independent review. No new judge outcome or clinical label is supplied by this offline change.
+
 **H147 / medium — Absence versus explicit warning:** The [S55 run](S55_MIXED_PANEL_RUN_EN.md) rejected a met judgment on `HC-MT-REASON-020` update criterion 4 because its evidence was empty. The anchor begins “Do not”; the frozen empty-quote exception recognizes only “Does not” and “Avoids.” Review which negative requirements are satisfied by absence of prohibited advice, which require an affirmative warning, and how EN/ZH equivalents should be treated. The format failure itself is reproducible without clinical adjudication. Do not infer that the rejected met status is clinically correct or silently broaden the exception. A prospective per-criterion evidence contract can first preserve current semantics; any semantic change needs a separate rationale/version. H147 remains open. The 36-record control pass does not close H136–H146 or validate clinical scores.
 
 ## New Batch P clinical and bilingual questions

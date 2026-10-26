@@ -1,0 +1,22 @@
+{
+  "version": "s56-saved-panel-offline-v1",
+  "status": "offline_preparation_not_live_protocol",
+  "source_directory": "work/s54-runs/255d7614-dfe4-4e2e-bf74-520f61d2d58f",
+  "source_protocol_sha256": "94c18ae8b8e3e025f8a20c0f0deeb77c9714c71777de2494734c8ecf753224e7",
+  "source_tree_sha256": "46cfaaf9664795d07caed5f4b59881ccb5476317d4ad9b1f7e6ea7ec59e7ea51",
+  "expected_answer_stages": 144,
+  "expected_conversations": 72,
+  "new_candidate_calls": 0,
+  "proposed_control_judgments": 36,
+  "proposed_first_judgments": 144,
+  "proposed_repeat_judgments": 144,
+  "proposed_maximum_judge_calls": 324,
+  "judge_model": "gemini-3.8-flash",
+  "judge_generation_config": {"max_output_tokens": 32768, "thinking_level": "medium"},
+  "live_call_allowance": 0,
+  "live_budget_usd": null,
+  "automatic_retries": 0,
+  "resume_allowed": false,
+  "historical_judgments_reused": false,
+  "fresh_control_gate_required": true
+}
