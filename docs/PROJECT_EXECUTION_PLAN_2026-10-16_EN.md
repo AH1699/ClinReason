@@ -1,12 +1,12 @@
 # ClinReason current execution plan — 2026-10-16
 
-## Current checkpoint S54 with the main project milestones
+## Current checkpoint S55 with the main project milestones
 
-**Current checkpoint S54:** [The approval-bound runner and Batch P](S54_LIVE_ADMISSION_AND_BATCH_P_EN.md) add a separately versioned live entry point tested through the full **452-request simulated schedule**. Fresh protocol-bound, single-use approval is required before credentials or network access; none has been created. The proposed stop threshold is **$10 with possible last-request overrun**, not a hard ceiling. All 72 cells and 16 imported stages remain; eight medication cells stay raw diagnostics only, with no pooled means or rankings.
+**Current checkpoint S55:** [The approved nine-family run](S55_MIXED_PANEL_RUN_EN.md) is in progress under the amended **$20 recorded-spending stop threshold**, with possible last-request overrun and at most 452 new calls. The four Gemini/MiniMax candidates and Gemini judge are unchanged. No complete outcome or control-gate pass is claimed yet. All 72 cells and 16 imported stages remain; eight medication cells stay raw diagnostics only, with no pooled means or rankings.
 
-Batch P adds **two distinct standalone families / four EN/ZH variants**, with twelve mapped criterion positions, four initial references and twelve update examples: unresolved platelet-count interference and routine blood-pressure confirmation/surveillance. Batch O's controls and H142/H143/H144 are unchanged; H145/H146 record the new clinical/bilingual questions. No paid calls or new model scores. S50's failed gate, historical $0.200815 estimate, S48 and S49 results remain unchanged.
+Cases, labels, scoring arithmetic and control thresholds are frozen throughout execution. S55 adds a separate read-only reporter, tested for exact scoring reuse, missing values, review holds and no credential/network access. S50's failed gate, historical $0.200815 estimate, S48 and S49 results remain unchanged.
 
-Registered development remains **125 families / 250 variants**; standalone O and P now total **four families / eight variants**. Confirmation reservations remain separate and approved calibration/Gold stay **0/0**. Next review the frozen paid proposal, refreshing pricing if stale, and obtain explicit bounded approval before execution. Continue distinct case authoring toward at least 500 families. Xi'an stays local and expert review stays later. Lower 60–70, average ~80 and premium ~90 remain diagnostics, never fitted targets.
+Registered development remains **125 families / 250 variants**; standalone O and P total **four families / eight variants**, with H142–H146 still open. Confirmation reservations remain separate and approved calibration/Gold stay **0/0**. Next audit the terminal journal, control outcomes and repeat stability before selecting another paid batch; no retry or restart is authorized. Continue distinct case authoring toward at least 500 families. Xi'an stays local and expert review stays later. Lower 60–70, average ~80 and premium ~90 remain diagnostics, never fitted targets.
 
 ## Project direction and next milestones
 
@@ -17,7 +17,7 @@ Recent work has concentrated on scoring and provider diagnostics while registere
 | Workstream | Current state | Next deliverable |
 |---|---|---|
 | Scoring boundaries | S50 complete; 16/16 author matches, 27/28 repeats; gate failed | Trial closed; keep medication item review-held, version any future “or/both” or ambiguous-reference decision; no automatic next diagnostic |
-| Broader model comparison | Approval-bound entry point tested; 16 imports and 72 cells retained; current prices checked | Review prospective freeze and $10 stop-threshold proposal; obtain fresh explicit approval before any paid call |
+| Broader model comparison | Approved run underway with $20 stop threshold; 16 imports and 72 cells retained | Audit terminal captures, control gate and separate repeats; no restart or pooled ranking |
 | Case expansion | 125 registered families plus four standalone O/P families; P adds 12 mapped requirements | Continue distinct source-backed cases and a new authoring catalog without changing historical run inputs |
 | Source and privacy | Public evidence mappings and private Xi'an processing remain separate | Continue source-to-answer checks; Xi'an stays local until its case/privacy readiness issues are resolved |
 | Expert review | Deferred during partner discussions | Maintain the clinical/bilingual question register now; obtain review before release or comparative clinical claims |

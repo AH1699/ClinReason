@@ -1,8 +1,8 @@
-# Next development panel: prepared, not authorized for live execution
+# Nine family panel scope and reporting rules
 
-This is a planning handoff after the S45/S46 workflow pilot, not another paid run or permission to use an earlier experiment's remaining allowance. A future run must pass its declared control gate before development judgments. Failed controls remain recorded; do not weaken acceptance rules to obtain scores. S50 is closed with the medication item held, rather than an automatic prerequisite for another single-item diagnostic.
+The owner approved one execution of this fixed panel, recorded in [S55](S55_MIXED_PANEL_RUN_EN.md). This document grants no repeat execution or use of an earlier experiment's unused allowance. The declared control gate still governs development judgments. Failed controls remain recorded; do not weaken acceptance rules to obtain scores. S50 is closed with the medication item held, not an automatic prerequisite for another single-item diagnostic.
 
-Current checkpoint: [S54's approval-bound runner and prospective proposal](S54_LIVE_ADMISSION_AND_BATCH_P_EN.md) are implemented and tested offline. The proposed maximum is 452 new requests with a $10 monitored-spending stop threshold and possible last-request overrun. No paid approval exists. All 16 imports and 72 cells are retained. S50's failed gate and S48/S49 scores remain unchanged. Eight medication cells are raw diagnostics only, with no pooled means or rankings. Review the freeze and explicitly approve this scope before execution; refresh pricing if older than 24 hours. Standalone O and P cases stay outside this fixed panel.
+Current checkpoint: the approved execution is underway using the S54 runner, at most 452 new requests and a **$20 monitored-spending stop threshold**, with possible last-request overrun. The amended configuration was frozen before dispatch. All 16 imports and 72 cells are retained. S50's failed gate and S48/S49 scores remain unchanged. Eight medication cells are raw diagnostics only, with no pooled means or rankings. Standalone O and P cases stay outside this fixed panel. See S55 for execution status; approval is single-use and cannot authorize a restart.
 
 ## Fixed case selection
 
@@ -16,13 +16,13 @@ Keep the existing S38 selection; do not select replacements after seeing candida
 
 All IDs have the `HC-MT-` prefix. These are author-defined strata, not empirically proven easy/medium/hard levels. The 3/3/3 balance is **by reasoning design**, not clinical domain: the panel contains two triage, three medication-safety and four reasoning families.
 
-## Proposed execution and implementation prerequisite
+## Fixed execution scope
 
 Use the same four working Gemini/MiniMax candidates and Gemini 3.8 Flash judge for a provisional continuity panel; leave Grok unavailable rather than assigning it a clinical zero. Preserve both languages and two turns: **72 conversations / 144 candidate turns** across nine families.
 
 S51 verified the exact 16 saved stages; only the other 128 are generation jobs. S52/S53 provide the offline journal/transport baseline, while S54 supplies separately versioned live-labelled journals, replay and approval consumption. Compatibility, no duplicate generation, follow-up history, fixed denominators, interruption and spending stops are tested. The approved protocol and fresh owner permission—not an old allowance—will govern any paid execution.
 
-A proposed complete schedule is 128 new candidate turns + 36 judge controls + 144 first-pass stage judgments + 144 repeated stage judgments = **452 new requests**. This is a request-count proposal, not a budget or live authorization. Rejudge the one-family pilot answers under the new panel's declared judging protocol; retain pilot scores separately. Run repeats against identical saved packets and report them separately rather than averaging away disagreement. Set the new spending policy and obtain a fresh bounded authorization before any calls.
+The approved maximum is 128 new candidate turns + 36 judge controls + 144 first-pass stage judgments + 144 repeated stage judgments = **452 new requests**. This is a request limit, not a promise of completion. Rejudge the one-family pilot answers under the panel's declared judging protocol; retain pilot scores separately. Run repeats against identical saved packets and report them separately rather than averaging away disagreement. The owner's $20 threshold applies only to the single recorded S55 execution.
 
 ## Offline implementation status and remaining engineering
 
@@ -31,7 +31,7 @@ The new [S51 module](../scripts/mixed_panel_s51.py) leaves frozen S45/S46 and th
 1. Build the complete 72-conversation manifest first. Bind each of the 16 imported stages to its saved request, raw response, model identity, case version and answer hash. Reject incompatible or duplicate imports instead of quietly regenerating them.
 2. Produce a dry-run schedule with exactly 128 generation jobs. Each update uses its own verified initial answer and matching user follow-up; no missing initial stage may be replaced with a different model's answer.
 3. Add the 36 controls, 144 first judgments and 144 identical-payload repeats. Test missing-stage handling, closed provider lanes, unknown usage, stop thresholds and no dispatch after a stop. Keep all 72 conversation cells in reporting, including missing and review-held ones.
-4. Export an offline readiness report. Before a live freeze, declare one judging policy for the panel, the treatment of disputed medication criteria and a new budget. The proposed 452-request schedule is still not authorized.
+4. Export an offline readiness report. S54 now binds the uniform judging policy, treatment of disputed medication criteria and spending threshold. The one live execution was separately approved; readiness alone never authorizes another run.
 
 S54 retains S53's uniform 32,768/medium S47 judging and reporting policy. Its live CLI consumes a protocol/run-bound approval before reading credentials and uses the existing verified-TLS transport; tests inject simulated connections. HTTP failures are never passed to the answer parser. Approval expiry, source changes, unknown cost and spending stops prevent further dispatch. Read-only replay does not permit retry or resume. No numeric scoring rule or historical result changes.
 

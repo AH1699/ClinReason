@@ -2,13 +2,13 @@
   "version": "s54-mixed-live-v1",
   "status": "ready_for_explicit_approval",
   "maximum_attempts": 452,
-  "stop_threshold_usd": "10.00",
+  "stop_threshold_usd": "20.00",
   "hard_ceiling": false,
   "last_request_overrun_possible": true,
   "automatic_retries": 0,
   "resume_allowed": false,
   "pricing_verification": {
-    "verified_at": "2026-10-26T01:01:25Z",
+    "verified_at": "2026-10-26T01:57:35Z",
     "verified_by": "Codex public-source check; not account or invoice verification",
     "sources": {
       "gemini": "https://ai.google.dev/gemini-api/docs/pricing",

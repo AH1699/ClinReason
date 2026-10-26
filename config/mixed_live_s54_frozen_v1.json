@@ -1042,7 +1042,7 @@
     "invoice_or_hard_cap": false
   },
   "files": {
-    "config/mixed_live_s54_v1.json": "22b5e35ff91a4b4431238d8a939b767f841b6d9fa0f767b1795e9b371a61eaa0",
+    "config/mixed_live_s54_v1.json": "047f53c428618fcfa4fdf551dcfcc23e59655e2db7c144a74d04a3e1f4649960",
     "scripts/mixed_live_s54.py": "c1b2bc52252753cfc28b4a9a8f06179125548dbe306a77cf0e03ca00e881c645",
     "tests/test_mixed_live_s54.py": "28e5ca17cdf9689f745619eb17f797b05cbb12df4440dd658e70913cafa62958"
   }

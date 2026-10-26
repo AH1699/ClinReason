@@ -1,5 +1,7 @@
 # Approval bound runner and two new case families
 
+**Subsequent execution:** the owner approved this scope with a $20 stop threshold. See [the S55 execution record](S55_MIXED_PANEL_RUN_EN.md). The $10 and no-approval statements below describe the original preparation checkpoint; that proposal is preserved in Git, while the linked prospective configuration was amended and refrozen before its first live request.
+
 This checkpoint adds a separately versioned runner for the nine-family panel and two new bilingual case drafts. The runner is tested with simulated responses, not a new provider experiment. A **$10 monitored-spending stop threshold and at most 452 requests** are proposed for the next run; no approval has been created or consumed outside tests.
 
 ## What the runner now enforces
