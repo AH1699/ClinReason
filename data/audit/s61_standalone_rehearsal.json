@@ -1,0 +1,26 @@
+{
+  "version": "s61-standalone-offline-integration-v1",
+  "simulation_only": true,
+  "live_calls": 0,
+  "measured_model_scores": 0,
+  "protocol_sha256": "7088f0a8b8b2b5a0e63efe13cc02148977f6c43bda4a1e0e1eb7e1f7bf694620",
+  "events": 480,
+  "read_only_replay_verified": true,
+  "incomplete_tail": null,
+  "terminal": "schedule_complete",
+  "expected_conversations": 64,
+  "complete_fixture_first_conversations": 64,
+  "complete_fixture_repeat_conversations": 64,
+  "outcomes": {
+    "accepted": 480
+  },
+  "unresolved_reservations": 0,
+  "unknown_simulated_cost_attempts": 0,
+  "new_families": 0,
+  "clinical_validation": false,
+  "paid_execution_ready": false,
+  "next": [
+    "Select prospective live control/technical failure gates and freeze settings.",
+    "Verify current availability/prices and seek fresh bounded export/spending approval."
+  ]
+}

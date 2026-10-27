@@ -1,0 +1,21 @@
+{
+  "version": "s61-standalone-offline-integration-v1",
+  "mode": "offline_transport_fixture",
+  "parent": "data/audit/s60_standalone_pilot_manifest.json",
+  "maximum_requests": 480,
+  "judge_settings": {"max_output_tokens": 32768, "thinking_level": "medium", "service_tier": "standard"},
+  "candidate_settings": "unchanged_s38_visible_text_history",
+  "control_admission": "all_96_format_valid_records_for_fixture_engineering_only",
+  "clinical_control_gate": "not_selected_or_authorized_by_this_rehearsal",
+  "control_disagreement": "retain_diagnostics_no_relabel_or_retry",
+  "known_cost_invalid_candidate": "close_only_that_candidate_model_lane",
+  "known_cost_invalid_judge": "stop_no_retry",
+  "unknown_delivery_or_cost": "global_stop",
+  "max_in_flight": 1,
+  "automatic_retries": 0,
+  "resume_allowed": false,
+  "live_call_allowance": 0,
+  "live_budget_usd": null,
+  "pricing_status": "historical_rates_for_simulated_accounting_only_not_current_quote",
+  "reporting": "all_64_cells_first_repeat_separate_missing_not_zero_all_clinically_held"
+}
