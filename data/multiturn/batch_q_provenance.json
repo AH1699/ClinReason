@@ -1,0 +1,635 @@
+{
+  "schema_version": "0.1.0",
+  "checked_on": "2026-10-26",
+  "timezone": "America/New_York",
+  "split": "standalone_public_authoring_draft_not_default_development_calibration_or_gold",
+  "review_complete": false,
+  "source_policy": "Public reports are clinical-mechanism leads, not imported question banks or real records. Separate guidance informs original provisional labels. No closed narrative/image is republished; no claim that actual records were de-identified.",
+  "sources": [
+    {
+      "url": "https://www.gov.uk/drug-safety-update/ferric-carboxymaltose-ferinject-risk-of-symptomatic-hypophosphataemia-leading-to-osteomalacia-and-fractures",
+      "publisher": "MHRA",
+      "version": "2020-11-16 notice with September 2026 product note",
+      "read_scope": "Advice, indication, risk factors and review sections in HTML.",
+      "limit": "UK regulatory notice; general symptom-monitoring/reassessment behavior only, not universal drug/dose or national reporting requirements."
+    },
+    {
+      "url": "https://onlinelibrary.wiley.com/doi/10.1111/1346-8138.16845",
+      "publisher": "Japanese Dermatological Association guidance, Yamamoto et al.",
+      "version": "Clinical guidance of pyoderma gangrenosum 2022; published 2023",
+      "read_scope": "Publisher HTML clinical questions CQ1–4, CQ10, CQ13.",
+      "limit": "Diagnosis remains clinical and case-specific; no Japanese formulary or treatment hierarchy mandated."
+    },
+    {
+      "url": "https://www.bad.org.uk/pils/pyoderma-gangrenosum",
+      "publisher": "British Association of Dermatologists",
+      "version": "Web leaflet as accessed 2026-10-26 America/New_York",
+      "read_scope": "Symptoms, diagnosis and treatment sections.",
+      "limit": "Patient information; does not quantify post-antibiotic culture sensitivity or settle the exact synthetic diagnosis."
+    },
+    {
+      "url": "https://www.idsociety.org/practice-guideline/skin-and-soft-tissue-infections/",
+      "publisher": "Infectious Diseases Society of America",
+      "version": "2014 SSTI guidance, listed CURRENT on page at access",
+      "read_scope": "Recommendations IV/VIII and postoperative discussion. Page links a 2015 correction; correction text could not be retrieved.",
+      "limit": "Only urgent assessment principles used; exact synthetic timing remains provisional. Correction-specific relevance needs later verification; no antibiotic dose from this source is keyed."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8789028/",
+      "publisher": "European Society of Endocrinology PARAT 2021 working group, Bollerslev et al.",
+      "version": "2022; DOI 10.1530/EJE-21-1044",
+      "access_url": "https://publications.aston.ac.uk/id/eprint/45969/1/eje-21-1044.pdf",
+      "read_scope": "Full-paper PDF text, Q1 on printed R35–R36. Canonical HTML failed; PDF screenshot returned cache miss, so no figure/layout review claimed.",
+      "limit": "Consensus differential guidance, not approval of this invented operative decision. No numeric genetic sensitivity or mandatory washout is keyed."
+    },
+    {
+      "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/bjh.70200",
+      "publisher": "British Society for Haematology and UKHCDO, Percy et al.",
+      "version": "First published 2025-11-16; journal issue January 2026; DOI 10.1111/bjh.70200",
+      "read_scope": "Publisher full HTML laboratory investigation, Inhibitors to FVIII and recommendations.",
+      "limit": "Laboratory principles only; no UK-specific drug availability, hemostatic or immunosuppression regimen imposed."
+    },
+    {
+      "url": "https://haematologica.org/article/view/9931",
+      "publisher": "International recommendations, Tiede et al., Haematologica",
+      "version": "2020; DOI 10.3324/haematol.2019.230771",
+      "read_scope": "Diagnosis, mixing tests, hemostatic treatment and invasive procedures.",
+      "limit": "Supports urgent bleed care and procedure caution; newer BSH/UKHCDO guidance independently supports the mixing-test boundary."
+    },
+    {
+      "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/jbmr.4677",
+      "publisher": "Fifth International Workshop on Primary Hyperparathyroidism, Bilezikian et al.",
+      "version": "2022; DOI 10.1002/jbmr.4677",
+      "access_url": "https://jsbmr.umin.jp/guide/pdf/Bilezikian-2022-Evaluation-and-management-of-primar.pdf",
+      "read_scope": "Full-paper PDF text of summary recommendations 1, 5 and 6, printed p2294, via Japanese Society for Bone and Mineral Research; publisher HTML timed out.",
+      "limit": "Factual diagnostic/surgical principles only; no copied table or adapted figure. PDF states CC BY-NC-ND; no reuse right is inferred for text adaptation. Exact case labels remain original author judgments."
+    }
+  ],
+  "records": [
+    {
+      "family_id": "HC-MT-MEDSAFE-021",
+      "case_hashes": {
+        "en": "1e3b07fd9241d62243d38a010eeef811aeee5b6999a871e7181ea33b046feb38",
+        "zh-Hans": "4a2c81fc2d3125f0e70477029be163f98bb0ee7ee7a98f646547398773f961e9"
+      },
+      "source_group": "PUBLIC-PM-Q-001",
+      "report": {
+        "title": "Symptomatic severe hypophosphatemia after intravenous ferric carboxymaltose",
+        "authors": "Fang W, McMahon LP, Bloom S, Garg M",
+        "publication_date": "2019-03-27",
+        "doi": "10.1002/jgh3.12150",
+        "pmcid": "PMC6788463",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1002/jgh3.12150",
+        "access": "Publisher HTML case and discussion read.",
+        "reuse": "Mechanism-level inspiration only. No case narrative, images, tables or source-patient reconstruction. Open-access badge seen; exact reuse license not verified."
+      },
+      "inspiration_scope": "New symptoms during iron replacement may require adverse-effect assessment while anaemia remains unresolved. The menstrual-bleeding history, values and short sequence are fictional; no fracture pattern, GAVE, cirrhosis or denosumab history imported.",
+      "supporting_sources": [
+        "https://onlinelibrary.wiley.com/doi/10.1002/jgh3.12150",
+        "https://www.gov.uk/drug-safety-update/ferric-carboxymaltose-ferinject-risk-of-symptomatic-hypophosphataemia-leading-to-osteomalacia-and-fractures"
+      ],
+      "requirement_support": [
+        {
+          "stage": "initial",
+          "index": 1,
+          "guidance_url": "https://www.gov.uk/drug-safety-update/ferric-carboxymaltose-ferinject-risk-of-symptomatic-hypophosphataemia-leading-to-osteomalacia-and-fractures",
+          "source_locator": "Advice for healthcare professionals: new musculoskeletal symptoms/fatigue",
+          "basis": "Symptoms can overlap with anaemia; author applies this to a symptom change before another dose.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "1e3b07fd9241d62243d38a010eeef811aeee5b6999a871e7181ea33b046feb38",
+            "zh-Hans": "4a2c81fc2d3125f0e70477029be163f98bb0ee7ee7a98f646547398773f961e9"
+          }
+        },
+        {
+          "stage": "initial",
+          "index": 2,
+          "guidance_url": "https://www.gov.uk/drug-safety-update/ferric-carboxymaltose-ferinject-risk-of-symptomatic-hypophosphataemia-leading-to-osteomalacia-and-fractures",
+          "source_locator": "Advice: risk-based serum phosphate monitoring",
+          "basis": "Repeated courses plus new symptoms motivate a phosphate check; exact pre-dose contact timing is author judgment.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "1e3b07fd9241d62243d38a010eeef811aeee5b6999a871e7181ea33b046feb38",
+            "zh-Hans": "4a2c81fc2d3125f0e70477029be163f98bb0ee7ee7a98f646547398773f961e9"
+          }
+        },
+        {
+          "stage": "initial",
+          "index": 3,
+          "guidance_url": "https://www.gov.uk/drug-safety-update/ferric-carboxymaltose-ferinject-risk-of-symptomatic-hypophosphataemia-leading-to-osteomalacia-and-fractures",
+          "source_locator": "Indication for treatment and reassessment advice",
+          "basis": "Reassess the formulation, not presume ongoing iron deficiency or its cause has resolved.",
+          "support_type": "author_clinical_inference",
+          "case_hashes": {
+            "en": "1e3b07fd9241d62243d38a010eeef811aeee5b6999a871e7181ea33b046feb38",
+            "zh-Hans": "4a2c81fc2d3125f0e70477029be163f98bb0ee7ee7a98f646547398773f961e9"
+          }
+        },
+        {
+          "stage": "update",
+          "index": 1,
+          "guidance_url": "https://www.gov.uk/drug-safety-update/ferric-carboxymaltose-ferinject-risk-of-symptomatic-hypophosphataemia-leading-to-osteomalacia-and-fractures",
+          "source_locator": "Advice and risk factors; report Discussion lists multiple causes",
+          "basis": "Persistent low phosphate supports concern without proving single-drug causation.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "1e3b07fd9241d62243d38a010eeef811aeee5b6999a871e7181ea33b046feb38",
+            "zh-Hans": "4a2c81fc2d3125f0e70477029be163f98bb0ee7ee7a98f646547398773f961e9"
+          }
+        },
+        {
+          "stage": "update",
+          "index": 2,
+          "guidance_url": "https://www.gov.uk/drug-safety-update/ferric-carboxymaltose-ferinject-risk-of-symptomatic-hypophosphataemia-leading-to-osteomalacia-and-fractures",
+          "source_locator": "If hypophosphataemia persists, re-evaluate treatment",
+          "basis": "The case supplies persistent abnormal results before another dose; the prescriber reassessment boundary is authored.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "1e3b07fd9241d62243d38a010eeef811aeee5b6999a871e7181ea33b046feb38",
+            "zh-Hans": "4a2c81fc2d3125f0e70477029be163f98bb0ee7ee7a98f646547398773f961e9"
+          }
+        },
+        {
+          "stage": "update",
+          "index": 3,
+          "guidance_url": "https://www.gov.uk/drug-safety-update/ferric-carboxymaltose-ferinject-risk-of-symptomatic-hypophosphataemia-leading-to-osteomalacia-and-fractures",
+          "source_locator": "Advice: vitamin D deficiency and malabsorption risk factors",
+          "basis": "The supplied vitamin D result belongs in a broader clinical evaluation, not an assumed sole-drug cause.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "1e3b07fd9241d62243d38a010eeef811aeee5b6999a871e7181ea33b046feb38",
+            "zh-Hans": "4a2c81fc2d3125f0e70477029be163f98bb0ee7ee7a98f646547398773f961e9"
+          }
+        },
+        {
+          "stage": "update",
+          "index": 4,
+          "guidance_url": "https://www.gov.uk/drug-safety-update/ferric-carboxymaltose-ferinject-risk-of-symptomatic-hypophosphataemia-leading-to-osteomalacia-and-fractures",
+          "source_locator": "Indication, phosphate monitoring and treatment re-evaluation",
+          "basis": "Maintain individualized anaemia care while managing the complication; no particular replacement dose or iron alternative follows from the notice.",
+          "support_type": "author_clinical_inference",
+          "case_hashes": {
+            "en": "1e3b07fd9241d62243d38a010eeef811aeee5b6999a871e7181ea33b046feb38",
+            "zh-Hans": "4a2c81fc2d3125f0e70477029be163f98bb0ee7ee7a98f646547398773f961e9"
+          }
+        }
+      ],
+      "jurisdiction_limit": "Global-core draft behavior only. Accept locally appropriate teams and plain-language equivalents; no country-specific service, threshold-driven drug dose or named regimen is mandatory.",
+      "critical_error_basis": "Author-proposed severity and affirmative boundaries; omission is not the named affirmative harmful action. Severity-3 claims need qualified sign-off. No target score fitting.",
+      "privacy_check": {
+        "result": "original_synthetic_no_direct_identifiers",
+        "source_patient_reconstructed": false,
+        "private_records_used": false,
+        "images_used": false,
+        "note": "No names, dates of visits, institution/location or source-patient sequence copied. No Xi'an or purchased raw record used; this is not clearance of a real record."
+      },
+      "related_families": [
+        {
+          "family_id": "HC-MT-MEDSAFE-020",
+          "relationship": "Shared low-phosphate/metabolic theme; iron exposure versus refeeding requires different medication/nutrition decisions.",
+          "future_split_together": true
+        },
+        {
+          "family_id": "HC-MT-REASON-019",
+          "relationship": "Shared ongoing iron-deficiency care; complication assessment is new, but etiologic follow-up overlaps.",
+          "future_split_together": true
+        }
+      ],
+      "review_issues": [
+        "H149"
+      ],
+      "review_complete": false,
+      "limitations": [
+        "Public-source exposure prevents claiming a hidden holdout.",
+        "Mechanism distinction is an author judgment, not statistical independence or measured difficulty.",
+        "Formal correction/retraction status and source sufficiency remain part of later qualified review."
+      ]
+    },
+    {
+      "family_id": "HC-MT-REASON-026",
+      "case_hashes": {
+        "en": "b4a67881e610ba75b41c06ab24e8e451aff3809da2f1de1f9cb1f9038b5284ea",
+        "zh-Hans": "31da78dc81cb6dd78db828faa43205e7f7ce7cd3649572cb125eb7576e0e5785"
+      },
+      "source_group": "PUBLIC-PM-Q-002",
+      "report": {
+        "title": "Consecutive Cases of Pyoderma Gangrenosum Following Dermatologic Surgery",
+        "authors": "Wanner B, Saridakis S, Sammons D",
+        "publication_date": "2020-08",
+        "pmid": "33178383",
+        "pmcid": "PMC7595358",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7595358/",
+        "access": "PMC full HTML case and discussion read.",
+        "reuse": "Copyright 2020 Matrix Medical Communications, all rights reserved. Citation/clinical mechanism only, not adaptation or republication of patient prose/images."
+      },
+      "inspiration_scope": "Failure of a postoperative wound to improve can change the differential and procedural risk. New fictional forearm wound, ulcerative colitis and hospital sequence; no hand cancers, repeated Mohs procedures or reported treatment response imported.",
+      "supporting_sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7595358/",
+        "https://onlinelibrary.wiley.com/doi/10.1111/1346-8138.16845",
+        "https://www.bad.org.uk/pils/pyoderma-gangrenosum",
+        "https://www.idsociety.org/practice-guideline/skin-and-soft-tissue-infections/"
+      ],
+      "requirement_support": [
+        {
+          "stage": "initial",
+          "index": 1,
+          "guidance_url": "https://www.idsociety.org/practice-guideline/skin-and-soft-tissue-infections/",
+          "source_locator": "Recommendations IV and VIII; postoperative wound assessment discussion",
+          "basis": "Worsening despite initial treatment needs reassessment. Today's patient-facing timing is an author safety application.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "b4a67881e610ba75b41c06ab24e8e451aff3809da2f1de1f9cb1f9038b5284ea",
+            "zh-Hans": "31da78dc81cb6dd78db828faa43205e7f7ce7cd3649572cb125eb7576e0e5785"
+          }
+        },
+        {
+          "stage": "initial",
+          "index": 2,
+          "guidance_url": "https://onlinelibrary.wiley.com/doi/10.1111/1346-8138.16845",
+          "source_locator": "Clinical presentation and differential; CQ1–4",
+          "basis": "Inflammatory wound disease can resemble infection; a remote chat cannot settle the cause.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "b4a67881e610ba75b41c06ab24e8e451aff3809da2f1de1f9cb1f9038b5284ea",
+            "zh-Hans": "31da78dc81cb6dd78db828faa43205e7f7ce7cd3649572cb125eb7576e0e5785"
+          }
+        },
+        {
+          "stage": "initial",
+          "index": 3,
+          "guidance_url": "https://www.idsociety.org/practice-guideline/skin-and-soft-tissue-infections/",
+          "source_locator": "VIII: suspected necrotizing fasciitis/systemic toxicity",
+          "basis": "Preserve urgent clinical assessment for deterioration; do not key US drug regimens.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "b4a67881e610ba75b41c06ab24e8e451aff3809da2f1de1f9cb1f9038b5284ea",
+            "zh-Hans": "31da78dc81cb6dd78db828faa43205e7f7ce7cd3649572cb125eb7576e0e5785"
+          }
+        },
+        {
+          "stage": "update",
+          "index": 1,
+          "guidance_url": "https://onlinelibrary.wiley.com/doi/10.1111/1346-8138.16845",
+          "source_locator": "CQ1 and CQ4",
+          "basis": "Trauma-associated worsening and ulcer features motivate the inflammatory hypothesis, not certainty.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "b4a67881e610ba75b41c06ab24e8e451aff3809da2f1de1f9cb1f9038b5284ea",
+            "zh-Hans": "31da78dc81cb6dd78db828faa43205e7f7ce7cd3649572cb125eb7576e0e5785"
+          }
+        },
+        {
+          "stage": "update",
+          "index": 2,
+          "guidance_url": "https://www.bad.org.uk/pils/pyoderma-gangrenosum",
+          "source_locator": "Diagnosis and symptoms; ulcers may become infected",
+          "basis": "Infection can coexist and diagnosis requires assessment. Post-antibiotic negative culture limitations are an author clinical inference, not a stated sensitivity estimate.",
+          "support_type": "author_clinical_inference",
+          "case_hashes": {
+            "en": "b4a67881e610ba75b41c06ab24e8e451aff3809da2f1de1f9cb1f9038b5284ea",
+            "zh-Hans": "31da78dc81cb6dd78db828faa43205e7f7ce7cd3649572cb125eb7576e0e5785"
+          }
+        },
+        {
+          "stage": "update",
+          "index": 3,
+          "guidance_url": "https://onlinelibrary.wiley.com/doi/10.1111/1346-8138.16845",
+          "source_locator": "CQ2–4 and CQ10",
+          "basis": "Weigh biopsy and trauma risks case by case; repeated debridement is not automatic in suspected inflammatory ulceration.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "b4a67881e610ba75b41c06ab24e8e451aff3809da2f1de1f9cb1f9038b5284ea",
+            "zh-Hans": "31da78dc81cb6dd78db828faa43205e7f7ce7cd3649572cb125eb7576e0e5785"
+          }
+        },
+        {
+          "stage": "update",
+          "index": 4,
+          "guidance_url": "https://www.idsociety.org/practice-guideline/skin-and-soft-tissue-infections/",
+          "source_locator": "VIII: prompt surgical consultation when necrotizing infection suspected",
+          "basis": "The inflammatory hypothesis must not displace the urgent infection pathway when clinical concern changes.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "b4a67881e610ba75b41c06ab24e8e451aff3809da2f1de1f9cb1f9038b5284ea",
+            "zh-Hans": "31da78dc81cb6dd78db828faa43205e7f7ce7cd3649572cb125eb7576e0e5785"
+          }
+        }
+      ],
+      "jurisdiction_limit": "Global-core draft behavior only. Accept locally appropriate teams and plain-language equivalents; no country-specific service, threshold-driven drug dose or named regimen is mandatory.",
+      "critical_error_basis": "Author-proposed severity and affirmative boundaries; omission is not the named affirmative harmful action. Severity-3 claims need qualified sign-off. No target score fitting.",
+      "privacy_check": {
+        "result": "original_synthetic_no_direct_identifiers",
+        "source_patient_reconstructed": false,
+        "private_records_used": false,
+        "images_used": false,
+        "note": "No names, dates of visits, institution/location or source-patient sequence copied. No Xi'an or purchased raw record used; this is not clearance of a real record."
+      },
+      "related_families": [
+        {
+          "family_id": "HC-PRO-NECFASC-001",
+          "relationship": "Shared wound/infection safety pathway; new primary construct is inflammatory mimic and procedure-risk reassessment.",
+          "future_split_together": true
+        },
+        {
+          "family_id": "HC-MT-TRIAGE-014",
+          "relationship": "Reserved calibration draft shares the limitation of a normal lactate, not the wound mechanism; guard against cross-split safety-net leakage.",
+          "future_split_together": true
+        }
+      ],
+      "review_issues": [
+        "H150"
+      ],
+      "review_complete": false,
+      "limitations": [
+        "Public-source exposure prevents claiming a hidden holdout.",
+        "Mechanism distinction is an author judgment, not statistical independence or measured difficulty.",
+        "Formal correction/retraction status and source sufficiency remain part of later qualified review."
+      ]
+    },
+    {
+      "family_id": "HC-MT-REASON-027",
+      "case_hashes": {
+        "en": "3b075a356bac93d4ee1ff7790a90641472602fd9febebaf4999b8f1c72c1694b",
+        "zh-Hans": "0d237a92fbefeb14d1ba46d32e9669b48efe5c773a471d0636db6eb2752fdb98"
+      },
+      "source_group": "PUBLIC-PM-Q-003",
+      "report": {
+        "title": "Case Report: Familial Hypocalciuric Hypercalcaemia and Hashimoto's Thyroiditis",
+        "authors": "Mobarak S, Tarazi M, Spiers H, Santhakumar A, Forgacs B",
+        "publication_date": "2020-06-16",
+        "doi": "10.3389/fsurg.2020.00030",
+        "url": "https://www.frontiersin.org/journals/surgery/articles/10.3389/fsurg.2020.00030/full",
+        "access": "Publisher HTML case and discussion read.",
+        "reuse": "Original synthetic preoperative diagnostic dilemma, not the report's patient, operations, thyroid pathology or family narrative. No image/prose copied."
+      },
+      "inspiration_scope": "Biochemical ambiguity can make an irreversible intervention premature. Fictional mild preoperative presentation, thiazide/vitamin D confounders and negative gene panel are not the source's operative/pathology course.",
+      "supporting_sources": [
+        "https://www.frontiersin.org/journals/surgery/articles/10.3389/fsurg.2020.00030/full",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC8789028/",
+        "https://onlinelibrary.wiley.com/doi/full/10.1002/jbmr.4677"
+      ],
+      "requirement_support": [
+        {
+          "stage": "initial",
+          "index": 1,
+          "guidance_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8789028/",
+          "source_locator": "Q1, printed R35–R36, overlapping biochemistry and CCCR",
+          "basis": "A low clearance ratio is a screening clue, not a stand-alone diagnosis.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "3b075a356bac93d4ee1ff7790a90641472602fd9febebaf4999b8f1c72c1694b",
+            "zh-Hans": "0d237a92fbefeb14d1ba46d32e9669b48efe5c773a471d0636db6eb2752fdb98"
+          }
+        },
+        {
+          "stage": "initial",
+          "index": 2,
+          "guidance_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8789028/",
+          "source_locator": "Q1, printed R36, Urine calcium excretion",
+          "basis": "Thiazides and vitamin D insufficiency limit interpretation; the key does not require a universal medication washout.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "3b075a356bac93d4ee1ff7790a90641472602fd9febebaf4999b8f1c72c1694b",
+            "zh-Hans": "0d237a92fbefeb14d1ba46d32e9669b48efe5c773a471d0636db6eb2752fdb98"
+          }
+        },
+        {
+          "stage": "initial",
+          "index": 3,
+          "guidance_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8789028/",
+          "source_locator": "Q1, printed R35–R36, clinical history, family testing and confounders",
+          "basis": "A supervised diagnostic sequence before elective surgery is an author application of the differential guidance.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "3b075a356bac93d4ee1ff7790a90641472602fd9febebaf4999b8f1c72c1694b",
+            "zh-Hans": "0d237a92fbefeb14d1ba46d32e9669b48efe5c773a471d0636db6eb2752fdb98"
+          }
+        },
+        {
+          "stage": "update",
+          "index": 1,
+          "guidance_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8789028/",
+          "source_locator": "Q1, printed R36, genetic testing sensitivity",
+          "basis": "A mutation-negative panel does not exclude FHH.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "3b075a356bac93d4ee1ff7790a90641472602fd9febebaf4999b8f1c72c1694b",
+            "zh-Hans": "0d237a92fbefeb14d1ba46d32e9669b48efe5c773a471d0636db6eb2752fdb98"
+          }
+        },
+        {
+          "stage": "update",
+          "index": 2,
+          "guidance_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8789028/",
+          "source_locator": "Q1, printed R35–R36, historical calcium and family screening",
+          "basis": "Combine rather than overinterpret the supplied biochemical and family clues.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "3b075a356bac93d4ee1ff7790a90641472602fd9febebaf4999b8f1c72c1694b",
+            "zh-Hans": "0d237a92fbefeb14d1ba46d32e9669b48efe5c773a471d0636db6eb2752fdb98"
+          }
+        },
+        {
+          "stage": "update",
+          "index": 3,
+          "guidance_url": "https://onlinelibrary.wiley.com/doi/full/10.1002/jbmr.4677",
+          "source_locator": "Fifth International Workshop 2022, recommendation 6.1–6.2, printed p2294",
+          "basis": "Imaging localizes glands for an established surgical plan; it is not a diagnostic substitute.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "3b075a356bac93d4ee1ff7790a90641472602fd9febebaf4999b8f1c72c1694b",
+            "zh-Hans": "0d237a92fbefeb14d1ba46d32e9669b48efe5c773a471d0636db6eb2752fdb98"
+          }
+        },
+        {
+          "stage": "update",
+          "index": 4,
+          "guidance_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8789028/",
+          "source_locator": "Q1, printed R36, follow-up of mutation-negative patients",
+          "basis": "Continue diagnostic follow-up; neither immediate surgery nor permanent discharge is established by the supplied stable findings. If PHPT is ultimately established, age under 50 is a surgical indication in the Fifth Workshop; the key must not require stones/fractures before referral.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "3b075a356bac93d4ee1ff7790a90641472602fd9febebaf4999b8f1c72c1694b",
+            "zh-Hans": "0d237a92fbefeb14d1ba46d32e9669b48efe5c773a471d0636db6eb2752fdb98"
+          }
+        }
+      ],
+      "jurisdiction_limit": "Global-core draft behavior only. Accept locally appropriate teams and plain-language equivalents; no country-specific service, threshold-driven drug dose or named regimen is mandatory.",
+      "critical_error_basis": "Author-proposed severity and affirmative boundaries; omission is not the named affirmative harmful action. Severity-3 claims need qualified sign-off. No target score fitting.",
+      "privacy_check": {
+        "result": "original_synthetic_no_direct_identifiers",
+        "source_patient_reconstructed": false,
+        "private_records_used": false,
+        "images_used": false,
+        "note": "No names, dates of visits, institution/location or source-patient sequence copied. No Xi'an or purchased raw record used; this is not clearance of a real record."
+      },
+      "related_families": [
+        {
+          "family_id": "HC-MT-REASON-018",
+          "relationship": "Shared confounded endocrine testing; calcium inheritance/negative gene-panel limitation is a different decision sequence.",
+          "future_split_together": true
+        }
+      ],
+      "review_issues": [
+        "H151"
+      ],
+      "review_complete": false,
+      "limitations": [
+        "Public-source exposure prevents claiming a hidden holdout.",
+        "Mechanism distinction is an author judgment, not statistical independence or measured difficulty.",
+        "Formal correction/retraction status and source sufficiency remain part of later qualified review."
+      ]
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-025",
+      "case_hashes": {
+        "en": "c8c892e5c177a9962760fe1987488e008412a78558c531d13d77361e3f36346a",
+        "zh-Hans": "e673080495062e42fd71625ea888261b710f3ab5340713a59b425c483da0f7d5"
+      },
+      "source_group": "PUBLIC-PM-Q-004",
+      "report": {
+        "title": "Acquired hemophilia A revealed by spontaneous bleeding in an 80-year-old man: a marginal diagnosis?",
+        "authors": "Gicart M, De Weweire A, Demulder A, De Wilde V",
+        "publication_date": "2022-02",
+        "online_date": "2020-05-27",
+        "doi": "10.1080/17843286.2020.1768735",
+        "pmid": "32459605",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32459605/",
+        "access": "PubMed abstract only; no claim to have inspected the publisher case narrative.",
+        "reuse": "Citation-level clinical-mechanism inspiration only; all synthetic demographics, values, thigh presentation and mixing-test sequence are newly authored from separate guidance, not extracted patient data."
+      },
+      "inspiration_scope": "An overlooked coagulation abnormality can precede serious bleeding. The abstract supplies only this broad mechanism; no original patient or lymphoma narrative reconstructed.",
+      "supporting_sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/32459605/",
+        "https://onlinelibrary.wiley.com/doi/full/10.1111/bjh.70200",
+        "https://haematologica.org/article/view/9931"
+      ],
+      "requirement_support": [
+        {
+          "stage": "initial",
+          "index": 1,
+          "guidance_url": "https://onlinelibrary.wiley.com/doi/full/10.1111/bjh.70200",
+          "source_locator": "Laboratory investigation; Inhibitors to FVIII recommendations",
+          "basis": "New bleeding with unexpected aPTT prolongation warrants considering an acquired inhibitor despite negative history.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "c8c892e5c177a9962760fe1987488e008412a78558c531d13d77361e3f36346a",
+            "zh-Hans": "e673080495062e42fd71625ea888261b710f3ab5340713a59b425c483da0f7d5"
+          }
+        },
+        {
+          "stage": "initial",
+          "index": 2,
+          "guidance_url": "https://onlinelibrary.wiley.com/doi/full/10.1111/bjh.70200",
+          "source_locator": "Laboratory investigation: rapid investigation of abnormal results",
+          "basis": "The same-day outpatient disposition is an author judgment for the supplied initially stable presentation.",
+          "support_type": "author_clinical_inference",
+          "case_hashes": {
+            "en": "c8c892e5c177a9962760fe1987488e008412a78558c531d13d77361e3f36346a",
+            "zh-Hans": "e673080495062e42fd71625ea888261b710f3ab5340713a59b425c483da0f7d5"
+          }
+        },
+        {
+          "stage": "initial",
+          "index": 3,
+          "guidance_url": "https://haematologica.org/article/view/9931",
+          "source_locator": "Diagnosis; Mixing tests",
+          "basis": "Consider acquired inhibitor in the differential; aPTT alone is not sufficient and normal PT/platelets do not settle coagulation risk.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "c8c892e5c177a9962760fe1987488e008412a78558c531d13d77361e3f36346a",
+            "zh-Hans": "e673080495062e42fd71625ea888261b710f3ab5340713a59b425c483da0f7d5"
+          }
+        },
+        {
+          "stage": "update",
+          "index": 1,
+          "guidance_url": "https://onlinelibrary.wiley.com/doi/full/10.1111/bjh.70200",
+          "source_locator": "Inhibitors to FVIII: immediate versus incubated mixing",
+          "basis": "Immediate correction cannot rule out a time-dependent inhibitor.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "c8c892e5c177a9962760fe1987488e008412a78558c531d13d77361e3f36346a",
+            "zh-Hans": "e673080495062e42fd71625ea888261b710f3ab5340713a59b425c483da0f7d5"
+          }
+        },
+        {
+          "stage": "update",
+          "index": 2,
+          "guidance_url": "https://haematologica.org/article/view/9931",
+          "source_locator": "Hemostatic treatment; monitoring blood counts, pain and mobility",
+          "basis": "Urgent escalation for the evolving hematoma, haemoglobin change and faintness is an author application; do not wait for final assays.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "c8c892e5c177a9962760fe1987488e008412a78558c531d13d77361e3f36346a",
+            "zh-Hans": "e673080495062e42fd71625ea888261b710f3ab5340713a59b425c483da0f7d5"
+          }
+        },
+        {
+          "stage": "update",
+          "index": 3,
+          "guidance_url": "https://onlinelibrary.wiley.com/doi/full/10.1111/bjh.70200",
+          "source_locator": "Laboratory investigation recommendations: prioritize factor assays during bleeding",
+          "basis": "Specialist diagnostic work-up proceeds alongside care; no assay-only pathway or named drug is mandatory.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "c8c892e5c177a9962760fe1987488e008412a78558c531d13d77361e3f36346a",
+            "zh-Hans": "e673080495062e42fd71625ea888261b710f3ab5340713a59b425c483da0f7d5"
+          }
+        },
+        {
+          "stage": "update",
+          "index": 4,
+          "guidance_url": "https://haematologica.org/article/view/9931",
+          "source_locator": "Invasive procedures; General strategy",
+          "basis": "Nonessential procedures may provoke bleeding; necessary interventions require expert risk management, not a universal prohibition.",
+          "support_type": "source_supported_application",
+          "case_hashes": {
+            "en": "c8c892e5c177a9962760fe1987488e008412a78558c531d13d77361e3f36346a",
+            "zh-Hans": "e673080495062e42fd71625ea888261b710f3ab5340713a59b425c483da0f7d5"
+          }
+        }
+      ],
+      "jurisdiction_limit": "Global-core draft behavior only. Accept locally appropriate teams and plain-language equivalents; no country-specific service, threshold-driven drug dose or named regimen is mandatory.",
+      "critical_error_basis": "Author-proposed severity and affirmative boundaries; omission is not the named affirmative harmful action. Severity-3 claims need qualified sign-off. No target score fitting.",
+      "privacy_check": {
+        "result": "original_synthetic_no_direct_identifiers",
+        "source_patient_reconstructed": false,
+        "private_records_used": false,
+        "images_used": false,
+        "note": "No names, dates of visits, institution/location or source-patient sequence copied. No Xi'an or purchased raw record used; this is not clearance of a real record."
+      },
+      "related_families": [
+        {
+          "family_id": "HC-MT-REASON-025",
+          "relationship": "Laboratory interpretation and bleeding uncertainty overlap, but this concerns an acquired inhibitor rather than clumped platelets.",
+          "future_split_together": true
+        },
+        {
+          "family_id": "HC-MT-MEDSAFE-017",
+          "relationship": "Shared hematology update reasoning; HIT thrombosis differs from time-dependent factor inhibition.",
+          "future_split_together": true
+        },
+        {
+          "family_id": "HC-MT-MEDSAFE-001",
+          "relationship": "Bleeding urgency overlaps, but drug interaction is not the new mechanism.",
+          "future_split_together": true
+        },
+        {
+          "family_id": "HC-MT-TRIAGE-022",
+          "relationship": "Reserved confirmation draft addresses stopped minor bleeding; distinct acuity but related safety-net content.",
+          "future_split_together": true
+        }
+      ],
+      "review_issues": [
+        "H152"
+      ],
+      "review_complete": false,
+      "limitations": [
+        "Public-source exposure prevents claiming a hidden holdout.",
+        "Mechanism distinction is an author judgment, not statistical independence or measured difficulty.",
+        "Formal correction/retraction status and source sufficiency remain part of later qualified review."
+      ]
+    }
+  ]
+}

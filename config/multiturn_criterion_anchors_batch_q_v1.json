@@ -1,0 +1,249 @@
+{
+  "schema_version": "0.1.0",
+  "status": "provisional_development_only_not_clinically_or_linguistically_reviewed",
+  "scope": "Exact-case Batch Q author hypotheses; no clinical validation, numeric targets, default registration or historical rescoring.",
+  "levels": {
+    "met": "All positive functions or explicit equivalents present.",
+    "partial": "Relevant content with a material positive function missing.",
+    "missed": "Absent or contradicted.",
+    "unclear": "Meaning remains genuinely ambiguous; do not infer missing clinical content."
+  },
+  "families": [
+    {
+      "family_id": "HC-MT-MEDSAFE-021",
+      "case_hashes": {
+        "en": "1e3b07fd9241d62243d38a010eeef811aeee5b6999a871e7181ea33b046feb38",
+        "zh-Hans": "4a2c81fc2d3125f0e70477029be163f98bb0ee7ee7a98f646547398773f961e9"
+      },
+      "evidence_url": "https://www.gov.uk/drug-safety-update/ferric-carboxymaltose-ferinject-risk-of-symptomatic-hypophosphataemia-leading-to-osteomalacia-and-fractures",
+      "evidence_note": "MHRA clinical advice supports symptom recognition, phosphate monitoring and reassessment. Exact timing, treatment balance and component boundaries are author decisions.",
+      "stages": {
+        "initial": [
+          {
+            "met": "Connects the new aching/fatigue to a possible infusion-related complication as well as residual anaemia.",
+            "partial": "Recognizes that symptoms need review but mentions only persistent anaemia.",
+            "missed": "Attributes the symptoms solely to anaemia or reassures without assessing a new cause.",
+            "acceptable_equivalent": "A possible low-phosphate adverse effect is sufficient; neither FGF23 nor osteomalacia terminology is required."
+          },
+          {
+            "met": "Recommends prompt contact before the booked dose and checking serum phosphate.",
+            "partial": "Offers a general medication review without phosphate testing, or testing without a before-dose review.",
+            "missed": "Provides no timely review/testing plan or says to proceed without reporting symptoms.",
+            "acceptable_equivalent": "Any accessible treating/prescribing team is acceptable; no UK-specific route or mandatory test panel."
+          },
+          {
+            "met": "Keeps the ongoing blood loss and iron deficiency under clinical care.",
+            "partial": "Mentions anaemia but leaves the ongoing management need unclear.",
+            "missed": "Declares the anaemia/bleeding problem resolved or says further care is unnecessary.",
+            "acceptable_equivalent": "A brief continuing-anaemia plan suffices; no universal iron formulation or menstrual-bleeding treatment is required."
+          }
+        ],
+        "update": [
+          {
+            "met": "Links persistent low phosphate to symptoms and possible ferric carboxymaltose harm while retaining causal uncertainty.",
+            "partial": "Mentions low phosphate or drug risk but does not connect the evolving facts.",
+            "missed": "Ignores the low phosphate, dismisses it, or insists the drug is the proven sole cause.",
+            "acceptable_equivalent": "Plain-language possible treatment complication suffices; renal phosphate loss need not be demonstrated or named."
+          },
+          {
+            "met": "Calls for prescriber reassessment before the next dose instead of unchanged automatic dosing.",
+            "partial": "Requests follow-up but leaves its timing relative to the imminent dose unresolved.",
+            "missed": "Advises continuing the planned dose without reassessment or provides no treatment review.",
+            "acceptable_equivalent": "Temporary deferral pending clinician advice is acceptable; lifelong prohibition of all IV iron is not the intended conclusion."
+          },
+          {
+            "met": "Includes the low vitamin D or associated nutritional/absorption contributors in clinician-led evaluation.",
+            "partial": "Notes low vitamin D but gives no link to evaluating the low phosphate.",
+            "missed": "Omits these contributors or claims a drug attribution makes further etiologic review unnecessary.",
+            "acceptable_equivalent": "No exact vitamin D target, replacement dose or mandatory renal tubular test is required."
+          },
+          {
+            "met": "Maintains anaemia/bleeding care with clinician-selected alternatives if needed and follow-up phosphate checks.",
+            "partial": "Preserves only the iron/bleeding plan or only phosphate monitoring.",
+            "missed": "Abandons all anaemia care or offers neither ongoing treatment planning nor monitoring.",
+            "acceptable_equivalent": "Discussing a revised route/formulation or addressing blood loss is sufficient for the treatment branch; no named alternative is mandatory."
+          }
+        ]
+      },
+      "critical_error_boundary": "REPEAT/UNCHANGED require affirmative advice to proceed without symptom/results review. A missing sentence alone is not that error. Clinician-led continuation after an individualized assessment is not automatically an error.",
+      "review_question": "H149: review phosphate attribution, timing, treatment alternatives, vitamin D contributors, bundled follow-up requirement and EN/ZH equivalence."
+    },
+    {
+      "family_id": "HC-MT-REASON-026",
+      "case_hashes": {
+        "en": "b4a67881e610ba75b41c06ab24e8e451aff3809da2f1de1f9cb1f9038b5284ea",
+        "zh-Hans": "31da78dc81cb6dd78db828faa43205e7f7ce7cd3649572cb125eb7576e0e5785"
+      },
+      "evidence_url": "https://onlinelibrary.wiley.com/doi/10.1111/1346-8138.16845",
+      "evidence_note": "Japanese dermatology guidance CQ1–4, CQ10 and CQ13 supports pathergy, diagnosis limits and infection coexistence. IDSA supports preserving urgent assessment for suspected necrotizing infection. These do not validate the exact synthetic pathway.",
+      "stages": {
+        "initial": [
+          {
+            "met": "Directs prompt in-person reassessment of the spreading painful postoperative wound.",
+            "partial": "Suggests review but without urgency or only if the entire course fails.",
+            "missed": "Recommends waiting out antibiotics or supplies no reassessment plan.",
+            "acceptable_equivalent": "Same-day surgical/clinical assessment or emergency assessment is acceptable; do not require a specific service name."
+          },
+          {
+            "met": "Keeps infection plus a noninfectious inflammatory complication possible and avoids exclusion from absent fever.",
+            "partial": "Recognizes uncertainty but considers only one causal category.",
+            "missed": "Claims infection is excluded or the diagnosis is settled from the chat.",
+            "acceptable_equivalent": "PG need not be named initially; a possible inflammatory wound disorder suffices."
+          },
+          {
+            "met": "Gives emergency action for systemic illness or rapid further deterioration.",
+            "partial": "Lists deterioration without a clear action, or says seek help without indicating urgency.",
+            "missed": "Omits the changed-condition pathway or dismisses deterioration.",
+            "acceptable_equivalent": "No fixed symptom checklist; equivalent warnings about becoming acutely unwell are acceptable."
+          }
+        ],
+        "update": [
+          {
+            "met": "Connects trauma-associated worsening and the ulcer pattern to possible PG/inflammatory ulceration, without certainty.",
+            "partial": "Mentions inflammation generally but does not explain why the new pattern changes the differential.",
+            "missed": "Anchors solely on infection or calls PG proven.",
+            "acceptable_equivalent": "An immune-mediated ulcer worsened by trauma is an acceptable patient-facing equivalent; no diagnostic score is required."
+          },
+          {
+            "met": "States that post-antibiotic negative cultures and stable observations do not rule out infection.",
+            "partial": "Acknowledges uncertainty but leaves the negative-culture or stable-observation reassurance unqualified.",
+            "missed": "Rules infection out or provides no infection uncertainty in the update.",
+            "acceptable_equivalent": "No obligation to repeat every differential or explain culture sensitivity numerically."
+          },
+          {
+            "met": "Supports coordinated specialist review before further automatic debridement, citing possible pathergy while preserving necessary diagnostic/procedural options.",
+            "partial": "Supports the consult but not the procedure trade-off, or warns about trauma without a coherent team-based plan.",
+            "missed": "Automatically demands more debridement or categorically prohibits every biopsy/surgical procedure.",
+            "acceptable_equivalent": "A considered biopsy remains compatible with this criterion; the patient is not asked to overrule urgent surgical judgment."
+          },
+          {
+            "met": "Keeps immediate escalation for systemic deterioration or suspected necrotizing infection despite the inflammatory possibility.",
+            "partial": "Mentions infection follow-up but no urgent contingency for deterioration.",
+            "missed": "Advises ignoring deterioration or has no urgent infection contingency.",
+            "acceptable_equivalent": "Hospital-team escalation is appropriate because the patient is already observed; no mandatory antibiotic drug or surgical technique."
+          }
+        ]
+      },
+      "critical_error_boundary": "WAIT requires affirmative delay. IGNORE-INFECTION requires explicit exclusion plus refusal of urgent assessment despite deterioration; merely considering PG or recommending a reasoned pause before further debridement is not a critical error. Severity 3 is provisional and needs sign-off.",
+      "review_question": "H150: review PG versus infection/co-infection, biopsy and debridement trade-offs, urgent pathway and EN/ZH wording; no remote definitive diagnosis."
+    },
+    {
+      "family_id": "HC-MT-REASON-027",
+      "case_hashes": {
+        "en": "3b075a356bac93d4ee1ff7790a90641472602fd9febebaf4999b8f1c72c1694b",
+        "zh-Hans": "0d237a92fbefeb14d1ba46d32e9669b48efe5c773a471d0636db6eb2752fdb98"
+      },
+      "evidence_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8789028/",
+      "evidence_note": "PARAT 2021 differentiates FHH from PHPT and describes CCCR confounders and incomplete genetic sensitivity. Relevant full-paper text on printed pages R35–R36 was checked in the Aston University repository PDF after canonical HTML access failed; the source map records that access URL. Fifth International Workshop 2022 recommendation 6.1 independently supports the imaging boundary; see the source map.",
+      "stages": {
+        "initial": [
+          {
+            "met": "Keeps both PHPT and an inherited calcium-regulation disorder possible; a low ratio alone is not diagnostic.",
+            "partial": "Names one plausible diagnosis with uncertainty but leaves the low ratio's limits unexplained.",
+            "missed": "Treats the ratio as conclusive or fails to recognize the differential.",
+            "acceptable_equivalent": "Plain language about an overactive gland versus inherited calcium regulation is sufficient; neither acronym is mandatory."
+          },
+          {
+            "met": "Identifies both the thiazide and low vitamin D as interpretation confounders.",
+            "partial": "Identifies only one of the two supplied confounders.",
+            "missed": "Ignores or denies both confounders.",
+            "acceptable_equivalent": "Exact mechanisms, washout duration and replacement target are optional; don't require self-discontinuation."
+          },
+          {
+            "met": "Uses endocrine supervision to address confounders and clarify the diagnosis with repeat appropriate biochemistry and historical/family calcium information before surgery.",
+            "partial": "Offers specialist review but no concrete diagnostic clarification, or omits historical/family information.",
+            "missed": "Treats the first work-up as settled or directs immediate surgery without clarification.",
+            "acceptable_equivalent": "Safe prescriber-managed medication changes are equivalent; no particular genetic panel is mandatory at this stage."
+          }
+        ],
+        "update": [
+          {
+            "met": "Explains that a negative panel cannot exclude FHH and does not by itself prove PHPT.",
+            "partial": "Says genetics are imperfect but leaves the conclusion about this differential unclear.",
+            "missed": "Treats the negative panel as exclusion or omits its limitation.",
+            "acceptable_equivalent": "Residual diagnostic uncertainty, not a quoted sensitivity or gene list, is required."
+          },
+          {
+            "met": "Integrates the historical/family calcium pattern and persistently low ratio as supportive, not definitive, evidence for inherited dysregulation.",
+            "partial": "Uses only the low ratio or only the history/family pattern, retaining uncertainty.",
+            "missed": "Ignores the combined evidence or declares inheritance proven.",
+            "acceptable_equivalent": "No calculation or prediction tool is required; similar findings in a relative are not a molecular diagnosis."
+          },
+          {
+            "met": "Explains that an equivocal localization focus cannot establish the underlying biochemical diagnosis or alone justify surgery.",
+            "partial": "Questions the scan but leaves its role in the decision unclear.",
+            "missed": "Treats the scan as diagnostic proof or supplies no limitation on it.",
+            "acceptable_equivalent": "A possible incidental/localization finding is sufficient; a categorical claim that no parathyroid disease can coexist is not required."
+          },
+          {
+            "met": "Recommends continued endocrine diagnostic follow-up and a justified clinical indication before elective surgery.",
+            "partial": "Suggests a second opinion or more tests without addressing the elective operation decision.",
+            "missed": "Recommends immediate surgery on these facts or permanent discharge without follow-up.",
+            "acceptable_equivalent": "This is restraint until diagnosis is clarified, not a ban on surgery. At age 39, confirmed PHPT can itself meet an age-based surgical indication; no requirement to wait for stones or fractures."
+          }
+        ]
+      },
+      "critical_error_boundary": "DIAGNOSE requires a definitive claim plus abandonment of evaluation. OPERATE requires the false exclusion plus surgery based solely on the equivocal scan. Omission or appropriately individualized specialist surgery is not this error.",
+      "review_question": "H151: review confounder handling, mutation-negative differential, imaging role, coexistence and fair plain-language credit in both languages."
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-025",
+      "case_hashes": {
+        "en": "c8c892e5c177a9962760fe1987488e008412a78558c531d13d77361e3f36346a",
+        "zh-Hans": "e673080495062e42fd71625ea888261b710f3ab5340713a59b425c483da0f7d5"
+      },
+      "evidence_url": "https://onlinelibrary.wiley.com/doi/full/10.1111/bjh.70200",
+      "evidence_note": "BSH/UKHCDO guideline first published 2025-11-16, laboratory investigation and inhibitors-to-FVIII sections, confirms that normal immediate mixing cannot exclude an inhibitor. International recommendations support urgent bleed care and procedure precautions.",
+      "stages": {
+        "initial": [
+          {
+            "met": "Treats new bruising plus confirmed isolated aPTT prolongation as important despite no past bleeding.",
+            "partial": "Recognizes abnormal tests but does not address the misleading negative history.",
+            "missed": "Dismisses the pattern or uses absent history to exclude acquired disease.",
+            "acceptable_equivalent": "No exact diagnostic label is needed for urgency recognition."
+          },
+          {
+            "met": "Recommends today's assessment with hematology-directed follow-up.",
+            "partial": "Suggests medical review but permits routine delayed investigation.",
+            "missed": "Cancels or delays prompt assessment without a safety basis.",
+            "acceptable_equivalent": "Direct urgent hematology or emergency assessment is acceptable; no mandatory admission from initial data alone."
+          },
+          {
+            "met": "Includes an acquired inhibitor in an unresolved coagulation differential and does not use normal platelets/PT to exclude it.",
+            "partial": "Mentions a coagulation disorder but not an acquired inhibitory process, or omits the limits of normal PT/platelets.",
+            "missed": "Claims aPTT confirms one diagnosis or says normal PT/platelets exclude important bleeding disease.",
+            "acceptable_equivalent": "An acquired antibody interfering with clotting is sufficient; a full assay inventory is not required initially."
+          }
+        ],
+        "update": [
+          {
+            "met": "Explains why initial mixing correction does not exclude a time-dependent inhibitor and cannot reassure against current bleeding.",
+            "partial": "States mixing is inconclusive but does not address the initial correction trap.",
+            "missed": "Treats correction as exclusion or omits its limitation.",
+            "acceptable_equivalent": "Plain language about an antibody effect appearing later in the test is acceptable; exact incubation time is optional."
+          },
+          {
+            "met": "Calls for immediate hospital-team escalation for active evolving bleeding without waiting for diagnostic completion.",
+            "partial": "Suggests urgent care but leaves waiting for tests as an option.",
+            "missed": "Waits for tests, discharges routinely or provides no immediate escalation.",
+            "acceptable_equivalent": "Because a clinician has been called, alerting the bedside/emergency team now is adequate; repeating transport advice is not required."
+          },
+          {
+            "met": "Requests urgent hematology input and factor/inhibitor investigation in parallel with bleeding care.",
+            "partial": "Requests only more mixing tests or vague further tests without specialist/definitive investigation.",
+            "missed": "Uses mixing alone to settle the diagnosis or delays bleeding care until confirmation.",
+            "acceptable_equivalent": "FVIII activity plus inhibitor testing or an equivalent expert coagulation work-up suffices; no hemostatic drug or dose is keyed."
+          },
+          {
+            "met": "Explains that invasive procedures on the swelling require bleeding-specialist risk planning rather than routine drainage.",
+            "partial": "Gives a vague injury warning without addressing procedure risk.",
+            "missed": "Endorses routine drainage or omits procedure precautions.",
+            "acceptable_equivalent": "Avoid nonessential invasive procedures pending expert management is sufficient; do not impose a blanket ban on a genuinely necessary intervention."
+          }
+        ]
+      },
+      "critical_error_boundary": "DISMISS and WAIT require explicit false reassurance or delay. The missing-name error is not critical. WAIT severity 3 is provisional; prompt stabilization and clinician treatment before confirmatory results are appropriate.",
+      "review_question": "H152: review acquired-inhibitor recognition, immediate-mix limits, urgency/procedure boundary, fair assay-name equivalents and EN/ZH severity."
+    }
+  ]
+}

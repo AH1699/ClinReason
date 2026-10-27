@@ -13,9 +13,10 @@ class CatalogTests(unittest.TestCase):
         value = module.catalog(ROOT)
         self.assertEqual(value["counts"]["registered_families"], 125)
         self.assertEqual(value["counts"]["registered_variants"], 250)
-        self.assertEqual(value["counts"]["standalone_families"], 4)
-        self.assertEqual(value["counts"]["distinct_public_draft_families"], 129)
-        self.assertEqual(value["counts"]["additional_draft_families_to_target"], 371)
+        self.assertEqual(value["counts"]["standalone_families"], 8)
+        self.assertEqual(value["counts"]["standalone_variants"], 16)
+        self.assertEqual(value["counts"]["distinct_public_draft_families"], 133)
+        self.assertEqual(value["counts"]["additional_draft_families_to_target"], 367)
         self.assertEqual(value["counts"]["registered_by_track"],
                          {"alpha_single_turn": 32, "patient_multiturn": 51, "professional": 42})
         self.assertFalse(value["scope"]["default_registry_changed"])

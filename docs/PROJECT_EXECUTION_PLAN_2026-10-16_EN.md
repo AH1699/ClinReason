@@ -1,12 +1,12 @@
 # ClinReason current execution plan — 2026-10-16
 
-## Current checkpoint S58 with the main project milestones
+## Current checkpoint S59 with the main project milestones
 
-**Current checkpoint S58:** [The approved judge-only panel completed](S58_JUDGE_PANEL_READOUT_EN.md) with **324 accepted requests / $3.875174 estimated cost**, below the $5 stop threshold. All 36 controls passed and all **72 conversations have complete first and repeat judgments**. No new candidate calls, failures, unknown charges, retries or repairs. The approval is consumed and the run is closed.
+**Current checkpoint S59:** [Batch Q adds four source-backed bilingual families](S59_BATCH_Q_CASE_EXPANSION_EN.md): IV-iron-associated phosphate problems, inflammatory postoperative wounds versus infection, uncertain hypercalcemia before surgery, and new bleeding despite immediate mixing correction. The package includes eight conversations, 28 mapped requirement positions, eight initial references and 24 update contrasts. No paid calls, scores or default-registry changes.
 
-**The workflow works; calibration remains incomplete.** Scores repeated exactly in **69/72 cells** and stage vectors in **141/144**. One unchanged answer moved **72.5 → 63.75**, crossing the provisional pass threshold; H148 records three boundary changes. Among 64 non-held cells, **38 first scores / 40 repeat scores were 100**. Eight medication cells remain review-held; no pooled model means, rankings, repeat averaging or historical rescoring.
+**Inventory: 133 distinct public draft families.** The [catalog](CASE_AUTHORING_CATALOG_EN.md) now lists **125 registered / 250 variants plus eight standalone O/P/Q families / 16 variants**. The 500-family target therefore needs 367 more drafts. Clinical and bilingual approval remain pending; approved calibration/Gold are **0/0**. H149–H152 record new questions, earlier holds remain, and Xi’an stays local.
 
-**Next: four distinct source-backed case families, not another automatic paid diagnostic.** The new [authoring catalog](CASE_AUTHORING_CATALOG_EN.md) exposes **125 registered families / 250 variants plus four standalone families / eight variants**: 129 public drafts, 371 short of 500. This checkpoint adds no cases; two public-report leads are recorded. **1,049 offline tests passed.** Approved calibration/Gold remain **0/0**, H142–H148 stay open, Xi’an stays local and expert review stays later. Lower 60–70, average ~80 and premium ~90 remain diagnostic aspirations, not score-fitting targets.
+**Next: prepare a balanced offline O/P/Q pilot manifest while continuing expansion.** Freeze a separately selected case/anchor/control package and define reporting and cost policy before proposing any new paid run. [S58](S58_JUDGE_PANEL_READOUT_EN.md) remains closed at 324 accepted requests / $3.875174 estimated cost: 69/72 exact score repeats, one provisional pass change, and 38/64 non-held first scores of 100. H148 and the eight held medication cells remain unresolved; no historical rescoring, pooled ranking or automatic single-case diagnostic. Lower 60–70, average ~80 and premium ~90 remain diagnostic aspirations, not score-fitting targets.
 
 ## Project direction and next milestones
 
@@ -18,7 +18,7 @@ Recent work has concentrated on scoring and provider diagnostics while registere
 |---|---|---|
 | Scoring boundaries | S58 has 69/72 exact score repeats and one provisional pass change; H148 queued; S50 medication hold remains | Preserve both scores and the three boundary questions for offline/later expert review; no retrospective label change or automatic diagnostic |
 | Broader model comparison | S58 complete: 324 accepted judge calls, all 72 first/repeat pairs, $3.875174 estimated cost | Run closed; interpret case-level results only, without pooled means or rankings |
-| Case expansion | Authoring catalog implemented: 125 registered plus four standalone O/P families; two new source leads | Author four distinct source-backed families with full label/source packages, separate from historical inputs |
+| Case expansion | Batch Q complete as drafts: 125 registered plus eight standalone O/P/Q families, 133 total | Prepare a balanced offline O/P/Q pilot manifest and continue new source-backed families; do not modify historical inputs |
 | Source and privacy | Public evidence mappings and private Xi'an processing remain separate | Continue source-to-answer checks; Xi'an stays local until its case/privacy readiness issues are resolved |
 | Expert review | Deferred during partner discussions | Maintain the clinical/bilingual question register now; obtain review before release or comparative clinical claims |
 | Product interface | Local CLI first | Dashboard/API-key UI after the broader workflow and reporting contract are established |

@@ -1,5 +1,17 @@
 # Living human-review handoff — opened 2026-10-07
 
+## Batch Q source and answer questions
+
+**H149 / high — IV iron and persistent hypophosphatemia:** Review `MEDSAFE-021` attribution versus vitamin D/nutritional contributors, pre-dose review timing, continued anaemia care, alternative-treatment/monitoring bundle and whether omission of component 3 is semantically independent. Exact replacement doses are not keyed.
+
+**H150 / high — Inflammatory postoperative ulcer versus infection:** Review `REASON-026` infection/co-infection uncertainty, post-antibiotic culture limits, trauma-associated worsening, biopsy versus debridement boundaries and the urgent necrotizing-infection pathway. Confirm the severity-3 affirmative error and whether the linked IDSA correction affects the cited principle; do not turn the PG hypothesis into remote certainty or a universal surgery prohibition.
+
+**H151 / high — Uncertain hypercalcemia before surgery:** Review `REASON-027` thiazide/vitamin D confounders, mutation-negative FHH, coexistence with PHPT, localization versus diagnosis and fair plain-language credit. At 39, confirmed PHPT can meet an age-based surgical indication; absence of stones/fractures is not a reason to deny indicated surgery. Diagnostic uncertainty is the present restraint.
+
+**H152 / high — New bleeding despite immediate mixing correction:** Review `TRIAGE-025` initial acuity, time-dependent inhibitor reasoning, specific-assay alternatives, urgent bleeding response and invasive-procedure caution. Check severity-3 delay and whether a partial omission is implicitly covered by retained text.
+
+All four require clinical and EN/ZH equivalence review of [the exact Batch Q package](S59_BATCH_Q_CASE_EXPANSION_EN.md). Requirements, severity, control labels and related-family grouping remain author hypotheses. No review is closed by structural tests; H148 remains unchanged.
+
 ## S58 same answer repeat boundaries
 
 **H148 / high — One provisional pass changes on repeat:** [S58](S58_JUDGE_PANEL_READOUT_EN.md) preserved three valid same-answer changes: `TRIAGE-019` Chinese Gemini Flash initial requirements 1/2 partial→met (90→100); `REASON-020` English Gemini Flash initial requirement 1 partial→met (95→100); and `MEDSAFE-019` English Gemini Flash-Lite update requirement 4 partial→missed (72.5→63.75, pass→fail). Review exact saved answers and case-bound anchors, accepted equivalents, omissions versus implicit coverage, bilingual meaning and the defensibility of the provisional 70 boundary. Link clinical content review to H65/H73, H98 and H118. Do not choose a preferred repeat, average away the disagreement or treat judge agreement as truth. This question does not block new draft case authoring; no automatic paid retest is planned.

@@ -4,7 +4,8 @@
   "registered_config": "config/benchmark.json",
   "standalone_case_paths": [
     "data/multiturn/batch_o_cases.json",
-    "data/multiturn/batch_p_cases.json"
+    "data/multiturn/batch_p_cases.json",
+    "data/multiturn/batch_q_cases.json"
   ],
   "target_distinct_families": 500,
   "changes_default_registry": false

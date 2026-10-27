@@ -1,0 +1,53 @@
+{
+  "status": "structural_not_clinical_validation",
+  "new_standalone_families": 4,
+  "variants": 8,
+  "mapped_criterion_positions": 28,
+  "bilingual_requirement_instances": 56,
+  "initial_references": 8,
+  "update_references": 24,
+  "default_portfolio_additions": 0,
+  "triage_transitions": {
+    "timely_nonemergency→emergency": 1
+  },
+  "packet_hashes": {
+    "HC-MT-MEDSAFE-021__en__safe": "ee30acb68780a61b1b498780fc740d7753a25ffeac78cb551896460427f7367e",
+    "HC-MT-MEDSAFE-021__en__partial": "6825ef9554c97d49b1eb04ccef509a9f50bd811ab068f66d04423fceecdf2f65",
+    "HC-MT-MEDSAFE-021__en__unsafe": "52992a9e30f40be18100cb2eeeefa3dc23f052f29fe6ebafd5cd42a96cc0ff4d",
+    "HC-MT-MEDSAFE-021__zh-Hans__safe": "3cfb991db13527b88c39bbdfbcbb0654b0d9fc9ec1ac60abbe31cb0797c215b7",
+    "HC-MT-MEDSAFE-021__zh-Hans__partial": "0d91e3ce541f2024071e83db58482312eba302604405bf650ff89b06f9bae2b1",
+    "HC-MT-MEDSAFE-021__zh-Hans__unsafe": "2bb06b84b8b9bfeed5f0476f9ad022b92377e89ac30f535add064dbf9e4cc35e",
+    "HC-MT-REASON-026__en__safe": "ef04cd88547de25a330f87a07249c2c12615a9d44a9fcd9749e3fb6b340e759d",
+    "HC-MT-REASON-026__en__partial": "7eb17a31f07c59256bddf5a21e222d510c03258b114168e5056ce06b4f5b0088",
+    "HC-MT-REASON-026__en__unsafe": "36690cea026c7af3b9c9233129fc7dadd831aa73c0b894ef263cc125094ace0c",
+    "HC-MT-REASON-026__zh-Hans__safe": "38aa5c787ae48989ceb6b68d4330f9b661e7fbf6c5c05c29d6a4fa00ef46fc6d",
+    "HC-MT-REASON-026__zh-Hans__partial": "f6525b08d690982be43ecc393216096bf9c51141ce4b960d3c625e4510032c55",
+    "HC-MT-REASON-026__zh-Hans__unsafe": "0b3e16a260244b0f8e73a07f5ac5bd2c826431ab0596892f2b683e604b6c8f41",
+    "HC-MT-REASON-027__en__safe": "279293f0ddc19332e61be258f23e67de142a15d27982405e89704a0af6f96a65",
+    "HC-MT-REASON-027__en__partial": "f6f1dde8cfbcff0c86a5f131c38f0a41405a5b8c930a227eef9ae10467604b09",
+    "HC-MT-REASON-027__en__unsafe": "be1925096f46f2f4754df46c4d689c4e4ba6c18034843c63f829667dd63976b8",
+    "HC-MT-REASON-027__zh-Hans__safe": "ffc02256662bdbb84cc52069af7c607f38638f8c3b5f46149212729dad493ced",
+    "HC-MT-REASON-027__zh-Hans__partial": "a511484b51cf77858b73413596a031087e0c4ec5c2b40523bce63aa94a9518b1",
+    "HC-MT-REASON-027__zh-Hans__unsafe": "09e8d8c47ad746c265139ddf4f66b72bd766c7232077fa7a9d58f7aa01461612",
+    "HC-MT-TRIAGE-025__en__safe": "2b926d1f027afd3ca6df52ef8fbda6a9758862e0fae1307871a5bed34a9f52fc",
+    "HC-MT-TRIAGE-025__en__partial": "c8b7732afda9f35c269040d1310c5dcbe54cd5184cd96590fcd2d4891ceeffc4",
+    "HC-MT-TRIAGE-025__en__unsafe": "3abad3381a3cf074fe5d351ed095ab00de0383c53b0bc1c19f864cd45a1caf7f",
+    "HC-MT-TRIAGE-025__zh-Hans__safe": "ba4ef9cfa5ac4dbedde3342699a914eed141b8a53086589dc5770847eb7fa0cf",
+    "HC-MT-TRIAGE-025__zh-Hans__partial": "a9463200866d433b82e5b54349e530b420d6dfa4f515a77c11ce4e27b785e620",
+    "HC-MT-TRIAGE-025__zh-Hans__unsafe": "2186bc52e47b58d82f375a896c1f1909957d74b76d6f45a820be6c0720247808"
+  },
+  "live_calls": 0,
+  "numeric_scores": 0,
+  "artifact_hashes": {
+    "cases": "44fc4a13480a0a795b459895b4d1cea0f31fb5f2a145bbafdc24d7c5f243df3c",
+    "anchors": "95d8ba3f4aff08adc605d2e1c0a0e8b6eaa26ca1c82b4d39d6f27ff067d5f706",
+    "controls": "c83cb27f52d1959716e94925ef5abd9057a03ddf465c8539b9086c0049be3ce3",
+    "provenance": "23e620d3e71cf05bea1f6bd62320701523dc24223f3303a429b9bd02f097cdc2"
+  },
+  "overlap_check": {
+    "existing_family_file_pairs_checked": 152,
+    "report_identity_overlaps": 0,
+    "shared_guidance": [],
+    "limit": "Visible DOI/PMID/PMCID and normalized URLs only, not all bibliographic aliases. Shared guidance does not prove case duplication. Manual related-family notes govern future grouping; semantic independence is unvalidated."
+  }
+}
