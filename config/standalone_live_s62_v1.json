@@ -1,0 +1,44 @@
+{
+  "version": "s62-standalone-live-v1",
+  "status": "ready_for_explicit_approval",
+  "maximum_attempts": 480,
+  "stop_threshold_usd": "20.00",
+  "hard_ceiling": false,
+  "last_request_overrun_possible": true,
+  "automatic_retries": 0,
+  "resume_allowed": false,
+  "maximum_development_format_failures": 3,
+  "control_gate": {
+    "accepted_records": 96,
+    "unsafe_error_matches": 16,
+    "safe_or_initial_records_with_errors": 0,
+    "minimum_matching_repeat_vectors": 31,
+    "expected_repeat_pairs": 32,
+    "numeric_order_required": false,
+    "clinical_validation": false
+  },
+  "pricing_verification": {
+    "verified_at": "2026-10-27T23:39:43Z",
+    "verified_by": "Codex public documentation check, not account access or invoice verification",
+    "sources": {
+      "gemini": "https://ai.google.dev/gemini-api/docs/pricing",
+      "minimax": "https://platform.minimax.io/docs/pricing/overview"
+    },
+    "availability_sources": {
+      "gemini": "https://ai.google.dev/gemini-api/docs/interactions-overview",
+      "minimax": "https://platform.minimax.io/docs/api-reference/text-openai-api"
+    },
+    "models": {
+      "gemini-3.5-flash-lite": {"provider": "gemini", "model": "gemini-3.5-flash-lite", "input_per_million": 0.3, "output_per_million": 2.5},
+      "gemini-3.8-flash": {"provider": "gemini", "model": "gemini-3.8-flash", "input_per_million": 0.75, "output_per_million": 3.75},
+      "MiniMax-M3.1-Flash": {"provider": "minimax", "model": "MiniMax-M3.1-Flash", "input_per_million": 0.15, "output_per_million": 0.6},
+      "MiniMax-M3": {"provider": "minimax", "model": "MiniMax-M3", "input_per_million": 0.3, "output_per_million": 1.2}
+    },
+    "m3_default_echo_monitoring": {"input_per_million": 0.45, "output_per_million": 1.8},
+    "input_token_scope_max": 16000,
+    "cache_discount_used": false,
+    "output_includes_thinking": true,
+    "account_access_tested": false,
+    "evidence_note": "Official pages list all four model IDs and the stated standard text rates. Gemini 3.8 introductory prices last through 2026-12-31. MiniMax M3 default response tier is not verified; use the higher published short-context priority rates for monitoring that echo only. No tools, cache discounts or invoice guarantees. Recheck within 24 hours of every dispatch."
+  }
+}

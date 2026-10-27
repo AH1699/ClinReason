@@ -1,0 +1,185 @@
+{
+  "version": "s62-standalone-live-v1",
+  "s61": {
+    "version": "s61-standalone-offline-integration-v1",
+    "s60_manifest_sha256": "0da7a9dbd0710aeb5d388ae5feae16e15f4f35d8a8a4dea58434a39c131030da",
+    "policy": {
+      "version": "s61-standalone-offline-integration-v1",
+      "mode": "offline_transport_fixture",
+      "parent": "data/audit/s60_standalone_pilot_manifest.json",
+      "maximum_requests": 480,
+      "judge_settings": {
+        "max_output_tokens": 32768,
+        "thinking_level": "medium",
+        "service_tier": "standard"
+      },
+      "candidate_settings": "unchanged_s38_visible_text_history",
+      "control_admission": "all_96_format_valid_records_for_fixture_engineering_only",
+      "clinical_control_gate": "not_selected_or_authorized_by_this_rehearsal",
+      "control_disagreement": "retain_diagnostics_no_relabel_or_retry",
+      "known_cost_invalid_candidate": "close_only_that_candidate_model_lane",
+      "known_cost_invalid_judge": "stop_no_retry",
+      "unknown_delivery_or_cost": "global_stop",
+      "max_in_flight": 1,
+      "automatic_retries": 0,
+      "resume_allowed": false,
+      "live_call_allowance": 0,
+      "live_budget_usd": null,
+      "pricing_status": "historical_rates_for_simulated_accounting_only_not_current_quote",
+      "reporting": "all_64_cells_first_repeat_separate_missing_not_zero_all_clinically_held"
+    },
+    "files": {
+      "config/standalone_rehearsal_s61_v1.json": "cffd23661027228bdeace2cc72462bf1b7ff0301b7d094c805cdcdfec1aca25c",
+      "scripts/standalone_engine_s61.py": "ee27b71b71ba6a787e9b0f7509216322685cc47e720fe093f0e7553de8345591",
+      "scripts/standalone_rehearsal_s61.py": "1417b20f8f7866b0b0cc4ae59aa1212d738c97fbd69392753f027a553f15e025",
+      "tests/test_standalone_rehearsal_s61.py": "0eda1dd55d92bd2bffb8af7ac39c7ba5d8425243582c12419928cca8eebc68ad",
+      "scripts/transport_s46.py": "0fb012e1f44046a370eabec92b8dca888c4509804ab5b00c793be93d216ac84f",
+      "scripts/minimax_accounting_s46.py": "58b248a3a291535cf7142ad42328ef65608d0259cd3da4b6276e9eca8e9668f9",
+      "scripts/mixed_transport_s53.py": "af484ce63443ffc142b50b757185e45a21563c895128c015dd78daa692f57fb2",
+      "benchmark/workflow_s38.py": "b7471c65c396533917d044520056240386a6fa92cb073cf604bbe32233c79d2b",
+      "benchmark/run_guard_s37.py": "a96a3b54a22fb6b1452e7c5781a6006f71e8d5a42d66c115ed1968885a882ab3",
+      "benchmark/usage_s39.py": "4ca81e5a1a86149d65638b8614c1ff3c14a0d14938e7ac347525fb057217e4b3",
+      "benchmark/spending_s40.py": "5500fb3b4022ac4f053313fef58f6c81084a2002b73446bcd9acd1aa877f5abf",
+      "config/live_s41_policy_v1.json": "160c2a77ebea0f8ca5fa2d5b2402fb6d8d93f8f68ee9884c9d094e21d5fff5bc",
+      "config/reference_mix_s38_v1.json": "7712db0d6d234991d89374bd9170a9f121e221b5e352c7955d2e6047f4fbd02a",
+      "config/reference_mix_s36_proposal_v1.json": "4bae6b30d39fee1eafbc7b68779b37fef454e5523893a1f0b13da260fb35e5d3"
+    },
+    "fixture_model_specs": [
+      {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite",
+        "input_per_million": 0.3,
+        "output_per_million": 2.5
+      },
+      {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash",
+        "input_per_million": 0.75,
+        "output_per_million": 3.75
+      },
+      {
+        "provider": "grok",
+        "model": "grok-4.6",
+        "input_per_million": 2,
+        "output_per_million": 6
+      },
+      {
+        "provider": "grok",
+        "model": "grok-4.7",
+        "input_per_million": 2,
+        "output_per_million": 6
+      },
+      {
+        "provider": "minimax",
+        "model": "MiniMax-M3.1-Flash",
+        "input_per_million": 0.15,
+        "output_per_million": 0.6
+      },
+      {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "input_per_million": 0.3,
+        "output_per_million": 1.2
+      },
+      {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash",
+        "input_per_million": 0.75,
+        "output_per_million": 3.75
+      },
+      {
+        "provider": "grok",
+        "model": "grok-4.7",
+        "input_per_million": 2,
+        "output_per_million": 6
+      }
+    ]
+  },
+  "plan": {
+    "version": "s62-standalone-live-v1",
+    "status": "ready_for_explicit_approval",
+    "maximum_attempts": 480,
+    "stop_threshold_usd": "20.00",
+    "hard_ceiling": false,
+    "last_request_overrun_possible": true,
+    "automatic_retries": 0,
+    "resume_allowed": false,
+    "maximum_development_format_failures": 3,
+    "control_gate": {
+      "accepted_records": 96,
+      "unsafe_error_matches": 16,
+      "safe_or_initial_records_with_errors": 0,
+      "minimum_matching_repeat_vectors": 31,
+      "expected_repeat_pairs": 32,
+      "numeric_order_required": false,
+      "clinical_validation": false
+    },
+    "pricing_verification": {
+      "verified_at": "2026-10-27T23:39:43Z",
+      "verified_by": "Codex public documentation check, not account access or invoice verification",
+      "sources": {
+        "gemini": "https://ai.google.dev/gemini-api/docs/pricing",
+        "minimax": "https://platform.minimax.io/docs/pricing/overview"
+      },
+      "availability_sources": {
+        "gemini": "https://ai.google.dev/gemini-api/docs/interactions-overview",
+        "minimax": "https://platform.minimax.io/docs/api-reference/text-openai-api"
+      },
+      "models": {
+        "gemini-3.5-flash-lite": {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "input_per_million": 0.3,
+          "output_per_million": 2.5
+        },
+        "gemini-3.8-flash": {
+          "provider": "gemini",
+          "model": "gemini-3.8-flash",
+          "input_per_million": 0.75,
+          "output_per_million": 3.75
+        },
+        "MiniMax-M3.1-Flash": {
+          "provider": "minimax",
+          "model": "MiniMax-M3.1-Flash",
+          "input_per_million": 0.15,
+          "output_per_million": 0.6
+        },
+        "MiniMax-M3": {
+          "provider": "minimax",
+          "model": "MiniMax-M3",
+          "input_per_million": 0.3,
+          "output_per_million": 1.2
+        }
+      },
+      "m3_default_echo_monitoring": {
+        "input_per_million": 0.45,
+        "output_per_million": 1.8
+      },
+      "input_token_scope_max": 16000,
+      "cache_discount_used": false,
+      "output_includes_thinking": true,
+      "account_access_tested": false,
+      "evidence_note": "Official pages list all four model IDs and the stated standard text rates. Gemini 3.8 introductory prices last through 2026-12-31. MiniMax M3 default response tier is not verified; use the higher published short-context priority rates for monitoring that echo only. No tools, cache discounts or invoice guarantees. Recheck within 24 hours of every dispatch."
+    }
+  },
+  "files": {
+    "config/standalone_live_s62_v1.json": "bd1c95e3eb2e3d93eba04835f2cf9aea8d7d2e9d0bc69ee0da84a87069186f6b",
+    "scripts/standalone_live_s62.py": "0d605c0aec467dc5cb45b82d319e1fe4f99915965c4a54aede94b41eb362251e",
+    "tests/test_standalone_live_s62.py": "977c17af0ef365909d4ed5e0b0ed29d679f36c7a42764906faeaa580aad6548a",
+    "benchmark/local_settings.py": "16240cec5ff8d90ad134293cdc04ebba28ac8224955a24c7efe80ebe2885b3b2",
+    "benchmark/live_s41.py": "81a55c200f529fb541b78c1b7dc1b05772bece04bbe5a4f9733612f324860058"
+  },
+  "endpoints": {
+    "gemini": [
+      "generativelanguage.googleapis.com",
+      "/v1beta/interactions",
+      "x-goog-api-key"
+    ],
+    "minimax": [
+      "api.minimax.io",
+      "/v1/chat/completions",
+      "Authorization"
+    ]
+  },
+  "reporting": "all_64_clinically_held_first_repeat_separate_missing_not_zero_no_ranking"
+}

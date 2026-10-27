@@ -1,12 +1,12 @@
 # ClinReason current execution plan — 2026-10-16
 
-## Current checkpoint S61 with the main project milestones
+## Current checkpoint S62 with the main project milestones
 
-**Current checkpoint S61:** [The standalone pilot now has a fixture-only scheduler, capture/replay and reporting integration](S61_STANDALONE_REHEARSAL_EN.md). The complete rehearsal processes 480 simulated requests and reconstructs 64 first-pass and 64 repeat conversation records. All S60 inputs remain unchanged. These are fabricated replies and simulated accounting, not provider calls or measured model scores. No new families or default-registry changes.
+**Current checkpoint S62:** [The eight-family live protocol is implemented and awaits separate approval](S62_STANDALONE_LIVE_PROTOCOL_EN.md). Its frozen scope is at most 480 requests, four Gemini/MiniMax candidates and Gemini judging, with a proposed $20 recorded-spending stop threshold and possible final-request overrun. Prospective control screening, one-use authorization, bounded format failures and read-only replay are tested offline. No paid calls, measured scores, new families or default-registry changes; S60/S61 and historical inputs remain unchanged.
 
 **Inventory: 133 distinct public draft families.** The [catalog](CASE_AUTHORING_CATALOG_EN.md) lists **125 registered / 250 variants plus eight standalone O/P/Q families / 16 variants**. The 500-family target needs 367 more drafts. Clinical and bilingual approval remain pending; approved calibration/Gold are **0/0**. H149–H152 and all earlier review holds remain open, and Xi’an stays local.
 
-**Next: prepare the prospective live protocol and cost proposal while continuing separate case expansion.** Select control-quality and technical-failure gates, freeze model settings, verify current availability/prices and obtain fresh bounded export/spending approval. S61's control admission is technical only, not a selected clinical gate. No budget is authorized. [S58](S58_JUDGE_PANEL_READOUT_EN.md) remains closed at 324 accepted requests / $3.875174 estimated cost. Existing review questions, the 69/72 exact score-repeat finding and one provisional pass change remain unchanged. No averaging, ranking, automatic single-case diagnostic or score fitting; 60–70 / about 80 / about 90 remain diagnostic aspirations.
+**Next decision: approve one bounded S62 run, then inspect case-level scores and repeats.** The $20 proposal is not yet authorized. Published prices and model listings were checked October 27; admission requires evidence within 24 hours and fresh consent to send public synthetic benchmark material to Google/MiniMax. Passing the author-control screen does not validate clinical labels. Continue separate source-backed expansion toward 500 families. [S58](S58_JUDGE_PANEL_READOUT_EN.md) remains closed at 324 accepted requests / $3.875174 estimated cost, with 69/72 exact score repeats and one provisional pass change. No averaging, rankings, automatic single-case diagnostics or score fitting; 60–70 / about 80 / about 90 remain diagnostic aspirations.
 
 ## Project direction and next milestones
 
@@ -18,7 +18,7 @@ Recent work has concentrated on scoring and provider diagnostics while registere
 |---|---|---|
 | Scoring boundaries | S58 has 69/72 exact score repeats and one provisional pass change; H148 queued; S50 medication hold remains | Preserve both scores and the three boundary questions for offline/later expert review; no retrospective label change or automatic diagnostic |
 | Broader model comparison | S58 complete: 324 accepted judge calls, all 72 first/repeat pairs, $3.875174 estimated cost | Run closed; interpret case-level results only, without pooled means or rankings |
-| New pilot engineering | S61 runs all 480 jobs with simulated transport and read-only replay; all 64 first/repeat cells retained | Prepare a separate approval-consuming live entry point, prospective quality/failure gates, frozen settings and fresh priced approval |
+| New pilot engineering | S62 adds one-use live approval, prospective controls and bounded format failures; offline run/replay tested | Obtain fresh approval for at most 480 requests with a $20 stop threshold and possible final overrun, then run once and audit |
 | Case expansion | 125 registered plus eight standalone O/P/Q families, 133 total; 367 more to target | Continue distinct source-backed families separately from frozen pilot inputs; review related-family grouping |
 | Source and privacy | Public evidence mappings and private Xi'an processing remain separate | Continue source-to-answer checks; Xi'an stays local until its case/privacy readiness issues are resolved |
 | Expert review | Deferred during partner discussions | Maintain the clinical/bilingual question register now; obtain review before release or comparative clinical claims |
