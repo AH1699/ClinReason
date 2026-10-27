@@ -1,0 +1,45 @@
+{
+  "version": "s57-saved-panel-live-v1",
+  "s54_protocol_sha256": "94c18ae8b8e3e025f8a20c0f0deeb77c9714c71777de2494734c8ecf753224e7",
+  "s56_readiness_sha256": "8e30ada16baaa672cc79da51e749d6660e373aa599556df17e6f5261cba88de1",
+  "s56_files": {
+    "config/judge_saved_bank_s56_v1.json": "005ff15b9bdbb5705f69c35f30fcada89e6ee2642426ec4e232bf93ee4ea09fd",
+    "scripts/judge_evidence_s56.py": "2cc1695a4809fce03f32ba9c7c9c49733123a0292d6090ce24ce77cedc9e1ab4",
+    "scripts/judge_saved_bank_s56.py": "d398a22f7c7a85eab30d4d4c913c72466e9dfdd11f6bbd7ed5db3f89b0b547a8",
+    "tests/test_judge_evidence_s56.py": "aac89d3e32eaaf4bdae15125825f9130b39e09fddd63216cb709bb59d37d004e",
+    "tests/test_judge_saved_bank_s56.py": "c5a56696054e6c92b732bb98b2f7e22eae1c47ee1a49ea40ca9bb071c232d491",
+    "scripts/audit_mixed_live_s55.py": "fc4f5168bc1922c23e4c437e1a64f3a4f54c94bef255b2d64fd9fe1b743c0598",
+    "tests/test_audit_mixed_live_s55.py": "9a7f8fb5f3bc2e2750097bf22f71f2a3e67a6db63bc035df1abfd32cba56669e"
+  },
+  "bank_sha256": "564b2d99f612fff91fadb49e32075ca0f362edab6eb05f9062cd1a8f344c1faa",
+  "schedule_sha256": "d76de96acb7ee9a9557d8c9cbb443a23ca96940ccc5e4b2e41104b16942da0fa",
+  "failure_policy": {
+    "invalid_control": "stop_immediately",
+    "failed_control_gate": "stop_before_development",
+    "development_known_cost_format": "retain_rejected_missing_continue_independent_rows",
+    "maximum_development_format_failures": 3,
+    "failure_count_scope": "cumulative_across_first_and_repeat",
+    "repeat_without_accepted_first": "skip_not_retry",
+    "model_identity_or_completion": "stop_immediately",
+    "unknown_cost_or_transport": "stop_immediately",
+    "automatic_retries": 0,
+    "resume_allowed": false,
+    "repair_or_rescore": false
+  },
+  "control_gate": {
+    "expected_records": 36,
+    "unsafe_errors": 6,
+    "strict_order_groups": 6,
+    "repeat_stage_vectors": 11,
+    "repeat_partial_scores_within_5": 6
+  },
+  "score_version": "s36-v1-variable-criteria-provisional",
+  "arithmetic_sha256": "9e996d3676a2aeb3621edb3d1ede31a65a26f059a5012e4fc3c0183a7dd8c8c2",
+  "files": {
+    "config/judge_live_s57_v1.json": "0c90135d6c158135a00bfead9917f27dbe920b4ec0233a661536d544e1e6bff1",
+    "scripts/judge_panel_s57.py": "4dfd29ce5b3167650c6ed4606cc6e6a7f0815efcafb08940c8a8bccaff0de262",
+    "scripts/judge_live_s57.py": "bec464757d57f60aaa277d044888a00cb79f2ac79f25970731fafd684616f027",
+    "tests/test_judge_panel_s57.py": "d38af9e28a4c8e2bf265f3a293cd6e1c0831ff8cd107825d61078a5bac27fce4",
+    "tests/test_judge_live_s57.py": "35e89b06b6ee92d2b87f45ff332a620b5fa7e951e67fa213ab3ca3c939df21f9"
+  }
+}

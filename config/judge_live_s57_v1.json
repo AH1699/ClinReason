@@ -1,0 +1,26 @@
+{
+  "version": "s57-saved-panel-live-v1",
+  "status": "ready_for_explicit_approval",
+  "maximum_attempts": 324,
+  "new_candidate_calls": 0,
+  "stop_threshold_usd": "5.00",
+  "hard_ceiling": false,
+  "last_request_overrun_possible": true,
+  "automatic_retries": 0,
+  "resume_allowed": false,
+  "maximum_development_format_failures": 3,
+  "bank_path": "work/s56-banks/panel-answer-bank.json",
+  "bank_sha256": "564b2d99f612fff91fadb49e32075ca0f362edab6eb05f9062cd1a8f344c1faa",
+  "pricing_verification": {
+    "verified_at": "2026-10-26T23:56:20Z",
+    "verified_by": "Codex official public pricing check; not invoice or account verification",
+    "source": "https://ai.google.dev/gemini-api/docs/pricing",
+    "model": "gemini-3.8-flash",
+    "service_tier": "standard",
+    "input_per_million": 0.75,
+    "output_per_million": 3.75,
+    "output_includes_thinking": true,
+    "cache_discount_used": false,
+    "evidence_note": "Official standard Gemini 3.8 Flash text pricing lists USD 0.75 input and 3.75 output including thinking per million tokens through 2026-12-31. No cache discount, tools or batch pricing assumed. Recheck within 24 hours of admission."
+  }
+}
