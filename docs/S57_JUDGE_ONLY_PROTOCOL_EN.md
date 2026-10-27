@@ -1,5 +1,7 @@
 # Judge only panel protocol and bounded failure policy
 
+**Execution completed:** the owner approved this exact scope and the run completed with 324 accepted calls and a $3.875174 token-cost estimate. See [S58 results](S58_JUDGE_PANEL_READOUT_EN.md). The preparation and approval-request statements below are historical; this approval is consumed and cannot authorize another run.
+
 The runner is implemented for **one fresh experiment using the 144 saved answer stages**. It makes no candidate-generation calls. The next decision is approval for up to **324 Gemini 3.8 Flash judge requests** with a proposed **$5 recorded-spending stop threshold**, allowing a possible last-request overrun. **No new paid calls have been made.** The previous $20 approval is consumed and is not reused.
 
 ## Keep the project moving without accepting invalid scores
