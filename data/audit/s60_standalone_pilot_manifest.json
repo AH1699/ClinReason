@@ -1,0 +1,3004 @@
+{
+  "version": "s60-standalone-pilot-offline-v1",
+  "status": "offline_input_freeze_not_execution_authorization",
+  "plan_sha256": "a7200dec56d82860fe3ac75fb379be1da4fa3553145c1ec63e36a2e420bd02b5",
+  "files": {
+    "benchmark/config.py": "fdadd7ce3f5fbe09a79f0f71e12981782a1f7d9cd487593fe38b18c636604af3",
+    "benchmark/criterion_anchors.py": "db467ce4abba1740c144a80f7f52de603660cf1c93bd3ff059ce639937be200f",
+    "benchmark/multiturn.py": "7dbc4575f144734040795f0a744636e80b511d69f0610193b55ae46b5301bcd7",
+    "benchmark/multiturn_diagnostics.py": "84d68d28c6bc9d8b0bf297b3bfc00289d4559ad80f71a2cae15e02cf93f00fb1",
+    "benchmark/provenance.py": "7855afa1e7e4890b664b7349c472584c319c31c2ad95dda76689b0d483a198bb",
+    "benchmark/scoring_s26.py": "8b6d9b055c2ffb1b460b26b7d52c50d6734efcbb2d23c953ee7687ef432306b0",
+    "benchmark/scoring_s36.py": "c6bf345cadd1afd9aea25ecb89069159cd084fdb6b540f9dd25f4299495dbe03",
+    "config/candidate_prompt_bilingual_v2.txt": "7ce8acef7e3398a2d23447f04959513b7198dcc8aa42a31945e17aa066f763b7",
+    "config/multiturn_criterion_anchors_batch_o_v1.json": "822292602a4908f227c2446ac26edd7617a544d12b4335759987c3acfc36266d",
+    "config/multiturn_criterion_anchors_batch_p_v1.json": "37b9f1e9c07ec022290680328754ca7dc08c0daf52a5055e46c3d9408dec7be5",
+    "config/multiturn_criterion_anchors_batch_q_v1.json": "86d83d4b2888551fcfcf2549b7a1bb4147d81ff3359389bf4bf87cb95d6f74b8",
+    "config/scoring_s36_common_judge.txt": "e6267533220c944bf82fe4dba086070bb46f7433ff76d0fc440f98be2e1d0f2a",
+    "config/scoring_s36_evidence_contract.txt": "9b9242871bc6da79a70eb2ddeee9bd049399177424dbd433605ab6a8b5fb6ae2",
+    "config/standalone_pilot_s60_v1.json": "50b13e031f695f39e8c0fd14738e17c0347d8f02a39acef99107f6f0641d1ea1",
+    "data/audit/batch_o_boundary_review_s51.json": "bcc7cd855cf1ac193bff23226d6c9c0c57e1b05d8a5cf731b218984de0b2ae15",
+    "data/audit/batch_o_component_controls_s53.json": "d9116847f918bd4a50dabc6af6aab818275670921c90d06053a638434966a443",
+    "data/audit/batch_o_wording_controls_s52.json": "82c4b5d2766d2907302389c0af4d896362235ecb6bd690b3162ea8362a33e11e",
+    "data/multiturn/batch_o_cases.json": "e5aa111e7e8204d4479b761cb39850b8306b5436e968cc3408671bcb8912abe1",
+    "data/multiturn/batch_o_contrasts_v1.json": "5c9d45e619cb9826b5661c3ae6db5cefc1a0c32ac0dd6b895548ed9969fa90f8",
+    "data/multiturn/batch_o_provenance.json": "37b17a9a90dc292c9cda2d71fcf6b61d882d9c5f862f0383655f6963a44b6026",
+    "data/multiturn/batch_p_cases.json": "3ca1d6aff034cdbe3fd63f07a179b4a0d930778e4bbb30f2c057b744d729a5bf",
+    "data/multiturn/batch_p_contrasts_v1.json": "855b918560862e1e399583b55298b2b03b1a8d423da6618e9c302b3265afdb95",
+    "data/multiturn/batch_p_provenance.json": "5cf83ede8794b09c7de88cb499ff927ac5c4ce06962d046519350ecb3ad4835c",
+    "data/multiturn/batch_q_cases.json": "4fd3c24a3b4a68458708f34fc1ab72419300a1f6f1d1cb6c85b2d2da4de5cd36",
+    "data/multiturn/batch_q_contrasts_v1.json": "26d28c254ab67b430f8b6e0d17a6adccb1e39e0d4a80959d556be5a8748976e8",
+    "data/multiturn/batch_q_provenance.json": "5d3b472fe068779232fe2f7734f418b5da84ad2cdfb7cb064db838aff3fe9528",
+    "scripts/audit_batch_o.py": "aa1df09889aed3c215fdba0f54d78564e9135d76b949d014a93b6c92d2f1072e",
+    "scripts/audit_batch_p.py": "44f0192bed91b731c302421130b5131bb718a94e01f4de5d7504626326b05fb1",
+    "scripts/audit_batch_q.py": "0cb439c3578d99d65b67be0f3c1d875da903dbdd54bacbf710a5e85c79474dfe",
+    "scripts/batch_o_boundary_review_s51.py": "5b9ea4ea12b733c31dfa2ee225c1b570328a52fe5e76087793d8f21dd7621bdd",
+    "scripts/batch_o_components_s53.py": "1eaf7249210d5e294a1f9db4111d4feef833f4a01c6c87c820b758496488ac7b",
+    "scripts/batch_o_wording_s52.py": "41263d4306195a68226d4ed3c0dc2f7ab09412540ae2d40801475b341b38c238",
+    "scripts/judge_evidence_s56.py": "2cc1695a4809fce03f32ba9c7c9c49733123a0292d6090ce24ce77cedc9e1ab4",
+    "scripts/judge_observation_draft.py": "ce70e692232cd5d3bc36fb2d8411e0ae8001ad8da0fd56024001bb0b42bccaf9",
+    "scripts/standalone_pilot_s60.py": "988b76d84e0255381c3273c6325df5604f03127d4a11f16e15f8b21a98d43e86",
+    "tests/test_standalone_pilot_s60.py": "77b240806d37e4038501c16d892f10dfbac5698d4c3c0adc512931417aae98d7"
+  },
+  "families": [
+    {
+      "family_id": "HC-MT-REASON-025",
+      "batch": "p",
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H145"
+      ],
+      "version": "0.1.0",
+      "category": "clinical_reasoning",
+      "family_sha256": "86caca83d435f3973419aaee9ed33c2f6960f0994b443481f96f08ddf74a77f0",
+      "original_family_sha256": "86caca83d435f3973419aaee9ed33c2f6960f0994b443481f96f08ddf74a77f0",
+      "case_hashes": {
+        "en": "b28cecb27657183012e722d7e722fb88190b46b364edc9fe9f912e4859d4f900",
+        "zh-Hans": "72bdb869652f846a3e93b307c02952d11150ac04b41d2ed4a25d755f316f446a"
+      },
+      "anchor_set_sha256": "ff8a40367bb9462b71509a1c86086f3f36a5882f2cba32795345c5720d1fd9a3",
+      "source_record_sha256": "c14de381aec85c13fca14cf3d4cc158b96711b0bb7695253eeae5600fc8d4d0f",
+      "artifact_paths": {
+        "cases": "data/multiturn/batch_p_cases.json",
+        "anchors": "config/multiturn_criterion_anchors_batch_p_v1.json",
+        "controls": "data/multiturn/batch_p_contrasts_v1.json",
+        "provenance": "data/multiturn/batch_p_provenance.json"
+      },
+      "criterion_counts": {
+        "initial": 3,
+        "update": 3
+      },
+      "source_mapping": [
+        {
+          "stage": "initial",
+          "index": 1,
+          "source_mapping_sha256": "e88071e7f167b8b67d1e2264e9b9de7993a4b0493cfc0a39af0027f72cbcc1d2",
+          "guidance_url": "https://hrcak.srce.hr/en/321333",
+          "source_locator": "Recommended criteria and procedure sections 1–2",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "initial",
+          "index": 2,
+          "source_mapping_sha256": "7ac71a46d13c9bcdf39cee798e684910baf34ceedea8bb7d395a25c5282c1cdb",
+          "guidance_url": "https://hrcak.srce.hr/en/321333",
+          "source_locator": "Procedure sections 2–3",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "initial",
+          "index": 3,
+          "source_mapping_sha256": "e299edd3c8dec8603adad5ed3cc3799a59686206a58e5eed63d5acdfc7fba396",
+          "guidance_url": "https://hrcak.srce.hr/en/321333",
+          "source_locator": "Introduction on patient mismanagement",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 1,
+          "source_mapping_sha256": "d63735b749708c57194734ca689db59a6f04a47cade8a7a4bcd6612eb780f284",
+          "guidance_url": "https://hrcak.srce.hr/en/321333",
+          "source_locator": "Procedure section 3",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 2,
+          "source_mapping_sha256": "2057b3ae3d79bc7cff3296aaceed2c123281ed43cf134597c9c46bcbaa7d9aef",
+          "guidance_url": "https://hrcak.srce.hr/en/321333",
+          "source_locator": "Procedure sections 3–4",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 3,
+          "source_mapping_sha256": "3a2175f249a8c4eee0d26f6db8972da528ca2399a4c2be2a63c58f3fa92789e6",
+          "guidance_url": "https://hrcak.srce.hr/en/321333",
+          "source_locator": "Scope plus author clinical-safety inference",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        }
+      ],
+      "related_families": [
+        {
+          "family_id": "HC-MT-REASON-006",
+          "relationship": "Shared laboratory interpretation; new specimen-validity decision",
+          "future_split_together": true
+        },
+        {
+          "family_id": "HC-MT-MEDSAFE-017",
+          "relationship": "Platelet-theme overlap requires manual construct review; no claim of independence from every existing family",
+          "future_split_together": true
+        }
+      ],
+      "initial_candidate_messages_sha256": {
+        "en": "d80de23591cb283167ad4efb5c7fae060246309e00bba3b2584cf39a2ff1d40d",
+        "zh-Hans": "e58d8ffc144d018d7661da5f86b591f2ac99afab2c3bf65be1bc744f5bda6590"
+      },
+      "clinical_and_language_review": "pending"
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-024",
+      "batch": "p",
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H146"
+      ],
+      "version": "0.1.0",
+      "category": "triage",
+      "family_sha256": "65e4e614da1c257b9740a5d986e53f0338276266a47ebff2d93cfaa29100e8d4",
+      "original_family_sha256": "65e4e614da1c257b9740a5d986e53f0338276266a47ebff2d93cfaa29100e8d4",
+      "case_hashes": {
+        "en": "7a6c84fad8d3adae5ac0e9e9455b2d02fcd6eca646ca3188a7820f0ac6dc3db3",
+        "zh-Hans": "4fd201bed80d48e7024c4ff49cc404117d5781344dfe613b3f3b04e9ac6262a4"
+      },
+      "anchor_set_sha256": "ff8a40367bb9462b71509a1c86086f3f36a5882f2cba32795345c5720d1fd9a3",
+      "source_record_sha256": "a9c1da49429ec07713d9c66260208489b805e84990abb23ae98ae5ebfbe137a8",
+      "artifact_paths": {
+        "cases": "data/multiturn/batch_p_cases.json",
+        "anchors": "config/multiturn_criterion_anchors_batch_p_v1.json",
+        "controls": "data/multiturn/batch_p_contrasts_v1.json",
+        "provenance": "data/multiturn/batch_p_provenance.json"
+      },
+      "criterion_counts": {
+        "initial": 3,
+        "update": 3
+      },
+      "source_mapping": [
+        {
+          "stage": "initial",
+          "index": 1,
+          "source_mapping_sha256": "032365e5dd6b564cb174a85c07f89e9340271c1782ed7a1ca1f390d5d7e69c14",
+          "guidance_url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/hypertension-in-adults-screening",
+          "source_locator": "Screening Tests and Biological Understanding",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "initial",
+          "index": 2,
+          "source_mapping_sha256": "4f06f2d45eee6a8a6d2297b028e14458774d685f1c8c1d58b15a2717ddb72373",
+          "guidance_url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/hypertension-in-adults-screening",
+          "source_locator": "Clinician Summary and Screening Tests",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "initial",
+          "index": 3,
+          "source_mapping_sha256": "dd42c7222cfc5543fa233bd21d6f73bf1ef347afddc5e0accb95770f29a34e53",
+          "guidance_url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/hypertension-in-adults-screening",
+          "source_locator": "Clinician Summary and Treatment",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 1,
+          "source_mapping_sha256": "6057430f6b2efdd9e96d4e7645051a6d8856e6e59d5fc85f4bfd03b1ff010504",
+          "guidance_url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/hypertension-in-adults-screening",
+          "source_locator": "Biological Understanding",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 2,
+          "source_mapping_sha256": "9226e51d29931a745289ff902c42c27408b47fba282a24c5cc6829118f06bee3",
+          "guidance_url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/hypertension-in-adults-screening",
+          "source_locator": "Screening Intervals and Treatment",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 3,
+          "source_mapping_sha256": "c0abd77f6c11a2ca3bced40e7f9760b7045bc5f7ef2d9ad4c905d4070ad36013",
+          "guidance_url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/hypertension-in-adults-screening",
+          "source_locator": "Author clinical-safety inference",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        }
+      ],
+      "related_families": [
+        {
+          "family_id": "HC-MT-TRIAGE-003",
+          "relationship": "Shared blood-pressure theme but stable routine surveillance instead of severe-pressure escalation",
+          "future_split_together": true
+        }
+      ],
+      "initial_candidate_messages_sha256": {
+        "en": "fab46f722704d5b711a1f434a57071687eac0ea63df66fe19d98ff20a32e92bf",
+        "zh-Hans": "69cbdf9f71640974747acd64d0bca822f687a3dda25f7263c6bc307ff8e6b0f9"
+      },
+      "clinical_and_language_review": "pending"
+    },
+    {
+      "family_id": "HC-MT-REASON-027",
+      "batch": "q",
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H151"
+      ],
+      "version": "0.1.0",
+      "category": "clinical_reasoning",
+      "family_sha256": "f551f726192220e700ac463e2794baceef6e52e8bada7a6fb83b144b3a8d7f38",
+      "original_family_sha256": "f551f726192220e700ac463e2794baceef6e52e8bada7a6fb83b144b3a8d7f38",
+      "case_hashes": {
+        "en": "3b075a356bac93d4ee1ff7790a90641472602fd9febebaf4999b8f1c72c1694b",
+        "zh-Hans": "0d237a92fbefeb14d1ba46d32e9669b48efe5c773a471d0636db6eb2752fdb98"
+      },
+      "anchor_set_sha256": "95d8ba3f4aff08adc605d2e1c0a0e8b6eaa26ca1c82b4d39d6f27ff067d5f706",
+      "source_record_sha256": "353dd75d7cab6245c2ff576a613a73e306d3b3c3dc2c87c9605c47ff9658a2dd",
+      "artifact_paths": {
+        "cases": "data/multiturn/batch_q_cases.json",
+        "anchors": "config/multiturn_criterion_anchors_batch_q_v1.json",
+        "controls": "data/multiturn/batch_q_contrasts_v1.json",
+        "provenance": "data/multiturn/batch_q_provenance.json"
+      },
+      "criterion_counts": {
+        "initial": 3,
+        "update": 4
+      },
+      "source_mapping": [
+        {
+          "stage": "initial",
+          "index": 1,
+          "source_mapping_sha256": "b881836ae437d46cbd7d4d244ff5d29073a9787868f7d01ab7f402702c9d9c2e",
+          "guidance_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8789028/",
+          "source_locator": "Q1, printed R35–R36, overlapping biochemistry and CCCR",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "initial",
+          "index": 2,
+          "source_mapping_sha256": "5d38f6131e0c571632749b302387ead44da71ac2d8399b6980d06c6b6edabff8",
+          "guidance_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8789028/",
+          "source_locator": "Q1, printed R36, Urine calcium excretion",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "initial",
+          "index": 3,
+          "source_mapping_sha256": "297dea6f41b7893255e45ab9aea9173c846875398ed711354c61a8813d498b37",
+          "guidance_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8789028/",
+          "source_locator": "Q1, printed R35–R36, clinical history, family testing and confounders",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 1,
+          "source_mapping_sha256": "ede0b9caae273eaa2d6a44af3a50f2b5c011e99884488896aae4c73142c54fd8",
+          "guidance_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8789028/",
+          "source_locator": "Q1, printed R36, genetic testing sensitivity",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 2,
+          "source_mapping_sha256": "8ca7eed1e5441ba27684daac093eb9a1af2948dd78ad0299f44d5ccb5f4f5b1d",
+          "guidance_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8789028/",
+          "source_locator": "Q1, printed R35–R36, historical calcium and family screening",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 3,
+          "source_mapping_sha256": "9d338e67c3264da7020d9362aa59b0fb03b3a4437bb89566145525931e6e3875",
+          "guidance_url": "https://onlinelibrary.wiley.com/doi/full/10.1002/jbmr.4677",
+          "source_locator": "Fifth International Workshop 2022, recommendation 6.1–6.2, printed p2294",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 4,
+          "source_mapping_sha256": "94beff13a5c176b995b76aff5793d7e3b00a89020e88f5b48c5156626af26353",
+          "guidance_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8789028/",
+          "source_locator": "Q1, printed R36, follow-up of mutation-negative patients",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        }
+      ],
+      "related_families": [
+        {
+          "family_id": "HC-MT-REASON-018",
+          "relationship": "Shared confounded endocrine testing; calcium inheritance/negative gene-panel limitation is a different decision sequence.",
+          "future_split_together": true
+        }
+      ],
+      "initial_candidate_messages_sha256": {
+        "en": "eb9e271566c5602a9284f19ec16ae79a63989ffe6fd9222e91777dbd54696b0c",
+        "zh-Hans": "3c45d326be8f0ad3d629850fa7cbea732e76242f9cae634a4107ecfd814fd3fb"
+      },
+      "clinical_and_language_review": "pending"
+    },
+    {
+      "family_id": "HC-MT-REASON-024",
+      "batch": "o",
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H142",
+        "H144"
+      ],
+      "version": "0.2.0",
+      "category": "clinical_reasoning",
+      "family_sha256": "8bf239ba20010e7e926a093bd5591ba51fa07afc61a06f0235cb1691bb83adf8",
+      "original_family_sha256": "36f9647f387c05a0b1a1a59be547b6953b5c13eac1e792b1bf207cdcea00d9f6",
+      "case_hashes": {
+        "en": "de73452fcf6fcf07da2ee24109b2f7413aa7387de1527ea06d82e3b4bb62011e",
+        "zh-Hans": "b5e2dd00f7003a3cae8335e220ce30468a54cc1c3ff191de6809a1e62a816e6a"
+      },
+      "anchor_set_sha256": "b340d96b2ee138195ab43a4c5850e2d29085dfa1d3adcceb1bb36da71ec7468d",
+      "source_record_sha256": "cfd1c6724980b85078f341b74cbfe9585d9857822b68e3a44f6079bde6b3708e",
+      "artifact_paths": {
+        "cases": "data/multiturn/batch_o_cases.json",
+        "anchors": "config/multiturn_criterion_anchors_batch_o_v1.json",
+        "controls": "data/multiturn/batch_o_contrasts_v1.json",
+        "provenance": "data/multiturn/batch_o_provenance.json"
+      },
+      "criterion_counts": {
+        "initial": 3,
+        "update": 3
+      },
+      "source_mapping": [
+        {
+          "stage": "initial",
+          "index": 1,
+          "source_mapping_sha256": "974917552b5761d92a639346ec40ddfdeaa6494fa56fed0a96b1c3ba7869199c",
+          "guidance_url": "https://www.heart.org/-/media/832EA0F4E73948848612F228F7FA2D35.pdf",
+          "source_locator": "PDF page 139: Assessment of Patients Hospitalized With Decompensated HF; corroborating case report Discussion",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "initial",
+          "index": 2,
+          "source_mapping_sha256": "a11e3b5a0fd03274b3377bdc9c42947e9f179c9ad83dfa549592fe604c207f02",
+          "guidance_url": "https://www.heart.org/-/media/832EA0F4E73948848612F228F7FA2D35.pdf",
+          "source_locator": "PDF page 139: assessment recommendations; page 148: shock clinical criteria",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "initial",
+          "index": 3,
+          "source_mapping_sha256": "4d9b4177fa47bb828b6b6f73951a84cf811d42a2db2e6e34c0b24a6f5aaa7da9",
+          "guidance_url": "https://www.heart.org/-/media/832EA0F4E73948848612F228F7FA2D35.pdf",
+          "source_locator": "PDF pages 141–142: maintenance and decongestion recommendations",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 1,
+          "source_mapping_sha256": "6b90c87a9558e38d0b2cd5a54ab2390374721514b5754b06c5059ff769433622",
+          "guidance_url": "https://www.heart.org/-/media/832EA0F4E73948848612F228F7FA2D35.pdf",
+          "source_locator": "PDF pages 141–142: renal/BP change and remaining congestion",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 2,
+          "source_mapping_sha256": "57e796592b27504d50bf4166f5a0ce9fc88eb29fcdd8b5b817d801c76c0fa4ff",
+          "guidance_url": "https://www.heart.org/-/media/832EA0F4E73948848612F228F7FA2D35.pdf",
+          "source_locator": "PDF page 139: trajectory, perfusion and reversible factors; page 142: treatment titration",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 3,
+          "source_mapping_sha256": "b6df9a56c7c77ad42d144b7b1ec601511f0013bc766597fcba92e13707613ede",
+          "guidance_url": "https://www.heart.org/-/media/832EA0F4E73948848612F228F7FA2D35.pdf",
+          "source_locator": "PDF page 148: poor-perfusion clinical features; page 139: congestion assessment",
+          "binding": "original_source_mapping_plus_unrevalidated_s52_wording",
+          "clinical_approval": false
+        }
+      ],
+      "related_families": [
+        {
+          "family_id": "HC-MT-REASON-006",
+          "relationship": "shared renal-trend interpretation, distinct congestion/perfusion decision",
+          "future_split_together": true
+        },
+        {
+          "family_id": "HC-PRO-KIDNEY-001",
+          "relationship": "related renal-evidence construct, different persona/chronicity question",
+          "future_split_together": true
+        }
+      ],
+      "initial_candidate_messages_sha256": {
+        "en": "20379e475c6c1d951ff731989c49801f2eb989c3ec171b34941ba61ac7fcfc85",
+        "zh-Hans": "cefc5811d4d09c5f5d97be95472deb3d05fcc24330c4fcd675d52559dec37768"
+      },
+      "clinical_and_language_review": "pending"
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-020",
+      "batch": "o",
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H143",
+        "H144"
+      ],
+      "version": "0.2.0",
+      "category": "medication_safety",
+      "family_sha256": "d09f01337a4ab382be78878880a12ee24de6c80b934f99371320c7a36536d509",
+      "original_family_sha256": "a41cec1945bcca85cfa2c5a2c2d20d6e4e14d49fc7248f3f2963e3eee0cd6d77",
+      "case_hashes": {
+        "en": "c2d710b97afce68385718ff393e7694aea903c2d25115b2e44efc4ce9e8a9994",
+        "zh-Hans": "b16d355857e22cdbb2ebebb3a288896b6b4060fb38dce39de1cb3ce82bd86ccc"
+      },
+      "anchor_set_sha256": "b340d96b2ee138195ab43a4c5850e2d29085dfa1d3adcceb1bb36da71ec7468d",
+      "source_record_sha256": "eef85f8b6b33d6880076e42d4306123f6915157a0379e6860d0464930af747d8",
+      "artifact_paths": {
+        "cases": "data/multiturn/batch_o_cases.json",
+        "anchors": "config/multiturn_criterion_anchors_batch_o_v1.json",
+        "controls": "data/multiturn/batch_o_contrasts_v1.json",
+        "provenance": "data/multiturn/batch_o_provenance.json"
+      },
+      "criterion_counts": {
+        "initial": 3,
+        "update": 3
+      },
+      "source_mapping": [
+        {
+          "stage": "initial",
+          "index": 1,
+          "source_mapping_sha256": "c52ba19d4358315bfb9d777043f04aa0fc827ec538d6973df0458c26445f49cb",
+          "guidance_url": "https://aspenjournals.onlinelibrary.wiley.com/doi/10.1002/ncp.10474",
+          "source_locator": "Adult risk Table 3 and its normal-electrolyte footnote; corroborating AuSPEN 2025 section 3.2",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "initial",
+          "index": 2,
+          "source_mapping_sha256": "3996bf4c62de7bdd4d30220a1bc6bf4806b0958fc376d6b5a85901eee83b02c2",
+          "guidance_url": "https://static1.squarespace.com/static/5a963e1a1137a60b45455f0c/t/68366c5a6b553145a61b8c85/1748397150638/AuSPEN%2BConsensus%2Bstatements%2Bon%2Brefeeding%2Bsyndrome.pdf",
+          "source_locator": "Sections 3.1, 3.4 and 3.6; corroborating ASPEN Table 6",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "initial",
+          "index": 3,
+          "source_mapping_sha256": "81d28f8a762aa21c871f31e67a951169171266c500cdb1d2c3d376dc1993cc38",
+          "guidance_url": "https://static1.squarespace.com/static/5a963e1a1137a60b45455f0c/t/68366c5a6b553145a61b8c85/1748397150638/AuSPEN%2BConsensus%2Bstatements%2Bon%2Brefeeding%2Bsyndrome.pdf",
+          "source_locator": "Sections 3.5 and 3.5.3–3.5.4; compare ASPEN Table 6",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 1,
+          "source_mapping_sha256": "6154b930d6c48649cb7116f1036c95944604961156ca2de3841ab9a01c079bd0",
+          "guidance_url": "https://static1.squarespace.com/static/5a963e1a1137a60b45455f0c/t/68366c5a6b553145a61b8c85/1748397150638/AuSPEN%2BConsensus%2Bstatements%2Bon%2Brefeeding%2Bsyndrome.pdf",
+          "source_locator": "Sections 3.3 and 3.7: symptomatic electrolyte change after nutrition",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 2,
+          "source_mapping_sha256": "38e0dff7d0d7c2f329910a7925aa1e3d7405f66d3ecf7c65b03391ad8bbb6b32",
+          "guidance_url": "https://static1.squarespace.com/static/5a963e1a1137a60b45455f0c/t/68366c5a6b553145a61b8c85/1748397150638/AuSPEN%2BConsensus%2Bstatements%2Bon%2Brefeeding%2Bsyndrome.pdf",
+          "source_locator": "Sections 3.4, 3.6 and 3.7; report provides coexistence illustration only",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 3,
+          "source_mapping_sha256": "002d23ebbe114123dac14e54c174bbae69c6e19252850cd8be79111a74e96396",
+          "guidance_url": "https://static1.squarespace.com/static/5a963e1a1137a60b45455f0c/t/68366c5a6b553145a61b8c85/1748397150638/AuSPEN%2BConsensus%2Bstatements%2Bon%2Brefeeding%2Bsyndrome.pdf",
+          "source_locator": "Section 3.5: stabilization before further advancement; compare ASPEN Table 6",
+          "binding": "original_source_mapping_plus_unrevalidated_s52_wording",
+          "clinical_approval": false
+        }
+      ],
+      "related_families": [
+        {
+          "family_id": "HC-MT-MEDSAFE-018",
+          "relationship": "shared electrolyte/clinical-change reasoning but distinct nutrition mechanism and competing underfeeding risk",
+          "future_split_together": true
+        }
+      ],
+      "initial_candidate_messages_sha256": {
+        "en": "35ed4542f6dcfa46097ea433698e57680cd58a1b446df1cf8d0c0852a83401d2",
+        "zh-Hans": "7eb0b230bedbd0e9a7729e7ff2cfa9cbe92c6e0ebf308f237e05a29fff798f7c"
+      },
+      "clinical_and_language_review": "pending"
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-021",
+      "batch": "q",
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H149"
+      ],
+      "version": "0.1.0",
+      "category": "medication_safety",
+      "family_sha256": "326b5003ed44d8a9f9d293a7a74f120d8184a7924109ea7274d69298f94096fb",
+      "original_family_sha256": "326b5003ed44d8a9f9d293a7a74f120d8184a7924109ea7274d69298f94096fb",
+      "case_hashes": {
+        "en": "1e3b07fd9241d62243d38a010eeef811aeee5b6999a871e7181ea33b046feb38",
+        "zh-Hans": "4a2c81fc2d3125f0e70477029be163f98bb0ee7ee7a98f646547398773f961e9"
+      },
+      "anchor_set_sha256": "95d8ba3f4aff08adc605d2e1c0a0e8b6eaa26ca1c82b4d39d6f27ff067d5f706",
+      "source_record_sha256": "248ff61c418db32019f3c9b94bce0b1c347a818e1eefcc59e81e49b124c636f6",
+      "artifact_paths": {
+        "cases": "data/multiturn/batch_q_cases.json",
+        "anchors": "config/multiturn_criterion_anchors_batch_q_v1.json",
+        "controls": "data/multiturn/batch_q_contrasts_v1.json",
+        "provenance": "data/multiturn/batch_q_provenance.json"
+      },
+      "criterion_counts": {
+        "initial": 3,
+        "update": 4
+      },
+      "source_mapping": [
+        {
+          "stage": "initial",
+          "index": 1,
+          "source_mapping_sha256": "6502f7809f5ae2b3232c71b31425c0ab7f1e1df7b403390edcb567bd6afaa008",
+          "guidance_url": "https://www.gov.uk/drug-safety-update/ferric-carboxymaltose-ferinject-risk-of-symptomatic-hypophosphataemia-leading-to-osteomalacia-and-fractures",
+          "source_locator": "Advice for healthcare professionals: new musculoskeletal symptoms/fatigue",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "initial",
+          "index": 2,
+          "source_mapping_sha256": "1cbe73ff32a15d1c1073afdb5dd771fb43c07c99d5178884d60afabba0e16efe",
+          "guidance_url": "https://www.gov.uk/drug-safety-update/ferric-carboxymaltose-ferinject-risk-of-symptomatic-hypophosphataemia-leading-to-osteomalacia-and-fractures",
+          "source_locator": "Advice: risk-based serum phosphate monitoring",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "initial",
+          "index": 3,
+          "source_mapping_sha256": "c426cc6967e6fc0b3cb2225379c1191b72734234f9d120fc4cf08083b030dcb3",
+          "guidance_url": "https://www.gov.uk/drug-safety-update/ferric-carboxymaltose-ferinject-risk-of-symptomatic-hypophosphataemia-leading-to-osteomalacia-and-fractures",
+          "source_locator": "Indication for treatment and reassessment advice",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 1,
+          "source_mapping_sha256": "0817af156ce44f1f2e8398f0971497448974e0193fe824d7eb962ca4ddbabc89",
+          "guidance_url": "https://www.gov.uk/drug-safety-update/ferric-carboxymaltose-ferinject-risk-of-symptomatic-hypophosphataemia-leading-to-osteomalacia-and-fractures",
+          "source_locator": "Advice and risk factors; report Discussion lists multiple causes",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 2,
+          "source_mapping_sha256": "dc87406baae209e39f2882ce8b39addf06ff13e5f15706a64b36e3f3c61c8c80",
+          "guidance_url": "https://www.gov.uk/drug-safety-update/ferric-carboxymaltose-ferinject-risk-of-symptomatic-hypophosphataemia-leading-to-osteomalacia-and-fractures",
+          "source_locator": "If hypophosphataemia persists, re-evaluate treatment",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 3,
+          "source_mapping_sha256": "b7b3d49fb4bc1e3aad889b4458643f787019cd7b419c0ab574095c599bf2271d",
+          "guidance_url": "https://www.gov.uk/drug-safety-update/ferric-carboxymaltose-ferinject-risk-of-symptomatic-hypophosphataemia-leading-to-osteomalacia-and-fractures",
+          "source_locator": "Advice: vitamin D deficiency and malabsorption risk factors",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 4,
+          "source_mapping_sha256": "88f4c1afd99d276af3597157d1dd9fe2884fe541bc3a397f0911780a10b38f23",
+          "guidance_url": "https://www.gov.uk/drug-safety-update/ferric-carboxymaltose-ferinject-risk-of-symptomatic-hypophosphataemia-leading-to-osteomalacia-and-fractures",
+          "source_locator": "Indication, phosphate monitoring and treatment re-evaluation",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        }
+      ],
+      "related_families": [
+        {
+          "family_id": "HC-MT-MEDSAFE-020",
+          "relationship": "Shared low-phosphate/metabolic theme; iron exposure versus refeeding requires different medication/nutrition decisions.",
+          "future_split_together": true
+        },
+        {
+          "family_id": "HC-MT-REASON-019",
+          "relationship": "Shared ongoing iron-deficiency care; complication assessment is new, but etiologic follow-up overlaps.",
+          "future_split_together": true
+        }
+      ],
+      "initial_candidate_messages_sha256": {
+        "en": "fae46619b84a631983312d691a0d033741f63311a8e61d864b4eff359d6aa97b",
+        "zh-Hans": "fa61fa91fb2fb2fdbf2964b14e5d2e1303b352be63d977473b357b2b40666be3"
+      },
+      "clinical_and_language_review": "pending"
+    },
+    {
+      "family_id": "HC-MT-REASON-026",
+      "batch": "q",
+      "stratum": "escalation_under_uncertainty",
+      "review_issues": [
+        "H150"
+      ],
+      "version": "0.1.0",
+      "category": "clinical_reasoning",
+      "family_sha256": "2d8986220d17f664de4be32a181d941e4bfe19d9f598a86e1ad59f6e8fe0ddbd",
+      "original_family_sha256": "2d8986220d17f664de4be32a181d941e4bfe19d9f598a86e1ad59f6e8fe0ddbd",
+      "case_hashes": {
+        "en": "b4a67881e610ba75b41c06ab24e8e451aff3809da2f1de1f9cb1f9038b5284ea",
+        "zh-Hans": "31da78dc81cb6dd78db828faa43205e7f7ce7cd3649572cb125eb7576e0e5785"
+      },
+      "anchor_set_sha256": "95d8ba3f4aff08adc605d2e1c0a0e8b6eaa26ca1c82b4d39d6f27ff067d5f706",
+      "source_record_sha256": "0d44640b0fb6e59dbfc1a5fc1d0c1a7cc6241163f214d3cfb27958b9dcf35022",
+      "artifact_paths": {
+        "cases": "data/multiturn/batch_q_cases.json",
+        "anchors": "config/multiturn_criterion_anchors_batch_q_v1.json",
+        "controls": "data/multiturn/batch_q_contrasts_v1.json",
+        "provenance": "data/multiturn/batch_q_provenance.json"
+      },
+      "criterion_counts": {
+        "initial": 3,
+        "update": 4
+      },
+      "source_mapping": [
+        {
+          "stage": "initial",
+          "index": 1,
+          "source_mapping_sha256": "46bfaeccb4cb5b9e5a6bf479493bdcf7708c0ecb5f1500c2c7def249a699165b",
+          "guidance_url": "https://www.idsociety.org/practice-guideline/skin-and-soft-tissue-infections/",
+          "source_locator": "Recommendations IV and VIII; postoperative wound assessment discussion",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "initial",
+          "index": 2,
+          "source_mapping_sha256": "fca73bb532124e0be2df7e7ee0ccc3d7a4705500a898d02d54727a65ffa698c2",
+          "guidance_url": "https://onlinelibrary.wiley.com/doi/10.1111/1346-8138.16845",
+          "source_locator": "Clinical presentation and differential; CQ1–4",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "initial",
+          "index": 3,
+          "source_mapping_sha256": "ef9d29eeb08357abf3cc88b3daf2a12eb3c8ed85a60193030e7eec44a574eaca",
+          "guidance_url": "https://www.idsociety.org/practice-guideline/skin-and-soft-tissue-infections/",
+          "source_locator": "VIII: suspected necrotizing fasciitis/systemic toxicity",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 1,
+          "source_mapping_sha256": "3290a84121bd879b63f4af024994d14ba72a074aa3d43c706ba143e9205f830e",
+          "guidance_url": "https://onlinelibrary.wiley.com/doi/10.1111/1346-8138.16845",
+          "source_locator": "CQ1 and CQ4",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 2,
+          "source_mapping_sha256": "6fd5b0f7b40ef49b4c9115522a58abccc39cf5750eeb0990930fa6186cf30779",
+          "guidance_url": "https://www.bad.org.uk/pils/pyoderma-gangrenosum",
+          "source_locator": "Diagnosis and symptoms; ulcers may become infected",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 3,
+          "source_mapping_sha256": "f5e940a71bc96afceb279f18d0a0885be22dc4463dbdfc831611755dd3a4073e",
+          "guidance_url": "https://onlinelibrary.wiley.com/doi/10.1111/1346-8138.16845",
+          "source_locator": "CQ2–4 and CQ10",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 4,
+          "source_mapping_sha256": "d8785a825797e534d9c1703ac8d53e927d34d387e7592bbcfbba367e5f5a5e0b",
+          "guidance_url": "https://www.idsociety.org/practice-guideline/skin-and-soft-tissue-infections/",
+          "source_locator": "VIII: prompt surgical consultation when necrotizing infection suspected",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        }
+      ],
+      "related_families": [
+        {
+          "family_id": "HC-PRO-NECFASC-001",
+          "relationship": "Shared wound/infection safety pathway; new primary construct is inflammatory mimic and procedure-risk reassessment.",
+          "future_split_together": true
+        },
+        {
+          "family_id": "HC-MT-TRIAGE-014",
+          "relationship": "Reserved calibration draft shares the limitation of a normal lactate, not the wound mechanism; guard against cross-split safety-net leakage.",
+          "future_split_together": true
+        }
+      ],
+      "initial_candidate_messages_sha256": {
+        "en": "3d5467242f535eea42ea1678bc5a8025cae1914c5ff834cafafa0ee56a2e640f",
+        "zh-Hans": "d24c7eeec76bafc5ed712ac351a59bb60ecbf6ac211df909c6223076d347c1d3"
+      },
+      "clinical_and_language_review": "pending"
+    },
+    {
+      "family_id": "HC-MT-TRIAGE-025",
+      "batch": "q",
+      "stratum": "escalation_under_uncertainty",
+      "review_issues": [
+        "H152"
+      ],
+      "version": "0.1.0",
+      "category": "triage",
+      "family_sha256": "f12a8232a79dafd66d3cb6c3cc8bdcc8163fa4db2be421d19054070606331459",
+      "original_family_sha256": "f12a8232a79dafd66d3cb6c3cc8bdcc8163fa4db2be421d19054070606331459",
+      "case_hashes": {
+        "en": "c8c892e5c177a9962760fe1987488e008412a78558c531d13d77361e3f36346a",
+        "zh-Hans": "e673080495062e42fd71625ea888261b710f3ab5340713a59b425c483da0f7d5"
+      },
+      "anchor_set_sha256": "95d8ba3f4aff08adc605d2e1c0a0e8b6eaa26ca1c82b4d39d6f27ff067d5f706",
+      "source_record_sha256": "2e082aad64bcaacb233e73168171b72ee09b38054e624e61dba56c8d86f0484b",
+      "artifact_paths": {
+        "cases": "data/multiturn/batch_q_cases.json",
+        "anchors": "config/multiturn_criterion_anchors_batch_q_v1.json",
+        "controls": "data/multiturn/batch_q_contrasts_v1.json",
+        "provenance": "data/multiturn/batch_q_provenance.json"
+      },
+      "criterion_counts": {
+        "initial": 3,
+        "update": 4
+      },
+      "source_mapping": [
+        {
+          "stage": "initial",
+          "index": 1,
+          "source_mapping_sha256": "f046363230037dc5496994413197bd163cc31d0764bbab22e545078faeda17ed",
+          "guidance_url": "https://onlinelibrary.wiley.com/doi/full/10.1111/bjh.70200",
+          "source_locator": "Laboratory investigation; Inhibitors to FVIII recommendations",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "initial",
+          "index": 2,
+          "source_mapping_sha256": "5f0a8c0acaaa0218837b0a89458221c533858174c84ed7671ecfdd107f2c1f11",
+          "guidance_url": "https://onlinelibrary.wiley.com/doi/full/10.1111/bjh.70200",
+          "source_locator": "Laboratory investigation: rapid investigation of abnormal results",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "initial",
+          "index": 3,
+          "source_mapping_sha256": "22b30a4cfb52b55a1edf15110c5a5ab6bccb91bed5ad39dbfd7c7011f3837df5",
+          "guidance_url": "https://haematologica.org/article/view/9931",
+          "source_locator": "Diagnosis; Mixing tests",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 1,
+          "source_mapping_sha256": "d3a7a59d0b4bd1de6b5110f3a28b2464cafec4355d10eec7abb01cc8ee4d7fc1",
+          "guidance_url": "https://onlinelibrary.wiley.com/doi/full/10.1111/bjh.70200",
+          "source_locator": "Inhibitors to FVIII: immediate versus incubated mixing",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 2,
+          "source_mapping_sha256": "d35e851c0dacd9c8ecf60bcfdc82058c65a894c1d071fe1df6e572fd8f4d43eb",
+          "guidance_url": "https://haematologica.org/article/view/9931",
+          "source_locator": "Hemostatic treatment; monitoring blood counts, pain and mobility",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 3,
+          "source_mapping_sha256": "102db1701ebbf9cdcc7953ed98e47226d2e29fbb86b165faec0416c2713d4372",
+          "guidance_url": "https://onlinelibrary.wiley.com/doi/full/10.1111/bjh.70200",
+          "source_locator": "Laboratory investigation recommendations: prioritize factor assays during bleeding",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        },
+        {
+          "stage": "update",
+          "index": 4,
+          "source_mapping_sha256": "1af471d3c75e8c525f2b51521647eebd1457999b4c3e91c31713fbbb0be2d69d",
+          "guidance_url": "https://haematologica.org/article/view/9931",
+          "source_locator": "Invasive procedures; General strategy",
+          "binding": "selected_requirement_unchanged_from_source_map",
+          "clinical_approval": false
+        }
+      ],
+      "related_families": [
+        {
+          "family_id": "HC-MT-REASON-025",
+          "relationship": "Laboratory interpretation and bleeding uncertainty overlap, but this concerns an acquired inhibitor rather than clumped platelets.",
+          "future_split_together": true
+        },
+        {
+          "family_id": "HC-MT-MEDSAFE-017",
+          "relationship": "Shared hematology update reasoning; HIT thrombosis differs from time-dependent factor inhibition.",
+          "future_split_together": true
+        },
+        {
+          "family_id": "HC-MT-MEDSAFE-001",
+          "relationship": "Bleeding urgency overlaps, but drug interaction is not the new mechanism.",
+          "future_split_together": true
+        },
+        {
+          "family_id": "HC-MT-TRIAGE-022",
+          "relationship": "Reserved confirmation draft addresses stopped minor bleeding; distinct acuity but related safety-net content.",
+          "future_split_together": true
+        }
+      ],
+      "initial_candidate_messages_sha256": {
+        "en": "2d8e2cb82c3076f7e21fbec9616c653b677b8e1180211b633265fb51dc665fcb",
+        "zh-Hans": "b6140398b131b4082204d698631ed5ea10f719641824a4167fc71f784c9d44c0"
+      },
+      "clinical_and_language_review": "pending"
+    }
+  ],
+  "counts": {
+    "families": 8,
+    "language_variants": 16,
+    "criterion_positions": 52,
+    "bilingual_criterion_positions": 104,
+    "candidate_conversations": 64,
+    "control_conversations": 48,
+    "unique_control_stage_packets": 64,
+    "proposed_requests_by_kind": {
+      "control_first": 64,
+      "control_repeat": 32,
+      "candidate": 128,
+      "judge_first": 128,
+      "judge_repeat": 128
+    },
+    "proposed_total_requests": 480
+  },
+  "strata": {
+    "diagnostic_restraint": 3,
+    "competing_treatment_risks": 3,
+    "escalation_under_uncertainty": 2
+  },
+  "categories": {
+    "clinical_reasoning": 4,
+    "triage": 2,
+    "medication_safety": 2
+  },
+  "controls": [
+    {
+      "key": "HC-MT-REASON-024__en__initial__shared",
+      "family_id": "HC-MT-REASON-024",
+      "language": "en",
+      "stage": "initial",
+      "profile": null,
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H142",
+        "H144"
+      ],
+      "packet_sha256": "997701319f5d91f0cacb9be6710ffa87e7d70980108bf7117a1940abe59cc043",
+      "judge_input_sha256": "9eb68b5ab8302d3abb88debccc4b2400a5fdafd6477fcc33a6de4c553e8587ed"
+    },
+    {
+      "key": "HC-MT-REASON-024__en__update__safe",
+      "family_id": "HC-MT-REASON-024",
+      "language": "en",
+      "stage": "update",
+      "profile": "safe",
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H142",
+        "H144"
+      ],
+      "packet_sha256": "3d82bf977ae68f4677336e861afa685f4834a8ed570d849a1680254e7fe89ae9",
+      "judge_input_sha256": "d7bcee4a8def8b7d3aeb35c2bfff2c223b6f8117a96c54898a2c04590e5fac17"
+    },
+    {
+      "key": "HC-MT-REASON-024__en__update__partial",
+      "family_id": "HC-MT-REASON-024",
+      "language": "en",
+      "stage": "update",
+      "profile": "partial",
+      "omitted_component": 3,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H142",
+        "H144"
+      ],
+      "packet_sha256": "edee97a2a0a03fe7fffbc8fb0fd09962a8eb2b4cb82796ea9c29a8c48c0fa769",
+      "judge_input_sha256": "c7cf1aaeab1bef5d573368006e16a7c24487af0eb466d01a68e3570060307854"
+    },
+    {
+      "key": "HC-MT-REASON-024__en__update__unsafe",
+      "family_id": "HC-MT-REASON-024",
+      "language": "en",
+      "stage": "update",
+      "profile": "unsafe",
+      "omitted_component": null,
+      "hypothesized_error_id": "CE-MT-REASON-024-BLANKET",
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H142",
+        "H144"
+      ],
+      "packet_sha256": "3de6553effac135f4365b0fea3f676df768980251c5c307688de2e0713acbe37",
+      "judge_input_sha256": "e1b5ca08f77be964cf52ed3c3d6069a92ab5e0136b03e0fe17062d10cfa7cd1e"
+    },
+    {
+      "key": "HC-MT-REASON-024__zh-Hans__initial__shared",
+      "family_id": "HC-MT-REASON-024",
+      "language": "zh-Hans",
+      "stage": "initial",
+      "profile": null,
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H142",
+        "H144"
+      ],
+      "packet_sha256": "c952a46cefb4555c942a4c7f708b032ede81aab4adacb3a760bc3c97ea06d77c",
+      "judge_input_sha256": "6087c328c5de7a2f6534b8a6fe39a79089d8f86b4ce89e3f9fa88b56f4a34478"
+    },
+    {
+      "key": "HC-MT-REASON-024__zh-Hans__update__safe",
+      "family_id": "HC-MT-REASON-024",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "safe",
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H142",
+        "H144"
+      ],
+      "packet_sha256": "2bb745047a2f6cb0d245f9aefb8111420c0086361c7d20903e40390f0b730e35",
+      "judge_input_sha256": "b19f38bdac5dbfedb14f24dcd504494943a4322369b5c4b0083d342c751ad094"
+    },
+    {
+      "key": "HC-MT-REASON-024__zh-Hans__update__partial",
+      "family_id": "HC-MT-REASON-024",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "partial",
+      "omitted_component": 3,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H142",
+        "H144"
+      ],
+      "packet_sha256": "2a881459e2e9fa24e0b1ef19e71498179c5d9d01e3c0ce3fc90de5af3b63fba0",
+      "judge_input_sha256": "6f15347917e5e08e9fbe4953f894baeea0b42fc8033b71d9d3728e5c5084c2d1"
+    },
+    {
+      "key": "HC-MT-REASON-024__zh-Hans__update__unsafe",
+      "family_id": "HC-MT-REASON-024",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "unsafe",
+      "omitted_component": null,
+      "hypothesized_error_id": "CE-MT-REASON-024-BLANKET",
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H142",
+        "H144"
+      ],
+      "packet_sha256": "1aa1990935967648053088551abe3b336cf7fc276119c594d88fa36ebdb734fb",
+      "judge_input_sha256": "f471123db0ad959a51080806264ab9d475566772cdacb40f6956add335beb9a4"
+    },
+    {
+      "key": "HC-MT-MEDSAFE-020__en__initial__shared",
+      "family_id": "HC-MT-MEDSAFE-020",
+      "language": "en",
+      "stage": "initial",
+      "profile": null,
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H143",
+        "H144"
+      ],
+      "packet_sha256": "465e7d8902d897a3b3847a69deb81b247b78091a4488753b99bb3e23b0102b92",
+      "judge_input_sha256": "149cd02687aad2f25edac09d09f06b2da23592c2528adc28ca24415c4d76376b"
+    },
+    {
+      "key": "HC-MT-MEDSAFE-020__en__update__safe",
+      "family_id": "HC-MT-MEDSAFE-020",
+      "language": "en",
+      "stage": "update",
+      "profile": "safe",
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H143",
+        "H144"
+      ],
+      "packet_sha256": "f42bda903ea7ddd9945d4c2ffab0b1dd01481545aee95f907073b35535fab3b5",
+      "judge_input_sha256": "d16acd21a277fe28600f7d0c30bed39ab661030c00b728d29841356774e84280"
+    },
+    {
+      "key": "HC-MT-MEDSAFE-020__en__update__partial",
+      "family_id": "HC-MT-MEDSAFE-020",
+      "language": "en",
+      "stage": "update",
+      "profile": "partial",
+      "omitted_component": 2,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H143",
+        "H144"
+      ],
+      "packet_sha256": "d2eb9744cde90820f5bb712e4fa3c3100510b46aaf0301046f8d189b532c5538",
+      "judge_input_sha256": "a32feb6c31b91d81fc3d8b196b4eb78c191081513852909cac72cd6b770fdca0"
+    },
+    {
+      "key": "HC-MT-MEDSAFE-020__en__update__unsafe",
+      "family_id": "HC-MT-MEDSAFE-020",
+      "language": "en",
+      "stage": "update",
+      "profile": "unsafe",
+      "omitted_component": null,
+      "hypothesized_error_id": "CE-MT-MEDSAFE-020-ESCALATE",
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H143",
+        "H144"
+      ],
+      "packet_sha256": "345148bf2ae9fff300f4ff47f303e039aea184c4facc7a6e845dfe51c953cb97",
+      "judge_input_sha256": "d63c4f403cd77c142e6f714ff87c509a5e678f9ad49754d887f5300ebc5a96aa"
+    },
+    {
+      "key": "HC-MT-MEDSAFE-020__zh-Hans__initial__shared",
+      "family_id": "HC-MT-MEDSAFE-020",
+      "language": "zh-Hans",
+      "stage": "initial",
+      "profile": null,
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H143",
+        "H144"
+      ],
+      "packet_sha256": "4af08389587456e3d7a296e4403a6566be9e103a1b05b6dd339a3691d71a6fbf",
+      "judge_input_sha256": "5ea1a15d96e4ec2fc72886156759bc0576a2cb8502a9802b8614ef93e0594d25"
+    },
+    {
+      "key": "HC-MT-MEDSAFE-020__zh-Hans__update__safe",
+      "family_id": "HC-MT-MEDSAFE-020",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "safe",
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H143",
+        "H144"
+      ],
+      "packet_sha256": "e3679b26859bc58d46fb57c9fb8150a961a7b09cf0b72a4377b032cd957beea8",
+      "judge_input_sha256": "00f9b9e3378c3041ec348133d58656e612a274a14a71b0756b98b00918b43d40"
+    },
+    {
+      "key": "HC-MT-MEDSAFE-020__zh-Hans__update__partial",
+      "family_id": "HC-MT-MEDSAFE-020",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "partial",
+      "omitted_component": 2,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H143",
+        "H144"
+      ],
+      "packet_sha256": "56cebfafabc2b53679cb268d0e8ca4361c5741bace2f5f32a5efd809f94ae1d0",
+      "judge_input_sha256": "7258eac13294bc1c3ad0dd72ee34e7c1bb922ed5f03ac9721a7c09c043a74def"
+    },
+    {
+      "key": "HC-MT-MEDSAFE-020__zh-Hans__update__unsafe",
+      "family_id": "HC-MT-MEDSAFE-020",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "unsafe",
+      "omitted_component": null,
+      "hypothesized_error_id": "CE-MT-MEDSAFE-020-ESCALATE",
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H143",
+        "H144"
+      ],
+      "packet_sha256": "400acd7d7eeb630de94a75d87448008d29828de6d7df336263fd491ea5313b71",
+      "judge_input_sha256": "fe5d498083851195aaffb9a1ff1f902b04e605bec05d576a7480ff1ef5b8dcb5"
+    },
+    {
+      "key": "HC-MT-REASON-025__en__initial__shared",
+      "family_id": "HC-MT-REASON-025",
+      "language": "en",
+      "stage": "initial",
+      "profile": null,
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H145"
+      ],
+      "packet_sha256": "89af3134ee57b1493f2cf4ff24e7023c6dda6a8e1fc0df08006dd35c79233676",
+      "judge_input_sha256": "dad3f2c8b6b7298fb4f5630b90ad2932a96cc54c1751788d5641ff86417c28a4"
+    },
+    {
+      "key": "HC-MT-REASON-025__en__update__safe",
+      "family_id": "HC-MT-REASON-025",
+      "language": "en",
+      "stage": "update",
+      "profile": "safe",
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H145"
+      ],
+      "packet_sha256": "d424643f37c50855c270abd8114f9bdf0162f483f5d14c3d82f9397e29239842",
+      "judge_input_sha256": "9beabecb06a4dc7f611f5346f64dcfcec3f7ffa08ba1f1495958b1d5c821fd62"
+    },
+    {
+      "key": "HC-MT-REASON-025__en__update__partial",
+      "family_id": "HC-MT-REASON-025",
+      "language": "en",
+      "stage": "update",
+      "profile": "partial",
+      "omitted_component": 3,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H145"
+      ],
+      "packet_sha256": "c9eedbdd635317717e264c78934190aa67a75d6ef58224ceeea0dab610e1c300",
+      "judge_input_sha256": "141eca2652c9c3260624451d4f5d01b6d27bce65245c0b1b7d570870630dc8f5"
+    },
+    {
+      "key": "HC-MT-REASON-025__en__update__unsafe",
+      "family_id": "HC-MT-REASON-025",
+      "language": "en",
+      "stage": "update",
+      "profile": "unsafe",
+      "omitted_component": null,
+      "hypothesized_error_id": "CE-MT-REASON-025-TRUST",
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H145"
+      ],
+      "packet_sha256": "dbe0148425e9a702ed0a3d2d7e5d9a68cd921111ff983b1659776d53e6cc7e1b",
+      "judge_input_sha256": "6ba732df427e20bc755cee11a4dd5dcbe4bc1187abb2c0ad5a9fad9ae23121dc"
+    },
+    {
+      "key": "HC-MT-REASON-025__zh-Hans__initial__shared",
+      "family_id": "HC-MT-REASON-025",
+      "language": "zh-Hans",
+      "stage": "initial",
+      "profile": null,
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H145"
+      ],
+      "packet_sha256": "afd0d781d545911f00a8fa4b544f79a7ed46e390d981e172b985b559cfaaa8c8",
+      "judge_input_sha256": "50ce1b6f6759fb548a8aeae02b901cecee1ffec6809dbd4c5d77de9965541d6f"
+    },
+    {
+      "key": "HC-MT-REASON-025__zh-Hans__update__safe",
+      "family_id": "HC-MT-REASON-025",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "safe",
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H145"
+      ],
+      "packet_sha256": "386aecf13f426469eddcc43babb04df441c03782d5f2489f5d7bada3cc9595cc",
+      "judge_input_sha256": "124550fc5eef04d138acb9946f5252c828b361dae8f618ebda1607a4b1a7d0ad"
+    },
+    {
+      "key": "HC-MT-REASON-025__zh-Hans__update__partial",
+      "family_id": "HC-MT-REASON-025",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "partial",
+      "omitted_component": 3,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H145"
+      ],
+      "packet_sha256": "2cad087cecfe31e1a311c124b6c0426aad7df38f3a0ab8a344ae1e6080ce7831",
+      "judge_input_sha256": "2c718bf4bf0e2ee5288c5e4d44de45538ef987194e4d807eb7493e7e3490207f"
+    },
+    {
+      "key": "HC-MT-REASON-025__zh-Hans__update__unsafe",
+      "family_id": "HC-MT-REASON-025",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "unsafe",
+      "omitted_component": null,
+      "hypothesized_error_id": "CE-MT-REASON-025-TRUST",
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H145"
+      ],
+      "packet_sha256": "6950cd5505a12d6bd2f4c18ca3e2e4b2c2aff01ee34da4683241cfe1689543d5",
+      "judge_input_sha256": "5cec7a52009499dc6847eded2f129c94c17b201aadfa785cd92c96a0acb6c8fb"
+    },
+    {
+      "key": "HC-MT-TRIAGE-024__en__initial__shared",
+      "family_id": "HC-MT-TRIAGE-024",
+      "language": "en",
+      "stage": "initial",
+      "profile": null,
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H146"
+      ],
+      "packet_sha256": "1316bbc5da9c8e23c37b3a7463a2d2656212c381a7b7ad03616282d1b8b8520c",
+      "judge_input_sha256": "1722533e0ff4e7234660c63ccfc9be2263dc1a6d926343e47de719b933fcdbb6"
+    },
+    {
+      "key": "HC-MT-TRIAGE-024__en__update__safe",
+      "family_id": "HC-MT-TRIAGE-024",
+      "language": "en",
+      "stage": "update",
+      "profile": "safe",
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H146"
+      ],
+      "packet_sha256": "1568403c3599a12158fe45c0df7b1a7163be4a7180113286cc05103c6b63bfb1",
+      "judge_input_sha256": "b0afb7a754599977a01f5496fcc899893a0fd4fd3451e9482eb775339fdb03cf"
+    },
+    {
+      "key": "HC-MT-TRIAGE-024__en__update__partial",
+      "family_id": "HC-MT-TRIAGE-024",
+      "language": "en",
+      "stage": "update",
+      "profile": "partial",
+      "omitted_component": 3,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H146"
+      ],
+      "packet_sha256": "37140221d417050e76a335f8ce189d08b76c97829ed509f6e8ef4320106a6e97",
+      "judge_input_sha256": "1b81b3cc07d0d96132ef693158f4fe1ce76460ff5b4ccb389670923cd3f85f79"
+    },
+    {
+      "key": "HC-MT-TRIAGE-024__en__update__unsafe",
+      "family_id": "HC-MT-TRIAGE-024",
+      "language": "en",
+      "stage": "update",
+      "profile": "unsafe",
+      "omitted_component": null,
+      "hypothesized_error_id": "CE-MT-TRIAGE-024-NEVER",
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H146"
+      ],
+      "packet_sha256": "5c4e1fe5084b351832aca796dba35e477701195e74edda4ce0935c43429619a0",
+      "judge_input_sha256": "7bfa7b2b9c272848e8779120dd8df1448b9dc47dd415e972534c16d15dfa2c5c"
+    },
+    {
+      "key": "HC-MT-TRIAGE-024__zh-Hans__initial__shared",
+      "family_id": "HC-MT-TRIAGE-024",
+      "language": "zh-Hans",
+      "stage": "initial",
+      "profile": null,
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H146"
+      ],
+      "packet_sha256": "5fd0484a25baa8b74fb13811a6a8a6056e25d1bfdf03ce9007396d487996637c",
+      "judge_input_sha256": "189dd6e795ca6ec470ef5d728420540250c92cb5d3cf4429d2bd861459c8ef1c"
+    },
+    {
+      "key": "HC-MT-TRIAGE-024__zh-Hans__update__safe",
+      "family_id": "HC-MT-TRIAGE-024",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "safe",
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H146"
+      ],
+      "packet_sha256": "d52c941195e21bff7323f4c6b22c444cb30c0222f0c8764039dbf37afc31fd96",
+      "judge_input_sha256": "6be9e6a22287bd29114958c21ddad9a64761210769f0d6881f2bbb259c38bde7"
+    },
+    {
+      "key": "HC-MT-TRIAGE-024__zh-Hans__update__partial",
+      "family_id": "HC-MT-TRIAGE-024",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "partial",
+      "omitted_component": 3,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H146"
+      ],
+      "packet_sha256": "bb0650c285c25c42f73a55fac7a39659067555b5aa9e045174311de9efccd8b5",
+      "judge_input_sha256": "66bf6e36bfa5b90e5ae170f52379e883dc1ee23439032b43bdf5f83d0fd612fe"
+    },
+    {
+      "key": "HC-MT-TRIAGE-024__zh-Hans__update__unsafe",
+      "family_id": "HC-MT-TRIAGE-024",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "unsafe",
+      "omitted_component": null,
+      "hypothesized_error_id": "CE-MT-TRIAGE-024-NEVER",
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H146"
+      ],
+      "packet_sha256": "5680306a85e152e3bfb398c443c7b3314e89924c0a4e1a093193b3424ccd771b",
+      "judge_input_sha256": "ae74aba235250fa509057e5e8cf6a8b3b5ca257c57f6a27094e1c5522b9c5da7"
+    },
+    {
+      "key": "HC-MT-MEDSAFE-021__en__initial__shared",
+      "family_id": "HC-MT-MEDSAFE-021",
+      "language": "en",
+      "stage": "initial",
+      "profile": null,
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H149"
+      ],
+      "packet_sha256": "b428026481b6578c00a8c0509ad228e1387f0f3303ae2336537f6266d6812db7",
+      "judge_input_sha256": "f5c5dc30b3770cbd8fa9fa9cef019dfd0e9b61541f06810c02bf4b2ffa71b1eb"
+    },
+    {
+      "key": "HC-MT-MEDSAFE-021__en__update__safe",
+      "family_id": "HC-MT-MEDSAFE-021",
+      "language": "en",
+      "stage": "update",
+      "profile": "safe",
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H149"
+      ],
+      "packet_sha256": "d8276c44a7de58d4013b103f697feb64cb5437a5b77b02ebfdd4c1ace89efb8a",
+      "judge_input_sha256": "c66482fcf0dd9419c9cc7ff17d4c68ee57af20a54da6a8a7925f814e35f90dec"
+    },
+    {
+      "key": "HC-MT-MEDSAFE-021__en__update__partial",
+      "family_id": "HC-MT-MEDSAFE-021",
+      "language": "en",
+      "stage": "update",
+      "profile": "partial",
+      "omitted_component": 3,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H149"
+      ],
+      "packet_sha256": "87d97c11659569b6331357deb9972bc538fb0a77f36f1fa4bd29bb6dfc03f2ef",
+      "judge_input_sha256": "969cf506e1faac4d19941f52fd9ac7131fbb78e5f544ac7f54fbc0407ee575a8"
+    },
+    {
+      "key": "HC-MT-MEDSAFE-021__en__update__unsafe",
+      "family_id": "HC-MT-MEDSAFE-021",
+      "language": "en",
+      "stage": "update",
+      "profile": "unsafe",
+      "omitted_component": null,
+      "hypothesized_error_id": "CE-MT-MEDSAFE-021-UNCHANGED",
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H149"
+      ],
+      "packet_sha256": "35b7a2a18db0ba09b3a711e16c194d41a4846f5ff020476674aced6fab1894f2",
+      "judge_input_sha256": "384e640d08024d692f92f8ede114fe46d7b8fd2aac7536e9b9d080762e006c10"
+    },
+    {
+      "key": "HC-MT-MEDSAFE-021__zh-Hans__initial__shared",
+      "family_id": "HC-MT-MEDSAFE-021",
+      "language": "zh-Hans",
+      "stage": "initial",
+      "profile": null,
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H149"
+      ],
+      "packet_sha256": "e3176fb038d54c7eeac85bf987858ebd5a7eba5d6794a4538c5b26f0f0cfafa3",
+      "judge_input_sha256": "2e54c31e22fc1567f2c8ecfcf1b49587c272fdf5748a7e8fdb97b8d199e2435b"
+    },
+    {
+      "key": "HC-MT-MEDSAFE-021__zh-Hans__update__safe",
+      "family_id": "HC-MT-MEDSAFE-021",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "safe",
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H149"
+      ],
+      "packet_sha256": "0865a536f1f44293f085dd0ae5777309045f321bb29fe6b82050f942d8157d96",
+      "judge_input_sha256": "76b469ffbcb2a38da99bc577c87a855141d3a8a5c007e8710dad78529335d1f9"
+    },
+    {
+      "key": "HC-MT-MEDSAFE-021__zh-Hans__update__partial",
+      "family_id": "HC-MT-MEDSAFE-021",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "partial",
+      "omitted_component": 3,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H149"
+      ],
+      "packet_sha256": "f722fe811546cdca9739999c7a78f851944f865120fea266cc5eaa66572a7890",
+      "judge_input_sha256": "06c20278853066f7c956d22cad483a8486ce4b95b250a84c67a673021b7bb063"
+    },
+    {
+      "key": "HC-MT-MEDSAFE-021__zh-Hans__update__unsafe",
+      "family_id": "HC-MT-MEDSAFE-021",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "unsafe",
+      "omitted_component": null,
+      "hypothesized_error_id": "CE-MT-MEDSAFE-021-UNCHANGED",
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H149"
+      ],
+      "packet_sha256": "a2a861f782b53b093347f012ee52263e76c0a4dc74cf57e86fdb1b815e0a8bfc",
+      "judge_input_sha256": "0e22e616bb843b1abfdf2717fb3c23c504f0c3c145b18a631a69dd51fd1f2a40"
+    },
+    {
+      "key": "HC-MT-REASON-026__en__initial__shared",
+      "family_id": "HC-MT-REASON-026",
+      "language": "en",
+      "stage": "initial",
+      "profile": null,
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H150"
+      ],
+      "packet_sha256": "771292ad337049bb2c165afadf86fa8a251fef227cd4b9861085e641956572db",
+      "judge_input_sha256": "ce531b206d278f7c47632767ffb18640f7a3a04d23d9282af4a7123dccd8d2da"
+    },
+    {
+      "key": "HC-MT-REASON-026__en__update__safe",
+      "family_id": "HC-MT-REASON-026",
+      "language": "en",
+      "stage": "update",
+      "profile": "safe",
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H150"
+      ],
+      "packet_sha256": "78150c6ef34b9fd897e91134d0dd0a925093f7f3adcc64f2a80bfd29b84b8c92",
+      "judge_input_sha256": "856ad460bb25f2e346f65a559ad6055873b84f784079cc3845ceb559c1b85126"
+    },
+    {
+      "key": "HC-MT-REASON-026__en__update__partial",
+      "family_id": "HC-MT-REASON-026",
+      "language": "en",
+      "stage": "update",
+      "profile": "partial",
+      "omitted_component": 2,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H150"
+      ],
+      "packet_sha256": "515a9bb15e7ae999fdbb508e1840ea4d7c299d4ac73813b87acd3fdff9b0492a",
+      "judge_input_sha256": "b5d0906abda4c14eee8ac858911b79534afcafc62799315501cd2aba577a510d"
+    },
+    {
+      "key": "HC-MT-REASON-026__en__update__unsafe",
+      "family_id": "HC-MT-REASON-026",
+      "language": "en",
+      "stage": "update",
+      "profile": "unsafe",
+      "omitted_component": null,
+      "hypothesized_error_id": "CE-MT-REASON-026-IGNORE-INFECTION",
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H150"
+      ],
+      "packet_sha256": "9398c6d994c0058785f1be2aca97650d0f5bc334713d30b86f67c2f42b8428d8",
+      "judge_input_sha256": "9963839509d3c553fcef5265bc18a6b2491665a6ae1b43d5438397f15438216b"
+    },
+    {
+      "key": "HC-MT-REASON-026__zh-Hans__initial__shared",
+      "family_id": "HC-MT-REASON-026",
+      "language": "zh-Hans",
+      "stage": "initial",
+      "profile": null,
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H150"
+      ],
+      "packet_sha256": "13cf185d8e25ed93f54cd5ca7d9f9d8df858abbaa8374d934604bd105a3a6e3e",
+      "judge_input_sha256": "5727cfa7de76033f43b069de4605f4f159e264f4623822b610f1e78da417aeb7"
+    },
+    {
+      "key": "HC-MT-REASON-026__zh-Hans__update__safe",
+      "family_id": "HC-MT-REASON-026",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "safe",
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H150"
+      ],
+      "packet_sha256": "15c86b99f408d31c948c0e5552df73d51fa6991eed47f458dfdd2627fa673181",
+      "judge_input_sha256": "da18481373bd5724a2a3b37a6b56cd0eead60073d206877425f39f61b0e6b98a"
+    },
+    {
+      "key": "HC-MT-REASON-026__zh-Hans__update__partial",
+      "family_id": "HC-MT-REASON-026",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "partial",
+      "omitted_component": 2,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H150"
+      ],
+      "packet_sha256": "ffac3f51fa12f568ecae2cee2f13915570848ad7070f95314734d11381a03321",
+      "judge_input_sha256": "4dc2b7a44fd1dd52658e416883f8b8aaaa3ba0452d25e78c51960d35e0a425c0"
+    },
+    {
+      "key": "HC-MT-REASON-026__zh-Hans__update__unsafe",
+      "family_id": "HC-MT-REASON-026",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "unsafe",
+      "omitted_component": null,
+      "hypothesized_error_id": "CE-MT-REASON-026-IGNORE-INFECTION",
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H150"
+      ],
+      "packet_sha256": "34838ac4324828ca005ef1ef382e15ed2b7eef0d590ba4199414bf007e282b0d",
+      "judge_input_sha256": "d0d3add2206e62abe94272c8eaf21514eb6c0ca505b43003663673e64609ae0f"
+    },
+    {
+      "key": "HC-MT-REASON-027__en__initial__shared",
+      "family_id": "HC-MT-REASON-027",
+      "language": "en",
+      "stage": "initial",
+      "profile": null,
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H151"
+      ],
+      "packet_sha256": "0f020cfc66302c616e42273c916761707aef9773f64d592a93f490a9f1b7bfa6",
+      "judge_input_sha256": "483779498fee902e895a7e98a7772cc54ce0b74249d399a35bce9bfaa737c4be"
+    },
+    {
+      "key": "HC-MT-REASON-027__en__update__safe",
+      "family_id": "HC-MT-REASON-027",
+      "language": "en",
+      "stage": "update",
+      "profile": "safe",
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H151"
+      ],
+      "packet_sha256": "ebbac769e3155d80fab1bc5f6df8dcae1d6ce2e707b91be8166d345cf58e9b23",
+      "judge_input_sha256": "9208d0f1abd509cb75ae426b274d90a079a2ee5137c9d6a3ab3aa7dc5aae8883"
+    },
+    {
+      "key": "HC-MT-REASON-027__en__update__partial",
+      "family_id": "HC-MT-REASON-027",
+      "language": "en",
+      "stage": "update",
+      "profile": "partial",
+      "omitted_component": 1,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H151"
+      ],
+      "packet_sha256": "28ed94f0fa049216ec45169da328a327eb0bb456a07ab5e65665b1c510474950",
+      "judge_input_sha256": "9b7b5024745deacccc40ab4f0af9a2b8f89cea590872187e95d0ff916147f30e"
+    },
+    {
+      "key": "HC-MT-REASON-027__en__update__unsafe",
+      "family_id": "HC-MT-REASON-027",
+      "language": "en",
+      "stage": "update",
+      "profile": "unsafe",
+      "omitted_component": null,
+      "hypothesized_error_id": "CE-MT-REASON-027-OPERATE",
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H151"
+      ],
+      "packet_sha256": "8b0f0ff1a032c79b8068e256a7742b0b00bd78328d416ab0256ae8d7183694bf",
+      "judge_input_sha256": "49ff6e2e925b6549085edc13a0e76aecca471ab258433d88b1c08f9749e44f92"
+    },
+    {
+      "key": "HC-MT-REASON-027__zh-Hans__initial__shared",
+      "family_id": "HC-MT-REASON-027",
+      "language": "zh-Hans",
+      "stage": "initial",
+      "profile": null,
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H151"
+      ],
+      "packet_sha256": "f2b39e8238e9917ef6f78c2f0e17a26ac23e2e55643949d164152e5821e40528",
+      "judge_input_sha256": "436178afdc75385d90a0b00fafb21da3606b1ac3eaf141b240bd1fd51b3e658b"
+    },
+    {
+      "key": "HC-MT-REASON-027__zh-Hans__update__safe",
+      "family_id": "HC-MT-REASON-027",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "safe",
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H151"
+      ],
+      "packet_sha256": "7ebdbcea703cf96def5993ad3fba7ac0f6240a717d0c9efbb4de3ba6e8c37ed1",
+      "judge_input_sha256": "5f03dd177c4194e2fd69159025fbc1e74493d24482ad3f479ad5784a71010757"
+    },
+    {
+      "key": "HC-MT-REASON-027__zh-Hans__update__partial",
+      "family_id": "HC-MT-REASON-027",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "partial",
+      "omitted_component": 1,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H151"
+      ],
+      "packet_sha256": "78d216ebd6bfb7d0b58e692409cae366a7ef7c23ef98de3b96eb46b94a261299",
+      "judge_input_sha256": "edb9eadad194aeec1c7df28cc138e7c46778cee7a14ee211f164662531f24bca"
+    },
+    {
+      "key": "HC-MT-REASON-027__zh-Hans__update__unsafe",
+      "family_id": "HC-MT-REASON-027",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "unsafe",
+      "omitted_component": null,
+      "hypothesized_error_id": "CE-MT-REASON-027-OPERATE",
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H151"
+      ],
+      "packet_sha256": "5902ecf266e636c5c29e1be0a3d39b1163037623239b5a6068c58bb96af3df2c",
+      "judge_input_sha256": "219b1d6516886ccaea14c988c89747302ff88151adcf192b63e75bf0b7355df1"
+    },
+    {
+      "key": "HC-MT-TRIAGE-025__en__initial__shared",
+      "family_id": "HC-MT-TRIAGE-025",
+      "language": "en",
+      "stage": "initial",
+      "profile": null,
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H152"
+      ],
+      "packet_sha256": "ee95bb3f9b237ffa7c3743a1faa652c979d1dc9a9e633b56b284348966a46eb0",
+      "judge_input_sha256": "f7084fed25450272556b94d4c72f3b385f21b4747cdd7d353e26dece6a755e36"
+    },
+    {
+      "key": "HC-MT-TRIAGE-025__en__update__safe",
+      "family_id": "HC-MT-TRIAGE-025",
+      "language": "en",
+      "stage": "update",
+      "profile": "safe",
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H152"
+      ],
+      "packet_sha256": "cbbee6167992d38b7f08b084f74c703fc377d72578e4018801cd3554e2e3d61e",
+      "judge_input_sha256": "4fca0d4107e2f0bbee2c15004128a83eb016080a467a9b7b866d1ed88d61d399"
+    },
+    {
+      "key": "HC-MT-TRIAGE-025__en__update__partial",
+      "family_id": "HC-MT-TRIAGE-025",
+      "language": "en",
+      "stage": "update",
+      "profile": "partial",
+      "omitted_component": 1,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H152"
+      ],
+      "packet_sha256": "241ecd23cadd788ddb6b20611138aa09e1478264b184a83eb89a48680519ae1e",
+      "judge_input_sha256": "5130e130222d8772c3f80bdded6667d97149c0ad426ee3662092ade4bdf31064"
+    },
+    {
+      "key": "HC-MT-TRIAGE-025__en__update__unsafe",
+      "family_id": "HC-MT-TRIAGE-025",
+      "language": "en",
+      "stage": "update",
+      "profile": "unsafe",
+      "omitted_component": null,
+      "hypothesized_error_id": "CE-MT-TRIAGE-025-WAIT",
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H152"
+      ],
+      "packet_sha256": "8f505062c0292c5085cb1c30638211b567ce278168b6cd8cc0fd29ce69b800ea",
+      "judge_input_sha256": "9a2e1ad743873a97ff4d4598bd7987ea59b3bc64d08ac6f982f22a00d6834912"
+    },
+    {
+      "key": "HC-MT-TRIAGE-025__zh-Hans__initial__shared",
+      "family_id": "HC-MT-TRIAGE-025",
+      "language": "zh-Hans",
+      "stage": "initial",
+      "profile": null,
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H152"
+      ],
+      "packet_sha256": "fddca45dbee8ef1342b29d1f1b6e14d89d1f0d1aed0998120d4c0ff5c04fa004",
+      "judge_input_sha256": "a2e6fe531d72eadba275419e91b91a914cb213b1f51e5556a6db481252ef0788"
+    },
+    {
+      "key": "HC-MT-TRIAGE-025__zh-Hans__update__safe",
+      "family_id": "HC-MT-TRIAGE-025",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "safe",
+      "omitted_component": null,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H152"
+      ],
+      "packet_sha256": "c8b3f4b9a2532ba6ebf9ee349c051f590522bad40a3c615cadfec95df550771e",
+      "judge_input_sha256": "b3ad194e8ff32a235da55a741900159bc1c829fcbd3db1c1cc369bc5a23c3347"
+    },
+    {
+      "key": "HC-MT-TRIAGE-025__zh-Hans__update__partial",
+      "family_id": "HC-MT-TRIAGE-025",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "partial",
+      "omitted_component": 1,
+      "hypothesized_error_id": null,
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H152"
+      ],
+      "packet_sha256": "7d61416bd4d8db5a6bf3575d7f1110c8e706470563c6170e57b7fa7e3039896b",
+      "judge_input_sha256": "3c70b5d9c7a417985084f51d47c03558222fe22da596a7758ac45a2a1ea71836"
+    },
+    {
+      "key": "HC-MT-TRIAGE-025__zh-Hans__update__unsafe",
+      "family_id": "HC-MT-TRIAGE-025",
+      "language": "zh-Hans",
+      "stage": "update",
+      "profile": "unsafe",
+      "omitted_component": null,
+      "hypothesized_error_id": "CE-MT-TRIAGE-025-WAIT",
+      "expected_status": null,
+      "expected_score": null,
+      "review_issues": [
+        "H152"
+      ],
+      "packet_sha256": "d4983fa095a9f8337e1d0f2b3c65e07707ad4fc4c03bad89615bb05a09e7a05d",
+      "judge_input_sha256": "f36f8e3eeae8474343afbd17c0956de7eca847a60c49ff35aed41daa3337618a"
+    }
+  ],
+  "conversation_cells": [
+    {
+      "cell_id": "HC-MT-REASON-025__en__gemini-3.5-flash-lite",
+      "family_id": "HC-MT-REASON-025",
+      "language": "en",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H145"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-025__en__gemini-3.8-flash",
+      "family_id": "HC-MT-REASON-025",
+      "language": "en",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H145"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-025__en__MiniMax-M3.1-Flash",
+      "family_id": "HC-MT-REASON-025",
+      "language": "en",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3.1-Flash"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H145"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-025__en__MiniMax-M3",
+      "family_id": "HC-MT-REASON-025",
+      "language": "en",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H145"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-025__zh-Hans__gemini-3.5-flash-lite",
+      "family_id": "HC-MT-REASON-025",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H145"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-025__zh-Hans__gemini-3.8-flash",
+      "family_id": "HC-MT-REASON-025",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H145"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-025__zh-Hans__MiniMax-M3.1-Flash",
+      "family_id": "HC-MT-REASON-025",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3.1-Flash"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H145"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-025__zh-Hans__MiniMax-M3",
+      "family_id": "HC-MT-REASON-025",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H145"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-TRIAGE-024__en__gemini-3.5-flash-lite",
+      "family_id": "HC-MT-TRIAGE-024",
+      "language": "en",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H146"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-TRIAGE-024__en__gemini-3.8-flash",
+      "family_id": "HC-MT-TRIAGE-024",
+      "language": "en",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H146"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-TRIAGE-024__en__MiniMax-M3.1-Flash",
+      "family_id": "HC-MT-TRIAGE-024",
+      "language": "en",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3.1-Flash"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H146"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-TRIAGE-024__en__MiniMax-M3",
+      "family_id": "HC-MT-TRIAGE-024",
+      "language": "en",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H146"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-TRIAGE-024__zh-Hans__gemini-3.5-flash-lite",
+      "family_id": "HC-MT-TRIAGE-024",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H146"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-TRIAGE-024__zh-Hans__gemini-3.8-flash",
+      "family_id": "HC-MT-TRIAGE-024",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H146"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-TRIAGE-024__zh-Hans__MiniMax-M3.1-Flash",
+      "family_id": "HC-MT-TRIAGE-024",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3.1-Flash"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H146"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-TRIAGE-024__zh-Hans__MiniMax-M3",
+      "family_id": "HC-MT-TRIAGE-024",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H146"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-027__en__gemini-3.5-flash-lite",
+      "family_id": "HC-MT-REASON-027",
+      "language": "en",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H151"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-027__en__gemini-3.8-flash",
+      "family_id": "HC-MT-REASON-027",
+      "language": "en",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H151"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-027__en__MiniMax-M3.1-Flash",
+      "family_id": "HC-MT-REASON-027",
+      "language": "en",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3.1-Flash"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H151"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-027__en__MiniMax-M3",
+      "family_id": "HC-MT-REASON-027",
+      "language": "en",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H151"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-027__zh-Hans__gemini-3.5-flash-lite",
+      "family_id": "HC-MT-REASON-027",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H151"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-027__zh-Hans__gemini-3.8-flash",
+      "family_id": "HC-MT-REASON-027",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H151"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-027__zh-Hans__MiniMax-M3.1-Flash",
+      "family_id": "HC-MT-REASON-027",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3.1-Flash"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H151"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-027__zh-Hans__MiniMax-M3",
+      "family_id": "HC-MT-REASON-027",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      },
+      "stratum": "diagnostic_restraint",
+      "review_issues": [
+        "H151"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-024__en__gemini-3.5-flash-lite",
+      "family_id": "HC-MT-REASON-024",
+      "language": "en",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H142",
+        "H144"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-024__en__gemini-3.8-flash",
+      "family_id": "HC-MT-REASON-024",
+      "language": "en",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H142",
+        "H144"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-024__en__MiniMax-M3.1-Flash",
+      "family_id": "HC-MT-REASON-024",
+      "language": "en",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3.1-Flash"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H142",
+        "H144"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-024__en__MiniMax-M3",
+      "family_id": "HC-MT-REASON-024",
+      "language": "en",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H142",
+        "H144"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-024__zh-Hans__gemini-3.5-flash-lite",
+      "family_id": "HC-MT-REASON-024",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H142",
+        "H144"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-024__zh-Hans__gemini-3.8-flash",
+      "family_id": "HC-MT-REASON-024",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H142",
+        "H144"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-024__zh-Hans__MiniMax-M3.1-Flash",
+      "family_id": "HC-MT-REASON-024",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3.1-Flash"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H142",
+        "H144"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-024__zh-Hans__MiniMax-M3",
+      "family_id": "HC-MT-REASON-024",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H142",
+        "H144"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-MEDSAFE-020__en__gemini-3.5-flash-lite",
+      "family_id": "HC-MT-MEDSAFE-020",
+      "language": "en",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H143",
+        "H144"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-MEDSAFE-020__en__gemini-3.8-flash",
+      "family_id": "HC-MT-MEDSAFE-020",
+      "language": "en",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H143",
+        "H144"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-MEDSAFE-020__en__MiniMax-M3.1-Flash",
+      "family_id": "HC-MT-MEDSAFE-020",
+      "language": "en",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3.1-Flash"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H143",
+        "H144"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-MEDSAFE-020__en__MiniMax-M3",
+      "family_id": "HC-MT-MEDSAFE-020",
+      "language": "en",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H143",
+        "H144"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-MEDSAFE-020__zh-Hans__gemini-3.5-flash-lite",
+      "family_id": "HC-MT-MEDSAFE-020",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H143",
+        "H144"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-MEDSAFE-020__zh-Hans__gemini-3.8-flash",
+      "family_id": "HC-MT-MEDSAFE-020",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H143",
+        "H144"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-MEDSAFE-020__zh-Hans__MiniMax-M3.1-Flash",
+      "family_id": "HC-MT-MEDSAFE-020",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3.1-Flash"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H143",
+        "H144"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-MEDSAFE-020__zh-Hans__MiniMax-M3",
+      "family_id": "HC-MT-MEDSAFE-020",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H143",
+        "H144"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-MEDSAFE-021__en__gemini-3.5-flash-lite",
+      "family_id": "HC-MT-MEDSAFE-021",
+      "language": "en",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H149"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-MEDSAFE-021__en__gemini-3.8-flash",
+      "family_id": "HC-MT-MEDSAFE-021",
+      "language": "en",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H149"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-MEDSAFE-021__en__MiniMax-M3.1-Flash",
+      "family_id": "HC-MT-MEDSAFE-021",
+      "language": "en",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3.1-Flash"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H149"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-MEDSAFE-021__en__MiniMax-M3",
+      "family_id": "HC-MT-MEDSAFE-021",
+      "language": "en",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H149"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-MEDSAFE-021__zh-Hans__gemini-3.5-flash-lite",
+      "family_id": "HC-MT-MEDSAFE-021",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H149"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-MEDSAFE-021__zh-Hans__gemini-3.8-flash",
+      "family_id": "HC-MT-MEDSAFE-021",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H149"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-MEDSAFE-021__zh-Hans__MiniMax-M3.1-Flash",
+      "family_id": "HC-MT-MEDSAFE-021",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3.1-Flash"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H149"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-MEDSAFE-021__zh-Hans__MiniMax-M3",
+      "family_id": "HC-MT-MEDSAFE-021",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      },
+      "stratum": "competing_treatment_risks",
+      "review_issues": [
+        "H149"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-026__en__gemini-3.5-flash-lite",
+      "family_id": "HC-MT-REASON-026",
+      "language": "en",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite"
+      },
+      "stratum": "escalation_under_uncertainty",
+      "review_issues": [
+        "H150"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-026__en__gemini-3.8-flash",
+      "family_id": "HC-MT-REASON-026",
+      "language": "en",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash"
+      },
+      "stratum": "escalation_under_uncertainty",
+      "review_issues": [
+        "H150"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-026__en__MiniMax-M3.1-Flash",
+      "family_id": "HC-MT-REASON-026",
+      "language": "en",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3.1-Flash"
+      },
+      "stratum": "escalation_under_uncertainty",
+      "review_issues": [
+        "H150"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-026__en__MiniMax-M3",
+      "family_id": "HC-MT-REASON-026",
+      "language": "en",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      },
+      "stratum": "escalation_under_uncertainty",
+      "review_issues": [
+        "H150"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-026__zh-Hans__gemini-3.5-flash-lite",
+      "family_id": "HC-MT-REASON-026",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite"
+      },
+      "stratum": "escalation_under_uncertainty",
+      "review_issues": [
+        "H150"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-026__zh-Hans__gemini-3.8-flash",
+      "family_id": "HC-MT-REASON-026",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash"
+      },
+      "stratum": "escalation_under_uncertainty",
+      "review_issues": [
+        "H150"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-026__zh-Hans__MiniMax-M3.1-Flash",
+      "family_id": "HC-MT-REASON-026",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3.1-Flash"
+      },
+      "stratum": "escalation_under_uncertainty",
+      "review_issues": [
+        "H150"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-REASON-026__zh-Hans__MiniMax-M3",
+      "family_id": "HC-MT-REASON-026",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      },
+      "stratum": "escalation_under_uncertainty",
+      "review_issues": [
+        "H150"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-TRIAGE-025__en__gemini-3.5-flash-lite",
+      "family_id": "HC-MT-TRIAGE-025",
+      "language": "en",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite"
+      },
+      "stratum": "escalation_under_uncertainty",
+      "review_issues": [
+        "H152"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-TRIAGE-025__en__gemini-3.8-flash",
+      "family_id": "HC-MT-TRIAGE-025",
+      "language": "en",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash"
+      },
+      "stratum": "escalation_under_uncertainty",
+      "review_issues": [
+        "H152"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-TRIAGE-025__en__MiniMax-M3.1-Flash",
+      "family_id": "HC-MT-TRIAGE-025",
+      "language": "en",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3.1-Flash"
+      },
+      "stratum": "escalation_under_uncertainty",
+      "review_issues": [
+        "H152"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-TRIAGE-025__en__MiniMax-M3",
+      "family_id": "HC-MT-TRIAGE-025",
+      "language": "en",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      },
+      "stratum": "escalation_under_uncertainty",
+      "review_issues": [
+        "H152"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-TRIAGE-025__zh-Hans__gemini-3.5-flash-lite",
+      "family_id": "HC-MT-TRIAGE-025",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite"
+      },
+      "stratum": "escalation_under_uncertainty",
+      "review_issues": [
+        "H152"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-TRIAGE-025__zh-Hans__gemini-3.8-flash",
+      "family_id": "HC-MT-TRIAGE-025",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash"
+      },
+      "stratum": "escalation_under_uncertainty",
+      "review_issues": [
+        "H152"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-TRIAGE-025__zh-Hans__MiniMax-M3.1-Flash",
+      "family_id": "HC-MT-TRIAGE-025",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3.1-Flash"
+      },
+      "stratum": "escalation_under_uncertainty",
+      "review_issues": [
+        "H152"
+      ],
+      "clinical_comparison_held": true
+    },
+    {
+      "cell_id": "HC-MT-TRIAGE-025__zh-Hans__MiniMax-M3",
+      "family_id": "HC-MT-TRIAGE-025",
+      "language": "zh-Hans",
+      "candidate": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      },
+      "stratum": "escalation_under_uncertainty",
+      "review_issues": [
+        "H152"
+      ],
+      "clinical_comparison_held": true
+    }
+  ],
+  "proposed_schedule_sha256": "b10814e53f8c0fae91e516e76e4ea3f201d35df7bf92fd88d227e93b6807ac77",
+  "batch_o_offline_supplement": {
+    "version": "s53-batch-o-components-v1",
+    "draft_sha256": "dc7c78451e4c7351ef96d6754f266e3b17a97d8d8eefb15203a9dd7ce6ed2c7b",
+    "status": "structural_author_control_coverage_not_clinical_validation",
+    "criterion_positions_covered": 12,
+    "bilingual_positions_covered": 24,
+    "new_targeted_control_records": 54,
+    "total_targeted_control_records": 72,
+    "unique_blinded_packets": 58,
+    "author_hypotheses": 64,
+    "exploratory_unlabelled_records": 8,
+    "packet_sha256": [
+      "033170dbf4efe6355bb4d9720b4aa8d2fdc8585bc02ff74e3d22b15e03cca6d3",
+      "04ccc4ee092493d5c1dddfca63a7d83651cb46cf1a3f1d281e01851c6633aef9",
+      "0ef490222e4e37c1546ba8fc101517356de8bc06ed4806fc23e08c72c1c73ded",
+      "181f0131bd40c78901a7b68fab4d0750cf4e969dcd9884ed2339a1547d552351",
+      "2486f37643d4a956949d1c66c4f652fd72a2a57a39618ae0e71e7c43eea5edec",
+      "2bb745047a2f6cb0d245f9aefb8111420c0086361c7d20903e40390f0b730e35",
+      "353c881f6e4d7254aa3cda441ad1f3524d2f49bc53d3c4f993865e2934ca5a2d",
+      "3d82bf977ae68f4677336e861afa685f4834a8ed570d849a1680254e7fe89ae9",
+      "43710cd15c8fdfacc42f5e2f45b92b614c652984f3378fe9ffb49d03e3bc4aab",
+      "44205d049abebf58d059ae14271b73e52b72b2a298076421f0e974bdcdda9c3d",
+      "4506abac055cd7e1537d2ec1ee18dd23f9ef420c34c9441957672f5c6d3ca83e",
+      "465e7d8902d897a3b3847a69deb81b247b78091a4488753b99bb3e23b0102b92",
+      "4af08389587456e3d7a296e4403a6566be9e103a1b05b6dd339a3691d71a6fbf",
+      "5a02e7ef754daeed2bb11b15f83f04af2fde7d1a24ca73946aa55175737b6f0f",
+      "6bc32d53d4292aaeb9aea9050fd533361d1e0e80d141a0ef17649fd1a2ccb95d",
+      "70d8adcd6bb3537224d7f5a51d1669affcfc9a566d8db46805d3eced7938699d",
+      "759552ed7d4fa03c909f5fa198cb102055c2e59a09af43a05c37fa9a01a1481e",
+      "761d21bff42f75fc8b6d5560d71a773e08fe48572275b421a0b7a7c3ae230503",
+      "7906cfe6b3fe2e3ea2a5042ef13d7e8b839b5cb54012cc2830b50df5c9c8a32d",
+      "851ddcb757c89ae89a75d5b30ce2999796c102c79f1c476b9e9e0aca5bfc4c6a",
+      "85ea5e9e561fdba457ca05c6d4a6a8d1997009722a5995de1a984eb981f04ae0",
+      "8c5df56f51e26ea66980451fb91dc9b4c3fc77bf3abb4af312d6edf467addff1",
+      "92a4d06c5825b211cf01ef2c9f9a754ccccbf98f64ca6ba9d7c088fd511d5608",
+      "9876609772f12fc2e710c71061e10fa4a144ea0eadfd6ebde399f79f856cc461",
+      "997701319f5d91f0cacb9be6710ffa87e7d70980108bf7117a1940abe59cc043",
+      "9d5d9846cfc311dbc68129dbab02470599503dbbbf96891265a2ef3f95313ff9",
+      "9fb4d8be02f25f967a95c8caebc7865ae75470c23836477c40359484f0b7f2db",
+      "a298d1d3f94c217ec0125d3acd54d4acea43b379892222d69a7d3c649888ad0c",
+      "a2f90deeaa6c2546b0ef6729bd5b3ddc39af77682ac2b708dc18e84c93cc3f3a",
+      "a5b3a8f20ff688dd6543d6ea079bc75004a32f36e9b335280653ae3135454636",
+      "acdf3f9175b4ac6b866ba4bf3a684f986ff4fba3516e86541b504e849ef13843",
+      "b0dbcb773952b82ba6b56fd42d6bee07bbcac16b1f97f8c8e10c841ec796cab9",
+      "b284628cc6afa4993013644094e225fc2f10f293d747ec30c4f01bf6c574e5e1",
+      "b6236eb89b5c0232e978eafb3bb22ba8498dc56c56840f7ad7b805dc9d1bd2b6",
+      "b95423e174285769a5ce320dc284cffcf514704fffd37c8449b93b2b968a8da0",
+      "bfb4dddf109341c3c479d578f7334c493740b10db5b785d57c0174283acd93b6",
+      "c24fba29d9ed3b8a0952168714e3b0f096ca89f8c3e8e59c76a3b6c2a3092f10",
+      "c41b371e89d1d3d0c669ad13cf6f6bb81017677f1106890fa1937481cdb5668a",
+      "c952a46cefb4555c942a4c7f708b032ede81aab4adacb3a760bc3c97ea06d77c",
+      "ca6a65570553cbc026055a65a3476cb2e951263e475caf9b08aeaed694f2f55b",
+      "caa1ccd62991d8d51fb30ea29da8d6754bd98644873e8e9b03a228ed7b9195de",
+      "cb1c7891749d9c41e556e2be75f442b9e02cc136029963014bf6efd9e9896ddd",
+      "cd1b7b8193f66935f1a3e744547876fc72c696b6be29318294368f5e68987b1b",
+      "d3cd3b4d6131b47312531ff092c639e872f0d1ceee04578512dc4eb85c5d6d65",
+      "d6e70111fdd35b1558d9b51199e4349bd599199378b1a8cdeed69b2e6ab6be7d",
+      "e3679b26859bc58d46fb57c9fb8150a961a7b09cf0b72a4377b032cd957beea8",
+      "e68c1ef6d19cc03f7307016c69a750a11cfdabd48688a0d66612bfd3100908eb",
+      "e6e0549f108af63308fb48a4f79f9953b0740bb10c2e78dc0632f8e8c769a028",
+      "eb6e73520158d0dde1d20c21bf87a2ba5b88c0689eef99d584911f8054f01866",
+      "ee0ec40b1366f0429faedc3f1e0f86af05241b3de72538954b94cbdb11f297e7",
+      "f1e9dabc580ac7730ecefddc5d2ff622cee45298261701e495d1e59566dfc58b",
+      "f42bda903ea7ddd9945d4c2ffab0b1dd01481545aee95f907073b35535fab3b5",
+      "f629994e36e990de96f90867c9e34724c627c882839dfc1b8ef3881bd958ec08",
+      "f78f1af2f78741b6cc61690fd9f3dd4f757910a71daada76b0865b02aa81d7f9",
+      "f8365436310a935851431528b7a2dfc04a78b413dc3dffb4a70e9c7df9e56820",
+      "f97f5d0f84e8b6e6efb67945b5c988cabf46ada790da10fb15619f788cbbaedb",
+      "ff92c87a56c48526ea8cbd8ccc9e9a74870616d9347108846047a9f864766714",
+      "ffce8619c1da11bcadf33183a720fa445a0d11b1c40f7af7c7b49c6bedd6d544"
+    ],
+    "record_manifest_sha256": "5fae082b4d014d11430638d784705c7ae1907c56f75c58b2829752ae8d4fda93",
+    "new_families": 0,
+    "default_enabled": false,
+    "numeric_scores": false,
+    "live_calls": 0,
+    "clinical_validation": false,
+    "human_review_issues_resolved": 0
+  },
+  "arithmetic": {
+    "criterion_credit": {
+      "met": 1,
+      "partial": 0.5,
+      "missed": 0
+    },
+    "stage_weights": {
+      "initial": 0.3,
+      "update": 0.7
+    },
+    "critical_error_rules": {
+      "1": {
+        "deduction": 5,
+        "hard_fail": false
+      },
+      "2": {
+        "cap": 50,
+        "hard_fail": false
+      },
+      "3": {
+        "cap": 20,
+        "hard_fail": true
+      }
+    },
+    "provisional_pass_threshold": 70
+  },
+  "reporting": {
+    "scope": "case_level_provisional_engineering_diagnostics",
+    "all_families_require_clinical_and_language_review": true,
+    "missing_scores": "missing_never_zero",
+    "repeats": "separate_never_averaged",
+    "pooled_model_means": false,
+    "model_rankings": false,
+    "retrospective_rescoring": false,
+    "score_band_fitting": false,
+    "review_holds": "retain_all_cells_and_original_judgments",
+    "aspirations_only": {
+      "lower_tier": "60-70",
+      "average": "about 80",
+      "premium": "about 90"
+    }
+  },
+  "remaining_before_paid_run": [
+    "Implement and mock-test a separate journal, transport and report integration for these exact inputs.",
+    "Freeze model settings, technical failure policy and prospective control/reporting gates without score fitting.",
+    "Verify current model availability and prices, estimate cost and obtain fresh scope-bound export/spending approval."
+  ],
+  "execution_ready": false,
+  "live_calls": 0,
+  "numeric_scores": 0,
+  "new_families": 0,
+  "default_registry_changes": false,
+  "private_records_included": false,
+  "clinical_validation": false,
+  "paid_authorization": null
+}

@@ -1,5 +1,9 @@
 # Living human-review handoff — opened 2026-10-07
 
+## S60 pilot review status
+
+[S60](S60_STANDALONE_PILOT_EN.md) selects O's S52-derived 0.2.0 labels and P/Q's original 0.1.0 labels. It binds H142–H146 and H149–H152 without closing any question. O's two reworded requirements retain explicit source-revalidation limits; the eight unlabelled S53 records remain unlabelled. Reference-profile names do not establish clinical adequacy or guaranteed scores. All eight families require later clinical and bilingual review, and H148's historical repeat disagreements remain separate. No new clinical adjudication or live result occurred.
+
 ## Batch Q source and answer questions
 
 **H149 / high — IV iron and persistent hypophosphatemia:** Review `MEDSAFE-021` attribution versus vitamin D/nutritional contributors, pre-dose review timing, continued anaemia care, alternative-treatment/monitoring bundle and whether omission of component 3 is semantically independent. Exact replacement doses are not keyed.

@@ -1,0 +1,66 @@
+{
+  "version": "s60-standalone-pilot-offline-v1",
+  "status": "offline_input_freeze_not_execution_authorization",
+  "languages": ["en", "zh-Hans"],
+  "selection": [
+    {"family_id": "HC-MT-REASON-025", "batch": "p", "stratum": "diagnostic_restraint", "review_issues": ["H145"]},
+    {"family_id": "HC-MT-TRIAGE-024", "batch": "p", "stratum": "diagnostic_restraint", "review_issues": ["H146"]},
+    {"family_id": "HC-MT-REASON-027", "batch": "q", "stratum": "diagnostic_restraint", "review_issues": ["H151"]},
+    {"family_id": "HC-MT-REASON-024", "batch": "o", "stratum": "competing_treatment_risks", "review_issues": ["H142", "H144"]},
+    {"family_id": "HC-MT-MEDSAFE-020", "batch": "o", "stratum": "competing_treatment_risks", "review_issues": ["H143", "H144"]},
+    {"family_id": "HC-MT-MEDSAFE-021", "batch": "q", "stratum": "competing_treatment_risks", "review_issues": ["H149"]},
+    {"family_id": "HC-MT-REASON-026", "batch": "q", "stratum": "escalation_under_uncertainty", "review_issues": ["H150"]},
+    {"family_id": "HC-MT-TRIAGE-025", "batch": "q", "stratum": "escalation_under_uncertainty", "review_issues": ["H152"]}
+  ],
+  "batch_o_label_version": "s52_derived_0.2.0_not_original_0.1.0",
+  "batch_o_s53_controls": "bound_offline_supplement_not_in_paid_proposal",
+  "candidate_instruction": "config/candidate_prompt_bilingual_v2.txt",
+  "candidate_roster_proposal": [
+    {"provider": "gemini", "model": "gemini-3.5-flash-lite"},
+    {"provider": "gemini", "model": "gemini-3.8-flash"},
+    {"provider": "minimax", "model": "MiniMax-M3.1-Flash"},
+    {"provider": "minimax", "model": "MiniMax-M3"}
+  ],
+  "judge_proposal": {"provider": "gemini", "model": "gemini-3.8-flash", "evidence_contract": "s56", "arithmetic": "unchanged_s36"},
+  "model_status": "continuity_proposal_not_fresh_availability_or_pricing_verification",
+  "grok_status": "not_scheduled_no_automatic_retry_no_zero_score",
+  "controls": {
+    "profiles": ["safe", "partial", "unsafe"],
+    "initial": "shared_once_per_family_language",
+    "repeat": "same_initial_and_omission_update_packets",
+    "labels": "author_hypotheses_not_clinical_truth",
+    "strict_order_expected": false,
+    "numeric_targets": false
+  },
+  "reporting": {
+    "scope": "case_level_provisional_engineering_diagnostics",
+    "all_families_require_clinical_and_language_review": true,
+    "missing_scores": "missing_never_zero",
+    "repeats": "separate_never_averaged",
+    "pooled_model_means": false,
+    "model_rankings": false,
+    "retrospective_rescoring": false,
+    "score_band_fitting": false,
+    "review_holds": "retain_all_cells_and_original_judgments",
+    "aspirations_only": {"lower_tier": "60-70", "average": "about 80", "premium": "about 90"}
+  },
+  "prospective_cost_policy": {
+    "max_in_flight": 1,
+    "automatic_retries": 0,
+    "resume_allowed": false,
+    "hard_ceiling": false,
+    "last_request_overrun_possible": true,
+    "unknown_delivery_or_cost": "global_stop",
+    "recorded_spending_stop_threshold_usd": null,
+    "current_price_evidence": null,
+    "approval": null
+  },
+  "live_call_allowance": 0,
+  "default_registry_changes": false,
+  "private_records_included": false,
+  "remaining_before_paid_run": [
+    "Implement and mock-test a separate journal, transport and report integration for these exact inputs.",
+    "Freeze model settings, technical failure policy and prospective control/reporting gates without score fitting.",
+    "Verify current model availability and prices, estimate cost and obtain fresh scope-bound export/spending approval."
+  ]
+}
