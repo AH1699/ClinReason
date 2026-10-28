@@ -1,12 +1,12 @@
 # ClinReason current execution plan — 2026-10-16
 
-## Current checkpoint S66 with the main project milestones
+## Current checkpoint S67 with the main project milestones
 
-**Current checkpoint S66:** [The fixed feasibility live adapter](S66_COMPACT_LIVE_READINESS_EN.md) is implemented and frozen, with single-use approval, pre-request reservations, raw capture/accounting and read-only replay. All 35 new tests pass, and a 16-request fake-transport rehearsal using the exact verified source packets replays successfully. These are engineering checks, not live model results. No paid requests, new scores or historical changes.
+**Current checkpoint S67:** [The approved live feasibility batch](S67_COMPACT_FEASIBILITY_RESULT_EN.md) is closed: 16/16 accepted requests, $0.145569 token-estimated cost, no retries or unknown-cost attempts. All 12 judge references validate and all four MiniMax turns complete; five of six repeat vectors match. Local review covers 58 entries with six holds across three issues. The overall gate is false; no new total model scores or historical changes. All 45 focused audit/runner tests pass.
 
 **Inventory: 135 public draft families / 270 variants.** The [catalog](CASE_AUTHORING_CATALOG_EN.md) now includes 125 registered plus ten standalone O/P/Q/R families. Batch R adds two original source-backed bilingual families with anchors, references and 14 source-mapped criteria. The target needs 365 more families. H153–H154 join the open clinical/bilingual register; approved calibration/Gold remain **0/0** and Xi’an stays local.
 
-**Next: obtain fresh approval for at most 12 Gemini judge requests + four MiniMax turns, using the shared $3 recorded-spending stop threshold with possible final-request overrun, then run once and inspect every evidence reference locally.** The runner is ready; no paid approval is recorded, and old $20 permission is consumed. Broader bilingual/multi-family confirmation follows only if feasibility and relevance review pass. Two empirical batches remain a conditional estimate, not a guarantee of completed clinical calibration. Expert review stays later; the 60–70 / around 80 / around 90 aspirations remain diagnostics, never score fitting.
+**Next: bounded offline work on explicit-versus-implicit platelet uncertainty, independent versus overlapping observations, and evidence supporting the whole rationale.** Preserve the frozen labels and both judgments; draft prospective contrasts/instructions before choosing a new confirmation scope. The $3 approval is consumed and broader confirmation remains conditional, not an automatic rerun. Calibration is not finished; no exact batch-count promise. H156 joins the later expert-review queue; 60–70 / around 80 / around 90 remain diagnostics, never score fitting.
 
 ## Project direction and next milestones
 
@@ -18,7 +18,7 @@ Recent work has concentrated on scoring and provider diagnostics while registere
 |---|---|---|
 | Scoring boundaries | S58 has 69/72 exact score repeats and one provisional pass change; H148 queued; S50 medication hold remains | Preserve both scores and the three boundary questions for offline/later expert review; no retrospective label change or automatic diagnostic |
 | Broader model comparison | S58 complete: 324 accepted judge calls, all 72 first/repeat pairs, $3.875174 estimated cost | Run closed; interpret case-level results only, without pooled means or rankings |
-| New pilot engineering | S66 live admission, capture and replay frozen; 16-request offline rehearsal complete | Obtain fresh scope/budget approval, run the fixed feasibility batch, inspect references locally; broader confirmation only if it passes |
+| New pilot engineering | S67 closed with 16/16 accepted calls; five of six criterion/error repeats match; six local review holds | Offline semantic/evidence clarification, prospective contrasts, then a separately approved confirmation; no automatic rerun |
 | Case expansion | 125 registered plus ten standalone O/P/Q/R families, 135 total; 365 more to target | Continue source-backed families separately from frozen pilot inputs; H153/H154 and related-family grouping remain open |
 | Source and privacy | Public evidence mappings and private Xi'an processing remain separate | Continue source-to-answer checks; Xi'an stays local until its case/privacy readiness issues are resolved |
 | Expert review | Deferred during partner discussions | Maintain the clinical/bilingual question register now; obtain review before release or comparative clinical claims |

@@ -1,5 +1,7 @@
 # S66 — fixed feasibility run ready for fresh approval
 
+Subsequent outcome: the separately approved run is now closed; see [S67 results](S67_COMPACT_FEASIBILITY_RESULT_EN.md). The text below records pre-run readiness, not current unused spending permission.
+
 Updated October 28, 2026, America/New_York. **Engineering readiness only: no paid requests, new model scores or clinical validation.**
 
 ## What is now finished
