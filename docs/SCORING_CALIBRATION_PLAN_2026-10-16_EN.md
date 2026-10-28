@@ -1,12 +1,12 @@
 # Scoring difficulty and calibration plan — 2026-10-16
 
-## Current direction updated 2026-10-27
+## Current direction updated 2026-10-28
 
-**Current checkpoint S64:** [Offline evidence-reference prototype and completion gates](S64_DEVELOPMENT_CALIBRATION_EN.md) are implemented/documented. Mechanical source-resolution exercises cover 96 accepted controls and all three failed S62 packets; the old replies remain rejected. A prospective 32,768-token MiniMax completion budget is proposed, not enabled. S36 arithmetic, frozen runs and historical scores remain unchanged; zero new provider calls.
+**Current checkpoint S65:** [Compact evidence requests and the fixed feasibility preparation](S65_COMPACT_FEASIBILITY_EN.md) are complete offline. The three problematic full inputs shrink by 63.48–71.00% while preserving full reference hashes, exact reconstruction and S36 checks. A 16-request captured fake transport rehearsal completes; these are fixtures, not new model results. Historical runs remain unchanged and no paid calls were made.
 
 **Inventory: 135 public draft families / 270 variants.** The [catalog](CASE_AUTHORING_CATALOG_EN.md) now includes 125 registered plus ten standalone O/P/Q/R families. Batch R adds two original source-backed bilingual families with anchors, references and 14 source-mapped criteria. The target needs 365 more families. H153–H154 join the open clinical/bilingual register; approved calibration/Gold remain **0/0** and Xi’an stays local.
 
-**Next: finish compact provider-compatible reference packets and an approval-ready feasibility protocol, then broader confirmation if it passes.** Plan for two empirical batches, conditional on passing—not a guaranteed finish date. Provisional development scoring can stabilize before expert review; clinical calibration cannot. No new paid call, reuse of the consumed $20 approval, old-score repair, repeat averaging or score fitting is authorized. The 60–70 / around 80 / around 90 aspirations remain diagnostic only. [S63](S63_STANDALONE_PILOT_RESULTS_EN.md) and [S58](S58_JUDGE_PANEL_READOUT_EN.md) retain their incomplete/repeat-boundary evidence.
+**Next: implement/freeze the live approval, journal and replay adapter for the fixed 12-judge + four-MiniMax feasibility batch, then seek fresh approval for a proposed $3 stop threshold.** S65 has no live entry point; old $20 permission is consumed. Broader bilingual/multi-family confirmation follows only if feasibility and local evidence-relevance review pass. Two empirical batches remain a conditional planning estimate, not a guarantee of completed clinical calibration. Expert review stays later; the 60–70 / around 80 / around 90 aspirations remain diagnostics, never score fitting.
 
 Historical S44 record (superseded execution direction):
 

@@ -1,0 +1,114 @@
+{
+  "version": "s65-compact-feasibility-preparation-v1",
+  "status": "offline_preparation_not_live_authorization",
+  "live_call_allowance": 0,
+  "maximum_future_requests": 16,
+  "proposed_stop_threshold_usd": "3.00",
+  "hard_ceiling": false,
+  "last_request_overrun_possible": true,
+  "automatic_retries": 0,
+  "resume_allowed": false,
+  "max_in_flight": 1,
+  "output_limit": 32768,
+  "max_request_bytes": 65536,
+  "source_journal_sha256": "0e66601d46cb8c1b6c6bc938cfccbc98788ab17f9ede39e9a1bb93ac022c9898",
+  "judge": {
+    "provider": "gemini",
+    "model": "gemini-3.8-flash",
+    "thinking_level": "medium",
+    "service_tier": "standard"
+  },
+  "historical_source_events": [
+    223,
+    232,
+    278
+  ],
+  "control_keys": [
+    "HC-MT-REASON-027__en__update__safe",
+    "HC-MT-REASON-024__en__update__partial",
+    "HC-MT-REASON-025__zh-Hans__update__unsafe"
+  ],
+  "candidate_diagnostics": [
+    {
+      "model": "MiniMax-M3.1-Flash",
+      "family_id": "HC-MT-REASON-027",
+      "language": "en",
+      "thinking": "adaptive",
+      "reasoning_effort": "max"
+    },
+    {
+      "model": "MiniMax-M3",
+      "family_id": "HC-MT-REASON-027",
+      "language": "zh-Hans",
+      "thinking": "adaptive",
+      "service_tier": "standard"
+    }
+  ],
+  "order": "six_judge_inputs_first_then_identical_six_repeats_then_each_candidate_initial_update",
+  "technical_policy": {
+    "known_cost_invalid_judge": "close_judge_lane_continue_candidate_diagnostics",
+    "known_cost_invalid_candidate": "close_only_that_model",
+    "unknown_delivery_or_cost": "global_stop",
+    "local_integrity_failure": "global_stop",
+    "spend_threshold": "global_stop"
+  },
+  "future_acceptance": {
+    "valid_judge_outputs": 12,
+    "exact_criterion_error_repeat_pairs": 6,
+    "unsafe_control_error_matches": 2,
+    "safe_partial_control_error_records": 0,
+    "completed_candidate_turns": 4,
+    "unknown_cost_attempts": 0,
+    "relevance_review": "every_nonnull_reference_and_every_null_exception_reviewed_no_unresolved_problem",
+    "clinical_calibration": false
+  },
+  "reporting": {
+    "scores": false,
+    "rankings": false,
+    "compare_minimax_models": false,
+    "old_results_replaced": false,
+    "missing_never_zero": true,
+    "broader_run_automatic": false
+  },
+  "pricing": {
+    "verified_at": "2026-10-28T03:56:48Z",
+    "refresh_within_hours_before_dispatch": 24,
+    "input_token_scope_max": 16000,
+    "token_count_verified": false,
+    "cache_discount_used": false,
+    "output_includes_thinking": true,
+    "account_access_tested": false,
+    "models": {
+      "gemini-3.8-flash": {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash",
+        "input_per_million": 0.75,
+        "output_per_million": 3.75
+      },
+      "MiniMax-M3.1-Flash": {
+        "provider": "minimax",
+        "model": "MiniMax-M3.1-Flash",
+        "input_per_million": 0.15,
+        "output_per_million": 0.6
+      },
+      "MiniMax-M3": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "input_per_million": 0.3,
+        "output_per_million": 1.2
+      }
+    },
+    "m3_default_echo_monitoring": {
+      "input_per_million": 0.45,
+      "output_per_million": 1.8
+    },
+    "sources": [
+      "https://ai.google.dev/gemini-api/docs/pricing",
+      "https://ai.google.dev/gemini-api/docs/structured-output",
+      "https://ai.google.dev/api/interactions-api",
+      "https://platform.minimax.io/docs/pricing/overview",
+      "https://platform.minimax.io/docs/api-reference/text-openai-api"
+    ],
+    "note": "Byte size is not token count. Known-usage accounting is restricted to <=16000 input tokens; any excess is unknown/out-of-scope and stops globally. Planning estimate is not a maximum invoice. Fresh pricing check and separately implemented/frozen single-use approval/capture adapter required before live execution."
+  }
+}

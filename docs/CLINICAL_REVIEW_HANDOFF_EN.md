@@ -1,5 +1,9 @@
 # Living human-review handoff — opened 2026-10-07
 
+## S65: source-valid evidence is not necessarily relevant evidence
+
+**H155 / high — Reference selection and clinical qualifiers:** For the [new compact reference contract](S65_COMPACT_FEASIBILITY_EN.md), inspect whether selected ranges actually support the criterion status, preserve negation/uncertainty/conditions and avoid credit from surrounding irrelevant text. Lossless chunks are up to 240 Unicode characters, not semantic sentences, so a short relevant clause may share a chunk with a contradiction. Review both languages and null-evidence absence exceptions; do not mistake exact source membership or repeat agreement for clinical correctness. Preliminary local relevance checks may permit further development but do not close this independent clinical/bilingual review question. No S65 live judgments yet exist.
+
 ## S64 / Batch R questions — not closed by engineering tests
 
 **H153 / high — Sodium artifact versus real concurrent risk:** Review REASON-028's invented indirect/direct sodium, triglyceride and osmolality coherence; initial clarification timing; avoidance of artifact correction without prohibiting independently indicated fluids; urgency of lipid care; and bundled neurological/abdominal return advice. Check partial credit, severity 2 and overlap with MEDSAFE-018, PRO-LAB-001 and REASON-025. The supporting review is not a graded guideline. No current pancreatitis is implied.

@@ -1,6 +1,6 @@
 # Nine family panel scope and reporting rules
 
-**Current work:** [S64](S64_DEVELOPMENT_CALIBRATION_EN.md) adds an offline evidence-reference prototype, MiniMax budget proposal, two Batch R families and explicit development-versus-clinical calibration gates. Next compact packets and prepare a separately approved small feasibility study, then broader confirmation if it passes. S63's 278-request closed run, 39 first scores and six full repeats remain unchanged; no paid execution is authorized here. Public inventory is 135 draft families. The nine-family S55 scope below is historical, not a new panel selection or permission to rerun.
+**Current work:** [S65](S65_COMPACT_FEASIBILITY_EN.md) completes compact source-bound references and a captured 16-request offline rehearsal. Next finish/freeze the live admission/replay adapter and seek fresh approval for the fixed feasibility scope; broader confirmation is conditional on passing. No paid call or score was added. S63's closed run remains unchanged; inventory is 135 draft families. The nine-family S55 scope below is historical, not permission to rerun.
 
 The owner approved one execution of this fixed panel, recorded in [S55](S55_MIXED_PANEL_RUN_EN.md). This document grants no repeat execution or use of an earlier experiment's unused allowance. The declared control gate still governs development judgments. Failed controls remain recorded; do not weaken acceptance rules to obtain scores. S50 is closed with the medication item held, not an automatic prerequisite for another single-item diagnostic.
 

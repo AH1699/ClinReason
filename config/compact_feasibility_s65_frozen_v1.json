@@ -1,0 +1,15 @@
+{
+  "version": "s65-compact-feasibility-preparation-v1",
+  "mode": "offline_preparation",
+  "parent_s62_sha256": "ff3eb575a24f3130a89043a3016d9701199931c66b02f7e603f9b402235fd05e",
+  "files": {
+    "config/compact_feasibility_s65_v1.json": "8894528d34aa7f26db6a74714ef1d991b57ae2aac1989bbfa5f77779b9561d0f",
+    "scripts/evidence_refs_s65.py": "f18954b3f811b1192714f97dda9c37f39bb6d5ea6da68911023c90807919f9a9",
+    "scripts/compact_feasibility_s65.py": "6ba66272bb85e71c0c1db379c9d411bff2bfa327e10b50a5bfe59f7e5c45d65b",
+    "scripts/evidence_refs_s64.py": "ce8afb3edbe11edb9c50ea58ca7313e7c2fc8801b68e81249f3ea241e5d37878",
+    "scripts/audit_standalone_s63.py": "31ee4a31382a81ac23164acef2fa2b0b845f596278fca837321a6ad9e0813042",
+    "tests/test_evidence_refs_s65.py": "883c4041fbe3f9b282007394708e1848eb3536757908f025729944ffdc276416",
+    "tests/test_compact_feasibility_s65.py": "5f5a62bcf73a768108c7ebe0380e37c724e9f2d65ac47579c558df22a68fba91",
+    "data/audit/s64_evidence_reference_prototype.json": "081650ca179de6d417adca86e51ae3148c636e7d5cf64079d1ce20914fd6c177"
+  }
+}
