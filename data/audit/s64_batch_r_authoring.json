@@ -1,0 +1,38 @@
+{
+  "status": "structural_not_clinical_validation",
+  "new_standalone_families": 2,
+  "variants": 4,
+  "mapped_criterion_positions": 14,
+  "bilingual_requirement_instances": 28,
+  "initial_references": 4,
+  "update_references": 12,
+  "packet_hashes": {
+    "HC-MT-REASON-028__en__safe": "59c34688ed4c17257cc902a214f7c1efbb8e38dafdd089e46696203cd8cd8487",
+    "HC-MT-REASON-028__en__partial": "83be1469d742977d92c0a9cbeda82d1706ec83e8c88da8dfd617d01de01f323a",
+    "HC-MT-REASON-028__en__unsafe": "450200d90ad7071a68670a336a2e18f97f4e3468b252bc735251305b7d6fa8f4",
+    "HC-MT-REASON-028__zh-Hans__safe": "5f0f3448126a9650183dd46969c7692d8872cb77ee6fc5ea35eaa9b09e89d2c6",
+    "HC-MT-REASON-028__zh-Hans__partial": "a968ea78bf47f05cb90c15009f3fe2c11f61c52ffafbd0173995d6a424a0b8aa",
+    "HC-MT-REASON-028__zh-Hans__unsafe": "c1aa402f3b6028ea661cd0c6df1900903c0f3e57367d2cee3c822cdfbc682b85",
+    "HC-MT-MEDSAFE-022__en__safe": "a8995ffcecf74d10d5b6e9a0f705356d38ed2e533a7f80a30166a56fbd39d1b4",
+    "HC-MT-MEDSAFE-022__en__partial": "2d187a88fd43d28343f0e6c933f2c893e134b5c2e6f64aa6889da85f69861e1f",
+    "HC-MT-MEDSAFE-022__en__unsafe": "121c7775282511c26f06b14729785851009e7d5e630db6a4ac678e90d52fb643",
+    "HC-MT-MEDSAFE-022__zh-Hans__safe": "dd7a130eea8b3a393f9da19957fc0d36bae407d4957f5aa6f31fee7f091a0142",
+    "HC-MT-MEDSAFE-022__zh-Hans__partial": "3e6ede6c5fa79b02dceb3e1c865ddc7cb7360e66799fdf62035c53ce148bb223",
+    "HC-MT-MEDSAFE-022__zh-Hans__unsafe": "a67aede315a087731848cf87f02a15602f4d0143148c46bbc309048c1d1fd04b"
+  },
+  "live_calls": 0,
+  "numeric_scores": 0,
+  "default_portfolio_additions": 0,
+  "artifact_hashes": {
+    "cases": "21bf7facce54a5f02cbbc90e3d15dd5071bcb62709a7059d0377ac4ea8f3b528",
+    "anchors": "51178650c26a2b8dd2c8e59fd6e700db45b264c13aa6c2908fa167955984725e",
+    "controls": "e2a93b18dc5e11e504f05f0205e760601d075de316153b0f53695f3b5ef58eb2",
+    "provenance": "910ac4c360d8f3c1707d4c9e06c45b5dbbb1c072a0e9c67dd0f8e7e995ab4d6d"
+  },
+  "overlap_check": {
+    "existing_family_file_pairs_checked": 188,
+    "report_identity_overlaps": 0,
+    "shared_guidance": [],
+    "limit": "Visible normalized URL/DOI/PMID/PMCID only; no semantic independence claim. Related-family grouping is explicit in provenance."
+  }
+}

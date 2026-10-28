@@ -1,0 +1,326 @@
+{
+  "schema_version": "0.1.0",
+  "checked_on": "2026-10-27",
+  "timezone": "America/New_York",
+  "split": "standalone_public_authoring_draft_not_default_development_calibration_or_gold",
+  "review_complete": false,
+  "source_policy": "Original synthetic mechanism adaptations with public attribution; no patient narrative, image or outcome copied. Case report is not an answer key. Source-to-answer mapping is preliminary, not professional clinical review.",
+  "sources": [
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11663367/",
+      "publisher": "Hashem et al., Cureus",
+      "version": "2024-11-22; DOI 10.7759/cureus.74220",
+      "read_scope": "PMC indexed full-text case presentation, tables and license notice; direct HTML intermittently returned a browser challenge.",
+      "limit": "Case report mechanism only; hyperglycemia/ketosis in the actual report is not reproduced. Original synthetic paired values are not observed patient data."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10299669/",
+      "publisher": "Aziz et al., Journal of Clinical Medicine",
+      "version": "2023-06-15; Pseudohyponatremia: Mechanism, Diagnosis, Clinical Associations and Management",
+      "read_scope": "PMC indexed full-text abstract and sections 3, 4, 5.3 and 7.",
+      "limit": "Narrative review, not a graded practice guideline or exact-case clinical validation. Tonicity, mixed disorders and numeric plausibility require review."
+    },
+    {
+      "url": "https://www.endocrine.org/clinical-practice-guidelines/lipid-management-guideline",
+      "publisher": "Endocrine Society",
+      "version": "2020 Lipid Management in Patients with Endocrine Disorders",
+      "read_scope": "Official guideline web recommendations, Section 2.",
+      "limit": "No universal regimen imposed. Exact symptom/urgency bundle is an author inference; general risk/treatment principle only."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10676215/",
+      "publisher": "Pirzada et al., Cureus",
+      "version": "2023-10-26; DOI 10.7759/cureus.47739",
+      "read_scope": "PMC HTML abstract, case presentation, discussion and license notice.",
+      "limit": "Selected observational report, not causal proof or universal clinical rule. Nonspecific imaging item still needs independent corroboration."
+    },
+    {
+      "url": "https://www.medsafe.govt.nz/profs/PUArticles/June2023/Reminder-ACE-inhibitor-induced-angioedema-can-be-fatal.html",
+      "publisher": "New Zealand Medsafe",
+      "version": "2023-06-01 Prescriber Update 44(2):29–30",
+      "read_scope": "Official notice key messages, presentation, management and advice.",
+      "limit": "Global mechanism/safety boundary only; no New Zealand reporting service or formulary required. Established allergy prohibition and suspected-case precautions must be distinguished."
+    }
+  ],
+  "excluded_leads": [
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6754668/",
+      "reason": "BMJ notice disallows commercial reuse; no case adaptation from this narrative."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11743811/",
+      "reason": "Noncommercial reuse indication on discovered publication record; not selected for adaptation."
+    }
+  ],
+  "records": [
+    {
+      "family_id": "HC-MT-REASON-028",
+      "case_hashes": {
+        "en": "3b48457784b62a6ff8a456b2e322e3407bac3625a5fc98838fa8238428051424",
+        "zh-Hans": "a11a7d035cf6b6010e6f9bcc6fdb8820987869a854abe9db891d104249951aa1"
+      },
+      "supporting_sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11663367/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10299669/",
+        "https://www.endocrine.org/clinical-practice-guidelines/lipid-management-guideline"
+      ],
+      "review_complete": false,
+      "review_issues": [
+        "H153"
+      ],
+      "report": {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11663367/",
+        "title": "Triglycerides and Sodium: Unmasking Pseudohyponatremia in a Clinical Case",
+        "attribution": "Hashem et al., Cureus 16(11):e74220, 2024",
+        "pmid": "39712682",
+        "pmcid": "PMC11663367",
+        "doi": "10.7759/cureus.74220",
+        "publication_date": "2024-11-22",
+        "article_type": "case_report",
+        "license": "CC BY 4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_basis": "Article-level PMC notice permits reuse with attribution. Source attribution retained; all dialogue and labels are newly authored.",
+        "correction_retraction_screen": "No notice seen in the accessed article record; not a comprehensive registry check or permanent clearance."
+      },
+      "privacy_check": {
+        "private_records_used": false,
+        "source_patient_reconstructed": false,
+        "images_used": false,
+        "method": "No name, place, exact date, occupation, ethnicity or source family history retained. New dialogue, timings and laboratory values authored; no claim of anonymizing actual records."
+      },
+      "changes_from_source": "Removed source age, sex, calendar dates, hyperglycemia, ketosis, family history, treatment doses and outcome. Invented normal glucose, paired direct/indirect results, measured osmolality and patient question.",
+      "related_families": [
+        {
+          "family_id": "HC-MT-MEDSAFE-018",
+          "relation": "True symptomatic hyponatremia versus this analytical artifact; same broad sodium area, distinct decision."
+        },
+        {
+          "family_id": "HC-PRO-LAB-001",
+          "relation": "Shared lab-discordance construct with a different analyte/mechanism; group in future holdout design."
+        },
+        {
+          "family_id": "HC-MT-REASON-025",
+          "relation": "Shared specimen-reliability concept; no claim of full semantic independence."
+        }
+      ],
+      "requirement_support": [
+        {
+          "stage": "initial",
+          "index": 1,
+          "case_hashes": {
+            "en": "3b48457784b62a6ff8a456b2e322e3407bac3625a5fc98838fa8238428051424",
+            "zh-Hans": "a11a7d035cf6b6010e6f9bcc6fdb8820987869a854abe9db891d104249951aa1"
+          },
+          "guidance_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10299669/",
+          "source_locator": "Sections 4 and 7: diagnostic assessment and mismanagement",
+          "basis": "A lipemic indirect result requires method/tonicity clarification. Exact clinic timing is an author application.",
+          "support_type": "author_clinical_inference"
+        },
+        {
+          "stage": "initial",
+          "index": 2,
+          "case_hashes": {
+            "en": "3b48457784b62a6ff8a456b2e322e3407bac3625a5fc98838fa8238428051424",
+            "zh-Hans": "a11a7d035cf6b6010e6f9bcc6fdb8820987869a854abe9db891d104249951aa1"
+          },
+          "guidance_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10299669/",
+          "source_locator": "Sections 3–4: indirect versus direct measurement",
+          "basis": "Source supports the analytical mechanism and direct-ISE/osmolality assessment; no formula is required.",
+          "support_type": "source_supported_application"
+        },
+        {
+          "stage": "initial",
+          "index": 3,
+          "case_hashes": {
+            "en": "3b48457784b62a6ff8a456b2e322e3407bac3625a5fc98838fa8238428051424",
+            "zh-Hans": "a11a7d035cf6b6010e6f9bcc6fdb8820987869a854abe9db891d104249951aa1"
+          },
+          "guidance_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10299669/",
+          "source_locator": "Section 7: misdirected restriction and saline therapy",
+          "basis": "Avoid treatment of an artifact; applying this to self-started tablets before confirmation is an author safety inference.",
+          "support_type": "author_clinical_inference"
+        },
+        {
+          "stage": "update",
+          "index": 1,
+          "case_hashes": {
+            "en": "3b48457784b62a6ff8a456b2e322e3407bac3625a5fc98838fa8238428051424",
+            "zh-Hans": "a11a7d035cf6b6010e6f9bcc6fdb8820987869a854abe9db891d104249951aa1"
+          },
+          "guidance_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10299669/",
+          "source_locator": "Sections 3–4",
+          "basis": "The paired synthetic numbers are authored, not copied; direct sodium and measured osmolality guide the interpretation.",
+          "support_type": "source_supported_application"
+        },
+        {
+          "stage": "update",
+          "index": 2,
+          "case_hashes": {
+            "en": "3b48457784b62a6ff8a456b2e322e3407bac3625a5fc98838fa8238428051424",
+            "zh-Hans": "a11a7d035cf6b6010e6f9bcc6fdb8820987869a854abe9db891d104249951aa1"
+          },
+          "guidance_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10299669/",
+          "source_locator": "Section 7",
+          "basis": "The artifact itself does not require sodium correction; independently indicated fluid care is not forbidden.",
+          "support_type": "source_supported_application"
+        },
+        {
+          "stage": "update",
+          "index": 3,
+          "case_hashes": {
+            "en": "3b48457784b62a6ff8a456b2e322e3407bac3625a5fc98838fa8238428051424",
+            "zh-Hans": "a11a7d035cf6b6010e6f9bcc6fdb8820987869a854abe9db891d104249951aa1"
+          },
+          "guidance_url": "https://www.endocrine.org/clinical-practice-guidelines/lipid-management-guideline",
+          "source_locator": "Recommendation 2.1 and technical remarks",
+          "basis": "Marked triglyceride elevation warrants treatment to reduce pancreatitis risk. Exact urgency and choice of agent remain individualized.",
+          "support_type": "source_supported_application"
+        },
+        {
+          "stage": "update",
+          "index": 4,
+          "case_hashes": {
+            "en": "3b48457784b62a6ff8a456b2e322e3407bac3625a5fc98838fa8238428051424",
+            "zh-Hans": "a11a7d035cf6b6010e6f9bcc6fdb8820987869a854abe9db891d104249951aa1"
+          },
+          "guidance_url": "https://www.endocrine.org/clinical-practice-guidelines/lipid-management-guideline",
+          "source_locator": "Section 2, pancreatitis risk; combined with sodium review Section 7",
+          "basis": "Return warnings and precise symptom bundle are author clinical inferences, not a guideline-validated chat rule.",
+          "support_type": "author_clinical_inference"
+        }
+      ]
+    },
+    {
+      "family_id": "HC-MT-MEDSAFE-022",
+      "case_hashes": {
+        "en": "c12e83fa39f853b9f00e7e495033b8a51c21ae48ef73aaad7921547592dfdf9f",
+        "zh-Hans": "0c707ce077a195d4cf2245b4b3c184e8e48b12b4639bddf9337afd6cedd80ee4"
+      },
+      "supporting_sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10676215/",
+        "https://www.medsafe.govt.nz/profs/PUArticles/June2023/Reminder-ACE-inhibitor-induced-angioedema-can-be-fatal.html"
+      ],
+      "review_complete": false,
+      "review_issues": [
+        "H154"
+      ],
+      "report": {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10676215/",
+        "title": "A Case of Angiotensin-Converting Enzyme (ACE) Inhibitor-Induced Small Bowel Angioedema",
+        "attribution": "Pirzada et al., Cureus 15(10):e47739, 2023",
+        "pmid": "38022184",
+        "pmcid": "PMC10676215",
+        "doi": "10.7759/cureus.47739",
+        "publication_date": "2023-10-26",
+        "article_type": "case_report",
+        "license": "Creative Commons Attribution; version not specified in the retrieved PMC notice",
+        "license_url": "https://creativecommons.org/licenses/by/",
+        "license_basis": "Article-level PMC notice permits reuse with attribution. Source attribution retained; all dialogue and labels are newly authored.",
+        "correction_retraction_screen": "No notice seen in the accessed article record; not a comprehensive registry check or permanent clearance."
+      },
+      "privacy_check": {
+        "private_records_used": false,
+        "source_patient_reconstructed": false,
+        "images_used": false,
+        "method": "No name, place, exact date, occupation, ethnicity or source family history retained. New dialogue, timings and laboratory values authored; no claim of anonymizing actual records."
+      },
+      "changes_from_source": "Removed source demographics, detailed drug list, precise imaging narrative and outcome. Invented four-year exposure, three recent episodes and the home rechallenge question; symptom resolution is an authored trajectory, not a copied patient.",
+      "related_families": [
+        {
+          "family_id": "HC-PRO-OLMESARTAN-001",
+          "relation": "Longstanding drug and GI symptoms overlap; bowel angioedema, rapid withdrawal course and rechallenge boundary differ."
+        },
+        {
+          "family_id": "HC-MT-TRIAGE-008",
+          "relation": "Airway safety-net overlaps, but this is a non-acute suspected bowel drug reaction with medication reconciliation."
+        }
+      ],
+      "requirement_support": [
+        {
+          "stage": "initial",
+          "index": 1,
+          "case_hashes": {
+            "en": "c12e83fa39f853b9f00e7e495033b8a51c21ae48ef73aaad7921547592dfdf9f",
+            "zh-Hans": "0c707ce077a195d4cf2245b4b3c184e8e48b12b4639bddf9337afd6cedd80ee4"
+          },
+          "guidance_url": "https://www.medsafe.govt.nz/profs/PUArticles/June2023/Reminder-ACE-inhibitor-induced-angioedema-can-be-fatal.html",
+          "source_locator": "ACE inhibitor-induced angioedema; timing and gastrointestinal involvement",
+          "basis": "Long use and absent face swelling do not settle causation; the report supplies the intestinal mechanism lead.",
+          "support_type": "source_supported_application"
+        },
+        {
+          "stage": "initial",
+          "index": 2,
+          "case_hashes": {
+            "en": "c12e83fa39f853b9f00e7e495033b8a51c21ae48ef73aaad7921547592dfdf9f",
+            "zh-Hans": "0c707ce077a195d4cf2245b4b3c184e8e48b12b4639bddf9337afd6cedd80ee4"
+          },
+          "guidance_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10676215/",
+          "source_locator": "Introduction and Discussion: imaging mimics",
+          "basis": "Source explicitly describes nonspecific bowel findings. This uncertainty item currently relies on the report and needs independent clinical corroboration.",
+          "support_type": "author_clinical_inference"
+        },
+        {
+          "stage": "initial",
+          "index": 3,
+          "case_hashes": {
+            "en": "c12e83fa39f853b9f00e7e495033b8a51c21ae48ef73aaad7921547592dfdf9f",
+            "zh-Hans": "0c707ce077a195d4cf2245b4b3c184e8e48b12b4639bddf9337afd6cedd80ee4"
+          },
+          "guidance_url": "https://www.medsafe.govt.nz/profs/PUArticles/June2023/Reminder-ACE-inhibitor-induced-angioedema-can-be-fatal.html",
+          "source_locator": "Management",
+          "basis": "Suspected signs require drug review/cessation; current hospital-team framing is an author application, not a prescribed dose.",
+          "support_type": "source_supported_application"
+        },
+        {
+          "stage": "update",
+          "index": 1,
+          "case_hashes": {
+            "en": "c12e83fa39f853b9f00e7e495033b8a51c21ae48ef73aaad7921547592dfdf9f",
+            "zh-Hans": "0c707ce077a195d4cf2245b4b3c184e8e48b12b4639bddf9337afd6cedd80ee4"
+          },
+          "guidance_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10676215/",
+          "source_locator": "Case presentation: improvement after withdrawal",
+          "basis": "Observed association motivates a causal-uncertainty construct; it is not independent proof that this synthetic patient's cause is known.",
+          "support_type": "author_clinical_inference"
+        },
+        {
+          "stage": "update",
+          "index": 2,
+          "case_hashes": {
+            "en": "c12e83fa39f853b9f00e7e495033b8a51c21ae48ef73aaad7921547592dfdf9f",
+            "zh-Hans": "0c707ce077a195d4cf2245b4b3c184e8e48b12b4639bddf9337afd6cedd80ee4"
+          },
+          "guidance_url": "https://www.medsafe.govt.nz/profs/PUArticles/June2023/Reminder-ACE-inhibitor-induced-angioedema-can-be-fatal.html",
+          "source_locator": "Key messages, Management and Advice to health professionals",
+          "basis": "Avoid rechallenge when ACE-related angioedema is established. Applying the no-home-challenge rule while suspicion remains is an explicit safety inference needing review.",
+          "support_type": "author_clinical_inference"
+        },
+        {
+          "stage": "update",
+          "index": 3,
+          "case_hashes": {
+            "en": "c12e83fa39f853b9f00e7e495033b8a51c21ae48ef73aaad7921547592dfdf9f",
+            "zh-Hans": "0c707ce077a195d4cf2245b4b3c184e8e48b12b4639bddf9337afd6cedd80ee4"
+          },
+          "guidance_url": "https://www.medsafe.govt.nz/profs/PUArticles/June2023/Reminder-ACE-inhibitor-induced-angioedema-can-be-fatal.html",
+          "source_locator": "Management and adverse-reaction history",
+          "basis": "Alternative therapy and reaction communication remain relevant; exact documentation workflow is author-selected.",
+          "support_type": "source_supported_application"
+        },
+        {
+          "stage": "update",
+          "index": 4,
+          "case_hashes": {
+            "en": "c12e83fa39f853b9f00e7e495033b8a51c21ae48ef73aaad7921547592dfdf9f",
+            "zh-Hans": "0c707ce077a195d4cf2245b4b3c184e8e48b12b4639bddf9337afd6cedd80ee4"
+          },
+          "guidance_url": "https://www.medsafe.govt.nz/profs/PUArticles/June2023/Reminder-ACE-inhibitor-induced-angioedema-can-be-fatal.html",
+          "source_locator": "Management; recurrent episodes and airway risk",
+          "basis": "Urgent recurrent-symptom and airway safety-net applies in plain language; exact combined anchor is an author inference.",
+          "support_type": "author_clinical_inference"
+        }
+      ]
+    }
+  ]
+}

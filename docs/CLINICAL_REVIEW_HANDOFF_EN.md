@@ -1,5 +1,13 @@
 # Living human-review handoff — opened 2026-10-07
 
+## S64 / Batch R questions — not closed by engineering tests
+
+**H153 / high — Sodium artifact versus real concurrent risk:** Review REASON-028's invented indirect/direct sodium, triglyceride and osmolality coherence; initial clarification timing; avoidance of artifact correction without prohibiting independently indicated fluids; urgency of lipid care; and bundled neurological/abdominal return advice. Check partial credit, severity 2 and overlap with MEDSAFE-018, PRO-LAB-001 and REASON-025. The supporting review is not a graded guideline. No current pancreatitis is implied.
+
+**H154 / high — Suspected bowel angioedema and rechallenge:** Review MEDSAFE-022's nonspecific imaging, delayed exposure, absent facial signs, uncertainty after withdrawal, safe cessation while diagnosis remains suspected, same-class warning, continued blood-pressure care and return pathways. Distinguish established ACE allergy rules from precautionary advice during uncertainty. Independently corroborate report-dependent requirements and confirm severity 3 only for affirmative home rechallenge. Review overlap with PRO-OLMESARTAN-001 and TRIAGE-008.
+
+Both need source-to-requirement and EN/ZH adjudication of the [exact R package](S64_DEVELOPMENT_CALIBRATION_EN.md). Review whether combined anchors and omitted components remain independent. S64 reference IDs guarantee source location only, not clinical relevance, correct status or closure of H147/H148. All earlier questions remain open.
+
 ## S60 pilot review status
 
 [S60](S60_STANDALONE_PILOT_EN.md) selects O's S52-derived 0.2.0 labels and P/Q's original 0.1.0 labels. It binds H142–H146 and H149–H152 without closing any question. O's two reworded requirements retain explicit source-revalidation limits; the eight unlabelled S53 records remain unlabelled. Reference-profile names do not establish clinical adequacy or guaranteed scores. All eight families require later clinical and bilingual review, and H148's historical repeat disagreements remain separate. No new clinical adjudication or live result occurred.

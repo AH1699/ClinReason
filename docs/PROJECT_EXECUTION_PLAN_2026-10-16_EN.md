@@ -1,12 +1,12 @@
 # ClinReason current execution plan — 2026-10-16
 
-## Current checkpoint S63 with the main project milestones
+## Current checkpoint S64 with the main project milestones
 
-**Current checkpoint S63:** [The approved run is closed and audited](S63_STANDALONE_PILOT_RESULTS_EN.md): **278 requests / $2.590216 monitored usage**, with no unknown-cost attempts. Controls passed: 96 valid replies, 16/16 unsafe hypotheses detected and 32/32 repeated vectors matching. Both MiniMax lanes closed after output-limit replies; the third judge evidence-format failure stopped the run. There are **39 complete first scores (65–100; 13 perfect)** and six matching complete repeats from only one family. Missing cells and all clinical holds remain. The public summary reproduces; 1,171 offline tests pass. Cases, labels and historical inputs are unchanged.
+**Current checkpoint S64:** [Offline evidence-reference prototype and completion gates](S64_DEVELOPMENT_CALIBRATION_EN.md) are implemented/documented. Mechanical source-resolution exercises cover 96 accepted controls and all three failed S62 packets; the old replies remain rejected. A prospective 32,768-token MiniMax completion budget is proposed, not enabled. S36 arithmetic, frozen runs and historical scores remain unchanged; zero new provider calls.
 
-**Inventory: 133 distinct public draft families.** The [catalog](CASE_AUTHORING_CATALOG_EN.md) lists **125 registered / 250 variants plus eight standalone O/P/Q families / 16 variants**. The 500-family target needs 367 more drafts. Clinical and bilingual approval remain pending; approved calibration/Gold are **0/0**. H149–H152 and all earlier review holds remain open, and Xi’an stays local.
+**Inventory: 135 public draft families / 270 variants.** The [catalog](CASE_AUTHORING_CATALOG_EN.md) now includes 125 registered plus ten standalone O/P/Q/R families. Batch R adds two original source-backed bilingual families with anchors, references and 14 source-mapped criteria. The target needs 365 more families. H153–H154 join the open clinical/bilingual register; approved calibration/Gold remain **0/0** and Xi’an stays local.
 
-**Next: offline evidence-reference and candidate-budget work, alongside case expansion.** Prototype source-bound answer-span identifiers instead of retyped quotations, with strict stage/hash checks; review MiniMax reasoning/output budgets in a new protocol. These are proposed changes, not implemented replacements or permission for more paid calls. Do not repair old scores, restart or reuse the consumed $20 allowance. Continue source-backed families toward 500 without fitting scores. [S58](S58_JUDGE_PANEL_READOUT_EN.md) and its boundary questions remain unchanged. No rankings or repeat averaging; 60–70 / about 80 / about 90 remain diagnostic aspirations.
+**Next: finish compact provider-compatible reference packets and an approval-ready feasibility protocol, then broader confirmation if it passes.** Plan for two empirical batches, conditional on passing—not a guaranteed finish date. Provisional development scoring can stabilize before expert review; clinical calibration cannot. No new paid call, reuse of the consumed $20 approval, old-score repair, repeat averaging or score fitting is authorized. The 60–70 / around 80 / around 90 aspirations remain diagnostic only. [S63](S63_STANDALONE_PILOT_RESULTS_EN.md) and [S58](S58_JUDGE_PANEL_READOUT_EN.md) retain their incomplete/repeat-boundary evidence.
 
 ## Project direction and next milestones
 
@@ -18,8 +18,8 @@ Recent work has concentrated on scoring and provider diagnostics while registere
 |---|---|---|
 | Scoring boundaries | S58 has 69/72 exact score repeats and one provisional pass change; H148 queued; S50 medication hold remains | Preserve both scores and the three boundary questions for offline/later expert review; no retrospective label change or automatic diagnostic |
 | Broader model comparison | S58 complete: 324 accepted judge calls, all 72 first/repeat pairs, $3.875174 estimated cost | Run closed; interpret case-level results only, without pooled means or rankings |
-| New pilot engineering | S62 closed at 278 requests; S63 preserves 39 first scores and six complete repeats, with output-cap and quote-format failures visible | Offline source-bound evidence-reference prototype and future candidate-budget review; no repair or automatic paid rerun |
-| Case expansion | 125 registered plus eight standalone O/P/Q families, 133 total; 367 more to target | Continue distinct source-backed families separately from frozen pilot inputs; review related-family grouping |
+| New pilot engineering | S64 reference prototype works offline; S63 retains 39 first scores and six full repeats | Compact the new format and prepare a bounded feasibility protocol; then broader confirmation if it passes |
+| Case expansion | 125 registered plus ten standalone O/P/Q/R families, 135 total; 365 more to target | Continue source-backed families separately from frozen pilot inputs; H153/H154 and related-family grouping remain open |
 | Source and privacy | Public evidence mappings and private Xi'an processing remain separate | Continue source-to-answer checks; Xi'an stays local until its case/privacy readiness issues are resolved |
 | Expert review | Deferred during partner discussions | Maintain the clinical/bilingual question register now; obtain review before release or comparative clinical claims |
 | Product interface | Local CLI first | Dashboard/API-key UI after the broader workflow and reporting contract are established |

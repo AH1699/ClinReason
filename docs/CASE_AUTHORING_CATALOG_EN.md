@@ -1,6 +1,6 @@
 # Find cases and prepare the next expansion batch
 
-The public draft inventory contains **133 distinct families**: 125 registered development families and eight standalone drafts. Each has English and Chinese versions. The new catalog makes these cases discoverable without adding the standalone drafts to a benchmark run or changing historical inputs. It does not create new cases or count calibration, confirmation or private Xi’an records toward this total.
+The public draft inventory contains **135 distinct families**: 125 registered development families and ten standalone drafts. Each has English and Chinese versions. The catalog makes these cases discoverable without adding the standalone drafts to a benchmark run or changing historical inputs. It does not itself create cases or count calibration, confirmation or private Xi’an records toward this total.
 
 ## Find a case and its answer labels
 
@@ -18,13 +18,15 @@ The full output lists each family ID, track, registration status, case file, lan
 | Alpha single turn | 32 registered | `reference_answer`, `critical_requirements` and `critical_errors` inside each JSONL case |
 | Patient multi-turn | 51 registered | Each turn's `critical_requirements` and `critical_errors`; a scoring experiment must also select and freeze the corresponding exact-case anchors |
 | Professional | 42 registered | Each language variant's `reference_elements` and `critical_errors`; professional scoring remains disabled |
-| Standalone O, P and Q | 8 unregistered | Separate cases, anchors, reference examples and source mappings linked below |
+| Standalone O, P, Q and R | 10 unregistered | Separate cases, anchors, reference examples and source mappings linked below |
 
 [Batch O](BATCH_O_STANDALONE_EN.md) covers competing fluid/renal concerns and nutrition-related electrolyte changes. [Batch P](S54_LIVE_ADMISSION_AND_BATCH_P_EN.md#new-cases-and-answer-labels) covers unreliable platelet measurements and discordant clinic/home blood-pressure readings. Their labels are author drafts, not clinically approved answers. Neither is silently added to the current scoring panel.
 
 ## Next expansion work
 
-The target remains **at least 500 distinct families**, leaving 367 additional public draft families beyond this inventory. Rewordings, translations and controlled-answer variants do not reduce that gap. Reaching the draft count will not establish clinical readiness.
+The target remains **at least 500 distinct families**, leaving 365 additional public draft families beyond this inventory. Rewordings, translations and controlled-answer variants do not reduce that gap. Reaching the draft count will not establish clinical readiness.
+
+[S64 / Batch R](S64_DEVELOPMENT_CALIBRATION_EN.md) adds two source-backed drafts: sodium assay artifact with ongoing lipid risk and suspected ACE-inhibitor bowel angioedema with a rechallenge boundary. [Cases](../data/authoring/batch_r_cases.json), [anchors](../config/multiturn_criterion_anchors_batch_r_v1.json), [reference contrasts](../data/authoring/batch_r_contrasts_v1.json) and [provenance](../data/authoring/batch_r_provenance.json) live outside historical experiment scans. H153/H154 remain open. Run `python3 -m scripts.audit_batch_r` for structural checks; no model score or measured difficulty follows.
 
 [Batch Q](S59_BATCH_Q_CASE_EXPANSION_EN.md) added the four planned source-backed reasoning problems. S60/S61 bound and rehearsed the eight O/P/Q families; the separately approved S62 run is now closed and documented in [S63](S63_STANDALONE_PILOT_RESULTS_EN.md). It produced 39 complete first scores and six complete repeats, with output-limit and evidence-format failures retained. None of this registers the drafts or adds families. Continue expansion independently. Use the readout to prioritize source-to-requirement questions, not to alter measured cases or manufacture difficulty. Favor competing explanations, changes over time, treatment trade-offs and decision-changing evidence. Avoid giving the intended conclusion away in the patient's question; include appropriate restraint so “always escalate” is not a shortcut.
 
