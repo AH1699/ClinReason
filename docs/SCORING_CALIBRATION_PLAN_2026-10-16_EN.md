@@ -2,11 +2,11 @@
 
 ## Current direction updated 2026-10-28
 
-**Current checkpoint S65:** [Compact evidence requests and the fixed feasibility preparation](S65_COMPACT_FEASIBILITY_EN.md) are complete offline. The three problematic full inputs shrink by 63.48–71.00% while preserving full reference hashes, exact reconstruction and S36 checks. A 16-request captured fake transport rehearsal completes; these are fixtures, not new model results. Historical runs remain unchanged and no paid calls were made.
+**Current checkpoint S66:** [The fixed feasibility live adapter](S66_COMPACT_LIVE_READINESS_EN.md) is implemented and frozen, with single-use approval, pre-request reservations, raw capture/accounting and read-only replay. All 35 new tests pass, and a 16-request fake-transport rehearsal using the exact verified source packets replays successfully. These are engineering checks, not live model results. No paid requests, new scores or historical changes.
 
 **Inventory: 135 public draft families / 270 variants.** The [catalog](CASE_AUTHORING_CATALOG_EN.md) now includes 125 registered plus ten standalone O/P/Q/R families. Batch R adds two original source-backed bilingual families with anchors, references and 14 source-mapped criteria. The target needs 365 more families. H153–H154 join the open clinical/bilingual register; approved calibration/Gold remain **0/0** and Xi’an stays local.
 
-**Next: implement/freeze the live approval, journal and replay adapter for the fixed 12-judge + four-MiniMax feasibility batch, then seek fresh approval for a proposed $3 stop threshold.** S65 has no live entry point; old $20 permission is consumed. Broader bilingual/multi-family confirmation follows only if feasibility and local evidence-relevance review pass. Two empirical batches remain a conditional planning estimate, not a guarantee of completed clinical calibration. Expert review stays later; the 60–70 / around 80 / around 90 aspirations remain diagnostics, never score fitting.
+**Next: obtain fresh approval for at most 12 Gemini judge requests + four MiniMax turns, using the shared $3 recorded-spending stop threshold with possible final-request overrun, then run once and inspect every evidence reference locally.** The runner is ready; no paid approval is recorded, and old $20 permission is consumed. Broader bilingual/multi-family confirmation follows only if feasibility and relevance review pass. Two empirical batches remain a conditional estimate, not a guarantee of completed clinical calibration. Expert review stays later; the 60–70 / around 80 / around 90 aspirations remain diagnostics, never score fitting.
 
 Historical S44 record (superseded execution direction):
 

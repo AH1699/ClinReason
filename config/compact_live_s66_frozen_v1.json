@@ -1,0 +1,127 @@
+{
+  "version": "s66-compact-feasibility-live-v1",
+  "s65": {
+    "version": "s65-compact-feasibility-preparation-v1",
+    "mode": "offline_preparation",
+    "parent_s62_sha256": "ff3eb575a24f3130a89043a3016d9701199931c66b02f7e603f9b402235fd05e",
+    "files": {
+      "config/compact_feasibility_s65_v1.json": "8894528d34aa7f26db6a74714ef1d991b57ae2aac1989bbfa5f77779b9561d0f",
+      "scripts/evidence_refs_s65.py": "f18954b3f811b1192714f97dda9c37f39bb6d5ea6da68911023c90807919f9a9",
+      "scripts/compact_feasibility_s65.py": "6ba66272bb85e71c0c1db379c9d411bff2bfa327e10b50a5bfe59f7e5c45d65b",
+      "scripts/evidence_refs_s64.py": "ce8afb3edbe11edb9c50ea58ca7313e7c2fc8801b68e81249f3ea241e5d37878",
+      "scripts/audit_standalone_s63.py": "31ee4a31382a81ac23164acef2fa2b0b845f596278fca837321a6ad9e0813042",
+      "tests/test_evidence_refs_s65.py": "883c4041fbe3f9b282007394708e1848eb3536757908f025729944ffdc276416",
+      "tests/test_compact_feasibility_s65.py": "5f5a62bcf73a768108c7ebe0380e37c724e9f2d65ac47579c558df22a68fba91",
+      "data/audit/s64_evidence_reference_prototype.json": "081650ca179de6d417adca86e51ae3148c636e7d5cf64079d1ce20914fd6c177"
+    }
+  },
+  "plan": {
+    "version": "s66-compact-feasibility-live-v1",
+    "status": "ready_for_explicit_approval",
+    "maximum_attempts": 16,
+    "judge_requests": 12,
+    "candidate_turns": 4,
+    "stop_threshold_usd": "3.00",
+    "hard_ceiling": false,
+    "last_request_overrun_possible": true,
+    "max_in_flight": 1,
+    "automatic_retries": 0,
+    "resume_allowed": false,
+    "max_request_bytes": 65536,
+    "socket_timeout_seconds": 900,
+    "exchange_deadline_seconds": 1800,
+    "source_selection": "unchanged_frozen_s65",
+    "relevance_review": "required_separately_never_inferred_from_structural_gate",
+    "clinical_validation": false,
+    "pricing_verified_at": "2026-10-28T04:27:45Z",
+    "pricing_evidence": "Official Gemini and MiniMax model/parameter/pricing pages rechecked; same S65 rates and <=16000 observed-input accounting scope. No account access, token count, invoice or live compatibility verification.",
+    "pricing_sources": [
+      "https://ai.google.dev/gemini-api/docs/pricing",
+      "https://ai.google.dev/api/interactions-api",
+      "https://platform.minimax.io/docs/pricing/overview",
+      "https://platform.minimax.io/docs/api-reference/text-openai-api"
+    ]
+  },
+  "files": {
+    "config/compact_live_s66_v1.json": "b64a969f584227e1777d421a8f1fb7a6f81f4543c57c4a72d792e1295db6b70b",
+    "data/audit/s65_compact_feasibility_rehearsal.json": "6b77f80db5714330bb517e6bc99beb7490c62c71b3bca8e7ad35c83d6cf91435",
+    "config/compact_feasibility_s65_frozen_v1.json": "d1fa3bb8eced0e80318b27e594e22419b8203823e77f5c06ac47e62db6b9eb5a",
+    "scripts/compact_live_s66.py": "a4b143e2acbd5d09d69cb75137efb33b27ef4641f99c6a240d39211a773c546a",
+    "tests/test_compact_live_s66.py": "d81a0b8ba9e558dbe82e5be894a4f7a03ee8dc76491673d236141ae6d3b90811"
+  },
+  "selected_packet_sha256": {
+    "HC-MT-REASON-027__en__update__safe": "ebbac769e3155d80fab1bc5f6df8dcae1d6ce2e707b91be8166d345cf58e9b23",
+    "HC-MT-REASON-024__en__update__partial": "edee97a2a0a03fe7fffbc8fb0fd09962a8eb2b4cb82796ea9c29a8c48c0fa769",
+    "HC-MT-REASON-025__zh-Hans__update__unsafe": "6950cd5505a12d6bd2f4c18ca3e2e4b2c2aff01ee34da4683241cfe1689543d5",
+    "historical-source-223": "e1e1466869a20bc14b22549a7f6612d2f48c77cbdbb1285eff236d183482ea54",
+    "historical-source-232": "e0b1718c74958d92c8f701170fee0a476bdb2e1db6688b5e527b4cb043dec51a",
+    "historical-source-278": "ab6e8f2242f64070eb14c0571364d14e2444c5e95a743ca9cb30d1aadb1ac401"
+  },
+  "judge_payload_sha256": {
+    "first__HC-MT-REASON-027__en__update__safe": "63fdde50f83bec3a8d3dd3e55ddd691149e7f3d6f96c2a74ab18f82a6955de95",
+    "first__HC-MT-REASON-024__en__update__partial": "f1a895a7ecccf58882c42036d45fb7e2e6cd632223c1282654a6e4d39db77302",
+    "first__HC-MT-REASON-025__zh-Hans__update__unsafe": "b0ac22b8ca1492fc51e4159b374b8382e8c4c658aca30989ca096dfb16ce9734",
+    "first__historical-source-223": "6d5a2bf243cc8f1d292c7d2fe6ba3b9173ab2d16a435e90913f99e70b45337f0",
+    "first__historical-source-232": "780964313d75faff794f25877478116503cca3b4ddb0c32b2ab7868c41ca0180",
+    "first__historical-source-278": "1de0a7df879b75b69e50db4cab87b883dad4c579fbfa9d4455607c09e70b50cb",
+    "repeat__HC-MT-REASON-027__en__update__safe": "63fdde50f83bec3a8d3dd3e55ddd691149e7f3d6f96c2a74ab18f82a6955de95",
+    "repeat__HC-MT-REASON-024__en__update__partial": "f1a895a7ecccf58882c42036d45fb7e2e6cd632223c1282654a6e4d39db77302",
+    "repeat__HC-MT-REASON-025__zh-Hans__update__unsafe": "b0ac22b8ca1492fc51e4159b374b8382e8c4c658aca30989ca096dfb16ce9734",
+    "repeat__historical-source-223": "6d5a2bf243cc8f1d292c7d2fe6ba3b9173ab2d16a435e90913f99e70b45337f0",
+    "repeat__historical-source-232": "780964313d75faff794f25877478116503cca3b4ddb0c32b2ab7868c41ca0180",
+    "repeat__historical-source-278": "1de0a7df879b75b69e50db4cab87b883dad4c579fbfa9d4455607c09e70b50cb"
+  },
+  "pricing": {
+    "verified_at": "2026-10-28T03:56:48Z",
+    "refresh_within_hours_before_dispatch": 24,
+    "input_token_scope_max": 16000,
+    "token_count_verified": false,
+    "cache_discount_used": false,
+    "output_includes_thinking": true,
+    "account_access_tested": false,
+    "models": {
+      "gemini-3.8-flash": {
+        "provider": "gemini",
+        "model": "gemini-3.8-flash",
+        "input_per_million": 0.75,
+        "output_per_million": 3.75
+      },
+      "MiniMax-M3.1-Flash": {
+        "provider": "minimax",
+        "model": "MiniMax-M3.1-Flash",
+        "input_per_million": 0.15,
+        "output_per_million": 0.6
+      },
+      "MiniMax-M3": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "input_per_million": 0.3,
+        "output_per_million": 1.2
+      }
+    },
+    "m3_default_echo_monitoring": {
+      "input_per_million": 0.45,
+      "output_per_million": 1.8
+    },
+    "sources": [
+      "https://ai.google.dev/gemini-api/docs/pricing",
+      "https://ai.google.dev/gemini-api/docs/structured-output",
+      "https://ai.google.dev/api/interactions-api",
+      "https://platform.minimax.io/docs/pricing/overview",
+      "https://platform.minimax.io/docs/api-reference/text-openai-api"
+    ],
+    "note": "Byte size is not token count. Known-usage accounting is restricted to <=16000 input tokens; any excess is unknown/out-of-scope and stops globally. Planning estimate is not a maximum invoice. Fresh pricing check and separately implemented/frozen single-use approval/capture adapter required before live execution."
+  },
+  "endpoints": {
+    "gemini": [
+      "generativelanguage.googleapis.com",
+      "/v1beta/interactions",
+      "x-goog-api-key"
+    ],
+    "minimax": [
+      "api.minimax.io",
+      "/v1/chat/completions",
+      "Authorization"
+    ]
+  }
+}

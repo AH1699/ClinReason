@@ -1,0 +1,27 @@
+{
+  "version": "s66-compact-feasibility-live-v1",
+  "status": "ready_for_explicit_approval",
+  "maximum_attempts": 16,
+  "judge_requests": 12,
+  "candidate_turns": 4,
+  "stop_threshold_usd": "3.00",
+  "hard_ceiling": false,
+  "last_request_overrun_possible": true,
+  "max_in_flight": 1,
+  "automatic_retries": 0,
+  "resume_allowed": false,
+  "max_request_bytes": 65536,
+  "socket_timeout_seconds": 900,
+  "exchange_deadline_seconds": 1800,
+  "source_selection": "unchanged_frozen_s65",
+  "relevance_review": "required_separately_never_inferred_from_structural_gate",
+  "clinical_validation": false,
+  "pricing_verified_at": "2026-10-28T04:27:45Z",
+  "pricing_evidence": "Official Gemini and MiniMax model/parameter/pricing pages rechecked; same S65 rates and <=16000 observed-input accounting scope. No account access, token count, invoice or live compatibility verification.",
+  "pricing_sources": [
+    "https://ai.google.dev/gemini-api/docs/pricing",
+    "https://ai.google.dev/api/interactions-api",
+    "https://platform.minimax.io/docs/pricing/overview",
+    "https://platform.minimax.io/docs/api-reference/text-openai-api"
+  ]
+}
