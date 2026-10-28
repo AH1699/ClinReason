@@ -1,5 +1,7 @@
 # Eight family live pilot and spending proposal
 
+Historical pre-run record: the owner subsequently approved one execution, now closed. See [S63 results](S63_STANDALONE_PILOT_RESULTS_EN.md) for its 278-request outcome and limitations. The proposal and rules below are preserved as written before execution, not a new approval or current run status.
+
 The next pilot is ready for **separate owner approval**, not yet authorized or run. It will test the eight O/P/Q families with two Gemini and two MiniMax candidate models, using Gemini 3.8 Flash as judge. The new [runner](../scripts/standalone_live_s62.py) adds one-use approval, prospective control checks and failure limits to the tested S61 workflow. Cases, labels, score arithmetic and historical results stay unchanged.
 
 This is a provisional scoring and difficulty experiment. It can show which requirements produce perfect scores, where models differ and whether the same answers receive consistent judgments. It cannot establish clinical validity or a defensible model ranking. Average about 80, lower-tier 60–70 and premium about 90 remain diagnostic aspirations, never scores to manufacture.
